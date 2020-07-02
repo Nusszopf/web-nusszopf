@@ -1,0 +1,7 @@
+.history
+.next
+.vercel
+docs
+node_modules
+public
+yarn.lock
