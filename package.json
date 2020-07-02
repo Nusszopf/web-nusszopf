@@ -35,6 +35,7 @@
     "@sanity/image-url": "0.140.19",
     "@sendgrid/client": "7.1.0",
     "@sendgrid/mail": "7.1.0",
+    "lodash": "4.17.15",
     "next": "9.4.4",
     "next-seo": "4.4.0",
     "react": "16.13.1",
