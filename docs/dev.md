@@ -1,6 +1,8 @@
 # Development
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+We use [Vercel](https://vercel.com) to build and host the site. To work locally you have to run `npx vercel` to link the project. After that you can load the
+environment-variables via `vercel env pull`.
 
 ## Scripts
 
