@@ -1,7 +1,6 @@
-import { useState, createRef } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useFormik } from 'formik'
-import ReCAPTCHA from 'react-google-recaptcha'
 import { CSSTransition } from 'react-transition-group'
 
 import { Heading, Text, Input, Button, Spinner } from '../../atoms'
@@ -22,8 +21,6 @@ const content = {
 }
 
 const Newsletter = ({ apiUrl, type, text }) => {
-  const recaptchaRef = createRef()
-  const [recaptchaValid, setRecaptchaState] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [hasError, setError] = useState(false)
   const [doesLeadExist, setLeadExist] = useState(false)
@@ -39,18 +36,9 @@ const Newsletter = ({ apiUrl, type, text }) => {
       return errors
     },
     onSubmit: () => {
-      if (recaptchaValid) {
-        createNewsletterContact()
-      } else {
-        recaptchaRef.current.execute()
-      }
+      createNewsletterContact()
     },
   })
-
-  const handleRecaptcha = () => {
-    setRecaptchaState(true)
-    createNewsletterContact()
-  }
 
   const resetForm = () => {
     setLeadExist(false)
@@ -122,16 +110,6 @@ const Newsletter = ({ apiUrl, type, text }) => {
         <CSSTransition in={isLoading} appear={true} timeout={250} classNames="step" unmountOnExit>
           {<Spinner className={styles.spinner} />}
         </CSSTransition>
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          sitekey={process.env.RECAPTCHA_KEY}
-          size="invisible"
-          badge="bottomright"
-          hl="de"
-          onChange={handleRecaptcha}
-          onExpired={() => setRecaptchaState(false)}
-          onErrored={() => setRecaptchaState(false)}
-        />
       </div>
       <AlertDialog
         showDialog={hasError}
