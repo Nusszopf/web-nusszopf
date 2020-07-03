@@ -17,3 +17,7 @@ Builds the app for production.
 ### `yarn start`
 
 Runs the built app in production mode.
+
+## Update dependencies
+
+Run `$yarn upgrade-interactive --latest`
