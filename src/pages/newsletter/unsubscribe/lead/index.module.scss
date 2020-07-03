@@ -1,0 +1,25 @@
+@import '../../../../styles/variables';
+
+.container {
+  margin: $space-6 auto 0 auto;
+  padding: 0 $space-3;
+  max-width: $size-50;
+
+  @media screen and (min-width: $breakpoint-1) {
+    margin: $space-8 auto 0 auto;
+    padding: 0 $space-6;
+  }
+}
+
+.section {
+  margin-top: $space-7;
+}
+
+.footer {
+  display: flex;
+  margin: $space-6 0;
+
+  @media screen and (min-width: $breakpoint-1) {
+    margin: $space-8 0;
+  }
+}

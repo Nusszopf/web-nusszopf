@@ -1,0 +1,7 @@
+export { default as AlertDialog } from './AlertDialog/alert-dialog.organism'
+export { default as Dialog } from './Dialog/dialog.organism'
+export { default as ErrorBoundary } from './ErrorBoundary/error-boundary.organism'
+export { default as Footer } from './Footer/footer.organism'
+export { default as Header } from './Header/header.organism'
+export { default as Newsletter } from './Newsletter/newsletter.organism'
+export { default as RenderSanitySections } from './RenderSanitySections/render-sanity-sections.organism'

@@ -1,0 +1,28 @@
+@import '../../../styles/variables';
+
+.image {
+  display: block;
+  width: $size-100;
+  height: $size-5;
+  max-width: $size-6;
+  border-radius: $radii-4;
+  background-color: $light-grey;
+  object-fit: cover;
+}
+
+.emptyImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $size-100;
+  height: $size-5;
+  max-width: $size-6;
+  border-radius: $radii-4;
+  background-color: $light-grey;
+}
+
+.icon {
+  height: $size-1-2;
+  width: $size-1-2;
+  color: $dark-grey;
+}

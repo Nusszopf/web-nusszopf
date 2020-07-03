@@ -1,0 +1,10 @@
+@import '~spinthatshit/src/loaders';
+@import '../../../styles/variables';
+
+$loader-color: $black;
+$loader-size: $size-2;
+$loader-border-size: 6px;
+
+.spinner {
+  @include loader02($align: middle);
+}

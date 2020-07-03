@@ -1,0 +1,10 @@
+@import '../../../styles/variables';
+
+.box {
+  background-color: $yellow;
+  padding: $space-3;
+  border-radius: $radii-4;
+  p {
+    margin: 0;
+  }
+}

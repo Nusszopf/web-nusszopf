@@ -1,0 +1,14 @@
+// Normalize
+@import './normalize.css';
+
+// Defaults
+@import '../../node_modules/@reach/dialog/styles.css';
+@import '../../node_modules/nprogress/nprogress.css';
+
+// Globals
+@import './font.css';
+@import './animation.css';
+
+// Customs
+@import './ngprogress';
+@import './reachDialog';

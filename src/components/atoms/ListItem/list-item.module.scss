@@ -1,0 +1,9 @@
+@import '../../../styles//variables';
+
+.listItem {
+  white-space: pre-wrap;
+  font-size: $font-size-2;
+  line-height: $space-5;
+  font-weight: normal;
+  color: $black;
+}

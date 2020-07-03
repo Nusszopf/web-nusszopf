@@ -1,0 +1,12 @@
+@import '../../../styles/variables';
+
+.container {
+  margin: $space-6 auto $space-6 auto;
+  padding: 0 $space-3;
+  max-width: $size-50;
+
+  @media screen and (min-width: $breakpoint-1) {
+    margin: $space-8 auto $space-8 auto;
+    padding: 0 $space-6;
+  }
+}

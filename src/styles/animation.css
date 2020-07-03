@@ -1,0 +1,17 @@
+.step-exit-done,
+.step-enter {
+  opacity: 0;
+}
+
+.step-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+.step-exit {
+  opacity: 1;
+  display: none;
+}
+.step-exit-active {
+  opacity: 0;
+  transition: opacity 250ms ease-out;
+}

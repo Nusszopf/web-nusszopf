@@ -1,0 +1,18 @@
+@import './variables';
+
+// [data-reach-dialog-overlay]
+
+[data-reach-dialog-content] {
+  width: calc(#{$size-100} - (2 * #{$space-3}));
+  margin: $space-9 $space-3 $space-3 $space-3;
+  box-sizing: border-box;
+  border-radius: $radii-3;
+  background: $white;
+  padding: $space-2 $space-4 $space-4 $space-4;
+
+  @media screen and (min-width: $breakpoint-1) {
+    width: calc(#{$size-100} - (2 * #{$space-6}));
+    max-width: $size-50;
+    margin: $space-9 auto;
+  }
+}
