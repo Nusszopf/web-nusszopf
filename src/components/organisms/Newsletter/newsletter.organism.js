@@ -66,6 +66,7 @@ const Newsletter = ({ apiUrl, type, text }) => {
         body: JSON.stringify({ email: formik.values.email }),
       })
       if (response.ok) {
+        console.log(response.status)
         setLeadExist(response.status === 200)
       }
     } catch (error) {
@@ -79,11 +80,7 @@ const Newsletter = ({ apiUrl, type, text }) => {
     <>
       <div className={type === 'subscribe' ? styles.newsletter : null}>
         {type === 'subscribe' && <Heading as="h3">{content.title}</Heading>}
-        <CSSTransition
-          in={!isLoading && !doesLeadExist}
-          timeout={250}
-          classNames="step"
-          unmountOnExit>
+        <CSSTransition in={!isLoading && !doesLeadExist} timeout={250} classNames="step" unmountOnExit>
           <div>
             <Text>{text.description}</Text>
             <form name="newsletter" onSubmit={formik.handleSubmit}>
@@ -114,12 +111,7 @@ const Newsletter = ({ apiUrl, type, text }) => {
             </form>
           </div>
         </CSSTransition>
-        <CSSTransition
-          in={!isLoading && doesLeadExist}
-          appear={true}
-          timeout={250}
-          classNames="step"
-          unmountOnExit>
+        <CSSTransition in={!isLoading && doesLeadExist} appear={true} timeout={250} classNames="step" unmountOnExit>
           <div>
             <Text>{text.confirmation}</Text>
             <Button type="reset" onClick={resetForm}>
