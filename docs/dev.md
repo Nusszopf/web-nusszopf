@@ -18,8 +18,12 @@ Builds the app for production.
 
 Runs the built app in production mode.
 
-## Update dependencies
+### `yarn analyze`
 
+Analyze the app bundles.
+
+## Update dependencies
+ 
 Run `yarn upgrade-interactive --latest`
 
 ## VS Code
