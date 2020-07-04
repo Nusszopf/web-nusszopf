@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "analyze": "cross-env ANALYZE=true yarn build"
   },
   "commitlint": {
     "extends": [
@@ -60,8 +61,10 @@
     "@babel/register": "7.10.4",
     "@commitlint/cli": "9.0.1",
     "@commitlint/config-conventional": "9.0.1",
+    "@next/bundle-analyzer": "9.4.4",
     "babel-eslint": "10.1.0",
     "babel-plugin-graphql-tag": "2.5.0",
+    "cross-env": "7.0.2",
     "eslint": "7.3.1",
     "eslint-config-prettier": "6.11.0",
     "eslint-plugin-jsx-a11y": "6.3.1",
