@@ -18,6 +18,10 @@ Builds the app for production.
 
 Runs the built app in production mode.
 
+### `yarn lint`
+
+Lint files in `src` folder.
+
 ## Update dependencies
 
 Run `yarn upgrade-interactive --latest`
@@ -34,4 +38,4 @@ Run `yarn upgrade-interactive --latest`
 
 ### Settings
 
-- turn default validations for css/less/sass/tailwind off and let stylelint take care of it (done in settings.json)
+- turn default validations for css/less/sass/tailwind off and let stylelint take care of it (.vscode/settings.json)
