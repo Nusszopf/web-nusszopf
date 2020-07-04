@@ -9,5 +9,9 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "css.validate": false,
+  "scss.validate": false,
+  "tailwindCSS.validate": false,
+  "less.validate": false
 }

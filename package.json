@@ -48,13 +48,15 @@
     "next": "9.4.4",
     "next-seo": "4.7.1",
     "nprogress": "0.2.0",
+    "postcss-preset-env": "6.7.0",
     "prop-types": "15.7.2",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-icons": "3.10.0",
     "react-inlinesvg": "2.0.0",
     "react-transition-group": "4.4.1",
-    "spinthatshit": "1.0.4"
+    "spinthatshit": "1.0.4",
+    "tailwindcss": "1.4.6"
   },
   "devDependencies": {
     "@babel/register": "7.10.4",
@@ -73,6 +75,7 @@
     "lint-staged": "10.2.11",
     "prettier": "2.0.5",
     "sass": "1.26.9",
+    "stylelint-config-recommended": "3.0.0",
     "vercel": "19.1.1"
   }
 }
