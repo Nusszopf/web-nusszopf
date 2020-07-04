@@ -18,10 +18,6 @@ Builds the app for production.
 
 Runs the built app in production mode.
 
-### `yarn lint`
-
-Lint files in `src` folder.
-
 ## Update dependencies
 
 Run `yarn upgrade-interactive --latest`
