@@ -1,7 +1,11 @@
+// cheatsheet: npx tailwind init tailwind-full.config.js --full
 module.exports = {
-  purge: ['./src/components/**/*.{js,ts,jsx,tsx}', './src/pages/**/*.{js,ts,jsx,tsx}'],
+  purge: ['./src/components/**/*.{js,jsx}', './src/pages/**/*.{js,jsx}'],
   theme: {
-    extend: {},
+    // overwrite theme sections
+    extend: {
+      // add variants to theme sections
+    },
   },
   variants: {},
   plugins: [],
