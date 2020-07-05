@@ -3,12 +3,14 @@
 module.exports = {
   purge: ['./src/components/**/*.{js,jsx}', './src/pages/**/*.{js,jsx}'],
   theme: {
-    // overwrite theme sections
+    // overwrites
     extend: {
-      // add styles to theme sections
+      // additions
     },
   },
   variants: {},
   corePlugins: {},
-  plugins: [],
+  plugins: [
+    // third-party-plugins
+  ],
 }
