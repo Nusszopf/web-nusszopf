@@ -39,7 +39,7 @@
     "@sendgrid/mail": "7.2.1",
     "cloudinary": "1.22.0",
     "cloudinary-react": "1.5.1",
-    "formik": "2.1.4",
+    "formik": "2.1.5",
     "graphql": "15.2.0",
     "graphql-request": "2.0.0",
     "graphql-tag": "2.10.3",
