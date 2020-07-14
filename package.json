@@ -33,7 +33,7 @@
     "@reach/alert-dialog": "0.10.5",
     "@reach/dialog": "0.10.5",
     "@sanity/block-content-to-react": "2.0.7",
-    "@sanity/client": "1.149.16",
+    "@sanity/client": "1.149.18",
     "@sanity/image-url": "0.140.19",
     "@sendgrid/client": "7.2.1",
     "@sendgrid/mail": "7.2.1",
