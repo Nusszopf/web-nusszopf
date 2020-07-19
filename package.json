@@ -43,7 +43,7 @@
     "graphql": "15.2.0",
     "graphql-request": "2.0.0",
     "graphql-tag": "2.10.3",
-    "lodash": "4.17.15",
+    "lodash": "4.17.19",
     "next": "9.4.4",
     "next-seo": "4.7.1",
     "nprogress": "0.2.0",
