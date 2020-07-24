@@ -1,16 +1,18 @@
 import sgClient from '@sendgrid/client'
+import jwt from 'jsonwebtoken'
 import { fetchWithAdminAuth } from '../../../utils/functions/api.function'
 import { UPDATE_LEAD } from '../../../utils/hasura/mutations/newsletter.mutation'
 
 export default async function subscribeConfirm(req, res) {
-  const { id } = req.body
+  const { token } = req.body
   sgClient.setApiKey(process.env.SENDGRID_API_KEY)
   try {
-    const lead = await updateLead(id)
+    const { leadId } = jwt.verify(token, process.env.EMAIL_SECRET)
+    const lead = await updateLead(leadId)
     const listId = await getNewsletterListId(sgClient)
-    await createContact(sgClient, lead?.email, listId)
+    await createContact(sgClient, listId, lead?.email, lead?.name)
 
-    res.status(200).json({ email: lead?.email })
+    res.status(200).json({ email: lead?.email, name: lead?.name })
   } catch (error) {
     console.error(error)
     res.status(error.status || 500).end(error.message)
@@ -30,13 +32,13 @@ const getNewsletterListId = async sgClient => {
   return list.id
 }
 
-const createContact = async (sgClient, email, listId) => {
+const createContact = async (sgClient, listId, email, name) => {
   const reqContact = {
     method: 'PUT',
     url: '/v3/marketing/contacts',
     body: {
       list_ids: [listId],
-      contacts: [{ email }],
+      contacts: [{ email, first_name: name }],
     },
     json: true,
   }

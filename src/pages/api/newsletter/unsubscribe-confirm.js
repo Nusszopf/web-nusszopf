@@ -1,20 +1,20 @@
 /* eslint-disable no-unused-vars */
 import sgClient from '@sendgrid/client'
+import jwt from 'jsonwebtoken'
 import { fetchWithAdminAuth } from '../../../utils/functions/api.function'
 import { DELETE_LEAD } from '../../../utils/hasura/mutations/newsletter.mutation'
 
 export default async function unsubscribeConfirm(req, res) {
-  const { id } = req.body
-
+  const { token } = req.body
   sgClient.setApiKey(process.env.SENDGRID_API_KEY)
-
   try {
-    const lead = await deleteLead(id)
+    const { leadId } = jwt.verify(token, process.env.EMAIL_SECRET)
+    const lead = await deleteLead(leadId)
     const listId = await getNewsletterListId(sgClient)
     const [response, body] = await getContact(sgClient, lead?.email, listId)
     const contactId = body.result[0].id
     await deleteContact(sgClient, contactId)
-    res.status(200).json({ email: lead?.email })
+    res.status(200).json({ email: lead?.email, name: lead?.name })
   } catch (error) {
     console.error(error)
     res.status(error.status || 500).end(error.message)
@@ -27,7 +27,6 @@ const deleteContact = async (sgClient, leadId) => {
     url: `/v3/marketing/contacts?ids=${leadId}`,
     body: '{}',
   }
-
   await sgClient.request(reqContact)
 }
 
@@ -40,7 +39,6 @@ const getContact = async (sgClient, email, listId) => {
     },
     json: true,
   }
-
   return await sgClient.request(reqContact)
 }
 
@@ -51,7 +49,6 @@ const getNewsletterListId = async sgClient => {
     qs: { page_size: '10' },
     body: '{}',
   }
-
   const [request, response] = await sgClient.request(reqListID)
   const list = response.result.find(list => list.name === process.env.SENDGRID_LISTNAME)
   return list.id

@@ -5,7 +5,7 @@ export const GET_LEAD = gql`
     leads(where: { email: { _eq: $email } }) {
       id
       email
-      isAuthenticated
+      name
     }
   }
 `
