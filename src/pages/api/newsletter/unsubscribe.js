@@ -12,10 +12,12 @@ export default async function unsubscribe(req, res) {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
   try {
     const lead = await getLead(email)
-    jwt.sign({ leadId: lead?.id }, process.env.EMAIL_SECRET, { expiresIn: '7d' }, (err, emailToken) => {
-      sendEmail(lead?.name, lead?.email, emailToken)
-    })
-    res.status(200).json({ email: lead?.email, name: lead?.name })
+    if (lead) {
+      sendEmail(lead)
+      res.status(200).json({ email: lead?.email, name: lead?.name })
+    } else {
+      res.status(404).end(`lead with email ${email} was not found`)
+    }
   } catch (error) {
     console.error(error)
     const status = error.response?.errors[0]?.extensions?.code === ERROR_CONSTRAINT ? 400 : error.status ?? 500
@@ -23,17 +25,19 @@ export default async function unsubscribe(req, res) {
   }
 }
 
-const sendEmail = async (name, email, token) => {
-  const content = {
-    to: email,
-    from: 'mail@nusszopf.org',
-    templateId: process.env.SENDGRID_TEMPLATE_UNSUBSCRIBE_ID,
-    dynamicTemplateData: {
-      unsubscribe_url: `${process.env.DOMAIN}/newsletter/unsubscribe/confirm/${token}`,
-      username: name,
-    },
-  }
-  await sgMail.send(content)
+const sendEmail = lead => {
+  jwt.sign({ leadId: lead.id }, process.env.EMAIL_SECRET, { expiresIn: '7d' }, (err, emailToken) => {
+    const content = {
+      to: lead.email,
+      from: 'mail@nusszopf.org',
+      templateId: process.env.SENDGRID_TEMPLATE_UNSUBSCRIBE_ID,
+      dynamicTemplateData: {
+        unsubscribe_url: `${process.env.DOMAIN}/newsletter/unsubscribe/confirm/${emailToken}`,
+        username: lead.name,
+      },
+    }
+    sgMail.send(content)
+  })
 }
 
 const getLead = async email => {
