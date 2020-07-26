@@ -1,0 +1,11 @@
+/* purgecss start ignore */
+
+@tailwind base;
+/* Your own custom base styles */
+@tailwind components;
+/* Your own custom component styles */
+
+/* purgecss end ignore */
+
+@tailwind utilities;
+/* Your own custom utilities */

@@ -1,7 +1,6 @@
-import { useState, createRef } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { useFormik } from 'formik'
-import ReCAPTCHA from 'react-google-recaptcha'
 import { CSSTransition } from 'react-transition-group'
 
 import { Heading, Text, Input, Button, Spinner } from '../../atoms'
@@ -22,8 +21,6 @@ const content = {
 }
 
 const Newsletter = ({ apiUrl, type, text }) => {
-  const recaptchaRef = createRef()
-  const [recaptchaValid, setRecaptchaState] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [hasError, setError] = useState(false)
   const [doesLeadExist, setLeadExist] = useState(false)
@@ -39,18 +36,9 @@ const Newsletter = ({ apiUrl, type, text }) => {
       return errors
     },
     onSubmit: () => {
-      if (recaptchaValid) {
-        createNewsletterContact()
-      } else {
-        recaptchaRef.current.execute()
-      }
+      createNewsletterContact()
     },
   })
-
-  const handleRecaptcha = () => {
-    setRecaptchaState(true)
-    createNewsletterContact()
-  }
 
   const resetForm = () => {
     setLeadExist(false)
@@ -66,6 +54,7 @@ const Newsletter = ({ apiUrl, type, text }) => {
         body: JSON.stringify({ email: formik.values.email }),
       })
       if (response.ok) {
+        console.log(response.status)
         setLeadExist(response.status === 200)
       }
     } catch (error) {
@@ -79,11 +68,7 @@ const Newsletter = ({ apiUrl, type, text }) => {
     <>
       <div className={type === 'subscribe' ? styles.newsletter : null}>
         {type === 'subscribe' && <Heading as="h3">{content.title}</Heading>}
-        <CSSTransition
-          in={!isLoading && !doesLeadExist}
-          timeout={250}
-          classNames="step"
-          unmountOnExit>
+        <CSSTransition in={!isLoading && !doesLeadExist} timeout={250} classNames="step" unmountOnExit>
           <div>
             <Text>{text.description}</Text>
             <form name="newsletter" onSubmit={formik.handleSubmit}>
@@ -114,12 +99,7 @@ const Newsletter = ({ apiUrl, type, text }) => {
             </form>
           </div>
         </CSSTransition>
-        <CSSTransition
-          in={!isLoading && doesLeadExist}
-          appear={true}
-          timeout={250}
-          classNames="step"
-          unmountOnExit>
+        <CSSTransition in={!isLoading && doesLeadExist} appear={true} timeout={250} classNames="step" unmountOnExit>
           <div>
             <Text>{text.confirmation}</Text>
             <Button type="reset" onClick={resetForm}>
@@ -130,16 +110,6 @@ const Newsletter = ({ apiUrl, type, text }) => {
         <CSSTransition in={isLoading} appear={true} timeout={250} classNames="step" unmountOnExit>
           {<Spinner className={styles.spinner} />}
         </CSSTransition>
-        <ReCAPTCHA
-          ref={recaptchaRef}
-          sitekey={process.env.RECAPTCHA_KEY}
-          size="invisible"
-          badge="bottomright"
-          hl="de"
-          onChange={handleRecaptcha}
-          onExpired={() => setRecaptchaState(false)}
-          onErrored={() => setRecaptchaState(false)}
-        />
       </div>
       <AlertDialog
         showDialog={hasError}

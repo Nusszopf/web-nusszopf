@@ -1,3 +1,5 @@
+// todo use gql and graphql-request
+
 export const logError = message => {
   const query = `
     mutation logError($message: String!) {

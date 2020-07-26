@@ -18,6 +18,24 @@ Builds the app for production.
 
 Runs the built app in production mode.
 
-## Update dependencies
+### `yarn analyze`
 
-Run `$yarn upgrade-interactive --latest`
+Analyze the app bundles.
+
+## Update dependencies
+ 
+Run `yarn upgrade-interactive --latest`
+
+## VS Code
+
+### Required Plugins
+
+- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
+- [Headwind](https://marketplace.visualstudio.com/items?itemName=heybourn.headwind)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
+
+### Settings
+
+- turn default validations for css/less/sass/tailwind off and let stylelint take care of it (.vscode/settings.json)
