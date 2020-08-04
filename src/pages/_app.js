@@ -2,6 +2,7 @@
 import Router from 'next/router'
 import NProgress from 'nprogress'
 import '../styles/tailwind.css'
+import '../styles/global.css'
 
 let loadingTimer
 Router.events.on('routeChangeStart', () => {

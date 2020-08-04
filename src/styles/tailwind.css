@@ -9,8 +9,3 @@
 
 @tailwind utilities;
 /* Your own custom utilities */
-
-#nprogress .bar {
-  background: $blue;
-  height: 4px;
-}
