@@ -1,5 +1,0 @@
-export { default as List } from './List.sanity'
-export { default as ListItem } from './ListItem.sanity'
-export { default as NewsletterSection } from './NewsletterSection.sanity'
-export { default as TextBlock } from './TextBlock.sanity'
-export { default as TextSection } from './TextSection.sanity'

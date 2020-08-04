@@ -5,7 +5,7 @@ import { NextSeo } from 'next-seo'
 import { truncate } from 'lodash'
 
 import { PROD_ENV } from '../../../utils/enums'
-import { Footer, ErrorBoundary, Header } from '../../organisms'
+import { ErrorBoundary } from '../../organisms'
 import styles from './page.module.scss'
 
 const Page = ({
@@ -16,7 +16,6 @@ const Page = ({
   noindex = false,
   errorRef = '/',
   notFound = false,
-  footer,
 }) => {
   const router = useRouter()
   const domain = `${process.env.DOMAIN}`
@@ -59,11 +58,7 @@ const Page = ({
         }}
       />
       <ErrorBoundary errorRef={errorRef}>
-        <>
-          <Header />
-          <main className={styles.container}>{children}</main>
-          {footer && <Footer items={footer} />}
-        </>
+        <main>{children}</main>
       </ErrorBoundary>
     </>
   )
@@ -78,7 +73,6 @@ Page.propTypes = {
   noindex: PropTypes.bool,
   errorRef: PropTypes.string,
   notFound: PropTypes.bool,
-  footer: PropTypes.oneOfType([PropTypes.array, PropTypes.instanceOf(null)]),
 }
 
 export default Page

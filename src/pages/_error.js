@@ -1,12 +1,6 @@
 import PropTypes from 'prop-types'
-import { Page } from '../components/molecules'
-import { Heading } from '../components/atoms'
 
-const CustomError = ({ statusCode }) => (
-  <Page noindex={true}>
-    <Heading>Ein Fehler {statusCode} ist aufgetreten</Heading>
-  </Page>
-)
+const CustomError = ({ statusCode }) => <p>error {statusCode} page works!</p>
 
 CustomError.propTypes = {
   statusCode: PropTypes.string,

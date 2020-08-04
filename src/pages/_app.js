@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
 import Router from 'next/router'
 import NProgress from 'nprogress'
-import '../styles/main.scss'
-// import '../styles/tailwind.css'
+import '../styles/tailwind.css'
 
 let loadingTimer
 Router.events.on('routeChangeStart', () => {
