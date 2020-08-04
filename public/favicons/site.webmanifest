@@ -1,6 +1,6 @@
 {
-    "name": "Nusszopf",
-    "short_name": "Nusszopf",
+    "name": "nusszopf",
+    "short_name": "nusszopf",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
