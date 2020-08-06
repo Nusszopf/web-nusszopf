@@ -22,7 +22,7 @@ const Index = () => (
               Mit dem Nusszopf findest du Mitstreiter:innen und Projekte, teilst Ressourcen, Wissen und vieles mehr, um
               mehr Ideen und Projekte zu verwirklichen.
             </h2>
-            <button className="px-5 py-3 mt-6 font-bold text-white transition-shadow duration-150 ease-in-out bg-black rounded-full outline-none hover:shadow-outline:black focus:outline-none focus:shadow-outline:black">
+            <button className="px-5 py-3 mt-6 text-lg font-bold text-white transition-shadow duration-150 ease-in-out bg-black rounded-full outline-none hover:shadow-outline:black focus:outline-none focus:shadow-outline:black">
               Zu den Nusszopfnews
             </button>
           </div>
@@ -31,7 +31,7 @@ const Index = () => (
     </header>
     <div className="px-4 py-12 bg-yellow-400">
       <div className="xl:container xl:mx-auto">
-        <p className="text-2xl font-bold text-yellow-700 ">
+        <p className="text-xl font-bold text-yellow-700 ">
           Der Nusszopf ist derzeit im Aufbau und zukünfig ein digitales und analoges Netzwerk, was dich bei deinen Ideen
           und Projekten unterstützen soll.
         </p>
@@ -42,30 +42,30 @@ const Index = () => (
         <h3 className="text-3xl font-bold text-pink-600">Deine Benefits</h3>
         <div className="flex flex-wrap mt-3">
           <div className="mt-4 text-pink-600 xl:w-1/3">
-            <h4 className="font-bold">Mitstreiter:innen</h4>
-            <p className="font-medium">Suche und finde Mitstreitern:innen für deine Ideen und Projekte.</p>
+            <h4 className="text-lg font-bold">Mitstreiter:innen</h4>
+            <p className="text-lg font-medium">Suche und finde Mitstreitern:innen für deine Ideen und Projekte.</p>
           </div>
           <div className="mt-8 text-pink-600 xl:w-1/3">
-            <h4 className="font-bold">Ressourcen</h4>
-            <p className="font-medium">Finde und teile benötigte Ressourcen mit dem Nusszopf-Netzwerk.</p>
+            <h4 className="text-lg font-bold">Ressourcen</h4>
+            <p className="text-lg font-medium">Finde und teile benötigte Ressourcen mit dem Nusszopf-Netzwerk.</p>
           </div>
           <div className="mt-8 text-pink-600 xl:w-1/3">
-            <h4 className="font-bold">Wissen und Erfahrungen</h4>
-            <p className="font-medium">
+            <h4 className="text-lg font-bold">Wissen und Erfahrungen</h4>
+            <p className="text-lg font-medium">
               Tausche dich zu guten Tips, Wissen und Erfahrungen mit anderen Nusszöpfen aus.
             </p>
           </div>
           <div className="mt-8 text-pink-600 xl:w-1/3">
-            <h4 className="font-bold">Tolle Projekte</h4>
-            <p className="font-medium">Mache bei spannenden Projekten mit.</p>
+            <h4 className="text-lg font-bold">Tolle Projekte</h4>
+            <p className="text-lg font-medium">Mache bei spannenden Projekten mit.</p>
           </div>
           <div className="mt-8 text-pink-600 xl:w-1/3">
-            <h4 className="font-bold">Geselleschaft</h4>
-            <p className="font-medium">Werde Teil einer bunten, kreativen Kultur des Miteinanders.</p>
+            <h4 className="text-lg font-bold">Geselleschaft</h4>
+            <p className="text-lg font-medium">Werde Teil einer bunten, kreativen Kultur des Miteinanders.</p>
           </div>
           <div className="mt-8 text-pink-600 xl:w-1/3">
-            <h4 className="font-bold">Spaß und Freude</h4>
-            <p className="font-medium">Inspiriere und unterstütze dich und andere.</p>
+            <h4 className="text-lg font-bold">Spaß und Freude</h4>
+            <p className="text-lg font-medium">Inspiriere und unterstütze dich und andere.</p>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@ const Index = () => (
     <div className="px-4 py-12 bg-red-400">
       <div className="xl:container xl:mx-auto">
         <h3 className="text-3xl font-bold text-yellow-100">Gesellschaft der Ideen</h3>
-        <p className="mt-5 text-yellow-100">
+        <p className="mt-5 text-lg text-yellow-100">
           Wir wollen mit Euch zur Gesellschaft der Ideen werden und machen deshalb beim Ideenwettbewerb für soziale
           Inovationen vom BMBF mit. Ab Herbst 2020 kommen die besten Ideen in die Entscheidungsrunde. Drückt uns die
           Daumen! Mehr Informationen zum Wettbewerb findet ihr unter der{' '}
@@ -132,22 +132,22 @@ const Index = () => (
         </div>
         <div className="flex flex-wrap mt-6">
           <div className="mt-3 text-blue-700 xl:w-1/3">
-            <h4 className="font-bold">Sponsor:innen</h4>
-            <p className="font-medium">
+            <h4 className="text-lg font-bold">Sponsor:innen</h4>
+            <p className="text-lg font-medium">
               Meldet euch bitte per E-Mail bei uns, falls Du oder dein Unternehmen uns und unser Projekt unterstützen
               wollt.
             </p>
           </div>
           <div className="mt-8 text-blue-700 xl:w-1/3">
-            <h4 className="font-bold">Partner:innen</h4>
-            <p className="font-medium">
+            <h4 className="text-lg font-bold">Partner:innen</h4>
+            <p className="text-lg font-medium">
               Wir möchten ein Partnerschaftsnetzwerk aufbauen und suchen aktuell Partner:innen. Falls du oder dein
               Unternehmen interessiert seid, sind wir gespannt von dir per E-Mail zu hören.
             </p>
           </div>
           <div className="mt-8 text-blue-700 xl:w-1/3">
-            <h4 className="font-bold">Feedback</h4>
-            <p className="font-medium">
+            <h4 className="text-lg font-bold">Feedback</h4>
+            <p className="text-lg font-medium">
               Um den Nusszopf stätig verbessern zu können, freuen wir uns, wenn du deine Gedanken, Ideen und Wünsche zum
               Nusszopf mit uns teilst.
             </p>
@@ -155,7 +155,7 @@ const Index = () => (
         </div>
         <a
           href="mailto:mail@nusszopf.org?subject=Sponsorship | Partnerschaft | Feedback"
-          className="inline-block px-5 py-3 mt-10 font-bold text-pink-400 transition-shadow duration-150 ease-in-out bg-blue-700 rounded-full outline-none hover:shadow-outline:blue-700 focus:outline-none focus:shadow-outline:blue-700">
+          className="inline-block px-5 py-3 mt-10 text-lg font-bold text-pink-400 transition-shadow duration-150 ease-in-out bg-blue-700 rounded-full outline-none hover:shadow-outline:blue-700 focus:outline-none focus:shadow-outline:blue-700">
           Kontakt aufnehmen
         </a>
       </div>
@@ -163,27 +163,27 @@ const Index = () => (
     <div id="newsletter" className="px-4 py-12 bg-blue-400">
       <div className="xl:container xl:mx-auto">
         <div>
-          <h3 className="text-3xl font-bold text-yellow-200">Newsletter</h3>
-          <p className="mt-4 text-xl text-yellow-200">
+          <h3 className="text-3xl font-bold text-yellow-300">Newsletter</h3>
+          <p className="mt-4 text-xl text-yellow-300">
             Wir möchten dich mindestens einmal pro Monat zu allen relevaten Informationen und Neuigkeiten zum Nusszopf
             informieren. Durch die Anmeldung bekommst du die News von uns direkt in deinen Posteingang.
           </p>
         </div>
         <div className="mt-8">
           <input
-            className="block w-full px-5 py-3 text-yellow-200 placeholder-yellow-200 transition-shadow duration-150 ease-in-out bg-blue-400 border-2 border-yellow-200 rounded-full appearance-none hover:shadow-outline:yellow-200 focus:placeholder-blue-400 focus:outline-none focus:shadow-outline:yellow-200"
+            className="block w-full px-5 py-3 text-lg text-yellow-300 placeholder-yellow-300 transition-shadow duration-150 ease-in-out bg-blue-400 border-2 border-yellow-300 rounded-full appearance-none hover:shadow-outline:yellow-300 focus:placeholder-blue-400 focus:outline-none focus:shadow-outline:yellow-300"
             type="text"
             aria-label="text"
             placeholder="Name"
           />
           <input
-            className="block w-full px-5 py-3 mt-4 text-yellow-200 placeholder-yellow-200 transition-shadow duration-150 ease-in-out bg-blue-400 border-2 border-yellow-200 rounded-full appearance-none hover:shadow-outline:yellow-200 focus:placeholder-blue-400 focus:outline-none focus:shadow-outline:yellow-200"
+            className="block w-full px-5 py-3 mt-4 text-lg text-yellow-300 placeholder-yellow-300 transition-shadow duration-150 ease-in-out bg-blue-400 border-2 border-yellow-300 rounded-full appearance-none hover:shadow-outline:yellow-300 focus:placeholder-blue-400 focus:outline-none focus:shadow-outline:yellow-300"
             type="email"
             aria-label="email"
             placeholder="E-Mail-Adresse"
           />
-          <button className="px-5 py-3 mt-6 font-bold text-blue-400 transition-shadow duration-150 ease-in-out bg-yellow-200 rounded-full outline-none hover:shadow-outline:yellow-200 focus:outline-none focus:shadow-outline:yellow-200">
-            Absenden
+          <button className="px-5 py-3 mt-6 text-lg font-bold text-blue-400 transition-shadow duration-150 ease-in-out bg-yellow-300 rounded-full outline-none hover:shadow-outline:yellow-300 focus:outline-none focus:shadow-outline:yellow-300">
+            Anmelden
           </button>
         </div>
       </div>
