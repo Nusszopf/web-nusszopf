@@ -1,20 +1,17 @@
 import { useEffect } from 'react'
-import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
+import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { truncate } from 'lodash'
 
-import { PROD_ENV } from '../../../utils/enums'
-import { ErrorBoundary } from '../../organisms'
-import styles from './page.module.scss'
+import ErrorBoundary from '../ErrorBoundary/error-boundary.organism'
 
 const Page = ({
   children,
   image,
-  description = 'Plattform für gemeinsame Ideenprozesse',
+  description = 'Dein Netzwerk für gemeinsame Ideen und Projekt',
   title = 'Nusszopf',
   noindex = false,
-  errorRef = '/',
   notFound = false,
 }) => {
   const router = useRouter()
@@ -27,15 +24,16 @@ const Page = ({
     if (notFound) {
       router.push('/404')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [notFound])
 
   return (
     <>
       <NextSeo
-        title={truncate(description, { length: 60 })}
+        title={truncate(title, { length: 60 })}
         description={truncate(description, { length: 150 })}
         canonical={canonical}
-        noindex={process.env.ENV !== PROD_ENV ? true : noindex}
+        noindex={process.env.NODE_ENV !== 'production' ? true : noindex}
         openGraph={{
           description,
           images: [
@@ -57,7 +55,7 @@ const Page = ({
           site: '@site',
         }}
       />
-      <ErrorBoundary errorRef={errorRef}>
+      <ErrorBoundary>
         <main>{children}</main>
       </ErrorBoundary>
     </>
@@ -68,11 +66,10 @@ Page.propTypes = {
   children: PropTypes.node,
   description: PropTypes.string,
   image: PropTypes.object,
-  title: PropTypes.string,
   keywords: PropTypes.string,
   noindex: PropTypes.bool,
-  errorRef: PropTypes.string,
   notFound: PropTypes.bool,
+  title: PropTypes.string,
 }
 
 export default Page
