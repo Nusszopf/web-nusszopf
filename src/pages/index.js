@@ -1,6 +1,7 @@
 import SVG from 'react-inlinesvg'
 import Link from 'next/link'
 import Page from '../components/Page/page.molecule'
+import NewsletterSection from '../components/NewsletterSection/NewsletterSection'
 
 const Index = () => {
   const scrollIntoView = id => {
@@ -181,34 +182,7 @@ const Index = () => {
           </a>
         </div>
       </div>
-      <div id="newsletter" className="px-4 py-12 bg-blue-400">
-        <div className="xl:container xl:mx-auto">
-          <div>
-            <h3 className="text-3xl font-bold text-yellow-300">Newsletter</h3>
-            <p className="mt-4 text-2xl leading-snug text-yellow-300">
-              Wir möchten dich mindestens einmal pro Monat zu allen relevaten Informationen und Neuigkeiten zum Nusszopf
-              informieren. Durch die Anmeldung bekommst du die News von uns direkt in deinen Posteingang.
-            </p>
-          </div>
-          <div className="mt-8">
-            <input
-              className="block w-full px-5 py-4 text-lg text-yellow-300 placeholder-yellow-300 transition-shadow duration-150 ease-in-out bg-blue-400 border-2 border-yellow-300 rounded-full appearance-none hover:shadow-outline:yellow-300 focus:placeholder-blue-400 focus:outline-none focus:shadow-outline:yellow-300"
-              type="text"
-              aria-label="text"
-              placeholder="Name"
-            />
-            <input
-              className="block w-full px-5 py-4 mt-4 text-lg text-yellow-300 placeholder-yellow-300 transition-shadow duration-150 ease-in-out bg-blue-400 border-2 border-yellow-300 rounded-full appearance-none hover:shadow-outline:yellow-300 focus:placeholder-blue-400 focus:outline-none focus:shadow-outline:yellow-300"
-              type="email"
-              aria-label="email"
-              placeholder="E-Mail-Adresse"
-            />
-            <button className="w-full px-5 py-4 mt-6 text-lg font-bold text-blue-400 transition-shadow duration-150 ease-in-out bg-yellow-300 rounded-full outline-none hover:shadow-outline:yellow-300 focus:outline-none focus:shadow-outline:yellow-300">
-              Anmelden
-            </button>
-          </div>
-        </div>
-      </div>
+      <NewsletterSection />
       <footer className="h-40 px-4 pt-10 pb-4 bg-turquoise-700">
         <div className="h-full xl:container xl:mx-auto">
           <div className="flex flex-col h-full">
