@@ -50,7 +50,7 @@ const NewsletterSection = ({ className }) => {
             <Form>
               <Field
                 className="inline-block w-full px-5 py-4 text-lg text-yellow-300 placeholder-yellow-300 transition-shadow duration-150 ease-in-out bg-blue-400 border-2 border-yellow-300 rounded-full shadow-xs appearance-none hover:shadow-outline:yellow-300 focus:placeholder-blue-400 focus:outline-none focus:shadow-outline:yellow-300"
-                autocomplete="off"
+                autoComplete="off"
                 name="name"
                 type="text"
                 aria-label="Name"
@@ -59,7 +59,7 @@ const NewsletterSection = ({ className }) => {
               <ErrorMessage className="mt-2 ml-6 text-lg italic text-yellow-100" component="p" name="name" />
               <Field
                 className="inline-block w-full px-5 py-4 mt-4 text-lg text-yellow-300 placeholder-yellow-300 transition-shadow duration-150 ease-in-out bg-blue-400 border-2 border-yellow-300 rounded-full shadow-xs appearance-none hover:shadow-outline:yellow-300 focus:placeholder-blue-400 focus:outline-none focus:shadow-outline:yellow-300"
-                autocomplete="off"
+                autoComplete="off"
                 name="email"
                 type="email"
                 aria-label="E-Mail-Adresse"
