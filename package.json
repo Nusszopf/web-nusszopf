@@ -53,6 +53,7 @@
     "react-dom": "16.13.1",
     "react-inlinesvg": "2.0.1",
     "react-spring": "8.0.27",
+    "smoothscroll-polyfill": "0.4.4",
     "tailwindcss": "1.6.2",
     "typeface-barlow": "0.0.71",
     "yup": "0.29.3"
