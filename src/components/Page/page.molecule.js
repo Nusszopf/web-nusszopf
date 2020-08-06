@@ -9,8 +9,8 @@ import ErrorBoundary from '../ErrorBoundary/error-boundary.organism'
 const Page = ({
   children,
   image,
-  description = 'Dein Netzwerk für gemeinsame Ideen und Projekt',
-  title = 'Nusszopf',
+  title = 'Nusszopf - Netzwerk für gemeinsame Ideen und Projekte',
+  description = 'Mit dem Nusszopf findest du Mitstreiter:innen und Projekte, teilst Ressourcen, Wissen und vieles mehr, um mehr Ideen und Projekte zu verwirklichen.',
   noindex = false,
   notFound = false,
 }) => {
