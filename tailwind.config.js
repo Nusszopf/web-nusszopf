@@ -72,7 +72,7 @@ module.exports = {
     extend: {
       // additions
       boxShadow: {
-        'outline:yellow-200': '0 0 0 3px rgba(250, 252, 136, 0.5)',
+        'outline:yellow-300': '0 0 0 3px rgba(250, 252, 136, 0.5)',
         'outline:blue-700': '0 0 0 3px rgba(0, 57, 138, 0.5)',
         'outline:black': '0 0 0 3px rgba(0, 0, 0, 0.5)',
       },
