@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
+import { useEffect } from 'react'
 import Router from 'next/router'
+import Head from 'next/head'
 import NProgress from 'nprogress'
 import smoothscroll from 'smoothscroll-polyfill'
 import '../styles/tailwind.css'
 import '../styles/global.css'
-import { useEffect } from 'react'
 
 let loadingTimer
 Router.events.on('routeChangeStart', () => {
@@ -26,5 +27,12 @@ export default function NusszopfApp({ Component, pageProps }) {
     smoothscroll.polyfill()
   }, [])
 
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Head>
+        <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+      </Head>
+      <Component {...pageProps} />
+    </>
+  )
 }

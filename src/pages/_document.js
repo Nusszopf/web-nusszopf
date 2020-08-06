@@ -14,7 +14,6 @@ class CustomDocument extends Document {
         <Head>
           <meta charSet="utf-8" />
           <meta content="IE=edge" httpEquiv="X-UA-Compatible" />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#ffffff" />
           <meta name="msapplication-TileColor" content="#000000" />
           <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
