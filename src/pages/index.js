@@ -1,6 +1,6 @@
 import SVG from 'react-inlinesvg'
 import Link from 'next/link'
-import Page from '../components/Page/page.molecule'
+import Page from '../components/Page/Page'
 import NewsletterSection from '../components/NewsletterSection/NewsletterSection'
 
 const Index = () => {

@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { truncate } from 'lodash'
 
-import ErrorBoundary from '../ErrorBoundary/error-boundary.organism'
+import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
 
 const Page = ({
   children,
