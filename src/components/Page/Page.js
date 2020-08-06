@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { truncate } from 'lodash'
 
+import Footer from '../Footer/Footer'
 import ErrorBoundary from '../ErrorBoundary/ErrorBoundary'
 
 const Page = ({
@@ -57,6 +58,7 @@ const Page = ({
       />
       <ErrorBoundary>
         <main>{children}</main>
+        <Footer />
       </ErrorBoundary>
     </>
   )
