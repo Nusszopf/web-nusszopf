@@ -153,9 +153,11 @@ const Index = () => (
             </p>
           </div>
         </div>
-        <button className="px-5 py-3 mt-6 font-bold text-pink-400 transition-shadow duration-150 ease-in-out bg-blue-700 rounded-full outline-none hover:shadow-outline:blue-700 focus:outline-none focus:shadow-outline:blue-700">
+        <a
+          href="mailto:mail@nusszopf.org?subject=Sponsorship | Partnerschaft | Feedback"
+          className="inline-block px-5 py-3 mt-10 font-bold text-pink-400 transition-shadow duration-150 ease-in-out bg-blue-700 rounded-full outline-none hover:shadow-outline:blue-700 focus:outline-none focus:shadow-outline:blue-700">
           Kontakt aufnehmen
-        </button>
+        </a>
       </div>
     </div>
     <div id="newsletter" className="px-4 py-12 bg-blue-400">
