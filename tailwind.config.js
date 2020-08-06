@@ -12,13 +12,13 @@ module.exports = {
       black: '#000',
       white: '#fff',
       gray: {
-        100: '#F4F4F0',
-        200: '#E9E9E2',
-        300: '#D5D5C8',
-        400: '#B1B19C',
-        500: '#7B7B5F',
-        600: '#55553A',
-        700: '#292915',
+        100: '#ECEFF1',
+        200: '#CFD8DC',
+        300: '#90A4AE',
+        400: '#607D8B',
+        500: '#546E7A',
+        600: '#37474F',
+        700: '#263238',
       },
       yellow: {
         100: '#FEFFCC',
@@ -71,6 +71,11 @@ module.exports = {
     },
     extend: {
       // additions
+      boxShadow: {
+        'outline:yellow-200': '0 0 0 3px rgba(250, 252, 136, 0.5)',
+        'outline:blue-700': '0 0 0 3px rgba(0, 57, 138, 0.5)',
+        'outline:black': '0 0 0 3px rgba(0, 0, 0, 0.5)',
+      },
     },
   },
   variants: {},
