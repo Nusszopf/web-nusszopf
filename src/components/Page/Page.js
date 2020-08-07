@@ -57,7 +57,7 @@ const Page = ({
         }}
       />
       <ErrorBoundary>
-        <main>{children}</main>
+        <main className="flex-auto">{children}</main>
         <Footer />
       </ErrorBoundary>
     </>

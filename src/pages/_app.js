@@ -33,7 +33,9 @@ export default function NusszopfApp({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
       </Head>
-      <Component {...pageProps} />
+      <div id="nusszopf" className="flex flex-col h-screen">
+        <Component {...pageProps} />
+      </div>
     </>
   )
 }

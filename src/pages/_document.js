@@ -36,7 +36,7 @@ class CustomDocument extends Document {
             }}
           /> */}
         </Head>
-        <body id="nusszopf">
+        <body>
           <Main />
           <NextScript />
         </body>

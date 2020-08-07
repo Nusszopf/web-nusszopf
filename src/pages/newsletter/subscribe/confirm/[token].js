@@ -39,7 +39,7 @@ const SubscribeConfirm = () => {
   return (
     <Page>
       <div className="container mx-auto">
-        <h1 className="mb-8 text-4xl font-semibold leading-tight text-gray-600">
+        <h1 className="my-8 text-3xl font-semibold leading-tight text-gray-600">
           Bestätigung Deiner Anmeldung zum Newsletter
         </h1>
         {isLoading ? (

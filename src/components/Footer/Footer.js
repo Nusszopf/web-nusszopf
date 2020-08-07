@@ -2,7 +2,7 @@ import Link from 'next/link'
 import SVG from 'react-inlinesvg'
 
 const Footer = () => (
-  <footer className="h-40 px-4 pt-10 pb-4 bg-turquoise-700 sm:pt-6 sm:h-24 sm:px-16">
+  <footer className="flex-shrink-0 h-40 px-4 pt-10 pb-4 bg-turquoise-700 sm:pt-6 sm:h-24 sm:px-16">
     <div className="h-full lg:container sm:max-w-xl sm:mx-auto">
       <div className="flex flex-col h-full sm:justify-between sm:flex-row sm:items-center">
         <div className="flex justify-center">
