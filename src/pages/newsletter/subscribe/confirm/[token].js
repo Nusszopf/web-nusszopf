@@ -1,3 +1,57 @@
-const SubscribeConfirm = () => <p>subscribe confirm page works!</p>
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+import Page from '../../../../components/Page/Page'
+
+const SubscribeConfirm = () => {
+  const router = useRouter()
+  const { token } = router.query
+  const [isLoading, setLoading] = useState(true)
+  const [isSuccessful, setSuccessful] = useState(false)
+  const [email, setEmail] = useState('')
+
+  useEffect(() => {
+    const main = async () => {
+      try {
+        const response = await fetch(`${process.env.DOMAIN}/api/newsletter/subscribe-confirm`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ token }),
+        })
+        if (response.ok) {
+          const { email } = await response.json()
+          setEmail(email)
+          setSuccessful(true)
+        }
+      } catch (error) {
+        // TODO: logError(`newsletter-subscribe-confirm: ${error.message}`)
+      }
+      setLoading(false)
+    }
+    if (token) {
+      console.log('fetch')
+      main()
+    }
+  }, [token])
+
+  // TODO: ui design
+  return (
+    <Page>
+      <div className="container mx-auto">
+        <h1 className="mb-8 text-4xl font-semibold leading-tight text-gray-600">
+          Bestätigung Deiner Anmeldung zum Newsletter
+        </h1>
+        {isLoading ? (
+          <p>in progress..</p>
+        ) : isSuccessful ? (
+          <p>confirmation successful - {email}</p>
+        ) : (
+          <p>confirmation failed</p>
+        )}
+      </div>
+    </Page>
+  )
+}
 
 export default SubscribeConfirm
