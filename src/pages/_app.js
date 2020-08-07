@@ -4,6 +4,7 @@ import Router from 'next/router'
 import Head from 'next/head'
 import NProgress from 'nprogress'
 import smoothscroll from 'smoothscroll-polyfill'
+require('typeface-barlow')
 import '../styles/tailwind.css'
 import '../styles/global.css'
 
