@@ -74,7 +74,7 @@ module.exports = {
       boxShadow: {
         'outline:yellow-300': '0 0 0 3px rgba(250, 252, 136, 0.5)',
         'outline:blue-700': '0 0 0 3px rgba(0, 57, 138, 0.5)',
-        'outline:black': '0 0 0 3px rgba(0, 0, 0, 0.5)',
+        'outline:gray-600': '0 0 0 3px rgba(38, 50, 56, 0.5)',
       },
     },
   },
