@@ -5,16 +5,8 @@ const prettier = require('prettier')
 async function generateSitemap() {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
 
-  // Ignore Next.js specific files (e.g., _app.js) and API routes.
-  let pages = await globby([
-    'src/pages/**/*.js',
-    '!src/pages/_*.js',
-    '!src/pages/api',
-    '!src/pages/newsletter',
-    '!src/pages/imprint.js',
-    '!src/pages/privacy.js',
-    '!src/pages/404.js',
-  ])
+  // Ignore files
+  let pages = await globby(['src/pages/**/*.js', '!src/pages/_*.js', '!src/pages/api', '!src/pages/404.js'])
 
   const sitemap = `
     <?xml version="1.0" encoding="UTF-8"?>

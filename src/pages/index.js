@@ -91,7 +91,7 @@ const Index = () => {
           <h3 className="mb-6 text-3xl font-bold text-yellow-100">Gesellschaft der Ideen</h3>
           <div className="sm:flex sm:justify-between">
             <div className="sm:w-2/3 lg:w-1/2">
-              <p className="text-xl leading-snug text-yellow-100 sm:mr-10">
+              <p className="text-xl leading-snug text-yellow-100 sm:mr-10 lg:mr-0">
                 Wir wollen mit Euch zur Gesellschaft der Ideen werden und machen deshalb beim Ideen&shy;wettbewerb für
                 soziale Inovationen vom BMBF mit. Ab Herbst 2020 kommen die besten Ideen in die Entscheidungsrunde.
                 Drückt uns die Daumen! Mehr Informationen zum Wettbewerb findet ihr unter der{' '}
