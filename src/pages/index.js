@@ -15,11 +15,11 @@ const Index = () => {
         <div className="lg:container sm:max-w-xl sm:mx-auto">
           <div className="flex flex-col mt-12 mb-12 sm:mt-20 lg-12 sm:mb-20 lg:mt-24 lg:flex-row">
             <div className="lg:w-1/2">
-              <img
+              <SVG
                 className="w-3/4 mx-auto lg:w-full lg:pr-8"
-                src="/images/logos/logo-nusszopf-bunt.png"
-                alt="nusszopf logo"
-                aria-label="nusszopf logo"
+                src="/images/logos/nusszopf-big.svg"
+                title="<3 Nusszopf"
+                aria-label="Nusszopf"
               />
             </div>
             <div className="mt-8 sm:mt-16 lg:mt-0 lg:pl-8 lg:w-1/2">
@@ -115,10 +115,7 @@ const Index = () => {
                 target="_blank"
                 title="Zum Bundesministerium für Bildung und Forschung"
                 aria-label="Zum Bundesministerium für Bildung und Forschung">
-                <SVG
-                  // className="w-48 mx-auto mt-12 sm:mt-0 sm:mx-0 sm:ml-auto lg:w-64 lg:mx-auto"
-                  src="/images/logos/bmbf-logo.svg"
-                />
+                <SVG src="/images/logos/bmbf-logo.svg" />
               </a>
             </div>
           </div>
