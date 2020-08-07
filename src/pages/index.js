@@ -88,10 +88,10 @@ const Index = () => {
       </div>
       <div className="px-4 py-12 bg-red-400 sm:px-16">
         <div className="lg:container sm:max-w-xl sm:mx-auto">
-          <h3 className="text-3xl font-bold text-yellow-100">Gesellschaft der Ideen</h3>
+          <h3 className="mb-6 text-3xl font-bold text-yellow-100">Gesellschaft der Ideen</h3>
           <div className="sm:flex sm:justify-between">
             <div className="sm:w-2/3 lg:w-1/2">
-              <p className="mt-5 text-xl leading-snug text-yellow-100 sm:mr-10">
+              <p className="text-xl leading-snug text-yellow-100 sm:mr-10">
                 Wir wollen mit Euch zur Gesellschaft der Ideen werden und machen deshalb beim Ideen&shy;wettbewerb für
                 soziale Inovationen vom BMBF mit. Ab Herbst 2020 kommen die besten Ideen in die Entscheidungsrunde.
                 Drückt uns die Daumen! Mehr Informationen zum Wettbewerb findet ihr unter der{' '}
@@ -107,15 +107,16 @@ const Index = () => {
                 .
               </p>
             </div>
-            <div className="sm:w-1/3 lg:w-1/2 sm:self-center">
+            <div className="sm:w-1/3 lg:w-1/2">
               <a
+                className="block w-48 mx-auto mt-12 sm:mt-0 sm:mx-0 sm:ml-auto lg:w-64 lg:mx-auto"
                 href="https://www.bmbf.de/"
                 rel="noopener noreferrer"
                 target="_blank"
                 title="Zum Bundesministerium für Bildung und Forschung"
                 aria-label="Zum Bundesministerium für Bildung und Forschung">
                 <SVG
-                  className="w-48 mx-auto mt-12 sm:mt-0 sm:mx-0 sm:ml-auto lg:w-64 lg:mx-auto"
+                  // className="w-48 mx-auto mt-12 sm:mt-0 sm:mx-0 sm:ml-auto lg:w-64 lg:mx-auto"
                   src="/images/logos/bmbf-logo.svg"
                 />
               </a>
