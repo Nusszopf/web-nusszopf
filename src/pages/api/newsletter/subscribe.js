@@ -8,7 +8,7 @@ const ERROR_CONSTRAINT = 'constraint-violation'
 
 export default async function subscribe(req, res) {
   await runMiddleware(req, res, rateLimiter)
-  const { email, name = 'test' } = req.body
+  const { email, name } = req.body
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
   try {
     const lead = await addLead(email, name)
