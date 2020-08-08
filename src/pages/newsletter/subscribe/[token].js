@@ -23,6 +23,8 @@ const SubscribeConfirm = () => {
           const { email } = await response.json()
           setEmail(email)
           setSuccessful(true)
+        } else {
+          // TODO: logError(`newsletter-subscribe-confirm: ${my-response-message}`)
         }
       } catch (error) {
         // TODO: logError(`newsletter-subscribe-confirm: ${error.message}`)
@@ -30,7 +32,6 @@ const SubscribeConfirm = () => {
       setLoading(false)
     }
     if (token) {
-      console.log('fetch')
       main()
     }
   }, [token])

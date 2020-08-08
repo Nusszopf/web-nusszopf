@@ -34,7 +34,7 @@ export default async function unsubscribeConfirm(req, res) {
 
 const deleteLead = async id => {
   const res = await fetchWithAdminAuth(DELETE_LEAD, { id })
-  return await res?.delete_leads_by_pk
+  return res?.delete_leads_by_pk
 }
 
 const getContactId = async (sgClient, email, listId) => {
