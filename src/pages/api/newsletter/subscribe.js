@@ -28,7 +28,7 @@ const sendEmail = lead => {
       from: 'mail@nusszopf.org',
       templateId: process.env.SENDGRID_TEMPLATE_SUBSCRIBE_ID,
       dynamicTemplateData: {
-        subscribe_url: `${process.env.DOMAIN}/newsletter/subscribe/confirm/${emailToken}`,
+        subscribe_url: `${process.env.DOMAIN}/newsletter/subscribe/${emailToken}`,
         username: lead.name,
       },
     }
