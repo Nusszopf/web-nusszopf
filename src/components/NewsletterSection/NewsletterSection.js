@@ -42,7 +42,7 @@ const NewsletterSection = ({ className }) => {
   return (
     <div id="newsletter" className={classnames(className, 'px-4 py-12 sm:px-16 bg-blue-400')}>
       <div className="lg:container sm:max-w-xl sm:mx-auto">
-        <h3 className="mb-4 text-2xl font-bold text-yellow-300 ">Newsletter</h3>
+        <h3 className="mb-4 text-3xl font-bold text-yellow-300 ">Newsletter</h3>
         <div className="h-full lg:flex">
           <div className="lg:w-1/2">
             <p className="text-2xl leading-snug text-yellow-300">
