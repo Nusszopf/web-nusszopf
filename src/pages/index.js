@@ -1,6 +1,6 @@
 import SVG from 'react-inlinesvg'
-import Page from '../components/Page/Page'
-import NewsletterSection from '../components/NewsletterSection/NewsletterSection'
+import { Page } from '../components/templates'
+import { NewsletterSection } from '../components/organisims'
 
 const Index = () => {
   const scrollIntoView = id => {
@@ -13,7 +13,7 @@ const Index = () => {
     <Page>
       <header className="px-4 bg-white sm:px-16">
         <div className="lg:container sm:max-w-xl sm:mx-auto">
-          <div className="flex flex-col mt-12 mb-12 sm:mt-20 lg-12 sm:mb-20 lg:mt-24 lg:flex-row">
+          <div className="flex flex-col pt-12 pb-12 sm:pt-20 lg-12 sm:pb-20 lg:pt-24 lg:flex-row">
             <div className="lg:w-1/2">
               <SVG
                 className="w-3/4 mx-auto lg:w-full lg:pr-8"

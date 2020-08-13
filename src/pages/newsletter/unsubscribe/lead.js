@@ -3,7 +3,7 @@ import { Field, Form, Formik, ErrorMessage } from 'formik'
 import classnames from 'classnames'
 import { object, string } from 'yup'
 import { Loader, CheckCircle, XCircle } from 'react-feather'
-import Page from '../../../components/Page/Page'
+import { Page } from '../../../components/templates'
 
 const UnsubscribeLead = () => {
   const [hasFailed, setFailed] = useState(false)
