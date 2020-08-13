@@ -3,7 +3,12 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  purge: ['./src/components/**/*.{js,jsx}', './src/pages/**/*.{js,jsx}'],
+  purge: {
+    content: ['./src/components/**/*.{js,jsx}', './src/pages/**/*.{js,jsx}'],
+    options: {
+      whitelist: [],
+    },
+  },
   theme: {
     // overwrites
     colors: {
@@ -76,6 +81,9 @@ module.exports = {
         'outline:blue-700': '0 0 0 3px rgba(0, 57, 138, 0.5)',
         'outline:blue-200': '0 0 0 3px rgba(203, 223, 251, 0.5)',
         'outline:gray-600': '0 0 0 3px rgba(38, 50, 56, 0.5)',
+      },
+      borderWidth: {
+        '3': '3px',
       },
     },
   },
