@@ -87,7 +87,14 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    // https://tailwindcss.com/docs/pseudo-class-variants#creating-custom-variants
+    backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
+    borderColor: ['responsive', 'active', 'hover', 'focus', 'group-hover'],
+    textColor: ['responsive', 'hover', 'focus', 'group-hover'],
+    opacity: ['responsive', 'hover', 'focus', 'disabled'],
+    cursor: ['responsive', 'disabled'],
+  },
   corePlugins: {},
   plugins: [
     // third-party-plugins
