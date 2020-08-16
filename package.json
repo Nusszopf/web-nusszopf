@@ -10,6 +10,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
     "analyze": "cross-env ANALYZE=true yarn build"
   },
   "commitlint": {
@@ -64,6 +66,10 @@
     "@commitlint/cli": "9.1.1",
     "@commitlint/config-conventional": "9.1.1",
     "@next/bundle-analyzer": "9.5.1",
+    "@storybook/addon-actions": "6.0.10",
+    "@storybook/addon-essentials": "6.0.10",
+    "@storybook/addon-links": "6.0.10",
+    "@storybook/react": "6.0.10",
     "babel-eslint": "10.1.0",
     "babel-plugin-graphql-tag": "3.0.0",
     "cross-env": "7.0.2",
