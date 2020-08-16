@@ -4,6 +4,7 @@ import classnames from 'classnames'
 import { object, string } from 'yup'
 import { Loader, CheckCircle, XCircle } from 'react-feather'
 import { Page } from '../../../components/templates'
+import { Button, BTN_COLORS } from '../../../components/atoms'
 
 const UnsubscribeLead = () => {
   const [hasFailed, setFailed] = useState(false)
@@ -69,11 +70,7 @@ const UnsubscribeLead = () => {
               />
               <ErrorMessage className="mt-2 ml-6 text-lg italic text-yellow-100" component="p" name="email" />
               {!isSuccessful && !hasFailed && !isLoading ? (
-                <button
-                  type="submit"
-                  className="w-full px-5 py-4 mt-6 text-lg font-bold text-blue-400 transition-shadow duration-150 ease-in-out bg-yellow-300 rounded-full outline-none sm:px-8 sm:w-auto hover:shadow-outline:yellow-300 focus:outline-none focus:shadow-outline:yellow-300">
-                  Abmelden
-                </button>
+                <Button className="mt-6" color={BTN_COLORS.blue400Yellow300} type="submit" label="Abmelden" />
               ) : (
                 <div className="flex p-5 mt-6 text-lg text-blue-100 bg-blue-600 rounded-lg">
                   {hasFailed ? (

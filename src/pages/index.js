@@ -1,6 +1,8 @@
 import SVG from 'react-inlinesvg'
-import { Page } from '../components/templates'
-import { NewsletterSection } from '../components/organisims'
+import { ArrowLeft } from 'react-feather'
+
+import { Page, NewsletterSection } from '../components'
+import { Button, NavItem, Link, LINK_TYPES, BTN_COLORS, Text, TEXT_TYPE, NAVITEM_TYPES } from '../stories/atoms'
 
 const Index = () => {
   const scrollIntoView = id => {
@@ -11,7 +13,7 @@ const Index = () => {
 
   return (
     <Page>
-      <header className="px-4 bg-white sm:px-16">
+      <header className="px-6 bg-white sm:px-16">
         <div className="lg:container sm:max-w-xl sm:mx-auto">
           <div className="flex flex-col pt-12 pb-12 sm:pt-20 lg-12 sm:pb-20 lg:pt-24 lg:flex-row">
             <div className="lg:w-1/2">
@@ -23,39 +25,41 @@ const Index = () => {
               />
             </div>
             <div className="mt-8 sm:mt-16 lg:mt-0 lg:pl-8 lg:w-1/2">
-              <h1 className="max-w-md text-4xl font-semibold leading-tight text-gray-600">
+              <Text as="h1" type={TEXT_TYPE.titleLg} className="max-w-md text-gray-600">
                 Netzwerk für gemeinsame Ideen und Projekte
-              </h1>
-              <h2 className="max-w-lg mt-5 text-2xl font-medium text-gray-600">
+              </Text>
+              <Text as="h2" type={TEXT_TYPE.subtitleLg} className="max-w-lg mt-5 text-gray-600">
                 Mit dem Nusszopf findest du Mitstreiter:innen und Projekte, teilst Ressourcen, Wissen und vieles mehr,
                 um mehr Ideen und Projekte zu verwirklichen.
-              </h2>
-              <button
+              </Text>
+              <Button
                 onClick={() => scrollIntoView('newsletter')}
-                className="w-full py-4 mt-8 text-lg font-bold text-white transition-shadow duration-150 ease-in-out bg-gray-600 rounded-full outline-none sm:mt-12 sm:px-8 sm:w-auto hover:shadow-outline:gray-600 focus:outline-none focus:shadow-outline:gray-600">
-                Zu den Nusszopfnews
-              </button>
+                label="Zu den Nusszopfnews"
+                className="mt-8 sm:mt-12"
+              />
             </div>
           </div>
         </div>
       </header>
-      <div className="px-4 py-12 bg-yellow-400 sm:px-16">
+      <div className="px-6 py-12 bg-yellow-400 sm:px-16">
         <div className="lg:container sm:max-w-xl sm:mx-auto">
-          <p className="text-xl font-bold text-yellow-700 ">
+          <Text type={TEXT_TYPE.titleSm} className="text-yellow-700 ">
             Der Nusszopf ist derzeit im Aufbau und zukünfig ein digitales und analoges Netzwerk, was dich bei deinen
             Ideen und Projekten unterstützen soll.
-          </p>
+          </Text>
         </div>
       </div>
-      <div className="px-4 py-12 bg-turquoise-400 sm:px-16">
+      <div className="px-6 py-12 bg-turquoise-400 sm:px-16">
         <div className="lg:container sm:max-w-xl sm:mx-auto">
-          <h3 className="mb-4 text-3xl font-bold text-pink-600">Deine Benefits</h3>
+          <Text as="h3" type={TEXT_TYPE.titleMd} className="mb-4 text-pink-600">
+            Deine Benefits
+          </Text>
           <div className="flex flex-wrap mt-3">
             <div className="mb-8 text-pink-600 sm:pr-4 lg:pr-6 sm:w-1/2 lg:w-1/3">
-              <h4 className="text-xl font-bold">Mitstreiter:innen</h4>
-              <p className="text-xl font-medium leading-snug hyphens-auto">
-                Suche und finde Mitstreitern:innen für deine Ideen und Projekte.
-              </p>
+              <Text as="h4" type={TEXT_TYPE.titleSm}>
+                Mitstreiter:innen
+              </Text>
+              <Text className="hyphens-auto">Suche und finde Mitstreitern:innen für deine Ideen und Projekte.</Text>
             </div>
             <div className="mb-8 text-pink-600 sm:pl-4 lg:pl-3 lg:pr-3 sm:w-1/2 lg:w-1/3">
               <h4 className="text-xl font-bold">Ressourcen</h4>
@@ -69,11 +73,11 @@ const Index = () => {
                 Tausche dich zu guten Tips, Wissen und Erfahrungen mit anderen Nusszöpfen aus.
               </p>
             </div>
-            <div className="mb-8 text-pink-600 sm:pl-4 lg:pl-0 lg:pr-6 sm:w-1/2 lg:w-1/3">
+            <div className="mb-8 text-pink-600 sm:pl-4 lg:mb-0 lg:pl-0 lg:pr-6 sm:w-1/2 lg:w-1/3">
               <h4 className="text-xl font-bold">Tolle Projekte</h4>
               <p className="text-xl font-medium leading-snug">Mache bei spannenden Projekten mit.</p>
             </div>
-            <div className="text-pink-600 sm:pr-4 lg:pr-3 lg:pl-3 sm:w-1/2 lg:w-1/3">
+            <div className="mb-8 text-pink-600 sm:mb-0 sm:pr-4 lg:pr-3 lg:pl-3 sm:w-1/2 lg:w-1/3">
               <h4 className="text-xl font-bold">Gesellschaft</h4>
               <p className="text-xl font-medium leading-snugauto">
                 Werde Teil einer bunten, kreativen Kultur des Miteinanders.
@@ -86,7 +90,7 @@ const Index = () => {
           </div>
         </div>
       </div>
-      <div className="px-4 py-12 bg-red-400 sm:px-16">
+      <div className="px-6 py-12 bg-red-400 sm:px-16">
         <div className="lg:container sm:max-w-xl sm:mx-auto">
           <h3 className="mb-6 text-3xl font-bold text-yellow-100">Gesellschaft der Ideen</h3>
           <div className="sm:flex sm:justify-between">
@@ -121,7 +125,7 @@ const Index = () => {
           </div>
         </div>
       </div>
-      <div className="px-4 py-12 bg-pink-400 sm:px-16">
+      <div className="px-6 py-12 bg-pink-400 sm:px-16">
         <div className="lg:container sm:max-w-xl sm:mx-auto">
           <h3 className="mb-6 text-3xl font-bold text-blue-700">Nusszopf Mitstreiter:innen</h3>
           <div className="flex flex-wrap items-center mb-6 -ml-4">

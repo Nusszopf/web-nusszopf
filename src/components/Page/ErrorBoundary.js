@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { logError } from '../../../utils/services/error.service'
+import { logError } from '../../utils/services/error.service'
 
 class ErrorBoundary extends React.Component {
   constructor(props) {

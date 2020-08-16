@@ -1,45 +1,13 @@
-import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Field, Form, Formik, ErrorMessage } from 'formik'
 import { object, string, mixed } from 'yup'
 import classnames from 'classnames'
-import { Loader, CheckCircle, XCircle, Square, CheckSquare } from 'react-feather'
-import { Button, BTN_COLORS, Input, INPUT_COLORS, Text, TEXT_TYPE, Checkbox } from '../../atoms'
+import { Loader, CheckCircle, XCircle } from 'react-feather'
+import { Button, BTN_COLORS, Input, INPUT_COLORS, Text, TEXT_TYPE, Checkbox } from '../../stories/atoms'
 
 const MAX_NAME_LEN = 50
 
-const NewsletterSection = ({ className }) => {
-  const [hasFailed, setFailed] = useState(false)
-  const [isSuccessful, setSuccessful] = useState(false)
-  const [isLoading, setLoading] = useState(false)
-
-  const handleChange = () => {
-    setLoading(false)
-    setFailed(false)
-    setSuccessful(false)
-  }
-
-  const handleSubmit = async values => {
-    setLoading(true)
-    try {
-      const response = await fetch(`${process.env.DOMAIN}/api/newsletter/subscribe`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: values.email, name: values.name }),
-      })
-      if (response.ok) {
-        setSuccessful(true)
-      } else {
-        setFailed(true)
-        // TODO: logError(`newsletter-subscribe: ${my-response-message}`)
-      }
-    } catch (error) {
-      setFailed(true)
-      // TODO: logError(`newsletter-subscribe: ${error.message}`)
-    }
-    setLoading(false)
-  }
-
+const NewsletterSection = ({ className, error, success, loading, onSubmit, onChange }) => {
   return (
     <div id="newsletter" className={classnames(className, 'px-6 py-12 sm:px-16 bg-blue-400')}>
       <div className="lg:container sm:max-w-xl sm:mx-auto">
@@ -67,9 +35,9 @@ const NewsletterSection = ({ className }) => {
                   .required('Bitte trage eine E-Mail-Adresse ein.'),
                 privacy: mixed().oneOf([true], 'Bitte bestätige die Datenschutzerklärung.'),
               })}
-              onSubmit={handleSubmit}>
+              onSubmit={onSubmit}>
               {({ values }) => (
-                <Form onChange={handleChange}>
+                <Form onChange={onChange}>
                   <Field
                     as={Input}
                     autoComplete="off"
@@ -77,7 +45,7 @@ const NewsletterSection = ({ className }) => {
                     type="text"
                     aria-label="Name"
                     placeholder="Name"
-                    disabled={isLoading}
+                    disabled={loading}
                     color={INPUT_COLORS.yellow300blue400}
                   />
                   <ErrorMessage
@@ -94,7 +62,7 @@ const NewsletterSection = ({ className }) => {
                     type="email"
                     aria-label="E-Mail-Adresse"
                     placeholder="E-Mail-Adresse"
-                    disabled={isLoading}
+                    disabled={loading}
                     color={INPUT_COLORS.yellow300blue400}
                   />
                   <ErrorMessage
@@ -108,7 +76,7 @@ const NewsletterSection = ({ className }) => {
                       as={Checkbox}
                       className="text-yellow-300"
                       checked={values.privacy}
-                      disabled={isLoading}
+                      disabled={loading}
                       name="privacy"
                       aria-label="Bestätigung der Datenschutzerklärung"
                       label="Bestätigung der Datenschutzerklärung"
@@ -120,11 +88,11 @@ const NewsletterSection = ({ className }) => {
                     component={Text}
                     name="privacy"
                   />
-                  {!isSuccessful && !hasFailed && !isLoading ? (
+                  {!success && !error && !loading ? (
                     <Button color={BTN_COLORS.blue400Yellow300} className="mt-6" type="submit" label="Anmelden" />
                   ) : (
                     <div className="flex p-5 mt-6 text-lg text-blue-100 bg-blue-600 rounded-lg">
-                      {hasFailed ? (
+                      {error ? (
                         <>
                           <XCircle className="flex-shrink-0 " />
                           <p className="ml-3">
@@ -132,7 +100,7 @@ const NewsletterSection = ({ className }) => {
                             mail@nusszopf.org.
                           </p>
                         </>
-                      ) : isSuccessful ? (
+                      ) : success ? (
                         <>
                           <CheckCircle className="flex-shrink-0 " />
                           <p className="ml-3">Eine E-Mail ist auf dem Weg zu dir.</p>
@@ -157,6 +125,11 @@ const NewsletterSection = ({ className }) => {
 
 NewsletterSection.propTypes = {
   className: PropTypes.string,
+  error: PropTypes.bool,
+  success: PropTypes.bool,
+  loading: PropTypes.bool,
+  onSubmit: PropTypes.func,
+  onChange: PropTypes.func,
 }
 
 export default NewsletterSection

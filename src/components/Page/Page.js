@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { truncate } from 'lodash'
 
-import { Footer } from '../../organisims'
+import { Footer } from '../../components'
 import ErrorBoundary from './ErrorBoundary'
 
 const Page = ({
