@@ -70,11 +70,11 @@ All configuration-files for specific libraries and dev-tooling, etc.
 
 ### /docs
 
-Dokumentation
+Dokumentation.
 
 ### /public
 
-Specific folder to Next.js. More informations in the documentation: [Next.js - Static File Serving].(https://nextjs.org/docs/basic-features/static-file-serving)
+Specific folder to Next.js. More informations in the documentation: [Next.js - Static File Serving](https://nextjs.org/docs/basic-features/static-file-serving).
 
 ### /scripts
 
@@ -92,14 +92,13 @@ All "dumb" UI components, managed and documented via storybook and structured vi
 
 Components, which:
 - are smart
-- are not relevant for the design-system
-- have a specific use-case, that do not occur often
+- are not relevant for the design-system; e.g. have a specific use-case, that do not occur often
 - can't be seperated easy into logic and ui
 - related to react concepts like `high-order-components`
 
 #### **src/pages**
 
-Specific folder to Next.js. More informations in the documentation: [Next.js - Pages](https://nextjs.org/docs/basic-features/pages)
+Specific folder to Next.js. More informations in the documentation: [Next.js - Pages](https://nextjs.org/docs/basic-features/pages):
 
 ```zsh
 | +-- /pages
@@ -113,7 +112,7 @@ Global styles and tailwind-configuration.
 
 #### **src/utils**
 
-Shared helper.
+Shared helper:
 
 ```zsh
 | +-- /utils
