@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Page } from '../../../components/templates'
+import { Page } from '../../../containers'
 
 const UnsubscribeConfirm = () => {
   const router = useRouter()

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import Link from 'next/link'
 import { ArrowLeft } from 'react-feather'
-import { Page } from '../../../components/templates'
+import { Page } from '../../../containers'
 
 const SubscribeConfirm = ({ lead }) => {
   // TODO: ui design

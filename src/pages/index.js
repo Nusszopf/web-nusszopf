@@ -1,7 +1,7 @@
 import SVG from 'react-inlinesvg'
 import { ArrowLeft } from 'react-feather'
 
-import { Page, NewsletterSection } from '../components'
+import { Page, NewsletterSection } from '../containers'
 import { Button, NavItem, Link, LINK_TYPES, BTN_COLORS, Text, TEXT_TYPE, NAVITEM_TYPES } from '../stories/atoms'
 
 const Index = () => {

@@ -3,8 +3,9 @@ import { Field, Form, Formik, ErrorMessage } from 'formik'
 import classnames from 'classnames'
 import { object, string } from 'yup'
 import { Loader, CheckCircle, XCircle } from 'react-feather'
-import { Page } from '../../../components/templates'
-import { Button, BTN_COLORS } from '../../../components/atoms'
+
+import { Page } from '../../../containers'
+import { Button, BTN_COLORS } from '../../../stories/atoms'
 
 const UnsubscribeLead = () => {
   const [hasFailed, setFailed] = useState(false)

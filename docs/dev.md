@@ -57,7 +57,7 @@ Run `yarn upgrade-interactive --latest`
 +-- /public
 +-- /scripts
 +-- /src
-| +-- /components
+| +-- /containers
 | +-- /pages
 | +-- /stories  
 | +-- /styles
@@ -88,7 +88,7 @@ All the code relevant for the frontend-app, als well the serverless-functions.
 
 All "dumb" UI components, managed and documented via storybook and structured via the atomic-design-pattern.
 
-#### **src/components**
+#### **src/containers**
 
 Components, which:
 - are smart
