@@ -31,9 +31,9 @@ const Link = ({
           target="_blank"
           title={title}
           aria-label={ariaLabel}>
-          <div className={classnames('border-b-2', color)}>
+          <span className={classnames('inline-block border-b-2', color)}>
             <Text>{children}</Text>
-          </div>
+          </span>
         </a>
       )
     }
