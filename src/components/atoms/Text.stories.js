@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, TEXT_TYPE } from '../atoms'
 
 export default {
-  title: 'Atoms/Text',
+  title: 'Design System/Atoms/Text',
   component: Text,
 }
 
