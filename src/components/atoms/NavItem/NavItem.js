@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import NLink from 'next/link'
 import classnames from 'classnames'
-import { Text, BTN_COLORS } from '../atoms'
+import { Text, BTN_COLORS } from '../../atoms'
 
 // todo: size
 
@@ -14,7 +14,7 @@ export const NAVITEM_TEXT_COLORS = {
   gray700: active => ('text-gray-700', { 'border-gray-700': active, 'hover:border-gray-700': !active }),
 }
 
-const Link = ({
+const NavItem = ({
   children,
   href,
   ariaLabel,
@@ -63,7 +63,7 @@ const Link = ({
   }
 }
 
-Link.propTypes = {
+NavItem.propTypes = {
   active: PropTypes.bool,
   ariaLabel: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -75,4 +75,4 @@ Link.propTypes = {
   className: PropTypes.string,
 }
 
-export default Link
+export default NavItem

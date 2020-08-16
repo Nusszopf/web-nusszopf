@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, LINK_TYPES } from '../atoms'
+import { Link, LINK_TYPES } from '../../atoms'
 
 export default {
   title: 'Design System/Atoms/Link',

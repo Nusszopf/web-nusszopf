@@ -1,5 +1,5 @@
 import React from 'react'
-import { Footer } from '../organisims'
+import { Footer } from '../../organisims'
 
 export default {
   title: 'Design System/Organisims/Footer',

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { Text, BTN_COLORS } from '../atoms'
+import { Text, BTN_COLORS } from '../../atoms'
 
 export const LINK_TYPES = {
   text: 'text',

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Input } from '../atoms'
+import { Input } from '../../atoms'
 
 export default {
   title: 'Design System/Atoms/Input',

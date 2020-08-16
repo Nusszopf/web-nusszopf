@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { Square, CheckSquare } from 'react-feather'
-import { Text, TEXT_TYPE } from '../atoms'
+import { Text, TEXT_TYPE } from '../../atoms'
 
 const Checkbox = ({ disabled = false, checked, label, className = 'text-black', ...props }) => (
   <label>

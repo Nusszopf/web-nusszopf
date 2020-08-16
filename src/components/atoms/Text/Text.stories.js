@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text, TEXT_TYPE } from '../atoms'
+import { Text, TEXT_TYPE } from '../../atoms'
 
 export default {
   title: 'Design System/Atoms/Text',
