@@ -6,13 +6,13 @@ export default {
   component: Link,
 }
 
-export const Default_Text = () => (
+export const Text = () => (
   <Link href="https://nusszopf.org/" title="title" ariaLabel="ariaLabel">
     link
   </Link>
 )
 
-export const Default_Button = () => (
+export const Button = () => (
   <Link href="https://nusszopf.org/" type={LINK_TYPES.button} title="title" ariaLabel="ariaLabel">
     link
   </Link>

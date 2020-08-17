@@ -47,7 +47,7 @@ const Link = ({
           aria-label={ariaLabel}
           title={title}
           className={classnames(
-            'group w-full py-4 text-lg font-bold transition-shadow duration-150 ease-in-out rounded-full outline-none sm:px-8 sm:w-auto focus:outline-none',
+            'group inline-block text-center w-full py-4 text-lg font-bold transition-shadow duration-150 ease-in-out rounded-full outline-none sm:px-8 sm:w-auto focus:outline-none',
             color,
             className
           )}>
