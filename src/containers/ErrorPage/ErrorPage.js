@@ -16,7 +16,7 @@ const ErrorPage = ({ statusCode }) => (
           unter{' '}
           <Link
             color={LINK_TEXT_COLORS.yellow400pink500}
-            href="mailto:mail@nusszopf.org?subject=Sponsorship | Partnerschaft | Feedback"
+            href="mailto:mail@nusszopf.org?subject=Nusszopf verknetet"
             title="E-Mail an Nusszopf schreiben"
             ariaLabel="E-Mail an Nusszopf schreiben">
             mail@nusszopf.org
