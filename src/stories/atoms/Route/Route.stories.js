@@ -9,16 +9,28 @@ export default {
 
 export const Text = () => (
   <Route href="/" title="title" ariaLabel="arial label">
-    home
+    Home
   </Route>
 )
 
 export const Text_Active = () => (
   <Route href="/" title="title" ariaLabel="arial label" active={true}>
-    home
+    Home
   </Route>
 )
 
-export const Icon_Button = () => (
-  <Route type={ROUTE_TYPES.button} href="/" icon={ArrowLeft} title="title" ariaLabel="arial label" />
+export const Icon = () => (
+  <Route type={ROUTE_TYPES.icon} href="/" icon={ArrowLeft} title="title" ariaLabel="arial label" />
+)
+
+export const Button = () => (
+  <Route type={ROUTE_TYPES.button} href="/" width={23} title="title" ariaLabel="arial label">
+    Link
+  </Route>
+)
+
+export const Button_Icon = () => (
+  <Route type={ROUTE_TYPES.button} href="/" width={23} icon={ArrowLeft} title="title" ariaLabel="arial label">
+    Link
+  </Route>
 )

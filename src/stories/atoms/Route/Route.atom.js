@@ -2,16 +2,19 @@ import PropTypes from 'prop-types'
 import NLink from 'next/link'
 import classnames from 'classnames'
 import { Text, BTN_COLORS } from '../../atoms'
-
-// todo: size
+import { TEXT_TYPE } from '../Text/Text.atom'
 
 export const ROUTE_TYPES = {
   text: 'text',
   button: 'button',
+  icon: 'icon',
+  svg: 'svg',
 }
 
 export const ROUTE_TEXT_COLORS = {
-  gray700: active => ('text-gray-700', { 'border-gray-700': active, 'hover:border-gray-700': !active }),
+  gray700: active => classnames('text-gray-700', { 'border-gray-700': active, 'hover:border-gray-700': !active }),
+  turquoise400: active =>
+    classnames('text-turquoise-400', { 'border-turquoise-400': active, 'hover:border-turquoise-400': !active }),
 }
 
 const Route = ({
@@ -21,6 +24,7 @@ const Route = ({
   title,
   className,
   icon,
+  textType = TEXT_TYPE.textSm,
   active = false,
   type = ROUTE_TYPES.text,
   color = type === ROUTE_TYPES.text ? ROUTE_TEXT_COLORS.gray700 : BTN_COLORS.whiteGray600,
@@ -29,21 +33,48 @@ const Route = ({
     case ROUTE_TYPES.text: {
       return (
         <NLink href={href}>
-          <a
-            className={classnames('cursor-pointer group', className)}
-            href={href}
-            rel="noopener noreferrer"
-            target="_blank"
-            title={title}
-            aria-label={ariaLabel}>
+          <a className={classnames('cursor-pointer group', className)} href={href} title={title} aria-label={ariaLabel}>
             <span className={classnames('inline-block border-b-2', { 'border-transparent': !active }, color(active))}>
-              <Text>{children}</Text>
+              <Text type={textType}>{children}</Text>
             </span>
           </a>
         </NLink>
       )
     }
+    case ROUTE_TYPES.svg: {
+      return (
+        <NLink href={href}>
+          <a className={classnames('cursor-pointer', className)} href={href} title={title} aria-label={ariaLabel}>
+            {children}
+          </a>
+        </NLink>
+      )
+    }
     case ROUTE_TYPES.button: {
+      const IconComponent = icon
+      return (
+        <NLink href={href}>
+          <a
+            aria-label={ariaLabel}
+            title={title}
+            className={classnames(
+              'group inline-block text-center w-full py-4 text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none sm:px-8 sm:w-auto focus:outline-none',
+              color,
+              className
+            )}>
+            {icon ? (
+              <span className="flex items-center justify-center">
+                <IconComponent className="-ml-1" />
+                <p className="ml-2">{children}</p>
+              </span>
+            ) : (
+              <>{children}</>
+            )}
+          </a>
+        </NLink>
+      )
+    }
+    case ROUTE_TYPES.icon: {
       const IconComponent = icon
       return (
         <NLink href={href}>
@@ -73,6 +104,7 @@ Route.propTypes = {
   children: PropTypes.node,
   color: PropTypes.oneOf(Object.values({ ...ROUTE_TEXT_COLORS, ...BTN_COLORS })),
   className: PropTypes.string,
+  textType: PropTypes.oneOf(Object.values(TEXT_TYPE)),
 }
 
 export default Route

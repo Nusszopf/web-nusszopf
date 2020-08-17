@@ -5,10 +5,13 @@ import { Text, BTN_COLORS } from '../../atoms'
 export const LINK_TYPES = {
   text: 'text',
   button: 'button',
+  svg: 'svg',
 }
 
 export const LINK_TEXT_COLORS = {
   gray700blue200: 'text-gray-700 bg-blue-200 border-blue-300 group-hover:bg-blue-300 group-hover:border-gray-700',
+  yellow100yellow200: 'text-yellow-100 bg-red-500 border-yellow-100 group-hover:bg-red-600',
+  yellow400pink500: 'text-yellow-400 bg-pink-500 border-yellow-400 group-hover:bg-pink-700',
 }
 
 const Link = ({
@@ -32,8 +35,21 @@ const Link = ({
           title={title}
           aria-label={ariaLabel}>
           <span className={classnames('inline-block border-b-2', color)}>
-            <Text>{children}</Text>
+            <span>{children}</span>
           </span>
+        </a>
+      )
+    }
+    case LINK_TYPES.svg: {
+      return (
+        <a
+          className={classnames('cursor-pointer', className)}
+          href={href}
+          rel="noopener noreferrer"
+          target="_blank"
+          title={title}
+          aria-label={ariaLabel}>
+          {children}
         </a>
       )
     }
@@ -47,7 +63,7 @@ const Link = ({
           aria-label={ariaLabel}
           title={title}
           className={classnames(
-            'group inline-block text-center w-full py-4 text-lg font-bold transition-shadow duration-150 ease-in-out rounded-full outline-none sm:px-8 sm:w-auto focus:outline-none',
+            'group inline-block text-center w-full py-4 text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none sm:px-8 sm:w-auto focus:outline-none',
             color,
             className
           )}>

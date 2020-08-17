@@ -78,6 +78,7 @@ module.exports = {
       // additions
       boxShadow: {
         'outline:yellow-300': '0 0 0 3px rgba(250, 252, 136, 0.5)',
+        'outline:yellow-400': '0 0 0 3px rgba(244, 246, 81, 0.5)',
         'outline:blue-700': '0 0 0 3px rgba(0, 57, 138, 0.5)',
         'outline:blue-200': '0 0 0 3px rgba(203, 223, 251, 0.5)',
         'outline:gray-600': '0 0 0 3px rgba(38, 50, 56, 0.5)',
