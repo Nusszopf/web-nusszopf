@@ -14,6 +14,7 @@ const Page = ({
   description = 'Mit dem Nusszopf findest du Mitstreiter:innen und Projekte, teilst Ressourcen, Wissen und vieles mehr, um mehr Ideen und Projekte zu verwirklichen.',
   noindex = false,
   notFound = false,
+  showFooter = true,
 }) => {
   const router = useRouter()
   const domain = `${process.env.DOMAIN}`
@@ -58,7 +59,7 @@ const Page = ({
       />
       <ErrorBoundary>
         <main className="flex-auto">{children}</main>
-        <Footer />
+        {showFooter && <Footer />}
       </ErrorBoundary>
     </>
   )
@@ -72,6 +73,7 @@ Page.propTypes = {
   noindex: PropTypes.bool,
   notFound: PropTypes.bool,
   title: PropTypes.string,
+  showFooter: PropTypes.bool,
 }
 
 export default Page

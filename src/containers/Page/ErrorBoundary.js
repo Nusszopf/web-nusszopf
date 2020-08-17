@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { logError } from '../../utils/services/error.service'
+import ErrorPage from '../ErrorPage/ErrorPage'
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      return <p>error boundary works!</p>
+      return <ErrorPage />
     }
     return this.props.children
   }
