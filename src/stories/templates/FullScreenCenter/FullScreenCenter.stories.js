@@ -8,6 +8,6 @@ export default {
 
 export const Primary = () => (
   <FullScreenCenter className="bg-gray-100">
-    <div className="p-10 text-white bg-gray-300">Full-Screen-Center</div>
+    <div className="p-4 text-white bg-gray-300">centered content</div>
   </FullScreenCenter>
 )
