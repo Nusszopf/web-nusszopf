@@ -6,4 +6,4 @@ export default {
   component: Input,
 }
 
-export const Default = () => <Input placeholder="some placeholder" />
+export const Primary = () => <Input placeholder="some placeholder" />

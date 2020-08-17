@@ -2,7 +2,7 @@ import SVG from 'react-inlinesvg'
 import { ArrowLeft } from 'react-feather'
 
 import { Page, NewsletterSection } from '../containers'
-import { Button, NavItem, Link, LINK_TYPES, BTN_COLORS, Text, TEXT_TYPE, NAVITEM_TYPES } from '../stories/atoms'
+import { Button, Route, Link, LINK_TYPES, BTN_COLORS, Text, TEXT_TYPE, ROUTE_TYPES } from '../stories/atoms'
 
 const Index = () => {
   const scrollIntoView = id => {

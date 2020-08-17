@@ -5,16 +5,16 @@ import { Text, BTN_COLORS } from '../../atoms'
 
 // todo: size
 
-export const NAVITEM_TYPES = {
+export const ROUTE_TYPES = {
   text: 'text',
   button: 'button',
 }
 
-export const NAVITEM_TEXT_COLORS = {
+export const ROUTE_TEXT_COLORS = {
   gray700: active => ('text-gray-700', { 'border-gray-700': active, 'hover:border-gray-700': !active }),
 }
 
-const NavItem = ({
+const Route = ({
   children,
   href,
   ariaLabel,
@@ -22,11 +22,11 @@ const NavItem = ({
   className,
   icon,
   active = false,
-  type = NAVITEM_TYPES.text,
-  color = type === NAVITEM_TYPES.text ? NAVITEM_TEXT_COLORS.gray700 : BTN_COLORS.whiteGray600,
+  type = ROUTE_TYPES.text,
+  color = type === ROUTE_TYPES.text ? ROUTE_TEXT_COLORS.gray700 : BTN_COLORS.whiteGray600,
 }) => {
   switch (type) {
-    case NAVITEM_TYPES.text: {
+    case ROUTE_TYPES.text: {
       return (
         <NLink href={href}>
           <a
@@ -36,14 +36,14 @@ const NavItem = ({
             target="_blank"
             title={title}
             aria-label={ariaLabel}>
-            <div className={classnames('border-b-2', { 'border-transparent': !active }, color(active))}>
+            <span className={classnames('inline-block border-b-2', { 'border-transparent': !active }, color(active))}>
               <Text>{children}</Text>
-            </div>
+            </span>
           </a>
         </NLink>
       )
     }
-    case NAVITEM_TYPES.button: {
+    case ROUTE_TYPES.button: {
       const IconComponent = icon
       return (
         <NLink href={href}>
@@ -63,16 +63,16 @@ const NavItem = ({
   }
 }
 
-NavItem.propTypes = {
+Route.propTypes = {
   active: PropTypes.bool,
   ariaLabel: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(Object.values(NAVITEM_TYPES)),
+  type: PropTypes.oneOf(Object.values(ROUTE_TYPES)),
   icon: PropTypes.elementType,
   children: PropTypes.node,
-  color: PropTypes.oneOf(Object.values({ ...NAVITEM_TEXT_COLORS, ...BTN_COLORS })),
+  color: PropTypes.oneOf(Object.values({ ...ROUTE_TEXT_COLORS, ...BTN_COLORS })),
   className: PropTypes.string,
 }
 
-export default NavItem
+export default Route
