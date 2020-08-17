@@ -1,1 +1,2 @@
-export { default as InfoCard } from './InfoCard/InfoCard.molecule'
+export { default as Alert } from './Alert/Alert.molecule'
+export * from './Alert/Alert.molecule'

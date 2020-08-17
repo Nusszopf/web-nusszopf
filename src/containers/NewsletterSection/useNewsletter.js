@@ -32,7 +32,7 @@ const useNewsletter = () => {
     setLoading(false)
   }
 
-  return { isLoading, isSuccessful, hasFailed, handleChange, handleSubmit }
+  return { loading: isLoading, success: isSuccessful, hasFailed, handleChange, handleSubmit }
 }
 
 export default useNewsletter
