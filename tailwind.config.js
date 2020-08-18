@@ -4,7 +4,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
   purge: {
-    content: ['./src/components/**/*.{js,jsx}', './src/pages/**/*.{js,jsx}'],
+    content: ['./src/containers/**/*.{js,jsx}', './src/pages/**/*.{js,jsx}', './src/stories/**/*.{js,jsx}'],
     options: {
       whitelist: [],
     },
