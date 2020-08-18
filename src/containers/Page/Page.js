@@ -36,7 +36,8 @@ const Page = ({
         title={truncate(title, { length: 60 })}
         description={truncate(description, { length: 150 })}
         canonical={canonical}
-        noindex={process.env.NODE_ENV !== 'production' ? true : noindex}
+        // noindex={process.env.NODE_ENV !== 'production' ? true : noindex}
+        noindex={true}
         openGraph={{
           description,
           images: [
