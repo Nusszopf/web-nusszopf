@@ -27,84 +27,86 @@ const Index = () => {
               Netzwerk für gemeinsame Ideen und Projekte
             </Text>
             <Text as="h2" type={TEXT_TYPE.subtitleLg} className="max-w-lg mt-5 text-gray-600">
-              Mit dem Nusszopf findest du Mitstreiter:innen und Projekte, teilst Ressourcen, Wissen und vieles mehr, um
-              mehr Ideen und Projekte zu verwirklichen.
+              Hast Du auch ständig tolle Ideen, die Du verwirklichen möchtest? Der Nusszopf hilft: Hier findest Du die
+              perfekten Zutaten für zopfige Ideenumsetzungen!
             </Text>
             <Button
-              onClick={() => scrollIntoView('newsletter')}
-              label="Zu den Nusszopfnews"
+              onClick={() => scrollIntoView('bmbf')}
+              label="Für den Nusszopf abstimmen"
               className="mt-8 sm:mt-12"
             />
           </div>
         </div>
       </Frame>
       <Frame className="py-12 text-yellow-700 bg-yellow-400">
+        {/* <Text as="h3" type={TEXT_TYPE.titleSm}>
+          Der Nusszopf wird gerade noch fertig geknetet.{' '} 
+        </Text>
+        <Button onClick={() => scrollIntoView('newsletter')} label="Nusszopf Neuigkeiten" className="mt-8 sm:mt-12" /> */}
         <Text type={TEXT_TYPE.titleSm}>
-          Der Nusszopf ist derzeit im Aufbau und zukünfig ein digitales und analoges Netzwerk, was dich bei deinen Ideen
-          und Projekten unterstützen soll.
+          Bald kannst Du dich anmelden, Ideen teilen, Mitstreiter:innen und Ressourcen finden und wirst bei deinen Ideen
+          analog und digital unterstützt.
         </Text>
       </Frame>
       <Frame className="py-12 text-pink-600 bg-turquoise-400">
         <Text as="h3" type={TEXT_TYPE.titleMd} className="mb-4">
-          Deine Benefits
+          Nusszopf Erfolgsrezept für Ideen und Projekte
         </Text>
         <div className="flex flex-wrap mt-3">
           <div className="mb-8 sm:pr-4 lg:pr-6 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Mitstreiter:innen
+              Passende Mitstreiter:innen
             </Text>
-            <Text className="hyphens-auto">Suche und finde Mitstreitern:innen für deine Ideen und Projekte.</Text>
+            <Text className="hyphens-auto">Finde genau die richtigen Nusszopfer:innen für dein Projekt!</Text>
           </div>
           <div className="mb-8 sm:pl-4 lg:pl-3 lg:pr-3 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Ressourcen
+              Ressourcenvielfalt
             </Text>
-            <Text>Finde und teile benötigte Ressourcen mit dem Nusszopf-Netzwerk.</Text>
+            <Text>Teile deine Ressourcen mit anderen und andere teilen ihre Ressourcen mit dir!</Text>
           </div>
           <div className="mb-8 sm:pr-4 lg:pr-0 lg:pl-6 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Wissen und Erfahrungen
+              Wissen, Erfahrungen, Lernen
             </Text>
-            <Text className="hyphens-auto">
-              Tausche dich zu guten Tips, Wissen und Erfahrungen mit anderen Nusszöpfen aus.
-            </Text>
+            <Text className="hyphens-auto">Tausche dich mit anderen Nusszopfer:innen aus!</Text>
           </div>
           <div className="mb-8 sm:pl-4 lg:mb-0 lg:pl-0 lg:pr-6 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
               Tolle Projekte
             </Text>
-            <Text>Mache bei spannenden Projekten mit.</Text>
+            <Text>Mach´ bei spannenden Projekten mit!</Text>
           </div>
           <div className="mb-8 sm:mb-0 sm:pr-4 lg:pr-3 lg:pl-3 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Gesellschaft
+              Gemeinschaft
             </Text>
-            <Text>Werde Teil einer bunten, kreativen Kultur des Miteinanders.</Text>
+            <Text>Werde Teil einer bunten und kreativen Kultur des Miteinanders!</Text>
           </div>
           <div className="sm:pl-4 lg:pl-6 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Spaß und Freude
+              Gegenseitige Inspiration
             </Text>
-            <Text>Inspiriere und unterstütze dich und andere.</Text>
+            <Text>Inspiriere dich und andere zu neuen Ideen, Sichtweisen und Lösungen!</Text>
           </div>
         </div>
       </Frame>
-      <Frame className="py-12 text-yellow-100 bg-red-400">
+      <Frame id="bmbf" className="py-12 text-yellow-100 bg-red-400">
         <Text as="h3" type={TEXT_TYPE.titleMd} className="mb-6">
-          Gesellschaft der Ideen
+          Gesellschaft der Ideen – Wettbewerb für Soziale Innovationen
         </Text>
         <div className="sm:flex sm:justify-between">
           <div className="sm:w-2/3 lg:w-1/2">
             <Text className="sm:mr-10 lg:mr-0">
-              Wir wollen mit Euch zur Gesellschaft der Ideen werden und machen deshalb beim Ideen&shy;wettbewerb für
-              soziale Inovationen vom BMBF mit. Ab Herbst 2020 kommen die besten Ideen in die Entscheidungsrunde. Drückt
-              uns die Daumen! Mehr Informationen zum Wettbewerb findet ihr unter der{' '}
+              Auch ein Nusszopf muss seine Brötchen verdienen: Um den Nusszopf dauerhaft umsetzen zu können, haben wir
+              das Projekt bei einem Wettbewerb des Bundesministeriums für Bildung und Forschung eingereicht. Neuigkeiten
+              gibt es ab Herbst 2020, drückt die Daumen! Mehr Informationen:{' '}
               <Link
                 href="https://www.gesellschaft-der-ideen.de/"
                 title="Zum Gesellschaft der Ideen Wettbewerb"
                 color={LINK_TEXT_COLORS.yellow100yellow200}
                 ariaLabel="Zum Gesellschaft der Ideen Wettbewerb">
-                öffenlichen Webseite
+                gesellschaft-der-ideen.de
               </Link>
               .
             </Text>
@@ -123,7 +125,7 @@ const Index = () => {
       </Frame>
       <Frame className="py-12 text-blue-700 bg-pink-400">
         <Text as="h3" type={TEXT_TYPE.titleMd} className="mb-6">
-          Nusszopf Mitstreiter:innen
+          Zopfstarke Mitstreiter:innen
         </Text>
         <div className="flex flex-wrap items-center mb-6 -ml-4">
           <Link type={LINK_TYPES.svg} href="https://www.sanity.io/" title="Zu Sanity" ariaLabel="Zu Sanity">
@@ -142,30 +144,29 @@ const Index = () => {
         <div className="flex flex-wrap mb-12 lg:mb-8">
           <div className="mb-8 lg:mb-0 lg:pr-6 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Partner:innen
+              Werde Sponsor:in!
             </Text>
 
             <Text>
-              Meldet euch bitte per E-Mail bei uns, falls Du oder dein Unter&shy;nehmen uns und unser Projekt
-              unterstützen wollt.
+              Der Nusszopf ist ein Non-Profit- Herzensprojekt: Unterstütze ihn, damit er dich unterstützen kann!
             </Text>
           </div>
           <div className="mb-8 lg:pl-3 lg:mb-0 lg:pr-3 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Sponsor:innen
+              Werde Partner:in!
             </Text>
             <Text>
-              Wir möchten ein Partner&shy;schafts&shy;netzwerk aufbauen und suchen aktuell Partner:innen. Falls du oder
-              dein Unter&shy;nehmen interessiert seid, sind wir gespannt von dir per E-Mail zu hören.
+              Gemeinsam können wir alles schaffen. Zusammen mit passenden Vereinen, Unternehmen und anderen
+              Organisationen wollen wir ein Partner:innennetzwerk aufbauen.
             </Text>
           </div>
           <div className=" lg:pl-6 lg:mb-0 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Feedback
+              Gib´ uns Feedback!
             </Text>
             <Text>
-              Um den Nusszopf stätig verbessern zu können, freuen wir uns, wenn du deine Gedanken, Ideen und Wünsche zum
-              Nusszopf mit uns teilst.
+              Teile deine Gedanken, Ideen und Wünsche mit uns, damit wir den Nusszopf immer weiter verbessern und an
+              deine Bedürfnisse anpassen können.
             </Text>
           </div>
         </div>
