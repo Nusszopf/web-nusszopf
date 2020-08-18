@@ -1,6 +1,7 @@
 import { withRouter } from 'next/router'
 import PropTypes from 'prop-types'
-import { Page } from '../containers'
+import { ArrowLeft } from 'react-feather'
+import { Page, PageBrand } from '../containers'
 import { Frame } from '../stories/templates'
 import {
   Link,
@@ -12,8 +13,6 @@ import {
   BTN_COLORS,
   LINK_TEXT_COLORS,
 } from '../stories/atoms'
-import { ArrowLeft } from 'react-feather'
-import BrandFooter from '../containers/BrandFooter/BrandFooter'
 
 const Privacy = ({ router }) => (
   <Page className="bg-turquoise-700 text-turquoise-300" showFooter={false}>
@@ -186,8 +185,8 @@ const Privacy = ({ router }) => (
           </Text>
         </div>
       </div>
+      <PageBrand className="mt-16 sm:mt-24" color="turquoise" />
     </Frame>
-    <BrandFooter className="mb-12" />
   </Page>
 )
 

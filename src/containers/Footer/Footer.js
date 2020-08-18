@@ -25,7 +25,7 @@ const Footer = () => (
       </div>
       <div className="flex justify-center mt-6 sm:mt-0">
         <Route type={ROUTE_TYPES.svg} href="/" title="Nusszopf" ariaLabel="nusszopf">
-          <SVG className="w-6 mr-6 sm:mr-8" src="/images/logos/nusszopf-logo-small.svg" />
+          <SVG className="w-6 mr-6 sm:mr-8" src="/images/logos/nusszopf-logo-small-turquoise.svg" />
         </Route>
         <Link type={LINK_TYPES.svg} href="https://vercel.com/" title="Zu Vercel" ariaLabel="Zu vercel">
           <SVG className="w-24" src="/images/logos/powered-by-vercel-turquoise.svg" />

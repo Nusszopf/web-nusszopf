@@ -7,7 +7,7 @@ export default {
 }
 
 export const Primary = () => (
-  <Frame className="bg-gray-100">
+  <Frame className="h-screen bg-gray-100">
     <div className="p-4 mb-2 text-center text-white bg-gray-300">framed content</div>
     <div className="p-4 mb-2 text-center text-white bg-gray-300">framed content</div>
     <div className="p-4 mb-2 text-center text-white bg-gray-300">framed content</div>

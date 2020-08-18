@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types'
 import { ArrowLeft } from 'react-feather'
 import { Route, Link, Text, TEXT_TYPE, LINK_TEXT_COLORS, ROUTE_TYPES, BTN_COLORS } from '../../stories/atoms'
-import { FullScreenCenter } from '../../stories/templates'
-import { Page } from '../../containers'
+import { FrameFullCenter } from '../../stories/templates'
+import { Page, PageBrand } from '../../containers'
 
 const ErrorPage = ({ statusCode }) => (
   <Page showFooter={false}>
-    <FullScreenCenter className="text-yellow-400 bg-pink-600">
+    <FrameFullCenter
+      className="py-12 text-yellow-400 bg-pink-600"
+      footer={<PageBrand className="mt-12 bg-pink-600 " color="pink" />}>
       <div className="max-w-xl">
         <Text as="h1" type={TEXT_TYPE.titleLg}>
           {statusCode && `${statusCode} – `}Nusszopf verknetet...
@@ -34,7 +36,7 @@ const ErrorPage = ({ statusCode }) => (
           Zum Nusszopf
         </Route>
       </div>
-    </FullScreenCenter>
+    </FrameFullCenter>
   </Page>
 )
 
