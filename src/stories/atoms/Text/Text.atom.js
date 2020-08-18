@@ -24,7 +24,7 @@ Text.propTypes = {
   as: PropTypes.elementType,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  type: PropTypes.oneOf(Object.values(TEXT_TYPE)),
+  type: PropTypes.string,
 }
 
 export default Text

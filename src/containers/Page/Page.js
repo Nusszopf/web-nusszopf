@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { truncate } from 'lodash'
-
+import classnames from 'classnames'
 import { Footer } from '../../containers'
 import ErrorBoundary from './ErrorBoundary'
 
@@ -15,6 +15,7 @@ const Page = ({
   noindex = false,
   notFound = false,
   showFooter = true,
+  className,
 }) => {
   const router = useRouter()
   const domain = `${process.env.DOMAIN}`
@@ -58,7 +59,7 @@ const Page = ({
         }}
       />
       <ErrorBoundary>
-        <main className="flex-auto">{children}</main>
+        <main className={classnames('flex-auto', className)}>{children}</main>
         {showFooter && <Footer />}
       </ErrorBoundary>
     </>
@@ -74,6 +75,7 @@ Page.propTypes = {
   notFound: PropTypes.bool,
   title: PropTypes.string,
   showFooter: PropTypes.bool,
+  className: PropTypes.string,
 }
 
 export default Page

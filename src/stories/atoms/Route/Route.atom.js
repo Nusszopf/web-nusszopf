@@ -34,7 +34,18 @@ const Route = ({
       return (
         <NLink href={href}>
           <a className={classnames('cursor-pointer group', className)} href={href} title={title} aria-label={ariaLabel}>
-            <span className={classnames('inline-block border-b-2', { 'border-transparent': !active }, color(active))}>
+            <span
+              className={classnames(
+                'inline-block',
+                {
+                  'border-transparent': !active,
+                  'border-b-2':
+                    textType !== TEXT_TYPE.titleSm && textType !== TEXT_TYPE.titleMd && textType !== TEXT_TYPE.titleLg,
+                  'border-b-3': textType === TEXT_TYPE.titleSm,
+                  'border-b-4': textType === TEXT_TYPE.titleLg || textType === TEXT_TYPE.titleMd,
+                },
+                color(active)
+              )}>
               <Text type={textType}>{children}</Text>
             </span>
           </a>
@@ -58,7 +69,7 @@ const Route = ({
             aria-label={ariaLabel}
             title={title}
             className={classnames(
-              'group inline-block text-center w-full py-4 text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none sm:px-8 sm:w-auto focus:outline-none',
+              'group inline-block flex-shrink-0 text-center w-full py-4 text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none sm:px-8 sm:w-auto focus:outline-none',
               color,
               className
             )}>
@@ -82,7 +93,7 @@ const Route = ({
             aria-label={ariaLabel}
             title={title}
             className={classnames(
-              'cursor-pointer inline-block transition-shadow flex items-center justify-center h-12 w-12 duration-150 ease-in-out rounded-full outline-none focus:outline-none',
+              'cursor-pointer flex-shrink-0 inline-block transition-shadow flex items-center justify-center h-10 w-10 duration-150 ease-in-out rounded-full outline-none focus:outline-none',
               color,
               className
             )}>
@@ -104,7 +115,7 @@ Route.propTypes = {
   children: PropTypes.node,
   color: PropTypes.oneOf(Object.values({ ...ROUTE_TEXT_COLORS, ...BTN_COLORS })),
   className: PropTypes.string,
-  textType: PropTypes.oneOf(Object.values(TEXT_TYPE)),
+  textType: PropTypes.string,
 }
 
 export default Route

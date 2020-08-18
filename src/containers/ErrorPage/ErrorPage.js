@@ -12,7 +12,7 @@ const ErrorPage = ({ statusCode }) => (
           {statusCode && `${statusCode} – `}Nusszopf verknetet...
         </Text>
         <Text className="max-w-xl mt-8">
-          Sorry! Es ist ein technische Problem aufgetreten. Falls der Feher erneut auftritt, melde dich bitte bei uns
+          Sorry! Es ist ein technische Problem aufgetreten. Falls der Fehler erneut auftritt, melde dich bitte bei uns
           unter{' '}
           <Link
             color={LINK_TEXT_COLORS.yellow400pink500}
