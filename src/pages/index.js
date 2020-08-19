@@ -160,7 +160,7 @@ const Index = () => {
               Organisationen wollen wir ein Partner:innennetzwerk aufbauen.
             </Text>
           </div>
-          <div className=" lg:pl-6 lg:mb-0 lg:w-1/3">
+          <div className="lg:pl-6 lg:mb-0 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
               Gib´ uns Feedback!
             </Text>

@@ -30,7 +30,7 @@ export const Button = () => (
 )
 
 export const Button_Icon = () => (
-  <Route type={ROUTE_TYPES.button} href="/" width={23} icon={ArrowLeft} title="title" ariaLabel="arial label">
+  <Route type={ROUTE_TYPES.buttonIconLeft} href="/" width={23} icon={ArrowLeft} title="title" ariaLabel="arial label">
     Link
   </Route>
 )

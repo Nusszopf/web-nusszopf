@@ -7,6 +7,8 @@ import { TEXT_TYPE } from '../Text/Text.atom'
 export const ROUTE_TYPES = {
   text: 'text',
   button: 'button',
+  buttonIconLeft: 'button icon left',
+  buttonIconRight: 'button icon right',
   icon: 'icon',
   svg: 'svg',
 }
@@ -61,6 +63,8 @@ const Route = ({
         </NLink>
       )
     }
+    case ROUTE_TYPES.buttonIconLeft:
+    case ROUTE_TYPES.buttonIconRight:
     case ROUTE_TYPES.button: {
       const IconComponent = icon
       return (
@@ -75,8 +79,15 @@ const Route = ({
             )}>
             {icon ? (
               <span className="flex items-center justify-center">
-                <IconComponent className="-ml-1" />
-                <p className="ml-2">{children}</p>
+                {type === ROUTE_TYPES.buttonIconLeft && <IconComponent className="-ml-1" />}
+                <p
+                  className={classnames({
+                    'ml-2': type === ROUTE_TYPES.buttonIconLeft,
+                    'mr-2': type === ROUTE_TYPES.buttonIconRight,
+                  })}>
+                  {children}
+                </p>
+                {type === ROUTE_TYPES.buttonIconRight && <IconComponent className="-mr-1" />}
               </span>
             ) : (
               <>{children}</>

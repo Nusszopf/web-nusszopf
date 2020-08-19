@@ -11,6 +11,7 @@ export const BTN_COLORS = {
   yellow400pink600: 'text-pink-600 bg-yellow-400 hover:shadow-outline:yellow-400 focus:shadow-outline:yellow-600',
   turquoise700turquoise500:
     'text-turquoise-700 bg-turquoise-600 hover:shadow-outline:turquoise-600-bright focus:shadow-outline:turquoise-600-bright',
+  blue400blue200: 'text-blue-400 bg-blue-200 hover:shadow-outline:blue-200 focus:shadow-outline:blue-200',
 }
 
 const Button = ({ className, color = BTN_COLORS.whiteGray600, label, ...props }) => (

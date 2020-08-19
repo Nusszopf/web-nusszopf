@@ -1,52 +1,35 @@
-import { useState } from 'react'
 import { Field, Form, Formik, ErrorMessage } from 'formik'
-import classnames from 'classnames'
 import { object, string } from 'yup'
-import { Loader, CheckCircle, XCircle } from 'react-feather'
+import SVG from 'react-inlinesvg'
 
-import { Page } from '../../../containers'
-import { Button, BTN_COLORS } from '../../../stories/atoms'
+import { Page, PageBrand } from '../../../containers'
+import { Input, INPUT_COLORS, Button, BTN_COLORS, Text, TEXT_TYPE } from '../../../stories/atoms'
+import { Alert, ALERT_TYPES } from '../../../stories/molecules'
+import { FrameFullCenter } from '../../../stories/templates'
+import useNewsletter from '../../../utils/services/newsletter.service'
 
 const UnsubscribeLead = () => {
-  const [hasFailed, setFailed] = useState(false)
-  const [isSuccessful, setSuccessful] = useState(false)
-  const [isLoading, setLoading] = useState(false)
+  const { loading, error, success, handleChange, unsubscribeFromNewsletter } = useNewsletter()
 
-  const handleChange = () => {
-    setLoading(false)
-    setFailed(false)
-    setSuccessful(false)
-  }
-
-  const handleSubmit = async values => {
-    setLoading(true)
-    try {
-      const response = await fetch(`${process.env.DOMAIN}/api/newsletter/unsubscribe`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: values.email }),
-      })
-      if (response.ok) {
-        setSuccessful(true)
-      } else {
-        setFailed(true)
-        // TODO: logError(`newsletter-unsubscribe: ${my-response-message}`)
-      }
-    } catch (error) {
-      setFailed(true)
-      // TODO: logError(`newsletter-unsubscribe: ${error.message}`)
-    }
-    setLoading(false)
-  }
-
-  // TODO: ui design
   return (
-    <Page>
-      <div className="h-full px-4 py-8 bg-blue-400">
-        <div className="container mx-auto">
-          <h1 className="text-3xl font-semibold leading-tight text-yellow-300">Abmeldung von Newsletter</h1>
+    <Page showFooter={false}>
+      <FrameFullCenter
+        className="text-yellow-300 bg-blue-400"
+        flex="justify-center"
+        footer={<PageBrand className="mt-24" color="pink" />}>
+        <div className="w-full max-w-xl sm:mt-12">
+          <SVG
+            className="flex-shrink-0 w-48 mx-auto mb-10 sm:mb-20"
+            src="/images/logos/nusszopf-big.svg"
+            title="<3 Nusszopf"
+            aria-label="Nusszopf"
+          />
+          <Text as="h1" type={TEXT_TYPE.titleMd} className="mb-4 text-yellow-300">
+            Abmeldung von Newsletter
+          </Text>
+          <Text className="mb-4">Bitte trage die E-Mail-Adresse ein, die Du abmelden möchtest:</Text>
           <Formik
-            className="mt-8"
+            className="mx-auto"
             initialValues={{
               email: '',
             }}
@@ -55,50 +38,47 @@ const UnsubscribeLead = () => {
                 .email('Bitte trage eine valide E-Mail-Adresse ein.')
                 .required('Bitte trage eine E-Mail-Adresse ein.'),
             })}
-            onSubmit={handleSubmit}>
+            onSubmit={unsubscribeFromNewsletter}>
             <Form onChange={handleChange}>
               <Field
-                className={classnames(
-                  'inline-block w-full px-5 py-4 mt-4 text-lg text-yellow-300 placeholder-yellow-300 transition-shadow duration-150 ease-in-out bg-blue-400 border-2 border-yellow-300 rounded-full shadow-xs appearance-none hover:shadow-outline:yellow-300 focus:placeholder-blue-400 focus:outline-none focus:shadow-outline:yellow-300',
-                  { 'opacity-50 cursor-not-allowed': isLoading }
-                )}
+                as={Input}
                 autoComplete="off"
                 name="email"
                 type="email"
                 aria-label="E-Mail-Adresse"
                 placeholder="E-Mail-Adresse"
-                disabled={isLoading}
+                disabled={loading}
+                color={INPUT_COLORS.yellow300blue400}
               />
-              <ErrorMessage className="mt-2 ml-6 text-lg italic text-yellow-100" component="p" name="email" />
-              {!isSuccessful && !hasFailed && !isLoading ? (
+              <ErrorMessage
+                type={TEXT_TYPE.textSm}
+                className="mt-2 ml-6 italic text-yellow-100"
+                component={Text}
+                name="email"
+              />
+              {!success && !error && !loading ? (
                 <Button className="mt-6" color={BTN_COLORS.blue400Yellow300} type="submit" label="Abmelden" />
               ) : (
-                <div className="flex p-5 mt-6 text-lg text-blue-100 bg-blue-600 rounded-lg">
-                  {hasFailed ? (
-                    <>
-                      <XCircle className="flex-shrink-0 " />
-                      <p className="ml-3">
-                        Sorry, es ist ein Fehler aufgetreten. Bitte veruche es nochmal oder melde dich bei
-                        mail@nusszopf.org.
-                      </p>
-                    </>
-                  ) : isSuccessful ? (
-                    <>
-                      <CheckCircle className="flex-shrink-0 " />
-                      <p className="ml-3">Eine Bestätigungs-E-Mail ist auf dem Weg zu dir.</p>
-                    </>
+                <>
+                  {error ? (
+                    <Alert
+                      type={ALERT_TYPES.error}
+                      text="Sorry, es ist ein Fehler aufgetreten. Bitte veruche es nochmal oder melde dich bei mail@nusszopf.org. "
+                    />
+                  ) : success ? (
+                    <Alert
+                      type={ALERT_TYPES.success}
+                      text="Bitte überprüfe deinen Posteingang und bestätige deine Abmeldung vom Nusszopf Newsletter. "
+                    />
                   ) : (
-                    <>
-                      <Loader className="flex-shrink-0 animate-spin" />
-                      <p className="ml-3">Deine Abmeldung wird bearbeitet.</p>
-                    </>
+                    <Alert type={ALERT_TYPES.loading} text="Deine Abmeldung wird bearbeitet." />
                   )}
-                </div>
+                </>
               )}
             </Form>
           </Formik>
         </div>
-      </div>
+      </FrameFullCenter>
     </Page>
   )
 }

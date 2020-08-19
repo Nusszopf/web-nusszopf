@@ -2,12 +2,12 @@ import { Field, Form, Formik, ErrorMessage } from 'formik'
 import { object, string, mixed } from 'yup'
 import { Button, BTN_COLORS, Input, INPUT_COLORS, Text, TEXT_TYPE, Checkbox } from '../../stories/atoms'
 import { Alert, ALERT_TYPES } from '../../stories/molecules'
-import useNewsletter from './useNewsletter'
+import useNewsletter from '../../utils/services/newsletter.service'
 
 const MAX_NAME_LEN = 50
 
 const NewsletterForm = props => {
-  const { error, success, loading, handleSubmit, handleChange } = useNewsletter()
+  const { error, success, loading, subscribeToNewsletter, handleChange } = useNewsletter()
 
   return (
     <Formik
@@ -25,7 +25,7 @@ const NewsletterForm = props => {
           .required('Bitte trage eine E-Mail-Adresse ein.'),
         privacy: mixed().oneOf([true], 'Bitte bestätige die Datenschutzerklärung.'),
       })}
-      onSubmit={handleSubmit}
+      onSubmit={subscribeToNewsletter}
       {...props}>
       {({ values }) => (
         <Form onChange={handleChange}>
