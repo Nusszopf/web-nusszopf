@@ -7,8 +7,8 @@ import { Page, PageBrand } from '../../containers'
 const ErrorPage = ({ statusCode }) => (
   <Page showFooter={false}>
     <FrameFullCenter
-      className="py-12 text-yellow-400 bg-pink-600"
-      footer={<PageBrand className="mt-12 bg-pink-600 " color="pink" />}>
+      className="text-yellow-400 bg-pink-600"
+      footer={<PageBrand className="mt-12 bg-pink-600" color="pink" />}>
       <div className="max-w-xl">
         <Text as="h1" type={TEXT_TYPE.titleLg}>
           {statusCode && `${statusCode} – `}Nusszopf verknetet...
@@ -26,7 +26,7 @@ const ErrorPage = ({ statusCode }) => (
           .
         </Text>
         <Route
-          type={ROUTE_TYPES.button}
+          type={ROUTE_TYPES.buttonIconLeft}
           color={BTN_COLORS.yellow400pink600}
           className="mt-16"
           href="/"

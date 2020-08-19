@@ -8,7 +8,15 @@ export default {
 
 export const Primary = () => (
   <div className="h-screen">
-    <FrameFullCenter className="py-12 bg-gray-100">
+    <FrameFullCenter className="bg-gray-100">
+      <div className="p-4 text-white bg-gray-300">centered content</div>
+    </FrameFullCenter>
+  </div>
+)
+
+export const With_Flex = () => (
+  <div className="h-screen">
+    <FrameFullCenter className="bg-gray-100" flex="items-center justify-end">
       <div className="p-4 text-white bg-gray-300">centered content</div>
     </FrameFullCenter>
   </div>
@@ -16,9 +24,7 @@ export const Primary = () => (
 
 export const With_Footer = () => (
   <div className="h-screen">
-    <FrameFullCenter
-      className="py-12 bg-gray-100 "
-      footer={<div className="text-center text-white bg-gray-500">footer</div>}>
+    <FrameFullCenter className="bg-gray-100" footer={<div className="text-center text-white bg-gray-500">footer</div>}>
       <div className="p-4 text-white bg-gray-300">centered content</div>
     </FrameFullCenter>
   </div>
