@@ -23,8 +23,8 @@ const SubscribeConfirm = ({ lead }) => (
           Juhuu! Geschafft!
         </Text>
         <Text className="mb-4">
-          <span className="font-bold">{lead.email}</span> wurde erfolgreich bei uns hinterlegt. Du bekommst jetzt von
-          uns mindestens einmal pro Monat ein Update zum Nusszopf-Projekt.
+          <span className="font-bold">{lead.email}</span> wurde erfolgreich zum Newsletter angemeldet! Wir freuen uns
+          übrigens sehr über dein Feedback zu dem Newsletter!
         </Text>
         <Text className="mb-8 italic">
           Frische Grüße<br></br>Dein Nusszopf-Team
