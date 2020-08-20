@@ -18,9 +18,9 @@ const UnsubscribeLead = () => {
         className="text-yellow-300 bg-blue-400"
         flex="justify-center"
         footer={<PageBrand className="mt-24" color="pink" />}>
-        <div className="w-full max-w-xl sm:mt-12">
+        <div className="w-full max-w-xl sm:mt-12 xl:mt-0">
           <SVG
-            className="flex-shrink-0 w-48 mx-auto mb-10 sm:mb-20"
+            className="flex-shrink-0 w-48 mx-auto mb-10 sm:mb-20 xl:mb-16"
             src="/images/logos/nusszopf-big.svg"
             title="<3 Nusszopf"
             aria-label="Nusszopf"
@@ -28,7 +28,7 @@ const UnsubscribeLead = () => {
           <Text as="h1" type={TEXT_TYPE.titleMd} className="mb-6 text-yellow-300">
             Newsletter&shy;abmeldung
           </Text>
-          <Text className="mb-4">Bitte trage die E-Mail-Adresse ein, die Du abmelden möchtest:</Text>
+          <Text className="mb-8">Bitte trage die E-Mail-Adresse ein, die Du abmelden möchtest:</Text>
           <Formik
             className="mx-auto"
             initialValues={{
@@ -71,7 +71,7 @@ const UnsubscribeLead = () => {
                 <Alert type={ALERT_TYPES.loading} text="Deine Abmeldung wird bearbeitet." />
               ) : null}
               {(!success && !error && !loading) || error ? (
-                <div className="mt-12">
+                <div className="mt-10">
                   <Button color={BTN_COLORS.blue400Yellow300} type="submit" label="Abmelden" />
                   <Route
                     className="mt-4 sm:ml-4 sm:mt-0"
@@ -86,7 +86,7 @@ const UnsubscribeLead = () => {
                 </div>
               ) : success ? (
                 <Route
-                  className="mt-12"
+                  className="mt-10"
                   type={ROUTE_TYPES.buttonIconRight}
                   color={BTN_COLORS.blue400Yellow300}
                   icon={ArrowRight}

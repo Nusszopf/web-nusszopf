@@ -73,7 +73,7 @@ const Route = ({
             aria-label={ariaLabel}
             title={title}
             className={classnames(
-              'group inline-block flex-shrink-0 w-full py-4 text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none sm:px-8 sm:w-auto focus:outline-none',
+              'group inline-block text-center flex-shrink-0 w-full py-4 text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none sm:px-8 sm:w-auto focus:outline-none',
               color,
               className
             )}>
