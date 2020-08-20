@@ -39,8 +39,10 @@ const useNewsletter = () => {
     await handleRequest({ email: values.email }, `${process.env.DOMAIN}/api/newsletter/unsubscribe`)
   }
 
-  const handleRequest = async (url, values) => {
+  const handleRequest = async (values, url) => {
     try {
+      setFailed(false)
+      setSuccessful(false)
       setLoading(true)
       const request = fetch(url, {
         method: 'POST',

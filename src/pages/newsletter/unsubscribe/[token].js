@@ -31,7 +31,7 @@ const UnsubscribeConfirm = ({ lead }) => (
           Frische Grüße<br></br>Dein Nusszopf-Team
         </Text>
         <Link
-          className="mb-4 sm:mr-4"
+          className="mb-4 sm:mr-4 sm:mb-0"
           type={LINK_TYPES.button}
           color={BTN_COLORS.blue400Yellow300}
           title="E-Mail an Nusszopf schreiben"

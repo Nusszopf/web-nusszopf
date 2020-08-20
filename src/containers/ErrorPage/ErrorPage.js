@@ -14,8 +14,7 @@ const ErrorPage = ({ statusCode }) => (
           {statusCode && `${statusCode} – `}Nusszopf verknetet...
         </Text>
         <Text className="max-w-xl mt-8">
-          Sorry! Es ist ein technische Problem aufgetreten. Falls der Fehler erneut auftritt, melde dich bitte bei uns
-          unter{' '}
+          Sorry, ein technisches Problem ist aufgetreten. Falls der Fehler erneut auftritt, melde dich bitte unter{' '}
           <Link
             color={LINK_TEXT_COLORS.yellow400pink500}
             href="mailto:mail@nusszopf.org?subject=Nusszopf verknetet"

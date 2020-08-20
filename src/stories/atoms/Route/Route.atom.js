@@ -73,22 +73,22 @@ const Route = ({
             aria-label={ariaLabel}
             title={title}
             className={classnames(
-              'group inline-block flex-shrink-0 text-center w-full py-4 text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none sm:px-8 sm:w-auto focus:outline-none',
+              'group inline-block flex-shrink-0 w-full py-4 text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none sm:px-8 sm:w-auto focus:outline-none',
               color,
               className
             )}>
             {icon ? (
-              <span className="flex items-center justify-center">
-                {type === ROUTE_TYPES.buttonIconLeft && <IconComponent className="-ml-1" />}
-                <p
+              <>
+                {type === ROUTE_TYPES.buttonIconLeft && <IconComponent className="inline -mt-1 -ml-1" />}
+                <span
                   className={classnames({
                     'ml-2': type === ROUTE_TYPES.buttonIconLeft,
                     'mr-2': type === ROUTE_TYPES.buttonIconRight,
                   })}>
                   {children}
-                </p>
-                {type === ROUTE_TYPES.buttonIconRight && <IconComponent className="-mr-1" />}
-              </span>
+                </span>
+                {type === ROUTE_TYPES.buttonIconRight && <IconComponent className="inline -mt-1 -mr-1" />}
+              </>
             ) : (
               <>{children}</>
             )}

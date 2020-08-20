@@ -17,7 +17,7 @@ export const BTN_COLORS = {
 const Button = ({ className, color = BTN_COLORS.whiteGray600, label, ...props }) => (
   <button
     className={classnames(
-      'w-full flex-shrink-0 py-4 text-lg font-bold transition-shadow duration-150 ease-in-out rounded-full outline-none sm:px-8 sm:w-auto focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed',
+      'w-full flex-shrink-0 py-4 text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none sm:px-8 sm:w-auto focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed',
       color,
       className
     )}
