@@ -61,14 +61,16 @@ export const getServerSideProps = async ctx => {
       const lead = await response.json()
       return { props: { lead } }
     } else {
-      // TODO: logError(`newsletter-subscribe-confirm: ${my-response-message}`)
-      // return { props: { lead: { email: 'finn@nuss.de', name: 'Finn' } } }
-      ctx.res.writeHead(302, { Location: '/404' })
+      // TODO: logError(`newsletter-subscribe-confirm: ${error.message}`)
+      const statusCode = response.status === 404 ? 404 : 500
+      ctx.res.writeHead(307, { Location: `/${statusCode}` })
       ctx.res.end()
+      return { props: { statusCode } }
     }
   } catch (error) {
     // TODO: logError(`newsletter-subscribe-confirm: ${error.message}`)
-    ctx.res.writeHead(302, { Location: '/500' })
+    ctx.res.writeHead(307, { Location: '/500' })
     ctx.res.end()
+    return { props: { statusCode: 500 } }
   }
 }

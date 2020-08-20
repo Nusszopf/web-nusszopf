@@ -1,80 +1,86 @@
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
-import { Page } from '../../../containers'
+import PropTypes from 'prop-types'
+import SVG from 'react-inlinesvg'
+import { ArrowRight } from 'react-feather'
+
+import { Page, PageBrand } from '../../../containers'
+import { Link, LINK_TYPES, Text, TEXT_TYPE, Route, ROUTE_TYPES, BTN_COLORS } from '../../../stories/atoms'
 import { confirmNewsletterUnsubscription } from '../../../utils/services/newsletter.service'
+import { FrameFullCenter } from '../../../stories/templates'
 
-const UnsubscribeConfirm = () => {
-  const router = useRouter()
-  const { token } = router.query
-  const [isLoading, setLoading] = useState(true)
-  const [isSuccessful, setSuccessful] = useState(false)
-  const [email, setEmail] = useState('')
-
-  useEffect(() => {
-    const main = async () => {
-      try {
-        const response = await fetch(`${process.env.DOMAIN}/api/newsletter/unsubscribe-confirm`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ token }),
-        })
-        if (response.ok) {
-          const { email } = await response.json()
-          setEmail(email)
-          setSuccessful(true)
-        } else {
-          // TODO: logError(`newsletter-unsubscribe-confirm: ${my-response-message}`)
-        }
-      } catch (error) {
-        // TODO: logError(`newsletter-unsubscribe-confirm: ${error.message}`)
-      }
-      setLoading(false)
-    }
-    if (token) {
-      main()
-    }
-  }, [token])
-
-  // TODO: ui design
-  return (
-    <Page>
-      <div className="container mx-auto">
-        <h1 className="my-8 text-3xl font-semibold leading-tight text-gray-600">
-          Bestätigung Deiner Abmeldung zum Newsletter
-        </h1>
-        {isLoading ? (
-          <p>in progress..</p>
-        ) : isSuccessful ? (
-          <p>confirmation successful - {email}</p>
-        ) : (
-          <p>confirmation failed</p>
-        )}
+const UnsubscribeConfirm = ({ lead }) => (
+  <Page showFooter={false}>
+    <FrameFullCenter
+      className="text-yellow-300 bg-blue-400"
+      flex="justify-center"
+      footer={<PageBrand className="mt-24" color="pink" />}>
+      <div className="w-full max-w-xl sm:mt-12">
+        <SVG
+          className="flex-shrink-0 w-48 mx-auto mb-10 sm:mb-20"
+          src="/images/logos/nusszopf-big.svg"
+          title="<3 Nusszopf"
+          aria-label="Nusszopf"
+        />
+        <Text as="h1" type={TEXT_TYPE.titleMd} className="mb-4 text-yellow-300">
+          Juhuu! Vielen Dank für Dein Interesse!
+        </Text>
+        <Text className="mb-4">
+          <span className="font-bold">{lead.email}</span> wurde erfolgreich vom Newsletter abgemeldet. Wir freuen uns
+          über dein Feedback, was wir an dem Newsletter verbessern können.
+        </Text>
+        <Text className="mb-8 italic">
+          Frische Grüße<br></br>Dein Nusszopf-Team
+        </Text>
+        <Link
+          className="mb-4 sm:mr-4"
+          type={LINK_TYPES.button}
+          color={BTN_COLORS.blue400Yellow300}
+          title="E-Mail an Nusszopf schreiben"
+          ariaLabel="E-Mail an Nusszopf schreiben"
+          href="mailto:mail@nusszopf.org?subject=Sponsorship | Partnerschaft | Feedback">
+          Feedback senden
+        </Link>
+        <Route
+          type={ROUTE_TYPES.buttonIconRight}
+          color={BTN_COLORS.blue400blue200}
+          href="/"
+          title="Zum Nusszopf"
+          ariaLabel="Zum Nusszopf"
+          icon={ArrowRight}>
+          Zum Nusszopf
+        </Route>
       </div>
-    </Page>
-  )
-}
+    </FrameFullCenter>
+  </Page>
+)
 
-// TODO: server fetch...
+UnsubscribeConfirm.propTypes = {
+  lead: PropTypes.objectOf({
+    email: PropTypes.string,
+    name: PropTypes.string,
+  }),
+}
 
 export default UnsubscribeConfirm
 
 export const getServerSideProps = async ctx => {
-  const { token } = ctx.query
-  const response = await confirmNewsletterUnsubscription(token)
-  console.log(response)
-  if (response.ok) {
-    const lead = await response.json()
-    return { props: { lead } }
-  } else {
-    // return { props: { lead: { email: 'finn@nuss.de', name: 'Finn' } } }
-    // ctx.res.writeHead(307, { Location: '/404?asdf' })
-    // ctx.res.end()
-    // return { props: { statusCode: 404 } }
-    console.log('throw error')
-    const err = new Error()
-    err.code = 'ENOENT'
-    throw err
+  try {
+    const { token } = ctx.query
+    const response = await confirmNewsletterUnsubscription(token)
+    console.log(response)
+    if (response.ok) {
+      const lead = await response.json()
+      return { props: { lead } }
+    } else {
+      // TODO: logError(`newsletter-subscribe-confirm: ${error.message}`)
+      const statusCode = response.status === 404 ? 404 : 500
+      ctx.res.writeHead(307, { Location: `/${statusCode}` })
+      ctx.res.end()
+      return { props: { statusCode } }
+    }
+  } catch (error) {
+    // TODO: logError(`newsletter-subscribe-confirm: ${error.message}`)
+    ctx.res.writeHead(307, { Location: '/500' })
+    ctx.res.end()
+    return { props: { statusCode: 500 } }
   }
 }

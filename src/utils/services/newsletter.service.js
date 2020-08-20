@@ -10,8 +10,14 @@ export const confirmNewsletterSubscription = token => {
   })
 }
 
-export const confirmNewsletterUnsubscription = () => {
-  // TODO: fetch
+export const confirmNewsletterUnsubscription = token => {
+  return fetch(`${process.env.DOMAIN}/api/newsletter/unsubscribe-confirm`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ token }),
+  })
 }
 
 const useNewsletter = () => {
@@ -26,34 +32,20 @@ const useNewsletter = () => {
   }
 
   const subscribeToNewsletter = async values => {
-    try {
-      setLoading(true)
-      const request = fetch(`${process.env.DOMAIN}/api/newsletter/subscribe`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: values.email, name: values.name }),
-      })
-      const response = await delayedFetch(request)
-      if (response.ok) {
-        setSuccessful(true)
-      } else {
-        setFailed(true)
-        // TODO: logError(`newsletter-subscribe: ${my-response-message}`)
-      }
-    } catch (error) {
-      setFailed(true)
-      // TODO: logError(`newsletter-subscribe: ${error.message}`)
-    }
-    setLoading(false)
+    await handleRequest({ email: values.email, name: values.name }, `${process.env.DOMAIN}/api/newsletter/subscribe`)
   }
 
   const unsubscribeFromNewsletter = async values => {
+    await handleRequest({ email: values.email }, `${process.env.DOMAIN}/api/newsletter/unsubscribe`)
+  }
+
+  const handleRequest = async (url, values) => {
     try {
       setLoading(true)
-      const request = fetch(`${process.env.DOMAIN}/api/newsletter/unsubscribe`, {
+      const request = fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: values.email }),
+        body: JSON.stringify(values),
       })
       const response = await delayedFetch(request)
       if (response.ok) {

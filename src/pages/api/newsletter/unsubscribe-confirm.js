@@ -27,7 +27,10 @@ export default async function unsubscribeConfirm(req, res) {
     }
   } catch (error) {
     console.error(error)
-    const status = error.response?.errors[0]?.extensions?.code === ERROR_CONSTRAINT ? 400 : error.status ?? 500
+    const status =
+      error.response?.errors[0]?.extensions?.code === ERROR_CONSTRAINT || error.message?.includes('jwt')
+        ? 400
+        : error.status ?? 500
     res.status(status).end(error.message)
   }
 }
