@@ -20,7 +20,7 @@ const UnsubscribeConfirm = ({ lead }) => (
           aria-label="Nusszopf"
         />
         <Text as="h1" type={TEXT_TYPE.titleMd} className="mb-4 text-yellow-300">
-          Juhuu! Vielen Dank für Dein Interesse!
+          Schade Marmelade...
         </Text>
         <Text className="mb-4">
           <span className="font-bold">{lead.email}</span> wurde erfolgreich vom Newsletter abgemeldet. Wir freuen uns
