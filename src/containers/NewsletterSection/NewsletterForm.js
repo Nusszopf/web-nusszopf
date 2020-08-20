@@ -86,10 +86,13 @@ const NewsletterForm = props => {
               {error ? (
                 <Alert
                   type={ALERT_TYPES.error}
-                  text="Sorry, es ist ein Fehler aufgetreten. Bitte veruche es nochmal oder melde dich bei mail@nusszopf.org."
+                  text="Sorry, es ist ein Fehler aufgetreten. Bitte versuche es nochmal oder melde dich bei mail@nusszopf.org."
                 />
               ) : success ? (
-                <Alert type={ALERT_TYPES.success} text="ine E-Mail ist auf dem Weg zu dir." />
+                <Alert
+                  type={ALERT_TYPES.success}
+                  text="Bitte überprüfe deinen Posteingang und bestätige deine Anmeldung."
+                />
               ) : (
                 <Alert type={ALERT_TYPES.loading} text="Deine Anmeldung wird bearbeitet." />
               )}
