@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
-import SVG from 'react-inlinesvg'
 import { ArrowRight } from 'react-feather'
 
 import { Page, PageBrand } from '../../../containers'
 import { Link, LINK_TYPES, Text, TEXT_TYPE, Route, ROUTE_TYPES, BTN_COLORS } from '../../../stories/atoms'
 import { confirmNewsletterUnsubscription } from '../../../utils/services/newsletter.service'
 import { FrameFullCenter } from '../../../stories/templates'
+import { SVGNusszopfLogoBig } from '../../../assets'
 
 const UnsubscribeConfirm = ({ lead }) => (
   <Page showFooter={false}>
@@ -14,9 +14,8 @@ const UnsubscribeConfirm = ({ lead }) => (
       flex="justify-center"
       footer={<PageBrand className="mt-24" color="pink" />}>
       <div className="w-full max-w-xl sm:mt-12">
-        <SVG
+        <SVGNusszopfLogoBig
           className="flex-shrink-0 w-48 mx-auto mb-10 sm:mb-20"
-          src="/images/logos/nusszopf-big.svg"
           title="<3 Nusszopf"
           aria-label="Nusszopf"
         />

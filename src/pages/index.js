@@ -1,7 +1,7 @@
-import SVG from 'react-inlinesvg'
 import { Page, NewsletterSection } from '../containers'
 import { Button, Link, Text, LINK_TYPES, TEXT_TYPE, LINK_TEXT_COLORS, BTN_COLORS } from '../stories/atoms'
 import { Frame } from '../stories/templates'
+import { SVGNusszopfLogoBig, SVGBmbfLogo, SVGAlgoliaLogo, SVGAuth0Logo, SVGVercelLogo, SVGSanityLogo } from '../assets'
 
 const Index = () => {
   const scrollIntoView = id => {
@@ -15,12 +15,7 @@ const Index = () => {
       <Frame as="header" className="bg-white">
         <div className="flex flex-col pt-12 pb-12 sm:pt-20 lg-12 sm:pb-20 lg:pt-24 lg:flex-row">
           <div className="lg:w-1/2">
-            <SVG
-              className="w-3/4 mx-auto lg:w-full lg:pr-8"
-              src="/images/logos/nusszopf-big.svg"
-              title="<3 Nusszopf"
-              aria-label="Nusszopf"
-            />
+            <SVGNusszopfLogoBig className="w-3/4 mx-auto lg:w-full lg:pr-8" title="<3 Nusszopf" aria-label="Nusszopf" />
           </div>
           <div className="mt-8 sm:mt-16 lg:mt-0 lg:pl-8 lg:w-1/2">
             <Text as="h1" type={TEXT_TYPE.titleLg} className="max-w-md text-gray-600">
@@ -118,7 +113,7 @@ const Index = () => {
               title="Zum Bundesministerium für Bildung und Forschung"
               ariaLabel="Zum Bundesministerium für Bildung und Forschung"
               className="block w-48 mx-auto mt-12 sm:mt-0 sm:mx-0 sm:ml-auto lg:w-64 lg:mx-auto">
-              <SVG src="/images/logos/bmbf-logo.svg" />
+              <SVGBmbfLogo />
             </Link>
           </div>
         </div>
@@ -129,16 +124,16 @@ const Index = () => {
         </Text>
         <div className="flex flex-wrap items-center mb-6 -ml-4">
           <Link type={LINK_TYPES.svg} href="https://www.sanity.io/" title="Zu Sanity" ariaLabel="Zu Sanity">
-            <SVG className="w-32 p-4" src="/images/logos/sanity-logo.svg" />
+            <SVGSanityLogo className="w-32 p-4" />
           </Link>
           <Link type={LINK_TYPES.svg} href="https://vercel.com/" title="Zu Vercel" ariaLabel="Zu Vercel">
-            <SVG className="w-32 p-4" src="/images/logos/vercel-logo.svg" />
+            <SVGVercelLogo className="w-32 p-4" />
           </Link>
           <Link type={LINK_TYPES.svg} href="https://auth0.com/" title="Zu Auth0" ariaLabel="Zu Auth0">
-            <SVG className="w-32 p-4" src="/images/logos/auth0-logo.svg" />
+            <SVGAuth0Logo className="w-32 p-4" />
           </Link>
           <Link type={LINK_TYPES.svg} href="https://www.algolia.com/" title="Zu Algolia" ariaLabel="Zu Algolia">
-            <SVG className="w-32 p-4" src="/images/logos/algolia-logo.svg" />
+            <SVGAlgoliaLogo className="w-32 p-4" />
           </Link>
         </div>
         <div className="flex flex-wrap mb-12 lg:mb-8">

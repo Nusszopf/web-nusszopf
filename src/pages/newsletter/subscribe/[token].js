@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types'
-import SVG from 'react-inlinesvg'
 import { ArrowRight } from 'react-feather'
 
 import { Page, PageBrand } from '../../../containers'
 import { Text, TEXT_TYPE, Route, ROUTE_TYPES, BTN_COLORS } from '../../../stories/atoms'
 import { FrameFullCenter } from '../../../stories/templates'
 import { confirmNewsletterSubscription } from '../../../utils/services/newsletter.service'
+import { SVGNusszopfLogoBig } from '../../../assets'
 
 const SubscribeConfirm = ({ lead }) => (
   <Page showFooter={false}>
@@ -14,14 +14,13 @@ const SubscribeConfirm = ({ lead }) => (
       flex="justify-center"
       footer={<PageBrand className="mt-24" color="pink" />}>
       <div className="w-full max-w-xl sm:mt-12">
-        <SVG
+        <SVGNusszopfLogoBig
           className="flex-shrink-0 w-48 mx-auto mb-10 sm:mb-20"
-          src="/images/logos/nusszopf-big.svg"
           title="<3 Nusszopf"
           aria-label="Nusszopf"
         />
         <Text as="h1" type={TEXT_TYPE.titleMd} className="mb-4 text-yellow-300">
-          Juhuu! Vielen Dank für Dein Interesse!
+          Juhuu! Geschafft!
         </Text>
         <Text className="mb-4">
           <span className="font-bold">{lead.email}</span> wurde erfolgreich bei uns hinterlegt. Du bekommst jetzt von
