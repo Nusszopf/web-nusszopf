@@ -57,11 +57,9 @@ const useNewsletter = () => {
         setSuccessful(true)
       } else {
         setFailed(true)
-        // TODO: logError(`newsletter-subscribe: ${my-response-message}`)
       }
     } catch (error) {
       setFailed(true)
-      // TODO: logError(`newsletter-subscribe: ${error.message}`)
     }
     setLoading(false)
   }

@@ -65,19 +65,15 @@ export const getServerSideProps = async ctx => {
   try {
     const { token } = ctx.query
     const response = await confirmNewsletterUnsubscription(token)
-    console.log(response)
     if (response.ok) {
       const lead = await response.json()
       return { props: { lead } }
     } else {
-      // TODO: logError(`newsletter-subscribe-confirm: ${error.message}`)
-      const statusCode = response.status === 404 ? 404 : 500
-      ctx.res.writeHead(307, { Location: `/${statusCode}` })
+      ctx.res.writeHead(307, { Location: '/404' })
       ctx.res.end()
-      return { props: { statusCode } }
+      return { props: { statusCode: 404 } }
     }
   } catch (error) {
-    // TODO: logError(`newsletter-subscribe-confirm: ${error.message}`)
     ctx.res.writeHead(307, { Location: '/500' })
     ctx.res.end()
     return { props: { statusCode: 500 } }

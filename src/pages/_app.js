@@ -8,7 +8,6 @@ require('typeface-barlow')
 import '../styles/tailwind.css'
 import '../styles/global.css'
 
-// START TODO
 let loadingTimer
 Router.events.on('routeChangeStart', () => {
   NProgress.configure({ showSpinner: false })
@@ -22,7 +21,6 @@ Router.events.on('routeChangeError', () => {
   clearTimeout(loadingTimer)
   NProgress.done()
 })
-// END TODO
 
 export default function NusszopfApp({ Component, pageProps }) {
   useEffect(() => {

@@ -1,7 +1,7 @@
 import sanity from '../libs/sanity'
 import imageUrlBuilder from '@sanity/image-url'
 
-// TODO
+// todo init sanity
 import { TextSection, TextBlock, NewsletterSection, List, ListItem } from '../../sanity'
 
 const imageBuilder = imageUrlBuilder(sanity)
