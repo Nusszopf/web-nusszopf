@@ -32,7 +32,10 @@ const useNewsletter = () => {
   }
 
   const subscribeToNewsletter = async values => {
-    await handleRequest({ email: values.email, name: values.name }, `${process.env.DOMAIN}/api/newsletter/subscribe`)
+    await handleRequest(
+      { email: values.email, name: values.name, privacy: values.privacy },
+      `${process.env.DOMAIN}/api/newsletter/subscribe`
+    )
   }
 
   const unsubscribeFromNewsletter = async values => {
