@@ -43,8 +43,8 @@ const Page = ({
           images: [
             {
               url: featuredImage,
-              width: image?.width ?? 279,
-              height: image?.height ?? 279,
+              width: image?.width ?? 1648,
+              height: image?.height ?? 863,
               alt: description,
             },
           ],
