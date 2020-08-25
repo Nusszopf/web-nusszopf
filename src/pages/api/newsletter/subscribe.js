@@ -32,6 +32,7 @@ const sendEmail = lead => {
         username: lead.name,
       },
     }
+    console.log(content)
     sgMail.send(content)
   })
 }
