@@ -9,7 +9,7 @@ async function generateSitemap() {
   let pages = await globby([
     'src/pages/**/*.js',
     '!src/pages/_*.js',
-    '!src/pages/newsletter/**.*.js',
+    '!src/pages/newsletter/**/*.js',
     '!src/pages/api',
     '!src/pages/404.js',
     '!src/pages/500.js',
