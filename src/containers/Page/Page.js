@@ -10,8 +10,8 @@ import ErrorBoundary from './ErrorBoundary'
 const Page = ({
   children,
   image,
-  title = 'Nusszopf - Netzwerk für gemeinsame Ideen und Projekte',
-  description = 'Mit dem Nusszopf findest du Mitstreiter:innen und Projekte, teilst Ressourcen, Wissen und vieles mehr, um mehr Ideen und Projekte zu verwirklichen.',
+  title = 'Nusszopf – Netzwerk für gemeinsame Ideen und Projekte',
+  description = 'Setze mehr Ideen mit passenden Mitstreiter:innen, Ressourcen und Wissen um. Mach mit bei spannenden Projekten und werde Teil der Nusszopfgemeinschaft!',
   noindex = false,
   notFound = false,
   showFooter = true,
@@ -21,7 +21,7 @@ const Page = ({
   const domain = `${process.env.DOMAIN}`
   const url = router && router.asPath ? router.asPath : undefined
   const canonical = url && url === '/' ? domain : domain + url
-  const featuredImage = image?.url ?? `${domain}/images/og-image.jpg`
+  const featuredImage = image?.url ?? `${domain}/images/og-image.png`
 
   useEffect(() => {
     if (notFound) {
@@ -43,8 +43,8 @@ const Page = ({
           images: [
             {
               url: featuredImage,
-              width: image?.width ?? 1027,
-              height: image?.height ?? 538,
+              width: image?.width ?? 279,
+              height: image?.height ?? 279,
               alt: description,
             },
           ],

@@ -7,7 +7,7 @@ import { Route, ROUTE_TYPES, Input, INPUT_COLORS, Button, BTN_COLORS, Text, TEXT
 import { Alert, ALERT_TYPES } from '../../../stories/molecules'
 import { FrameFullCenter } from '../../../stories/templates'
 import useNewsletter from '../../../utils/services/newsletter.service'
-import { SVGNusszopfLogoBig } from '../../../assets'
+import { SVGNusszopfLogoBigYellow } from '../../../assets'
 
 const UnsubscribeLead = () => {
   const { loading, error, success, handleChange, unsubscribeFromNewsletter } = useNewsletter()
@@ -19,7 +19,7 @@ const UnsubscribeLead = () => {
         flex="justify-center"
         footer={<PageBrand className="mt-24" color="pink" />}>
         <div className="w-full max-w-xl sm:mt-12 xl:mt-0">
-          <SVGNusszopfLogoBig
+          <SVGNusszopfLogoBigYellow
             className="flex-shrink-0 w-48 mx-auto mb-10 sm:mb-20 xl:mb-16"
             title="<3 Nusszopf"
             aria-label="Nusszopf"

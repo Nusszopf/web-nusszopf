@@ -5,7 +5,7 @@ import { Page, PageBrand } from '../../../containers'
 import { Text, TEXT_TYPE, Route, ROUTE_TYPES, BTN_COLORS } from '../../../stories/atoms'
 import { FrameFullCenter } from '../../../stories/templates'
 import { confirmNewsletterSubscription } from '../../../utils/services/newsletter.service'
-import { SVGNusszopfLogoBig } from '../../../assets'
+import { SVGNusszopfLogoBigYellow } from '../../../assets'
 
 const SubscribeConfirm = ({ lead }) => (
   <Page showFooter={false}>
@@ -14,7 +14,7 @@ const SubscribeConfirm = ({ lead }) => (
       flex="justify-center"
       footer={<PageBrand className="mt-24" color="pink" />}>
       <div className="w-full max-w-xl sm:mt-12">
-        <SVGNusszopfLogoBig
+        <SVGNusszopfLogoBigYellow
           className="flex-shrink-0 w-48 mx-auto mb-10 sm:mb-20"
           title="<3 Nusszopf"
           aria-label="Nusszopf"
