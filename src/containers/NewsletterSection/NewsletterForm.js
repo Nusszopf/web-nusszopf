@@ -47,7 +47,7 @@ const NewsletterForm = props => {
           />
           <Field
             as={Input}
-            className="mt-4"
+            className="mt-6"
             autoComplete="off"
             name="email"
             type="email"
@@ -62,7 +62,7 @@ const NewsletterForm = props => {
             component={Text}
             name="email"
           />
-          <div className="mt-4">
+          <div className="mt-6">
             <Field
               as={Checkbox}
               className="text-yellow-300"
@@ -75,29 +75,33 @@ const NewsletterForm = props => {
           </div>
           <ErrorMessage
             type={TEXT_TYPE.textSm}
-            className="mt-2 ml-6 italic text-yellow-100"
+            className="mt-2 ml-8 italic text-yellow-100"
             component={Text}
             name="privacy"
           />
-          {!success && !error && !loading ? (
-            <Button color={BTN_COLORS.blue400Yellow300} className="mt-6" type="submit" label="Anmelden" />
-          ) : (
-            <>
-              {error ? (
-                <Alert
-                  type={ALERT_TYPES.error}
-                  text="Sorry, es ist ein Fehler aufgetreten. Bitte versuche es nochmal oder melde dich bei mail@nusszopf.org."
-                />
-              ) : success ? (
-                <Alert
-                  type={ALERT_TYPES.success}
-                  text="Bitte überprüfe deinen Posteingang und bestätige deine Anmeldung."
-                />
-              ) : (
-                <Alert type={ALERT_TYPES.loading} text="Deine Anmeldung wird bearbeitet." />
-              )}
-            </>
-          )}
+          <div className="flex justify-center">
+            {!success && !error && !loading ? (
+              <Button color={BTN_COLORS.blue400Yellow300} className="mt-10" type="submit" label="Anmelden" />
+            ) : (
+              <>
+                {error ? (
+                  <Alert
+                    className="mt-6"
+                    type={ALERT_TYPES.error}
+                    text="Sorry, es ist ein Fehler aufgetreten. Bitte versuche es nochmal oder melde dich bei mail@nusszopf.org."
+                  />
+                ) : success ? (
+                  <Alert
+                    className="mt-6"
+                    type={ALERT_TYPES.success}
+                    text="Bitte überprüfe deinen Posteingang und bestätige deine Anmeldung."
+                  />
+                ) : (
+                  <Alert className="mt-6" type={ALERT_TYPES.loading} text="Deine Anmeldung wird bearbeitet." />
+                )}
+              </>
+            )}
+          </div>
         </Form>
       )}
     </Formik>

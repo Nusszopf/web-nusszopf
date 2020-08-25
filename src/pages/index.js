@@ -21,38 +21,37 @@ const Index = () => {
             <Text as="h1" type={TEXT_TYPE.titleLg} className="max-w-md text-gray-600">
               Netzwerk für gemeinsame Ideen und Projekte
             </Text>
-            <Text as="h2" type={TEXT_TYPE.subtitleLg} className="max-w-lg mt-5 text-gray-600">
-              Hast Du auch ständig tolle Ideen, die Du verwirklichen möchtest? Der Nusszopf hilft: Hier findest Du die
-              perfekten Zutaten für zopfige Ideenumsetzungen!
+            <Text as="h2" type={TEXT_TYPE.textLg} className="max-w-lg mt-5 text-gray-600">
+              Hast Du auch ständig tolle Ideen, die Du verwirklichen möchtest? Hier findest Du die perfekten Zutaten für
+              zopfige Ideenumsetzungen!
             </Text>
-            <Button
-              onClick={() => scrollIntoView('bmbf')}
-              label="Für den Nusszopf abstimmen"
-              className="mt-8 sm:mt-12"
-            />
           </div>
         </div>
       </Frame>
-      <Frame className="py-12 text-yellow-700 bg-yellow-400">
-        {/* <Text as="h3" type={TEXT_TYPE.titleSm}>
-          Der Nusszopf wird gerade noch fertig geknetet.{' '} 
-        </Text>
-        <Button onClick={() => scrollIntoView('newsletter')} label="Nusszopf Neuigkeiten" className="mt-8 sm:mt-12" /> */}
-        <Text type={TEXT_TYPE.titleSm}>
-          Bald kannst Du dich anmelden, Ideen teilen, Mitstreiter:innen und Ressourcen finden und wirst bei deinen Ideen
-          analog und digital unterstützt.
-        </Text>
+      <Frame className="pt-12 pb-16 text-yellow-700 bg-yellow-400">
+        <div className="flex flex-col max-w-5xl mx-auto">
+          <Text className="mb-10" type={TEXT_TYPE.textXl}>
+            Der Nusszopf wird gerade noch fertig geknetet. Bald kannst Du dich anmelden, Ideen teilen, Mitstreiter:innen
+            und Ressourcen finden und wirst bei deinen Ideen analog und digital unterstützt.
+          </Text>
+          <Button
+            color={BTN_COLORS.yellow400yellow700}
+            onClick={() => scrollIntoView('newsletter')}
+            label="Nusszopf Neuigkeiten"
+            className="self-center sm:mb-0"
+          />
+        </div>
       </Frame>
-      <Frame className="py-12 text-pink-600 bg-turquoise-400">
-        <Text as="h3" type={TEXT_TYPE.titleMd} className="mb-4">
+      <Frame className="pt-12 pb-16 text-pink-600 bg-turquoise-400">
+        <Text as="h3" type={TEXT_TYPE.titleMd} className="mb-8">
           Nusszopf Erfolgsrezept für Ideen und Projekte
         </Text>
-        <div className="flex flex-wrap mt-3">
+        <div className="flex flex-wrap">
           <div className="mb-8 sm:pr-4 lg:pr-6 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
               Passende Mitstreiter:innen
             </Text>
-            <Text className="hyphens-auto">Finde genau die richtigen Nusszopfer:innen für dein Projekt!</Text>
+            <Text>Finde genau die richtigen Nusszopfer:innen für dein Projekt!</Text>
           </div>
           <div className="mb-8 sm:pl-4 lg:pl-3 lg:pr-3 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
@@ -64,7 +63,7 @@ const Index = () => {
             <Text as="h4" type={TEXT_TYPE.titleSm}>
               Wissen, Erfahrungen, Lernen
             </Text>
-            <Text className="hyphens-auto">Tausche dich mit anderen Nusszopfer:innen aus!</Text>
+            <Text>Tausche dich mit anderen Nusszopfer:innen aus!</Text>
           </div>
           <div className="mb-8 sm:pl-4 lg:mb-0 lg:pl-0 lg:pr-6 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
@@ -86,16 +85,19 @@ const Index = () => {
           </div>
         </div>
       </Frame>
-      <Frame id="bmbf" className="py-12 text-yellow-100 bg-red-400">
-        <Text as="h3" type={TEXT_TYPE.titleMd} className="mb-6">
+      <Frame id="bmbf" className="pt-12 pb-16 text-yellow-100 bg-red-400">
+        <Text as="h3" type={TEXT_TYPE.titleMd} className="mb-8">
           Gesellschaft der Ideen – Wettbewerb für Soziale Innovationen
         </Text>
         <div className="sm:flex sm:justify-between">
           <div className="sm:w-2/3 lg:w-1/2">
             <Text className="sm:mr-10 lg:mr-0">
               Auch ein Nusszopf muss seine Brötchen verdienen: Um den Nusszopf dauerhaft umsetzen zu können, haben wir
-              das Projekt bei einem Wettbewerb des Bundesministeriums für Bildung und Forschung eingereicht. Neuigkeiten
-              gibt es ab Herbst 2020, drückt die Daumen! Mehr Informationen:{' '}
+              das Projekt bei einem Wettbewerb des BMBF eingereicht. Neuigkeiten gibt es ab Herbst 2020, drückt die
+              Daumen!
+            </Text>
+            <Text className="mt-4">
+              Mehr Informationen:{' '}
               <Link
                 href="https://www.gesellschaft-der-ideen.de/"
                 title="Zum Gesellschaft der Ideen Wettbewerb"
@@ -103,7 +105,6 @@ const Index = () => {
                 ariaLabel="Zum Gesellschaft der Ideen Wettbewerb">
                 gesellschaft-der-ideen.de
               </Link>
-              .
             </Text>
           </div>
           <div className="sm:w-1/3 lg:w-1/2">
@@ -112,13 +113,13 @@ const Index = () => {
               href="https://www.bmbf.de/"
               title="Zum Bundesministerium für Bildung und Forschung"
               ariaLabel="Zum Bundesministerium für Bildung und Forschung"
-              className="block w-48 mx-auto mt-12 sm:mt-0 sm:mx-0 sm:ml-auto lg:w-64 lg:mx-auto">
+              className="block w-48 mx-auto mt-16 sm:mt-0 sm:mx-0 sm:ml-auto lg:w-64 lg:mx-auto">
               <SVGBmbfLogo />
             </Link>
           </div>
         </div>
       </Frame>
-      <Frame className="py-12 text-blue-700 bg-pink-400">
+      <Frame className="pt-12 pb-16 text-blue-700 bg-pink-400">
         <Text as="h3" type={TEXT_TYPE.titleMd} className="mb-6">
           Zopfstarke Mitstreiter:innen
         </Text>
@@ -136,7 +137,7 @@ const Index = () => {
             <SVGAlgoliaLogo className="w-32 p-4" />
           </Link>
         </div>
-        <div className="flex flex-wrap mb-12 lg:mb-8">
+        <div className="flex flex-wrap mb-10">
           <div className="mb-8 lg:mb-0 lg:pr-6 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
               Werde Sponsor:in!
@@ -165,14 +166,16 @@ const Index = () => {
             </Text>
           </div>
         </div>
-        <Link
-          type={LINK_TYPES.button}
-          color={BTN_COLORS.pink400blue700}
-          title="E-Mail an Nusszopf schreiben"
-          ariaLabel="E-Mail an Nusszopf schreiben"
-          href="mailto:mail@nusszopf.org?subject=Sponsorship | Partnerschaft | Feedback">
-          Kontakt aufnehmen
-        </Link>
+        <div className="w-full text-center">
+          <Link
+            type={LINK_TYPES.button}
+            color={BTN_COLORS.pink400blue700}
+            title="E-Mail an Nusszopf schreiben"
+            ariaLabel="E-Mail an Nusszopf schreiben"
+            href="mailto:mail@nusszopf.org?subject=Sponsorship | Partnerschaft | Feedback">
+            Mitstreiter:in werden
+          </Link>
+        </div>
       </Frame>
       <NewsletterSection />
     </Page>

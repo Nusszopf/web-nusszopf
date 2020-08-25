@@ -5,8 +5,8 @@ export const TEXT_TYPE = {
   titleLg: 'text-4xl font-semibold leading-tight',
   titleMd: 'text-3xl font-bold leading-tight',
   titleSm: 'text-xl font-bold leading-snug',
-  subtitleLg: 'text-2xl font-medium leading-snug',
-  textLg: 'text-2xl leading-snug',
+  textXl: 'text-2xl font-semibold leading-snug',
+  textLg: 'text-2xl font-medium leading-snug',
   textMd: 'text-xl font-medium leading-snug',
   textSm: 'text-lg',
 }

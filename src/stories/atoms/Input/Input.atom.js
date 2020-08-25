@@ -9,7 +9,7 @@ export const INPUT_COLORS = {
 const Input = ({ disabled = false, color = INPUT_COLORS.yellow300blue400, className, ...props }) => (
   <input
     className={classnames(
-      'inline-block w-full px-5 py-4 text-lg transition-shadow duration-150 ease-in-out border-3 rounded-full shadow-xs appearance-none focus:outline-none ',
+      'inline-block w-full px-5 py-4 text-lg transition-shadow duration-150 ease-in-out border-3 rounded-lg shadow-xs appearance-none focus:outline-none ',
       color,
       className,
       { 'opacity-50 cursor-not-allowed': disabled }

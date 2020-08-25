@@ -7,12 +7,12 @@ const Checkbox = ({ disabled = false, checked, label, className = 'text-black', 
   <label>
     <input type="checkbox" disabled={disabled} className="hidden" {...props} />
     <span
-      className={classnames('inline mt-4 align-middle cursor-pointer', {
+      className={classnames('inline-flex cursor-pointer', {
         'opacity-50 cursor-not-allowed': disabled,
       })}>
-      {!checked && <Square className={classnames('inline', className)} />}
-      {checked && <CheckSquare className={classnames('inline', className)} />}
-      <Text type={TEXT_TYPE.textSm} className={classnames('inline ml-2 align-middle', className)}>
+      {!checked && <Square className={classnames('mt-px', className)} />}
+      {checked && <CheckSquare className={classnames('mt-px', className)} />}
+      <Text type={TEXT_TYPE.textSm} className={classnames('ml-2', className)}>
         {label}
       </Text>
     </span>
