@@ -21,7 +21,7 @@ const Index = () => {
               aria-label="Nusszopf"
             />
           </div>
-          <div className="mt-8 sm:mt-16 lg:mt-0 lg:pl-8 lg:w-1/2 xl:self-center">
+          <div className="mt-8 sm:mt-16 lg:mt-0 lg:pl-8 lg:w-1/2 lg:self-center">
             <Text as="h1" type={TEXT_TYPE.titleLg} className="max-w-md text-gray-600">
               Netzwerk für gemeinsame Ideen und Projekte
             </Text>
