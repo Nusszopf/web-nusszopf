@@ -51,37 +51,37 @@ const Index = () => {
           Nusszopf Erfolgsrezept für Ideen und Projekte
         </Text>
         <div className="flex flex-wrap">
-          <div className="mb-8 sm:pr-4 lg:pr-6 sm:w-1/2 lg:w-1/3">
+          <div className="mb-8 sm:pr-4 xl:pr-10 lg:pr-6 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
               Passende Mitstreiter:innen
             </Text>
             <Text>Finde genau die richtigen Nusszopfer:innen für dein Projekt!</Text>
           </div>
-          <div className="mb-8 sm:pl-4 lg:pl-3 lg:pr-3 sm:w-1/2 lg:w-1/3">
+          <div className="mb-8 sm:pl-4 lg:pl-3 lg:pr-3 xl:pl-5 xl:pr-5 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
               Ressourcenvielfalt
             </Text>
             <Text>Teile deine Ressourcen mit anderen und andere teilen ihre Ressourcen mit dir!</Text>
           </div>
-          <div className="mb-8 sm:pr-4 lg:pr-0 lg:pl-6 sm:w-1/2 lg:w-1/3">
+          <div className="mb-8 sm:pr-4 lg:pr-0 xl:pl-10 lg:pl-6 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
               Wissen & Erfahrungen
             </Text>
             <Text>Tausche dich mit anderen Nusszopfer:innen aus!</Text>
           </div>
-          <div className="mb-8 sm:pl-4 lg:mb-0 lg:pl-0 lg:pr-6 sm:w-1/2 lg:w-1/3">
+          <div className="mb-8 sm:pl-4 lg:mb-0 lg:pl-0 lg:pr-6 xl:pr-10 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
               Tolle Projekte
             </Text>
             <Text>Mach´ bei spannenden Projekten mit!</Text>
           </div>
-          <div className="mb-8 sm:mb-0 sm:pr-4 lg:pr-3 lg:pl-3 sm:w-1/2 lg:w-1/3">
+          <div className="mb-8 sm:mb-0 sm:pr-4 lg:pr-3 lg:pl-3 xl:pl-5 xl:pr-5 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
               Gemeinschaft
             </Text>
             <Text>Werde Teil einer bunten und kreativen Kultur des Miteinanders!</Text>
           </div>
-          <div className="sm:pl-4 lg:pl-6 sm:w-1/2 lg:w-1/3">
+          <div className="sm:pl-4 lg:pl-6 xl:pl-10 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
               Gegenseitige Inspiration
             </Text>
