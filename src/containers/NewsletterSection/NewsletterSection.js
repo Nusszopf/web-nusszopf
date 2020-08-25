@@ -6,7 +6,9 @@ import NewsletterForm from './NewsletterForm'
 
 const NewsletterSection = ({ className }) => {
   return (
-    <Frame id="newsletter" className={classnames('pt-12 pb-16 bg-blue-400 text-yellow-300', className)}>
+    <Frame
+      id="newsletter"
+      className={classnames('pt-12 pb-16 bg-blue-400 text-yellow-300 sm:pt-16 sm:pb-18', className)}>
       <Text as="h3" type={TEXT_TYPE.titleMd} className="mb-8">
         Nussiger Newsletter
       </Text>
@@ -17,7 +19,7 @@ const NewsletterSection = ({ className }) => {
             sonst noch so einfällt.
           </Text>
         </div>
-        <div className="lg:mt-0 lg:w-1/2 lg:pl-16">
+        <div className="lg:mt-0 lg:w-1/2 lg:pl-12 xl:pl-16">
           <NewsletterForm />
         </div>
       </div>

@@ -81,7 +81,7 @@ const NewsletterForm = props => {
           />
           <div className="flex justify-center">
             {!success && !error && !loading ? (
-              <Button color={BTN_COLORS.blue400Yellow300} className="mt-10" type="submit" label="Anmelden" />
+              <Button color={BTN_COLORS.blue400Yellow300} className="mt-10 sm:mt-12" type="submit" label="Anmelden" />
             ) : (
               <>
                 {error ? (
