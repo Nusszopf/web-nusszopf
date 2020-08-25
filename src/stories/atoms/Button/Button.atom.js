@@ -7,7 +7,7 @@ export const BTN_COLORS = {
   whiteGray600: 'text-white bg-gray-600 hover:shadow-outline:gray-600 focus:shadow-outline:gray-600',
   blue400Yellow300: 'text-blue-400 bg-yellow-300 hover:shadow-outline:yellow-300 focus:shadow-outline:yellow-300',
   pink400blue700: 'text-pink-400 bg-blue-700 hover:shadow-outline:blue-700 focus:shadow-outline:blue-700',
-  yellow400pink600: 'text-pink-600 bg-yellow-400 hover:shadow-outline:yellow-400 focus:shadow-outline:yellow-600',
+  pink600yellow300: 'text-pink-600 bg-yellow-300 hover:shadow-outline:yellow-300 focus:shadow-outline:yellow-300',
   yellow400yellow700: 'text-yellow-400 bg-yellow-700 hover:shadow-outline:yellow-700 focus:shadow-outline:yellow-700',
   turquoise700turquoise500:
     'text-turquoise-700 bg-turquoise-600 hover:shadow-outline:turquoise-600-bright focus:shadow-outline:turquoise-600-bright',

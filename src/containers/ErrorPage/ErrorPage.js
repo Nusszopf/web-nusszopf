@@ -7,16 +7,16 @@ import { Page, PageBrand } from '../../containers'
 const ErrorPage = ({ statusCode }) => (
   <Page showFooter={false}>
     <FrameFullCenter
-      className="text-yellow-400 bg-pink-600"
+      className="text-yellow-300 bg-pink-600"
       footer={<PageBrand className="mt-12 bg-pink-600" color="pink" />}>
-      <div className="max-w-xl">
+      <div className="flex flex-col max-w-xl">
         <Text as="h1" type={TEXT_TYPE.titleLg}>
           {statusCode && `${statusCode} – `}Nusszopf verknetet...
         </Text>
-        <Text className="max-w-xl mt-8">
-          Sorry, ein technisches Problem ist aufgetreten. Falls der Fehler erneut auftritt, melde dich bitte unter{' '}
+        <Text className="max-w-lg mt-8">
+          Sorry, es ist ein technisches Problem aufgetreten. Falls der Fehler erneut auftritt, melde dich bitte unter{' '}
           <Link
-            color={LINK_TEXT_COLORS.yellow400pink500}
+            color={LINK_TEXT_COLORS.yellow300pink500}
             href="mailto:mail@nusszopf.org?subject=Nusszopf verknetet"
             title="E-Mail an Nusszopf schreiben"
             ariaLabel="E-Mail an Nusszopf schreiben">
@@ -24,16 +24,18 @@ const ErrorPage = ({ statusCode }) => (
           </Link>
           .
         </Text>
-        <Route
-          type={ROUTE_TYPES.buttonIconLeft}
-          color={BTN_COLORS.yellow400pink600}
-          className="mt-16"
-          href="/"
-          icon={ArrowLeft}
-          title="Zum Nusszopf"
-          ariaLabel="Zum Nusszopf">
-          Zum Nusszopf
-        </Route>
+        <div className="self-center">
+          <Route
+            type={ROUTE_TYPES.buttonIconLeft}
+            color={BTN_COLORS.pink600yellow300}
+            className="mt-16"
+            href="/"
+            icon={ArrowLeft}
+            title="Zum Nusszopf"
+            ariaLabel="Zum Nusszopf">
+            Zum Nusszopf
+          </Route>
+        </div>
       </div>
     </FrameFullCenter>
   </Page>
