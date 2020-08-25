@@ -1,3 +1,5 @@
+<div style="text-align:center; margin-bottom: 20px"><img src="./docs/1200x630.png" height="120px"></div>
+
 # Nusszopf (Web)
 
 Network for joint ideas and projects - non-profit and open source.

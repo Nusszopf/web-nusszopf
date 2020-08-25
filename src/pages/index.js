@@ -42,7 +42,7 @@ const Index = () => {
             color={BTN_COLORS.yellow400yellow700}
             onClick={() => scrollIntoView('newsletter')}
             label="Nusszopf Neuigkeiten"
-            className="self-center mt-10 sm:mt-12"
+            className="self-center hidden mt-10 sm:mt-12"
           />
         </div>
       </Frame>
@@ -180,7 +180,7 @@ const Index = () => {
           </Link>
         </div>
       </Frame>
-      <NewsletterSection />
+      <NewsletterSection className="hidden" />
     </Page>
   )
 }

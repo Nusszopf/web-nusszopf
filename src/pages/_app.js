@@ -6,7 +6,6 @@ import NProgress from 'nprogress'
 import smoothscroll from 'smoothscroll-polyfill'
 require('typeface-barlow')
 import '../styles/tailwind.css'
-import '../styles/global.css'
 
 let loadingTimer
 Router.events.on('routeChangeStart', () => {
