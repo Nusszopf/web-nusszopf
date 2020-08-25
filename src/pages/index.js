@@ -105,7 +105,7 @@ const Index = () => {
               <Link
                 href="https://www.gesellschaft-der-ideen.de/"
                 title="Zum Gesellschaft der Ideen Wettbewerb"
-                color={LINK_TEXT_COLORS.yellow100yellow200}
+                color={LINK_TEXT_COLORS.yellow100red500}
                 ariaLabel="Zum Gesellschaft der Ideen Wettbewerb">
                 gesellschaft-der-ideen.de
               </Link>

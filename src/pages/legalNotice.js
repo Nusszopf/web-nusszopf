@@ -122,7 +122,7 @@ const LegalNotice = ({ router }) => (
           <Text type={TEXT_TYPE.textSm} className="italic">
             Quelle: Impressum-Konfigurator von{' '}
             <Link
-              color={LINK_TEXT_COLORS.turquoise300turquoise500}
+              color={LINK_TEXT_COLORS.turquoise400turquoise800}
               href="https://www.e-recht24.de/"
               ariaLabel="Zu eRecht24"
               title="Zu eRecht24">

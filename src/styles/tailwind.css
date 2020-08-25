@@ -9,6 +9,7 @@
 
 /* local css */
 @import './global.css';
+@import '../stories/atoms/Button/Button.css';
 
 @tailwind utilities;
 /* Your own custom utilities */

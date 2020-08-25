@@ -13,10 +13,10 @@ const ErrorPage = ({ statusCode }) => (
         <Text as="h1" type={TEXT_TYPE.titleLg}>
           {statusCode && `${statusCode} – `}Nusszopf verknetet...
         </Text>
-        <Text className="max-w-lg mt-8">
+        <Text className="max-w-xl mt-8">
           Sorry, es ist ein technisches Problem aufgetreten. Falls der Fehler erneut auftritt, melde dich bitte unter{' '}
           <Link
-            color={LINK_TEXT_COLORS.yellow300pink500}
+            color={LINK_TEXT_COLORS.yellow300pink700}
             href="mailto:mail@nusszopf.org?subject=Nusszopf verknetet"
             title="E-Mail an Nusszopf schreiben"
             ariaLabel="E-Mail an Nusszopf schreiben">
