@@ -7,6 +7,9 @@
 
 /* purgecss end ignore */
 
+/* local css */
+@import './global.css';
+
 @tailwind utilities;
 /* Your own custom utilities */
 

@@ -27,14 +27,17 @@ export default async function unsubscribeConfirm(req, res) {
     }
   } catch (error) {
     console.error(error)
-    const status = error.response?.errors[0]?.extensions?.code === ERROR_CONSTRAINT ? 400 : error.status ?? 500
+    const status =
+      error.response?.errors[0]?.extensions?.code === ERROR_CONSTRAINT || error.message?.includes('jwt')
+        ? 400
+        : error.status ?? 500
     res.status(status).end(error.message)
   }
 }
 
 const deleteLead = async id => {
   const res = await fetchWithAdminAuth(DELETE_LEAD, { id })
-  return await res?.delete_leads_by_pk
+  return res?.delete_leads_by_pk
 }
 
 const getContactId = async (sgClient, email, listId) => {

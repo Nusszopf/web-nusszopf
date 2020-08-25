@@ -8,10 +8,10 @@ const ERROR_CONSTRAINT = 'constraint-violation'
 
 export default async function subscribe(req, res) {
   await runMiddleware(req, res, rateLimiter)
-  const { email, name } = req.body
+  const { email, name, privacy } = req.body
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
   try {
-    const lead = await addLead(email, name)
+    const lead = await addLead(email, name, privacy)
     sendEmail(lead)
     res.status(200).json({ email: lead?.email, name: lead?.name })
   } catch (error) {
@@ -28,7 +28,7 @@ const sendEmail = lead => {
       from: 'mail@nusszopf.org',
       templateId: process.env.SENDGRID_TEMPLATE_SUBSCRIBE_ID,
       dynamicTemplateData: {
-        subscribe_url: `${process.env.DOMAIN}/newsletter/subscribe/confirm/${emailToken}`,
+        subscribe_url: `${process.env.DOMAIN}/newsletter/subscribe/${emailToken}`,
         username: lead.name,
       },
     }
@@ -36,7 +36,7 @@ const sendEmail = lead => {
   })
 }
 
-const addLead = async (email, name) => {
-  const res = await fetchWithAdminAuth(INSERT_LEAD, { email, name })
+const addLead = async (email, name, privacy) => {
+  const res = await fetchWithAdminAuth(INSERT_LEAD, { email, name, privacy })
   return res?.insert_leads_one
 }

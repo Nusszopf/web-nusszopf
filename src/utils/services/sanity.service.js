@@ -1,6 +1,8 @@
 import sanity from '../libs/sanity'
 import imageUrlBuilder from '@sanity/image-url'
-import { TextSection, TextBlock, NewsletterSection, List, ListItem } from '../../components/sanity'
+
+// todo init sanity
+import { TextSection, TextBlock, NewsletterSection, List, ListItem } from '../../sanity'
 
 const imageBuilder = imageUrlBuilder(sanity)
 export const imageUrlFor = source => imageBuilder.image(source)

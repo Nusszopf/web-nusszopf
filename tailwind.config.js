@@ -3,7 +3,15 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  purge: ['./src/components/**/*.{js,jsx}', './src/pages/**/*.{js,jsx}'],
+  experimental: {
+    applyComplexClasses: true,
+  },
+  purge: {
+    content: ['./src/containers/**/*.{js,jsx}', './src/pages/**/*.{js,jsx}', './src/stories/**/*.{js,jsx}'],
+    options: {
+      whitelist: [],
+    },
+  },
   theme: {
     // overwrites
     colors: {
@@ -46,6 +54,7 @@ module.exports = {
         500: '#68D9B9',
         600: '#169C7D',
         700: '#005C4C',
+        800: '#00332A',
       },
       blue: {
         100: '#E5F0FF',
@@ -73,12 +82,28 @@ module.exports = {
       // additions
       boxShadow: {
         'outline:yellow-300': '0 0 0 3px rgba(250, 252, 136, 0.5)',
+        'outline:yellow-700': '0 0 0 3px rgba(87, 72, 0, 0.5)',
+        'outline:blue-200': '0 0 0 3px rgba(203, 223, 251, 0.5)',
         'outline:blue-700': '0 0 0 3px rgba(0, 57, 138, 0.5)',
         'outline:gray-600': '0 0 0 3px rgba(38, 50, 56, 0.5)',
+        'outline:turquoise-600-bright': '0 0 0 3px rgba(104, 217, 185, 0.25)',
+      },
+      borderWidth: {
+        '3': '3px',
+      },
+      spacing: {
+        '18': '4.75rem',
       },
     },
   },
-  variants: {},
+  variants: {
+    // https://tailwindcss.com/docs/pseudo-class-variants#creating-custom-variants
+    backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
+    borderColor: ['responsive', 'active', 'hover', 'focus', 'group-hover'],
+    textColor: ['responsive', 'hover', 'focus', 'group-hover'],
+    opacity: ['responsive', 'hover', 'focus', 'disabled'],
+    cursor: ['responsive', 'disabled'],
+  },
   corePlugins: {},
   plugins: [
     // third-party-plugins

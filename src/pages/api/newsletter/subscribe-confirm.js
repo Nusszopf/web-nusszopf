@@ -17,7 +17,10 @@ export default async function subscribeConfirm(req, res) {
     res.status(200).json({ email: lead?.email, name: lead?.name })
   } catch (error) {
     console.error(error)
-    const status = error.response?.errors[0]?.extensions?.code === ERROR_CONSTRAINT ? 400 : error.status ?? 500
+    const status =
+      error.response?.errors[0]?.extensions?.code === ERROR_CONSTRAINT || error.message?.includes('jwt')
+        ? 400
+        : error.status ?? 500
     res.status(status).end(error.message)
   }
 }

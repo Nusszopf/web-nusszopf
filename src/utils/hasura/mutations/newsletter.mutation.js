@@ -1,9 +1,9 @@
 import gql from 'graphql-tag'
 
 export const INSERT_LEAD = gql`
-  mutation insertLead($email: String!, $name: String!) {
+  mutation insertLead($email: String!, $name: String!, $privacy: Boolean!) {
     insert_leads_one(
-      object: { email: $email, name: $name }
+      object: { email: $email, name: $name, privacy: $privacy }
       on_conflict: { update_columns: created_at, constraint: leads_email_key }
     ) {
       id
