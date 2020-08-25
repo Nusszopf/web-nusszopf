@@ -58,16 +58,18 @@ const UnsubscribeLead = () => {
               />
               {error ? (
                 <Alert
+                  className="mt-6"
                   type={ALERT_TYPES.error}
                   text="Sorry, es ist ein Fehler aufgetreten. Bitte versuche es nochmal oder melde dich bei mail@nusszopf.org."
                 />
               ) : success ? (
                 <Alert
+                  className="mt-6"
                   type={ALERT_TYPES.success}
                   text="Bitte überprüfe deinen Posteingang und bestätige deine Abmeldung."
                 />
               ) : loading ? (
-                <Alert type={ALERT_TYPES.loading} text="Deine Abmeldung wird bearbeitet." />
+                <Alert className="mt-6" type={ALERT_TYPES.loading} text="Deine Abmeldung wird bearbeitet." />
               ) : null}
               {(!success && !error && !loading) || error ? (
                 <div className="mt-10">

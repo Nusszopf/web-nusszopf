@@ -12,7 +12,7 @@ export default async function subscribe(req, res) {
   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
   try {
     const lead = await addLead(email, name, privacy)
-    sendEmail(lead)
+    await sendEmail(lead)
     res.status(200).json({ email: lead?.email, name: lead?.name })
   } catch (error) {
     console.error(error)
@@ -22,19 +22,28 @@ export default async function subscribe(req, res) {
 }
 
 const sendEmail = lead => {
-  jwt.sign({ leadId: lead.id }, process.env.EMAIL_SECRET, { expiresIn: '7d' }, (err, emailToken) => {
-    const content = {
-      to: lead.email,
-      from: 'mail@nusszopf.org',
-      templateId: process.env.SENDGRID_TEMPLATE_SUBSCRIBE_ID,
-      dynamicTemplateData: {
-        subscribe_url: `${process.env.DOMAIN}/newsletter/subscribe/${emailToken}`,
-        username: lead.name,
-      },
-    }
-    console.log(content)
-    sgMail.send(content)
-  })
+  return new Promise((resolve, reject) =>
+    jwt.sign({ leadId: lead.id }, process.env.EMAIL_SECRET, { expiresIn: '7d' }, async (err, emailToken) => {
+      const content = {
+        to: lead.email,
+        from: 'mail@nusszopf.org',
+        templateId: process.env.SENDGRID_TEMPLATE_SUBSCRIBE_ID,
+        dynamicTemplateData: {
+          subscribe_url: `${process.env.DOMAIN}/newsletter/subscribe/${emailToken}`,
+          username: lead.name,
+        },
+      }
+      if (err) {
+        reject(err)
+      }
+      try {
+        await sgMail.send(content)
+        resolve('success')
+      } catch (error) {
+        reject('error')
+      }
+    })
+  )
 }
 
 const addLead = async (email, name, privacy) => {
