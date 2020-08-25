@@ -20,4 +20,4 @@ Network for joint ideas and projects - non-profit and open source.
 
 ## Development
 
-- [documentation](./docs/dev.md)
+- Take a look at our [documentation](./docs/dev.md)
