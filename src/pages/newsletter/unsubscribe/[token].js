@@ -12,7 +12,7 @@ const UnsubscribeConfirm = ({ lead }) => (
     <FrameFullCenter
       className="text-yellow-300 bg-blue-400"
       flex="justify-center"
-      footer={<PageBrand className="mt-24" color="pink" />}>
+      footer={<PageBrand className="mt-24" color="blue" />}>
       <div className="w-full max-w-xl sm:mt-12">
         <SVGNusszopfLogoBigYellow
           className="flex-shrink-0 w-48 mx-auto mb-10 sm:mb-20"
