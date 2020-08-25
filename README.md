@@ -1,4 +1,8 @@
-<div style="text-align:center; margin-bottom: 20px"><img src="./docs/1200x630.png" height="120px"></div>
+<p align="center">
+  <a href="https://nusszopf.org">
+    <img src="./docs/1200x630.png" alt="Nusszopf logo" height="165">
+  </a>
+</p>
 
 # Nusszopf (Web)
 
