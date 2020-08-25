@@ -53,11 +53,11 @@ const getContactId = async (sgClient, email, listId) => {
   return body.result[0]?.id
 }
 
-const deleteContact = async (sgClient, leadId) => {
+const deleteContact = (sgClient, leadId) => {
   const reqContact = {
     method: 'DELETE',
     url: `/v3/marketing/contacts?ids=${leadId}`,
     body: '{}',
   }
-  await sgClient.request(reqContact)
+  return sgClient.request(reqContact)
 }

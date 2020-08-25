@@ -14,7 +14,7 @@ export const ALERT_COLORS = {
 }
 
 const Alert = ({ type = ALERT_TYPES.info, text, className, color = ALERT_COLORS.blue100blue400 }) => (
-  <div className={classnames('flex p-5 text-lg rounded-lg', color, className)}>
+  <div className={classnames('flex p-5 text-lg rounded-lg w-full', color, className)}>
     {type === ALERT_TYPES.success && <CheckCircle className="flex-shrink-0 mt-px" />}
     {type === ALERT_TYPES.error && <XCircle className="flex-shrink-0 mt-px" />}
     {type === ALERT_TYPES.info && <Info className="flex-shrink-0 mt-px" />}

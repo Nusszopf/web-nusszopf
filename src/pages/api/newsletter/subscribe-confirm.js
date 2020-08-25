@@ -25,7 +25,7 @@ export default async function subscribeConfirm(req, res) {
   }
 }
 
-const createContact = async (sgClient, listId, email, name) => {
+const createContact = (sgClient, listId, email, name) => {
   const reqContact = {
     method: 'PUT',
     url: '/v3/marketing/contacts',
@@ -35,7 +35,7 @@ const createContact = async (sgClient, listId, email, name) => {
     },
     json: true,
   }
-  await sgClient.request(reqContact)
+  return sgClient.request(reqContact)
 }
 
 const updateLead = async id => {
