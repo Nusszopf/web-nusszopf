@@ -4,14 +4,13 @@ import classnames from 'classnames'
 // todo: size
 
 export const BTN_COLORS = {
-  whiteGray600: 'text-white bg-gray-600 hover:shadow-outline:gray-600 focus:shadow-outline:gray-600',
-  blue400Yellow300: 'text-blue-400 bg-yellow-300 hover:shadow-outline:yellow-300 focus:shadow-outline:yellow-300',
-  pink400blue700: 'text-pink-400 bg-blue-700 hover:shadow-outline:blue-700 focus:shadow-outline:blue-700',
-  pink600yellow300: 'text-pink-600 bg-yellow-300 hover:shadow-outline:yellow-300 focus:shadow-outline:yellow-300',
-  yellow400yellow700: 'text-yellow-400 bg-yellow-700 hover:shadow-outline:yellow-700 focus:shadow-outline:yellow-700',
-  turquoise700turquoise500:
-    'text-turquoise-700 bg-turquoise-600 hover:shadow-outline:turquoise-600-bright focus:shadow-outline:turquoise-600-bright',
-  blue400blue200: 'text-blue-400 bg-blue-200 hover:shadow-outline:blue-200 focus:shadow-outline:blue-200',
+  whiteGray600: 'btn-white-gray600',
+  blue400Yellow300: 'btn-blue400-yellow300',
+  pink400blue700: 'btn-pink400-blue700',
+  pink600yellow300: 'btn-pink600-yellow300',
+  yellow400yellow700: 'btn-yellow400-yellow700 ',
+  turquoise700turquoise500: 'btn-turquoise-700turquoise600',
+  blue400blue200: 'btn-blue400-blue200',
 }
 
 const Button = ({ className, color = BTN_COLORS.whiteGray600, label, ...props }) => (

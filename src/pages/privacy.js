@@ -88,7 +88,7 @@ const Privacy = ({ router }) => (
             Landesdatenschutzbeauftragte des Bundeslandes, in dem sich der Sitz unseres Unternehmens befindet. Der
             folgende Link stellt eine Liste der Datenschutzbeauftragten sowie deren Kontaktdaten bereit:{' '}
             <Link
-              color={LINK_TEXT_COLORS.turquoise300turquoise500}
+              color={LINK_TEXT_COLORS.turquoise400turquoise800}
               href="https://www.bfdi.bund.de"
               title="Zu BfDI"
               ariaLabel="Zu BfDI">
@@ -175,7 +175,7 @@ const Privacy = ({ router }) => (
           <Text type={TEXT_TYPE.textSm} className="italic">
             Quelle: Datenschutz-Konfigurator von{' '}
             <Link
-              color={LINK_TEXT_COLORS.turquoise300turquoise500}
+              color={LINK_TEXT_COLORS.turquoise400turquoise800}
               href="https://www.mein-datenschutzbeauftragter.de/"
               ariaLabel="Zu mein-datenschutzbeauftragter.de"
               title="Zu mein-datenschutzbeauftragter.de">
