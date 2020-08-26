@@ -19,7 +19,7 @@ const NewsletterSection = ({ className }) => {
             sonst noch so einfällt.
           </Text>
         </div>
-        <div className="lg:mt-0 lg:w-1/2 lg:pl-12 xl:pl-0">
+        <div className="lg:mt-0 lg:w-1/2 lg:pl-12 xl:pl-4">
           <NewsletterForm />
         </div>
       </div>
