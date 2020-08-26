@@ -64,6 +64,7 @@ Run `yarn upgrade-interactive --latest`
 +-- /docs
 +-- /public
 +-- /scripts
++-- /sendgrid
 +-- /src
 | +-- /containers
 | +-- /pages
@@ -87,6 +88,10 @@ Specific folder to Next.js. More informations in the documentation: [Next.js - S
 ### /scripts
 
 Dev-Tooling and helpers for e.g. automatisation.
+
+### /scripts
+
+E-Mail templates for SendGrid.
 
 ### /src
 
