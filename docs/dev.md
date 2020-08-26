@@ -20,12 +20,20 @@ Builds the app for production.
 
 Runs the built app in production mode.
 
+### `yarn storybook`
+
+Starts development server for storybook on [http://localhost:6006](http://localhost:6006).
+
+### `yarn build-storybook`
+
+Builds storybook for production.
+
 ### `yarn analyze`
 
 Analyze the app bundles.
 
 ## Update dependencies
- 
+
 Run `yarn upgrade-interactive --latest`
 
 ---
