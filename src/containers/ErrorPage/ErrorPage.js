@@ -6,14 +6,12 @@ import { Page, PageBrand } from '../../containers'
 
 const ErrorPage = ({ statusCode }) => (
   <Page showFooter={false}>
-    <FrameFullCenter
-      className="text-yellow-300 bg-pink-600"
-      footer={<PageBrand className="mt-12 bg-pink-600" color="pink" />}>
-      <div className="flex flex-col max-w-xl">
-        <Text as="h1" type={TEXT_TYPE.titleLg}>
+    <FrameFullCenter className="text-yellow-300 bg-pink-600" footer={<PageBrand className="mt-12 " color="pink" />}>
+      <div className="max-w-xl mx-auto">
+        <Text as="h1" type={TEXT_TYPE.titleLg} className="sm:text-center">
           {statusCode && `${statusCode} – `}Nusszopf verknetet...
         </Text>
-        <Text className="max-w-xl mt-8">
+        <Text className="mt-8">
           Sorry, es ist ein technisches Problem aufgetreten. Falls der Fehler erneut auftritt, melde dich bitte unter{' '}
           <Link
             color={LINK_TEXT_COLORS.yellow300pink700}
@@ -24,7 +22,7 @@ const ErrorPage = ({ statusCode }) => (
           </Link>
           .
         </Text>
-        <div className="self-center">
+        <div className="text-center">
           <Route
             type={ROUTE_TYPES.buttonIconLeft}
             color={BTN_COLORS.pink600yellow300}
