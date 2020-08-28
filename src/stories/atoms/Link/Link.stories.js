@@ -1,5 +1,5 @@
 import React from 'react'
-import { ArrowLeft, ArrowRight } from 'react-feather'
+import { ArrowLeft } from 'react-feather'
 import { Link, LINK_TYPES, LINK_TEXT_COLORS } from '../../atoms'
 import { SVGNusszopfLogoBig } from '../../../assets'
 
@@ -24,7 +24,7 @@ export const Text = () => (
       external link
     </Link>
     <Link href="https://nusszopf.org/" color={LINK_TEXT_COLORS.yellow300pink700} title="title" ariaLabel="ariaLabel">
-      external link <ArrowRight className="inline h-4 mb-px -ml-1" />
+      external link
     </Link>
   </div>
 )

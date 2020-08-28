@@ -1,5 +1,5 @@
 import React from 'react'
-import { ArrowLeft } from 'react-feather'
+import { ArrowLeft, ArrowRight } from 'react-feather'
 import { Route, ROUTE_TYPES } from '../../atoms'
 
 export default {
@@ -10,7 +10,7 @@ export default {
 export const Text = () => (
   <div className="space-x-3">
     <Route href="/" title="title" ariaLabel="arial label">
-      Home (inactive)
+      Home <ArrowRight className="inline h-5 mb-px -ml-1" />
     </Route>
     <Route href="/" title="title" ariaLabel="arial label" active={true}>
       Home (active)
