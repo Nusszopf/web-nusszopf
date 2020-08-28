@@ -1,6 +1,6 @@
 {
   "name": "web-nusszopf",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "nusszopf website",
   "repository": "git@github.com:nusszopf/web-nusszopf.git",
   "author": "schwamic <schwarz.michael@posteo.net>",
@@ -50,6 +50,7 @@
     "next": "9.5.2",
     "next-seo": "4.7.3",
     "nprogress": "0.2.0",
+    "postcss-flexbugs-fixes": "4.2.1",
     "postcss-preset-env": "6.7.0",
     "prop-types": "15.7.2",
     "react": "16.13.1",

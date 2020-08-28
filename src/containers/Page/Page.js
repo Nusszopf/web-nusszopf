@@ -6,6 +6,7 @@ import { truncate } from 'lodash'
 import classnames from 'classnames'
 import { Footer } from '../../containers'
 import ErrorBoundary from './ErrorBoundary'
+import { FOOTER_TYPE } from '../Footer/Footer'
 
 const Page = ({
   children,
@@ -15,6 +16,7 @@ const Page = ({
   noindex = false,
   notFound = false,
   showFooter = true,
+  footerType = FOOTER_TYPE.primary,
   className,
 }) => {
   const router = useRouter()
@@ -36,7 +38,7 @@ const Page = ({
         title={truncate(title, { length: 60 })}
         description={truncate(description, { length: 150 })}
         canonical={canonical}
-        noindex={process.env.NODE_ENV !== 'production' ? true : noindex}
+        noindex={process.env.ENV !== 'production' ? true : noindex}
         openGraph={{
           description,
           images: [
@@ -59,8 +61,8 @@ const Page = ({
         }}
       />
       <ErrorBoundary>
-        <main className={classnames('flex-auto', className)}>{children}</main>
-        {showFooter && <Footer />}
+        <main className={classnames('flex-1', className)}>{children}</main>
+        {showFooter && <Footer type={footerType} />}
       </ErrorBoundary>
     </>
   )
@@ -76,6 +78,7 @@ Page.propTypes = {
   title: PropTypes.string,
   showFooter: PropTypes.bool,
   className: PropTypes.string,
+  footerType: PropTypes.string,
 }
 
 export default Page

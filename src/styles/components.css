@@ -1,0 +1,10 @@
+/* Custom Components */
+@import '../stories/atoms/Button/Button.css';
+@import '../stories/atoms/Text/Text.css';
+@import '../stories/atoms/Link/Link.css';
+@import '../stories/atoms/Input/Input.css';
+
+/* Global Stylings */
+#nprogress .bar {
+  @apply h-1 bg-blue-500;
+}

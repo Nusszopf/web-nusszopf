@@ -4,6 +4,13 @@ import { Frame } from '../../templates'
 export default {
   title: 'Design System/Templates/Frame',
   component: Frame,
+  parameters: {
+    docs: {
+      description: {
+        component: 'A full-responsive wrapper for pages and sections.',
+      },
+    },
+  },
 }
 
 export const Primary = () => (

@@ -1,0 +1,7 @@
+.nz-input-whiteGray600 {
+  @apply text-gray-600 placeholder-gray-600 border-gray-600 hover:shadow-outline:gray-600 focus:placeholder-white focus:shadow-outline:gray-600;
+}
+
+.nz-input-yellow300blue400 {
+  @apply text-yellow-300 placeholder-yellow-300 bg-blue-400 border-yellow-300 hover:shadow-outline:yellow-300 focus:placeholder-blue-400 focus:shadow-outline:yellow-300;
+}

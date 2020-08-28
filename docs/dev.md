@@ -20,12 +20,20 @@ Builds the app for production.
 
 Runs the built app in production mode.
 
+### `yarn storybook`
+
+Starts development server for storybook on [http://localhost:6006](http://localhost:6006).
+
+### `yarn build-storybook`
+
+Builds storybook for production.
+
 ### `yarn analyze`
 
 Analyze the app bundles.
 
 ## Update dependencies
- 
+
 Run `yarn upgrade-interactive --latest`
 
 ---
@@ -56,6 +64,7 @@ Run `yarn upgrade-interactive --latest`
 +-- /docs
 +-- /public
 +-- /scripts
++-- /sendgrid
 +-- /src
 | +-- /containers
 | +-- /pages
@@ -79,6 +88,10 @@ Specific folder to Next.js. More informations in the documentation: [Next.js - S
 ### /scripts
 
 Dev-Tooling and helpers for e.g. automatisation.
+
+### /scripts
+
+E-Mail templates for SendGrid.
 
 ### /src
 

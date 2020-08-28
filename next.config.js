@@ -10,6 +10,7 @@ const nextConfig = {
     DOMAIN: process.env.DOMAIN,
     SANITY_PROJECT_ID: process.env.SANITY_PROJECT_ID,
     SANITY_URL: process.env.SANITY_URL,
+    ENV: process.env.ENV,
   },
   webpack: (config, { isServer }) => {
     if (isServer) {
