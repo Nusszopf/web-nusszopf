@@ -89,10 +89,10 @@ module.exports = {
         'outline:turquoise-600-bright': '0 0 0 3px rgba(104, 217, 185, 0.25)',
       },
       borderWidth: {
-        '3': '3px',
+        3: '3px',
       },
       spacing: {
-        '18': '4.75rem',
+        18: '4.75rem',
       },
     },
   },

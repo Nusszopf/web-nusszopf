@@ -8,8 +8,7 @@
 /* purgecss end ignore */
 
 /* local css */
-@import './global.css';
-@import '../stories/atoms/Button/Button.css';
+@import './components.css';
 
 @tailwind utilities;
 /* Your own custom utilities */

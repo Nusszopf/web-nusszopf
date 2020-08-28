@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { Square, CheckSquare } from 'react-feather'
 import { Text, TEXT_TYPE } from '../../atoms'
 
-const Checkbox = ({ disabled = false, checked, label, className = 'text-black', ...props }) => (
+const Checkbox = ({ disabled = false, checked = false, label, className = 'text-black', ...props }) => (
   <label>
     <input type="checkbox" disabled={disabled} className="hidden" {...props} />
     <span

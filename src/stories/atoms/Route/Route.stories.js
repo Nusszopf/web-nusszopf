@@ -8,15 +8,14 @@ export default {
 }
 
 export const Text = () => (
-  <Route href="/" title="title" ariaLabel="arial label">
-    Home
-  </Route>
-)
-
-export const Text_Active = () => (
-  <Route href="/" title="title" ariaLabel="arial label" active={true}>
-    Home
-  </Route>
+  <div className="space-x-3">
+    <Route href="/" title="title" ariaLabel="arial label">
+      Home (inactive)
+    </Route>
+    <Route href="/" title="title" ariaLabel="arial label" active={true}>
+      Home (active)
+    </Route>
+  </div>
 )
 
 export const Icon = () => (

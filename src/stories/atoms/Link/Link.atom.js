@@ -9,10 +9,10 @@ export const LINK_TYPES = {
 }
 
 export const LINK_TEXT_COLORS = {
-  gray700blue200: 'text-gray-700 bg-blue-200 border-blue-300 group-hover:bg-blue-300 group-hover:border-gray-700',
-  yellow100red500: 'text-yellow-100 bg-red-500 border-yellow-100 group-hover:bg-red-600',
-  yellow300pink700: 'text-yellow-300 bg-pink-700 border-yellow-300 group-hover:bg-gray-700',
-  turquoise400turquoise800: 'text-turquoise-400 bg-turquoise-800 border-turquoise-400 group-hover:bg-black',
+  gray700blue200: 'nz-link-gray700-blue200',
+  yellow100red500: 'nz-link-yellow100-red500',
+  yellow300pink700: 'nz-link-yellow300-pink700',
+  turquoise400turquoise800: 'nz-link-turquoise400-turquoise800',
 }
 
 const Link = ({

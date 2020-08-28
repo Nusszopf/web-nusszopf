@@ -1,9 +1,14 @@
 import React from 'react'
-import { Input } from '../../atoms'
+import { Input, INPUT_COLORS } from '../../atoms'
 
 export default {
   title: 'Design System/Atoms/Input',
   component: Input,
 }
 
-export const Primary = () => <Input placeholder="some placeholder" />
+export const Primary = () => (
+  <div className="space-y-3">
+    <Input placeholder="some placeholder" />
+    <Input color={INPUT_COLORS.yellow300blue400} placeholder="some placeholder" />
+  </div>
+)
