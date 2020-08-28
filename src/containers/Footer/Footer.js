@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { ArrowRight } from 'react-feather'
 import { Route, Link, ROUTE_TEXT_COLORS, LINK_TYPES } from '../../stories/atoms'
 import { Frame } from '../../stories/templates'
 import { SVGPoweredByVercelTurquoise, SVGPoweredByVercelBlue } from '../../assets'
@@ -39,7 +40,7 @@ const Footer = ({ type = FOOTER_TYPE.primary }) => (
         <div className="flex items-center justify-between sm:h-24">
           <div>
             <Route color={ROUTE_TEXT_COLORS.blue200} href="/" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
-              Zum Nusszopf
+              Zum Nusszopf <ArrowRight className="inline h-5 mb-px -ml-px" />
             </Route>
           </div>
           <div>
