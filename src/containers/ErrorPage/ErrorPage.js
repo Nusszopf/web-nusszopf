@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import { ArrowLeft } from 'react-feather'
 import { Route, Link, Text, TEXT_TYPE, LINK_TEXT_COLORS, ROUTE_TYPES, BTN_COLORS } from '../../stories/atoms'
 import { FrameFullCenter } from '../../stories/templates'
 import { Page, PageBrand } from '../../containers'
@@ -24,11 +23,10 @@ const ErrorPage = ({ statusCode }) => (
         </Text>
         <div className="text-center">
           <Route
-            type={ROUTE_TYPES.buttonIconLeft}
+            type={ROUTE_TYPES.button}
             color={BTN_COLORS.pink600yellow300}
             className="mt-16"
             href="/"
-            icon={ArrowLeft}
             title="Zum Nusszopf"
             ariaLabel="Zum Nusszopf">
             Zum Nusszopf
