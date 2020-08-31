@@ -27,7 +27,11 @@ const Footer = ({ type = FOOTER_TYPE.primary }) => (
             </Route>
           </div>
           <div className="flex justify-center h-8 mt-6 sm:mt-0">
-            <Link type={LINK_TYPES.svg} href="https://vercel.com/" title="Zu Vercel" ariaLabel="Zu vercel">
+            <Link
+              type={LINK_TYPES.svg}
+              href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"
+              title="Zu Vercel"
+              ariaLabel="Zu vercel">
               <SVGPoweredByVercelTurquoise className="w-20 h-full" />
             </Link>
           </div>
@@ -43,7 +47,11 @@ const Footer = ({ type = FOOTER_TYPE.primary }) => (
             </Route>
           </div>
           <div>
-            <Link type={LINK_TYPES.svg} href="https://vercel.com/" title="Zu Vercel" ariaLabel="Zu vercel">
+            <Link
+              type={LINK_TYPES.svg}
+              href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"
+              title="Zu Vercel"
+              ariaLabel="Zu vercel">
               <SVGPoweredByVercelBlue className="w-20 h-full" />
             </Link>
           </div>

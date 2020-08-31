@@ -5,7 +5,11 @@ import { SVGPoweredByVercelPink, SVGPoweredByVercelTurquoise, SVGPoweredByVercel
 
 const PageBrand = ({ className, color = 'turquoise' }) => (
   <div className={classnames('flex h-8 justify-center', className)}>
-    <Link type={LINK_TYPES.svg} href="https://vercel.com/" title="Zu Vercel" ariaLabel="Zu vercel">
+    <Link
+      type={LINK_TYPES.svg}
+      href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"
+      title="Zu Vercel"
+      ariaLabel="Zu vercel">
       {color === 'pink' && <SVGPoweredByVercelPink className="w-20 h-full" />}
       {color === 'turquoise' && <SVGPoweredByVercelTurquoise className="w-20 h-full" />}
       {color === 'blue' && <SVGPoweredByVercelBlue className="w-20 h-full" />}
