@@ -6,7 +6,7 @@
 
 # Nusszopf (Web)
 
-Network for joint ideas and projects - non-profit and open source.
+Network for joint ideas and projects
 
 ## Special thanks to our sponsors
 
