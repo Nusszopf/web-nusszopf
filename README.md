@@ -16,7 +16,7 @@ Network for joint ideas and projects - non-profit and open source.
 
 <a href="https://auth0.com/"><img src="./docs/sponsors/auth0-logo.png" height="24px"></a>
 
-<a href="https://vercel.com/"><img src="./docs/sponsors/vercel-logo.png" height="18px"></a>
+<a href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"><img src="./docs/sponsors/vercel-logo.png" height="18px"></a>
 
 ## Development
 
