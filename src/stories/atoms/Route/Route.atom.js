@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types'
 import NLink from 'next/link'
 import classnames from 'classnames'
-import { Text, BTN_COLORS } from '../../atoms'
-import { TEXT_TYPE } from '../Text/Text.atom'
+import { BTN_COLORS, TEXT_TYPE } from '../../atoms'
 
 export const ROUTE_TYPES = {
   text: 'text',
@@ -15,6 +14,8 @@ export const ROUTE_TYPES = {
 
 export const ROUTE_TEXT_COLORS = {
   blue200: active => classnames('text-blue-200', { 'border-blue-200': active, 'hover:border-blue-200': !active }),
+  yellow300: active =>
+    classnames('text-yellow-300', { 'border-yellow-300': active, 'hover:border-yellow-300': !active }),
   gray700: active => classnames('text-gray-700', { 'border-gray-700': active, 'hover:border-gray-700': !active }),
   turquoise400: active =>
     classnames('text-turquoise-400', { 'border-turquoise-400': active, 'hover:border-turquoise-400': !active }),
@@ -40,6 +41,7 @@ const Route = ({
             <span
               className={classnames(
                 'inline-block',
+                textType,
                 {
                   'border-transparent': !active,
                   'border-b-2':
@@ -49,7 +51,7 @@ const Route = ({
                 },
                 color(active)
               )}>
-              <Text type={textType}>{children}</Text>
+              {children}
             </span>
           </a>
         </NLink>

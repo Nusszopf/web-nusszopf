@@ -131,7 +131,11 @@ const Index = () => {
           <Link type={LINK_TYPES.svg} href="https://www.sanity.io/" title="Zu Sanity" ariaLabel="Zu Sanity">
             <SVGSanityLogo className="w-32 p-4" />
           </Link>
-          <Link type={LINK_TYPES.svg} href="https://vercel.com/" title="Zu Vercel" ariaLabel="Zu Vercel">
+          <Link
+            type={LINK_TYPES.svg}
+            href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"
+            title="Zu Vercel"
+            ariaLabel="Zu Vercel">
             <SVGVercelLogo className="w-32 p-4" />
           </Link>
           <Link type={LINK_TYPES.svg} href="https://auth0.com/" title="Zu Auth0" ariaLabel="Zu Auth0">

@@ -1,6 +1,16 @@
 import { Field, Form, Formik, ErrorMessage } from 'formik'
 import { object, string, mixed } from 'yup'
-import { Button, BTN_COLORS, Input, INPUT_COLORS, Text, TEXT_TYPE, Checkbox } from '../../stories/atoms'
+import {
+  Route,
+  ROUTE_TEXT_COLORS,
+  Button,
+  BTN_COLORS,
+  Input,
+  INPUT_COLORS,
+  Text,
+  TEXT_TYPE,
+  Checkbox,
+} from '../../stories/atoms'
 import { Alert, ALERT_TYPES } from '../../stories/molecules'
 import useNewsletter from '../../utils/services/newsletter.service'
 
@@ -70,7 +80,19 @@ const NewsletterForm = props => {
               disabled={loading}
               name="privacy"
               aria-label="Bestätigung der Datenschutzerklärung"
-              label="Bestätigung der Datenschutzerklärung"
+              label={
+                <>
+                  Bestätigung der{' '}
+                  <Route
+                    className="italic"
+                    color={ROUTE_TEXT_COLORS.yellow300}
+                    href="/privacy"
+                    title="Zum Datenschutz"
+                    ariaLabel="Zum Datenschutz">
+                    Datenschutzerklärung
+                  </Route>
+                </>
+              }
             />
           </div>
           <ErrorMessage
