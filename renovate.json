@@ -1,4 +1,10 @@
 {
   "extends": ["config:base"],
-  "baseBranches": ["develop"]
+  "baseBranches": ["develop"],
+  "packageRules": [
+    {
+      "updateTypes": ["patch", "pin", "digest"],
+      "automerge": true
+    }
+  ]
 }

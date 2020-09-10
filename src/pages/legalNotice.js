@@ -132,7 +132,7 @@ const LegalNotice = ({ router }) => (
           </Text>
         </div>
       </div>
-      <PageBrand className="mt-24" color="turquoise" />
+      <PageBrand className="mt-24" />
     </Frame>
   </Page>
 )
