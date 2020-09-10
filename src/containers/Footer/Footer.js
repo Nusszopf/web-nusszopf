@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { Route, Link, ROUTE_TEXT_COLORS, LINK_TYPES } from '../../stories/atoms'
 import { Frame } from '../../stories/templates'
-import { SVGPoweredByVercelTurquoise, SVGPoweredByVercelBlue } from '../../assets'
+import { SVGPoweredByVercel } from '../../assets'
 
 export const FOOTER_TYPE = {
   primary: 'primary',
@@ -32,7 +32,7 @@ const Footer = ({ type = FOOTER_TYPE.primary }) => (
               href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"
               title="Zu Vercel"
               ariaLabel="Zu vercel">
-              <SVGPoweredByVercelTurquoise className="w-20 h-full" />
+              <SVGPoweredByVercel className="w-20 h-full" />
             </Link>
           </div>
         </div>
@@ -52,7 +52,7 @@ const Footer = ({ type = FOOTER_TYPE.primary }) => (
               href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"
               title="Zu Vercel"
               ariaLabel="Zu vercel">
-              <SVGPoweredByVercelBlue className="w-20 h-full" />
+              <SVGPoweredByVercel className="w-20 h-full" />
             </Link>
           </div>
         </div>

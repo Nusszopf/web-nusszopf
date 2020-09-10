@@ -185,7 +185,7 @@ const Privacy = ({ router }) => (
           </Text>
         </div>
       </div>
-      <PageBrand className="mt-16 sm:mt-24" color="turquoise" />
+      <PageBrand className="mt-16 sm:mt-24" />
     </Frame>
   </Page>
 )
