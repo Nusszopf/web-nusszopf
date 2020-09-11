@@ -84,7 +84,7 @@
     "husky": "4.2.5",
     "lint-staged": "10.2.12",
     "prettier": "2.1.1",
-    "stylelint": "13.6.1",
+    "stylelint": "13.7.0",
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-recommended": "3.0.0",
     "vercel": "19.2.0"
