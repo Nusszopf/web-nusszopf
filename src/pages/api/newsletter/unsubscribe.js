@@ -27,26 +27,31 @@ export default async function unsubscribe(req, res) {
 
 const sendEmail = lead => {
   return new Promise((resolve, reject) =>
-    jwt.sign({ leadId: lead.id }, process.env.EMAIL_SECRET, { expiresIn: '7d' }, async (err, emailToken) => {
-      const content = {
-        to: lead.email,
-        from: 'mail@nusszopf.org',
-        templateId: process.env.SENDGRID_TEMPLATE_UNSUBSCRIBE_ID,
-        dynamicTemplateData: {
-          unsubscribe_url: `${process.env.DOMAIN}/newsletter/unsubscribe/${emailToken}`,
-          username: lead.name,
-        },
+    jwt.sign(
+      { leadId: lead.id, leadEmail: lead.email },
+      process.env.EMAIL_SECRET,
+      { expiresIn: '7d' },
+      async (err, emailToken) => {
+        const content = {
+          to: lead.email,
+          from: 'mail@nusszopf.org',
+          templateId: process.env.SENDGRID_TEMPLATE_UNSUBSCRIBE_ID,
+          dynamicTemplateData: {
+            unsubscribe_url: `${process.env.DOMAIN}/newsletter/unsubscribe/${emailToken}`,
+            username: lead.name,
+          },
+        }
+        if (err) {
+          reject(err)
+        }
+        try {
+          await sgMail.send(content)
+          resolve('success')
+        } catch (error) {
+          reject('error')
+        }
       }
-      if (err) {
-        reject(err)
-      }
-      try {
-        await sgMail.send(content)
-        resolve('success')
-      } catch (error) {
-        reject('error')
-      }
-    })
+    )
   )
 }
 
