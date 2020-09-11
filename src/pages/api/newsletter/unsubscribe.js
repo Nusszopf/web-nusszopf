@@ -34,7 +34,7 @@ const sendEmail = lead => {
       async (err, emailToken) => {
         const content = {
           to: lead.email,
-          from: 'mail@nusszopf.org',
+          from: { name: 'Nusszopf (noreply)', email: 'noreply@nusszopf.org' },
           templateId: process.env.SENDGRID_TEMPLATE_UNSUBSCRIBE_ID,
           dynamicTemplateData: {
             unsubscribe_url: `${process.env.DOMAIN}/newsletter/unsubscribe/${emailToken}`,
