@@ -18,6 +18,7 @@ class CustomDocument extends Document {
           <meta name="msapplication-TileColor" content="#000000" />
           <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
           <meta name="msvalidate.01" content="35B7B49272873FF353E58BB8EAD467D5" />
+          <meta name="yandex-verification" content="80d061cfbf55597b" />
           <link href="/favicons/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
           <link href="/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
           <link href="/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
