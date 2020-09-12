@@ -10,7 +10,7 @@ const PageBrand = ({ className }) => (
       href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"
       title="Zu Vercel"
       ariaLabel="Zu vercel">
-      <SVGPoweredByVercel className="w-20 h-full" />
+      <SVGPoweredByVercel className="w-32 h-full" />
     </Link>
   </div>
 )
