@@ -12,18 +12,14 @@ export default async function unsubscribeConfirm(req, res) {
   const { token } = req.body
   sgClient.setApiKey(process.env.SENDGRID_API_KEY)
   try {
-    const { leadId } = jwt.verify(token, process.env.EMAIL_SECRET)
-    const lead = await deleteLead(leadId)
-    if (lead) {
-      const contactId = await getContactId(sgClient, lead.email, process.env.SENDGRID_LIST_ID)
-      if (contactId) {
-        await deleteContact(sgClient, contactId)
-        res.status(200).json({ email: lead.email, name: lead.name })
-      } else {
-        res.status(404).end(`lead with id ${leadId} was not found in sendgrid`)
-      }
+    const { leadId, leadEmail } = jwt.verify(token, process.env.EMAIL_SECRET)
+    const contactId = await getContactId(sgClient, leadEmail, process.env.SENDGRID_LIST_ID)
+    if (contactId) {
+      await deleteContact(sgClient, contactId)
+      const lead = await deleteLead(leadId)
+      res.status(200).json({ email: lead.email, name: lead.name })
     } else {
-      res.status(404).end(`lead with id ${leadId} was not found in backend`)
+      res.status(404).end(`lead with id ${leadId} was not found in sendgrid`)
     }
   } catch (error) {
     console.error(error)

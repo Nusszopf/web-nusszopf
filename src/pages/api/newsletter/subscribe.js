@@ -26,7 +26,7 @@ const sendEmail = lead => {
     jwt.sign({ leadId: lead.id }, process.env.EMAIL_SECRET, { expiresIn: '7d' }, async (err, emailToken) => {
       const content = {
         to: lead.email,
-        from: 'mail@nusszopf.org',
+        from: { name: 'Nusszopf (noreply)', email: 'noreply@nusszopf.org' },
         templateId: process.env.SENDGRID_TEMPLATE_SUBSCRIBE_ID,
         dynamicTemplateData: {
           subscribe_url: `${process.env.DOMAIN}/newsletter/subscribe/${emailToken}`,
