@@ -1,7 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
-// const GA_TRACKING_ID = 'UA-131784128-1';
-
 class CustomDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx)
@@ -26,18 +24,6 @@ class CustomDocument extends Document {
           <link href="/favicons/site.webmanifest" rel="manifest" />
           <link color="#000000" href="/favicons/safari-pinned-tab.svg" rel="mask-icon" />
           <link href="/favicons/favicon.ico" rel="shortcut icon" />
-          {/* <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
-          <script
-            // eslint-disable-next-line react/no-danger
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${GA_TRACKING_ID}');
-            `,
-            }}
-          /> */}
         </Head>
         <body className="bg-gray-700">
           <Main />
