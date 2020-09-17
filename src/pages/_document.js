@@ -24,6 +24,7 @@ class CustomDocument extends Document {
           <link href="/favicons/site.webmanifest" rel="manifest" />
           <link color="#000000" href="/favicons/safari-pinned-tab.svg" rel="mask-icon" />
           <link href="/favicons/favicon.ico" rel="shortcut icon" />
+          <script defer src="//app-worker.visitor-analytics.io/main.js?s=4786e4f4-f91c-11ea-b589-901b0edac50a&v=0.3" />
         </Head>
         <body className="bg-gray-700">
           <Main />
