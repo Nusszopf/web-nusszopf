@@ -156,6 +156,26 @@ const Privacy = ({ router }) => (
         </div>
         <div className="mb-10">
           <Text as="h3" type={TEXT_TYPE.titleSmSemi} className="mb-3">
+            Visitor Analytics
+          </Text>
+          <Text type={TEXT_TYPE.textSm}>
+            <Link
+              color={LINK_TEXT_COLORS.turquoise400turquoise800}
+              href="https://www.visitor-analytics.io/de"
+              title="Zu Visitor Analytics"
+              ariaLabel="Zu Visitor Analytics">
+              Visitor Analytics
+            </Link>{' '}
+            ist ein Website-Analyse-Service, der den Verkehr und das Nutzerverhalten auf unserer Website analysiert. Die
+            gesamelten Daten werden pseudonymisiert, sowie IP-Adressen anonymisiert zu 100% DSGVO-/GDPR-konform in
+            ISO27001-zertifizierten Rechenzentren in Deutschland gespeichert. Als Website-Eigentümer, der Visitor
+            Analytics einsetzt, verwenden wir keine Cookies, um Daten über den Gerätetyp und die Bildschirmgröße unserer
+            Besucher, den ungefähren Standort, den Browser, das Betriebssystem, die Seitenbesuche, die Absprungrate, die
+            Konversionen und den populären Inhalt der Website zu sammeln.
+          </Text>
+        </div>
+        <div className="mb-10">
+          <Text as="h3" type={TEXT_TYPE.titleSmSemi} className="mb-3">
             Newsletter-Daten
           </Text>
           <Text type={TEXT_TYPE.textSm} className="mb-3">
