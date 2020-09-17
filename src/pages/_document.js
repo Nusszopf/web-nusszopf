@@ -24,7 +24,11 @@ class CustomDocument extends Document {
           <link href="/favicons/site.webmanifest" rel="manifest" />
           <link color="#000000" href="/favicons/safari-pinned-tab.svg" rel="mask-icon" />
           <link href="/favicons/favicon.ico" rel="shortcut icon" />
-          <script defer src="//app-worker.visitor-analytics.io/main.js?s=4786e4f4-f91c-11ea-b589-901b0edac50a&v=0.3" />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(v,i,s,a){if(!v._visaSettings){v._visaSettings={};}v._visaSettings["4786e4f4-f91c-11ea-b589-901b0edac50a"]={v:"0.3",s:"4786e4f4-f91c-11ea-b589-901b0edac50a",a:"1"};_v=i.getElementsByTagName("head")[0];_a=_v;_i=i.createElement("script");_s=_i;_s.defer="defer";_s.src=s+a+v._visaSettings["4786e4f4-f91c-11ea-b589-901b0edac50a"].v;_a.appendChild(_s);})(window,document,"//app-worker.visitor-analytics.io/main",".js?s=4786e4f4-f91c-11ea-b589-901b0edac50a&v=")`,
+            }}
+          />
         </Head>
         <body className="bg-gray-700">
           <Main />
