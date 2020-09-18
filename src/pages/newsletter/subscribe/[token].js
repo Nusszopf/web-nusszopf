@@ -6,7 +6,7 @@ import { confirmNewsletterSubscription } from '../../../utils/services/newslette
 import { SVGNusszopfBigYellowBlue } from '../../../assets'
 
 const SubscribeConfirm = ({ lead }) => (
-  <Page className="text-yellow-300 bg-blue-400" showFooter={true} footerType={FOOTER_TYPE.secondary}>
+  <Page className="text-yellow-300 bg-blue-400" showFooter={true} footerType={FOOTER_TYPE.secondary} noindex={true}>
     <FrameFullCenter fullScreen={false}>
       <div className="sm:text-center">
         <Route

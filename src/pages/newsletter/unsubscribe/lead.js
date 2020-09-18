@@ -13,7 +13,7 @@ const UnsubscribeLead = () => {
   const { loading, error, success, handleChange, unsubscribeFromNewsletter } = useNewsletter()
 
   return (
-    <Page className="text-yellow-300 bg-blue-400" showFooter={true} footerType={FOOTER_TYPE.secondary}>
+    <Page className="text-yellow-300 bg-blue-400" showFooter={true} footerType={FOOTER_TYPE.secondary} noindex={true}>
       <FrameFullCenter fullScreen={false}>
         <div className="max-w-xl mx-auto">
           <Route
