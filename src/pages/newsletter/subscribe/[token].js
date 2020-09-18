@@ -4,6 +4,7 @@ import { ROUTE_TYPES, Route, Text, TEXT_TYPE } from '../../../stories/atoms'
 import { FrameFullCenter } from '../../../stories/templates'
 import { confirmNewsletterSubscription } from '../../../utils/services/newsletter.service'
 import { SVGNusszopfBigYellowBlue } from '../../../assets'
+import { newsletterData } from '../../../assets/data'
 
 const SubscribeConfirm = ({ lead }) => (
   <Page className="text-yellow-300 bg-blue-400" showFooter={true} footerType={FOOTER_TYPE.secondary} noindex={true}>
@@ -13,16 +14,16 @@ const SubscribeConfirm = ({ lead }) => (
           type={ROUTE_TYPES.svg}
           className="block w-40 mx-auto mb-12 sm:w-48 sm:mb-16"
           href="/"
-          title="Zum Nusszopf"
-          ariaLabel="Zum Nusszopf">
+          title={newsletterData.subscribeConfirm.logo}
+          ariaLabel={newsletterData.subscribeConfirm.logo}>
           <SVGNusszopfBigYellowBlue className="flex-shrink-0 w-full" />
         </Route>
         <Text as="h1" type={TEXT_TYPE.titleMd} className="mb-8">
-          Juhuu! Nussige News!
+          {newsletterData.subscribeConfirm.heading}
         </Text>
         <Text className="hyphens-auto">
-          <span className="italic">{lead.email}</span> wurde zum Newsletter angemeldet.
-          <span className="block mt-2">Schön, dass Du mit dabei bist!</span>
+          <span className="italic">{lead.email}</span> {newsletterData.subscribeConfirm.textA}
+          <span className="block mt-2">{newsletterData.subscribeConfirm.textB}</span>
         </Text>
       </div>
     </FrameFullCenter>

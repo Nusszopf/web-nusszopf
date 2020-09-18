@@ -8,6 +8,7 @@ import { FrameFullCenter } from '../../../stories/templates'
 import useNewsletter from '../../../utils/services/newsletter.service'
 import { SVGNusszopfBigYellowBlue } from '../../../assets'
 import { FOOTER_TYPE } from '../../../containers/Footer/Footer'
+import { newsletterData } from '../../../assets/data'
 
 const UnsubscribeLead = () => {
   const { loading, error, success, handleChange, unsubscribeFromNewsletter } = useNewsletter()
@@ -20,14 +21,14 @@ const UnsubscribeLead = () => {
             type={ROUTE_TYPES.svg}
             className="block w-40 mx-auto mb-12 sm:w-48 sm:mb-16"
             href="/"
-            title="Zum Nusszopf"
-            ariaLabel="Zum Nusszopf">
+            title={newsletterData.unsubscribe.logo}
+            ariaLabel={newsletterData.unsubscribe.logo}>
             <SVGNusszopfBigYellowBlue className="flex-shrink-0 w-full" />
           </Route>
           <Text as="h1" type={TEXT_TYPE.titleMd} className="mb-8 sm:text-center">
-            Newsletter&shy;abmeldung
+            {newsletterData.unsubscribe.heading}
           </Text>
-          <Text className="mb-4 hyphens-auto">Bitte trage die E-Mail-Adresse ein, die Du abmelden möchtest:</Text>
+          <Text className="mb-4 hyphens-auto">{newsletterData.unsubscribe.description}</Text>
           <Formik
             className="mx-auto"
             initialValues={{
@@ -35,8 +36,8 @@ const UnsubscribeLead = () => {
             }}
             validationSchema={object({
               email: string()
-                .email('Bitte trage eine valide E-Mail-Adresse ein.')
-                .required('Bitte trage eine E-Mail-Adresse ein.'),
+                .email(newsletterData.unsubscribe.email.errorMessages[0])
+                .required(newsletterData.unsubscribe.email.errorMessages[1]),
             })}
             onSubmit={unsubscribeFromNewsletter}>
             <Form onChange={handleChange}>
@@ -45,8 +46,8 @@ const UnsubscribeLead = () => {
                 autoComplete="off"
                 name="email"
                 type="email"
-                aria-label="E-Mail-Adresse"
-                placeholder="E-Mail-Adresse"
+                aria-label={newsletterData.unsubscribe.email.meta}
+                placeholder={newsletterData.unsubscribe.email.meta}
                 disabled={loading}
                 color={INPUT_COLORS.yellow300blue400}
               />
@@ -58,17 +59,11 @@ const UnsubscribeLead = () => {
               />
               <div className="mt-12">
                 {error ? (
-                  <Alert
-                    type={ALERT_TYPES.error}
-                    text="Sorry, es ist ein Fehler aufgetreten. Bitte versuche es nochmal oder melde dich bei mail@nusszopf.org."
-                  />
+                  <Alert type={ALERT_TYPES.error} text={newsletterData.unsubscribe.alerts.error} />
                 ) : success ? (
-                  <Alert
-                    type={ALERT_TYPES.success}
-                    text="Bitte überprüfe deinen Posteingang und bestätige deine Abmeldung."
-                  />
+                  <Alert type={ALERT_TYPES.success} text={newsletterData.unsubscribe.alerts.success} />
                 ) : loading ? (
-                  <Alert type={ALERT_TYPES.loading} text="Deine Abmeldung wird bearbeitet." />
+                  <Alert type={ALERT_TYPES.loading} text={newsletterData.unsubscribe.alerts.loading} />
                 ) : (
                   <div className="text-center">
                     <Button color={BTN_COLORS.blue400Yellow300} type="submit" label="Abmelden" />

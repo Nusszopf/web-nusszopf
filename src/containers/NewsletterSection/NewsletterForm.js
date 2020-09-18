@@ -13,6 +13,7 @@ import {
 } from '../../stories/atoms'
 import { Alert, ALERT_TYPES } from '../../stories/molecules'
 import useNewsletter from '../../utils/services/newsletter.service'
+import { newsletterData } from '../../assets/data'
 
 const MAX_NAME_LEN = 50
 
@@ -28,12 +29,12 @@ const NewsletterForm = props => {
       }}
       validationSchema={object({
         name: string()
-          .max(MAX_NAME_LEN, `Der Name sollte nicht länger als ${MAX_NAME_LEN} Zeichen sein`)
-          .required('Bitte trage einen Namen ein.'),
+          .max(MAX_NAME_LEN, newsletterData.subscribe.name.errorMessages[0])
+          .required(newsletterData.subscribe.name.errorMessages[1]),
         email: string()
-          .email('Bitte trage eine valide E-Mail-Adresse ein.')
-          .required('Bitte trage eine E-Mail-Adresse ein.'),
-        privacy: mixed().oneOf([true], 'Bitte bestätige die Datenschutzerklärung.'),
+          .email(newsletterData.subscribe.email.errorMessages[0])
+          .required(newsletterData.subscribe.email.errorMessages[1]),
+        privacy: mixed().oneOf([true], newsletterData.subscribe.privacy.errorMessages[0]),
       })}
       onSubmit={subscribeToNewsletter}
       {...props}>
@@ -44,8 +45,8 @@ const NewsletterForm = props => {
             autoComplete="off"
             name="name"
             type="text"
-            aria-label="Name"
-            placeholder="Name"
+            aria-label={newsletterData.subscribe.name.meta}
+            placeholder={newsletterData.subscribe.name.meta}
             disabled={loading}
             color={INPUT_COLORS.yellow300blue400}
           />
@@ -61,8 +62,8 @@ const NewsletterForm = props => {
             autoComplete="off"
             name="email"
             type="email"
-            aria-label="E-Mail-Adresse"
-            placeholder="E-Mail-Adresse"
+            aria-label={newsletterData.subscribe.email.meta}
+            placeholder={newsletterData.subscribe.email.meta}
             disabled={loading}
             color={INPUT_COLORS.yellow300blue400}
           />
@@ -79,17 +80,17 @@ const NewsletterForm = props => {
               checked={values.privacy}
               disabled={loading}
               name="privacy"
-              aria-label="Bestätigung der Datenschutzerklärung"
+              aria-label={newsletterData.subscribe.privacy.meta}
               label={
                 <>
-                  Bestätigung der{' '}
+                  {newsletterData.subscribe.privacy.label.textA}{' '}
                   <Route
                     className="italic"
                     color={ROUTE_TEXT_COLORS.yellow300}
                     href="/privacy"
-                    title="Zum Datenschutz"
-                    ariaLabel="Zum Datenschutz">
-                    Datenschutzerklärung
+                    title={newsletterData.subscribe.privacy.label.meta}
+                    ariaLabel={newsletterData.subscribe.privacy.label.meta}>
+                    {newsletterData.subscribe.privacy.label.textB}
                   </Route>
                 </>
               }
@@ -107,19 +108,11 @@ const NewsletterForm = props => {
             ) : (
               <>
                 {error ? (
-                  <Alert
-                    className="mt-6"
-                    type={ALERT_TYPES.error}
-                    text="Sorry, es ist ein Fehler aufgetreten. Bitte versuche es nochmal oder melde dich bei mail@nusszopf.org."
-                  />
+                  <Alert className="mt-6" type={ALERT_TYPES.error} text={newsletterData.subscribe.alerts.error} />
                 ) : success ? (
-                  <Alert
-                    className="mt-6"
-                    type={ALERT_TYPES.success}
-                    text="Bitte überprüfe deinen Posteingang und bestätige deine Anmeldung."
-                  />
+                  <Alert className="mt-6" type={ALERT_TYPES.success} text={newsletterData.subscribe.alerts.success} />
                 ) : (
-                  <Alert className="mt-6" type={ALERT_TYPES.loading} text="Deine Anmeldung wird bearbeitet." />
+                  <Alert className="mt-6" type={ALERT_TYPES.loading} text={newsletterData.subscribe.alerts.loading} />
                 )}
               </>
             )}

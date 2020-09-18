@@ -1,7 +1,7 @@
 import { Page, NewsletterSection } from '../containers'
 import { Button, Link, Text, LINK_TYPES, TEXT_TYPE, LINK_TEXT_COLORS, BTN_COLORS } from '../stories/atoms'
 import { Frame } from '../stories/templates'
-import { SVGNusszopfLogoBig, SVGBmbfLogo, SVGAlgoliaLogo, SVGAuth0Logo, SVGVercelLogo, SVGSanityLogo } from '../assets'
+import { headerData, hintData, featuresData, bmbfData, fellowsData } from '../assets/data'
 
 const Index = () => {
   const scrollIntoView = id => {
@@ -15,77 +15,73 @@ const Index = () => {
       <Frame as="header" className="bg-white">
         <div className="flex flex-col pt-12 pb-12 sm:pt-20 sm:pb-20 lg:flex-row xl:pt-32 xl:pb-32">
           <div className="lg:w-1/2 lg:pr-8 lg:self-center">
-            <SVGNusszopfLogoBig
+            <headerData.logo.component
               className="w-3/4 mx-auto lg:w-full xl:w-4/5"
-              title="<3 Nusszopf"
-              aria-label="Nusszopf"
+              title={headerData.logo.title}
+              aria-label={headerData.logo.ariaLabel}
             />
           </div>
           <div className="mt-8 sm:mt-16 lg:mt-0 lg:pl-8 lg:w-1/2 lg:self-center">
             <Text as="h1" type={TEXT_TYPE.titleLg} className="max-w-md text-gray-600">
-              Netzwerk für gemeinsame Ideen und Projekte
+              {headerData.title}
             </Text>
             <Text as="h2" type={TEXT_TYPE.textLg} className="mt-5 text-gray-600">
-              Hast Du auch ständig tolle Ideen, die Du verwirklichen möchtest? Hier findest Du die perfekten Zutaten für
-              zopfige Ideenumsetzungen!
+              {headerData.subtitle}
             </Text>
           </div>
         </div>
       </Frame>
       <Frame className="pt-12 pb-16 text-yellow-700 bg-yellow-400 sm:pt-16 sm:pb-18">
         <div className="flex flex-col max-w-2xl mx-auto xl:max-w-3xl">
-          <Text type={TEXT_TYPE.textXl}>
-            Der Nusszopf wird gerade noch fertig geknetet. Bald kannst Du dich anmelden, Ideen teilen,
-            Mitstreiter:in&shy;nen und Ressourcen finden und wirst bei deinen Ideen analog und digital unterstützt.
-          </Text>
+          <Text type={TEXT_TYPE.textXl}>{hintData.message}</Text>
           <Button
             color={BTN_COLORS.yellow400yellow700}
             onClick={() => scrollIntoView('newsletter')}
-            label="Nusszopf Neuigkeiten"
+            label={hintData.action}
             className="self-center mt-10 sm:mt-12"
           />
         </div>
       </Frame>
       <Frame className="pt-12 pb-16 text-pink-600 bg-turquoise-400 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
         <Text as="h3" type={TEXT_TYPE.titleMd} className="mb-8 sm:max-w-sm xl:max-w-full xl:mb-10">
-          Nusszopf Erfolgsrezept für Ideen und Projekte
+          {featuresData.heading}
         </Text>
         <div className="flex flex-wrap">
           <div className="mb-8 sm:pr-4 xl:pr-10 lg:pr-6 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Passende Mitstreiter:innen
+              {featuresData.list[0].title}
             </Text>
-            <Text>Finde genau die richtigen Nusszopfer:innen für dein Projekt!</Text>
+            <Text>{featuresData.list[0].description}</Text>
           </div>
           <div className="mb-8 sm:pl-4 lg:pl-3 lg:pr-3 xl:pl-5 xl:pr-5 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Ressourcenvielfalt
+              {featuresData.list[1].title}
             </Text>
-            <Text>Teile deine Ressourcen mit anderen und andere teilen ihre Ressourcen mit dir!</Text>
+            <Text>{featuresData.list[1].description}</Text>
           </div>
           <div className="mb-8 sm:pr-4 lg:pr-0 xl:pl-10 lg:pl-6 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Wissen & Erfahrungen
+              {featuresData.list[2].title}
             </Text>
-            <Text>Tausche dich mit anderen Nusszopfer:innen aus!</Text>
+            <Text>{featuresData.list[2].description}</Text>
           </div>
           <div className="mb-8 sm:pl-4 lg:mb-0 lg:pl-0 lg:pr-6 xl:pr-10 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Tolle Projekte
+              {featuresData.list[3].title}
             </Text>
-            <Text>Mach´ bei spannenden Projekten mit!</Text>
+            <Text>{featuresData.list[3].description}</Text>
           </div>
           <div className="mb-8 sm:mb-0 sm:pr-4 lg:pr-3 lg:pl-3 xl:pl-5 xl:pr-5 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Gemeinschaft
+              {featuresData.list[4].title}
             </Text>
-            <Text>Werde Teil einer bunten und kreativen Kultur des Miteinanders!</Text>
+            <Text>{featuresData.list[4].description}</Text>
           </div>
           <div className="sm:pl-4 lg:pl-6 xl:pl-10 sm:w-1/2 lg:w-1/3">
             <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Gegenseitige Inspiration
+              {featuresData.list[5].title}
             </Text>
-            <Text>Inspiriere dich und andere zu neuen Ideen, Sichtweisen und Lösungen!</Text>
+            <Text>{featuresData.list[5].description}</Text>
           </div>
         </div>
       </Frame>
@@ -93,21 +89,17 @@ const Index = () => {
         <div className="lg:flex">
           <div className="lg:w-2/3 xl:w-7/12">
             <Text as="h3" type={TEXT_TYPE.titleMd} className="mb-8 xl:mb-10">
-              Gesellschaft der Ideen – <br></br>Wettbewerb für Soziale Innovationen
+              {bmbfData.heading}
             </Text>
-            <Text className="mb-4 sm:mb-5">
-              Auch ein Nusszopf muss seine Brötchen verdienen: Um den Nusszopf dauerhaft umsetzen zu können, haben wir
-              das Projekt bei einem Wettbewerb des BMBF eingereicht. Neuigkeiten gibt es ab Herbst 2020, drückt die
-              Daumen!
-            </Text>
+            <Text className="mb-4 sm:mb-5">{bmbfData.description}</Text>
             <Text>
-              Mehr Informationen:{' '}
+              {bmbfData.infoText}{' '}
               <Link
-                href="https://www.gesellschaft-der-ideen.de/"
-                title="Zum Gesellschaft der Ideen Wettbewerb"
+                href={bmbfData.infoLink.href}
+                title={bmbfData.infoLink.meta}
                 color={LINK_TEXT_COLORS.yellow100red500}
-                ariaLabel="Zum Gesellschaft der Ideen Wettbewerb">
-                gesellschaft-der-ideen.de
+                ariaLabel={bmbfData.infoLink.meta}>
+                {bmbfData.infoLink.text}
               </Link>
             </Text>
           </div>
@@ -115,35 +107,29 @@ const Index = () => {
             <Link
               className="block w-48 mx-auto lg:w-56 xl:w-64"
               type={LINK_TYPES.svg}
-              href="https://www.bmbf.de/"
-              title="Zum Bundesministerium für Bildung und Forschung"
-              ariaLabel="Zum Bundesministerium für Bildung und Forschung">
-              <SVGBmbfLogo />
+              href={bmbfData.host.href}
+              title={bmbfData.host.meta}
+              ariaLabel={bmbfData.host.meta}>
+              <bmbfData.host.logo />
             </Link>
           </div>
         </div>
       </Frame>
       <Frame className="pt-12 pb-16 text-blue-700 bg-pink-400 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
         <Text as="h3" type={TEXT_TYPE.titleMd} className="mb-6">
-          Zopfstarke Mitstreiter:innen
+          {fellowsData.heading}
         </Text>
         <div className="flex flex-wrap items-center mb-6 -ml-4">
-          <Link type={LINK_TYPES.svg} href="https://www.sanity.io/" title="Zu Sanity" ariaLabel="Zu Sanity">
-            <SVGSanityLogo className="w-32 p-4" />
-          </Link>
-          <Link
-            type={LINK_TYPES.svg}
-            href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"
-            title="Zu Vercel"
-            ariaLabel="Zu Vercel">
-            <SVGVercelLogo className="w-32 p-4" />
-          </Link>
-          <Link type={LINK_TYPES.svg} href="https://auth0.com/" title="Zu Auth0" ariaLabel="Zu Auth0">
-            <SVGAuth0Logo className="w-32 p-4" />
-          </Link>
-          <Link type={LINK_TYPES.svg} href="https://www.algolia.com/" title="Zu Algolia" ariaLabel="Zu Algolia">
-            <SVGAlgoliaLogo className="w-32 p-4" />
-          </Link>
+          {fellowsData.list.map((fellow, index) => (
+            <Link
+              key={`fellow-${index}`}
+              type={LINK_TYPES.svg}
+              href={fellow.href}
+              title={fellow.meta}
+              ariaLabel={fellow.meta}>
+              <fellow.logo className="w-32 p-4" />
+            </Link>
+          ))}
         </div>
         <div className="flex flex-wrap mb-10 sm:mb-12 xl:mb-16">
           <div className="mb-8 lg:mb-0 lg:pr-6 lg:w-1/3 xl:pr-10">
@@ -177,10 +163,10 @@ const Index = () => {
           <Link
             type={LINK_TYPES.button}
             color={BTN_COLORS.pink400blue700}
-            title="E-Mail an Nusszopf schreiben"
-            ariaLabel="E-Mail an Nusszopf schreiben"
-            href="mailto:mail@nusszopf.org?subject=Sponsorship | Partnerschaft | Feedback">
-            Mitstreiter:in werden
+            title={fellowsData.action.meta}
+            ariaLabel={fellowsData.action.meta}
+            href={fellowsData.action.href}>
+            {fellowsData.action.text}
           </Link>
         </div>
       </Frame>

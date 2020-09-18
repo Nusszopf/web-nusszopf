@@ -4,6 +4,7 @@ import { ROUTE_TYPES, Route, Link, LINK_TYPES, Text, TEXT_TYPE, BTN_COLORS } fro
 import { confirmNewsletterUnsubscription } from '../../../utils/services/newsletter.service'
 import { FrameFullCenter } from '../../../stories/templates'
 import { SVGNusszopfBigYellowBlue } from '../../../assets'
+import { newsletterData } from '../../../assets/data'
 
 const UnsubscribeConfirm = ({ lead }) => (
   <Page className="text-yellow-300 bg-blue-400" showFooter={true} footerType={FOOTER_TYPE.secondary} noindex={true}>
@@ -13,25 +14,26 @@ const UnsubscribeConfirm = ({ lead }) => (
           type={ROUTE_TYPES.svg}
           className="block w-40 mx-auto mb-12 sm:w-48 sm:mb-16"
           href="/"
-          title="Zum Nusszopf"
-          ariaLabel="Zum Nusszopf">
+          title={newsletterData.unsubscribeConfirm.logo}
+          ariaLabel={newsletterData.unsubscribeConfirm.logo}>
           <SVGNusszopfBigYellowBlue className="flex-shrink-0 w-full" />
         </Route>
         <Text as="h1" type={TEXT_TYPE.titleMd} className="mb-8">
-          Schade Marmelade<span className="hidden sm:inline">...</span>
+          {newsletterData.unsubscribeConfirm.heading}
+          <span className="hidden sm:inline">...</span>
         </Text>
         <Text className="mb-12 sm:mb-16 hyphens-auto">
-          <span className="italic">{lead.email}</span> wurde vom Newsletter abgemeldet.
-          <span className="block mt-3">Wir freuen uns über dein Feedback!</span>
+          <span className="italic">{lead.email}</span> {newsletterData.unsubscribeConfirm.textA}
+          <span className="block mt-3">{newsletterData.unsubscribeConfirm.textB}</span>
         </Text>
         <div className="text-center">
           <Link
             type={LINK_TYPES.button}
             color={BTN_COLORS.blue400Yellow300}
-            title="E-Mail an Nusszopf schreiben"
-            ariaLabel="E-Mail an Nusszopf schreiben"
-            href="mailto:mail@nusszopf.org?subject=Sponsorship | Partnerschaft | Feedback">
-            Feedback senden
+            title={newsletterData.unsubscribeConfirm.action.meta}
+            ariaLabel={newsletterData.unsubscribeConfirm.action.meta}
+            href={newsletterData.unsubscribeConfirm.action.href}>
+            {newsletterData.unsubscribeConfirm.action.text}
           </Link>
         </div>
       </div>
