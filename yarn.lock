@@ -1972,7 +1972,15 @@
   resolved "https://registry.yarnpkg.com/@sanity/timed-out/-/timed-out-4.0.2.tgz#c9f61f9a1609baa1eb3e4235a24ea2a775022cdf"
   integrity sha512-NBDKGj14g9Z+bopIvZcQKWCzJq5JSrdmzRR1CS+iyA3Gm8SnIWBfZa7I3mTg2X6Nu8LQXG0EPKXdOGozLS4i3w==
 
-"@sendgrid/client@7.2.5", "@sendgrid/client@^7.2.5":
+"@sendgrid/client@7.2.6":
+  version "7.2.6"
+  resolved "https://registry.yarnpkg.com/@sendgrid/client/-/client-7.2.6.tgz#28374927b5d9b3b351b9426f4a218d23d590c958"
+  integrity sha512-AOB3IVlB76SMYdaLEtWGm6/GwrOv0xlAOkyCqk5+XifJRqL2pl8a9lfxFZ9BEnWrdqPJPJ1/omopj0P7d5ZPmw==
+  dependencies:
+    "@sendgrid/helpers" "^7.2.6"
+    axios "^0.19.2"
+
+"@sendgrid/client@^7.2.5":
   version "7.2.5"
   resolved "https://registry.yarnpkg.com/@sendgrid/client/-/client-7.2.5.tgz#912575a5ecfe91c250eb6b267711dff2dea4e0f1"
   integrity sha512-UZxk0liUeOMwbBkvlFJUezzP+w+gV6n13IAbG49KEiqwOns02HeSinFwF/CK0vQfjr3wkXRGKS34gvic53rlOg==
@@ -1984,6 +1992,14 @@
   version "7.2.4"
   resolved "https://registry.yarnpkg.com/@sendgrid/helpers/-/helpers-7.2.4.tgz#82544a4b7d9a905ce5e0b4f96fcd9b2a73129337"
   integrity sha512-h8bBRXpjQLM0Zl08EGJPxVOPWBaXjEZZCM3IurxWn8RaVFYDGPVZ4pv4ZW9AAmsujntZXuIxSsmB4aQczg/ivw==
+  dependencies:
+    chalk "^2.0.1"
+    deepmerge "^4.2.2"
+
+"@sendgrid/helpers@^7.2.6":
+  version "7.2.6"
+  resolved "https://registry.yarnpkg.com/@sendgrid/helpers/-/helpers-7.2.6.tgz#5d15b8914940147c0635c9a3d2a93fed8c73dc71"
+  integrity sha512-J2xniPBOVo4ASzx+xc735OovHGj/v9oNrDo1Bb5fwTg/kmUxWxeoKZRkB+KLdciwmTtVrZjYLdQB3pMFIe9lAw==
   dependencies:
     chalk "^2.0.1"
     deepmerge "^4.2.2"
