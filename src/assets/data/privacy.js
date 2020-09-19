@@ -104,10 +104,12 @@ export default [
         text: 'Visitor Analytics',
       },
       <>
-        Aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, die Sie an uns als Seitenbetreiber
-        senden, nutzt unsere Website eine SSL-bzw. TLS-Verschlüsselung. Damit sind Daten, die Sie über diese Website
-        übermitteln, für Dritte nicht mitlesbar. Sie erkennen eine verschlüsselte Verbindung an der „https://“
-        Adresszeile Ihres Browsers und am Schloss-Symbol in der Browserzeile.
+        ist ein Website-Analyse-Service, der den Verkehr und das Nutzerverhalten auf unserer Website analysiert. Die
+        gesamelten Daten werden pseudonymisiert, sowie IP-Adressen anonymisiert zu 100% DSGVO-/GDPR-konform in
+        ISO27001-zertifizierten Rechenzentren in Deutschland gespeichert. Als Website-Eigentümer, der Visitor Analytics
+        einsetzt, verwenden wir keine Cookies, um Daten über den Gerätetyp und die Bildschirmgröße unserer Besucher, den
+        ungefähren Standort, den Browser, das Betriebssystem, die Seitenbesuche, die Absprungrate, die Konversionen und
+        den populären Inhalt der Website zu sammeln.
       </>,
     ],
   },
