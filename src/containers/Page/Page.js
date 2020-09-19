@@ -4,15 +4,17 @@ import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { truncate } from 'lodash'
 import classnames from 'classnames'
+
 import { Footer } from '../../containers'
 import ErrorBoundary from './ErrorBoundary'
 import { FOOTER_TYPE } from '../Footer/Footer'
+import { seoData } from '../../assets/data'
 
 const Page = ({
   children,
   image,
-  title = 'Nusszopf – Netzwerk für gemeinsame Ideen und Projekte',
-  description = 'Setze mehr Ideen mit passenden Mitstreiter:innen, Ressourcen und Wissen um. Mach mit bei spannenden Projekten und werde Teil der Nusszopfgemeinschaft!',
+  title = seoData.title,
+  description = seoData.description,
   noindex = false,
   notFound = false,
   showFooter = true,

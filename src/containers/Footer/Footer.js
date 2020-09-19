@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { Route, Link, ROUTE_TEXT_COLORS, LINK_TYPES } from '../../stories/atoms'
 import { Frame } from '../../stories/templates'
-import { SVGPoweredByVercel } from '../../assets'
+import footerData from './footer.data'
 
 export const FOOTER_TYPE = {
   primary: 'primary',
@@ -18,21 +18,25 @@ const Footer = ({ type = FOOTER_TYPE.primary }) => (
               className="mr-8 sm:mr-10"
               color={ROUTE_TEXT_COLORS.turquoise400}
               href="/legalNotice"
-              title="Impressum"
-              ariaLabel="Impressum">
-              Impressum
+              title={footerData.nav.legalNotice}
+              ariaLabel={footerData.nav.legalNotice}>
+              {footerData.nav.legalNotice}
             </Route>
-            <Route color={ROUTE_TEXT_COLORS.turquoise400} href="/privacy" title="Datenschutz" ariaLabel="Datenschutz">
-              Datenschutz
+            <Route
+              color={ROUTE_TEXT_COLORS.turquoise400}
+              href="/privacy"
+              title={footerData.nav.privacy}
+              ariaLabel={footerData.nav.privacy}>
+              {footerData.nav.privacy}
             </Route>
           </div>
           <div className="flex justify-center h-8 mt-6 sm:mt-0">
             <Link
               type={LINK_TYPES.svg}
-              href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"
-              title="Zu Vercel"
-              ariaLabel="Zu vercel">
-              <SVGPoweredByVercel className="w-32 h-full" />
+              href={footerData.brand.href}
+              title={footerData.brand.meta}
+              ariaLabel={footerData.brand.meta}>
+              <footerData.brand.logo className="w-32 h-full" />
             </Link>
           </div>
         </div>
@@ -42,17 +46,21 @@ const Footer = ({ type = FOOTER_TYPE.primary }) => (
       <Frame as="footer" className="py-8 bg-blue-600 sm:py-0">
         <div className="flex items-center justify-between sm:h-24">
           <div>
-            <Route color={ROUTE_TEXT_COLORS.blue200} href="/" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
-              Zum Nusszopf
+            <Route
+              color={ROUTE_TEXT_COLORS.blue200}
+              href="/"
+              title={footerData.nav.home}
+              ariaLabel={footerData.nav.home}>
+              {footerData.nav.home}
             </Route>
           </div>
           <div>
             <Link
               type={LINK_TYPES.svg}
-              href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"
-              title="Zu Vercel"
-              ariaLabel="Zu vercel">
-              <SVGPoweredByVercel className="w-32 h-full" />
+              href={footerData.brand.href}
+              title={footerData.brand.meta}
+              ariaLabel={footerData.brand.meta}>
+              <footerData.brand.logo className="w-32 h-full" />
             </Link>
           </div>
         </div>

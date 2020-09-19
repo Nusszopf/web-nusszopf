@@ -1,7 +1,7 @@
 import React from 'react'
 import { ArrowLeft } from 'react-feather'
 import { Link, LINK_TYPES, LINK_TEXT_COLORS } from '../../atoms'
-import { SVGNusszopfLogoBig } from '../../../assets'
+import { SVGNusszopfLogoBig } from '../../../assets/logos'
 
 export default {
   title: 'Design System/Atoms/Link',
