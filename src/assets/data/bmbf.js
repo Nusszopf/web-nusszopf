@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import { SVGBmbfLogo } from '..'
+import { SVGBmbfLogo } from '../logos'
 
 export default {
   heading: (

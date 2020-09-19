@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import { SVGNusszopfLogoBig } from '..'
+import { SVGNusszopfLogoBig } from '../logos'
 
 export default {
   logo: {

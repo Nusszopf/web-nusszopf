@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import { SVGAlgoliaLogo, SVGAuth0Logo, SVGSanityLogo, SVGVercelLogo } from '..'
+import { SVGAlgoliaLogo, SVGAuth0Logo, SVGSanityLogo, SVGVercelLogo } from '../logos'
 
 export default {
   heading: 'Zopfstarke Mitstreiter:innen',
