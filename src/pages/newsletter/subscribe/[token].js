@@ -3,7 +3,7 @@ import { Page, FOOTER_TYPE } from '../../../containers'
 import { ROUTE_TYPES, Route, Text, TEXT_TYPE } from '../../../stories/atoms'
 import { FrameFullCenter } from '../../../stories/templates'
 import { confirmNewsletterSubscription } from '../../../utils/services/newsletter.service'
-import { SVGNusszopfBigYellowBlue } from '../../../assets'
+import { SVGNusszopfBigYellowBlue } from '../../../assets/logos'
 import { newsletterData } from '../../../assets/data'
 
 const SubscribeConfirm = ({ lead }) => (

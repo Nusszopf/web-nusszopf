@@ -6,8 +6,8 @@ import { Input, INPUT_COLORS, Button, BTN_COLORS, Text, TEXT_TYPE, ROUTE_TYPES, 
 import { Alert, ALERT_TYPES } from '../../../stories/molecules'
 import { FrameFullCenter } from '../../../stories/templates'
 import useNewsletter from '../../../utils/services/newsletter.service'
-import { SVGNusszopfBigYellowBlue } from '../../../assets'
 import { FOOTER_TYPE } from '../../../containers/Footer/Footer'
+import { SVGNusszopfBigYellowBlue } from '../../../assets/logos'
 import { newsletterData } from '../../../assets/data'
 
 const UnsubscribeLead = () => {
