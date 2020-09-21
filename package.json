@@ -87,6 +87,6 @@
     "stylelint": "13.7.0",
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-recommended": "3.0.0",
-    "vercel": "19.2.0"
+    "vercel": "20.1.1"
   }
 }
