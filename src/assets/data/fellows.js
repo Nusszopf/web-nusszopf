@@ -28,7 +28,17 @@ export default {
   options: [
     {
       title: 'Werde Sponsor:in!',
-      description: 'Der Nusszopf ist ein Non-Profit-Herzensprojekt: Unterstütze ihn, damit er dich unterstützen kann!',
+      description: (
+        <>
+          Der Nusszopf ist ein Non-Profit- Herzens&shy;projekt: Unter&shy;stütze ihn, damit er dich unter&shy;stützen
+          kann! Wähle dazu deinen Beitrag auf unserer Förderungs&shy;webseite aus.
+        </>
+      ),
+      action: {
+        text: 'Sponsor:in werden',
+        href: 'https://steadyhq.com/de/nusszopf',
+        meta: 'Zur Förderungswebseite',
+      },
     },
     {
       title: 'Werde Partner:in!',
@@ -38,20 +48,25 @@ export default {
           Partner:innen&shy;netzwerk aufbauen.
         </>
       ),
+      action: {
+        text: 'Partner:in werden',
+        href: 'mailto:mail@nusszopf.org?subject=Nussige Partnerschaft',
+        meta: 'E-Mail an Nusszopf schreiben',
+      },
     },
     {
       title: 'Gib´ uns Feedback!',
       description: (
         <>
-          Teile deine Ideen und Wünsche mit uns, damit wir den Nusszopf weiter verbessern und an deine Bedürfnisse
+          Teile deine Ideen und Wünsche mit uns, damit wir den Nusszopf weiter ver&shy;bessern und an deine Bedürfnisse
           anpassen können.
         </>
       ),
+      action: {
+        text: 'Feedback senden',
+        href: 'mailto:mail@nusszopf.org?subject=Nussiges Feedback',
+        meta: 'E-Mail an Nusszopf schreiben',
+      },
     },
   ],
-  action: {
-    text: 'Mitstreiter:in werden',
-    href: 'mailto:mail@nusszopf.org?subject=Sponsorship | Partnerschaft | Feedback',
-    meta: 'E-Mail an Nusszopf schreiben',
-  },
 }

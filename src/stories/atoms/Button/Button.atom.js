@@ -11,10 +11,11 @@ export const BTN_COLORS = {
   blue400blue200: 'nz-btn-blue400-blue200',
 }
 
-const Button = ({ className, color = BTN_COLORS.whiteGray600, label, ...props }) => (
+const Button = ({ className, color = BTN_COLORS.whiteGray600, label, small, ...props }) => (
   <button
     className={classnames(
-      'flex-shrink-0 py-4 text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none px-8 sm:w-auto focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed',
+      'flex-shrink-0 text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none sm:w-auto focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed',
+      { 'px-8 py-4': !small, 'py-3 px-5': small },
       color,
       className
     )}
@@ -27,6 +28,7 @@ Button.propTypes = {
   className: PropTypes.string,
   color: PropTypes.oneOf(Object.values(BTN_COLORS)),
   label: PropTypes.string.isRequired,
+  small: PropTypes.bool,
 }
 
 export default Button
