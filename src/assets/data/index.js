@@ -1,4 +1,4 @@
-export { default as bmbfData } from './bmbf'
+export { default as contestData } from './contest'
 export { default as featuresData } from './features'
 export { default as fellowsData } from './fellows'
 export { default as headerData } from './header'
