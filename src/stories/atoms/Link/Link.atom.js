@@ -65,7 +65,7 @@ const Link = ({
           title={title}
           className={classnames(
             'group flex-shrink-0 inline-block text-center  text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none focus:outline-none',
-            { 'py-4 px-8': type === LINK_TYPES.button, 'py-3 px-5': type === LINK_TYPES.buttonSmall },
+            { 'py-4 px-8': type === LINK_TYPES.button, 'py-2 px-4': type === LINK_TYPES.buttonSmall },
             color,
             className
           )}>
