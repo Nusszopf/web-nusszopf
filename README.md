@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# Nusszopf (Web)
+# Nusszopf Web App
 
 Network for joint ideas and projects
 
