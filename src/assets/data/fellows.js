@@ -27,15 +27,15 @@ export default {
   ],
   options: [
     {
-      title: 'Werde Sponsor:in!',
+      title: 'Werde Mitglied!',
       description: (
         <>
-          Der Nusszopf ist ein Non-Profit- Herzens&shy;projekt: Unter&shy;stütze ihn, damit er dich unter&shy;stützen
-          kann! Wähle dazu deinen Beitrag auf unserer Förderungs&shy;webseite aus.
+          Der Nusszopf ist ein Non-Profit- Herzens&shy;projekt! Als Mitglied unterstützt Du ihn finanziell und kannst
+          seine Zukunft aktiv mitgestalten.
         </>
       ),
       action: {
-        text: 'Sponsor:in werden',
+        text: 'Mitglied werden',
         href: 'https://steadyhq.com/de/nusszopf',
         meta: 'Zur Förderungswebseite',
       },
