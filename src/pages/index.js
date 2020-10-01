@@ -1,7 +1,8 @@
+import classnames from 'classnames'
 import { Page, NewsletterSection } from '../containers'
 import { Button, Link, Text, LINK_TYPES, TEXT_TYPE, LINK_TEXT_COLORS, BTN_COLORS } from '../stories/atoms'
 import { Frame } from '../stories/templates'
-import { headerData, hintData, featuresData, bmbfData, fellowsData } from '../assets/data'
+import { headerData, hintData, featuresData, contestData, fellowsData } from '../assets/data'
 
 const Index = () => {
   const scrollIntoView = id => {
@@ -89,28 +90,28 @@ const Index = () => {
         <div className="lg:flex">
           <div className="lg:w-2/3 xl:w-7/12">
             <Text as="h3" type={TEXT_TYPE.titleMd} className="mb-8 xl:mb-10">
-              {bmbfData.heading}
+              {contestData.heading}
             </Text>
-            <Text className="mb-4 sm:mb-5">{bmbfData.description}</Text>
+            <Text className="mb-4 sm:mb-5">{contestData.description}</Text>
             <Text>
-              {bmbfData.infoText}{' '}
+              {contestData.infoText}{' '}
               <Link
-                href={bmbfData.infoLink.href}
-                title={bmbfData.infoLink.meta}
+                href={contestData.infoLink.href}
+                title={contestData.infoLink.meta}
                 color={LINK_TEXT_COLORS.yellow100red500}
-                ariaLabel={bmbfData.infoLink.meta}>
-                {bmbfData.infoLink.text}
+                ariaLabel={contestData.infoLink.meta}>
+                {contestData.infoLink.text}
               </Link>
             </Text>
           </div>
-          <div className="mt-16 lg:ml-4 xl:ml-0 lg:mt-4 lg:self-center lg:w-1/3 xl:w-5/12">
+          <div className="mt-12 sm:mt-16 lg:ml-4 xl:ml-0 lg:mt-4 lg:self-center lg:w-1/3 xl:w-5/12">
             <Link
-              className="block w-48 mx-auto lg:w-56 xl:w-64"
+              className="block w-48 mx-auto sm:w-56 lg:mr-0 xl:mr-auto xl:w-64"
               type={LINK_TYPES.svg}
-              href={bmbfData.host.href}
-              title={bmbfData.host.meta}
-              ariaLabel={bmbfData.host.meta}>
-              <bmbfData.host.logo />
+              href={contestData.host.href}
+              title={contestData.host.meta}
+              ariaLabel={contestData.host.meta}>
+              <contestData.host.logo className="fill-current" />
             </Link>
           </div>
         </div>
@@ -119,7 +120,7 @@ const Index = () => {
         <Text as="h3" type={TEXT_TYPE.titleMd} className="mb-6">
           {fellowsData.heading}
         </Text>
-        <div className="flex flex-wrap items-center mb-6 -ml-4">
+        <div className="flex flex-wrap items-center mb-8 -ml-4">
           {fellowsData.list.map((fellow, index) => (
             <Link
               key={`fellow-${index}`}
@@ -131,43 +132,33 @@ const Index = () => {
             </Link>
           ))}
         </div>
-        <div className="flex flex-wrap mb-10 sm:mb-12 xl:mb-16">
-          <div className="mb-8 lg:mb-0 lg:pr-6 lg:w-1/3 xl:pr-10">
-            <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Werde Sponsor:in!
-            </Text>
-            <Text>
-              Der Nusszopf ist ein Non-Profit-Herzensprojekt: Unterstütze ihn, damit er dich unterstützen kann!
-            </Text>
-          </div>
-          <div className="mb-8 lg:pl-3 lg:mb-0 lg:pr-3 lg:w-1/3 xl:pr-5 xl:pl-5">
-            <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Werde Partner:in!
-            </Text>
-            <Text>
-              Zusammen mit passenden Vereinen, Unternehmen und anderen Organi&shy;sationen wollen wir ein
-              Partner:innen&shy;netzwerk aufbauen.
-            </Text>
-          </div>
-          <div className="lg:pl-6 lg:mb-0 lg:w-1/3 xl:pl-10">
-            <Text as="h4" type={TEXT_TYPE.titleSm}>
-              Gib´ uns Feedback!
-            </Text>
-            <Text className="hyphens-auto">
-              Teile deine Ideen und Wünsche mit uns, damit wir den Nusszopf weiter verbessern und an deine Bedürfnisse
-              anpassen können.
-            </Text>
-          </div>
-        </div>
-        <div className="w-full text-center">
-          <Link
-            type={LINK_TYPES.button}
-            color={BTN_COLORS.pink400blue700}
-            title={fellowsData.action.meta}
-            ariaLabel={fellowsData.action.meta}
-            href={fellowsData.action.href}>
-            {fellowsData.action.text}
-          </Link>
+        <div className="flex flex-wrap">
+          {fellowsData.options.map((fellow, index) => (
+            <div
+              key={`fellow-${index}`}
+              className={classnames('flex flex-col justify-between lg:w-1/3', {
+                'lg:pr-6 xl:pr-10 mb-12 lg:mb-0': index === 0,
+                'lg:pl-3 lg:pr-3 xl:pr-5 xl:pl-5 mb-12 lg:mb-0': index === 1,
+                'lg:pl-6 xl:pl-10': index === 2,
+              })}>
+              <div>
+                <Text as="h4" type={TEXT_TYPE.titleSm}>
+                  {fellow.title}
+                </Text>
+                <Text>{fellow.description}</Text>
+              </div>
+              <div className="w-full mt-8 text-center lg:text-left">
+                <Link
+                  type={LINK_TYPES.buttonSmall}
+                  color={BTN_COLORS.pink400blue700}
+                  title={fellow.action.meta}
+                  ariaLabel={fellow.action.meta}
+                  href={fellow.action.href}>
+                  {fellow.action.text}
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
       </Frame>
       <NewsletterSection />

@@ -5,6 +5,7 @@ import { BTN_COLORS } from '../../atoms'
 export const LINK_TYPES = {
   text: 'text',
   button: 'button',
+  buttonSmall: 'small button',
   svg: 'svg',
 }
 
@@ -52,6 +53,7 @@ const Link = ({
         </a>
       )
     }
+    case LINK_TYPES.buttonSmall:
     case LINK_TYPES.button: {
       const IconComponent = icon
       return (
@@ -62,7 +64,8 @@ const Link = ({
           aria-label={ariaLabel}
           title={title}
           className={classnames(
-            'group flex-shrink-0 inline-block text-center py-4 text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none px-8 focus:outline-none',
+            'group flex-shrink-0 inline-block text-center  text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none focus:outline-none',
+            { 'py-4 px-8': type === LINK_TYPES.button, 'py-2 px-4': type === LINK_TYPES.buttonSmall },
             color,
             className
           )}>
