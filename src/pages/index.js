@@ -147,7 +147,7 @@ const Index = () => {
                 </Text>
                 <Text>{fellow.description}</Text>
               </div>
-              <div className="w-full mt-6 text-center lg:text-left lg:mt-8">
+              <div className="w-full mt-8 text-center lg:text-left">
                 <Link
                   type={LINK_TYPES.buttonSmall}
                   color={BTN_COLORS.pink400blue700}
