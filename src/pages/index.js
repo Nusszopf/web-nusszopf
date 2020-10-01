@@ -104,9 +104,9 @@ const Index = () => {
               </Link>
             </Text>
           </div>
-          <div className="mt-16 lg:ml-4 xl:ml-0 lg:mt-4 lg:self-center lg:w-1/3 xl:w-5/12">
+          <div className="mt-12 sm:mt-16 lg:ml-4 xl:ml-0 lg:mt-4 lg:self-center lg:w-1/3 xl:w-5/12">
             <Link
-              className="block w-56 mx-auto lg:mr-0 xl:mr-auto xl:w-64"
+              className="block w-48 mx-auto sm:w-56 lg:mr-0 xl:mr-auto xl:w-64"
               type={LINK_TYPES.svg}
               href={contestData.host.href}
               title={contestData.host.meta}
