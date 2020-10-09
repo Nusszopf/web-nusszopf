@@ -4,9 +4,7 @@
   </a>
 </p>
 
-# Nusszopf Web App
-
-Network for joint ideas and projects
+# Nusszopf Monorepo
 
 ## Special thanks to our sponsors
 
@@ -20,4 +18,7 @@ Network for joint ideas and projects
 
 ## Development
 
-- Take a look at our [documentation](./docs/dev.md)
+- [webapp](./projects/web/README.md)
+- [design system](./projects/ui/README.md)
+- [auth0 login](./projects/auth-login/README.md)
+- [auth0 password](./projects/auth-password/README.md)

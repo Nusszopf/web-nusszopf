@@ -1,0 +1,15 @@
+/* purgecss start ignore */
+
+@tailwind base;
+/* Your own custom base styles */
+@tailwind components;
+/* Your own custom component styles */
+
+/* purgecss end ignore */
+
+/* local css */
+@import 'ui/styles/components.css';
+
+@tailwind utilities;
+/* Your own custom utilities */
+@import 'ui/styles/utilities.css';

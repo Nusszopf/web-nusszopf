@@ -1,0 +1,38 @@
+{
+  "name": "auth-login",
+  "version": "1.0.0",
+  "description": "auth0 login page",
+  "repository": "git@github.com:nusszopf/web-nusszopf.git",
+  "author": "schwamic <schwarz.michael@posteo.net>",
+  "license": "GNU General Public License v3.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "analyze": "cross-env ANALYZE=true yarn build"
+  },
+  "dependencies": {
+    "auth0-js": "9.14.0",
+    "classnames": "2.2.6",
+    "formik": "2.2.0",
+    "lodash": "4.17.20",
+    "next": "9.5.4",
+    "next-seo": "4.11.0",
+    "next-transpile-modules": "4.1.0",
+    "nprogress": "0.2.0",
+    "prop-types": "15.7.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-feather": "2.0.8",
+    "smoothscroll-polyfill": "0.4.4",
+    "typeface-barlow": "1.1.13",
+    "yup": "0.29.3"
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "9.5.4",
+    "babel-plugin-inline-react-svg": "1.1.1",
+    "cross-env": "7.0.2",
+    "vercel": "20.1.2"
+  }
+}
