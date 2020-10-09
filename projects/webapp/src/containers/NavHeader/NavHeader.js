@@ -2,8 +2,8 @@ import { withRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import { ArrowLeft } from 'react-feather'
 
-import { Route, ROUTE_TYPES, ROUTE_TEXT_COLORS, BTN_COLORS } from 'ui/stories/atoms'
-import { Frame } from 'ui/stories/templates'
+import { Route, ROUTE_TYPES, ROUTE_TEXT_COLORS, BTN_COLORS } from 'ui-library/stories/atoms'
+import { Frame } from 'ui-library/stories/templates'
 import navHeaderData from './navHeader.data'
 
 const NavHeader = ({ router }) => (

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { Text, TEXT_TYPE } from 'ui/stories/atoms'
-import { Frame } from 'ui/stories/templates'
+import { Text, TEXT_TYPE } from 'ui-library/stories/atoms'
+import { Frame } from 'ui-library/stories/templates'
 import NewsletterForm from './NewsletterForm'
 import { newsletterData } from '../../assets/data'
 

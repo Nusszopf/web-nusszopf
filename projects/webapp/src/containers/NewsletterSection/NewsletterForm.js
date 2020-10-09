@@ -10,8 +10,8 @@ import {
   Text,
   TEXT_TYPE,
   Checkbox,
-} from 'ui/stories/atoms'
-import { Alert, ALERT_TYPES } from 'ui/stories/molecules'
+} from 'ui-library/stories/atoms'
+import { Alert, ALERT_TYPES } from 'ui-library/stories/molecules'
 import useNewsletter from '../../utils/services/newsletter.service'
 import { newsletterData } from '../../assets/data'
 

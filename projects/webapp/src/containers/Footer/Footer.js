@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import { Route, Link, ROUTE_TEXT_COLORS, LINK_TYPES } from 'ui/stories/atoms'
-import { Frame } from 'ui/stories/templates'
+import { Route, Link, ROUTE_TEXT_COLORS, LINK_TYPES } from 'ui-library/stories/atoms'
+import { Frame } from 'ui-library/stories/templates'
 import footerData from './footer.data'
 
 export const FOOTER_TYPE = {

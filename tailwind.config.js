@@ -10,7 +10,7 @@ module.exports = {
     content: [
       './src/containers/**/*.{js,jsx}',
       './src/pages/**/*.{js,jsx}',
-      '../ui/stories/**/*.{js,jsx}',
+      '../ui-library/stories/**/*.{js,jsx}',
       './stories/**/*.{js,jsx}',
     ],
     options: {

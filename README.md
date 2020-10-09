@@ -18,7 +18,7 @@
 
 ## Development
 
-- [webapp](./projects/web/README.md)
+- [webapp](./projects/webapp/README.md)
 - [design system](./projects/ui/README.md)
 - [auth0 login](./projects/auth-login/README.md)
 - [auth0 password](./projects/auth-password/README.md)

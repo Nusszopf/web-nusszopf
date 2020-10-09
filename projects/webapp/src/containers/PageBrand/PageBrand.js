@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { Link, LINK_TYPES } from 'ui/stories/atoms'
+import { Link, LINK_TYPES } from 'ui-library/stories/atoms'
 import pageBrandData from './pageBrand.data'
 
 const PageBrand = ({ className }) => (

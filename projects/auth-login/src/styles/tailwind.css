@@ -8,8 +8,8 @@
 /* purgecss end ignore */
 
 /* local css */
-@import 'ui/styles/components.css';
+@import 'ui-library/styles/components.css';
 
 @tailwind utilities;
 /* Your own custom utilities */
-@import 'ui/styles/utilities.css';
+@import 'ui-library/styles/utilities.css';

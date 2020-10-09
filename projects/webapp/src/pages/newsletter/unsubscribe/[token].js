@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types'
 import { Page, FOOTER_TYPE } from '../../../containers'
-import { ROUTE_TYPES, Route, Link, LINK_TYPES, Text, TEXT_TYPE, BTN_COLORS } from 'ui/stories/atoms'
+import { ROUTE_TYPES, Route, Link, LINK_TYPES, Text, TEXT_TYPE, BTN_COLORS } from 'ui-library/stories/atoms'
 import { confirmNewsletterUnsubscription } from '../../../utils/services/newsletter.service'
-import { FrameFullCenter } from 'ui/stories/templates'
+import { FrameFullCenter } from 'ui-library/stories/templates'
 import { SVGNusszopfBigYellowBlue } from '../../../assets/logos'
 import { newsletterData } from '../../../assets/data'
 

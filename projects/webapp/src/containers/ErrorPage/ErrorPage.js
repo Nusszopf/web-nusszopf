@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
-import { Route, Link, Text, TEXT_TYPE, LINK_TEXT_COLORS, ROUTE_TYPES, BTN_COLORS } from 'ui/stories/atoms'
-import { FrameFullCenter } from 'ui/stories/templates'
+import { Route, Link, Text, TEXT_TYPE, LINK_TEXT_COLORS, ROUTE_TYPES, BTN_COLORS } from 'ui-library/stories/atoms'
+import { FrameFullCenter } from 'ui-library/stories/templates'
 import { Page, PageBrand } from '../../containers'
 import errorData from './error.data'
 

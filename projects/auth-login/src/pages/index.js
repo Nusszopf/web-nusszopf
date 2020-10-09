@@ -1,4 +1,4 @@
-import { FrameFullCenter } from 'ui/stories/templates'
+import { FrameFullCenter } from 'ui-library/stories/templates'
 import { Page } from '../containers'
 
 export default function IndexPage() {

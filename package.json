@@ -1,6 +1,6 @@
 {
   "name": "web-nusszopf",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "nusszopf monorepo",
   "repository": "git@github.com:nusszopf/web-nusszopf.git",
   "author": "schwamic <schwarz.michael@posteo.net>",
@@ -10,9 +10,9 @@
     "projects/*"
   ],
   "scripts": {
-    "dev:web": "yarn --cwd projects/web dev",
+    "dev:webapp": "yarn --cwd projects/webapp dev",
     "dev:login": "yarn --cwd projects/auth-login dev",
-    "storybook": "yarn --cwd projects/ui start-storybook -p 6006"
+    "storybook": "yarn --cwd projects/ui-library start-storybook -p 6006"
   },
   "commitlint": {
     "extends": [

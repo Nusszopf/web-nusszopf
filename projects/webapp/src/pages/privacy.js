@@ -1,6 +1,6 @@
 import { Page, PageBrand, NavHeader } from '../containers'
-import { Frame } from 'ui/stories/templates'
-import { Link, Text, TEXT_TYPE, LINK_TEXT_COLORS } from 'ui/stories/atoms'
+import { Frame } from 'ui-library/stories/templates'
+import { Link, Text, TEXT_TYPE, LINK_TEXT_COLORS } from 'ui-library/stories/atoms'
 import { privacyData } from '../assets/data'
 
 const Privacy = () => (
