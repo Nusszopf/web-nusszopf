@@ -7,7 +7,12 @@ module.exports = {
     applyComplexClasses: true,
   },
   purge: {
-    content: ['./src/containers/**/*.{js,jsx}', './src/pages/**/*.{js,jsx}', './src/stories/**/*.{js,jsx}'],
+    content: [
+      './src/containers/**/*.{js,jsx}',
+      './src/pages/**/*.{js,jsx}',
+      '../ui/stories/**/*.{js,jsx}',
+      './stories/**/*.{js,jsx}',
+    ],
     options: {
       whitelist: [],
     },
