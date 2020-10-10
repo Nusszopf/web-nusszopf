@@ -32,7 +32,10 @@ export default function IndexPage() {
           scope: 'openid profile',
           responseType: 'token id_token',
         },
-        (error, response) => setError(error.description)
+        (error, response) => {
+          setError(error.description)
+          console.log(error)
+        }
       )
     } catch {
       error => console.log(error)
