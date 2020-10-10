@@ -45,8 +45,9 @@ export default function IndexPage() {
       },
       domain: process.env.AUTH0_DOMAIN,
       clientID: process.env.AUTH0_CLIENT_ID,
-      ...router.query,
-      tenant: 'nusszopf',
+      // ...router.query,
+      responseType: 'token token_id code',
+      redirectUri: process.env.AUTH0_REDIRECT_URI,
     }
     console.log(params)
     const webAuth = new WebAuth(params)
