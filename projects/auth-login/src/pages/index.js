@@ -15,9 +15,13 @@ export default function IndexPage() {
     const params = {
       domain: process.env.AUTH0_DOMAIN,
       clientID: process.env.AUTH0_CLIENT_ID,
-      redirectUri: process.env.AUTH0_REDIRECT_URI, //'http://192.168.0.173:3000/api/callback',
+      redirectUri: process.env.AUTH0_REDIRECT_URI,
+      audience: process.env.AUTH0_AUDIENCE,
+      scope: 'openid profile',
+      responseType: 'token id_token',
     }
     const webAuth = new WebAuth(params)
+    // webAuth.authorize()
     setWebAuth(webAuth)
   }, [])
 
@@ -29,8 +33,6 @@ export default function IndexPage() {
           realm: 'Username-Password-Authentication',
           username: values.email,
           password: values.password,
-          scope: 'openid profile',
-          responseType: 'token id_token',
         },
         (error, response) => {
           setError(error.description)
