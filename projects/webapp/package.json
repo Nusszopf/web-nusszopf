@@ -13,6 +13,10 @@
     "analyze": "cross-env ANALYZE=true yarn build"
   },
   "dependencies": {
+    "@apollo/client": "3.2.2",
+    "@apollo/link-context": "2.0.0-beta.3",
+    "@apollo/link-error": "2.0.0-beta.3",
+    "@auth0/nextjs-auth0": "0.16.0",
     "@sanity/block-content-to-react": "2.0.7",
     "@sanity/client": "1.150.7",
     "@sanity/image-url": "0.140.19",

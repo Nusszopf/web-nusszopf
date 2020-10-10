@@ -10,7 +10,6 @@ const nextConfig = {
   target: 'serverless',
   env: {
     API_URL: process.env.API_URL,
-    CLOUDINARY_NAME: process.env.CLOUDINARY_NAME,
     DOMAIN: process.env.DOMAIN,
     SANITY_PROJECT_ID: process.env.SANITY_PROJECT_ID,
     SANITY_URL: process.env.SANITY_URL,
