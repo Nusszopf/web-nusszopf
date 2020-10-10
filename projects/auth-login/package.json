@@ -7,7 +7,7 @@
   "license": "GNU General Public License v3.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start",
     "analyze": "cross-env ANALYZE=true yarn build"
@@ -25,6 +25,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-feather": "2.0.8",
+    "reakit": "1.2.5",
     "smoothscroll-polyfill": "0.4.4",
     "typeface-barlow": "1.1.13",
     "yup": "0.29.3"

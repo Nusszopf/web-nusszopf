@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import { Input as RInput } from 'reakit/Input'
 
 export const INPUT_COLORS = {
   whiteGray600: 'nz-input-whiteGray600',
@@ -8,7 +9,7 @@ export const INPUT_COLORS = {
 }
 
 const Input = ({ disabled = false, color = INPUT_COLORS.whiteGray600, className, ...props }) => (
-  <input
+  <RInput
     className={classnames(
       'inline-block w-full px-5 py-4 text-lg transition-shadow duration-150 ease-in-out border-3 rounded-lg shadow-xs appearance-none focus:outline-none',
       color,

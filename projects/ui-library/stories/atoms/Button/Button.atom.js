@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import { Button as RButton } from 'reakit/Button'
 
 export const BTN_COLORS = {
   whiteGray600: 'nz-btn-white-gray600',
@@ -13,7 +14,7 @@ export const BTN_COLORS = {
 }
 
 const Button = ({ className, color = BTN_COLORS.whiteGray600, label, small, ...props }) => (
-  <button
+  <RButton
     className={classnames(
       'flex-shrink-0 text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none sm:w-auto focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed',
       { 'px-8 py-4': !small, 'py-2 px-4': small },
@@ -22,7 +23,7 @@ const Button = ({ className, color = BTN_COLORS.whiteGray600, label, small, ...p
     )}
     {...props}>
     {label}
-  </button>
+  </RButton>
 )
 
 Button.propTypes = {

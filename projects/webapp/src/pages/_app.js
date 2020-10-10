@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from 'react'
+import { ApolloProvider } from '@apollo/client'
 import Router from 'next/router'
 import Head from 'next/head'
 import NProgress from 'nprogress'
 import smoothscroll from 'smoothscroll-polyfill'
 require('typeface-barlow')
+
 import '../styles/tailwind.css'
+import { useApollo } from '../utils/libs/apolloClient'
 
 let loadingTimer
 Router.events.on('routeChangeStart', () => {
@@ -22,6 +25,8 @@ Router.events.on('routeChangeError', () => {
 })
 
 export default function NusszopfApp({ Component, pageProps }) {
+  const apolloClient = useApollo(pageProps.initialApolloState)
+
   useEffect(() => {
     // polyfill: https://github.com/iamdustan/smoothscroll
     smoothscroll.polyfill()
@@ -33,7 +38,9 @@ export default function NusszopfApp({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
       </Head>
       <div id="nusszopf" className="flex flex-col h-screen">
-        <Component {...pageProps} />
+        <ApolloProvider client={apolloClient}>
+          <Component {...pageProps} />
+        </ApolloProvider>
       </div>
     </>
   )

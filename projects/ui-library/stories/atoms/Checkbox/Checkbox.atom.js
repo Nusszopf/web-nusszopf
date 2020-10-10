@@ -2,11 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { Square, CheckSquare } from 'react-feather'
+import { Checkbox as RCheckbox } from 'reakit/Checkbox'
 import { TEXT_TYPE } from '../../atoms'
 
 const Checkbox = ({ disabled = false, checked = false, label, className = 'text-black', ...props }) => (
   <label>
-    <input type="checkbox" disabled={disabled} className="hidden" {...props} />
+    <RCheckbox disabled={disabled} checked={checked} className="hidden" {...props} />
     <span
       className={classnames('inline-flex cursor-pointer', {
         'opacity-50 cursor-not-allowed': disabled,
