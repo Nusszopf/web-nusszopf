@@ -39,17 +39,17 @@ export default function IndexPage() {
     if (isEmpty(router.query)) return
     console.log(router.query)
     const params = {
+      overrides: {
+        __tenant: 'nusszopf',
+        __token_issuer: 'https://auth.nusszopf.org/',
+      },
       domain: process.env.AUTH0_DOMAIN,
       clientID: process.env.AUTH0_CLIENT_ID,
-      audience: router.query['audience'],
-      redirectUri: router.query['redirect_uri'],
-      scope: router.query['scope'],
-      responseType: 'token id_token code',
-      // state: router.query['state'],
+      ...router.query,
+      tenant: 'nusszopf',
     }
     console.log(params)
     const webAuth = new WebAuth(params)
-    webAuth.authorize()
     setWebAuth(webAuth)
   }, [router.query])
 
