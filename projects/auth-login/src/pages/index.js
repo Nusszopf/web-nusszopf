@@ -1,27 +1,30 @@
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { WebAuth } from 'auth0-js'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { object, string } from 'yup'
-
+import { isEmpty } from 'lodash'
 import { FrameFullCenter } from 'ui-library/stories/templates'
 import { Text, TEXT_TYPE, Button, Input, INPUT_COLORS } from 'ui-library/stories/atoms'
 import { Page } from '../containers'
 
 export default function IndexPage() {
+  const router = useRouter()
   const [webAuth, setWebAuth] = useState()
   const [error, setError] = useState()
 
   useEffect(() => {
+    if (isEmpty(router.query)) return
+    console.log(router.query)
     const params = {
       domain: process.env.AUTH0_DOMAIN,
       clientID: process.env.AUTH0_CLIENT_ID,
-      redirectUri: process.env.AUTH0_REDIRECT_URI,
-      audience: process.env.AUTH0_AUDIENCE,
+      ...router.query,
     }
     const webAuth = new WebAuth(params)
     // webAuth.authorize()
     setWebAuth(webAuth)
-  }, [])
+  }, [router.query])
 
   const handleSubmit = values => {
     setError(false)
