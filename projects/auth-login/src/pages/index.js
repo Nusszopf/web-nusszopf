@@ -19,8 +19,12 @@ export default function IndexPage() {
     const params = {
       domain: process.env.AUTH0_DOMAIN,
       clientID: process.env.AUTH0_CLIENT_ID,
-      ...router.query,
+      audience: router.query['audience'],
+      redirectUri: router.query['redirect_uri'],
+      scope: router.query['scope'],
+      responseType: 'token id_token code',
     }
+    console.log(params)
     const webAuth = new WebAuth(params)
     // webAuth.authorize()
     setWebAuth(webAuth)
@@ -34,8 +38,6 @@ export default function IndexPage() {
           realm: 'Username-Password-Authentication',
           username: values.email,
           password: values.password,
-          scope: 'openid profile',
-          responseType: 'token id_token code',
         },
         (error, response) => {
           setError(error.description)
