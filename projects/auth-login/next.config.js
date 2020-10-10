@@ -9,9 +9,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const nextConfig = {
   target: 'serverless',
   env: {
-    DOMAIN: process.env.DOMAIN,
-    AUTH0_CLIENT_SECRET: process.env.AUTH0_CLIENT_SECRET,
-    ENV: process.env.ENV,
+    AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
+    AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID,
+    AUTH0_REDIRECT_URI: process.env.AUTH0_REDIRECT_URI,
   },
 }
 

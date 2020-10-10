@@ -1,6 +1,15 @@
 import classnames from 'classnames'
 import { Page, NewsletterSection } from '../containers'
-import { Button, Link, Text, LINK_TYPES, TEXT_TYPE, LINK_TEXT_COLORS, BTN_COLORS } from 'ui-library/stories/atoms'
+import {
+  Button,
+  Link,
+  Route,
+  Text,
+  LINK_TYPES,
+  TEXT_TYPE,
+  LINK_TEXT_COLORS,
+  BTN_COLORS,
+} from 'ui-library/stories/atoms'
 import { Frame } from 'ui-library/stories/templates'
 import { headerData, hintData, featuresData, contestData, fellowsData } from '../assets/data'
 
@@ -162,6 +171,11 @@ const Index = () => {
         </div>
       </Frame>
       <NewsletterSection />
+      <Frame className="py-4 bg-red-300">
+        <Route href="/api/login" title="login" ariaLabel="temp login">
+          Test Login
+        </Route>
+      </Frame>
     </Page>
   )
 }
