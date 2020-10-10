@@ -45,9 +45,10 @@ export default function IndexPage() {
       },
       domain: process.env.AUTH0_DOMAIN,
       clientID: process.env.AUTH0_CLIENT_ID,
-      // ...router.query,
       responseType: 'token token_id code',
       redirectUri: process.env.AUTH0_REDIRECT_URI,
+      // ...router.query,
+      state: router.query['state'],
     }
     console.log(params)
     const webAuth = new WebAuth(params)
