@@ -8,6 +8,28 @@ import { FrameFullCenter } from 'ui-library/stories/templates'
 import { Text, TEXT_TYPE, Button, Input, INPUT_COLORS } from 'ui-library/stories/atoms'
 import { Page } from '../containers'
 
+// audience: "hasura"
+// auth0Client: "eyJuYW1lIjoibmV4dGpzLWF1dGgwIiwidmVyc2lvbiI6IjAuMTYuMCJ9"
+// clientID: "EwSzud3xk42bYp0myzuuSbR18jNTqp0t"
+// domain: "auth.nusszopf.org"
+// jwksURI: undefined
+// overrides:
+// __tenant: "nusszopf"
+// __token_issuer: "https://auth.nusszopf.org/"
+// __proto__: Object
+// plugins: PluginHandler {plugins: Array(0)}
+// popupOrigin: undefined
+// protocol: "oauth2"
+// redirectUri: "https://web.dev.nusszopf.org/api/callback"
+// responseType: "code"
+// response_type: "code"
+// rootUrl: "https://auth.nusszopf.org"
+// scope: "openid profile"
+// state: "g6Fo2SA2UEszdWJKRnQzR3VNQUhpTVdKSDhiUkx1MEVENXR2UaN0aWTZIFV6SllIYnBQb2xzXzdDOEJEdUhKMVJNQWlQMUt0aVR2o2NpZNkgRXdTenVkM3hrNDJiWXAwbXl6dXVTYlIxOGpOVHFwMHQ"
+// tenant: "nusszopf"
+// token_issuer: "https://auth.nusszopf.org/"
+// universalLoginPage: true
+
 export default function IndexPage() {
   const router = useRouter()
   const [webAuth, setWebAuth] = useState()
@@ -23,10 +45,11 @@ export default function IndexPage() {
       redirectUri: router.query['redirect_uri'],
       scope: router.query['scope'],
       responseType: 'token id_token code',
+      // state: router.query['state'],
     }
     console.log(params)
     const webAuth = new WebAuth(params)
-    // webAuth.authorize()
+    webAuth.authorize()
     setWebAuth(webAuth)
   }, [router.query])
 
