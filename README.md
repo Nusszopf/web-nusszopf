@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# Nusszopf Monorepo
+# Nusszopf – Network for joint ideas and projects
 
 ## Special thanks to our sponsors
 
