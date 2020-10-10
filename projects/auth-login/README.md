@@ -6,6 +6,6 @@
 
 # Nusszopf – Login Page
 
-Environment to develop and build the custom auth0-nusszopf login page.
+Environment to develop and build the custom auth0 login page.
 
 Copy and paste the current build on vercel: e.g. https://vercel.com/nusszopf/auth-login-nusszopf/9a2td8tty/source, and add to each url the domain. After each deployment, replace the new index.html file in auth0!
