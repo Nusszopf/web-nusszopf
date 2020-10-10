@@ -16,9 +16,9 @@ export default function IndexPage() {
       domain: process.env.AUTH0_DOMAIN,
       clientID: process.env.AUTH0_CLIENT_ID,
       redirectUri: process.env.AUTH0_REDIRECT_URI,
-      audience: process.env.AUTH0_AUDIENCE,
+      // audience: process.env.AUTH0_AUDIENCE,
       scope: 'openid profile',
-      responseType: 'token id_token',
+      responseType: 'token id_token code',
     }
     const webAuth = new WebAuth(params)
     // webAuth.authorize()
