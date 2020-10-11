@@ -8,27 +8,8 @@ import { FrameFullCenter } from 'ui-library/stories/templates'
 import { Text, TEXT_TYPE, Button, Input, INPUT_COLORS } from 'ui-library/stories/atoms'
 import { Page } from '../containers'
 
-// audience: "hasura"
-// auth0Client: "eyJuYW1lIjoibmV4dGpzLWF1dGgwIiwidmVyc2lvbiI6IjAuMTYuMCJ9"
-// clientID: "EwSzud3xk42bYp0myzuuSbR18jNTqp0t"
-// domain: "auth.nusszopf.org"
-// jwksURI: undefined
-// overrides:
-// __tenant: "nusszopf"
-// __token_issuer: "https://auth.nusszopf.org/"
-// __proto__: Object
-// plugins: PluginHandler {plugins: Array(0)}
-// popupOrigin: undefined
-// protocol: "oauth2"
-// redirectUri: "https://web.dev.nusszopf.org/api/callback"
-// responseType: "code"
-// response_type: "code"
-// rootUrl: "https://auth.nusszopf.org"
-// scope: "openid profile"
-// state: "g6Fo2SA2UEszdWJKRnQzR3VNQUhpTVdKSDhiUkx1MEVENXR2UaN0aWTZIFV6SllIYnBQb2xzXzdDOEJEdUhKMVJNQWlQMUt0aVR2o2NpZNkgRXdTenVkM3hrNDJiWXAwbXl6dXVTYlIxOGpOVHFwMHQ"
-// tenant: "nusszopf"
-// token_issuer: "https://auth.nusszopf.org/"
-// universalLoginPage: true
+// test: at the moment stylesheets, etc. are getting loaded too slow from auth0...
+// todo: login, signup, password-request, google-login
 
 export default function IndexPage() {
   const router = useRouter()
@@ -40,14 +21,13 @@ export default function IndexPage() {
     console.log(router.query)
     const params = {
       overrides: {
-        __tenant: 'nusszopf',
-        __token_issuer: 'https://auth.nusszopf.org/',
+        __tenant: process.env.AUTH0_TENANT,
+        __token_issuer: `https://${process.env.AUTH0_DOMAIN}/`,
       },
       domain: process.env.AUTH0_DOMAIN,
-      clientID: process.env.AUTH0_CLIENT_ID,
-      responseType: 'token token_id code',
-      redirectUri: process.env.AUTH0_REDIRECT_URI,
-      // ...router.query,
+      clientID: router.query['client'],
+      redirectUri: router.query['redirect_uri'],
+      responseType: router.query['response_type'],
       state: router.query['state'],
     }
     console.log(params)

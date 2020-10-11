@@ -8,4 +8,15 @@
 
 Environment to develop and build the custom auth0 login page.
 
-Copy and paste the current build on vercel: e.g. https://vercel.com/nusszopf/auth-login-nusszopf/9a2td8tty/source, and add to each url the domain. After each deployment, replace the new index.html file in auth0!
+## 101
+
+1. Push new changes
+2. Replace the dist/index.html with index.html from the output folder of the new vercel build
+3. Add full path to href and src urls
+4. Replace preload stylesheets with inline stylesheets
+5. Save new index.html in auth0 custom login page
+
+## Notes
+
+- [Auth0 Auth App](https://community.auth0.com/t/disable-authorize-app-dialog/6939)
+- [Auth0.js Custom Domains](https://auth0.com/docs/custom-domains/configure-features-to-use-custom-domains#universal-login)
