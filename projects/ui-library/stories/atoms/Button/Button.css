@@ -2,6 +2,10 @@
   @apply text-white bg-gray-600 hover:shadow-outline:gray-600 focus:shadow-outline:gray-600;
 }
 
+.nz-btn-gray600gray200 {
+  @apply text-gray-600 bg-gray-200 hover:shadow-outline:gray-200 focus:shadow-outline:gray-200;
+}
+
 .nz-btn-blue400-yellow300 {
   @apply text-blue-400 bg-yellow-300 hover:shadow-outline:yellow-300 focus:shadow-outline:yellow-300;
 }

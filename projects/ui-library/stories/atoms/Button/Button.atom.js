@@ -11,6 +11,7 @@ export const BTN_COLORS = {
   yellow400yellow700: 'nz-btn-yellow400-yellow700 ',
   turquoise700turquoise500: 'nz-btn-turquoise-700turquoise600',
   blue400blue200: 'nz-btn-blue400-blue200',
+  gray600gray200: 'nz-btn-gray600gray200',
 }
 
 const Button = ({ className, color = BTN_COLORS.whiteGray600, label, small, ...props }) => (

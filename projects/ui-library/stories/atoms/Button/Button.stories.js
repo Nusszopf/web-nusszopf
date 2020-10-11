@@ -15,5 +15,6 @@ export const Primary = () => (
     <Button color={BTN_COLORS.yellow400yellow700} label="Button" />
     <Button color={BTN_COLORS.turquoise700turquoise500} label="Button" />
     <Button color={BTN_COLORS.blue400blue200} label="Button" />
+    <Button color={BTN_COLORS.gray600gray200} label="Button" />
   </div>
 )

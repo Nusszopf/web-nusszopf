@@ -3,6 +3,7 @@ import { NextSeo } from 'next-seo'
 import { truncate } from 'lodash'
 import classnames from 'classnames'
 
+import { Footer } from '../../containers'
 import { seoData } from '../../assets/data'
 
 const Page = ({ children, className }) => {
@@ -38,7 +39,7 @@ const Page = ({ children, className }) => {
         }}
       />
       <main className={classnames('flex-1', className)}>{children}</main>
-      <footer className="flex justify-center">footer</footer>
+      <Footer />
     </>
   )
 }
