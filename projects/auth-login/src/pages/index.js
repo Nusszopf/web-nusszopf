@@ -24,10 +24,14 @@ export default function IndexPage() {
         __tenant: process.env.AUTH0_TENANT,
         __token_issuer: `https://${process.env.AUTH0_DOMAIN}/`,
       },
-      domain: process.env.AUTH0_DOMAIN,
+      audience: router.query['audience'],
+      auth0Client: router.query['auth0Client'],
       clientID: router.query['client'],
+      domain: process.env.AUTH0_DOMAIN,
+      protocol: router.query['protocol'],
       redirectUri: router.query['redirect_uri'],
       responseType: router.query['response_type'],
+      scope: router.query['scope'],
       state: router.query['state'],
     }
     console.log(params)
