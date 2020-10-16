@@ -1,31 +1,39 @@
-.nz-btn-white-gray600 {
+.nz-btn-filled {
+  @apply transition-shadow duration-150 ease-in-out rounded-full;
+}
+
+.nz-btn-filled--white-gray600 {
   @apply text-white bg-gray-600 hover:shadow-outline:gray-600 focus:shadow-outline:gray-600;
 }
 
-.nz-btn-gray600gray200 {
+.nz-btn-filled--gray600-gray200 {
   @apply text-gray-600 bg-gray-200 hover:shadow-outline:gray-200 focus:shadow-outline:gray-200;
 }
 
-.nz-btn-blue400-yellow300 {
+.nz-btn-filled--blue400-yellow300 {
   @apply text-blue-400 bg-yellow-300 hover:shadow-outline:yellow-300 focus:shadow-outline:yellow-300;
 }
 
-.nz-btn-pink400-blue700 {
+.nz-btn-filled--pink400-blue700 {
   @apply text-pink-400 bg-blue-700 hover:shadow-outline:blue-700 focus:shadow-outline:blue-700;
 }
 
-.nz-btn-pink600-yellow300 {
+.nz-btn-filled--pink600-yellow300 {
   @apply text-pink-600 bg-yellow-300 hover:shadow-outline:yellow-300 focus:shadow-outline:yellow-300;
 }
 
-.nz-btn-yellow400-yellow700 {
+.nz-btn-filled--yellow400-yellow700 {
   @apply text-yellow-400 bg-yellow-700 hover:shadow-outline:yellow-700 focus:shadow-outline:yellow-700;
 }
 
-.nz-btn-turquoise-700turquoise600 {
+.nz-btn-filled--turquoise700-turquoise600 {
   @apply text-turquoise-700 bg-turquoise-600 hover:shadow-outline:turquoise-600-bright focus:shadow-outline:turquoise-600-bright;
 }
 
-.nz-btn-blue400-blue200 {
+.nz-btn-filled--blue400-blue200 {
   @apply text-blue-400 bg-blue-200 hover:shadow-outline:blue-200 focus:shadow-outline:blue-200;
 }
+
+/* .btn-primary-outline {
+  @apply transition-shadow duration-150 ease-in-out rounded-full border-3;
+} */

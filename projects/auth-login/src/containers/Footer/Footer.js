@@ -1,5 +1,5 @@
 import { Frame } from 'ui-library/stories/templates'
-import { LINK_TYPES, Link } from 'ui-library/stories/atoms'
+import { LinkType, Link } from 'ui-library/stories/atoms'
 import footerData from './footer.data'
 
 const Footer = () => (
@@ -7,7 +7,7 @@ const Footer = () => (
     <div className="flex items-center justify-between sm:h-24">
       <div>
         <Link
-          type={LINK_TYPES.text}
+          type={LinkType.text}
           href={footerData.home.href}
           title={footerData.home.meta}
           ariaLabel={footerData.home.meta}>
@@ -16,7 +16,7 @@ const Footer = () => (
       </div>
       <div>
         <Link
-          type={LINK_TYPES.svg}
+          type={LinkType.svg}
           href={footerData.brand.href}
           title={footerData.brand.meta}
           ariaLabel={footerData.brand.meta}>

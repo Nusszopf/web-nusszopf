@@ -3,13 +3,15 @@ import { useRouter } from 'next/router'
 import { WebAuth } from 'auth0-js'
 import { isEmpty } from 'lodash'
 import { FrameFullCenter } from 'ui-library/stories/templates'
-import { Text, TEXT_TYPE } from 'ui-library/stories/atoms'
+import { Text } from 'ui-library/stories/atoms'
 import { ChangePasswordForm, LoginForm, SignUpForm, Page } from '../containers'
 import { SVGNusszopfLogoBig } from '../assets/images'
 
 // works: login, signup, password-request
 // todo: apple-login, google-login update settings
 // todo: validation password: https://github.com/auth0/password-sheriff oder regex?
+// todo: refactor components, notifications component, design
+// todo: password reset page -> readme.md
 // test: at the moment stylesheets, etc. are getting loaded too slow from auth0...
 
 export default function IndexPage() {
@@ -114,7 +116,7 @@ export default function IndexPage() {
         <div className="flex flex-col items-center w-full max-w-sm mx-auto">
           <SVGNusszopfLogoBig className="w-32 h-full" />
           <div className="w-full my-8">
-            <Text className="mb-6 text-center" type={TEXT_TYPE.titleMd}>
+            <Text className="mb-6 text-center" style="titleMd">
               Anmelden
             </Text>
             <LoginForm
@@ -124,13 +126,13 @@ export default function IndexPage() {
             />
           </div>
           <div className="w-full mt-16">
-            <Text className="mb-6 text-center" type={TEXT_TYPE.titleMd}>
+            <Text className="mb-6 text-center" style="titleMd">
               Registrieren
             </Text>
             <SignUpForm onSubmit={handleSignup} />
           </div>
           <div className="w-full mt-16">
-            <Text className="mb-6 text-center" type={TEXT_TYPE.titleMd}>
+            <Text className="mb-6 text-center" style="titleMd">
               Passwort ändern
             </Text>
             <ChangePasswordForm onSubmit={handleChangePassword} />

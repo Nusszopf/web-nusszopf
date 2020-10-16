@@ -1,20 +1,47 @@
 import React from 'react'
-import { Button, BTN_COLORS } from '../../atoms'
+import { ChevronDown, ChevronLeft, ArrowLeft } from 'react-feather'
+import Button from './Button.atom'
 
 export default {
   title: 'Design System/Atoms/Button',
   component: Button,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '**UI atom** which at first only provides the **styling for buttons**. Works as [Reakit Button](https://reakit.io/docs/button/) by default, but can also be used via `as` as another element if you only need the button style.',
+      },
+    },
+  },
 }
 
-export const Primary = () => (
-  <div className="space-x-3">
-    <Button label="Button" />
-    <Button color={BTN_COLORS.blue400Yellow300} label="Button" />
-    <Button color={BTN_COLORS.pink400blue700} label="Button" />
-    <Button color={BTN_COLORS.pink600yellow300} label="Button" />
-    <Button color={BTN_COLORS.yellow400yellow700} label="Button" />
-    <Button color={BTN_COLORS.turquoise700turquoise500} label="Button" />
-    <Button color={BTN_COLORS.blue400blue200} label="Button" />
-    <Button color={BTN_COLORS.gray600gray200} label="Button" />
-  </div>
+export const Filled = () => <Button color="gray600gray200">Button</Button>
+
+export const Disabled = () => <Button disabled>Button</Button>
+
+export const Circle = () => (
+  <Button size="circle" color="gray600gray200">
+    <ArrowLeft size={27} />
+  </Button>
+)
+
+export const IconLeft = () => <Button iconLeft={<ChevronLeft className="-ml-2" />}>Button</Button>
+
+export const IconRight = () => (
+  <Button size="large" iconRight={<ChevronDown className="mt-1 -mr-2" />}>
+    Button
+  </Button>
+)
+
+export const As = () => (
+  <Button
+    as="a"
+    color="gray600gray200"
+    href="https://nusszopf.org"
+    rel="noopener noreferrer"
+    target="_blank"
+    title="Zum Nusszopf"
+    aria-label="Zum Nusszopf">
+    As Link
+  </Button>
 )

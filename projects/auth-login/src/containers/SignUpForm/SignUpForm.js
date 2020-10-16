@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import classnames from 'classnames'
 import { object, string } from 'yup'
-import { Text, TEXT_TYPE, Button, Input, INPUT_COLORS } from 'ui-library/stories/atoms'
+import { Text, Button, Input } from 'ui-library/stories/atoms'
 
 const SignUpForm = ({ className, onSubmit }) => (
   <div className={classnames('w-full', className)} data-test="signup form">
@@ -27,14 +27,9 @@ const SignUpForm = ({ className, onSubmit }) => (
               aria-label="Name"
               placeholder="Name"
               disabled={false}
-              color={INPUT_COLORS.whiteGray600}
+              color="whiteGray600"
             />
-            <ErrorMessage
-              name="username"
-              type={TEXT_TYPE.textSm}
-              className="mt-2 ml-6 italic text-gray-600"
-              component={Text}
-            />
+            <ErrorMessage name="username" style="textSm" className="mt-2 ml-6 italic text-gray-600" component={Text} />
           </div>
           <div className="mt-4">
             <Field
@@ -45,14 +40,9 @@ const SignUpForm = ({ className, onSubmit }) => (
               aria-label="E-Mail-Adresse"
               placeholder="E-Mail-Adresse"
               disabled={false}
-              color={INPUT_COLORS.whiteGray600}
+              color="whiteGray600"
             />
-            <ErrorMessage
-              name="email"
-              type={TEXT_TYPE.textSm}
-              className="mt-2 ml-6 italic text-gray-600"
-              component={Text}
-            />
+            <ErrorMessage name="email" style="textSm" className="mt-2 ml-6 italic text-gray-600" component={Text} />
           </div>
           <div className="mt-4">
             <Field
@@ -63,17 +53,12 @@ const SignUpForm = ({ className, onSubmit }) => (
               aria-label="Passwort"
               placeholder="Passwort"
               disabled={false}
-              color={INPUT_COLORS.whiteGray600}
+              color="whiteGray600"
             />
-            <ErrorMessage
-              name="password"
-              type={TEXT_TYPE.textSm}
-              className="mt-2 ml-6 italic text-gray-600"
-              component={Text}
-            />
+            <ErrorMessage name="password" style="textSm" className="mt-2 ml-6 italic text-gray-600" component={Text} />
           </div>
           <div className="mt-6 space-x-4 text-center">
-            <Button type="submit" label="Registrieren" />
+            <Button type="submit">Registrieren</Button>
           </div>
         </Form>
       )}

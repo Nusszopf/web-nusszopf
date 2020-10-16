@@ -1,10 +1,17 @@
 import React from 'react'
 import { ArrowLeft, ArrowRight } from 'react-feather'
-import { Route, ROUTE_TYPES } from '../../atoms'
+import Route from './Route.atom'
 
 export default {
   title: 'Design System/Atoms/Route',
   component: Route,
+  parameters: {
+    docs: {
+      description: {
+        component: '**UI atom** based on [Next Link](https://nextjs.org/docs/api-reference/next/link).',
+      },
+    },
+  },
 }
 
 export const Text = () => (
@@ -18,18 +25,8 @@ export const Text = () => (
   </div>
 )
 
-export const Icon = () => (
-  <Route type={ROUTE_TYPES.icon} href="/" icon={ArrowLeft} title="title" ariaLabel="arial label" />
-)
-
 export const Button = () => (
-  <Route type={ROUTE_TYPES.button} href="/" width={23} title="title" ariaLabel="arial label">
-    Link
-  </Route>
-)
-
-export const Button_Icon = () => (
-  <Route type={ROUTE_TYPES.buttonIconLeft} href="/" width={23} icon={ArrowLeft} title="title" ariaLabel="arial label">
-    Link
+  <Route type="button" href="/" title="title" ariaLabel="arial label" size="circle" color="gray600gray200">
+    <ArrowLeft size={27} />
   </Route>
 )

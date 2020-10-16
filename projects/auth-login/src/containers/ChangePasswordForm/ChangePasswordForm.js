@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import classnames from 'classnames'
 import { object, string } from 'yup'
-import { Text, TEXT_TYPE, Button, Input, INPUT_COLORS } from 'ui-library/stories/atoms'
+import { Text, Button, Input } from 'ui-library/stories/atoms'
 
 const ChangePasswordForm = ({ className, onSubmit }) => (
   <div className={classnames('w-full', className)} data-test="signup form">
@@ -23,16 +23,11 @@ const ChangePasswordForm = ({ className, onSubmit }) => (
             aria-label="E-Mail-Adresse"
             placeholder="E-Mail-Adresse"
             disabled={false}
-            color={INPUT_COLORS.whiteGray600}
+            color="whiteGray600"
           />
-          <ErrorMessage
-            name="email"
-            type={TEXT_TYPE.textSm}
-            className="mt-2 ml-6 italic text-gray-600"
-            component={Text}
-          />
+          <ErrorMessage name="email" style="textSm" className="mt-2 ml-6 italic text-gray-600" component={Text} />
           <div className="mt-6 space-x-4 text-center">
-            <Button type="submit" label="Absenden" />
+            <Button type="submit">Absenden</Button>
           </div>
         </Form>
       )}

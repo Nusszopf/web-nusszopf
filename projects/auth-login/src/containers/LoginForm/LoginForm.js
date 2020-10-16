@@ -2,13 +2,13 @@ import PropTypes from 'prop-types'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import classnames from 'classnames'
 import { object, string } from 'yup'
-import { Text, TEXT_TYPE, Button, BTN_COLORS, Input, INPUT_COLORS } from 'ui-library/stories/atoms'
+import { Text, Button, Input } from 'ui-library/stories/atoms'
 
 const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple }) => (
   <div className={classnames('w-full', className)} data-test="login form">
     <div className="flex flex-col mb-4 space-y-4">
-      <Button label="Mit Apple anmelden" onClick={onLoginWithApple} />
-      <Button label="Mit Google anmelden" onClick={onLoginWithGoogle} />
+      <Button onClick={onLoginWithApple}>Mit Apple anmelden</Button>
+      <Button onClick={onLoginWithGoogle}>Mit Google anmelden</Button>
     </div>
     <Formik
       initialValues={{ password: '', emailOrName: '' }}
@@ -28,11 +28,11 @@ const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple })
               aria-label="E-Mail-Adresse / Name"
               placeholder="E-Mail-Adresse / Name"
               disabled={false}
-              color={INPUT_COLORS.whiteGray600}
+              color="whiteGray600"
             />
             <ErrorMessage
               name="emailOrName"
-              type={TEXT_TYPE.textSm}
+              style="textSm"
               className="mt-2 ml-6 italic text-gray-600"
               component={Text}
             />
@@ -46,18 +46,13 @@ const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple })
               aria-label="Passwort"
               placeholder="Passwort"
               disabled={false}
-              color={INPUT_COLORS.whiteGray600}
+              color="whiteGray600"
             />
-            <ErrorMessage
-              name="password"
-              type={TEXT_TYPE.textSm}
-              className="mt-2 ml-6 italic text-gray-600"
-              component={Text}
-            />
+            <ErrorMessage name="password" style="textSm" className="mt-2 ml-6 italic text-gray-600" component={Text} />
           </div>
           <div className="mt-6 space-x-4 text-center">
-            <Button type="submit" label="Anmelden" />
-            <Button color={BTN_COLORS.gray600gray200} label="Passwort vergessen" />
+            <Button type="submit">Anmelden</Button>
+            <Button color="gray600gray200">Passwort vergessen</Button>
           </div>
         </Form>
       )}
