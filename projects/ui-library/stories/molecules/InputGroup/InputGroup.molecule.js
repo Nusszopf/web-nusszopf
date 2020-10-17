@@ -8,7 +8,6 @@ const InputGroup = ({ children, className, ...props }) => (
   <div className={classnames('relative', className)} {...props}>
     {React.Children.map(children, child => (
       <>
-        {console.log(child.type.displayName)}
         {child.type.displayName === 'InputGroup.Input' &&
           React.cloneElement(child, {
             className: classnames(

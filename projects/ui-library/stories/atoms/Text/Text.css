@@ -29,3 +29,7 @@
 .nz-text-sm {
   @apply text-lg;
 }
+
+.nz-text-xs {
+  @apply text-base;
+}

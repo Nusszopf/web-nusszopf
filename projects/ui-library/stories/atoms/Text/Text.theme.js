@@ -7,4 +7,5 @@ export const TextStyle = {
   textMd: 'nz-text-md',
   textSmMedium: 'nz-text-sm--medium',
   textSm: 'nz-text-sm',
+  textXs: 'nz-text-xs',
 }

@@ -17,11 +17,14 @@ const Footer = () => (
           Zum Nusszopf
         </Link>
       </div>
-      <div className="flex items-center space-x-4">
-        <Text style="textSm">Unterstützt von:</Text>
+      <div className="flex items-center">
+        <Text style="textXs" className="mr-4">
+          Unterstützt von:
+        </Text>
         {footerData.sponsors.map((sponsor, index) => (
           <Link
             key={`sponsor-${index}`}
+            className="ml-4"
             type={LinkType.svg}
             href={sponsor.href}
             title={sponsor.meta}
