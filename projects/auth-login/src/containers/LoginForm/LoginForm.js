@@ -9,7 +9,7 @@ import { Text, Button, Input } from 'ui-library/stories/atoms'
 import { InputGroup } from 'ui-library/stories/molecules'
 import { SVGAppleLogo, SVGGoogleLogo } from '../../assets/images'
 
-const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple, onForgotPassword }) => {
+const LoginForm = ({ className, loading, onSubmit, onLoginWithGoogle, onLoginWithApple, onForgotPassword }) => {
   const [isEyeOpen, setEye] = useState(false)
   return (
     <div className={classnames('w-full text-gray-500', className)} data-test="login form">
@@ -30,7 +30,7 @@ const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple, o
                 type="text"
                 aria-label="E-Mail-Adresse / Name"
                 placeholder="E-Mail-Adresse / Name"
-                disabled={false}
+                disabled={loading}
                 color="whiteGray500"
               />
               <ErrorMessage name="emailOrName" style="textSm" className="mt-2 ml-6 italic" component={Text} />
@@ -44,22 +44,26 @@ const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple, o
                   value={formikProps.values.password}
                   aria-label="Passwort"
                   placeholder="Passwort"
-                  disabled={false}
+                  disabled={loading}
                   color="whiteGray500"
                   onChange={formikProps.handleChange}
                   onBlur={formikProps.handleBlur}
                 />
                 <InputGroup.RightElement onClick={() => setEye(isEyeOpen => !isEyeOpen)}>
-                  {isEyeOpen ? <Eye size={26} /> : <EyeOff size={26} />}
+                  {isEyeOpen ? (
+                    <Eye size={26} className={classnames({ 'opacity-50': loading })} />
+                  ) : (
+                    <EyeOff size={26} className={classnames({ 'opacity-50': loading })} />
+                  )}
                 </InputGroup.RightElement>
               </InputGroup>
               <ErrorMessage name="password" style="textSm" className="mt-2 ml-6 italic" component={Text} />
             </div>
             <div className="mt-5 space-x-4 text-center">
-              <Button type="submit" color="whiteGray500" className="mb-4">
+              <Button type="submit" color="whiteGray500" className="mb-4" disabled={loading}>
                 Einloggen
               </Button>
-              <Button color="gray500Gray200" onClick={onForgotPassword} className="mb-4">
+              <Button color="gray500Gray200" onClick={onForgotPassword} className="mb-4" disabled={loading}>
                 Passwort vergessen
               </Button>
             </div>
@@ -84,6 +88,7 @@ const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple, o
             Apple
           </Button>
           <Button
+            disabled={loading}
             onClick={onLoginWithGoogle}
             color="gray500Gray200"
             iconLeft={<SVGGoogleLogo className="w-auto h-5 mr-2" />}>
@@ -101,6 +106,7 @@ LoginForm.propTypes = {
   onLoginWithGoogle: PropTypes.func,
   onLoginWithApple: PropTypes.func,
   onForgotPassword: PropTypes.func,
+  loading: PropTypes.bool,
 }
 
 export default LoginForm

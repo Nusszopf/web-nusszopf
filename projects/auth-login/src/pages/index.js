@@ -5,15 +5,17 @@ import { isEmpty } from 'lodash'
 
 import { FrameFullCenter } from 'ui-library/stories/templates'
 import { Tab } from 'ui-library/stories/molecules'
+import { Link, LinkType } from 'ui-library/stories/atoms'
+import { useToasts } from 'ui-library/services/Toasts.service'
 import { ChangePasswordForm, LoginForm, SignUpForm, Page } from '../containers'
 import { SVGNusszopfLogoBig } from '../assets/images'
 
-// works: login, signup, password-request
+// done: login, signup, password-request
+// done: refactor components, notifications component, design
 // todo: apple-login, google-login update settings
 // todo: validation password: https://github.com/auth0/password-sheriff oder regex?
-// todo: refactor components, notifications component, design
 // todo: password reset page -> readme.md
-// test: at the moment stylesheets, etc. are getting loaded too slow from auth0...
+// todo: at the moment stylesheets, etc. are getting loaded too slow from auth0... -> add css inline
 
 const Views = {
   signInUp: 'signInUp',
@@ -21,10 +23,11 @@ const Views = {
 }
 
 export default function IndexPage() {
+  const { notify } = useToasts()
   const router = useRouter()
   const [webAuth, setWebAuth] = useState()
   const [view, setView] = useState(Views.signInUp)
-  // const [error, setError] = useState()
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (isEmpty(router.query)) return
@@ -47,8 +50,17 @@ export default function IndexPage() {
     setWebAuth(webAuth)
   }, [router.query])
 
+  const showError = () => {
+    notify({
+      type: 'error',
+      message: 'Sorry, es ist ein Fehler aufgetreten. Bitte versuche es nochmal oder melde dich bei mail@nusszopf.org.',
+    })
+  }
+
   // https://auth0.com/docs/api/authentication#login
   const handleLogin = values => {
+    setLoading(true)
+    notify({ type: 'loading', message: 'Du wirst einloggt.' })
     webAuth.login(
       {
         realm: 'Username-Password-Authentication',
@@ -56,19 +68,25 @@ export default function IndexPage() {
         password: values.password,
       },
       (error, response) => {
-        console.log(error)
+        setLoading(false)
+        if (error) showError()
+        // redirect
         console.log(response)
       }
     )
   }
 
   const handleGoogleLogin = () => {
+    setLoading(true)
+    notify({ type: 'loading', message: 'Du wirst einloggt.' })
     webAuth.authorize(
       {
         connection: 'google-oauth2',
       },
       (error, response) => {
-        console.log(error)
+        setLoading(false)
+        if (error) showError()
+        // redirect
         console.log(response)
       }
     )
@@ -76,12 +94,16 @@ export default function IndexPage() {
 
   // todo: create auth0-apple connection
   const handleAppleLogin = () => {
+    setLoading(true)
+    notify({ type: 'loading', message: 'Du wirst einloggt.' })
     webAuth.authorize(
       {
         connection: 'apple',
       },
       (error, response) => {
-        console.log(error)
+        setLoading(false)
+        if (error) showError()
+        // redirect
         console.log(response)
       }
     )
@@ -89,6 +111,8 @@ export default function IndexPage() {
 
   // https://auth0.com/docs/api/authentication#signup
   const handleSignup = values => {
+    setLoading(true)
+    notify({ type: 'loading', message: 'Du wirst registriert.' })
     webAuth.redirect.signupAndLogin(
       {
         connection: 'Username-Password-Authentication',
@@ -97,7 +121,9 @@ export default function IndexPage() {
         password: values.password,
       },
       (error, response) => {
-        console.log(error)
+        setLoading(false)
+        if (error) showError()
+        // redirect
         console.log(response)
       }
     )
@@ -105,14 +131,25 @@ export default function IndexPage() {
 
   // https://auth0.com/docs/api/authentication#change-password
   const handleChangePassword = values => {
+    setLoading(true)
+    notify({
+      type: 'loading',
+      message: 'Anfrage wird bearbeitet.',
+    })
     webAuth.changePassword(
       {
         connection: 'Username-Password-Authentication',
         email: values.email,
       },
       (error, response) => {
-        console.log(error)
-        console.log(response)
+        setLoading(false)
+        if (error) showError()
+        if (response) {
+          notify({
+            type: 'info',
+            message: 'E-Mail verschickt! Schaue bitte in dein Postfach.',
+          })
+        }
       }
     )
   }
@@ -121,11 +158,21 @@ export default function IndexPage() {
     <Page className="bg-white">
       <FrameFullCenter fullScreen={false}>
         <div className="flex flex-col items-center w-full max-w-sm mx-auto">
-          <SVGNusszopfLogoBig className="w-40 h-full" />
-          {view === Views.signInUp && (
+          <Link type={LinkType.svg} href="https://nusszopf.org" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
+            <SVGNusszopfLogoBig className="w-40 h-full" />
+          </Link>
+          {view === Views.password ? (
+            <ChangePasswordForm
+              loading={loading}
+              className="mt-10 sm:mt-12"
+              onSubmit={handleChangePassword}
+              onCancel={() => setView(Views.signInUp)}
+            />
+          ) : (
             <Tab ariaLabel="Auth Navigation" className="mt-12" labelLeft="Einloggen" labelRight="Registrieren">
               <Tab.Panel>
                 <LoginForm
+                  loading={loading}
                   className="mt-5"
                   onSubmit={handleLogin}
                   onLoginWithGoogle={handleGoogleLogin}
@@ -134,16 +181,9 @@ export default function IndexPage() {
                 />
               </Tab.Panel>
               <Tab.Panel>
-                <SignUpForm className="mt-5" onSubmit={handleSignup} />
+                <SignUpForm loading={loading} className="mt-5" onSubmit={handleSignup} />
               </Tab.Panel>
             </Tab>
-          )}
-          {view === Views.password && (
-            <ChangePasswordForm
-              className="mt-12"
-              onSubmit={handleChangePassword}
-              onCancel={() => setView(Views.signInUp)}
-            />
           )}
         </div>
       </FrameFullCenter>

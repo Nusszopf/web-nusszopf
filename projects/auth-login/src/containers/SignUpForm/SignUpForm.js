@@ -8,7 +8,7 @@ import { Text, Button, Input, Link, Checkbox } from 'ui-library/stories/atoms'
 import { InputGroup } from 'ui-library/stories/molecules'
 import { Eye, EyeOff } from 'react-feather'
 
-const SignUpForm = ({ className, onSubmit }) => {
+const SignUpForm = ({ loading, className, onSubmit }) => {
   const [isEyeOpen, setEye] = useState(false)
   return (
     <div className={classnames('w-full text-gray-500', className)} data-test="signup form">
@@ -35,7 +35,7 @@ const SignUpForm = ({ className, onSubmit }) => {
                 type="username"
                 aria-label="Name"
                 placeholder="Name"
-                disabled={false}
+                disabled={loading}
                 color="whiteGray500"
               />
               <ErrorMessage name="username" style="textSm" className="mt-2 ml-6 italic" component={Text} />
@@ -48,7 +48,7 @@ const SignUpForm = ({ className, onSubmit }) => {
                 type="email"
                 aria-label="E-Mail-Adresse"
                 placeholder="E-Mail-Adresse"
-                disabled={false}
+                disabled={loading}
                 color="whiteGray500"
               />
               <ErrorMessage name="email" style="textSm" className="mt-2 ml-6 italic" component={Text} />
@@ -62,13 +62,17 @@ const SignUpForm = ({ className, onSubmit }) => {
                   value={formikProps.values.password}
                   aria-label="Passwort"
                   placeholder="Passwort"
-                  disabled={false}
+                  disabled={loading}
                   color="whiteGray500"
                   onChange={formikProps.handleChange}
                   onBlur={formikProps.handleBlur}
                 />
                 <InputGroup.RightElement onClick={() => setEye(isEyeOpen => !isEyeOpen)}>
-                  {isEyeOpen ? <Eye size={26} /> : <EyeOff size={26} />}
+                  {isEyeOpen ? (
+                    <Eye size={26} className={classnames({ 'opacity-50': loading })} />
+                  ) : (
+                    <EyeOff size={26} className={classnames({ 'opacity-50': loading })} />
+                  )}
                 </InputGroup.RightElement>
               </InputGroup>
               <ErrorMessage name="password" style="textSm" className="mt-2 ml-6 italic" component={Text} />
@@ -76,6 +80,7 @@ const SignUpForm = ({ className, onSubmit }) => {
             <div className="mt-4">
               <Field
                 as={Checkbox}
+                disabled={loading}
                 checked={formikProps.values.privacy}
                 name="privacy"
                 aria-label="Datenschutzerklärung"
@@ -97,7 +102,7 @@ const SignUpForm = ({ className, onSubmit }) => {
               <ErrorMessage name="privacy" style="textSm" className="mt-2 ml-6 italic" component={Text} />
             </div>
             <div className="mt-6 mb-1 text-center">
-              <Button type="submit" color="whiteGray500">
+              <Button type="submit" color="whiteGray500" disabled={loading}>
                 Registrieren
               </Button>
             </div>
@@ -110,6 +115,7 @@ const SignUpForm = ({ className, onSubmit }) => {
 SignUpForm.propTypes = {
   className: PropTypes.string,
   onSubmit: PropTypes.func,
+  loading: PropTypes.bool,
 }
 
 export default SignUpForm
