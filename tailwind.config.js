@@ -11,6 +11,7 @@ module.exports = {
       './src/containers/**/*.{js,jsx}',
       './src/pages/**/*.{js,jsx}',
       '../ui-library/stories/**/*.{js,jsx}',
+      '../ui-library/services/**/*.{js,jsx}',
       './stories/**/*.{js,jsx}',
     ],
     options: {
