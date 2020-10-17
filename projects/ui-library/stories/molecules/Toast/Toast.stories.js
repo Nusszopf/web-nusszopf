@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Toast from './Toast.molecule'
 import { Button } from '../../atoms'
 import { useToasts, ToastsProvider } from '../../../services/Toasts.service'
+import { ToastType } from './Toast.molecule'
 
 export default {
   title: 'Design System/Molecules/Toast',
@@ -23,7 +24,7 @@ export const NotifyMe = () => {
     return (
       <Button
         onClick={() => {
-          notify({ type: 'info', message: `counter: ${counter}` })
+          notify({ type: ToastType.info, message: `counter: ${counter}` })
           setCounter(counter => counter + 1)
         }}>
         click to notify me!
@@ -38,7 +39,7 @@ export const NotifyMe = () => {
   )
 }
 
-export const Info = () => <Toast id={1} type="info" message="info" onClose={console.log} />
-export const Success = () => <Toast id={2} type="success" message="success" onClose={console.log} />
-export const Error = () => <Toast id={3} type="error" message="error" onClose={console.log} />
-export const Loading = () => <Toast id={4} type="loading" message="loading" onClose={console.log} />
+export const Info = () => <Toast id={1} type={ToastType.info} message="info" onClose={console.log} />
+export const Success = () => <Toast id={2} type={ToastType.success} message="success" onClose={console.log} />
+export const Error = () => <Toast id={3} type={ToastType.error} message="error" onClose={console.log} />
+export const Loading = () => <Toast id={4} type={ToastType.loading} message="loading" onClose={console.log} />
