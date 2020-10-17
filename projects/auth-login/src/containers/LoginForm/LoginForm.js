@@ -56,10 +56,10 @@ const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple, o
               <ErrorMessage name="password" style="textSm" className="mt-2 ml-6 italic" component={Text} />
             </div>
             <div className="mt-5 space-x-4 text-center">
-              <Button type="submit" color="whiteGray500">
-                Anmelden
+              <Button type="submit" color="whiteGray500" className="mb-4">
+                Einloggen
               </Button>
-              <Button color="gray500Gray200" onClick={onForgotPassword}>
+              <Button color="gray500Gray200" onClick={onForgotPassword} className="mb-4">
                 Passwort vergessen
               </Button>
             </div>
@@ -67,24 +67,23 @@ const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple, o
         )}
       </Formik>
       <div>
-        <div className="flex items-center justify-center mt-6">
-          <div className="w-20 h-px mr-3 bg-gray-500" />
+        <div className="flex items-center justify-center mt-2">
+          <div className="w-10 h-px mr-3 bg-gray-500 sm:w-20" />
           <Text className="text-center" style="textSm">
             Oder einloggen mit
           </Text>
-          <div className="w-20 h-px ml-3 bg-gray-500" />
+          <div className="w-10 h-px ml-3 bg-gray-500 sm:w-20" />
         </div>
         <div className="mt-6 text-center">
           <Button
             disabled
             color="gray500Gray200"
-            className="mr-2"
+            className="mr-3 sm:mr-4"
             onClick={onLoginWithApple}
             iconLeft={<SVGAppleLogo className="w-auto h-5 mr-2" />}>
             Apple
           </Button>
           <Button
-            className="ml-2"
             onClick={onLoginWithGoogle}
             color="gray500Gray200"
             iconLeft={<SVGGoogleLogo className="w-auto h-5 mr-2" />}>

@@ -3,9 +3,9 @@ import { LinkType, Link, Text } from 'ui-library/stories/atoms'
 import footerData from './footer.data'
 
 const Footer = () => (
-  <Frame as="footer" className="py-8 text-gray-500 bg-gray-100 sm:py-0">
-    <div className="flex items-center justify-between sm:h-24">
-      <div>
+  <Frame as="footer" className="text-gray-500 bg-gray-100">
+    <div className="flex items-center justify-center h-24 lg:justify-between">
+      <div className="hidden lg:block">
         <Link
           type={LinkType.text}
           href={footerData.home.href}
@@ -17,14 +17,14 @@ const Footer = () => (
           Zum Nusszopf
         </Link>
       </div>
-      <div className="flex items-center ">
-        <Text style="textXs" className="mr-4">
+      <div className="flex items-center">
+        <Text style="textXs" className="hidden mr-6 sm:block">
           Unterstützt von:
         </Text>
         {footerData.sponsors.map((sponsor, index) => (
           <Link
             key={`sponsor-${index}`}
-            className="ml-4"
+            className={index && 'ml-4'}
             type={LinkType.svg}
             href={sponsor.href}
             title={sponsor.meta}
