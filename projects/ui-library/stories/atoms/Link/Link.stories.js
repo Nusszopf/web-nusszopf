@@ -19,13 +19,13 @@ export const Text = () => (
     <Link href="https://nusszopf.org/" border="large" textStyle="textLg" title="title" ariaLabel="ariaLabel">
       external link
     </Link>
-    <Link href="https://nusszopf.org/" color="turquoise400turquoise800" title="title" ariaLabel="ariaLabel">
+    <Link href="https://nusszopf.org/" color="turquoise400Turquoise800" title="title" ariaLabel="ariaLabel">
       external link
     </Link>
-    <Link href="https://nusszopf.org/" color="yellow100red500" title="title" ariaLabel="ariaLabel">
+    <Link href="https://nusszopf.org/" color="yellow100Red500" title="title" ariaLabel="ariaLabel">
       external link
     </Link>
-    <Link href="https://nusszopf.org/" color="yellow300pink700" title="title" ariaLabel="ariaLabel">
+    <Link href="https://nusszopf.org/" color="yellow300Pink700" title="title" ariaLabel="ariaLabel">
       external link
     </Link>
     <Link
@@ -47,7 +47,7 @@ export const SVG = () => (
 )
 
 export const Button = () => (
-  <Link type="button" color="gray600gray200" href="https://nusszopf.org" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
+  <Link type="button" color="gray600Gray200" href="https://nusszopf.org" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
     Link with button styles
   </Link>
 )

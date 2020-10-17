@@ -48,7 +48,7 @@ const NewsletterForm = props => {
             aria-label={newsletterData.subscribe.name.meta}
             placeholder={newsletterData.subscribe.name.meta}
             disabled={loading}
-            color={INPUT_COLORS.yellow300blue400}
+            color={INPUT_COLORS.yellow300Blue400}
           />
           <ErrorMessage
             type={TEXT_TYPE.textSm}
@@ -65,7 +65,7 @@ const NewsletterForm = props => {
             aria-label={newsletterData.subscribe.email.meta}
             placeholder={newsletterData.subscribe.email.meta}
             disabled={loading}
-            color={INPUT_COLORS.yellow300blue400}
+            color={INPUT_COLORS.yellow300Blue400}
           />
           <ErrorMessage
             type={TEXT_TYPE.textSm}

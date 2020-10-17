@@ -5,7 +5,7 @@ import { Square, CheckSquare } from 'react-feather'
 import { Checkbox as ReakitCheckbox } from 'reakit/Checkbox'
 import Text from '../Text/Text.atom'
 
-const Checkbox = ({ disabled = false, checked = false, label, className = 'text-black', ...props }) => (
+const Checkbox = ({ disabled = false, checked = false, label, className, ...props }) => (
   <label>
     <ReakitCheckbox disabled={disabled} checked={checked} className="hidden" {...props} />
     <span

@@ -14,41 +14,51 @@ export const ButtonColor = {
   whiteGray600: {
     clean: '',
     outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--white-gray600',
+    filled: 'nz-btn-filled nz-btn-filled--whiteGray600',
+  },
+  whiteGray500: {
+    clean: '',
+    outline: '',
+    filled: 'nz-btn-filled nz-btn-filled--whiteGray500',
   },
   blue400Yellow300: {
     clean: '',
     outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--blue400-yellow300',
+    filled: 'nz-btn-filled nz-btn-filled--blue400Yellow300',
   },
-  pink400blue700: {
+  pink400Blue700: {
     clean: '',
     outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--pink400-blue700',
+    filled: 'nz-btn-filled nz-btn-filled--pink400Blue700',
   },
-  pink600yellow300: {
+  pink600Yellow300: {
     clean: '',
     outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--pink600-yellow300',
+    filled: 'nz-btn-filled nz-btn-filled--pink600Yellow300',
   },
-  yellow400yellow700: {
+  yellow400Yellow700: {
     clean: '',
     outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--yellow400-yellow700',
+    filled: 'nz-btn-filled nz-btn-filled--yellow400Yellow700',
   },
-  turquoise700turquoise500: {
+  turquoise700Turquoise500: {
     clean: '',
     outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--turquoise-700-turquoise600',
+    filled: 'nz-btn-filled nz-btn-filled--turquoise700Turquoise600',
   },
-  blue400blue200: {
+  blue400Blue200: {
     clean: '',
     outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--blue400-blue200',
+    filled: 'nz-btn-filled nz-btn-filled--blue400Blue200',
   },
-  gray600gray200: {
+  gray600Gray200: {
     clean: '',
     outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--gray600-gray200',
+    filled: 'nz-btn-filled nz-btn-filled--gray600Gray200',
+  },
+  gray500Gray200: {
+    clean: '',
+    outline: '',
+    filled: 'nz-btn-filled nz-btn-filled--gray500Gray200',
   },
 }

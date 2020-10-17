@@ -45,7 +45,7 @@ const Index = () => {
         <div className="flex flex-col max-w-2xl mx-auto xl:max-w-3xl">
           <Text type={TEXT_TYPE.textXl}>{hintData.message}</Text>
           <Button
-            color={BTN_COLORS.yellow400yellow700}
+            color={BTN_COLORS.yellow400Yellow700}
             onClick={() => scrollIntoView('newsletter')}
             label={hintData.action}
             className="self-center mt-10 sm:mt-12"
@@ -107,7 +107,7 @@ const Index = () => {
               <Link
                 href={contestData.infoLink.href}
                 title={contestData.infoLink.meta}
-                color={LINK_TEXT_COLORS.yellow100red500}
+                color={LINK_TEXT_COLORS.yellow100Red500}
                 ariaLabel={contestData.infoLink.meta}>
                 {contestData.infoLink.text}
               </Link>
@@ -159,7 +159,7 @@ const Index = () => {
               <div className="w-full mt-8 text-center lg:text-left">
                 <Link
                   type={LINK_TYPES.buttonSmall}
-                  color={BTN_COLORS.pink400blue700}
+                  color={BTN_COLORS.pink400Blue700}
                   title={fellow.action.meta}
                   ariaLabel={fellow.action.meta}
                   href={fellow.action.href}>

@@ -12,7 +12,7 @@ const NavHeader = ({ router }) => (
       <Route
         className="md:absolute md:top-0 md:left-0 md:-ml-16 md:-mt-1 lg:-ml-24"
         type={ROUTE_TYPES.icon}
-        color={BTN_COLORS.turquoise700turquoise500}
+        color={BTN_COLORS.turquoise700Turquoise500}
         href="/"
         icon={ArrowLeft}
         title={navHeaderData.home.meta}

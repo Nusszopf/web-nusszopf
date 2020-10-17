@@ -12,7 +12,7 @@ import { SVGAppleLogo, SVGGoogleLogo } from '../../assets/images'
 const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple, onForgotPassword }) => {
   const [isEyeOpen, setEye] = useState(false)
   return (
-    <div className={classnames('w-full', className)} data-test="login form">
+    <div className={classnames('w-full text-gray-500', className)} data-test="login form">
       <Formik
         initialValues={{ password: '', emailOrName: '' }}
         onSubmit={onSubmit}
@@ -31,14 +31,9 @@ const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple, o
                 aria-label="E-Mail-Adresse / Name"
                 placeholder="E-Mail-Adresse / Name"
                 disabled={false}
-                color="whiteGray600"
+                color="whiteGray500"
               />
-              <ErrorMessage
-                name="emailOrName"
-                style="textSm"
-                className="mt-2 ml-6 italic text-gray-600"
-                component={Text}
-              />
+              <ErrorMessage name="emailOrName" style="textSm" className="mt-2 ml-6 italic" component={Text} />
             </div>
             <div className="mt-4">
               <InputGroup>
@@ -50,6 +45,7 @@ const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple, o
                   aria-label="Passwort"
                   placeholder="Passwort"
                   disabled={false}
+                  color="whiteGray500"
                   onChange={formikProps.handleChange}
                   onBlur={formikProps.handleBlur}
                 />
@@ -57,16 +53,13 @@ const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple, o
                   {isEyeOpen ? <Eye size={26} /> : <EyeOff size={26} />}
                 </InputGroup.RightElement>
               </InputGroup>
-              <ErrorMessage
-                name="password"
-                style="textSm"
-                className="mt-2 ml-6 italic text-gray-600"
-                component={Text}
-              />
+              <ErrorMessage name="password" style="textSm" className="mt-2 ml-6 italic" component={Text} />
             </div>
             <div className="mt-5 space-x-4 text-center">
-              <Button type="submit">Anmelden</Button>
-              <Button color="gray600gray200" onClick={onForgotPassword}>
+              <Button type="submit" color="whiteGray500">
+                Anmelden
+              </Button>
+              <Button color="gray500Gray200" onClick={onForgotPassword}>
                 Passwort vergessen
               </Button>
             </div>
@@ -75,21 +68,26 @@ const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple, o
       </Formik>
       <div>
         <div className="flex items-center justify-center mt-6">
-          <div className="w-20 h-px mr-3 bg-gray-600" />
+          <div className="w-20 h-px mr-3 bg-gray-500" />
           <Text className="text-center" style="textSm">
             Oder einloggen mit
           </Text>
-          <div className="w-20 h-px ml-3 bg-gray-600" />
+          <div className="w-20 h-px ml-3 bg-gray-500" />
         </div>
         <div className="mt-6 text-center">
           <Button
             disabled
+            color="gray500Gray200"
             className="mr-2"
             onClick={onLoginWithApple}
             iconLeft={<SVGAppleLogo className="w-auto h-5 mr-2" />}>
             Apple
           </Button>
-          <Button className="ml-2" onClick={onLoginWithGoogle} iconLeft={<SVGGoogleLogo className="w-auto h-5 mr-2" />}>
+          <Button
+            className="ml-2"
+            onClick={onLoginWithGoogle}
+            color="gray500Gray200"
+            iconLeft={<SVGGoogleLogo className="w-auto h-5 mr-2" />}>
             Google
           </Button>
         </div>
@@ -97,6 +95,7 @@ const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple, o
     </div>
   )
 }
+
 LoginForm.propTypes = {
   className: PropTypes.string,
   onSubmit: PropTypes.func,

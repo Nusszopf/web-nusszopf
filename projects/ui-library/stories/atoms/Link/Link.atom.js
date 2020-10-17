@@ -20,7 +20,7 @@ const Link = ({
   title,
   type = LinkType.text,
   textStyle = 'textMd',
-  color = 'gray700blue200',
+  color = 'gray700Blue200',
   border = LinkBorder.medium,
   ...props
 }) => {

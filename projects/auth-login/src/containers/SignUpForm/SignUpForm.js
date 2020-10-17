@@ -11,7 +11,7 @@ import { Eye, EyeOff } from 'react-feather'
 const SignUpForm = ({ className, onSubmit }) => {
   const [isEyeOpen, setEye] = useState(false)
   return (
-    <div className={classnames('w-full', className)} data-test="signup form">
+    <div className={classnames('w-full text-gray-500', className)} data-test="signup form">
       <Formik
         initialValues={{ username: '', password: '', email: '', privacy: false }}
         onSubmit={onSubmit}
@@ -36,14 +36,9 @@ const SignUpForm = ({ className, onSubmit }) => {
                 aria-label="Name"
                 placeholder="Name"
                 disabled={false}
-                color="whiteGray600"
+                color="whiteGray500"
               />
-              <ErrorMessage
-                name="username"
-                style="textSm"
-                className="mt-2 ml-6 italic text-gray-600"
-                component={Text}
-              />
+              <ErrorMessage name="username" style="textSm" className="mt-2 ml-6 italic" component={Text} />
             </div>
             <div className="mt-4">
               <Field
@@ -54,9 +49,9 @@ const SignUpForm = ({ className, onSubmit }) => {
                 aria-label="E-Mail-Adresse"
                 placeholder="E-Mail-Adresse"
                 disabled={false}
-                color="whiteGray600"
+                color="whiteGray500"
               />
-              <ErrorMessage name="email" style="textSm" className="mt-2 ml-6 italic text-gray-600" component={Text} />
+              <ErrorMessage name="email" style="textSm" className="mt-2 ml-6 italic" component={Text} />
             </div>
             <div className="mt-4">
               <InputGroup>
@@ -68,6 +63,7 @@ const SignUpForm = ({ className, onSubmit }) => {
                   aria-label="Passwort"
                   placeholder="Passwort"
                   disabled={false}
+                  color="whiteGray500"
                   onChange={formikProps.handleChange}
                   onBlur={formikProps.handleBlur}
                 />
@@ -75,12 +71,7 @@ const SignUpForm = ({ className, onSubmit }) => {
                   {isEyeOpen ? <Eye size={26} /> : <EyeOff size={26} />}
                 </InputGroup.RightElement>
               </InputGroup>
-              <ErrorMessage
-                name="password"
-                style="textSm"
-                className="mt-2 ml-6 italic text-gray-600"
-                component={Text}
-              />
+              <ErrorMessage name="password" style="textSm" className="mt-2 ml-6 italic" component={Text} />
             </div>
             <div className="mt-4">
               <Field
@@ -95,7 +86,7 @@ const SignUpForm = ({ className, onSubmit }) => {
                       href="https://nusszopf.org/privacy"
                       textStyle="textSm"
                       border="small"
-                      color="gray600transparent"
+                      color="gray500Transparent"
                       title="Zum Datenschutz"
                       ariaLabel="Zum Datenschutz">
                       Datenschutzerklärung
@@ -103,10 +94,12 @@ const SignUpForm = ({ className, onSubmit }) => {
                   </>
                 }
               />
-              <ErrorMessage name="privacy" style="textSm" className="mt-2 ml-6 italic text-gray-600" component={Text} />
+              <ErrorMessage name="privacy" style="textSm" className="mt-2 ml-6 italic" component={Text} />
             </div>
             <div className="mt-6 mb-1 text-center">
-              <Button type="submit">Registrieren</Button>
+              <Button type="submit" color="whiteGray500">
+                Registrieren
+              </Button>
             </div>
           </Form>
         )}

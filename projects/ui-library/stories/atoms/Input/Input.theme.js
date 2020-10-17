@@ -5,5 +5,6 @@ export const InputSize = {
 
 export const InputColor = {
   whiteGray600: 'nz-input-whiteGray600',
-  yellow300blue400: 'nz-input-yellow300blue400',
+  whiteGray500: 'nz-input-whiteGray500',
+  yellow300Blue400: 'nz-input-yellow300Blue400',
 }

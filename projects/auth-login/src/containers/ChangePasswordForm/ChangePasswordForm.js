@@ -5,7 +5,7 @@ import { object, string } from 'yup'
 import { Text, Button, Input } from 'ui-library/stories/atoms'
 
 const ChangePasswordForm = ({ className, onSubmit, onCancel }) => (
-  <div className={classnames('w-full', className)} data-test="signup form">
+  <div className={classnames('w-full text-gray-500', className)} data-test="signup form">
     <Text as="h1" style="textXl" className="mb-5 text-center">
       Passwort vergessen
     </Text>
@@ -28,12 +28,16 @@ const ChangePasswordForm = ({ className, onSubmit, onCancel }) => (
             aria-label="E-Mail-Adresse"
             placeholder="E-Mail-Adresse"
             disabled={false}
-            color="whiteGray600"
+            color="whiteGray500"
           />
           <ErrorMessage name="email" style="textSm" className="mt-2 ml-6 italic text-gray-600" component={Text} />
           <div className="mt-6 space-x-4 text-center">
-            <Button type="submit">Senden</Button>
-            <Button onClick={onCancel}>Abbrechen</Button>
+            <Button type="submit" color="whiteGray500">
+              Senden
+            </Button>
+            <Button onClick={onCancel} color="gray500Gray200">
+              Abbrechen
+            </Button>
           </div>
         </Form>
       )}
@@ -44,6 +48,7 @@ const ChangePasswordForm = ({ className, onSubmit, onCancel }) => (
 ChangePasswordForm.propTypes = {
   className: PropTypes.string,
   onSubmit: PropTypes.func,
+  onCancel: PropTypes.func,
 }
 
 export default ChangePasswordForm

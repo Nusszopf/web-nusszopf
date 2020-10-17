@@ -15,7 +15,7 @@ const Tab = ({ ariaLabel, className, children, labelLeft, labelRight }) => {
         <div className={classnames('w-full h-full')}>
           <div
             className={classnames(
-              'border-2 border-gray-600 text-lg font-medium h-full bg-gray-600 transform transition-all duration-200 ease-in-out w-1/2 px-4 py-2',
+              'border-2 border-gray-500 text-lg font-medium h-full bg-gray-500 transform transition-all duration-200 ease-in-out w-1/2 px-4 py-2',
               {
                 'translate-x-full rounded-r-full': getIndex(tab.currentId) === 1,
                 'translate-x-0 rounded-l-full': getIndex(tab.currentId) === 0,
@@ -24,7 +24,7 @@ const Tab = ({ ariaLabel, className, children, labelLeft, labelRight }) => {
         </div>
         <ReakitTabList
           {...tab}
-          className="absolute top-0 left-0 right-0 w-full h-full border-2 border-gray-600 rounded-full "
+          className="absolute top-0 left-0 right-0 w-full h-full text-white border-2 border-gray-500 rounded-full"
           aria-label={ariaLabel}>
           {[labelLeft, labelRight].map((label, index) => (
             <ReakitTab
@@ -32,8 +32,7 @@ const Tab = ({ ariaLabel, className, children, labelLeft, labelRight }) => {
               className={classnames(
                 'w-1/2 px-3 py-2 text-lg transition-colors duration-200 ease-in-out font-medium outline-none focus:outline-none',
                 {
-                  'text-white': getIndex(tab.currentId) === index,
-                  'text-gray-600': getIndex(tab.currentId) !== index,
+                  'text-gray-500': getIndex(tab.currentId) !== index,
                 }
               )}
               {...tab}>

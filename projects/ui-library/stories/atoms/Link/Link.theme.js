@@ -1,9 +1,9 @@
 export const LinkColor = {
-  gray700blue200: 'nz-link-gray700-blue200',
-  yellow100red500: 'nz-link-yellow100-red500',
-  yellow300pink700: 'nz-link-yellow300-pink700',
-  turquoise400turquoise800: 'nz-link-turquoise400-turquoise800',
-  gray600transparent: 'nz-link-gray600-transparent',
+  gray700Blue200: 'nz-link-gray700Blue200',
+  yellow100Red500: 'nz-link-yellow100Red500',
+  yellow300Pink700: 'nz-link-yellow300Pink700',
+  turquoise400Turquoise800: 'nz-linkTurquoise400-turquoise800',
+  gray500Transparent: 'nz-link-gray500Transparent',
 }
 
 export const LinkBorder = {

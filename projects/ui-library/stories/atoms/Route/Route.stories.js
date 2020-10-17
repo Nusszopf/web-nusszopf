@@ -26,7 +26,7 @@ export const Text = () => (
 )
 
 export const Button = () => (
-  <Route type="button" href="/" title="title" ariaLabel="arial label" size="circle" color="gray600gray200">
+  <Route type="button" href="/" title="title" ariaLabel="arial label" size="circle" color="gray600Gray200">
     <ArrowLeft size={27} />
   </Route>
 )

@@ -10,7 +10,7 @@ const Button = ({
   children,
   style = ButtonStyle.filled,
   size = 'base',
-  color = 'gray600gray200',
+  color = 'gray600Gray200',
   as = ReakitButton,
   iconLeft,
   iconRight,

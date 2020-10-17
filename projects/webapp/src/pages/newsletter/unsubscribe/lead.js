@@ -49,7 +49,7 @@ const UnsubscribeLead = () => {
                 aria-label={newsletterData.unsubscribe.email.meta}
                 placeholder={newsletterData.unsubscribe.email.meta}
                 disabled={loading}
-                color={INPUT_COLORS.yellow300blue400}
+                color={INPUT_COLORS.yellow300Blue400}
               />
               <ErrorMessage
                 type={TEXT_TYPE.textSm}

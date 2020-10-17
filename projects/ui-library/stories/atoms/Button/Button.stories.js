@@ -15,12 +15,12 @@ export default {
   },
 }
 
-export const Filled = () => <Button color="gray600gray200">Button</Button>
+export const Filled = () => <Button color="gray600Gray200">Button</Button>
 
 export const Disabled = () => <Button disabled>Button</Button>
 
 export const Circle = () => (
-  <Button size="circle" color="gray600gray200">
+  <Button size="circle" color="gray600Gray200">
     <ArrowLeft size={27} />
   </Button>
 )
@@ -36,7 +36,7 @@ export const IconRight = () => (
 export const As = () => (
   <Button
     as="a"
-    color="gray600gray200"
+    color="gray600Gray200"
     href="https://nusszopf.org"
     rel="noopener noreferrer"
     target="_blank"

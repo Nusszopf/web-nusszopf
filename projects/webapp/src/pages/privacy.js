@@ -30,7 +30,7 @@ const Privacy = () => (
           <Text type={TEXT_TYPE.textSm}>
             {privacyData[2].description[0]}{' '}
             <Link
-              color={LINK_TEXT_COLORS.turquoise400turquoise800}
+              color={LINK_TEXT_COLORS.turquoise400Turquoise800}
               href={privacyData[2].description[1].href}
               title={privacyData[2].description[1].meta}
               ariaLabel={privacyData[2].description[1].meta}>
@@ -77,7 +77,7 @@ const Privacy = () => (
           </Text>
           <Text type={TEXT_TYPE.textSm}>
             <Link
-              color={LINK_TEXT_COLORS.turquoise400turquoise800}
+              color={LINK_TEXT_COLORS.turquoise400Turquoise800}
               href={privacyData[7].description[0].href}
               title={privacyData[7].description[0].meta}
               ariaLabel={privacyData[7].description[0].meta}>
@@ -98,7 +98,7 @@ const Privacy = () => (
           <Text type={TEXT_TYPE.textSm} className="italic">
             {privacyData[9].text}{' '}
             <Link
-              color={LINK_TEXT_COLORS.turquoise400turquoise800}
+              color={LINK_TEXT_COLORS.turquoise400Turquoise800}
               href={privacyData[9].link.href}
               ariaLabel={privacyData[9].link.meta}
               title={privacyData[9].link.meta}>
