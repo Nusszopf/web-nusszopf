@@ -4,7 +4,7 @@ import { useTabState, Tab as ReakitTab, TabList as ReakitTabList, TabPanel as Re
 import classnames from 'classnames'
 
 const Tab = ({ ariaLabel, className, children, labelLeft, labelRight }) => {
-  const tab = useTabState()
+  const tab = useTabState({ baseId: 'panel', currentId: 'panel-1' })
   const getIndex = id => {
     return tab.items.findIndex(item => item.id === id)
   }

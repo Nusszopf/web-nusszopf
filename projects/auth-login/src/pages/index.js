@@ -112,7 +112,7 @@ export default function IndexPage() {
   // https://auth0.com/docs/api/authentication#signup
   const handleSignup = values => {
     setLoading(true)
-    notify({ type: ToastType.loading, message: 'Du wirst registriert.' })
+    notify({ type: ToastType.loading, message: 'Du wirst registriert und eingeloggt.' })
     webAuth.redirect.signupAndLogin(
       {
         connection: 'Username-Password-Authentication',
