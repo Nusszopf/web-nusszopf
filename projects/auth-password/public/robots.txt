@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://auth.password.nusszopf.org/sitemap.xml
