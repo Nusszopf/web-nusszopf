@@ -10,13 +10,6 @@ import { useToasts } from 'ui-library/services/Toasts.service'
 import { ChangePasswordForm, LoginForm, SignUpForm, Page } from '../containers'
 import { SVGNusszopfLogoBig } from '../assets/images'
 
-// done: login, signup, password-request
-// done: refactor components, notifications component, design
-// todo: apple-login, google-login update settings
-// todo: validation password: https://github.com/auth0/password-sheriff oder regex?
-// todo: password reset page -> readme.md
-// todo: at the moment stylesheets, etc. are getting loaded too slow from auth0... -> add css inline
-
 const Views = {
   signInUp: 'signInUp',
   password: 'password',
