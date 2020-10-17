@@ -4,7 +4,7 @@ import { useTabState, Tab as ReakitTab, TabList as ReakitTabList, TabPanel as Re
 import classnames from 'classnames'
 
 const Tab = ({ ariaLabel, className, children, labelLeft, labelRight }) => {
-  const tab = useTabState({ baseId: 'panel', currentId: 'panel-1' })
+  const tab = useTabState({ baseId: 'panel', currentId: 'panel-1', selectedId: 'panel-1' })
   const getIndex = id => {
     return tab.items.findIndex(item => item.id === id)
   }
@@ -44,8 +44,6 @@ const Tab = ({ ariaLabel, className, children, labelLeft, labelRight }) => {
       {React.Children.map(children, (child, index) => (
         <ReakitTabPanel
           key={`panel-${index}`}
-          // animated={true}
-          // animating={getIndex(tab.currentId) === index}
           className={classnames('transition-opacity duration-200 ease-in-out w-full outline-none focus:outline-none', {
             'opacity-100': getIndex(tab.currentId) === index,
             'opacity-0': getIndex(tab.currentId) !== index,
