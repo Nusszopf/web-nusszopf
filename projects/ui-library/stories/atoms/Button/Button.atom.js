@@ -25,6 +25,7 @@ const Button = ({
       ButtonColor[color][style],
       className
     )}
+    disabled={disabled}
     as={as}
     {...props}>
     {iconLeft || iconRight ? (

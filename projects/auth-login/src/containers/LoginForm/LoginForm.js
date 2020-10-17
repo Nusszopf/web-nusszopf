@@ -3,13 +3,10 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import classnames from 'classnames'
 import { object, string } from 'yup'
 import { Text, Button, Input } from 'ui-library/stories/atoms'
+import { SVGAppleLogo, SVGGoogleLogo } from '../../assets/images'
 
-const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple }) => (
+const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple, onForgotPassword }) => (
   <div className={classnames('w-full', className)} data-test="login form">
-    <div className="flex flex-col mb-4 space-y-4">
-      <Button onClick={onLoginWithApple}>Mit Apple anmelden</Button>
-      <Button onClick={onLoginWithGoogle}>Mit Google anmelden</Button>
-    </div>
     <Formik
       initialValues={{ password: '', emailOrName: '' }}
       onSubmit={onSubmit}
@@ -50,13 +47,36 @@ const LoginForm = ({ className, onSubmit, onLoginWithGoogle, onLoginWithApple })
             />
             <ErrorMessage name="password" style="textSm" className="mt-2 ml-6 italic text-gray-600" component={Text} />
           </div>
-          <div className="mt-6 space-x-4 text-center">
+          <div className="mt-5 space-x-4 text-center">
             <Button type="submit">Anmelden</Button>
-            <Button color="gray600gray200">Passwort vergessen</Button>
+            <Button color="gray600gray200" onClick={onForgotPassword}>
+              Passwort vergessen
+            </Button>
           </div>
         </Form>
       )}
     </Formik>
+    <div>
+      <div className="flex items-center justify-center mt-6">
+        <div className="w-20 h-px mr-3 bg-gray-600" />
+        <Text className="text-center" style="textSm">
+          Oder einloggen mit
+        </Text>
+        <div className="w-20 h-px ml-3 bg-gray-600" />
+      </div>
+      <div className="mt-6 text-center">
+        <Button
+          disabled
+          className="mr-2"
+          onClick={onLoginWithApple}
+          iconLeft={<SVGAppleLogo className="w-auto h-5 mr-2" />}>
+          Apple
+        </Button>
+        <Button className="ml-2" onClick={onLoginWithGoogle} iconLeft={<SVGGoogleLogo className="w-auto h-5 mr-2" />}>
+          Google
+        </Button>
+      </div>
+    </div>
   </div>
 )
 
@@ -65,6 +85,7 @@ LoginForm.propTypes = {
   onSubmit: PropTypes.func,
   onLoginWithGoogle: PropTypes.func,
   onLoginWithApple: PropTypes.func,
+  onForgotPassword: PropTypes.func,
 }
 
 export default LoginForm

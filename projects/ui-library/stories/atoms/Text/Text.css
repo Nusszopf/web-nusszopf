@@ -22,6 +22,10 @@
   @apply text-xl font-medium leading-snug;
 }
 
+.nz-text-sm--medium {
+  @apply text-lg font-medium;
+}
+
 .nz-text-sm {
   @apply text-lg;
 }

@@ -4,8 +4,14 @@ import classnames from 'classnames'
 import { object, string } from 'yup'
 import { Text, Button, Input } from 'ui-library/stories/atoms'
 
-const ChangePasswordForm = ({ className, onSubmit }) => (
+const ChangePasswordForm = ({ className, onSubmit, onCancel }) => (
   <div className={classnames('w-full', className)} data-test="signup form">
+    <Text as="h1" style="textXl" className="mb-5 text-center">
+      Passwort vergessen
+    </Text>
+    <Text style="textSmMedium" className="mb-4">
+      Wir senden dir einen Link zu, mit dem du ein neues Passwort setzen kannst.
+    </Text>
     <Formik
       initialValues={{ email: '' }}
       onSubmit={onSubmit}
@@ -14,7 +20,6 @@ const ChangePasswordForm = ({ className, onSubmit }) => (
       })}>
       {formikProps => (
         <Form>
-          <Text className="mb-4">Wir senden dir einen Link zu, mit dem du ein neues Passwort setzen kannst.</Text>
           <Field
             as={Input}
             autoComplete="off"
@@ -27,7 +32,8 @@ const ChangePasswordForm = ({ className, onSubmit }) => (
           />
           <ErrorMessage name="email" style="textSm" className="mt-2 ml-6 italic text-gray-600" component={Text} />
           <div className="mt-6 space-x-4 text-center">
-            <Button type="submit">Absenden</Button>
+            <Button type="submit">Senden</Button>
+            <Button onClick={onCancel}>Abbrechen</Button>
           </div>
         </Form>
       )}

@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import classnames from 'classnames'
-import { object, string } from 'yup'
-import { Text, Button, Input } from 'ui-library/stories/atoms'
+import { object, string, mixed } from 'yup'
+import { Text, Button, Input, Link, Checkbox } from 'ui-library/stories/atoms'
 
 const SignUpForm = ({ className, onSubmit }) => (
   <div className={classnames('w-full', className)} data-test="signup form">
     <Formik
-      initialValues={{ username: '', password: '', email: '' }}
+      initialValues={{ username: '', password: '', email: '', privacy: false }}
       onSubmit={onSubmit}
       validationSchema={object({
         username: string()
@@ -15,6 +15,7 @@ const SignUpForm = ({ className, onSubmit }) => (
           .required('Bitte gib einen Namen ein'),
         email: string().email('Bitte gib eine valide E-Mail-Adresse ein').required('Bitte gib eine E-Mail-Adresse ein'),
         password: string().required('Bitte gib ein Passwort ein'),
+        privacy: mixed().oneOf([true], 'Bitte bestätige die Datenschutzerklärung'),
       })}>
       {formikProps => (
         <Form>
@@ -57,7 +58,28 @@ const SignUpForm = ({ className, onSubmit }) => (
             />
             <ErrorMessage name="password" style="textSm" className="mt-2 ml-6 italic text-gray-600" component={Text} />
           </div>
-          <div className="mt-6 space-x-4 text-center">
+          <div className="mt-4">
+            <Field
+              as={Checkbox}
+              checked={formikProps.values.privacy}
+              name="privacy"
+              aria-label="Datenschutzerklärung"
+              label={
+                <>
+                  Bestätigung der{' '}
+                  <Link
+                    href="https://nusszopf.org/privacy"
+                    textStyle="textSm"
+                    title="Zum Datenschutz"
+                    ariaLabel="Zum Datenschutz">
+                    Datenschutzerklärung
+                  </Link>
+                </>
+              }
+            />
+            <ErrorMessage name="privacy" style="textSm" className="mt-2 ml-6 italic text-gray-600" component={Text} />
+          </div>
+          <div className="mt-6 mb-1 text-center">
             <Button type="submit">Registrieren</Button>
           </div>
         </Form>
