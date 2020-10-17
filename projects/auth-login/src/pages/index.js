@@ -166,7 +166,10 @@ export default function IndexPage() {
               loading={loading}
               className="mt-10 sm:mt-12"
               onSubmit={handleChangePassword}
-              onCancel={() => setView(Views.signInUp)}
+              onCancel={() => {
+                setView(Views.signInUp)
+                window.scrollTo(0, 0)
+              }}
             />
           ) : (
             <Tab ariaLabel="Auth Navigation" className="mt-12" labelLeft="Einloggen" labelRight="Registrieren">
@@ -177,7 +180,10 @@ export default function IndexPage() {
                   onSubmit={handleLogin}
                   onLoginWithGoogle={handleGoogleLogin}
                   onLoginWithApple={handleAppleLogin}
-                  onForgotPassword={() => setView(Views.password)}
+                  onForgotPassword={() => {
+                    setView(Views.password)
+                    window.scrollTo(0, 0)
+                  }}
                 />
               </Tab.Panel>
               <Tab.Panel>
