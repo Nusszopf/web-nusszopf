@@ -8,6 +8,7 @@ import smoothscroll from 'smoothscroll-polyfill'
 require('typeface-barlow')
 
 import '../styles/tailwind.css'
+import { ToastsProvider } from 'ui-library/services/Toasts.service'
 import { useApollo } from '../utils/libs/apolloClient'
 
 let loadingTimer
@@ -39,7 +40,9 @@ export default function NusszopfApp({ Component, pageProps }) {
       </Head>
       <div id="nusszopf" className="flex flex-col h-screen">
         <ApolloProvider client={apolloClient}>
-          <Component {...pageProps} />
+          <ToastsProvider>
+            <Component {...pageProps} />
+          </ToastsProvider>
         </ApolloProvider>
       </div>
     </>

@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import { useToasts } from 'ui-library/services/Toasts.service'
+import { ToastType } from 'ui-library/stories/molecules'
+import { newsletterData } from '../../assets/data'
 
 export const confirmNewsletterSubscription = token => {
   return fetch(`${process.env.DOMAIN}/api/newsletter/subscribe-confirm`, {
@@ -21,31 +24,24 @@ export const confirmNewsletterUnsubscription = token => {
 }
 
 const useNewsletter = () => {
-  const [hasFailed, setFailed] = useState(false)
-  const [isSuccessful, setSuccessful] = useState(false)
+  const { notify } = useToasts()
   const [isLoading, setLoading] = useState(false)
-
-  const handleChange = () => {
-    setLoading(false)
-    setFailed(false)
-    setSuccessful(false)
-  }
 
   const subscribeToNewsletter = async values => {
     await handleRequest(
       { email: values.email, name: values.name, privacy: values.privacy },
-      `${process.env.DOMAIN}/api/newsletter/subscribe`
+      `${process.env.DOMAIN}/api/newsletter/subscribe`,
+      'subscribe'
     )
   }
 
   const unsubscribeFromNewsletter = async values => {
-    await handleRequest({ email: values.email }, `${process.env.DOMAIN}/api/newsletter/unsubscribe`)
+    await handleRequest({ email: values.email }, `${process.env.DOMAIN}/api/newsletter/unsubscribe`, 'unsubscribe')
   }
 
-  const handleRequest = async (values, url) => {
+  const handleRequest = async (values, url, type) => {
     try {
-      setFailed(false)
-      setSuccessful(false)
+      notify({ type: ToastType.loading, message: newsletterData[type].alerts.loading })
       setLoading(true)
       const request = fetch(url, {
         method: 'POST',
@@ -54,12 +50,12 @@ const useNewsletter = () => {
       })
       const response = await delayedFetch(request)
       if (response.ok) {
-        setSuccessful(true)
+        notify({ type: ToastType.success, message: newsletterData[type].alerts.success })
       } else {
-        setFailed(true)
+        notify({ type: ToastType.error, message: newsletterData[type].alerts.error })
       }
     } catch (error) {
-      setFailed(true)
+      notify({ type: ToastType.error, message: newsletterData[type].alerts.error })
     }
     setLoading(false)
   }
@@ -72,9 +68,6 @@ const useNewsletter = () => {
 
   return {
     loading: isLoading,
-    success: isSuccessful,
-    error: hasFailed,
-    handleChange,
     subscribeToNewsletter,
     unsubscribeFromNewsletter,
   }

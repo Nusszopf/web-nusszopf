@@ -3,7 +3,6 @@ import { object, string } from 'yup'
 
 import { Page } from '../../../containers'
 import { Input, Button, Text, RouteType, Route } from 'ui-library/stories/atoms'
-import { Alert, ALERT_TYPES } from 'ui-library/stories/molecules'
 import { FrameFullCenter } from 'ui-library/stories/templates'
 import useNewsletter from '../../../utils/services/newsletter.service'
 import { FOOTER_TYPE } from '../../../containers/Footer/Footer'
@@ -11,7 +10,7 @@ import { SVGNusszopfBigYellowBlue } from '../../../assets/logos'
 import { newsletterData } from '../../../assets/data'
 
 const UnsubscribeLead = () => {
-  const { loading, error, success, handleChange, unsubscribeFromNewsletter } = useNewsletter()
+  const { loading, unsubscribeFromNewsletter } = useNewsletter()
 
   return (
     <Page className="text-yellow-300 bg-blue-400" showFooter={true} footerType={FOOTER_TYPE.secondary} noindex={true}>
@@ -40,7 +39,7 @@ const UnsubscribeLead = () => {
                 .required(newsletterData.unsubscribe.email.errorMessages[1]),
             })}
             onSubmit={unsubscribeFromNewsletter}>
-            <Form onChange={handleChange}>
+            <Form>
               <Field
                 as={Input}
                 autoComplete="off"
@@ -54,19 +53,11 @@ const UnsubscribeLead = () => {
               />
               <ErrorMessage style="textSm" className="mt-2 ml-6 italic text-yellow-100" component={Text} name="email" />
               <div className="mt-12">
-                {error ? (
-                  <Alert type={ALERT_TYPES.error} text={newsletterData.unsubscribe.alerts.error} />
-                ) : success ? (
-                  <Alert type={ALERT_TYPES.success} text={newsletterData.unsubscribe.alerts.success} />
-                ) : loading ? (
-                  <Alert type={ALERT_TYPES.loading} text={newsletterData.unsubscribe.alerts.loading} />
-                ) : (
-                  <div className="text-center">
-                    <Button color="blue400Yellow300" type="submit" size="large">
-                      Abmelden
-                    </Button>
-                  </div>
-                )}
+                <div className="text-center">
+                  <Button color="blue400Yellow300" type="submit" size="large" disabled={loading}>
+                    Abmelden
+                  </Button>
+                </div>
               </div>
             </Form>
           </Formik>

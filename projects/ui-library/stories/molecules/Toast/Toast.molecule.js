@@ -5,7 +5,7 @@ import { Clickable as ReakitClickable } from 'reakit/Clickable'
 import classnames from 'classnames'
 import { Text } from '../../atoms'
 
-const ToastType = {
+export const ToastType = {
   info: 'info',
   error: 'error',
   success: 'success',

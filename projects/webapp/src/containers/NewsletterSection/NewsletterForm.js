@@ -1,14 +1,13 @@
 import { Field, Form, Formik, ErrorMessage } from 'formik'
 import { object, string, mixed } from 'yup'
 import { Route, Button, Input, Text, Checkbox } from 'ui-library/stories/atoms'
-import { Alert, ALERT_TYPES } from 'ui-library/stories/molecules'
 import useNewsletter from '../../utils/services/newsletter.service'
 import { newsletterData } from '../../assets/data'
 
 const MAX_NAME_LEN = 50
 
 const NewsletterForm = props => {
-  const { error, success, loading, subscribeToNewsletter, handleChange } = useNewsletter()
+  const { loading, subscribeToNewsletter } = useNewsletter()
 
   return (
     <Formik
@@ -29,7 +28,7 @@ const NewsletterForm = props => {
       onSubmit={subscribeToNewsletter}
       {...props}>
       {({ values }) => (
-        <Form onChange={handleChange}>
+        <Form>
           <Field
             as={Input}
             size="large"
@@ -80,21 +79,9 @@ const NewsletterForm = props => {
           </div>
           <ErrorMessage style="textSm" className="mt-2 ml-8 italic text-yellow-100" component={Text} name="privacy" />
           <div className="flex justify-center">
-            {!success && !error && !loading ? (
-              <Button color="blue400Yellow300" className="mt-10 sm:mt-12" type="submit" size="large">
-                Anmelden
-              </Button>
-            ) : (
-              <>
-                {error ? (
-                  <Alert className="mt-6" type={ALERT_TYPES.error} text={newsletterData.subscribe.alerts.error} />
-                ) : success ? (
-                  <Alert className="mt-6" type={ALERT_TYPES.success} text={newsletterData.subscribe.alerts.success} />
-                ) : (
-                  <Alert className="mt-6" type={ALERT_TYPES.loading} text={newsletterData.subscribe.alerts.loading} />
-                )}
-              </>
-            )}
+            <Button color="blue400Yellow300" className="mt-10 sm:mt-12" type="submit" size="large" disabled={loading}>
+              Anmelden
+            </Button>
           </div>
         </Form>
       )}
