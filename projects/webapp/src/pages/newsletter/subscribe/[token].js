@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { Page, FOOTER_TYPE } from '../../../containers'
-import { ROUTE_TYPES, Route, Text, TEXT_TYPE } from 'ui-library/stories/atoms'
+import { RouteType, Route, Text } from 'ui-library/stories/atoms'
 import { FrameFullCenter } from 'ui-library/stories/templates'
 import { confirmNewsletterSubscription } from '../../../utils/services/newsletter.service'
 import { SVGNusszopfBigYellowBlue } from '../../../assets/logos'
@@ -11,18 +11,18 @@ const SubscribeConfirm = ({ lead }) => (
     <FrameFullCenter fullScreen={false}>
       <div className="sm:text-center">
         <Route
-          type={ROUTE_TYPES.svg}
+          type={RouteType.svg}
           className="block w-40 mx-auto mb-12 sm:w-48 sm:mb-16"
           href="/"
           title={newsletterData.subscribeConfirm.logo}
           ariaLabel={newsletterData.subscribeConfirm.logo}>
           <SVGNusszopfBigYellowBlue className="flex-shrink-0 w-full" />
         </Route>
-        <Text as="h1" type={TEXT_TYPE.titleMd} className="mb-8">
+        <Text as="h1" style="titleMd" className="mb-8">
           {newsletterData.subscribeConfirm.heading}
         </Text>
         <Text className="hyphens-auto">
-          <span className="italic">{lead.email}</span> {newsletterData.subscribeConfirm.textA}
+          <span className="italic">{lead?.email}</span> {newsletterData.subscribeConfirm.textA}
           <span className="block mt-2">{newsletterData.subscribeConfirm.textB}</span>
         </Text>
       </div>

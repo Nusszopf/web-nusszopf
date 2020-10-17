@@ -17,6 +17,7 @@ const Route = ({
   children,
   href,
   ariaLabel,
+  as = 'span',
   border = RouterBorder.small,
   title,
   className,
@@ -32,7 +33,7 @@ const Route = ({
         <NLink href={href}>
           <a className={classnames('cursor-pointer group', className)} href={href} title={title} aria-label={ariaLabel}>
             <Text
-              as="span"
+              as={as}
               style={textStyle}
               className={classnames(
                 'inline-block',
@@ -78,6 +79,7 @@ const Route = ({
 }
 
 Route.propTypes = {
+  as: PropTypes.string,
   active: PropTypes.bool,
   ariaLabel: PropTypes.string.isRequired,
   border: PropTypes.oneOf(Object.keys(RouterBorder)),

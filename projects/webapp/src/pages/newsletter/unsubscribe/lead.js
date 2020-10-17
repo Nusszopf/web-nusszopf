@@ -2,7 +2,7 @@ import { Field, Form, Formik, ErrorMessage } from 'formik'
 import { object, string } from 'yup'
 
 import { Page } from '../../../containers'
-import { Input, INPUT_COLORS, Button, BTN_COLORS, Text, TEXT_TYPE, ROUTE_TYPES, Route } from 'ui-library/stories/atoms'
+import { Input, Button, Text, RouteType, Route } from 'ui-library/stories/atoms'
 import { Alert, ALERT_TYPES } from 'ui-library/stories/molecules'
 import { FrameFullCenter } from 'ui-library/stories/templates'
 import useNewsletter from '../../../utils/services/newsletter.service'
@@ -18,14 +18,14 @@ const UnsubscribeLead = () => {
       <FrameFullCenter fullScreen={false}>
         <div className="max-w-xl mx-auto">
           <Route
-            type={ROUTE_TYPES.svg}
+            type={RouteType.svg}
             className="block w-40 mx-auto mb-12 sm:w-48 sm:mb-16"
             href="/"
             title={newsletterData.unsubscribe.logo}
             ariaLabel={newsletterData.unsubscribe.logo}>
             <SVGNusszopfBigYellowBlue className="flex-shrink-0 w-full" />
           </Route>
-          <Text as="h1" type={TEXT_TYPE.titleMd} className="mb-8 sm:text-center">
+          <Text as="h1" style="titleMd" className="mb-8 sm:text-center">
             {newsletterData.unsubscribe.heading}
           </Text>
           <Text className="mb-4 hyphens-auto">{newsletterData.unsubscribe.description}</Text>
@@ -44,19 +44,15 @@ const UnsubscribeLead = () => {
               <Field
                 as={Input}
                 autoComplete="off"
+                size="large"
                 name="email"
                 type="email"
                 aria-label={newsletterData.unsubscribe.email.meta}
                 placeholder={newsletterData.unsubscribe.email.meta}
                 disabled={loading}
-                color={INPUT_COLORS.yellow300Blue400}
+                color="yellow300Blue400"
               />
-              <ErrorMessage
-                type={TEXT_TYPE.textSm}
-                className="mt-2 ml-6 italic text-yellow-100"
-                component={Text}
-                name="email"
-              />
+              <ErrorMessage style="textSm" className="mt-2 ml-6 italic text-yellow-100" component={Text} name="email" />
               <div className="mt-12">
                 {error ? (
                   <Alert type={ALERT_TYPES.error} text={newsletterData.unsubscribe.alerts.error} />
@@ -66,7 +62,9 @@ const UnsubscribeLead = () => {
                   <Alert type={ALERT_TYPES.loading} text={newsletterData.unsubscribe.alerts.loading} />
                 ) : (
                   <div className="text-center">
-                    <Button color={BTN_COLORS.blue400Yellow300} type="submit" label="Abmelden" />
+                    <Button color="blue400Yellow300" type="submit" size="large">
+                      Abmelden
+                    </Button>
                   </div>
                 )}
               </div>

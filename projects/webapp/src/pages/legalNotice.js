@@ -1,6 +1,6 @@
 import { Page, PageBrand, NavHeader } from '../containers'
 import { Frame } from 'ui-library/stories/templates'
-import { Link, Text, TEXT_TYPE, LINK_TEXT_COLORS } from 'ui-library/stories/atoms'
+import { Link, Text } from 'ui-library/stories/atoms'
 import { legalNoticeData } from '../assets/data'
 
 const LegalNotice = () => (
@@ -10,17 +10,18 @@ const LegalNotice = () => (
       <div className="max-w-2xl mx-auto">
         {legalNoticeData.list.map((section, index) => (
           <div key={`section-${index}`} className="mb-10">
-            <Text as="h2" type={TEXT_TYPE.titleSmSemi} className="mb-3">
+            <Text as="h2" style="titleSmSemi" className="mb-3">
               {section.title}
             </Text>
-            <Text type={TEXT_TYPE.textSm}>{section.description}</Text>
+            <Text style="textSm">{section.description}</Text>
           </div>
         ))}
         <div>
-          <Text type={TEXT_TYPE.textSm} className="italic">
+          <Text style="textSm" className="italic">
             {legalNoticeData.source.text}{' '}
             <Link
-              color={LINK_TEXT_COLORS.turquoise400Turquoise800}
+              color="turquoise400Turquoise800"
+              textStyle="textSm"
               href={legalNoticeData.source.link.href}
               ariaLabel={legalNoticeData.source.link.meta}
               title={legalNoticeData.source.link.meta}>

@@ -1,16 +1,6 @@
 import { Field, Form, Formik, ErrorMessage } from 'formik'
 import { object, string, mixed } from 'yup'
-import {
-  Route,
-  ROUTE_TEXT_COLORS,
-  Button,
-  BTN_COLORS,
-  Input,
-  INPUT_COLORS,
-  Text,
-  TEXT_TYPE,
-  Checkbox,
-} from 'ui-library/stories/atoms'
+import { Route, Button, Input, Text, Checkbox } from 'ui-library/stories/atoms'
 import { Alert, ALERT_TYPES } from 'ui-library/stories/molecules'
 import useNewsletter from '../../utils/services/newsletter.service'
 import { newsletterData } from '../../assets/data'
@@ -42,22 +32,19 @@ const NewsletterForm = props => {
         <Form onChange={handleChange}>
           <Field
             as={Input}
+            size="large"
             autoComplete="off"
             name="name"
             type="text"
             aria-label={newsletterData.subscribe.name.meta}
             placeholder={newsletterData.subscribe.name.meta}
             disabled={loading}
-            color={INPUT_COLORS.yellow300Blue400}
+            color="yellow300Blue400"
           />
-          <ErrorMessage
-            type={TEXT_TYPE.textSm}
-            className="mt-2 ml-6 italic text-yellow-100"
-            component={Text}
-            name="name"
-          />
+          <ErrorMessage style="textSm" className="mt-2 ml-6 italic text-yellow-100" component={Text} name="name" />
           <Field
             as={Input}
+            size="large"
             className="mt-6"
             autoComplete="off"
             name="email"
@@ -65,14 +52,9 @@ const NewsletterForm = props => {
             aria-label={newsletterData.subscribe.email.meta}
             placeholder={newsletterData.subscribe.email.meta}
             disabled={loading}
-            color={INPUT_COLORS.yellow300Blue400}
+            color="yellow300Blue400"
           />
-          <ErrorMessage
-            type={TEXT_TYPE.textSm}
-            className="mt-2 ml-6 italic text-yellow-100"
-            component={Text}
-            name="email"
-          />
+          <ErrorMessage style="textSm" className="mt-2 ml-6 italic text-yellow-100" component={Text} name="email" />
           <div className="mt-6">
             <Field
               as={Checkbox}
@@ -86,7 +68,7 @@ const NewsletterForm = props => {
                   {newsletterData.subscribe.privacy.label.textA}{' '}
                   <Route
                     className="italic"
-                    color={ROUTE_TEXT_COLORS.yellow300}
+                    color="yellow300"
                     href="/privacy"
                     title={newsletterData.subscribe.privacy.label.meta}
                     ariaLabel={newsletterData.subscribe.privacy.label.meta}>
@@ -96,15 +78,12 @@ const NewsletterForm = props => {
               }
             />
           </div>
-          <ErrorMessage
-            type={TEXT_TYPE.textSm}
-            className="mt-2 ml-8 italic text-yellow-100"
-            component={Text}
-            name="privacy"
-          />
+          <ErrorMessage style="textSm" className="mt-2 ml-8 italic text-yellow-100" component={Text} name="privacy" />
           <div className="flex justify-center">
             {!success && !error && !loading ? (
-              <Button color={BTN_COLORS.blue400Yellow300} className="mt-10 sm:mt-12" type="submit" label="Anmelden" />
+              <Button color="blue400Yellow300" className="mt-10 sm:mt-12" type="submit" size="large">
+                Anmelden
+              </Button>
             ) : (
               <>
                 {error ? (

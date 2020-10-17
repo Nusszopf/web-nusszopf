@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { Page, FOOTER_TYPE } from '../../../containers'
-import { ROUTE_TYPES, Route, Link, LINK_TYPES, Text, TEXT_TYPE, BTN_COLORS } from 'ui-library/stories/atoms'
+import { RouteType, Route, Link, LinkType, Text } from 'ui-library/stories/atoms'
 import { confirmNewsletterUnsubscription } from '../../../utils/services/newsletter.service'
 import { FrameFullCenter } from 'ui-library/stories/templates'
 import { SVGNusszopfBigYellowBlue } from '../../../assets/logos'
@@ -11,25 +11,26 @@ const UnsubscribeConfirm = ({ lead }) => (
     <FrameFullCenter fullScreen={false}>
       <div className="sm:text-center">
         <Route
-          type={ROUTE_TYPES.svg}
+          type={RouteType.svg}
           className="block w-40 mx-auto mb-12 sm:w-48 sm:mb-16"
           href="/"
           title={newsletterData.unsubscribeConfirm.logo}
           ariaLabel={newsletterData.unsubscribeConfirm.logo}>
           <SVGNusszopfBigYellowBlue className="flex-shrink-0 w-full" />
         </Route>
-        <Text as="h1" type={TEXT_TYPE.titleMd} className="mb-8">
+        <Text as="h1" style="titleMd" className="mb-8">
           {newsletterData.unsubscribeConfirm.heading}
           <span className="hidden sm:inline">...</span>
         </Text>
         <Text className="mb-12 sm:mb-16 hyphens-auto">
-          <span className="italic">{lead.email}</span> {newsletterData.unsubscribeConfirm.textA}
+          <span className="italic">{lead?.email}</span> {newsletterData.unsubscribeConfirm.textA}
           <span className="block mt-3">{newsletterData.unsubscribeConfirm.textB}</span>
         </Text>
         <div className="text-center">
           <Link
-            type={LINK_TYPES.button}
-            color={BTN_COLORS.blue400Yellow300}
+            type={LinkType.button}
+            color="blue400Yellow300"
+            size="large"
             title={newsletterData.unsubscribeConfirm.action.meta}
             ariaLabel={newsletterData.unsubscribeConfirm.action.meta}
             href={newsletterData.unsubscribeConfirm.action.href}>
