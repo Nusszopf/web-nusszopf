@@ -15,10 +15,10 @@ const Tab = ({ ariaLabel, className, children, labelLeft, labelRight }) => {
         <div className={classnames('w-full h-full')}>
           <div
             className={classnames(
-              'border-2 border-gray-600 text-lg font-medium rounded-full h-full bg-gray-600 transform transition-transform duration-200 ease-in-out w-1/2 px-4 py-2',
+              'border-2 border-gray-600 text-lg font-medium h-full bg-gray-600 transform transition-all duration-200 ease-in-out w-1/2 px-4 py-2',
               {
-                'translate-x-full': getIndex(tab.currentId) === 1,
-                'translate-x-0': getIndex(tab.currentId) === 0,
+                'translate-x-full rounded-r-full': getIndex(tab.currentId) === 1,
+                'translate-x-0 rounded-l-full': getIndex(tab.currentId) === 0,
               }
             )}></div>
         </div>
