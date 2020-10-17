@@ -16,7 +16,7 @@ export default {
 
 export const Text = () => (
   <div className="space-x-3 space-y-3">
-    <Link href="https://nusszopf.org/" title="title" ariaLabel="ariaLabel">
+    <Link href="https://nusszopf.org/" border="large" textStyle="textLg" title="title" ariaLabel="ariaLabel">
       external link
     </Link>
     <Link href="https://nusszopf.org/" color="turquoise400turquoise800" title="title" ariaLabel="ariaLabel">
@@ -26,6 +26,15 @@ export const Text = () => (
       external link
     </Link>
     <Link href="https://nusszopf.org/" color="yellow300pink700" title="title" ariaLabel="ariaLabel">
+      external link
+    </Link>
+    <Link
+      href="https://nusszopf.org/"
+      color="gray600transparent"
+      title="title"
+      border="small"
+      textStyle="textSm"
+      ariaLabel="ariaLabel">
       external link
     </Link>
   </div>

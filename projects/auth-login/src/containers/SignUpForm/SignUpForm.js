@@ -70,6 +70,8 @@ const SignUpForm = ({ className, onSubmit }) => (
                   <Link
                     href="https://nusszopf.org/privacy"
                     textStyle="textSm"
+                    border="small"
+                    color="gray600transparent"
                     title="Zum Datenschutz"
                     ariaLabel="Zum Datenschutz">
                     Datenschutzerklärung

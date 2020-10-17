@@ -13,3 +13,7 @@
 .nz-link-turquoise400-turquoise800 {
   @apply text-turquoise-400 bg-turquoise-800 border-turquoise-400 group-hover:bg-black;
 }
+
+.nz-link-gray600-transparent {
+  @apply text-gray-600 bg-transparent border-gray-600;
+}
