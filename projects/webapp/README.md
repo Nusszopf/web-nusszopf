@@ -48,16 +48,6 @@ Run `yarn upgrade-interactive --latest`
 
 ---
 
-## VS Code
-
-### Required Plugins
-
-- [Tailwind CSS IntelliSense](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
-- [Headwind](https://marketplace.visualstudio.com/items?itemName=heybourn.headwind)
-- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
-- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
-- [Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
-
 ### Settings
 
 - turn default validations for css/less/sass/tailwind off and let stylelint take care of it (.vscode/settings.json)
@@ -68,22 +58,18 @@ Run `yarn upgrade-interactive --latest`
 
 ```zsh
 +-- /.next
-+-- /.storybook
 +-- /.vercel
-+-- /.vscode
 +-- /docs
 +-- /public
 +-- /scripts
-+-- /sendgrid
 +-- /src
 | +-- /containers
 | +-- /pages
-| +-- /stories
 | +-- /styles
 | +-- /utils
 ```
 
-### Root / .next / .storybook / .vercel / .vscode
+### Root / .next / .storybook / .vercel
 
 All configuration-files for specific libraries and dev-tooling, etc.
 
@@ -99,17 +85,9 @@ Specific folder to Next.js. More informations in the documentation: [Next.js - S
 
 Dev-Tooling and helpers for e.g. automatisation.
 
-### /scripts
-
-E-Mail templates for SendGrid.
-
 ### /src
 
-All the code relevant for the frontend-app, als well the serverless-functions.
-
-#### **src/stories**
-
-All "dumb" UI components, managed and documented via storybook and structured via the atomic-design-pattern.
+All the code relevant for the frontend app, als well the serverless-functions.
 
 #### **src/containers**
 
