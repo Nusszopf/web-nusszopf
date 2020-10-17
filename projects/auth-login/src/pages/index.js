@@ -4,7 +4,7 @@ import { WebAuth } from 'auth0-js'
 import { isEmpty } from 'lodash'
 
 import { FrameFullCenter } from 'ui-library/stories/templates'
-import { Tab } from 'ui-library/stories/molecules'
+import { Tab, ToastType } from 'ui-library/stories/molecules'
 import { Link, LinkType } from 'ui-library/stories/atoms'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import { ChangePasswordForm, LoginForm, SignUpForm, Page } from '../containers'
@@ -52,7 +52,7 @@ export default function IndexPage() {
 
   const showError = () => {
     notify({
-      type: 'error',
+      type: ToastType.error,
       message: 'Sorry, es ist ein Fehler aufgetreten. Bitte versuche es nochmal oder melde dich bei mail@nusszopf.org.',
     })
   }
@@ -60,7 +60,7 @@ export default function IndexPage() {
   // https://auth0.com/docs/api/authentication#login
   const handleLogin = values => {
     setLoading(true)
-    notify({ type: 'loading', message: 'Du wirst einloggt.' })
+    notify({ type: ToastType.loading, message: 'Du wirst einloggt.' })
     webAuth.login(
       {
         realm: 'Username-Password-Authentication',
@@ -78,7 +78,7 @@ export default function IndexPage() {
 
   const handleGoogleLogin = () => {
     setLoading(true)
-    notify({ type: 'loading', message: 'Du wirst einloggt.' })
+    notify({ type: ToastType.loading, message: 'Du wirst einloggt.' })
     webAuth.authorize(
       {
         connection: 'google-oauth2',
@@ -95,7 +95,7 @@ export default function IndexPage() {
   // todo: create auth0-apple connection
   const handleAppleLogin = () => {
     setLoading(true)
-    notify({ type: 'loading', message: 'Du wirst einloggt.' })
+    notify({ type: ToastType.loading, message: 'Du wirst einloggt.' })
     webAuth.authorize(
       {
         connection: 'apple',
@@ -112,7 +112,7 @@ export default function IndexPage() {
   // https://auth0.com/docs/api/authentication#signup
   const handleSignup = values => {
     setLoading(true)
-    notify({ type: 'loading', message: 'Du wirst registriert.' })
+    notify({ type: ToastType.loading, message: 'Du wirst registriert.' })
     webAuth.redirect.signupAndLogin(
       {
         connection: 'Username-Password-Authentication',
@@ -133,7 +133,7 @@ export default function IndexPage() {
   const handleChangePassword = values => {
     setLoading(true)
     notify({
-      type: 'loading',
+      type: ToastType.loading,
       message: 'Anfrage wird bearbeitet.',
     })
     webAuth.changePassword(
@@ -146,7 +146,7 @@ export default function IndexPage() {
         if (error) showError()
         if (response) {
           notify({
-            type: 'info',
+            type: ToastType.success,
             message: 'E-Mail verschickt! Schaue bitte in dein Postfach.',
           })
         }
