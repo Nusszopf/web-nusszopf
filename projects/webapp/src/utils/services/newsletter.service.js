@@ -2,24 +2,25 @@ import { useState } from 'react'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import { ToastType } from 'ui-library/stories/molecules'
 import { newsletterData } from '../../assets/data'
+import { NewsletterType } from '../functions/newsletter.function'
 
 export const confirmNewsletterSubscription = token => {
-  return fetch(`${process.env.DOMAIN}/api/newsletter/subscribe-confirm`, {
+  return fetch(`${process.env.DOMAIN}/api/newsletter`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ token }),
+    body: JSON.stringify({ token, action: NewsletterType.subscribeConfirm }),
   })
 }
 
 export const confirmNewsletterUnsubscription = token => {
-  return fetch(`${process.env.DOMAIN}/api/newsletter/unsubscribe-confirm`, {
+  return fetch(`${process.env.DOMAIN}/api/newsletter`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ token }),
+    body: JSON.stringify({ token, action: NewsletterType.unsubscribeConfirm }),
   })
 }
 
@@ -29,21 +30,20 @@ const useNewsletter = () => {
 
   const subscribeToNewsletter = async values => {
     await handleRequest(
-      { email: values.email, name: values.name, privacy: values.privacy },
-      `${process.env.DOMAIN}/api/newsletter/subscribe`,
+      { email: values.email, name: values.name, privacy: values.privacy, action: NewsletterType.subscribe },
       'subscribe'
     )
   }
 
   const unsubscribeFromNewsletter = async values => {
-    await handleRequest({ email: values.email }, `${process.env.DOMAIN}/api/newsletter/unsubscribe`, 'unsubscribe')
+    await handleRequest({ email: values.email, action: NewsletterType.unsubscribe }, 'unsubscribe')
   }
 
-  const handleRequest = async (values, url, type) => {
+  const handleRequest = async (values, type) => {
     try {
       notify({ type: ToastType.loading, message: newsletterData[type].alerts.loading })
       setLoading(true)
-      const request = fetch(url, {
+      const request = fetch(`${process.env.DOMAIN}/api/newsletter`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(values),

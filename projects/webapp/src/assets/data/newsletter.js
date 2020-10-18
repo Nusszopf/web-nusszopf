@@ -27,7 +27,7 @@ export default {
     alerts: {
       loading: 'Deine Anmeldung wird bearbeitet.',
       error: 'Sorry, es ist ein Fehler aufgetreten. Bitte versuche es nochmal oder melde dich bei mail@nusszopf.org.',
-      success: 'Bitte überprüfe deinen Posteingang und bestätige deine Anmeldung.',
+      success: 'E-Mail verschickt! Bitte bestätige deine Anmeldung.',
     },
   },
   subscribeConfirm: {
@@ -47,7 +47,7 @@ export default {
     alerts: {
       loading: 'Deine Abmeldung wird bearbeitet.',
       error: 'Sorry, es ist ein Fehler aufgetreten. Bitte versuche es nochmal oder melde dich bei mail@nusszopf.org.',
-      success: 'Bitte überprüfe deinen Posteingang und bestätige deine Abmeldung.',
+      success: 'E-Mail verschickt! Bitte bestätige deine Abmeldung.',
     },
   },
   unsubscribeConfirm: {
