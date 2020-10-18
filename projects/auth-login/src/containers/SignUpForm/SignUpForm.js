@@ -16,13 +16,15 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
         initialValues={{ username: '', password: '', email: '', privacy: false }}
         onSubmit={onSubmit}
         validationSchema={object({
-          username: string()
-            .max(15, 'Dein Name sollte zwischen 1 und 15 Zeichen sein')
-            .required('Bitte gib einen Namen ein'),
-          email: string()
-            .email('Bitte gib eine valide E-Mail-Adresse ein')
-            .required('Bitte gib eine E-Mail-Adresse ein'),
-          password: string().required('Bitte gib ein Passwort ein'),
+          username: string().max(15, 'Maximal 15 Zeichen').required('Bitte gib einen Namen ein'),
+          email: string().email('Keine valide E-Mail-Adresse').required('Bitte gib eine E-Mail-Adresse ein'),
+          password: string()
+            .min(8, 'Mindestens 8 Zeichen')
+            .matches(/[a-z]/, 'Mindestens ein Kleinbuchstabe')
+            .matches(/[A-Z]/, 'Mindestens ein Großbuchstabe')
+            .matches(/\d/, 'Mindestens eine Ziffer')
+            .matches(/[!@#$%^&*]/, 'Mindestens ein Sonderzeichen (!@#$%^&*)')
+            .required('Bitte gib ein Passwort ein'),
           privacy: mixed().oneOf([true], 'Bitte bestätige die Datenschutzerklärung'),
         })}>
         {formikProps => (
