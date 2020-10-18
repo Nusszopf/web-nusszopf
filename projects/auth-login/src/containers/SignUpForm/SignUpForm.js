@@ -8,7 +8,7 @@ import { Text, Button, Input, Link, Checkbox } from 'ui-library/stories/atoms'
 import { InputGroup } from 'ui-library/stories/molecules'
 import { Eye, EyeOff } from 'react-feather'
 
-// Password Strength Controls: Dashboard/Authentication/Database/PasswordPolicy
+// Auth0 Password Strength Controls: Dashboard/Authentication/Database/PasswordPolicy
 
 const SignUpForm = ({ loading, className, onSubmit }) => {
   const [isEyeOpen, setEye] = useState(false)

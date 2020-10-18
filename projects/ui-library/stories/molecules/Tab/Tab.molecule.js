@@ -37,7 +37,10 @@ const Tab = ({ className, children, labelLeft, labelRight, initialIndex = 0 }) =
       </div>
       <TabPanels>
         {React.Children.map(children, (child, index) => (
-          <TabPanel key={`panel-${index}`} className="w-full outline-none focus:outline-none">
+          <TabPanel
+            hidden={index !== tabIndex}
+            key={`panel-${index}`}
+            className="w-full outline-none focus:outline-none">
             {child}
           </TabPanel>
         ))}
