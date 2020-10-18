@@ -7,7 +7,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: '**UI molecule** based on [Reakit Tab](https://reakit.io/docs/tab/).',
+        component:
+          '**UI molecule** to switch between two screens. Accessable tab component inspired by [Reakit Tab](https://reakit.io/docs/tab/).',
       },
     },
   },
