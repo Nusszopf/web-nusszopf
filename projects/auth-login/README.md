@@ -14,7 +14,8 @@ Environment to develop and build a custom auth0 login page.
 2. Replace dist/tt.mm.yy.html with tt.mm.yy.html from the output folder of the new vercel build
 3. Replace preload stylesheets with inline stylesheets
 4. Add full path to all `href`, `src` and `url` params
-5. Save new html file in auth0 as custom login page
+5. Minify via [willpeavy.com/tools/minifier/](https://www.willpeavy.com/tools/minifier/)
+6. Save new html file in auth0 as custom login page
 
 ## Notes
 
