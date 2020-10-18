@@ -1,57 +1,48 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import { Tabs, TabList, Tab as ReachTab, TabPanels, TabPanel } from '@reach/tabs'
 
-const Tab = ({ ariaLabel, className, children, labelLeft, labelRight, initialIndex = 0 }) => {
-  const [current, setCurrent] = useState(`panel-${initialIndex}`)
+const Tab = ({ className, children, labelLeft, labelRight, initialIndex = 0 }) => {
+  const [tabIndex, setTabIndex] = useState(initialIndex)
+
+  const handleTabsChange = index => {
+    setTabIndex(index)
+  }
+
   return (
-    <>
+    <Tabs index={tabIndex} onChange={handleTabsChange}>
       <div className={classnames('relative w-full h-12', className)}>
         <div className={classnames('w-full h-full')} aria-hidden="true">
           <div
             className={classnames(
               'border-2 border-gray-500 text-lg font-medium h-full bg-gray-500 transform transition-all duration-200 ease-in-out w-1/2 px-4 py-2',
               {
-                'translate-x-0 rounded-l-full': current === 'panel-0',
-                'translate-x-full rounded-r-full': current === 'panel-1',
+                'translate-x-0 rounded-l-full': tabIndex === 0,
+                'translate-x-full rounded-r-full': tabIndex === 1,
               }
             )}></div>
         </div>
-        <div
-          role="tablist"
-          aria-label={ariaLabel}
-          className="absolute top-0 left-0 right-0 w-full h-full text-white bg-transparent border-2 border-gray-500 rounded-full">
+        <TabList>
           {[labelLeft, labelRight].map((label, index) => (
-            <button
+            <ReachTab
               key={`tab-${index}`}
-              role="tab"
-              aria-selected={current === `panel-${index}`}
-              aria-controls={`panel-${index}`}
-              tabIndex={index}
-              onClick={() => setCurrent(`panel-${index}`)}
-              className={classnames(
-                'w-1/2 px-3 py-2 text-lg transition-colors duration-200 ease-in-out font-medium outline-none focus:outline-none',
-                {
-                  'text-gray-500': current !== `panel-${index}`,
-                }
-              )}>
+              className={classnames({
+                'text-gray-500': tabIndex !== index,
+              })}>
               {label}
-            </button>
+            </ReachTab>
           ))}
-        </div>
+        </TabList>
       </div>
-      {React.Children.map(children, (child, index) => (
-        <div
-          key={`panel-${index}`}
-          role="tabpanel"
-          tabIndex={index}
-          aria-labelledby={`panel-${index}`}
-          hidden={current !== `panel-${index}`}
-          className="w-full outline-none focus:outline-none">
-          {child}
-        </div>
-      ))}
-    </>
+      <TabPanels>
+        {React.Children.map(children, (child, index) => (
+          <TabPanel key={`panel-${index}`} className="w-full outline-none focus:outline-none">
+            {child}
+          </TabPanel>
+        ))}
+      </TabPanels>
+    </Tabs>
   )
 }
 

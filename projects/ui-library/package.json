@@ -11,6 +11,7 @@
 		"build-storybook": "yarn build-storybook"
 	},
 	"dependencies": {
+		"@reach/tabs": "0.11.2",
 		"classnames": "2.2.6",
 		"prop-types": "15.7.2",
 		"react-feather": "2.0.8",

@@ -15,7 +15,7 @@ export default {
 }
 
 export const Default = () => (
-  <Tab ariaLabel="Auth Navigation" labelLeft="Einloggen" labelRight="Registrieren">
+  <Tab labelLeft="Einloggen" labelRight="Registrieren">
     <Tab.Panel>Panel 1</Tab.Panel>
     <Tab.Panel>Panel 2</Tab.Panel>
   </Tab>
