@@ -20,7 +20,7 @@ const Tab = ({ ariaLabel, className, children, labelLeft, labelRight, initialInd
         <div
           role="tablist"
           aria-label={ariaLabel}
-          className="absolute top-0 left-0 right-0 w-full h-full text-white border-2 border-gray-500 rounded-full">
+          className="absolute top-0 left-0 right-0 w-full h-full text-white bg-transparent border-2 border-gray-500 rounded-full">
           {[labelLeft, labelRight].map((label, index) => (
             <button
               key={`tab-${index}`}
