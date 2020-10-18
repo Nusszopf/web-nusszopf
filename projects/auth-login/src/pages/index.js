@@ -46,7 +46,7 @@ export default function IndexPage() {
   const showError = () => {
     notify({
       type: ToastType.error,
-      message: 'Sorry, es ist ein Fehler aufgetreten. Bitte versuche es nochmal oder melde dich bei mail@nusszopf.org.',
+      message: 'Sorry, das hat gerade nicht geklappt.',
     })
   }
 
@@ -54,72 +54,88 @@ export default function IndexPage() {
   const handleLogin = values => {
     setLoading(true)
     notify({ type: ToastType.loading, message: 'Du wirst einloggt.' })
-    webAuth.login(
-      {
-        realm: 'Username-Password-Authentication',
-        username: values.emailOrName,
-        password: values.password,
-      },
-      (error, response) => {
-        setLoading(false)
-        if (error) showError()
-        // redirect
-        console.log(response)
-      }
-    )
+    try {
+      webAuth.login(
+        {
+          realm: 'Username-Password-Authentication',
+          username: values.emailOrName,
+          password: values.password,
+        },
+        (error, response) => {
+          setLoading(false)
+          if (error) showError()
+          // redirect
+        }
+      )
+    } catch (error) {
+      setLoading(false)
+      showError()
+    }
   }
 
   const handleGoogleLogin = () => {
     setLoading(true)
     notify({ type: ToastType.loading, message: 'Du wirst einloggt.' })
-    webAuth.authorize(
-      {
-        connection: 'google-oauth2',
-      },
-      (error, response) => {
-        setLoading(false)
-        if (error) showError()
-        // redirect
-        console.log(response)
-      }
-    )
+    try {
+      webAuth.authorize(
+        {
+          connection: 'google-oauth2',
+        },
+        (error, response) => {
+          setLoading(false)
+          if (error) showError()
+          // redirect
+        }
+      )
+    } catch (error) {
+      setLoading(false)
+      showError()
+    }
   }
 
   // todo: create auth0-apple connection
   const handleAppleLogin = () => {
     setLoading(true)
     notify({ type: ToastType.loading, message: 'Du wirst einloggt.' })
-    webAuth.authorize(
-      {
-        connection: 'apple',
-      },
-      (error, response) => {
-        setLoading(false)
-        if (error) showError()
-        // redirect
-        console.log(response)
-      }
-    )
+    try {
+      webAuth.authorize(
+        {
+          connection: 'apple',
+        },
+        (error, response) => {
+          setLoading(false)
+          if (error) showError()
+          // redirect
+        }
+      )
+    } catch (error) {
+      setLoading(false)
+      showError()
+    }
   }
 
   // https://auth0.com/docs/api/authentication#signup
   const handleSignup = values => {
     setLoading(true)
     notify({ type: ToastType.loading, message: 'Du wirst registriert und eingeloggt.' })
-    webAuth.redirect.signupAndLogin(
-      {
-        connection: 'Username-Password-Authentication',
-        username: values.username,
-        email: values.email,
-        password: values.password,
-      },
-      (error, response) => {
-        setLoading(false)
-        if (error) showError()
-        // redirect
-        console.log(response)
-      }
-    )
+    try {
+      webAuth.redirect.signupAndLogin(
+        {
+          connection: 'Username-Password-Authentication',
+          username: values.username,
+          email: values.email,
+          password: values.password,
+        },
+        (error, response) => {
+          setLoading(false)
+          if (error) showError()
+          // redirect
+        }
+      )
+    } catch (error) {
+      setLoading(false)
+      showError()
+    }
   }
 
   // https://auth0.com/docs/api/authentication#change-password
@@ -129,22 +145,27 @@ export default function IndexPage() {
       type: ToastType.loading,
       message: 'Anfrage wird bearbeitet.',
     })
-    webAuth.changePassword(
-      {
-        connection: 'Username-Password-Authentication',
-        email: values.email,
-      },
-      (error, response) => {
-        setLoading(false)
-        if (error) showError()
-        if (response) {
-          notify({
-            type: ToastType.success,
-            message: 'E-Mail verschickt! Schaue bitte in dein Postfach.',
-          })
+    try {
+      webAuth.changePassword(
+        {
+          connection: 'Username-Password-Authentication',
+          email: values.email,
+        },
+        (error, response) => {
+          setLoading(false)
+          if (error) showError()
+          if (response) {
+            notify({
+              type: ToastType.success,
+              message: 'E-Mail verschickt! Schaue bitte in dein Postfach.',
+            })
+          }
         }
-      }
-    )
+      )
+    } catch (error) {
+      setLoading(false)
+      showError()
+    }
   }
 
   return (
