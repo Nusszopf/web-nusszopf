@@ -8,7 +8,7 @@ export default {
     docs: {
       description: {
         component:
-          '**UI molecule** to switch between two screens. Accessable tab component inspired by [Reakit Tab](https://reakit.io/docs/tab/).',
+          '**UI molecule** based on [ReachUI Tab](https://reach.tech/tabs). `Tab` to switch between two screens only.',
       },
     },
   },

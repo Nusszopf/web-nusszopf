@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { Tabs, TabList, Tab as ReachTab, TabPanels, TabPanel } from '@reach/tabs'
+import {
+  Tabs as ReachTabs,
+  TabList as ReachTabList,
+  Tab as ReachTab,
+  TabPanels as ReachTabPanels,
+  TabPanel as ReachTabPanel,
+} from '@reach/tabs'
 
 const Tab = ({ className, children, labelLeft, labelRight, initialIndex = 0 }) => {
   const [tabIndex, setTabIndex] = useState(initialIndex)
@@ -11,7 +17,7 @@ const Tab = ({ className, children, labelLeft, labelRight, initialIndex = 0 }) =
   }
 
   return (
-    <Tabs index={tabIndex} onChange={handleTabsChange}>
+    <ReachTabs index={tabIndex} onChange={handleTabsChange} className="w-full">
       <div className={classnames('relative w-full h-12', className)}>
         <div className={classnames('w-full h-full')} aria-hidden="true">
           <div
@@ -23,7 +29,7 @@ const Tab = ({ className, children, labelLeft, labelRight, initialIndex = 0 }) =
               }
             )}></div>
         </div>
-        <TabList>
+        <ReachTabList>
           {[labelLeft, labelRight].map((label, index) => (
             <ReachTab
               key={`tab-${index}`}
@@ -33,19 +39,19 @@ const Tab = ({ className, children, labelLeft, labelRight, initialIndex = 0 }) =
               {label}
             </ReachTab>
           ))}
-        </TabList>
+        </ReachTabList>
       </div>
-      <TabPanels>
+      <ReachTabPanels>
         {React.Children.map(children, (child, index) => (
-          <TabPanel
+          <ReachTabPanel
             hidden={index !== tabIndex}
             key={`panel-${index}`}
             className="w-full outline-none focus:outline-none">
             {child}
-          </TabPanel>
+          </ReachTabPanel>
         ))}
-      </TabPanels>
-    </Tabs>
+      </ReachTabPanels>
+    </ReachTabs>
   )
 }
 
