@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { Route, Link, LinkType } from 'ui-library/stories/atoms'
+import { Route, Link } from 'ui-library/stories/atoms'
 import { Frame } from 'ui-library/stories/templates'
 import footerData from './footer.data'
 
@@ -32,7 +32,7 @@ const Footer = ({ type = FOOTER_TYPE.primary }) => (
           </div>
           <div className="flex justify-center h-8 mt-6 sm:mt-0">
             <Link
-              type={LinkType.svg}
+              variant="svg"
               href={footerData.brand.href}
               title={footerData.brand.meta}
               ariaLabel={footerData.brand.meta}>
@@ -52,7 +52,7 @@ const Footer = ({ type = FOOTER_TYPE.primary }) => (
           </div>
           <div>
             <Link
-              type={LinkType.svg}
+              variant="svg"
               href={footerData.brand.href}
               title={footerData.brand.meta}
               ariaLabel={footerData.brand.meta}>

@@ -3,12 +3,12 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { Box as ReakitBox } from 'reakit/Box'
 import { Button as ReakitButton } from 'reakit/Button'
-import { ButtonColor, ButtonSize, ButtonStyle } from './Button.theme'
+import { ButtonColor, ButtonSize, ButtonVariant } from './Button.theme'
 
 const Button = ({
   className,
   children,
-  style = ButtonStyle.filled,
+  variant = ButtonVariant.filled,
   size = 'base',
   color = 'gray600Gray200',
   as = ReakitButton,
@@ -22,7 +22,7 @@ const Button = ({
       'outline-none focus:outline-none',
       { 'opacity-50': disabled, 'cursor-default': disabled, 'cursor-pointer': !disabled },
       ButtonSize[size],
-      ButtonColor[color][style],
+      ButtonColor[color][variant],
       className
     )}
     disabled={disabled}
@@ -50,7 +50,7 @@ Button.propTypes = {
   disabled: PropTypes.bool,
   iconLeft: PropTypes.node,
   iconRight: PropTypes.node,
-  style: PropTypes.oneOf(Object.keys(ButtonStyle)),
+  variant: PropTypes.oneOf(Object.keys(ButtonVariant)),
   size: PropTypes.oneOf(Object.keys(ButtonSize)),
 }
 

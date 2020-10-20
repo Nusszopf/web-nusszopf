@@ -1,4 +1,4 @@
-export const TextStyle = {
+export const TextVariant = {
   titleLg: 'nz-title-lg',
   titleMd: 'nz-title-md',
   titleSm: 'nz-title-sm',

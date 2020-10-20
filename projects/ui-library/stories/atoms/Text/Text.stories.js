@@ -14,9 +14,9 @@ export default {
   },
 }
 
-export const Title_LG = () => <Text style="titleLg">Large Title</Text>
-export const Title_MD = () => <Text style="titleMd">Medium Title</Text>
-export const Title_SM = () => <Text style="titleSm">Small Title</Text>
-export const Text_LG = () => <Text style="textLg">Large Text</Text>
-export const Text_MD = () => <Text style="textMd">Medium Text</Text>
-export const Text_SM = () => <Text style="textSm">Small Text</Text>
+export const Title_LG = () => <Text variant="titleLg">Large Title</Text>
+export const Title_MD = () => <Text variant="titleMd">Medium Title</Text>
+export const Title_SM = () => <Text variant="titleSm">Small Title</Text>
+export const Text_LG = () => <Text variant="textLg">Large Text</Text>
+export const Text_MD = () => <Text variant="textMd">Medium Text</Text>
+export const Text_SM = () => <Text variant="textSm">Small Text</Text>

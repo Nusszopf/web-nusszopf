@@ -6,10 +6,10 @@ import { Text, Button, Input } from 'ui-library/stories/atoms'
 
 const ChangePasswordForm = ({ className, loading, onSubmit, onCancel }) => (
   <div className={classnames('w-full text-gray-500', className)} data-test="signup form">
-    <Text as="h1" style="textXl" className="mb-5 text-center">
+    <Text as="h1" variant="textXl" className="mb-5 text-center">
       Passwort vergessen
     </Text>
-    <Text style="textSmMedium" className="mb-4">
+    <Text variant="textSmMedium" className="mb-4">
       Wir senden dir einen Link zu, mit dem du ein neues Passwort setzen kannst.
     </Text>
     <Formik
@@ -30,7 +30,7 @@ const ChangePasswordForm = ({ className, loading, onSubmit, onCancel }) => (
             disabled={loading}
             color="whiteGray500"
           />
-          <ErrorMessage name="email" style="textSm" className="mt-2 ml-6 italic text-gray-600" component={Text} />
+          <ErrorMessage name="email" variant="textSm" className="mt-2 ml-6 italic text-gray-600" component={Text} />
           <div className="mt-6 space-x-4 text-center">
             <Button type="submit" color="whiteGray500" disabled={loading}>
               Senden

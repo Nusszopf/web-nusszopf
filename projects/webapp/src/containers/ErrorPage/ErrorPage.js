@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { Route, Link, Text, RouteType } from 'ui-library/stories/atoms'
+import { Route, Link, Text } from 'ui-library/stories/atoms'
 import { FrameFullCenter } from 'ui-library/stories/templates'
 import { Page, PageBrand } from '../../containers'
 import errorData from './error.data'
@@ -8,7 +8,7 @@ const ErrorPage = ({ statusCode }) => (
   <Page showFooter={false}>
     <FrameFullCenter className="text-yellow-300 bg-pink-600" brand={<PageBrand className="mt-12 " />}>
       <div className="max-w-xl mx-auto">
-        <Text as="h1" style="titleLg" className="sm:text-center">
+        <Text as="h1" variant="titleLg" className="sm:text-center">
           {statusCode && `${statusCode} – `}
           {errorData.heading}
         </Text>
@@ -25,7 +25,7 @@ const ErrorPage = ({ statusCode }) => (
         </Text>
         <div className="text-center">
           <Route
-            type={RouteType.button}
+            variant="button"
             color="pink600Yellow300"
             size="large"
             className="mt-16"

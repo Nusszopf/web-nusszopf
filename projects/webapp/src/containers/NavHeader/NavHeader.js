@@ -2,7 +2,7 @@ import { withRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import { ArrowLeft } from 'react-feather'
 
-import { Route, RouteType } from 'ui-library/stories/atoms'
+import { Route } from 'ui-library/stories/atoms'
 import { Frame } from 'ui-library/stories/templates'
 import navHeaderData from './navHeader.data'
 
@@ -11,7 +11,7 @@ const NavHeader = ({ router }) => (
     <div className="relative flex items-center max-w-2xl mx-auto">
       <Route
         className="md:absolute md:top-0 md:left-0 md:-ml-16 md:-mt-1 lg:-ml-24"
-        type={RouteType.button}
+        variant="button"
         size="circle"
         color="turquoise700Turquoise500"
         href="/"
@@ -23,7 +23,7 @@ const NavHeader = ({ router }) => (
         className="ml-4 sm:ml-6 md:ml-0"
         textType="text-lg sm:text-xl sm:font-medium sm:leading-snug"
         color="turquoise400"
-        textStyle="textMd"
+        textVariant="textMd"
         href="/legalNotice"
         as={router?.route === '/legalNotice' ? 'h1' : 'h3'}
         title={navHeaderData.legalNotice.meta}
@@ -34,7 +34,7 @@ const NavHeader = ({ router }) => (
       <Route
         className="ml-4 sm:ml-6"
         color="turquoise400"
-        textStyle="textMd"
+        textVariant="textMd"
         textType="text-lg sm:text-xl sm:font-medium sm:leading-snug"
         href="/privacy"
         as={router?.route === '/privacy' ? 'h1' : 'h3'}

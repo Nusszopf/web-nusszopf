@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useToasts } from 'ui-library/services/Toasts.service'
-import { ToastType } from 'ui-library/stories/molecules'
 import { newsletterData } from '../../assets/data'
 import { NewsletterType } from '../functions/newsletter.function'
 
@@ -41,7 +40,7 @@ const useNewsletter = () => {
 
   const handleRequest = async (values, type) => {
     try {
-      notify({ type: ToastType.loading, message: newsletterData[type].alerts.loading })
+      notify({ type: 'loading', message: newsletterData[type].alerts.loading })
       setLoading(true)
       const request = fetch(`${process.env.DOMAIN}/api/newsletter`, {
         method: 'POST',
@@ -50,12 +49,12 @@ const useNewsletter = () => {
       })
       const response = await delayedFetch(request)
       if (response.ok) {
-        notify({ type: ToastType.success, message: newsletterData[type].alerts.success })
+        notify({ type: 'success', message: newsletterData[type].alerts.success })
       } else {
-        notify({ type: ToastType.error, message: newsletterData[type].alerts.error })
+        notify({ type: 'error', message: newsletterData[type].alerts.error })
       }
     } catch (error) {
-      notify({ type: ToastType.error, message: newsletterData[type].alerts.error })
+      notify({ type: 'error', message: newsletterData[type].alerts.error })
     }
     setLoading(false)
   }

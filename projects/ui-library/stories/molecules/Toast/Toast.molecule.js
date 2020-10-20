@@ -4,13 +4,7 @@ import { Loader, CheckCircle, Info, X, XCircle } from 'react-feather'
 import { Clickable as ReakitClickable } from 'reakit/Clickable'
 import classnames from 'classnames'
 import { Text } from '../../atoms'
-
-export const ToastType = {
-  info: 'info',
-  error: 'error',
-  success: 'success',
-  loading: 'loading',
-}
+import { ToastVariant } from './Toast.theme'
 
 const Toast = ({ message, className, type, id, onClose, ...props }) => (
   <ReakitClickable
@@ -21,11 +15,11 @@ const Toast = ({ message, className, type, id, onClose, ...props }) => (
     )}
     {...props}>
     <div className="flex items-start">
-      {type === ToastType.info && <Info className="flex-shrink-0 mr-2" size={25} />}
-      {type === ToastType.error && <XCircle className="flex-shrink-0 mr-2" size={25} />}
-      {type === ToastType.success && <CheckCircle className="flex-shrink-0 mr-2" size={25} />}
-      {type === ToastType.loading && <Loader className="flex-shrink-0 mr-2 animate-spin" size={25} />}
-      <Text style="textSm" className="leading-snug text-left" as="span">
+      {type === ToastVariant.info && <Info className="flex-shrink-0 mr-2" size={25} />}
+      {type === ToastVariant.error && <XCircle className="flex-shrink-0 mr-2" size={25} />}
+      {type === ToastVariant.success && <CheckCircle className="flex-shrink-0 mr-2" size={25} />}
+      {type === ToastVariant.loading && <Loader className="flex-shrink-0 mr-2 animate-spin" size={25} />}
+      <Text variant="textSm" className="leading-snug text-left" as="span">
         {message}
       </Text>
     </div>
@@ -38,7 +32,7 @@ Toast.propTypes = {
   onClose: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(Object.keys(ToastType)).isRequired,
+  type: PropTypes.oneOf(Object.keys(ToastVariant)).isRequired,
 }
 
 export default Toast

@@ -1,3 +1,9 @@
+export const LinkVariant = {
+  button: 'button',
+  text: 'text',
+  svg: 'svg',
+}
+
 export const LinkColor = {
   gray700Blue200: 'nz-link-gray700Blue200',
   yellow100Red500: 'nz-link-yellow100Red500',

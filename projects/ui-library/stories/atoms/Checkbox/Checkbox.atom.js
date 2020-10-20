@@ -15,7 +15,7 @@ const Checkbox = ({ disabled = false, checked = false, label, className, ...prop
       })}>
       {!checked && <Square className={classnames('mt-px', className)} />}
       {checked && <CheckSquare className={classnames('mt-px', className)} />}
-      <Text as="span" style="textSm" className={classnames('ml-2', className)}>
+      <Text as="span" variant="textSm" className={classnames('ml-2', className)}>
         {label}
       </Text>
     </span>

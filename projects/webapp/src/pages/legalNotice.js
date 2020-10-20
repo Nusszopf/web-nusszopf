@@ -10,18 +10,18 @@ const LegalNotice = () => (
       <div className="max-w-2xl mx-auto">
         {legalNoticeData.list.map((section, index) => (
           <div key={`section-${index}`} className="mb-10">
-            <Text as="h2" style="titleSmSemi" className="mb-3">
+            <Text as="h2" variant="titleSmSemi" className="mb-3">
               {section.title}
             </Text>
-            <Text style="textSm">{section.description}</Text>
+            <Text variant="textSm">{section.description}</Text>
           </div>
         ))}
         <div>
-          <Text style="textSm" className="italic">
+          <Text variant="textSm" className="italic">
             {legalNoticeData.source.text}{' '}
             <Link
               color="turquoise400Turquoise800"
-              textStyle="textSm"
+              textVariant="textSm"
               href={legalNoticeData.source.link.href}
               ariaLabel={legalNoticeData.source.link.meta}
               title={legalNoticeData.source.link.meta}>

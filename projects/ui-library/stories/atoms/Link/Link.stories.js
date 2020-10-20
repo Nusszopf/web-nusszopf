@@ -16,7 +16,7 @@ export default {
 
 export const Text = () => (
   <div className="space-x-3 space-y-3">
-    <Link href="https://nusszopf.org/" border="large" textStyle="textLg" title="title" ariaLabel="ariaLabel">
+    <Link href="https://nusszopf.org/" border="large" textVariant="textLg" title="title" ariaLabel="ariaLabel">
       external link
     </Link>
     <Link href="https://nusszopf.org/" color="turquoise400Turquoise800" title="title" ariaLabel="ariaLabel">
@@ -33,7 +33,7 @@ export const Text = () => (
       color="gray600transparent"
       title="title"
       border="small"
-      textStyle="textSm"
+      textVariant="textSm"
       ariaLabel="ariaLabel">
       external link
     </Link>
@@ -41,13 +41,18 @@ export const Text = () => (
 )
 
 export const SVG = () => (
-  <Link type="svg" href="https://nusszopf.org" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
+  <Link variant="svg" href="https://nusszopf.org" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
     <SVGNusszopfLogoBig className="w-32 h-full" />
   </Link>
 )
 
 export const Button = () => (
-  <Link type="button" color="gray600Gray200" href="https://nusszopf.org" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
+  <Link
+    variant="button"
+    color="gray600Gray200"
+    href="https://nusszopf.org"
+    title="Zum Nusszopf"
+    ariaLabel="Zum Nusszopf">
     Link with button styles
   </Link>
 )

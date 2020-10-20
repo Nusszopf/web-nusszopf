@@ -3,15 +3,9 @@ import PropTypes from 'prop-types'
 import NLink from 'next/link'
 import classnames from 'classnames'
 import { Text, Button } from '../../atoms'
-import { TextStyle } from '../Text/Text.theme'
+import { TextVariant } from '../Text/Text.theme'
 import { ButtonColor } from '../Button/Button.theme'
-import { RouterBorder, RouteColor } from './Route.theme'
-
-export const RouteType = {
-  text: 'text',
-  button: 'button',
-  svg: 'svg',
-}
+import { RouterBorder, RouteColor, RouteVariant } from './Route.theme'
 
 const Route = ({
   children,
@@ -21,20 +15,20 @@ const Route = ({
   border = RouterBorder.small,
   title,
   className,
-  textStyle = 'textSm',
+  textVariant = 'textSm',
   active = false,
-  type = 'text',
+  variant = RouteVariant.text,
   color = 'gray700',
   ...props
 }) => {
-  switch (type) {
-    case RouteType.text: {
+  switch (variant) {
+    case RouteVariant.text: {
       return (
         <NLink href={href}>
           <a className={classnames('cursor-pointer group', className)} href={href} title={title} aria-label={ariaLabel}>
             <Text
               as={as}
-              style={textStyle}
+              variant={textVariant}
               className={classnames(
                 'inline-block',
                 {
@@ -51,7 +45,7 @@ const Route = ({
         </NLink>
       )
     }
-    case RouteType.svg: {
+    case RouteVariant.svg: {
       return (
         <NLink href={href}>
           <a className={classnames('cursor-pointer', className)} href={href} title={title} aria-label={ariaLabel}>
@@ -60,7 +54,7 @@ const Route = ({
         </NLink>
       )
     }
-    case RouteType.button: {
+    case RouteVariant.button: {
       return (
         <NLink href={href}>
           <Button
@@ -87,9 +81,9 @@ Route.propTypes = {
   color: PropTypes.oneOf([...Object.keys(RouteColor), ...Object.keys(ButtonColor)]),
   className: PropTypes.string,
   href: PropTypes.string.isRequired,
-  textStyle: PropTypes.oneOf(Object.keys(TextStyle)),
+  textVariant: PropTypes.oneOf(Object.keys(TextVariant)),
   title: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(Object.keys(RouteType)),
+  variant: PropTypes.oneOf(Object.keys(RouteVariant)),
 }
 
 export default Route

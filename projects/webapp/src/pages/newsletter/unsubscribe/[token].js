@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import { Page, FOOTER_TYPE } from '../../../containers'
-import { RouteType, Route, Link, LinkType, Text } from 'ui-library/stories/atoms'
+import { Route, Link, Text } from 'ui-library/stories/atoms'
 import { confirmNewsletterUnsubscription } from '../../../utils/services/newsletter.service'
 import { FrameFullCenter } from 'ui-library/stories/templates'
 import { SVGNusszopfBigYellowBlue } from '../../../assets/logos'
@@ -11,14 +11,14 @@ const UnsubscribeConfirm = ({ lead }) => (
     <FrameFullCenter fullScreen={false}>
       <div className="sm:text-center">
         <Route
-          type={RouteType.svg}
+          variant="svg"
           className="block w-40 mx-auto mb-12 sm:w-48 sm:mb-16"
           href="/"
           title={newsletterData.unsubscribeConfirm.logo}
           ariaLabel={newsletterData.unsubscribeConfirm.logo}>
           <SVGNusszopfBigYellowBlue className="flex-shrink-0 w-full" />
         </Route>
-        <Text as="h1" style="titleMd" className="mb-8">
+        <Text as="h1" variant="titleMd" className="mb-8">
           {newsletterData.unsubscribeConfirm.heading}
           <span className="hidden sm:inline">...</span>
         </Text>
@@ -28,7 +28,7 @@ const UnsubscribeConfirm = ({ lead }) => (
         </Text>
         <div className="text-center">
           <Link
-            type={LinkType.button}
+            variant="button"
             color="blue400Yellow300"
             size="large"
             title={newsletterData.unsubscribeConfirm.action.meta}

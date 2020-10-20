@@ -40,7 +40,7 @@ const NewsletterForm = props => {
             disabled={loading}
             color="yellow300Blue400"
           />
-          <ErrorMessage style="textSm" className="mt-2 ml-6 italic text-yellow-100" component={Text} name="name" />
+          <ErrorMessage variant="textSm" className="mt-2 ml-6 italic text-yellow-100" component={Text} name="name" />
           <Field
             as={Input}
             size="large"
@@ -53,7 +53,7 @@ const NewsletterForm = props => {
             disabled={loading}
             color="yellow300Blue400"
           />
-          <ErrorMessage style="textSm" className="mt-2 ml-6 italic text-yellow-100" component={Text} name="email" />
+          <ErrorMessage variant="textSm" className="mt-2 ml-6 italic text-yellow-100" component={Text} name="email" />
           <div className="mt-6">
             <Field
               as={Checkbox}
@@ -77,7 +77,7 @@ const NewsletterForm = props => {
               }
             />
           </div>
-          <ErrorMessage style="textSm" className="mt-2 ml-8 italic text-yellow-100" component={Text} name="privacy" />
+          <ErrorMessage variant="textSm" className="mt-2 ml-8 italic text-yellow-100" component={Text} name="privacy" />
           <div className="flex justify-center">
             <Button color="blue400Yellow300" className="mt-10 sm:mt-12" type="submit" size="large" disabled={loading}>
               Anmelden

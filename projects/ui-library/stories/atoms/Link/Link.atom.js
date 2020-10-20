@@ -3,14 +3,8 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { Button, Text } from '../../atoms'
 import { ButtonColor } from '../Button/Button.theme'
-import { TextStyle } from '../Text/Text.theme'
-import { LinkColor, LinkBorder } from './Link.theme'
-
-export const LinkType = {
-  button: 'button',
-  text: 'text',
-  svg: 'svg',
-}
+import { TextVariant } from '../Text/Text.theme'
+import { LinkColor, LinkBorder, LinkVariant } from './Link.theme'
 
 const Link = ({
   children,
@@ -18,14 +12,14 @@ const Link = ({
   ariaLabel,
   className,
   title,
-  type = LinkType.text,
-  textStyle = 'textMd',
+  variant = LinkVariant.text,
+  textVariant = 'textMd',
   color = 'gray700Blue200',
   border = LinkBorder.medium,
   ...props
 }) => {
-  switch (type) {
-    case LinkType.text: {
+  switch (variant) {
+    case LinkVariant.text: {
       return (
         <a
           className={classnames('cursor-pointer group', className)}
@@ -37,7 +31,7 @@ const Link = ({
           {...props}>
           <Text
             as="span"
-            style={textStyle}
+            variant={textVariant}
             className={classnames(
               'inline-block',
               {
@@ -52,7 +46,7 @@ const Link = ({
         </a>
       )
     }
-    case LinkType.svg: {
+    case LinkVariant.svg: {
       return (
         <a
           className={classnames('cursor-pointer', className)}
@@ -66,12 +60,12 @@ const Link = ({
         </a>
       )
     }
-    case LinkType.button: {
+    case LinkVariant.button: {
       return (
         <Button
           as="a"
           color={color}
-          className={classnames('cursor-pointer', className)}
+          className={classnames('inline-block cursor-pointer', className)}
           href={href}
           rel="noopener noreferrer"
           target="_blank"
@@ -93,8 +87,8 @@ Link.propTypes = {
   children: PropTypes.node,
   href: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(Object.keys(LinkType)),
-  textStyle: PropTypes.oneOf(Object.keys(TextStyle)),
+  variant: PropTypes.oneOf(Object.keys(LinkVariant)),
+  textVariant: PropTypes.oneOf(Object.keys(TextVariant)),
 }
 
 export default Link

@@ -4,8 +4,8 @@ import { WebAuth } from 'auth0-js'
 import { isEmpty } from 'lodash'
 
 import { FrameFullCenter } from 'ui-library/stories/templates'
-import { Tab, ToastType } from 'ui-library/stories/molecules'
-import { Link, LinkType } from 'ui-library/stories/atoms'
+import { Tab } from 'ui-library/stories/molecules'
+import { Link } from 'ui-library/stories/atoms'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import { ChangePasswordForm, LoginForm, SignUpForm, Page } from '../containers'
 import { SVGNusszopfLogoBig } from '../assets/images'
@@ -45,7 +45,7 @@ export default function IndexPage() {
 
   const showError = () => {
     notify({
-      type: ToastType.error,
+      type: 'error',
       message: 'Sorry, das hat gerade nicht geklappt.',
     })
   }
@@ -53,7 +53,7 @@ export default function IndexPage() {
   // https://auth0.com/docs/api/authentication#login
   const handleLogin = values => {
     setLoading(true)
-    notify({ type: ToastType.loading, message: 'Du wirst einloggt.' })
+    notify({ type: 'loading', message: 'Du wirst einloggt.' })
     try {
       webAuth.login(
         {
@@ -75,7 +75,7 @@ export default function IndexPage() {
 
   const handleGoogleLogin = () => {
     setLoading(true)
-    notify({ type: ToastType.loading, message: 'Du wirst einloggt.' })
+    notify({ type: 'loading', message: 'Du wirst einloggt.' })
     try {
       webAuth.authorize(
         {
@@ -96,7 +96,7 @@ export default function IndexPage() {
   // todo: create auth0-apple connection
   const handleAppleLogin = () => {
     setLoading(true)
-    notify({ type: ToastType.loading, message: 'Du wirst einloggt.' })
+    notify({ type: 'loading', message: 'Du wirst einloggt.' })
     try {
       webAuth.authorize(
         {
@@ -117,7 +117,7 @@ export default function IndexPage() {
   // https://auth0.com/docs/api/authentication#signup
   const handleSignup = values => {
     setLoading(true)
-    notify({ type: ToastType.loading, message: 'Du wirst registriert und eingeloggt.' })
+    notify({ type: 'loading', message: 'Du wirst registriert und eingeloggt.' })
     try {
       webAuth.redirect.signupAndLogin(
         {
@@ -142,7 +142,7 @@ export default function IndexPage() {
   const handleChangePassword = values => {
     setLoading(true)
     notify({
-      type: ToastType.loading,
+      type: 'loading',
       message: 'Anfrage wird bearbeitet.',
     })
     try {
@@ -156,7 +156,7 @@ export default function IndexPage() {
           if (error) showError()
           if (response) {
             notify({
-              type: ToastType.success,
+              type: 'success',
               message: 'E-Mail verschickt! Schaue bitte in dein Postfach.',
             })
           }
@@ -172,7 +172,7 @@ export default function IndexPage() {
     <Page className="bg-white">
       <FrameFullCenter fullScreen={false}>
         <div className="flex flex-col items-center w-full max-w-sm mx-auto">
-          <Link type={LinkType.svg} href="https://nusszopf.org" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
+          <Link variant="svg" href="https://nusszopf.org" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
             <SVGNusszopfLogoBig className="w-40 h-full" />
           </Link>
           {view === Views.password ? (

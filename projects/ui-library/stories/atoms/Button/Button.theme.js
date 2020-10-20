@@ -1,4 +1,4 @@
-export const ButtonStyle = {
+export const ButtonVariant = {
   clean: 'clean',
   outline: 'outline',
   filled: 'filled',

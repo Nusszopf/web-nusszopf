@@ -33,7 +33,7 @@ const LoginForm = ({ className, loading, onSubmit, onLoginWithGoogle, onLoginWit
                 disabled={loading}
                 color="whiteGray500"
               />
-              <ErrorMessage name="emailOrName" style="textSm" className="mt-2 ml-6 italic" component={Text} />
+              <ErrorMessage name="emailOrName" variant="textSm" className="mt-2 ml-6 italic" component={Text} />
             </div>
             <div className="mt-4">
               <InputGroup>
@@ -57,7 +57,7 @@ const LoginForm = ({ className, loading, onSubmit, onLoginWithGoogle, onLoginWit
                   )}
                 </InputGroup.RightElement>
               </InputGroup>
-              <ErrorMessage name="password" style="textSm" className="mt-2 ml-6 italic" component={Text} />
+              <ErrorMessage name="password" variant="textSm" className="mt-2 ml-6 italic" component={Text} />
             </div>
             <div className="mt-5 space-x-4 text-center">
               <Button type="submit" color="whiteGray500" className="mb-4" disabled={loading}>
@@ -73,7 +73,7 @@ const LoginForm = ({ className, loading, onSubmit, onLoginWithGoogle, onLoginWit
       <div>
         <div className="flex items-center justify-center mt-2">
           <div className="w-10 h-px mr-3 bg-gray-500 sm:w-20" />
-          <Text className="text-center" style="textSm">
+          <Text className="text-center" variant="textSm">
             Oder einloggen mit
           </Text>
           <div className="w-10 h-px ml-3 bg-gray-500 sm:w-20" />

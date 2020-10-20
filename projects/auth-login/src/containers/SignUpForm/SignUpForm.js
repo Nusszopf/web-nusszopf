@@ -42,7 +42,7 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                 disabled={loading}
                 color="whiteGray500"
               />
-              <ErrorMessage name="username" style="textSm" className="mt-2 ml-6 italic" component={Text} />
+              <ErrorMessage name="username" variant="textSm" className="mt-2 ml-6 italic" component={Text} />
             </div>
             <div className="mt-4">
               <Field
@@ -55,7 +55,7 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                 disabled={loading}
                 color="whiteGray500"
               />
-              <ErrorMessage name="email" style="textSm" className="mt-2 ml-6 italic" component={Text} />
+              <ErrorMessage name="email" variant="textSm" className="mt-2 ml-6 italic" component={Text} />
             </div>
             <div className="mt-4">
               <InputGroup>
@@ -79,7 +79,7 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                   )}
                 </InputGroup.RightElement>
               </InputGroup>
-              <ErrorMessage name="password" style="textSm" className="mt-2 ml-6 italic" component={Text} />
+              <ErrorMessage name="password" variant="textSm" className="mt-2 ml-6 italic" component={Text} />
             </div>
             <div className="mt-4">
               <Field
@@ -93,7 +93,7 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                     Bestätigung der{' '}
                     <Link
                       href="https://nusszopf.org/privacy"
-                      textStyle="textSm"
+                      textVariant="textSm"
                       border="small"
                       color="gray500Transparent"
                       title="Zum Datenschutz"
@@ -103,7 +103,7 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                   </>
                 }
               />
-              <ErrorMessage name="privacy" style="textSm" className="mt-2 ml-6 italic" component={Text} />
+              <ErrorMessage name="privacy" variant="textSm" className="mt-2 ml-6 italic" component={Text} />
             </div>
             <div className="mt-6 mb-1 text-center">
               <Button type="submit" color="whiteGray500" disabled={loading}>

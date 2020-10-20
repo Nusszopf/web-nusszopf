@@ -1,5 +1,11 @@
 import classnames from 'classnames'
 
+export const RouteVariant = {
+  text: 'text',
+  button: 'button',
+  svg: 'svg',
+}
+
 export const RouterBorder = {
   small: 'small',
   medium: 'medium',
