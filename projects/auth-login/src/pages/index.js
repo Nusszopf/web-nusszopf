@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { WebAuth } from 'auth0-js'
 import { isEmpty } from 'lodash'
 
-import { FrameFullCenter } from 'ui-library/stories/templates'
+import { Frame } from 'ui-library/stories/templates'
 import { Tab } from 'ui-library/stories/molecules'
 import { Link } from 'ui-library/stories/atoms'
 import { useToasts } from 'ui-library/services/Toasts.service'
@@ -169,9 +169,9 @@ export default function IndexPage() {
   }
 
   return (
-    <Page className="bg-white">
-      <FrameFullCenter fullScreen={false}>
-        <div className="flex flex-col items-center w-full max-w-sm mx-auto">
+    <Page className="bg-white sm:bg-gray-100">
+      <Frame fluid className="mt-12 mb-12 sm:mt-16">
+        <div className="flex flex-col items-center w-full max-w-md mx-auto bg-white rounded-lg sm:px-12 sm:py-16">
           <Link variant="svg" href="https://nusszopf.org" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
             <SVGNusszopfLogoBig className="w-40 h-full" />
           </Link>
@@ -186,7 +186,12 @@ export default function IndexPage() {
               }}
             />
           ) : (
-            <Tab ariaLabel="Auth Navigation" className="mt-12" labelLeft="Einloggen" labelRight="Registrieren">
+            <Tab
+              ariaLabel="Auth Navigation"
+              className="mt-12"
+              labelLeft="Einloggen"
+              labelRight="Registrieren"
+              loading={loading}>
               <Tab.Panel>
                 <LoginForm
                   loading={loading}
@@ -206,7 +211,7 @@ export default function IndexPage() {
             </Tab>
           )}
         </div>
-      </FrameFullCenter>
+      </Frame>
     </Page>
   )
 }

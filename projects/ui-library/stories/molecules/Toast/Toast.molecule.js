@@ -23,7 +23,7 @@ const Toast = ({ message, className, type, id, onClose, ...props }) => (
         {message}
       </Text>
     </div>
-    <X className="flex-shrink-0 ml-5 text-gray-500" size={26} />
+    <X className="flex-shrink-0 ml-5 text-gray-400" size={26} />
   </ReakitClickable>
 )
 

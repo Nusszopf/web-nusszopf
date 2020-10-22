@@ -29,7 +29,7 @@
 }
 
 [data-reach-tab]:disabled {
-  @apply opacity-50 cursor-default;
+  @apply opacity-100 cursor-default;
 }
 
 [data-reach-tab][data-selected] {

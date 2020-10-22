@@ -30,7 +30,7 @@ const ChangePasswordForm = ({ className, loading, onSubmit, onCancel }) => (
             disabled={loading}
             color="whiteGray500"
           />
-          <ErrorMessage name="email" variant="textSm" className="mt-2 ml-6 italic text-gray-600" component={Text} />
+          <ErrorMessage name="email" variant="textSm" className="mt-2 ml-6 italic" component={Text} />
           <div className="mt-6 space-x-4 text-center">
             <Button type="submit" color="whiteGray500" disabled={loading}>
               Senden

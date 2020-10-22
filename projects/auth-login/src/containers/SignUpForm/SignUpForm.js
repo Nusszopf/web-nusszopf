@@ -18,7 +18,10 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
         initialValues={{ username: '', password: '', email: '', privacy: false }}
         onSubmit={onSubmit}
         validationSchema={object({
-          username: string().max(15, 'Maximal 15 Zeichen').required('Bitte gib einen Namen ein'),
+          username: string()
+            .matches(/^\S*$/, 'Keine Leerzeichen')
+            .max(15, 'Maximal 15 Zeichen')
+            .required('Bitte gib einen Namen ein'),
           email: string().email('Keine valide E-Mail-Adresse').required('Bitte gib eine E-Mail-Adresse ein'),
           password: string()
             .min(8, 'Mindestens 8 Zeichen')
@@ -105,7 +108,7 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
               />
               <ErrorMessage name="privacy" variant="textSm" className="mt-2 ml-6 italic" component={Text} />
             </div>
-            <div className="mt-6 mb-1 text-center">
+            <div className="mt-6 text-center">
               <Button type="submit" color="whiteGray500" disabled={loading}>
                 Registrieren
               </Button>

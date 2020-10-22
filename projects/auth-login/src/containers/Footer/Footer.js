@@ -3,7 +3,7 @@ import { Link, Text } from 'ui-library/stories/atoms'
 import footerData from './footer.data'
 
 const Footer = () => (
-  <Frame as="footer" className="text-gray-500 bg-gray-100">
+  <Frame as="footer" className="text-gray-500 bg-gray-200">
     <div className="flex items-center justify-center h-24 lg:justify-between">
       <div className="hidden lg:block">
         <Link

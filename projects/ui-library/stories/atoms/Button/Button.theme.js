@@ -5,8 +5,8 @@ export const ButtonVariant = {
 }
 
 export const ButtonSize = {
-  base: 'font-semibold text-lg py-2 px-4',
-  circle: 'font-semibold text-lg p-2',
+  base: 'font-medium text-lg py-2 px-4',
+  circle: 'text-lg p-2',
   large: 'font-semibold text-lg py-4 px-8',
 }
 
