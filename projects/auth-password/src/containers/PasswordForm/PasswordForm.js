@@ -41,7 +41,7 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
             .required('Bitte gib ein Passwort ein'),
         })}>
         {formikProps => (
-          <Form id="change-password-form" action="/lo/reset" method="post">
+          <Form>
             <InputGroup>
               <InputGroup.Input
                 autoComplete="off"
