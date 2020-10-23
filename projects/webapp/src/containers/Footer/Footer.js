@@ -1,6 +1,7 @@
+/* eslint-disable react/display-name */
 import PropTypes from 'prop-types'
-import { Route, Link } from 'ui-library/stories/atoms'
-import { Frame } from 'ui-library/stories/templates'
+import { Route } from 'ui-library/stories/atoms'
+import { Footer as UIFooter } from 'ui-library/stories/organisims'
 import footerData from './footer.data'
 
 export const FOOTER_TYPE = {
@@ -11,56 +12,37 @@ export const FOOTER_TYPE = {
 const Footer = ({ type = FOOTER_TYPE.primary }) => (
   <>
     {type === FOOTER_TYPE.primary && (
-      <Frame as="footer" className="py-8 sm:py-0 bg-turquoise-700">
-        <div className="flex flex-col sm:h-24 sm:justify-between sm:flex-row sm:items-center">
-          <div className="flex justify-center">
-            <Route
-              className="mr-8 sm:mr-10"
-              color="turquoise400"
-              href="/legalNotice"
-              title={footerData.nav.legalNotice}
-              ariaLabel={footerData.nav.legalNotice}>
-              {footerData.nav.legalNotice}
-            </Route>
-            <Route
-              color="turquoise400"
-              href="/privacy"
-              title={footerData.nav.privacy}
-              ariaLabel={footerData.nav.privacy}>
-              {footerData.nav.privacy}
-            </Route>
-          </div>
-          <div className="flex justify-center h-8 mt-6 sm:mt-0">
-            <Link
-              variant="svg"
-              href={footerData.brand.href}
-              title={footerData.brand.meta}
-              ariaLabel={footerData.brand.meta}>
-              <footerData.brand.logo className="w-32 h-full" />
-            </Link>
-          </div>
-        </div>
-      </Frame>
+      <UIFooter variant="col" className="bg-turquoise-700">
+        <UIFooter.LeftElement>
+          <Route
+            className="mr-8 sm:mr-10"
+            color="turquoise400"
+            href="/legalNotice"
+            title={footerData.nav.legalNotice}
+            ariaLabel={footerData.nav.legalNotice}>
+            {footerData.nav.legalNotice}
+          </Route>
+          <Route color="turquoise400" href="/privacy" title={footerData.nav.privacy} ariaLabel={footerData.nav.privacy}>
+            {footerData.nav.privacy}
+          </Route>
+        </UIFooter.LeftElement>
+        <UIFooter.RightElement sponsors={['vercel']} />
+      </UIFooter>
     )}
     {type === FOOTER_TYPE.secondary && (
-      <Frame as="footer" className="py-8 bg-blue-600 sm:py-0">
-        <div className="flex items-center justify-between sm:h-24">
-          <div>
-            <Route color="blue200" href="/" title={footerData.nav.home} ariaLabel={footerData.nav.home}>
-              {footerData.nav.home}
-            </Route>
-          </div>
-          <div>
-            <Link
-              variant="svg"
-              href={footerData.brand.href}
-              title={footerData.brand.meta}
-              ariaLabel={footerData.brand.meta}>
-              <footerData.brand.logo className="w-32 h-full" />
-            </Link>
-          </div>
-        </div>
-      </Frame>
+      <UIFooter className="bg-blue-300">
+        <UIFooter.LeftElement>
+          <Route
+            color="gray600"
+            textVariant="textSmMedium"
+            href="/"
+            title={footerData.nav.home}
+            ariaLabel={footerData.nav.home}>
+            {footerData.nav.home}
+          </Route>
+        </UIFooter.LeftElement>
+        <UIFooter.RightElement sponsors={['vercel']} />
+      </UIFooter>
     )}
   </>
 )
