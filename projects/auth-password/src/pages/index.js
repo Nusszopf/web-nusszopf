@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 import { isEmpty } from 'lodash'
 
 import { FramedCard } from 'ui-library/stories/templates'
@@ -9,7 +8,6 @@ import { Page, PasswordForm } from '../containers'
 import { SVGNusszopfLogoBig } from '../assets/images'
 
 export default function IndexPage() {
-  const router = useRouter()
   const { notify } = useToasts()
   const [ticket, setTicket] = useState()
   const [loading, setLoading] = useState(false)
@@ -45,17 +43,6 @@ export default function IndexPage() {
     }
     setLoading(false)
   }
-
-  useEffect(() => {
-    if (isEmpty(router.query)) return
-    console.log(router.query)
-    setTicket(router.query['ticket'])
-    // {
-    //   _csrf: router.query['csrf_token'],
-    //   ticket: ,
-    //   email: router.query['email'],
-    // })
-  }, [router.query])
 
   return (
     <Page className="bg-white sm:bg-gray-100">

@@ -19,7 +19,7 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
         Nach dem Speichern kannst Du dich gleich wieder wie gewohnt einloggen.
       </Text>
       <Formik
-        initialValues={{ password: '', _csrf: '', ticket: '', email: '' }}
+        initialValues={{ password: '' }}
         onSubmit={onSubmit}
         validationSchema={object({
           password: string()
@@ -31,28 +31,10 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
             .required('Bitte gib ein Passwort ein'),
         })}>
         {formikProps => (
-          <Form>
-            <input
-              type="hidden"
-              name="_csrf"
-              value="{{csrf_token}}"
-              onChange={formikProps.handleChange}
-              onBlur={formikProps.handleBlur}
-            />
-            <input
-              type="hidden"
-              name="ticket"
-              value="{{ticket}}"
-              onChange={formikProps.handleChange}
-              onBlur={formikProps.handleBlur}
-            />
-            <input
-              type="hidden"
-              name="email"
-              value="{{email}}"
-              onChange={formikProps.handleChange}
-              onBlur={formikProps.handleBlur}
-            />
+          <Form id="change-password-form" action="/lo/reset" method="post">
+            <input type="hidden" name="_csrf" value="{{csrf_token}}" />
+            <input type="hidden" name="ticket" value="{{ticket}}" />
+            <input type="hidden" name="email" value="{{email}}" />
             <InputGroup>
               <InputGroup.Input
                 autoComplete="off"
@@ -62,6 +44,7 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
                 aria-label="Passwort"
                 placeholder="Passwort"
                 disabled={loading}
+                i
                 color="whiteGray500"
                 onChange={formikProps.handleChange}
                 onBlur={formikProps.handleBlur}
