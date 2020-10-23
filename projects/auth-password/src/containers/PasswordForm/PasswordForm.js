@@ -42,9 +42,6 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
         })}>
         {formikProps => (
           <Form id="change-password-form" action="/lo/reset" method="post">
-            <input ref={_csrf} type="hidden" name="_csrf" value="{{csrf_token}}" />
-            <input ref={_ticket} type="hidden" name="ticket" value="{{ticket}}" />
-            <input ref={_email} type="hidden" name="email" value="{{email}}" />
             <InputGroup>
               <InputGroup.Input
                 autoComplete="off"
@@ -76,6 +73,13 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
           </Form>
         )}
       </Formik>
+      <div id="reset-view" className="hidden">
+        <form id="change-password-form" action="/lo/reset" method="post">
+          <input ref={_csrf} type="hidden" name="_csrf" value="{{csrf_token}}" />
+          <input ref={_ticket} type="hidden" name="ticket" value="{{ticket}}" />
+          <input ref={_email} type="hidden" name="email" value="{{email}}" />
+        </form>
+      </div>
     </div>
   )
 }
