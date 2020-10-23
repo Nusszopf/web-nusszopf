@@ -27,9 +27,9 @@ export default function IndexPage() {
         },
         body: JSON.stringify(data),
       })
+      console.log('PRE', response)
       if (response.ok) {
-        const json = await response.json()
-        console.log(json)
+        console.log('OK', response)
       } else {
         console.log('HTTP-Error: ' + response.status)
       }
