@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import { WebAuth } from 'auth0-js'
 import { isEmpty } from 'lodash'
 
-import { Frame } from 'ui-library/stories/templates'
+import { FramedCard } from 'ui-library/stories/templates'
 import { Tab } from 'ui-library/stories/molecules'
 import { Link } from 'ui-library/stories/atoms'
 import { useToasts } from 'ui-library/services/Toasts.service'
@@ -170,48 +170,46 @@ export default function IndexPage() {
 
   return (
     <Page className="bg-white sm:bg-gray-100">
-      <Frame fluid className="mt-12 mb-12 sm:mt-16">
-        <div className="flex flex-col items-center w-full max-w-md mx-auto bg-white rounded-lg sm:px-12 sm:py-16">
-          <Link variant="svg" href="https://nusszopf.org" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
-            <SVGNusszopfLogoBig className="w-40 h-full" />
-          </Link>
-          {view === Views.password ? (
-            <ChangePasswordForm
-              loading={loading}
-              className="mt-10 sm:mt-12"
-              onSubmit={handleChangePassword}
-              onCancel={() => {
-                setView(Views.signInUp)
-                window.scrollTo(0, 0)
-              }}
-            />
-          ) : (
-            <Tab
-              ariaLabel="Auth Navigation"
-              className="mt-12"
-              labelLeft="Einloggen"
-              labelRight="Registrieren"
-              loading={loading}>
-              <Tab.Panel>
-                <LoginForm
-                  loading={loading}
-                  className="mt-5"
-                  onSubmit={handleLogin}
-                  onLoginWithGoogle={handleGoogleLogin}
-                  onLoginWithApple={handleAppleLogin}
-                  onForgotPassword={() => {
-                    setView(Views.password)
-                    window.scrollTo(0, 0)
-                  }}
-                />
-              </Tab.Panel>
-              <Tab.Panel>
-                <SignUpForm loading={loading} className="mt-5" onSubmit={handleSignup} />
-              </Tab.Panel>
-            </Tab>
-          )}
-        </div>
-      </Frame>
+      <FramedCard className="bg-white">
+        <Link variant="svg" href="https://nusszopf.org" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
+          <SVGNusszopfLogoBig className="w-40 h-full" />
+        </Link>
+        {view === Views.password ? (
+          <ChangePasswordForm
+            loading={loading}
+            className="mt-10 sm:mt-12"
+            onSubmit={handleChangePassword}
+            onCancel={() => {
+              setView(Views.signInUp)
+              window.scrollTo(0, 0)
+            }}
+          />
+        ) : (
+          <Tab
+            ariaLabel="Auth Navigation"
+            className="mt-12"
+            labelLeft="Einloggen"
+            labelRight="Registrieren"
+            loading={loading}>
+            <Tab.Panel>
+              <LoginForm
+                loading={loading}
+                className="mt-5"
+                onSubmit={handleLogin}
+                onLoginWithGoogle={handleGoogleLogin}
+                onLoginWithApple={handleAppleLogin}
+                onForgotPassword={() => {
+                  setView(Views.password)
+                  window.scrollTo(0, 0)
+                }}
+              />
+            </Tab.Panel>
+            <Tab.Panel>
+              <SignUpForm loading={loading} className="mt-5" onSubmit={handleSignup} />
+            </Tab.Panel>
+          </Tab>
+        )}
+      </FramedCard>
     </Page>
   )
 }
