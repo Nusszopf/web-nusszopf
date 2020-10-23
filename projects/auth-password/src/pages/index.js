@@ -21,8 +21,8 @@ export default function IndexPage() {
       ticket,
       newPassword: _data.password,
       confirmNewPassword: _data.password,
-      _csrf: _data._csrf,
-      email: _data.email,
+      // _csrf: _data._csrf,
+      // email: _data.email,
     }
     console.log(JSON.stringify(data))
     try {
@@ -30,6 +30,7 @@ export default function IndexPage() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
+          credentials: 'include',
         },
         body: JSON.stringify(data),
       })
