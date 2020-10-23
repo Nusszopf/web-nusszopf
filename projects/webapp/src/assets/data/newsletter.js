@@ -53,7 +53,7 @@ export default {
   unsubscribeConfirm: {
     heading: 'Schade Marmelade',
     textA: 'wurde vom Newsletter abgemeldet.',
-    textB: 'Wir freuen uns über dein Feedback!',
+    textB: 'Wir freuen uns über dein Feedback, was wir am Newsletter noch verbessern können.',
     logo: 'Zum Nusszopf',
     action: {
       meta: 'E-Mail an Nusszopf schreiben',

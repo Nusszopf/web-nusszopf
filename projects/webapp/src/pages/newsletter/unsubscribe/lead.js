@@ -19,23 +19,22 @@ const UnsubscribeLead = () => {
       footerType={FOOTER_TYPE.secondary}
       noindex={true}>
       <FramedCard className="bg-white">
-        <div className="max-w-xl mx-auto">
-          <Route
-            variant="svg"
-            className="block w-40 mx-auto"
-            href="/"
-            title={newsletterData.unsubscribe.logo}
-            ariaLabel={newsletterData.unsubscribe.logo}>
-            <SVGNusszopfLogoBig className="flex-shrink-0 w-full" />
-          </Route>
-          <Text as="h1" variant="textXl" className="mt-10 mb-5 sm:mt-12 sm:text-center">
-            {newsletterData.unsubscribe.heading}
-          </Text>
-          <Text variant="textSmMedium" className="mb-4 hyphens-auto">
-            {newsletterData.unsubscribe.description}
-          </Text>
+        <Route
+          variant="svg"
+          className="block w-40 mx-auto"
+          href="/"
+          title={newsletterData.unsubscribe.logo}
+          ariaLabel={newsletterData.unsubscribe.logo}>
+          <SVGNusszopfLogoBig className="flex-shrink-0 w-full" />
+        </Route>
+        <Text as="h1" variant="textXl" className="mt-10 mb-5 sm:mt-12 sm:text-center">
+          {newsletterData.unsubscribe.heading}
+        </Text>
+        <Text variant="textSmMedium" className="mb-4 hyphens-auto">
+          {newsletterData.unsubscribe.description}
+        </Text>
+        <div className="w-full">
           <Formik
-            className="mx-auto"
             initialValues={{
               email: '',
             }}
