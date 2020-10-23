@@ -1,6 +1,4 @@
-import { useState, useEffect } from 'react'
-import { isEmpty } from 'lodash'
-
+import { useState } from 'react'
 import { FramedCard } from 'ui-library/stories/templates'
 import { Link } from 'ui-library/stories/atoms'
 import { useToasts } from 'ui-library/services/Toasts.service'
@@ -9,14 +7,17 @@ import { SVGNusszopfLogoBig } from '../assets/images'
 
 export default function IndexPage() {
   const { notify } = useToasts()
-  const [ticket, setTicket] = useState()
   const [loading, setLoading] = useState(false)
 
-  const handleSavePassword = async _data => {
-    const auth0Element = document.getElementById('auth0-keys').childNodes
-    console.log(auth0Element)
+  const handleSavePassword = async ({ password }) => {
+    const _auth0Keys = document.getElementById('auth0-keys')?.childNodes
+    const auth0Keys = [..._auth0Keys].map(child => child?.value)
+    console.log(auth0Keys)
     console.log('data', {
-      data: _data,
+      password,
+      _csrf: auth0Keys[0],
+      ticket: auth0Keys[1],
+      email: auth0Keys[2],
     })
 
     // setLoading(true)
