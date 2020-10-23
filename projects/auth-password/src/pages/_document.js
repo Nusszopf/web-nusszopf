@@ -25,7 +25,7 @@ class CustomDocument extends Document {
           <link color="#000000" href="/favicons/safari-pinned-tab.svg" rel="mask-icon" />
           <link href="/favicons/favicon.ico" rel="shortcut icon" />
         </Head>
-        <body className="bg-white">
+        <body className="bg-gray-700">
           <div className="hidden">
             <input id="auth0-csrf" type="hidden" name="_csrf" value="{{csrf_token}}" />
             <input id="auth0-ticket" type="hidden" name="ticket" value="{{ticket}}" />

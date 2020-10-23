@@ -25,7 +25,7 @@ class CustomDocument extends Document {
           <link color="#000000" href="/favicons/safari-pinned-tab.svg" rel="mask-icon" />
           <link href="/favicons/favicon.ico" rel="shortcut icon" />
         </Head>
-        <body className="bg-white">
+        <body className="bg-gray-700">
           <Main />
           <NextScript />
         </body>
