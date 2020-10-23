@@ -28,8 +28,7 @@ export default function IndexPage() {
       if (response.ok) {
         notify({ type: 'success', message: 'Passwort geändert! Weiterleitung zum Login.' })
         setTimeout(() => {
-          // TODO .env
-          window.location.href = 'https://web.dev.nusszopf.org/api/login'
+          window.location.href = `${process.env.DOMAIN}/api/login`
         }, 1500)
       } else {
         notify({ type: 'error', message: 'Sorry, das hat gerade nicht geklappt.' })

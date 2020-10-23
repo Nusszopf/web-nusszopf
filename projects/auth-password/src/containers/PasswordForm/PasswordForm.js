@@ -20,7 +20,7 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
       </Text>
       <Formik
         initialValues={{ password: '' }}
-        onSubmit={({ password }) => onSubmit({ password })}
+        onSubmit={onSubmit}
         validationSchema={object({
           password: string()
             .min(8, 'Mindestens 8 Zeichen')

@@ -11,6 +11,7 @@ const nextConfig = {
   env: {
     AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
     AUTH0_TENANT: process.env.AUTH0_TENANT,
+    DOMAIN: process.env.DOMAIN,
   },
 }
 
