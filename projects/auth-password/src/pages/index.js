@@ -19,12 +19,12 @@ export default function IndexPage() {
     console.log(JSON.stringify(data))
 
     try {
-      const response = await fetch('https://auth.nusszopf.org/lo/reset', {
+      const response = await fetch('/lo/reset', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-          credentials: 'include',
-        },
+        // headers: {
+        //   'Content-Type': 'application/json;charset=utf-8',
+        //   credentials: 'include',
+        // },
         body: JSON.stringify(data),
       })
       if (response.ok) {
