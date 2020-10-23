@@ -26,12 +26,10 @@ class CustomDocument extends Document {
           <link href="/favicons/favicon.ico" rel="shortcut icon" />
         </Head>
         <body className="bg-white">
-          <div id="reset-view" className="hidden">
-            <form id="change-password-form" action="/lo/reset" method="post">
-              <input type="hidden" name="_csrf" value="{{csrf_token}}" />
-              <input type="hidden" name="ticket" value="{{ticket}}" />
-              <input type="hidden" name="email" value="{{email}}" />
-            </form>
+          <div id="auth0-keys" className="hidden">
+            <input type="hidden" name="_csrf" value="{{csrf_token}}" />
+            <input type="hidden" name="ticket" value="{{ticket}}" />
+            <input type="hidden" name="email" value="{{email}}" />
           </div>
           <Main />
           <NextScript />

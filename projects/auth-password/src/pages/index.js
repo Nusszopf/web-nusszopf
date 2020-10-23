@@ -10,20 +10,11 @@ import { SVGNusszopfLogoBig } from '../assets/images'
 export default function IndexPage() {
   const { notify } = useToasts()
   const [ticket, setTicket] = useState()
-  const [auth0, setAuth0] = useState()
   const [loading, setLoading] = useState(false)
 
-  useEffect(() => {
-    const auth0Element = document.getElementById('change-password-form').childNodes
-    console.log(auth0Element)
-    if (auth0Element) setAuth0([...auth0Element])
-  }, [])
-
-  useEffect(() => {
-    if (auth0) console.log(auth0.map(child => child.value))
-  }, [auth0])
-
   const handleSavePassword = async _data => {
+    const auth0Element = document.getElementById('auth0-keys').childNodes
+    console.log(auth0Element)
     console.log('data', {
       data: _data,
     })
