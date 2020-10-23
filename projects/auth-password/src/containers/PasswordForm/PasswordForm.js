@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { Formik, Form, ErrorMessage } from 'formik'
 import classnames from 'classnames'
@@ -9,6 +9,9 @@ import { Text, Button } from 'ui-library/stories/atoms'
 import { InputGroup } from 'ui-library/stories/molecules'
 
 const PasswordForm = ({ className, loading, onSubmit }) => {
+  const _csrf = useRef()
+  const _ticket = useRef()
+  const _email = useRef()
   const [isEyeOpen, setEye] = useState(false)
   return (
     <div className={classnames('w-full text-gray-500', className)} data-test="signup form">
@@ -20,7 +23,14 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
       </Text>
       <Formik
         initialValues={{ password: '' }}
-        onSubmit={onSubmit}
+        onSubmit={({ password }) =>
+          onSubmit({
+            password,
+            csrf: _csrf?.current?.value,
+            ticket: _ticket?.current?.value,
+            email: _email?.current?.value,
+          })
+        }
         validationSchema={object({
           password: string()
             .min(8, 'Mindestens 8 Zeichen')
@@ -32,9 +42,9 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
         })}>
         {formikProps => (
           <Form id="change-password-form" action="/lo/reset" method="post">
-            <input type="hidden" name="_csrf" value="{{csrf_token}}" />
-            <input type="hidden" name="ticket" value="{{ticket}}" />
-            <input type="hidden" name="email" value="{{email}}" />
+            <input ref={_csrf} type="hidden" name="_csrf" value="{{csrf_token}}" />
+            <input ref={_ticket} type="hidden" name="ticket" value="{{ticket}}" />
+            <input ref={_email} type="hidden" name="email" value="{{email}}" />
             <InputGroup>
               <InputGroup.Input
                 autoComplete="off"

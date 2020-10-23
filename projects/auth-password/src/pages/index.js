@@ -13,35 +13,35 @@ export default function IndexPage() {
   const [loading, setLoading] = useState(false)
 
   const handleSavePassword = async _data => {
-    console.log(_data)
-    setLoading(true)
-    const data = {
-      ticket,
-      newPassword: _data.password,
-      confirmNewPassword: _data.password,
-      // _csrf: _data._csrf,
-      // email: _data.email,
-    }
-    console.log(JSON.stringify(data))
-    try {
-      const response = await fetch('https://auth.nusszopf.org/lo/reset', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8',
-          credentials: 'include',
-        },
-        body: JSON.stringify(data),
-      })
-      if (response.ok) {
-        const json = await response.json()
-        console.log(json)
-      } else {
-        console.log('HTTP-Error: ' + response.status)
-      }
-    } catch (error) {
-      console.log('Catch-Error', error)
-    }
-    setLoading(false)
+    console.log('data', _data)
+    // setLoading(true)
+    // const data = {
+    //   ticket,
+    //   newPassword: _data.password,
+    //   confirmNewPassword: _data.password,
+    //   // _csrf: _data._csrf,
+    //   // email: _data.email,
+    // }
+    // console.log(JSON.stringify(data))
+    // try {
+    //   const response = await fetch('https://auth.nusszopf.org/lo/reset', {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json;charset=utf-8',
+    //       credentials: 'include',
+    //     },
+    //     body: JSON.stringify(data),
+    //   })
+    //   if (response.ok) {
+    //     const json = await response.json()
+    //     console.log(json)
+    //   } else {
+    //     console.log('HTTP-Error: ' + response.status)
+    //   }
+    // } catch (error) {
+    //   console.log('Catch-Error', error)
+    // }
+    // setLoading(false)
   }
 
   return (
