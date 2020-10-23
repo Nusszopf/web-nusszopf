@@ -14,17 +14,17 @@ export default function IndexPage() {
     const _csrf = document.getElementById('auth0-csrf')?.value
     const ticket = document.getElementById('auth0-ticket')?.value
     const email = document.getElementById('auth0-email')?.value
-    const data = { password, _csrf, ticket, email }
+    const data = { newPassword: password, confirmNewPassword: password, _csrf, ticket, email }
 
     console.log(JSON.stringify(data))
 
     try {
       const response = await fetch('/lo/reset', {
         method: 'POST',
-        // headers: {
-        //   'Content-Type': 'application/json;charset=utf-8',
-        //   credentials: 'include',
-        // },
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          credentials: 'include',
+        },
         body: JSON.stringify(data),
       })
       if (response.ok) {
