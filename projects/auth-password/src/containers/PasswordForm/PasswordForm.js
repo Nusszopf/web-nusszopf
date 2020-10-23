@@ -15,7 +15,7 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
       <Text as="h1" variant="textXl" className="mb-5 text-center">
         Neues Passwort vergeben
       </Text>
-      <Text variant="textSmMedium" className="mb-4">
+      <Text variant="textSmMedium" className="mb-4 hyphens-auto">
         Nach dem Speichern kannst Du dich gleich wieder wie gewohnt einloggen.
       </Text>
       <Formik

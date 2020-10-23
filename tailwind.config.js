@@ -90,6 +90,7 @@ module.exports = {
         'outline:yellow-300': '0 0 0 3px rgba(250, 252, 136, 0.5)',
         'outline:yellow-700': '0 0 0 3px rgba(87, 72, 0, 0.5)',
         'outline:blue-200': '0 0 0 3px rgba(203, 223, 251, 0.5)',
+        'outline:blue-400': '0 0 0 3px rgba(99, 150, 220, 0.5)',
         'outline:blue-700': '0 0 0 3px rgba(0, 57, 138, 0.5)',
         'outline:gray-600': '0 0 0 3px rgba(38, 50, 56, 0.5)',
         'outline:gray-500': '0 0 0 3px rgba(84, 110, 122, 0.5)',

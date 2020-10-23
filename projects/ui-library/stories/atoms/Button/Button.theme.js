@@ -26,6 +26,11 @@ export const ButtonColor = {
     outline: '',
     filled: 'nz-btn-filled nz-btn-filled--blue400Yellow300',
   },
+  whiteBlue400: {
+    clean: '',
+    outline: '',
+    filled: 'nz-btn-filled nz-btn-filled--whiteBlue400',
+  },
   pink400Blue700: {
     clean: '',
     outline: '',
