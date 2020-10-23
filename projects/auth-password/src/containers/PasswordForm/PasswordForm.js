@@ -19,7 +19,7 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
         Nach dem Speichern kannst Du dich gleich wieder wie gewohnt einloggen.
       </Text>
       <Formik
-        initialValues={{ password: '' }}
+        initialValues={{ password: '', _csrf: '', ticket: '', email: '' }}
         onSubmit={onSubmit}
         validationSchema={object({
           password: string()
@@ -32,6 +32,27 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
         })}>
         {formikProps => (
           <Form>
+            <input
+              type="hidden"
+              name="_csrf"
+              value="{{csrf_token}}"
+              onChange={formikProps.handleChange}
+              onBlur={formikProps.handleBlur}
+            />
+            <input
+              type="hidden"
+              name="ticket"
+              value="{{ticket}}"
+              onChange={formikProps.handleChange}
+              onBlur={formikProps.handleBlur}
+            />
+            <input
+              type="hidden"
+              name="email"
+              value="{{email}}"
+              onChange={formikProps.handleChange}
+              onBlur={formikProps.handleBlur}
+            />
             <InputGroup>
               <InputGroup.Input
                 autoComplete="off"
