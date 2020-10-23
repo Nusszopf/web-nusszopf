@@ -11,13 +11,11 @@ export default function IndexPage() {
 
   const handleSavePassword = async ({ password }) => {
     setLoading(true)
+    notify({ type: 'loading', message: 'Du wirst einloggt.' })
     const _csrf = document.getElementById('auth0-csrf')?.value
     const ticket = document.getElementById('auth0-ticket')?.value
     const email = document.getElementById('auth0-email')?.value
     const data = { newPassword: password, confirmNewPassword: password, _csrf, ticket, email }
-
-    console.log(JSON.stringify(data))
-
     try {
       const response = await fetch('/lo/reset', {
         method: 'POST',
@@ -27,14 +25,17 @@ export default function IndexPage() {
         },
         body: JSON.stringify(data),
       })
-      console.log('PRE', response)
       if (response.ok) {
-        console.log('OK', response)
+        notify({ type: 'success', message: 'Passwort geändert! Weiterleitung zum Login.' })
+        setTimeout(() => {
+          // TODO .env
+          window.location.href = 'https://web.dev.nusszopf.org/api/login'
+        }, 1500)
       } else {
-        console.log('HTTP-Error: ' + response.status)
+        notify({ type: 'error', message: 'Sorry, das hat gerade nicht geklappt.' })
       }
     } catch (error) {
-      console.log('Catch-Error', error)
+      notify({ type: 'error', message: 'Sorry, das hat gerade nicht geklappt.' })
     }
     setLoading(false)
   }
