@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { isEmpty } from 'lodash'
 
 import { FramedCard } from 'ui-library/stories/templates'
@@ -8,19 +8,24 @@ import { Page, PasswordForm } from '../containers'
 import { SVGNusszopfLogoBig } from '../assets/images'
 
 export default function IndexPage() {
-  const _csrf = useRef()
-  const _ticket = useRef()
-  const _email = useRef()
   const { notify } = useToasts()
   const [ticket, setTicket] = useState()
+  const [auth0, setAuth0] = useState()
   const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    const auth0Element = document.getElementById('change-password-form').childNodes
+    console.log(auth0Element)
+    if (auth0Element) setAuth0([...auth0Element])
+  }, [])
+
+  useEffect(() => {
+    if (auth0) console.log(auth0.map(child => child.value))
+  }, [auth0])
 
   const handleSavePassword = async _data => {
     console.log('data', {
       data: _data,
-      csrf: _csrf?.current?.value,
-      ticket: _ticket?.current?.value,
-      email: _email?.current?.value,
     })
 
     // setLoading(true)
@@ -55,13 +60,6 @@ export default function IndexPage() {
 
   return (
     <Page className="bg-white sm:bg-gray-100">
-      <div id="reset-view" className="hidden">
-        <form id="change-password-form" action="/lo/reset" method="post">
-          <input ref={_csrf} type="hidden" name="_csrf" value="{{csrf_token}}" />
-          <input ref={_ticket} type="hidden" name="ticket" value="{{ticket}}" />
-          <input ref={_email} type="hidden" name="email" value="{{email}}" />
-        </form>
-      </div>
       <FramedCard className="bg-white">
         <Link variant="svg" href="https://nusszopf.org" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
           <SVGNusszopfLogoBig className="w-40 h-full" />
