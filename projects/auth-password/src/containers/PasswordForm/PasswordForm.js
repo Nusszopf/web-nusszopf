@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Formik, Form, ErrorMessage } from 'formik'
 import classnames from 'classnames'
@@ -9,9 +9,6 @@ import { Text, Button } from 'ui-library/stories/atoms'
 import { InputGroup } from 'ui-library/stories/molecules'
 
 const PasswordForm = ({ className, loading, onSubmit }) => {
-  const _csrf = useRef()
-  const _ticket = useRef()
-  const _email = useRef()
   const [isEyeOpen, setEye] = useState(false)
   return (
     <div className={classnames('w-full text-gray-500', className)} data-test="signup form">
@@ -23,14 +20,7 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
       </Text>
       <Formik
         initialValues={{ password: '' }}
-        onSubmit={({ password }) =>
-          onSubmit({
-            password,
-            csrf: _csrf?.current?.value,
-            ticket: _ticket?.current?.value,
-            email: _email?.current?.value,
-          })
-        }
+        onSubmit={({ password }) => onSubmit({ password })}
         validationSchema={object({
           password: string()
             .min(8, 'Mindestens 8 Zeichen')
@@ -73,13 +63,6 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
           </Form>
         )}
       </Formik>
-      <div id="reset-view" className="hidden">
-        <form id="change-password-form" action="/lo/reset" method="post">
-          <input ref={_csrf} type="hidden" name="_csrf" value="{{csrf_token}}" />
-          <input ref={_ticket} type="hidden" name="ticket" value="{{ticket}}" />
-          <input ref={_email} type="hidden" name="email" value="{{email}}" />
-        </form>
-      </div>
     </div>
   )
 }
