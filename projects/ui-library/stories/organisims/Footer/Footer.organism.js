@@ -50,9 +50,9 @@ Footer.LeftElement.propTypes = {
 Footer.RightElement = ({ sponsors, children, ...props }) => (
   <div {...props}>
     {children}
-    {sponsorsData.map(sponsor => {
-      return sponsors.map(key => (
-        <React.Fragment key={sponsor.key}>
+    {sponsorsData.map((sponsor, i) => {
+      return sponsors.map((key, j) => (
+        <React.Fragment key={sponsor.key + i + j}>
           {key === sponsor.key && (
             <Link
               className={key === 'auth0' ? 'mr-4' : ''}
@@ -71,7 +71,7 @@ Footer.RightElement = ({ sponsors, children, ...props }) => (
 Footer.RightElement.displayName = 'Footer.RightElement'
 Footer.RightElement.propTypes = {
   sponsors: PropTypes.array,
-  children: PropTypes.string,
+  children: PropTypes.node,
 }
 
 export default Footer
