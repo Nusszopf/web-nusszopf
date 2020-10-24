@@ -1,21 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { BTN_COLORS } from '../../atoms'
-
-export const LINK_TYPES = {
-  text: 'text',
-  button: 'button',
-  buttonSmall: 'small button',
-  svg: 'svg',
-}
-
-export const LINK_TEXT_COLORS = {
-  gray700blue200: 'nz-link-gray700-blue200',
-  yellow100red500: 'nz-link-yellow100-red500',
-  yellow300pink700: 'nz-link-yellow300-pink700',
-  turquoise400turquoise800: 'nz-link-turquoise400-turquoise800',
-}
+import { Button, Text } from '../../atoms'
+import { ButtonColor } from '../Button/Button.theme'
+import { TextVariant } from '../Text/Text.theme'
+import { LinkColor, LinkBorder, LinkVariant } from './Link.theme'
 
 const Link = ({
   children,
@@ -23,12 +12,14 @@ const Link = ({
   ariaLabel,
   className,
   title,
-  icon,
-  type = LINK_TYPES.text,
-  color = type === LINK_TYPES.text ? LINK_TEXT_COLORS.gray700blue200 : BTN_COLORS.whiteGray600,
+  variant = LinkVariant.text,
+  textVariant = 'textMd',
+  color = 'gray700Blue200',
+  border = LinkBorder.medium,
+  ...props
 }) => {
-  switch (type) {
-    case LINK_TYPES.text: {
+  switch (variant) {
+    case LinkVariant.text: {
       return (
         <a
           className={classnames('cursor-pointer group', className)}
@@ -36,12 +27,26 @@ const Link = ({
           rel="noopener noreferrer"
           target="_blank"
           title={title}
-          aria-label={ariaLabel}>
-          <span className={classnames('inline-block border-b-2', color)}>{children}</span>
+          aria-label={ariaLabel}
+          {...props}>
+          <Text
+            as="span"
+            variant={textVariant}
+            className={classnames(
+              'inline-block',
+              {
+                'border-b': border === LinkBorder.small,
+                'border-b-2': border === LinkBorder.medium,
+                'border-b-3': border === LinkBorder.large,
+              },
+              LinkColor[color]
+            )}>
+            {children}
+          </Text>
         </a>
       )
     }
-    case LINK_TYPES.svg: {
+    case LinkVariant.svg: {
       return (
         <a
           className={classnames('cursor-pointer', className)}
@@ -49,36 +54,26 @@ const Link = ({
           rel="noopener noreferrer"
           target="_blank"
           title={title}
-          aria-label={ariaLabel}>
+          aria-label={ariaLabel}
+          {...props}>
           {children}
         </a>
       )
     }
-    case LINK_TYPES.buttonSmall:
-    case LINK_TYPES.button: {
-      const IconComponent = icon
+    case LinkVariant.button: {
       return (
-        <a
+        <Button
+          as="a"
+          color={color}
+          className={classnames('inline-block cursor-pointer', className)}
           href={href}
           rel="noopener noreferrer"
           target="_blank"
-          aria-label={ariaLabel}
           title={title}
-          className={classnames(
-            'group flex-shrink-0 inline-block text-center  text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none focus:outline-none',
-            { 'py-4 px-8': type === LINK_TYPES.button, 'py-2 px-4': type === LINK_TYPES.buttonSmall },
-            color,
-            className
-          )}>
-          {icon ? (
-            <span className="flex items-center justify-center">
-              <IconComponent className="-ml-1" />
-              <p className="ml-2">{children}</p>
-            </span>
-          ) : (
-            <>{children}</>
-          )}
-        </a>
+          aria-label={ariaLabel}
+          {...props}>
+          {children}
+        </Button>
       )
     }
   }
@@ -86,13 +81,14 @@ const Link = ({
 
 Link.propTypes = {
   ariaLabel: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired,
-  icon: PropTypes.elementType,
-  children: PropTypes.node,
-  type: PropTypes.oneOf(Object.values(LINK_TYPES)),
-  color: PropTypes.oneOf(Object.values({ ...LINK_TEXT_COLORS, ...BTN_COLORS })),
+  border: PropTypes.oneOf(Object.keys(LinkBorder)),
   className: PropTypes.string,
+  color: PropTypes.oneOf([...Object.keys(LinkColor), ...Object.keys(ButtonColor)]),
+  children: PropTypes.node,
+  href: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  variant: PropTypes.oneOf(Object.keys(LinkVariant)),
+  textVariant: PropTypes.oneOf(Object.keys(TextVariant)),
 }
 
 export default Link

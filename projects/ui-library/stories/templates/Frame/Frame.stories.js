@@ -20,3 +20,11 @@ export const Primary = () => (
     <div className="p-4 mb-2 text-center text-white bg-gray-300">framed content</div>
   </Frame>
 )
+
+export const Fluid = () => (
+  <Frame fluid className="h-screen bg-gray-100">
+    <div className="p-4 mb-2 text-center text-white bg-gray-300">framed fluid content</div>
+    <div className="p-4 mb-2 text-center text-white bg-gray-300">framed fluid content</div>
+    <div className="p-4 mb-2 text-center text-white bg-gray-300">framed fluid content</div>
+  </Frame>
+)

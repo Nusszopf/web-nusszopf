@@ -1,65 +1,60 @@
 import { useState } from 'react'
+import { useToasts } from 'ui-library/services/Toasts.service'
+import { newsletterData } from '../../assets/data'
+import { NewsletterType } from '../functions/newsletter.function'
 
 export const confirmNewsletterSubscription = token => {
-  return fetch(`${process.env.DOMAIN}/api/newsletter/subscribe-confirm`, {
+  return fetch(`${process.env.DOMAIN}/api/newsletter`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ token }),
+    body: JSON.stringify({ token, action: NewsletterType.subscribeConfirm }),
   })
 }
 
 export const confirmNewsletterUnsubscription = token => {
-  return fetch(`${process.env.DOMAIN}/api/newsletter/unsubscribe-confirm`, {
+  return fetch(`${process.env.DOMAIN}/api/newsletter`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ token }),
+    body: JSON.stringify({ token, action: NewsletterType.unsubscribeConfirm }),
   })
 }
 
 const useNewsletter = () => {
-  const [hasFailed, setFailed] = useState(false)
-  const [isSuccessful, setSuccessful] = useState(false)
+  const { notify } = useToasts()
   const [isLoading, setLoading] = useState(false)
-
-  const handleChange = () => {
-    setLoading(false)
-    setFailed(false)
-    setSuccessful(false)
-  }
 
   const subscribeToNewsletter = async values => {
     await handleRequest(
-      { email: values.email, name: values.name, privacy: values.privacy },
-      `${process.env.DOMAIN}/api/newsletter/subscribe`
+      { email: values.email, name: values.name, privacy: values.privacy, action: NewsletterType.subscribe },
+      'subscribe'
     )
   }
 
   const unsubscribeFromNewsletter = async values => {
-    await handleRequest({ email: values.email }, `${process.env.DOMAIN}/api/newsletter/unsubscribe`)
+    await handleRequest({ email: values.email, action: NewsletterType.unsubscribe }, 'unsubscribe')
   }
 
-  const handleRequest = async (values, url) => {
+  const handleRequest = async (values, type) => {
     try {
-      setFailed(false)
-      setSuccessful(false)
+      notify({ type: 'loading', message: newsletterData[type].alerts.loading })
       setLoading(true)
-      const request = fetch(url, {
+      const request = fetch(`${process.env.DOMAIN}/api/newsletter`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(values),
       })
       const response = await delayedFetch(request)
       if (response.ok) {
-        setSuccessful(true)
+        notify({ type: 'success', message: newsletterData[type].alerts.success })
       } else {
-        setFailed(true)
+        notify({ type: 'error', message: newsletterData[type].alerts.error })
       }
     } catch (error) {
-      setFailed(true)
+      notify({ type: 'error', message: newsletterData[type].alerts.error })
     }
     setLoading(false)
   }
@@ -72,9 +67,6 @@ const useNewsletter = () => {
 
   return {
     loading: isLoading,
-    success: isSuccessful,
-    error: hasFailed,
-    handleChange,
     subscribeToNewsletter,
     unsubscribeFromNewsletter,
   }

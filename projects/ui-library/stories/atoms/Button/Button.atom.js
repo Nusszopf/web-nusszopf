@@ -1,35 +1,57 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import { Box as ReakitBox } from 'reakit/Box'
+import { Button as ReakitButton } from 'reakit/Button'
+import { ButtonColor, ButtonSize, ButtonVariant } from './Button.theme'
 
-export const BTN_COLORS = {
-  whiteGray600: 'nz-btn-white-gray600',
-  blue400Yellow300: 'nz-btn-blue400-yellow300',
-  pink400blue700: 'nz-btn-pink400-blue700',
-  pink600yellow300: 'nz-btn-pink600-yellow300',
-  yellow400yellow700: 'nz-btn-yellow400-yellow700 ',
-  turquoise700turquoise500: 'nz-btn-turquoise-700turquoise600',
-  blue400blue200: 'nz-btn-blue400-blue200',
-}
-
-const Button = ({ className, color = BTN_COLORS.whiteGray600, label, small, ...props }) => (
-  <button
+const Button = ({
+  className,
+  children,
+  variant = ButtonVariant.filled,
+  size = 'base',
+  color = 'gray600Gray200',
+  as = ReakitButton,
+  iconLeft,
+  iconRight,
+  disabled,
+  ...props
+}) => (
+  <ReakitBox
     className={classnames(
-      'flex-shrink-0 text-lg font-semibold transition-shadow duration-150 ease-in-out rounded-full outline-none sm:w-auto focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed',
-      { 'px-8 py-4': !small, 'py-2 px-4': small },
-      color,
+      'outline-none focus:outline-none',
+      { 'opacity-50': disabled, 'cursor-default': disabled, 'cursor-pointer': !disabled },
+      ButtonSize[size],
+      ButtonColor[color][variant],
       className
     )}
+    disabled={disabled}
+    as={as}
     {...props}>
-    {label}
-  </button>
+    {iconLeft || iconRight ? (
+      <div className="flex items-center justify-center">
+        {iconLeft && iconLeft}
+        <span className={classnames({ 'ml-1': iconLeft && size === 'large', 'mr-1': iconRight && size === 'large' })}>
+          {children}
+        </span>
+        {iconRight && iconRight}
+      </div>
+    ) : (
+      <>{children}</>
+    )}
+  </ReakitBox>
 )
 
 Button.propTypes = {
+  as: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string]),
   className: PropTypes.string,
-  color: PropTypes.oneOf(Object.values(BTN_COLORS)),
-  label: PropTypes.string.isRequired,
-  small: PropTypes.bool,
+  children: PropTypes.node,
+  color: PropTypes.oneOf(Object.keys(ButtonColor)),
+  disabled: PropTypes.bool,
+  iconLeft: PropTypes.node,
+  iconRight: PropTypes.node,
+  variant: PropTypes.oneOf(Object.keys(ButtonVariant)),
+  size: PropTypes.oneOf(Object.keys(ButtonSize)),
 }
 
 export default Button

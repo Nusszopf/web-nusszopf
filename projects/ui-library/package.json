@@ -1,27 +1,29 @@
 {
-  "name": "ui-library",
-  "version": "2.0.0",
-  "description": "nusszopf design system",
-  "repository": "git@github.com:nusszopf/web-nusszopf.git",
-  "author": "schwamic <schwarz.michael@posteo.net>",
-  "license": "GNU General Public License v3.0",
-  "private": true,
-  "scripts": {
-    "storybook": "yarn start-storybook -p 6006",
-    "build-storybook": "yarn build-storybook"
-  },
-  "dependencies": {
-    "classnames": "2.2.6",
-    "prop-types": "15.7.2",
-    "react-feather": "2.0.8",
-    "typeface-barlow": "1.1.13"
-  },
-  "devDependencies": {
-    "@storybook/addon-actions": "6.0.26",
-    "@storybook/addon-essentials": "6.0.26",
-    "@storybook/addon-links": "6.0.26",
-    "@storybook/react": "6.0.26",
-    "babel-loader": "8.1.0",
-    "react-is": "16.13.1"
-  }
+	"name": "ui-library",
+	"version": "2.1.0",
+	"description": "nusszopf design system",
+	"repository": "git@github.com:nusszopf/web-nusszopf.git",
+	"author": "schwamic <schwarz.michael@posteo.net>",
+	"license": "GNU General Public License v3.0",
+	"private": true,
+	"scripts": {
+		"storybook": "yarn start-storybook -p 6006",
+		"build-storybook": "yarn build-storybook"
+	},
+	"dependencies": {
+		"@reach/tabs": "0.11.2",
+		"classnames": "2.2.6",
+		"prop-types": "15.7.2",
+		"react-feather": "2.0.8",
+		"reakit": "1.2.5",
+		"typeface-barlow": "1.1.13"
+	},
+	"devDependencies": {
+		"@storybook/addon-actions": "6.0.26",
+		"@storybook/addon-essentials": "6.0.26",
+		"@storybook/addon-links": "6.0.26",
+		"@storybook/react": "6.0.26",
+		"babel-loader": "8.1.0",
+		"react-is": "16.13.1"
+	}
 }

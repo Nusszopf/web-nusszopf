@@ -10,6 +10,10 @@
   @apply text-xl font-bold leading-snug;
 }
 
+.nz-title-sm--semi {
+  @apply text-xl font-semibold leading-snug;
+}
+
 .nz-text-xl {
   @apply text-2xl font-semibold leading-snug;
 }
@@ -22,6 +26,14 @@
   @apply text-xl font-medium leading-snug;
 }
 
+.nz-text-sm--medium {
+  @apply text-lg font-medium;
+}
+
 .nz-text-sm {
   @apply text-lg;
+}
+
+.nz-text-xs {
+  @apply text-base;
 }

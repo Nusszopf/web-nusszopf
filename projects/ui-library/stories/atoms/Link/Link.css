@@ -1,15 +1,19 @@
-.nz-link-gray700-blue200 {
+.nz-link-gray700Blue200 {
   @apply text-gray-700 bg-blue-200 border-blue-300 group-hover:bg-blue-300 group-hover:border-gray-700;
 }
 
-.nz-link-yellow100-red500 {
+.nz-link-yellow100Red500 {
   @apply text-yellow-100 bg-red-500 border-yellow-100 group-hover:bg-red-600;
 }
 
-.nz-link-yellow300-pink700 {
+.nz-link-yellow300Pink700 {
   @apply text-yellow-300 bg-pink-700 border-yellow-300 group-hover:bg-gray-700;
 }
 
-.nz-link-turquoise400-turquoise800 {
+.nz-link-turquoise400Turquoise800 {
   @apply text-turquoise-400 bg-turquoise-800 border-turquoise-400 group-hover:bg-black;
+}
+
+.nz-link-gray500Transparent {
+  @apply text-gray-500 bg-transparent border-gray-500;
 }

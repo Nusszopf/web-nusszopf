@@ -6,6 +6,26 @@
 
 # Nusszopf – Login Page
 
-Environment to develop and build the custom auth0-nusszopf login page.
+Environment to develop and build a custom auth0 login page.
 
-Copy and paste the current build on vercel: e.g. https://vercel.com/nusszopf/auth-login-nusszopf/9a2td8tty/source, and add to each url the domain. After each deployment, replace the new index.html file in auth0!
+## Current Workflow
+
+1. Push new changes to Vercel
+2. Replace dist/tt.mm.yy.html with tt.mm.yy.html from the output folder of the new vercel build
+3. Replace preload stylesheets with inline stylesheets
+4. Add full path to all `href`, `src` and `url` params
+5. Minify via [willpeavy.com/tools/minifier/](https://www.willpeavy.com/tools/minifier/)
+6. Save new html file in auth0 as custom login page
+
+## Auth0 Hooks & Rules
+
+- Rule: Add keys for hasura for each session ([auth0/rules](https://auth0.com/docs/rules))
+- Hook: Sync signup with hasura after registration ([auth0/hooks](https://auth0.com/docs/hooks))
+
+## Notes
+
+- [Auth0 Auth App](https://community.auth0.com/t/disable-authorize-app-dialog/6939)
+- [Auth0JS Custom Domains](https://auth0.com/docs/custom-domains/configure-features-to-use-custom-domains#universal-login) for auth-emails and auth-pages
+- [Auth0JS SDK](https://github.com/auth0/auth0.js#auth0webauth)
+- [Auth0 API](https://auth0.com/docs/api/authentication#introduction)
+- Auth0 Authentication: `Requires Username` enabled

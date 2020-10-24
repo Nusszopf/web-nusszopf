@@ -1,59 +1,56 @@
 {
-  "name": "web-nusszopf",
-  "version": "2.0.0",
-  "description": "nusszopf monorepo",
-  "repository": "git@github.com:nusszopf/web-nusszopf.git",
-  "author": "schwamic <schwarz.michael@posteo.net>",
-  "license": "GNU General Public License v3.0",
-  "private": true,
-  "workspaces": [
-    "projects/*"
-  ],
-  "scripts": {
-    "dev:webapp": "yarn --cwd projects/webapp dev",
-    "dev:login": "yarn --cwd projects/auth-login dev",
-    "storybook": "yarn --cwd projects/ui-library start-storybook -p 6006"
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "lint-staged": {
-    "*.{html,js,json,md,mdx,mjs,yml}": "prettier --write",
-    "*.css": "stylelint --fix"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e",
-      "pre-commit": "lint-staged"
-    }
-  },
-  "engines": {
-    "node": "12.x",
-    "yarn": "1.22.x"
-  },
-  "dependencies": {},
-  "devDependencies": {
-    "@babel/core": "7.11.6",
-    "@babel/register": "7.11.5",
-    "@commitlint/cli": "11.0.0",
-    "@commitlint/config-conventional": "11.0.0",
-    "babel-eslint": "10.1.0",
-    "eslint": "7.10.0",
-    "eslint-config-prettier": "6.12.0",
-    "eslint-plugin-jsx-a11y": "6.3.1",
-    "eslint-plugin-prettier": "3.1.4",
-    "eslint-plugin-react": "7.21.3",
-    "eslint-plugin-react-hooks": "4.1.2",
-    "husky": "4.3.0",
-    "lint-staged": "10.4.0",
-    "postcss-flexbugs-fixes": "4.2.1",
-    "postcss-preset-env": "6.7.0",
-    "prettier": "2.1.2",
-    "stylelint": "13.7.2",
-    "stylelint-config-prettier": "8.0.2",
-    "stylelint-config-recommended": "3.0.0",
-    "tailwindcss": "1.8.12"
-  }
+	"name": "web-nusszopf",
+	"version": "2.1.0",
+	"description": "nusszopf monorepo",
+	"repository": "git@github.com:nusszopf/web-nusszopf.git",
+	"author": "schwamic <schwarz.michael@posteo.net>",
+	"license": "GNU General Public License v3.0",
+	"private": true,
+	"workspaces": [ "projects/*" ],
+	"scripts": {
+		"dev:webapp": "yarn --cwd projects/webapp dev",
+		"dev:login": "yarn --cwd projects/auth-login dev",
+		"dev:pw": "yarn --cwd projects/auth-password dev",
+		"storybook": "yarn --cwd projects/ui-library start-storybook -p 6006"
+	},
+	"commitlint": {
+		"extends": [ "@commitlint/config-conventional" ]
+	},
+	"lint-staged": {
+		"*.{html,js,json,md,mdx,mjs,yml}": "prettier --write",
+		"*.css": "stylelint --fix"
+	},
+	"husky": {
+		"hooks": {
+			"commit-msg": "commitlint -e",
+			"pre-commit": "lint-staged"
+		}
+	},
+	"engines": {
+		"node": "12.x",
+		"yarn": "1.22.x"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"@babel/core": "7.11.6",
+		"@babel/register": "7.11.5",
+		"@commitlint/cli": "11.0.0",
+		"@commitlint/config-conventional": "11.0.0",
+		"babel-eslint": "10.1.0",
+		"eslint": "7.10.0",
+		"eslint-config-prettier": "6.12.0",
+		"eslint-plugin-jsx-a11y": "6.3.1",
+		"eslint-plugin-prettier": "3.1.4",
+		"eslint-plugin-react": "7.21.3",
+		"eslint-plugin-react-hooks": "4.1.2",
+		"husky": "4.3.0",
+		"lint-staged": "10.4.0",
+		"postcss-flexbugs-fixes": "4.2.1",
+		"postcss-preset-env": "6.7.0",
+		"prettier": "2.1.2",
+		"stylelint": "13.7.2",
+		"stylelint-config-prettier": "8.0.2",
+		"stylelint-config-recommended": "3.0.0",
+		"tailwindcss": "1.8.12"
+	}
 }

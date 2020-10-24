@@ -5,6 +5,7 @@ import { NextSeo } from 'next-seo'
 import { truncate } from 'lodash'
 import classnames from 'classnames'
 
+import { NavHeader } from 'ui-library/stories/organisims'
 import { Footer } from '../../containers'
 import ErrorBoundary from './ErrorBoundary'
 import { FOOTER_TYPE } from '../Footer/Footer'
@@ -18,6 +19,7 @@ const Page = ({
   noindex = false,
   notFound = false,
   showFooter = true,
+  showNavHeader = false,
   footerType = FOOTER_TYPE.primary,
   className,
 }) => {
@@ -63,6 +65,7 @@ const Page = ({
         }}
       />
       <ErrorBoundary>
+        {showNavHeader && <NavHeader />}
         <main className={classnames('flex-1', className)}>{children}</main>
         {showFooter && <Footer type={footerType} />}
       </ErrorBoundary>
@@ -79,6 +82,7 @@ Page.propTypes = {
   notFound: PropTypes.bool,
   title: PropTypes.string,
   showFooter: PropTypes.bool,
+  showNavHeader: PropTypes.bool,
   className: PropTypes.string,
   footerType: PropTypes.string,
 }

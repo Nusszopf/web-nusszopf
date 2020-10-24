@@ -1,29 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import { Input as ReakitInput } from 'reakit/Input'
+import { InputColor, InputSize } from './Input.theme'
 
-export const INPUT_COLORS = {
-  whiteGray600: 'nz-input-whiteGray600',
-  yellow300blue400: 'nz-input-yellow300blue400',
-}
-
-const Input = ({ disabled = false, color = INPUT_COLORS.whiteGray600, className, ...props }) => (
-  <input
+const Input = ({ size = 'base', color = 'whiteGray600', className, ...props }) => (
+  <ReakitInput
     className={classnames(
-      'inline-block w-full px-5 py-4 text-lg transition-shadow duration-150 ease-in-out border-3 rounded-lg shadow-xs appearance-none focus:outline-none',
-      color,
-      className,
-      { 'opacity-50 cursor-not-allowed': disabled }
+      'inline-block w-full transition-shadow duration-150 ease-in-out rounded-lg shadow-xs appearance-none focus:outline-none disabled:opacity-50 disabled:cursor-default',
+      InputColor[color],
+      InputSize[size],
+      className
     )}
-    disabled={disabled}
     {...props}
   />
 )
 
 Input.propTypes = {
-  color: PropTypes.oneOf(Object.values(INPUT_COLORS)),
-  disabled: PropTypes.bool,
   className: PropTypes.string,
+  color: PropTypes.oneOf(Object.keys(InputColor)),
+  size: PropTypes.oneOf(Object.keys(InputSize)),
 }
 
 export default Input

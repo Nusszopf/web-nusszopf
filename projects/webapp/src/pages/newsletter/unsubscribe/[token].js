@@ -1,43 +1,44 @@
 import PropTypes from 'prop-types'
 import { Page, FOOTER_TYPE } from '../../../containers'
-import { ROUTE_TYPES, Route, Link, LINK_TYPES, Text, TEXT_TYPE, BTN_COLORS } from 'ui-library/stories/atoms'
+import { Route, Link, Text } from 'ui-library/stories/atoms'
 import { confirmNewsletterUnsubscription } from '../../../utils/services/newsletter.service'
-import { FrameFullCenter } from 'ui-library/stories/templates'
-import { SVGNusszopfBigYellowBlue } from '../../../assets/logos'
+import { FramedCard } from 'ui-library/stories/templates'
+import { SVGNusszopfLogoBig } from '../../../assets/logos'
 import { newsletterData } from '../../../assets/data'
 
 const UnsubscribeConfirm = ({ lead }) => (
-  <Page className="text-yellow-300 bg-blue-400" showFooter={true} footerType={FOOTER_TYPE.secondary} noindex={true}>
-    <FrameFullCenter fullScreen={false}>
-      <div className="sm:text-center">
-        <Route
-          type={ROUTE_TYPES.svg}
-          className="block w-40 mx-auto mb-12 sm:w-48 sm:mb-16"
-          href="/"
-          title={newsletterData.unsubscribeConfirm.logo}
-          ariaLabel={newsletterData.unsubscribeConfirm.logo}>
-          <SVGNusszopfBigYellowBlue className="flex-shrink-0 w-full" />
-        </Route>
-        <Text as="h1" type={TEXT_TYPE.titleMd} className="mb-8">
-          {newsletterData.unsubscribeConfirm.heading}
-          <span className="hidden sm:inline">...</span>
-        </Text>
-        <Text className="mb-12 sm:mb-16 hyphens-auto">
-          <span className="italic">{lead.email}</span> {newsletterData.unsubscribeConfirm.textA}
-          <span className="block mt-3">{newsletterData.unsubscribeConfirm.textB}</span>
-        </Text>
-        <div className="text-center">
-          <Link
-            type={LINK_TYPES.button}
-            color={BTN_COLORS.blue400Yellow300}
-            title={newsletterData.unsubscribeConfirm.action.meta}
-            ariaLabel={newsletterData.unsubscribeConfirm.action.meta}
-            href={newsletterData.unsubscribeConfirm.action.href}>
-            {newsletterData.unsubscribeConfirm.action.text}
-          </Link>
-        </div>
-      </div>
-    </FrameFullCenter>
+  <Page
+    className="text-blue-400 bg-white sm:bg-blue-400"
+    showFooter={true}
+    footerType={FOOTER_TYPE.secondary}
+    noindex={true}>
+    <FramedCard className="bg-white">
+      <Route
+        variant="svg"
+        className="block w-40 mx-auto"
+        href="/"
+        title={newsletterData.unsubscribe.logo}
+        ariaLabel={newsletterData.unsubscribe.logo}>
+        <SVGNusszopfLogoBig className="flex-shrink-0 w-full" />
+      </Route>
+      <Text as="h1" variant="textXl" className="mt-10 mb-5 sm:mt-12">
+        {newsletterData.unsubscribeConfirm.heading}
+        <span className="hidden sm:inline">...</span>
+      </Text>
+      <Text variant="textSmMedium" className="hyphens-auto">
+        <span className="italic font-semibold">{lead?.email}</span> {newsletterData.unsubscribeConfirm.textA}{' '}
+        {newsletterData.unsubscribeConfirm.textB}
+      </Text>
+      <Link
+        variant="button"
+        color="whiteBlue400"
+        className="mt-6"
+        title={newsletterData.unsubscribeConfirm.action.meta}
+        ariaLabel={newsletterData.unsubscribeConfirm.action.meta}
+        href={newsletterData.unsubscribeConfirm.action.href}>
+        {newsletterData.unsubscribeConfirm.action.text}
+      </Link>
+    </FramedCard>
   </Page>
 )
 
