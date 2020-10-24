@@ -9,9 +9,6 @@
 - [Vercel – Build Ignore Step](https://vercel.com/knowledge/how-do-i-use-the-ignored-build-step-field-on-vercel)
 - [Vercel – Monorepos](https://vercel.com/blog/monorepos)
 
-- [Vercel – Build Ignore Step](https://vercel.com/knowledge/how-do-i-use-the-ignored-build-step-field-on-vercel)
-- [Vercel – Monorepos](https://vercel.com/blog/monorepos)
-
 ## Special thanks to our sponsors
 
 <a href="https://www.sanity.io/"><img src="./docs/sponsors/sanity-logo.png" height="16px"></a>
