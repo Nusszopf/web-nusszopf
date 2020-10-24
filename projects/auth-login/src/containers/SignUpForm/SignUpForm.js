@@ -8,14 +8,12 @@ import { Text, Button, Input, Link, Checkbox } from 'ui-library/stories/atoms'
 import { InputGroup } from 'ui-library/stories/molecules'
 import { Eye, EyeOff } from 'react-feather'
 
-// Auth0 Password Strength: Dashboard/Authentication/Database/PasswordPolicy
-
 const SignUpForm = ({ loading, className, onSubmit }) => {
   const [isEyeOpen, setEye] = useState(false)
   return (
     <div className={classnames('w-full text-gray-500', className)} data-test="signup form">
       <Formik
-        initialValues={{ username: '', password: '', email: '', privacy: false }}
+        initialValues={{ username: '', password: '', email: '', privacy: false, newsletter: false }}
         onSubmit={onSubmit}
         validationSchema={object({
           username: string()
@@ -23,6 +21,7 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
             .max(15, 'Maximal 15 Zeichen')
             .required('Bitte gib einen Namen ein'),
           email: string().email('Keine valide E-Mail-Adresse').required('Bitte gib eine E-Mail-Adresse ein'),
+          // Auth0 Password Strength: Dashboard/Authentication/Database/PasswordPolicy
           password: string()
             .min(8, 'Mindestens 8 Zeichen')
             .matches(/[a-z]/, 'Mindestens ein Kleinbuchstabe')
@@ -106,7 +105,17 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                   </>
                 }
               />
-              <ErrorMessage name="privacy" variant="textSm" className="mt-2 ml-6 italic" component={Text} />
+              <ErrorMessage name="privacy" variant="textSm" className="mt-1 mb-3 ml-6 italic" component={Text} />
+            </div>
+            <div className="mt-2">
+              <Field
+                as={Checkbox}
+                disabled={loading}
+                checked={formikProps.values.newsletter}
+                name="newsletter"
+                aria-label="Nussigen Newsletter abon­nie­ren"
+                label="Nussigen Newsletter abon­nie­ren"
+              />
             </div>
             <div className="mt-6 text-center">
               <Button type="submit" color="whiteGray500" disabled={loading}>

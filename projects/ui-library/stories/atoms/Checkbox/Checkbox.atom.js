@@ -13,8 +13,8 @@ const Checkbox = ({ disabled = false, checked = false, label, className, ...prop
         'opacity-50 cursor-default': disabled,
         'cursor-pointer': !disabled,
       })}>
-      {!checked && <Square className={classnames('mt-px', className)} />}
-      {checked && <CheckSquare className={classnames('mt-px', className)} />}
+      {!checked && <Square className={classnames('mt-px flex-shrink-0', className)} />}
+      {checked && <CheckSquare className={classnames('mt-px flex-shrink-0', className)} />}
       <Text as="span" variant="textSm" className={classnames('ml-2', className)}>
         {label}
       </Text>

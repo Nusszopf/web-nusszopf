@@ -125,6 +125,7 @@ export default function IndexPage() {
           username: values.username,
           email: values.email,
           password: values.password,
+          userMetadata: { newsletter: values.newsletter },
         },
         (error, response) => {
           setLoading(false)
