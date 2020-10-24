@@ -1,6 +1,6 @@
 import classnames from 'classnames'
 import { Page, NewsletterSection } from '../containers'
-import { Button, Link, Route, Text } from 'ui-library/stories/atoms'
+import { Button, Link, Text } from 'ui-library/stories/atoms'
 import { Frame } from 'ui-library/stories/templates'
 import { headerData, hintData, featuresData, contestData, fellowsData } from '../assets/data'
 
@@ -12,7 +12,7 @@ const Index = () => {
   }
 
   return (
-    <Page>
+    <Page showNavHeader={process.env.ENV !== 'production'}>
       <Frame as="header" className="bg-white">
         <div className="flex flex-col pt-12 pb-12 sm:pt-20 sm:pb-20 lg:flex-row xl:pt-32 xl:pb-32">
           <div className="lg:w-1/2 lg:pr-8 lg:self-center">
@@ -158,11 +158,6 @@ const Index = () => {
         </div>
       </Frame>
       <NewsletterSection />
-      <Frame className="py-4 bg-red-300">
-        <Route href="/api/login" title="login" ariaLabel="temp login">
-          Test Login
-        </Route>
-      </Frame>
     </Page>
   )
 }
