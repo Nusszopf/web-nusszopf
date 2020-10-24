@@ -44,30 +44,28 @@ Footer.propTypes = {
 Footer.LeftElement = ({ children, ...props }) => <div {...props}>{children}</div>
 Footer.LeftElement.displayName = 'Footer.LeftElement'
 Footer.LeftElement.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.node,
 }
 
 Footer.RightElement = ({ sponsors, children, ...props }) => (
   <div {...props}>
     {children}
-    {sponsorsData.map(sponsor => (
-      <>
-        {sponsors.map(key => (
-          <>
-            {key === sponsor.key && (
-              <Link
-                className={key === 'auth0' && 'mr-4'}
-                variant="svg"
-                href={sponsor.href}
-                title={sponsor.meta}
-                ariaLabel={sponsor.meta}>
-                <sponsor.logo className="w-32 h-full" />
-              </Link>
-            )}
-          </>
-        ))}
-      </>
-    ))}
+    {sponsorsData.map(sponsor => {
+      return sponsors.map(key => (
+        <React.Fragment key={sponsor.key}>
+          {key === sponsor.key && (
+            <Link
+              className={key === 'auth0' ? 'mr-4' : ''}
+              variant="svg"
+              href={sponsor.href}
+              title={sponsor.meta}
+              ariaLabel={sponsor.meta}>
+              <sponsor.logo className="w-32 h-full" />
+            </Link>
+          )}
+        </React.Fragment>
+      ))
+    })}
   </div>
 )
 Footer.RightElement.displayName = 'Footer.RightElement'
