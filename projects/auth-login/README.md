@@ -17,6 +17,11 @@ Environment to develop and build a custom auth0 login page.
 5. Minify via [willpeavy.com/tools/minifier/](https://www.willpeavy.com/tools/minifier/)
 6. Save new html file in auth0 as custom login page
 
+## Auth0 Hooks & Rules
+
+- Rule: Add keys for hasura for each session ([auth0/rules](https://auth0.com/docs/rules))
+- Hook: Sync signup with hasura after registration ([auth0/hooks](https://auth0.com/docs/hooks))
+
 ## Notes
 
 - [Auth0 Auth App](https://community.auth0.com/t/disable-authorize-app-dialog/6939)

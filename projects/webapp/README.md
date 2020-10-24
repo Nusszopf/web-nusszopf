@@ -30,27 +30,9 @@ Builds the app for production.
 
 Runs the built app in production mode.
 
-### `yarn storybook`
-
-Starts development server for storybook on [http://localhost:6006](http://localhost:6006).
-
-### `yarn build-storybook`
-
-Builds storybook for production.
-
 ### `yarn analyze`
 
 Analyze the app bundles.
-
-## Update dependencies
-
-Run `yarn upgrade-interactive --latest`
-
----
-
-### Settings
-
-- turn default validations for css/less/sass/tailwind off and let stylelint take care of it (.vscode/settings.json)
 
 ---
 
@@ -59,7 +41,6 @@ Run `yarn upgrade-interactive --latest`
 ```zsh
 +-- /.next
 +-- /.vercel
-+-- /docs
 +-- /public
 +-- /scripts
 +-- /src
@@ -69,9 +50,9 @@ Run `yarn upgrade-interactive --latest`
 | +-- /utils
 ```
 
-### Root / .next / .storybook / .vercel
+### ./
 
-All configuration-files for specific libraries and dev-tooling, etc.
+All configuration-files for specific libraries, dev-tooling, etc.
 
 ### /docs
 
@@ -94,9 +75,9 @@ All the code relevant for the frontend app, als well the serverless-functions.
 Components, which:
 
 - are smart
-- are not relevant for the design-system; e.g. have a specific use-case, that do not occur often
-- can't be seperated easy into logic and ui
-- related to react concepts like `high-order-components`
+- are not relevant for the design-system
+- can't be seperated simply
+- are related to react concepts like `high-order-components`
 
 #### **src/pages**
 
