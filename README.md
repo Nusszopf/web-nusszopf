@@ -4,7 +4,10 @@
   </a>
 </p>
 
-# Nusszopf Monorepo
+# Nusszopf – Network for joint ideas and projects
+
+- [Vercel – Build Ignore Step](https://vercel.com/knowledge/how-do-i-use-the-ignored-build-step-field-on-vercel)
+- [Vercel – Monorepos](https://vercel.com/blog/monorepos)
 
 - [Vercel – Build Ignore Step](https://vercel.com/knowledge/how-do-i-use-the-ignored-build-step-field-on-vercel)
 - [Vercel – Monorepos](https://vercel.com/blog/monorepos)
