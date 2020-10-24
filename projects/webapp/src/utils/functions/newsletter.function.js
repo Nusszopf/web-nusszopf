@@ -6,6 +6,7 @@ export const NewsletterType = {
   subscribeConfirm: 'subscribeConfirm',
   unsubscribe: 'unsubscribe',
   unsubscribeConfirm: 'unsubscribeConfirm',
+  auth0SyncHasura: 'auth0SyncHasura', // todo
 }
 
 export const handleSubscribe = async ({ email, name, privacy }, res, sgMail) => {
@@ -40,6 +41,19 @@ export const handleUnsubscribeConfirm = async ({ token }, res, sgClient) => {
     res.status(200).json({ email: lead.email, name: lead.name })
   } else {
     res.status(404).end(`lead with id ${leadId} was not found in sendgrid`)
+  }
+}
+
+export const handleAuth0SyncHasura = async ({ token }, res, sgClient) => {
+  const { id, name, email } = jwt.verify(token, process.env.EMAIL_SECRET)
+  const lead = await getLead(email)
+  if (lead) {
+    res.status(200).json({ id })
+  } else {
+    await addLead(email, name, true)
+    await createSendGridContact(sgClient, process.env.SENDGRID_LIST_ID, email, name)
+    await updateLead(id)
+    res.status(200).json({ id })
   }
 }
 

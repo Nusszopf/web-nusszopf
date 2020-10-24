@@ -6,6 +6,7 @@ import {
   handleSubscribeConfirm,
   handleUnsubscribe,
   handleUnsubscribeConfirm,
+  handleAuth0SyncHasura,
   NewsletterType,
 } from '../../utils/functions/newsletter.function'
 
@@ -29,6 +30,9 @@ export default async function newsletter(req, res) {
         break
       case NewsletterType.unsubscribeConfirm:
         await handleUnsubscribeConfirm(req.body, res, sgClient)
+        break
+      case NewsletterType.auth0SyncHasura:
+        await handleAuth0SyncHasura(req.body, res, sgClient)
         break
     }
   } catch (error) {
