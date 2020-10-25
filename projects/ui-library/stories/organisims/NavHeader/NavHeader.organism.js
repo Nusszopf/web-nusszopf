@@ -14,7 +14,7 @@ const NavHeader = ({ children, user }) => {
   const router = useRouter()
 
   const handleLoginSignup = () => {
-    notify({ type: 'loading', message: 'Du wirst einloggt.' })
+    notify({ type: 'loading', message: 'Du wirst einloggt oder weitergeleitet.' })
     router.push('/api/login')
   }
 
