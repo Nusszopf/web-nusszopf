@@ -1,15 +1,25 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { Menu } from 'react-feather'
 import { Clickable } from 'reakit/Clickable'
 
-import { Route } from '../../atoms'
+import { Text } from '../../atoms'
 import { Frame } from '../../templates'
+import { useToasts } from '../../../services/Toasts.service'
 
 const NavHeader = ({ children, user }) => {
+  const { notify } = useToasts()
+  const router = useRouter()
+
+  const handleLoginSignup = () => {
+    notify({ type: 'loading', message: 'Du wirst einloggt.' })
+    router.push('/api/login')
+  }
+
   return (
-    <Frame as="nav" className="bg-gray-300">
+    <Frame as="nav" className="bg-gray-200">
       <div
         className={classnames('flex items-center w-full h-10 lg:h-12', {
           'justify-between': children,
@@ -21,9 +31,9 @@ const NavHeader = ({ children, user }) => {
             <Menu />
           </Clickable>
         ) : (
-          <Route title="Einloggen" ariaLabel="Einloggen" href="/api/login">
-            Anmelden | Einloggen
-          </Route>
+          <Clickable onClick={handleLoginSignup} className="text-gray-700 focus:outline-none hover:text-gray-500">
+            <Text variant="textSm">Anmelden | Einloggen</Text>
+          </Clickable>
         )}
       </div>
     </Frame>
