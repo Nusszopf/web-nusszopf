@@ -122,7 +122,7 @@ export default function IndexPage() {
       webAuth.redirect.signupAndLogin(
         {
           connection: 'Username-Password-Authentication',
-          nickname: values.username,
+          username: values.username,
           email: values.email,
           password: values.password,
           user_metadata: { newsletter: values.newsletter ? 'true' : 'false' }, // test
