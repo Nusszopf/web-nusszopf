@@ -50,9 +50,9 @@ export const handleAuth0SyncHasura = async ({ token }, res, sgClient) => {
   if (lead) {
     res.status(200).json({ id })
   } else {
-    await addLead(email, name, true)
+    const lead = await addLead(email, name, true)
     await createSendGridContact(sgClient, process.env.SENDGRID_LIST_ID, email, name)
-    await updateLead(id)
+    await updateLead(lead.id)
     res.status(200).json({ id })
   }
 }
