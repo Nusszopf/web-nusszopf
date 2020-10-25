@@ -1,6 +1,6 @@
 {
 	"name": "webapp",
-	"version": "2.1.1",
+	"version": "2.1.2",
 	"description": "nusszopf webapp",
 	"repository": "git@github.com:nusszopf/web-nusszopf.git",
 	"author": "schwamic <schwarz.michael@posteo.net>",
