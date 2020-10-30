@@ -23,10 +23,9 @@ export const UPDATE_LEAD = gql`
 `
 
 export const DELETE_LEAD = gql`
-  mutation deleteLead($id: uuid!) {
-    delete_leads_by_pk(id: $id) {
-      email
-      name
+  mutation deleteLead($email: String!) {
+    delete_leads(where: { email: { _eq: $email } }) {
+      affected_rows
     }
   }
 `

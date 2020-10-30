@@ -13,11 +13,11 @@ import {
 const ERROR_CONSTRAINT = 'constraint-violation'
 
 export default async function newsletter(req, res) {
-  await runMiddleware(req, res, rateLimiter)
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-  sgClient.setApiKey(process.env.SENDGRID_API_KEY)
-  const { action } = req.body
   try {
+    await runMiddleware(req, res, rateLimiter)
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+    sgClient.setApiKey(process.env.SENDGRID_API_KEY)
+    const { action } = req.body
     switch (action) {
       case NewsletterType.subscribe:
         await handleSubscribe(req.body, res, sgMail)

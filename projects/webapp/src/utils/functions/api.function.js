@@ -1,6 +1,6 @@
 import { GraphQLClient } from 'graphql-request'
 import { print } from 'graphql/language/printer'
-import { INSERT_LEAD, UPDATE_LEAD, DELETE_LEAD } from '../hasura/mutations/newsletter.mutation'
+import { INSERT_LEAD, UPDATE_LEAD, DELETE_LEAD } from '../hasura/mutations/leads.mutation'
 import { GET_LEAD } from '../hasura/queries/newsletter.query'
 
 export const fetchWithUserAuth = (query, variables = {}, token) => {
@@ -38,7 +38,7 @@ export const updateLead = async id => {
   return res?.update_leads_by_pk
 }
 
-export const deleteLead = async id => {
-  const res = await fetchWithAdminAuth(DELETE_LEAD, { id })
-  return res?.delete_leads_by_pk
+export const deleteLead = async email => {
+  const res = await fetchWithAdminAuth(DELETE_LEAD, { email })
+  return res?.delete_leads?.affected_rows
 }
