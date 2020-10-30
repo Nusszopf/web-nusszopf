@@ -25,6 +25,7 @@ module.exports = {
       current: 'currentColor',
       black: '#000',
       white: '#fff',
+      warning: '#F54636',
       gray: {
         100: '#ECEFF1',
         200: '#CFD8DC',
@@ -95,6 +96,7 @@ module.exports = {
         'outline:gray-600': '0 0 0 3px rgba(38, 50, 56, 0.5)',
         'outline:gray-500': '0 0 0 3px rgba(84, 110, 122, 0.5)',
         'outline:gray-200': '0 0 0 3px rgba(207, 216, 220, 0.5)',
+        'outline:warning': '0 0 0 3px rgba(245, 70, 54, 0.5)',
         'outline:turquoise-600-bright': '0 0 0 3px rgba(104, 217, 185, 0.25)',
       },
       borderWidth: {

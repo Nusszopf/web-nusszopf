@@ -1,4 +1,4 @@
-.nz-btn-filled {
+.nz-btn {
   @apply transition-shadow duration-150 ease-in-out rounded-full;
 }
 
@@ -46,6 +46,6 @@
   @apply text-blue-400 bg-blue-200 hover:shadow-outline:blue-200 focus:shadow-outline:blue-200;
 }
 
-/* .btn-primary-outline {
-  @apply transition-shadow duration-150 ease-in-out rounded-full border-3;
-} */
+.nz-btn-outline-warning {
+  @apply border-warning text-warning border-3 hover:shadow-outline:warning focus:shadow-outline:warning;
+}

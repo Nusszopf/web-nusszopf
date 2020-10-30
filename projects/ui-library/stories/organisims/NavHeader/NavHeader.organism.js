@@ -9,7 +9,7 @@ import { Text } from '../../atoms'
 import { Frame } from '../../templates'
 import { useToasts } from '../../../services/Toasts.service'
 
-const NavHeader = ({ children, user }) => {
+const NavHeader = ({ children, user, sticky = false }) => {
   const { notify } = useToasts()
   const router = useRouter()
 
@@ -19,7 +19,7 @@ const NavHeader = ({ children, user }) => {
   }
 
   return (
-    <Frame as="nav" className="bg-gray-200">
+    <Frame as="nav" className={classnames(' bg-gray-300', { 'sticky top-0': sticky })}>
       <div
         className={classnames('flex items-center w-full h-10 lg:h-12', {
           'justify-between': children,
@@ -43,6 +43,7 @@ const NavHeader = ({ children, user }) => {
 NavHeader.propTypes = {
   children: PropTypes.node,
   user: PropTypes.object,
+  sticky: PropTypes.bool,
 }
 
 export default NavHeader

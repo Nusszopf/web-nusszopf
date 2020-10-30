@@ -1,4 +1,5 @@
 import React from 'react'
+import { ToastsProvider } from '../../../services/Toasts.service'
 import NavHeader from './NavHeader.organism'
 
 export default {
@@ -14,4 +15,8 @@ export default {
   },
 }
 
-export const Default = () => <NavHeader />
+export const Default = () => (
+  <ToastsProvider>
+    <NavHeader />
+  </ToastsProvider>
+)
