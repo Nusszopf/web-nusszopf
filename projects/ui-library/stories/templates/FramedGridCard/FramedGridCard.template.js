@@ -31,7 +31,7 @@ const Header = ({ className, children, ...props }) => (
     </div>
   </div>
 )
-Header.propTypes = { children: PropTypes.string, className: PropTypes.string }
+Header.propTypes = { children: PropTypes.node, className: PropTypes.string }
 Header.displayName = 'FramedGridCard.Header'
 FramedGridCard.Header = Header
 
