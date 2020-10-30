@@ -1,16 +1,16 @@
 import sgClient from '@sendgrid/client'
 import { requireEventSecret } from '../../../utils/functions/auth.function'
-import { AccountTrigger, handleDelete } from '../../../utils/functions/account.function'
+import { UsersTrigger, handleDeleteUser } from '../../../utils/functions/users.function'
 
 const ERROR_CONSTRAINT = 'constraint-violation'
 
-export default async function account(req, res) {
+export default async function users(req, res) {
   try {
     requireEventSecret(req.headers.secret)
     sgClient.setApiKey(process.env.SENDGRID_API_KEY)
     switch (req.body?.trigger?.name) {
-      case AccountTrigger.delete:
-        await handleDelete(req.body?.event?.data?.old, res, sgClient)
+      case UsersTrigger.delete:
+        await handleDeleteUser(req.body?.event?.data?.old, res, sgClient)
         break
     }
   } catch (error) {
