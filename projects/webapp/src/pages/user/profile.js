@@ -1,7 +1,7 @@
 import { Frame } from 'ui-library/stories/templates'
 import { Text } from 'ui-library/stories/atoms'
 import { Page } from '../../containers'
-import { useFetchUser } from '../../utils/services/user.service'
+import { useFetchUser } from '../../utils/services/auth.service'
 
 // Todo: hasura request user+lead object
 

@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
-import { concatPagination } from '@apollo/client/utilities'
-import { setContext } from '@apollo/link-context'
-import { onError } from '@apollo/link-error'
+// import { concatPagination } from '@apollo/client/utilities'
+import { setContext } from '@apollo/client/link/context'
+import { onError } from '@apollo/client/link/error'
 
 let apolloClient
 let accessToken
@@ -56,7 +56,10 @@ function createApolloClient() {
       typePolicies: {
         Query: {
           fields: {
-            allPosts: concatPagination(),
+            users_by_pk: {
+              merge: true,
+            },
+            // allPosts: concatPagination(),
           },
         },
       },

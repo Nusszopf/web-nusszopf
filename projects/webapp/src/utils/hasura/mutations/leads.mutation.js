@@ -16,6 +16,7 @@ export const INSERT_LEAD = gql`
 export const UPDATE_LEAD = gql`
   mutation updateLead($id: uuid!) {
     update_leads_by_pk(pk_columns: { id: $id }, _set: { hasConfirmed: true }) {
+      id
       email
       name
     }
@@ -26,6 +27,9 @@ export const DELETE_LEAD = gql`
   mutation deleteLead($email: String!) {
     delete_leads(where: { email: { _eq: $email } }) {
       affected_rows
+      returning {
+        id
+      }
     }
   }
 `

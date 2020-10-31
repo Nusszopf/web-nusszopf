@@ -1,33 +1,76 @@
-import { FramedGridCard } from 'ui-library/stories/templates'
-import { Text, Link, Checkbox, Route, Button } from 'ui-library/stories/atoms'
+import { useEffect } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { object, mixed } from 'yup'
-import { Page } from '../../containers'
-import { useFetchUser } from '../../utils/services/user.service'
+import { useRouter } from 'next/router'
+
+import { Text, Link, Checkbox, Route, Button } from 'ui-library/stories/atoms'
+import { FramedGridCard } from 'ui-library/stories/templates'
 import { InfoCard } from 'ui-library/stories/molecules'
+import { useToasts } from 'ui-library/services/Toasts.service'
+import { useFetchUser } from '../../utils/services/auth.service'
+import apollo from '../../utils/services/apollo.service'
+import { Page } from '../../containers'
 import { settingsData } from '../../assets/data'
 
-// Todo: hasura request user+lead object
-
 const Settings = () => {
-  const { user, loading } = useFetchUser({ required: true })
-  console.log(user)
+  const { user: authUser } = useFetchUser({ required: true })
+  const { notify } = useToasts()
+  const router = useRouter()
+  const [deleteUser] = apollo.useDeleteUser()
+  const [addLead] = apollo.useAddLead()
+  const [deleteLead] = apollo.useDeleteLead()
+  const [updateLead] = apollo.useUpdateLead(authUser?.sub)
+  const [loadData, { loading, data: user }] = apollo.useLazyGetUser(authUser?.sub)
 
-  const handleSubscribe = ({ privacy }) => {
-    // request to hasura
-  }
+  useEffect(() => {
+    if (authUser) loadData()
+  }, [authUser, loadData])
 
-  const handleUnsubscribe = () => {
-    const isConfirmed = confirm(settingsData.newsletter.unsubscribe.confirm)
-    if (isConfirmed) {
-      // request to hasura
+  const handleSubscribe = async ({ privacy }) => {
+    notify({ type: 'loading', message: 'Du wirst zum Newsletter angemeldet.' })
+    try {
+      const res = await addLead({
+        variables: {
+          email: user.users_by_pk.email,
+          name: authUser.nickname,
+          privacy,
+        },
+      })
+      await updateLead({ variables: { id: res.data.insert_leads_one.id } })
+      notify({ type: 'success', message: 'Du bist jetzt angemeldet.' })
+    } catch (error) {
+      notify({ type: 'error', message: 'Sorry, da lief was schief.' })
     }
   }
 
-  const handleDelete = () => {
-    const isConfirmed = confirm(settingsData.delete.confirm)
+  const handleUnsubscribe = async () => {
+    const isConfirmed = confirm(settingsData.newsletter.unsubscribe.confirm)
     if (isConfirmed) {
       // request to hasura
+      notify({ type: 'loading', message: 'Du wirst vom Newsletter abgemeldet.' })
+      try {
+        await deleteLead({
+          variables: { email: user.users_by_pk.email },
+        })
+        notify({ type: 'success', message: 'Du bist jetzt abgemeldet.' })
+      } catch (error) {
+        notify({ type: 'error', message: 'Sorry, da lief was schief.' })
+      }
+    }
+  }
+
+  const handleDelete = async () => {
+    const isConfirmed = confirm(settingsData.delete.confirm)
+    if (isConfirmed) {
+      notify({ type: 'loading', message: 'Dein Account wird gelöscht.' })
+      try {
+        await deleteUser({
+          variables: { id: authUser?.sub },
+        })
+        router.push('/')
+      } catch (error) {
+        notify({ type: 'error', message: 'Sorry, da lief was schief.' })
+      }
     }
   }
 
@@ -43,10 +86,10 @@ const Settings = () => {
               {settingsData.title}
             </Text>
             <div className="flex items-center mt-4 md:mt-0">
-              <div className="w-16 h-16 bg-gray-600 rounded-full"></div>
+              <img className="w-16 h-16 bg-gray-600 rounded-full" src={authUser?.picture} alt="avatar" />
               <div className="ml-4">
-                <Text variant="textSmMedium">Nickname</Text>
-                <Text variant="textSm">email@email.de</Text>
+                <Text variant="textSmMedium">{authUser?.nickname ?? '-'}</Text>
+                <Text variant="textSm">{user?.users_by_pk?.email ?? '-'}</Text>
               </div>
             </div>
           </div>
@@ -57,7 +100,7 @@ const Settings = () => {
               <Text variant="textMd" className="mb-2">
                 {settingsData.newsletter.title}
               </Text>
-              {true ? (
+              {!user?.users_by_pk?.lead?.hasConfirmed ? (
                 <Formik
                   initialValues={{ privacy: false }}
                   onSubmit={handleSubscribe}
