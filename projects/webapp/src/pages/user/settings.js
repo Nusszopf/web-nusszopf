@@ -67,6 +67,7 @@ const Settings = () => {
           variables: { id: authUser?.sub },
         })
         router.push('/')
+        notify({ type: 'success', message: 'Dein Account wurde gelöscht.' })
       } catch (error) {
         notify({ type: 'error', message: 'Sorry, da lief was schief.' })
       }

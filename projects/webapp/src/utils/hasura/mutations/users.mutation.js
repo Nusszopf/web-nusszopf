@@ -1,11 +1,13 @@
 import gql from 'graphql-tag'
 
 export const DELETE_USER = gql`
-  mutation deleteUser($id: uuid!) {
-    delete_users_py_bk(id: $id) {
-      id
+  mutation deleteUser($id: String!) {
+    delete_users_by_pk(id: $id) {
       email
-      lead
+      id
+      lead {
+        id
+      }
     }
   }
 `
