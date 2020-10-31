@@ -10,7 +10,7 @@ const Toast = ({ message, className, type, id, onClose, ...props }) => (
   <ReakitClickable
     onClick={() => onClose(id)}
     className={classnames(
-      'w-full sm:w-96 bg-gray-300 rounded-md flex items-start outline-none focus:outline-none justify-between p-5 text-gray-600',
+      'w-full sm:w-96 bg-gray-250 rounded-md flex items-start outline-none focus:outline-none justify-between p-5 text-gray-600',
       className
     )}
     {...props}>

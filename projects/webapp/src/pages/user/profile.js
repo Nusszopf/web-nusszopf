@@ -7,10 +7,9 @@ import { useFetchUser } from '../../utils/services/auth.service'
 
 const Profile = () => {
   const { user, loading } = useFetchUser({ required: true })
-  console.log(user)
 
   return (
-    <Page noindex={true}>
+    <Page noindex={true} navHeader={{ visible: true, goBackUri: 'back' }} showFooter={false}>
       <Frame className="bg-white">
         {!loading && user && (
           <div className="flex items-center p-8">

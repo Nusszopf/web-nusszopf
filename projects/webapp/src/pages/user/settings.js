@@ -75,7 +75,11 @@ const Settings = () => {
   }
 
   return (
-    <Page showNavHeader={true} showFooter={false} noindex={true} className="text-gray-600 bg-gray-100">
+    <Page
+      navHeader={{ visible: true, goBackUri: 'back' }}
+      showFooter={false}
+      noindex={true}
+      className="text-gray-600 bg-gray-100">
       <FramedGridCard
         className="lg:mb-20 lg:mt-12"
         bodyColor="bg-white lg:bg-gray-100"
@@ -88,7 +92,7 @@ const Settings = () => {
             <div className="flex items-center mt-4 md:mt-0">
               <img className="w-16 h-16 bg-gray-600 rounded-full" src={authUser?.picture} alt="avatar" />
               <div className="ml-4">
-                <Text variant="textSmMedium">{authUser?.nickname ?? '-'}</Text>
+                <Text variant="textSmMedium">{authUser?.name ?? '-'}</Text>
                 <Text variant="textSm">{user?.users_by_pk?.email ?? '-'}</Text>
               </div>
             </div>

@@ -12,7 +12,7 @@ const Index = () => {
   }
 
   return (
-    <Page showNavHeader={process.env.ENV !== 'production'}>
+    <Page navHeader={{ visible: process.env.ENV !== 'production' }}>
       <Frame as="header" className="bg-white">
         <div className="flex flex-col pt-12 pb-12 sm:pt-20 sm:pb-20 lg:flex-row xl:pt-32 xl:pb-32">
           <div className="lg:w-1/2 lg:pr-8 lg:self-center">

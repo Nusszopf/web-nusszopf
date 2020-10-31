@@ -9,3 +9,7 @@
 .hyphens-auto {
   hyphens: auto;
 }
+
+.max-w-content {
+  max-width: max-content;
+}

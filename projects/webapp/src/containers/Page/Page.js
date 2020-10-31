@@ -6,6 +6,7 @@ import { truncate } from 'lodash'
 import classnames from 'classnames'
 
 import { NavHeader } from 'ui-library/stories/organisims'
+import { useFetchUser } from '../../utils/services/auth.service'
 import { Footer } from '../../containers'
 import ErrorBoundary from './ErrorBoundary'
 import { FOOTER_TYPE } from '../Footer/Footer'
@@ -19,11 +20,12 @@ const Page = ({
   noindex = false,
   notFound = false,
   showFooter = true,
-  showNavHeader = false,
+  navHeader,
   footerType = FOOTER_TYPE.primary,
   className,
 }) => {
   const router = useRouter()
+  const { user } = useFetchUser()
   const domain = `${process.env.DOMAIN}`
   const url = router && router.asPath ? router.asPath : undefined
   const canonical = url && url === '/' ? domain : domain + url
@@ -65,7 +67,7 @@ const Page = ({
         }}
       />
       <ErrorBoundary>
-        {showNavHeader && <NavHeader />}
+        {navHeader?.visible && <NavHeader user={user} {...navHeader} />}
         <main className={classnames('flex-1', className)}>{children}</main>
         {showFooter && <Footer type={footerType} />}
       </ErrorBoundary>
@@ -77,12 +79,11 @@ Page.propTypes = {
   children: PropTypes.node,
   description: PropTypes.string,
   image: PropTypes.object,
-  keywords: PropTypes.string,
   noindex: PropTypes.bool,
   notFound: PropTypes.bool,
   title: PropTypes.string,
   showFooter: PropTypes.bool,
-  showNavHeader: PropTypes.bool,
+  navHeader: PropTypes.object,
   className: PropTypes.string,
   footerType: PropTypes.string,
 }

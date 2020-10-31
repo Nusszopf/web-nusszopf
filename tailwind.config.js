@@ -27,8 +27,10 @@ module.exports = {
       white: '#fff',
       warning: '#F54636',
       gray: {
+        50: '#F6F8F9',
         100: '#ECEFF1',
         200: '#CFD8DC',
+        250: '#AFBEC5',
         300: '#90A4AE',
         400: '#607D8B',
         500: '#546E7A',
