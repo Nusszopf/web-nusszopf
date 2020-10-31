@@ -46,7 +46,6 @@ const Settings = () => {
   const handleUnsubscribe = async () => {
     const isConfirmed = confirm(settingsData.newsletter.unsubscribe.confirm)
     if (isConfirmed) {
-      // request to hasura
       notify({ type: 'loading', message: 'Du wirst vom Newsletter abgemeldet.' })
       try {
         await deleteLead({
