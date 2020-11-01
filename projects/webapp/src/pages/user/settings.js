@@ -9,7 +9,7 @@ import { InfoCard } from 'ui-library/stories/molecules'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import { useFetchUser } from '../../utils/services/auth.service'
 import apollo from '../../utils/services/apollo.service'
-import { Page } from '../../containers'
+import { Page, Avatar } from '../../containers'
 import { settingsData } from '../../assets/data'
 
 const Settings = () => {
@@ -89,13 +89,7 @@ const Settings = () => {
             <Text as="h1" variant="textLg">
               {settingsData.title}
             </Text>
-            <div className="flex items-center mt-4 md:mt-0">
-              <img className="w-16 h-16 bg-gray-600 rounded-full" src={authUser?.picture} alt="avatar" />
-              <div className="ml-4">
-                <Text variant="textSmMedium">{authUser?.name ?? '-'}</Text>
-                <Text variant="textSm">{user?.users_by_pk?.email ?? '-'}</Text>
-              </div>
-            </div>
+            <Avatar user={{ ...authUser, ...user?.users_by_pk }} className="mt-4 md:mt-0" />
           </div>
         </FramedGridCard.Header>
         <FramedGridCard.Body className="bg-white">

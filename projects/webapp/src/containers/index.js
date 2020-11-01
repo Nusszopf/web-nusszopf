@@ -1,3 +1,4 @@
+export { default as Avatar } from './Avatar/Avatar'
 export { default as EditProjectCard } from './EditProjectCard/EditProjectCard'
 export { default as ErrorPage } from './ErrorPage/ErrorPage'
 export { default as Footer } from './Footer/Footer'
