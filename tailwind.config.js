@@ -83,6 +83,16 @@ module.exports = {
         600: '#CC005C',
         700: '#990045',
       },
+      lilac: {
+        100: '#F4F3F5',
+        200: '#EDECEF',
+        300: '#E5E3E7',
+        400: '#CBC6D0',
+        500: '#B1AAB8',
+        600: '#7D7289',
+        700: '#645B6E',
+        800: '#4B4452',
+      },
     },
     fontFamily: {
       sans: ['Barlow', ...defaultTheme.fontFamily.sans],
