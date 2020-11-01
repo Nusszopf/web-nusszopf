@@ -110,6 +110,7 @@ module.exports = {
         'outline:gray-200': '0 0 0 3px rgba(207, 216, 220, 0.5)',
         'outline:warning': '0 0 0 3px rgba(245, 70, 54, 0.5)',
         'outline:turquoise-600-bright': '0 0 0 3px rgba(104, 217, 185, 0.25)',
+        'outline:lilac-700': '0 0 0 3px rgba(100, 91, 110, 0.5)',
       },
       borderWidth: {
         3: '3px',

@@ -98,8 +98,8 @@ const Settings = () => {
             </div>
           </div>
         </FramedGridCard.Header>
-        <FramedGridCard.Body variant="twoCols" className="bg-white">
-          <FramedGridCard.Body.Col>
+        <FramedGridCard.Body className="bg-white">
+          <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2">
             <div id="newsletter">
               <Text variant="textMd" className="mb-2">
                 {settingsData.newsletter.title}
@@ -175,7 +175,7 @@ const Settings = () => {
               </Link>
             </div>
           </FramedGridCard.Body.Col>
-          <FramedGridCard.Body.Col>
+          <FramedGridCard.Body.Col variant="twoCols">
             <InfoCard className="mt-12 text-gray-700 bg-gray-200 lg:ml-16 lg:mt-0">
               {settingsData.info[0]}
               <Link
@@ -188,7 +188,7 @@ const Settings = () => {
               {settingsData.info[2]}
             </InfoCard>
           </FramedGridCard.Body.Col>
-          <FramedGridCard.Body.Col>
+          <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2">
             <div id="delete" className="mt-10 text-warning">
               <Text variant="textMd" className="mb-2">
                 {settingsData.delete.title}

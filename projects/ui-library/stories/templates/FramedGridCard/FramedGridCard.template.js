@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { Frame } from '../../templates'
+import { BodyGap, ColVariant } from './FramedGridCard.theme'
 
 const FramedGridCard = ({ children, className, headerColor, bodyColor }) => (
   <div className={className}>
@@ -35,36 +36,40 @@ Header.propTypes = { children: PropTypes.node, className: PropTypes.string }
 Header.displayName = 'FramedGridCard.Header'
 FramedGridCard.Header = Header
 
-const BodyVariant = {
-  twoCols: 'twoCols',
-  twelveCols: 'twelveCols',
-}
-
-const Body = ({ className, children, variant = BodyVariant.twelveCols, ...props }) => (
-  <div className={classnames('grid grid-cols-12 gap-2 py-16 rounded-b-lg', className)} {...props}>
-    {React.Children.map(children, (child, index) =>
-      React.cloneElement(child, {
-        className: classnames(
-          {
-            'col-span-12 lg:col-span-5': variant === BodyVariant.twoCols,
-            'lg:col-start-2': index % 2 === 0,
-          },
-          child.props.className
-        ),
-      })
+const Body = ({ className, children, gap = BodyGap.small, ...props }) => (
+  <div
+    className={classnames(
+      'grid grid-cols-12 py-12 md:py-16 rounded-b-lg',
+      { 'gap-2': gap === BodyGap.small, 'gap-4': gap === BodyGap.medium, 'gap-6': gap === BodyGap.large },
+      className
     )}
+    {...props}>
+    {children}
   </div>
 )
 Body.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
-  variant: PropTypes.oneOf(Object.keys(BodyVariant)),
+  gap: PropTypes.oneOf(Object.keys(BodyGap)),
 }
 Body.displayName = 'FramedGridCard.Body'
 FramedGridCard.Body = Body
 
-const Col = ({ children, ...props }) => <div {...props}>{children}</div>
-Col.propTypes = { children: PropTypes.node }
+const Col = ({ children, className, variant = ColVariant.twelveCols, ...props }) => (
+  <div
+    className={classnames(className, {
+      'col-span-12 lg:col-span-5': variant === ColVariant.twoCols,
+      'col-span-12 lg:col-span-10 lg:col-start-2': variant === ColVariant.oneCol,
+    })}
+    {...props}>
+    {children}
+  </div>
+)
+Col.propTypes = {
+  className: PropTypes.string,
+  children: PropTypes.node,
+  variant: PropTypes.oneOf(Object.keys(ColVariant)),
+}
 Col.displayName = 'FramedGridCard.Body.Col'
 FramedGridCard.Body.Col = Col
 
