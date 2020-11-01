@@ -2,6 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import { truncate } from 'lodash'
 import { Menu as RMenu, Search, ChevronLeft, User, X } from 'react-feather'
 import { Clickable } from 'reakit/Clickable'
 import { useMenuState, Menu, MenuItem, MenuButton } from 'reakit/Menu'
@@ -74,7 +75,7 @@ const NavHeader = ({ user, goBackUri, sticky = false }) => {
           <div className="flex items-center">
             <Clickable
               onClick={handleSearch}
-              className={classnames('mr-6  sm:mr-8 focus:outline-none hover:text-gray-500', {
+              className={classnames('mr-6 sm:mr-8 focus:outline-none hover:text-gray-500', {
                 hidden: menu.visible,
               })}>
               <Search />
@@ -82,21 +83,21 @@ const NavHeader = ({ user, goBackUri, sticky = false }) => {
             {user && (
               <Clickable
                 onClick={handleProfile}
-                className={classnames('mr-6  sm:mr-8 focus:outline-none hover:text-gray-500', {
+                className={classnames('mr-6 sm:mr-8 focus:outline-none hover:text-gray-500', {
                   hidden: menu.visible,
                 })}>
                 <User />
               </Clickable>
             )}
-            <MenuButton {...menu} className={classnames(' focus:outline-none hover:text-gray-500', {})}>
+            <MenuButton {...menu} className="focus:outline-none hover:text-gray-500">
               {menu?.visible ? <X /> : <RMenu />}
             </MenuButton>
           </div>
           <Menu
             {...menu}
             aria-label="Preferences"
-            className="w-screen pt-4 pb-8 bg-gray-300 rounded-b-lg md:w-full md:max-w-xs focus:outline-none">
-            <div className="mx-auto max-w-content">
+            className="w-screen px-4 pt-4 pb-8 bg-gray-300 rounded-b-lg lg:w-full lg:max-w-xs focus:outline-none">
+            <div className="mx-auto lg:ml-12 max-w-content">
               <MenuItem
                 {...menu}
                 onClick={handleSearch}
@@ -114,7 +115,7 @@ const NavHeader = ({ user, goBackUri, sticky = false }) => {
                     className="flex block py-2 focus:outline-none hover:text-gray-500">
                     <User />
                     <Text variant="textSmMedium" className="ml-4">
-                      {user?.name ?? 'Profil'}
+                      {truncate(user?.name ?? 'Dein Bereich', { length: 14 })}
                     </Text>
                   </MenuItem>
                   <MenuItem
