@@ -2,6 +2,8 @@ import PropTypes from 'prop-types'
 import { Clickable } from 'reakit/Clickable'
 import classnames from 'classnames'
 import { Edit3, Eye, EyeOff } from 'react-feather'
+import { truncate } from 'lodash'
+
 import { Text } from 'ui-library/stories/atoms'
 import { profileData } from '../../assets/data'
 
@@ -9,7 +11,7 @@ const EditProjectCard = ({ onClick, project, className, ...props }) => (
   <Clickable
     onClick={() => onClick(project.id)}
     className={classnames(
-      'w-full p-4 text-left transition-shadow duration-150 ease-in-out rounded-lg cursor-pointer bg-lilac-300 focus:outline-none hover:shadow-outline:lilac-700 focus:shadow-outline:lilac-700',
+      'w-full p-4 text-left hyphens-auto text-lilac-800 transition-shadow duration-150 ease-in-out rounded-lg cursor-pointer bg-lilac-300 focus:outline-none hover:shadow-outline:lilac-700 focus:shadow-outline:lilac-700',
       className
     )}
     {...props}>
@@ -21,7 +23,7 @@ const EditProjectCard = ({ onClick, project, className, ...props }) => (
       </div>
     </div>
     <Text variant="textSm" className="mt-2">
-      {project.description}
+      {truncate(project.goal, { length: 100 })}
     </Text>
     <div className="flex flex-col mt-6 sm:flex-row lg:flex-col">
       <Text variant="textXs" className="sm:mr-4 lg:mr-0">
@@ -41,7 +43,7 @@ EditProjectCard.propTypes = {
   project: PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,
-    description: PropTypes.string,
+    goal: PropTypes.string,
     isVisible: PropTypes.bool,
     searchings: PropTypes.array,
     created_at: PropTypes.string,

@@ -26,7 +26,7 @@ FramedGridCard.propTypes = {
 }
 
 const Header = ({ className, children, ...props }) => (
-  <div className={classnames('grid grid-cols-12 gap-2 py-5 bg-grey-200 rounded-t-lg', className)} {...props}>
+  <div className={classnames('grid grid-cols-12 gap-2 py-5 lg:py-8 rounded-t-lg', className)} {...props}>
     <div className={classnames('col-span-12 lg:col-span-10 lg:col-start-2 ', className)} {...props}>
       {children}
     </div>

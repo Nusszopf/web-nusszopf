@@ -76,4 +76,9 @@ export const ButtonColor = {
     outline: '',
     filled: 'nz-btn nz-btn-filled--whiteLilac700',
   },
+  lilac800: {
+    clean: '',
+    outline: 'nz-btn nz-btn-outline-lilac800',
+    filled: '',
+  },
 }

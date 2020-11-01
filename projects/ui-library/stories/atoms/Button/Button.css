@@ -50,6 +50,10 @@
   @apply text-white bg-lilac-700 hover:shadow-outline:lilac-700 focus:shadow-outline:lilac-700;
 }
 
+.nz-btn-outline-lilac800 {
+  @apply border-lilac-800 text-lilac-800 border-3 hover:shadow-outline:lilac-700 focus:shadow-outline:lilac-700;
+}
+
 .nz-btn-outline-warning {
   @apply border-warning text-warning border-3 hover:shadow-outline:warning focus:shadow-outline:warning;
 }

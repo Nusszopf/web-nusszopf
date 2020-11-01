@@ -3,7 +3,7 @@ import { PlusCircle } from 'react-feather'
 import { useRouter } from 'next/router'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import projectMocks from 'ui-library/assets/mocks/projects.mock'
-import { Text, Button } from 'ui-library/stories/atoms'
+import { Button } from 'ui-library/stories/atoms'
 import { EditProjectCard, NusszopfCard, Page, Avatar } from '../../containers'
 import { useFetchUser } from '../../utils/services/auth.service'
 import apollo from '../../utils/services/apollo.service'
@@ -31,7 +31,7 @@ const Profile = () => {
         bodyColor="bg-white lg:bg-gray-100"
         headerColor="bg-gray-200 lg:bg-gray-100">
         <FramedGridCard.Header className="bg-gray-200">
-          <div id="header" className="flex flex-col md:flex-row md:justify-between md:items-center">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center">
             <Avatar user={authUser} />
             <Button color="whiteLilac700" iconLeft={<PlusCircle className="mr-2 -ml-1" />} className="hidden md:block">
               {profileData.action}
