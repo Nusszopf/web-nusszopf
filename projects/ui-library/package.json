@@ -16,6 +16,7 @@
 		"lodash": "4.17.20",
 		"prop-types": "15.7.2",
 		"react-feather": "2.0.8",
+		"react-masonry-css": "1.0.14",
 		"reakit": "1.2.5",
 		"typeface-barlow": "1.1.13"
 	},

@@ -39,4 +39,12 @@ export default [
     created_at: '2020-11-01T12:07:33.631Z',
     isVisible: true,
   },
+  {
+    id: 'asdfqwer1234-D',
+    title: 'Projekt 4',
+    description: 'Kurzbeschreibung des Projekts in wenigen Worten',
+    searchings: [],
+    created_at: '2020-11-01T12:07:33.631Z',
+    isVisible: true,
+  },
 ]

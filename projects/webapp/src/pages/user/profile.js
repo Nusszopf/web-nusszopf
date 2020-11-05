@@ -1,9 +1,11 @@
 import { useEffect } from 'react'
 import { PlusCircle } from 'react-feather'
 import { useRouter } from 'next/router'
+
 import { FramedGridCard } from 'ui-library/stories/templates'
 import projectMocks from 'ui-library/assets/mocks/projects.mock'
 import { Button } from 'ui-library/stories/atoms'
+import { Masonry } from 'ui-library/stories/organisims'
 import { EditProjectCard, NusszopfCard, Page, Avatar } from '../../containers'
 import { useFetchUser } from '../../utils/services/auth.service'
 import apollo from '../../utils/services/apollo.service'
@@ -47,26 +49,25 @@ const Profile = () => {
               {profileData.action}
             </Button>
           </FramedGridCard.Body.Col>
-          {projectMocks.length > 0 ? (
-            <>
-              {projectMocks.map((project, index) => (
-                <FramedGridCard.Body.Col
-                  key={project.id}
-                  variant="twoCols"
-                  className={index % 2 === 0 && 'lg:col-start-2'}>
-                  <EditProjectCard project={project} onClick={id => router.push(`/user/project/${id}`)} />
-                </FramedGridCard.Body.Col>
-              ))}
-            </>
-          ) : (
-            <FramedGridCard.Body.Col variant="oneCol">
+          <FramedGridCard.Body.Col variant="oneCol">
+            {projectMocks.length > 0 ? (
+              <Masonry>
+                {projectMocks.map(project => (
+                  <EditProjectCard
+                    key={project.id}
+                    project={project}
+                    onClick={id => router.push(`/user/project/${id}`)}
+                  />
+                ))}
+              </Masonry>
+            ) : (
               <NusszopfCard
                 title={profileData.welcome.title}
                 description={profileData.welcome.description}
                 greetings={profileData.welcome.greetings}
               />
-            </FramedGridCard.Body.Col>
-          )}
+            )}
+          </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
       </FramedGridCard>
     </Page>
