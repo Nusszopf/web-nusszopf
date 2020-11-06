@@ -7,7 +7,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: '**RichTextEditor Organism**.',
+        component: '**RichTextEditor Organism** based on [SlateJS](https://docs.slatejs.org/).',
       },
     },
   },
