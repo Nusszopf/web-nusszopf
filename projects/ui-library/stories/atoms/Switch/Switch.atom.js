@@ -27,7 +27,7 @@ const Switch = ({ onCheck = () => {}, className, size = SwitchSize.large }) => {
       <Tabbable
         aria-hidden={true}
         className={classnames(
-          'inline-flex flex-shrink-0 items-center border-gray-600  transform duration-200 ease-out transition-colors rounded-full cursor-pointer outline-none',
+          'inline-flex flex-shrink-0 items-center border-gray-600  transform duration-200 ease-out transition-colors rounded-full cursor-pointer outline-none hover:shadow-outline:gray-600',
           {
             'w-10 h-6 border-2': size === SwitchSize.small,
             'w-16 h-9 border-2': size === SwitchSize.large,

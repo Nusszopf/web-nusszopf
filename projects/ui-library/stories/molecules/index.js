@@ -1,4 +1,5 @@
 export { default as InfoCard } from './InfoCard/InfoCard.molecule'
 export { default as InputGroup } from './InputGroup/InputGroup.molecule'
+export { default as Popover } from './Popover/Popover.molecule'
 export { default as Tab } from './Tab/Tab.molecule'
 export { default as Toast } from './Toast/Toast.molecule'
