@@ -121,6 +121,9 @@ module.exports = {
         84: '21rem',
         96: '24rem',
       },
+      translate: {
+        7: '1.75rem',
+      },
     },
   },
   variants: {
