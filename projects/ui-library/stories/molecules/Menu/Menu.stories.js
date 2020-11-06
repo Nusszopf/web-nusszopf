@@ -8,15 +8,36 @@ export default {
     docs: {
       description: {
         component:
-          '**Menu Molecule** is based on [Reakit Menu](https://reakit.io/docs/menu/) and [Button Atom](/design-system-atoms-button--filled).',
+          '**Menu Molecule** is based on [ReachUI MenuButton](https://reach.tech/menu-button) and [Button Atom](/design-system-atoms-button--filled).',
       },
     },
   },
 }
 
-export const Default = () => (
+export const Icon = () => (
+  <Menu
+    variant="icon"
+    label="Menü"
+    items={[
+      {
+        type: 'button',
+        text: 'Beschreibung',
+        action: () => console.log('action'),
+      },
+      {
+        type: 'link',
+        text: 'Einstellungen',
+        href: '/',
+      },
+    ]}
+  />
+)
+
+export const Button = () => (
   <Menu
     label="Menü"
+    variant="button"
+    color="gray200"
     items={[
       {
         type: 'button',

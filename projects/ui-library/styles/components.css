@@ -4,6 +4,7 @@
 @import '../stories/atoms/Link/Link.css';
 @import '../stories/atoms/Input/Input.css';
 @import '../stories/molecules/Tab/Tab.css';
+@import '../stories/molecules/Menu/Menu.css';
 
 /* Global Stylings */
 #nprogress .bar {

@@ -1,58 +1,49 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import Link from 'next/link'
 import { ChevronDown } from 'react-feather'
-import { useMenuState, Menu, MenuItem, MenuButton } from 'reakit/Menu'
+import { Menu, MenuButton, MenuList, MenuItem } from '@reach/menu-button'
+
 import { Button, Text } from '../../atoms'
-import { MenuColor } from './Menu.theme'
+import { MenuColor, MenuVariant } from './Menu.theme'
 
-const MyMenu = ({ label, items, color = 'gray200', initialFocus = 0, ...props }) => {
-  const menu = useMenuState()
-  const ref = useRef([])
-
-  useEffect(() => {
-    if (menu.visible) {
-      ref.current[initialFocus].focus()
-    }
-  }, [menu.visible, initialFocus])
-
+const MyMenu = ({ label, items, color = 'lilac700', variant = 'icon', ...props }) => {
   return (
-    <div className="max-w-content">
-      <MenuButton as={Button} iconRight={<ChevronDown className="mt-1 -mr-2" />} {...menu} {...props}>
-        {label}
-      </MenuButton>
-      <Menu
-        {...menu}
-        aria-label="Menu"
-        className={classnames(
-          'z-50 flex flex-col py-2 mt-2 overflow-hidden rounded-md focus:outline-none',
-          MenuColor[color].menu
-        )}>
+    <Menu>
+      {variant === MenuVariant.button && (
+        <Button as={MenuButton} iconRight={<ChevronDown className="mt-1 -mr-2" />} {...props}>
+          {label}
+        </Button>
+      )}
+      {variant === MenuVariant.icon && (
+        <MenuButton className="m-4 focus:outline-none" {...props}>
+          {label}
+        </MenuButton>
+      )}
+      <MenuList aria-label="Menu" className={classnames(MenuColor[color].menu)}>
         <>
           {items.map((item, index) => (
             <>
               {item.type === 'link' && (
-                <MenuItem as={Link} key={`menu-${index}`} href={item.href} {...menu}>
-                  <a
-                    ref={el => (ref.current[index] = el)}
-                    className={classnames('px-5 py-1 text-left focus:outline-none', MenuColor[color].item)}>
-                    <Text as="span" variant="textSm">
-                      {item.text}
-                    </Text>
-                  </a>
+                <MenuItem className={classnames(MenuColor[color].item)} key={`menu-${index}`} onSelect={() => {}}>
+                  <Link href={item.href}>
+                    <a>
+                      <Text as="span" variant="textSm">
+                        {item.text}
+                      </Text>
+                    </a>
+                  </Link>
                 </MenuItem>
               )}
+              {item?.seperator && <div className="w-full h-px my-2 bg-white opacity-25"></div>}
               {item.type === 'button' && (
                 <MenuItem
-                  ref={el => (ref.current[index] = el)}
-                  className={classnames('px-5 py-1 text-left focus:outline-none', MenuColor[color].item)}
+                  className={classnames(MenuColor[color].item)}
                   key={`menu-${index}`}
-                  onClick={() => {
-                    menu.hide()
+                  onSelect={() => {
                     item.action()
-                  }}
-                  {...menu}>
+                  }}>
                   <Text as="span" variant="textSm">
                     {item.text}
                   </Text>
@@ -61,16 +52,17 @@ const MyMenu = ({ label, items, color = 'gray200', initialFocus = 0, ...props })
             </>
           ))}
         </>
-      </Menu>
-    </div>
+      </MenuList>
+    </Menu>
   )
 }
 
 MyMenu.propTypes = {
   items: PropTypes.array.isRequired,
-  label: PropTypes.string,
+  label: PropTypes.node,
   initialFocus: PropTypes.number,
   color: PropTypes.oneOf(Object.keys(MenuColor)),
+  variant: PropTypes.oneOf(Object.keys(MenuVariant)),
 }
 
 export default MyMenu
