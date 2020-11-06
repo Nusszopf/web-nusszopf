@@ -116,6 +116,9 @@ module.exports = {
       borderWidth: {
         3: '3px',
       },
+      minHeight: {
+        48: '12rem',
+      },
       spacing: {
         18: '4.75rem',
         72: '18rem',

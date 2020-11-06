@@ -14,12 +14,15 @@
 		"@reach/menu-button": "0.11.2",
 		"@reach/tabs": "0.11.2",
 		"classnames": "2.2.6",
-		"draft-js": "0.11.7",
 		"lodash": "4.17.20",
+		"lucide-react": "0.1.2-beta.3",
 		"prop-types": "15.7.2",
 		"react-feather": "2.0.8",
 		"react-masonry-css": "1.0.14",
 		"reakit": "1.2.5",
+		"slate": "0.59.0",
+		"slate-history": "0.59.0",
+		"slate-react": "0.59.0",
 		"typeface-barlow": "1.1.13"
 	},
 	"devDependencies": {
