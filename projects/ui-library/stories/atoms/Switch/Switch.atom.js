@@ -4,6 +4,7 @@ import classnames from 'classnames'
 import { Checkbox, useCheckboxState } from 'reakit/Checkbox'
 import { Tabbable } from 'reakit/Tabbable'
 import { uniqueId } from 'lodash'
+import { VisuallyHidden } from 'reakit/VisuallyHidden'
 
 const SwitchSize = {
   small: 'small',
@@ -19,11 +20,9 @@ const Switch = ({ onCheck = () => {}, className, size = SwitchSize.large }) => {
 
   return (
     <label htmlFor={`switch-${id}`}>
-      <Checkbox
-        id={`switch-${id}`}
-        className="absolute w-0 h-px p-0 m-0 overflow-hidden whitespace-no-wrap"
-        {...checkbox}
-      />
+      <VisuallyHidden>
+        <Checkbox id={`switch-${id}`} {...checkbox} />
+      </VisuallyHidden>
       <Tabbable
         aria-hidden={true}
         className={classnames(
