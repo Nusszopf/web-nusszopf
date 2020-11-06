@@ -49,8 +49,8 @@ const MyMenu = ({ label, items, color = 'gray200', initialFocus = 0, ...props })
                   className={classnames('px-5 py-1 text-left focus:outline-none', MenuColor[color].item)}
                   key={`menu-${index}`}
                   onClick={() => {
-                    item.action()
                     menu.hide()
+                    item.action()
                   }}
                   {...menu}>
                   <Text as="span" variant="textSm">
