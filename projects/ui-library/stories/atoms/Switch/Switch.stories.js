@@ -7,7 +7,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: '**Switch Atom**.',
+        component: '**Switch Atom** based on [Reakit Checkbox](https://reakit.io/docs/checkbox/).',
       },
     },
   },
