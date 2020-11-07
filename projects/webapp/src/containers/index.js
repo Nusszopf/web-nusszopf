@@ -8,3 +8,4 @@ export { default as NewsletterSection } from './NewsletterSection/NewsletterSect
 export { default as NusszopfCard } from './NusszopfCard/NusszopfCard'
 export { default as Page } from './Page/Page'
 export { default as PageBrand } from './PageBrand/PageBrand'
+export * from './EditProjectSteps'

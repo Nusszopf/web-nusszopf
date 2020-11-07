@@ -11,7 +11,7 @@ const FramedGridCard = ({ children, className, headerColor, bodyColor }) => (
         {child.type.displayName === 'FramedGridCard.Header' && (
           <Frame className={headerColor}>{React.cloneElement(child)}</Frame>
         )}
-        {child.type.displayName === 'FramedGridCard.Body' && (
+        {child.type.displayName !== 'FramedGridCard.Header' && (
           <Frame className={bodyColor}>{React.cloneElement(child)}</Frame>
         )}
       </>

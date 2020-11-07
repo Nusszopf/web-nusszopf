@@ -35,7 +35,11 @@ const Profile = () => {
         <FramedGridCard.Header className="bg-gray-200">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center">
             <Avatar user={authUser} />
-            <Button color="whiteLilac700" iconLeft={<PlusCircle className="mr-2 -ml-1" />} className="hidden md:block">
+            <Button
+              color="whiteLilac700"
+              onClick={() => router.push('/user/project/new')}
+              iconLeft={<PlusCircle className="mr-2 -ml-1" />}
+              className="hidden md:block">
               {profileData.action}
             </Button>
           </div>
@@ -57,6 +61,9 @@ const Profile = () => {
                     key={project.id}
                     project={project}
                     onClick={id => router.push(`/user/project/${id}`)}
+                    onEdit={id => router.push(`/user/project/${id}/edit`)}
+                    onDelete={id => console.log('onDelete', id)}
+                    toggleVisibility={id => console.log('toggleVisibility', id)}
                   />
                 ))}
               </Masonry>

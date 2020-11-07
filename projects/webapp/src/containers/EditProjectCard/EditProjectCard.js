@@ -8,7 +8,7 @@ import { Text } from 'ui-library/stories/atoms'
 import { Menu } from 'ui-library/stories/molecules'
 import { profileData } from '../../assets/data'
 
-const EditProjectCard = ({ onClick, project, className, ...props }) => (
+const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project, className, ...props }) => (
   <div
     className={classnames(
       'w-full flex hyphens-auto text-lilac-800 transition-shadow duration-150 ease-in-out rounded-lg cursor-pointer bg-lilac-300 hover:shadow-outline:lilac-700 focus:shadow-outline:lilac-700',
@@ -40,18 +40,18 @@ const EditProjectCard = ({ onClick, project, className, ...props }) => (
           {
             type: 'button',
             text: 'Bearbeiten',
-            action: () => onClick(project.id),
+            action: () => onEdit(project.id),
           },
           {
             type: 'button',
             text: project.isVisible ? 'Veröffentlichen' : 'Geheimhalten',
-            action: () => console.log('visibillity'),
+            action: () => toggleVisibility(project.id),
           },
           {
             type: 'button',
             text: 'Löschen',
             seperator: true,
-            action: () => console.log('delete'),
+            action: () => onDelete(project.id),
           },
         ]}
       />
@@ -62,6 +62,9 @@ const EditProjectCard = ({ onClick, project, className, ...props }) => (
 EditProjectCard.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func,
+  toggleVisibility: PropTypes.func,
+  onDelete: PropTypes.func,
+  onEdit: PropTypes.func,
   project: PropTypes.shape({
     id: PropTypes.string,
     title: PropTypes.string,

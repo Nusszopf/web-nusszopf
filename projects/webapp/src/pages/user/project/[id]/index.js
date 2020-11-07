@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { MapPin, Calendar, Send, Share2 } from 'react-feather'
-import { Text, Button } from 'ui-library/stories/atoms'
 
+import { Text, Button } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import projectsMock from 'ui-library/assets/mocks/projects.mock'
-import { Page } from '../../../containers'
+import { Page } from '../../../../containers'
 
 const Project = () => {
   const router = useRouter()
@@ -16,7 +16,6 @@ const Project = () => {
     const project = projectsMock.find(project => project.id === id)
     setProject(project)
   }, [id])
-  console.log(project)
 
   return (
     <Page

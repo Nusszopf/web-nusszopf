@@ -1,3 +1,6 @@
+export { default as Dialog } from './Dialog/Dialog.molecule'
+export { default as FormikStepper } from './FormikStepper/FormikStepper.molecule'
+export * from './FormikStepper/FormikStepper.molecule'
 export { default as InfoCard } from './InfoCard/InfoCard.molecule'
 export { default as InputGroup } from './InputGroup/InputGroup.molecule'
 export { default as Menu } from './Menu/Menu.molecule'

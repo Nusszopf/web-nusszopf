@@ -7,7 +7,7 @@ import { Text } from '../../atoms'
 import { PopoverColor } from './Popover.theme'
 
 const MyPopover = ({ color = 'lilac600', ...props }) => {
-  const popover = usePopoverState()
+  const popover = usePopoverState({ placement: 'top' })
 
   return (
     <div {...props}>

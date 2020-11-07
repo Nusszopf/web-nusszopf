@@ -45,9 +45,11 @@ export const Element = ({ attributes, children, element }) => {
       )
     default:
       return (
-        <Text variant="textXs" {...attributes}>
-          {children}
-        </Text>
+        <p {...attributes}>
+          <Text as="span" variant="textXs">
+            {children}
+          </Text>
+        </p>
       )
   }
 }
@@ -56,6 +58,7 @@ export const BlockButton = ({ format, icon, className, ...props }) => {
   const editor = useSlate()
   return (
     <button
+      type="button"
       {...props}
       className={classnames(
         'text-lilac-800 mx-2 p-2 rounded-full tranform transition-color duration-150 ease-out hover:bg-lilac-300',
@@ -77,6 +80,7 @@ export const MarkButton = ({ format, icon, className, ...props }) => {
   const editor = useSlate()
   return (
     <button
+      type="button"
       {...props}
       className={classnames(
         'text-lilac-800 p-2 mx-1 rounded-full tranform transition-color duration-150 ease-out hover:bg-lilac-300',
@@ -98,6 +102,7 @@ export const LinkButton = ({ icon, className, ...props }) => {
   const editor = useSlate()
   return (
     <button
+      type="button"
       {...props}
       className={classnames(
         'text-lilac-800 mx-2 p-2 rounded-full tranform transition-color duration-150 ease-out hover:bg-lilac-300',
