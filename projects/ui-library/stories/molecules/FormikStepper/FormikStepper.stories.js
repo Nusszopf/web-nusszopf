@@ -15,41 +15,41 @@ export default {
   },
 }
 
-const Step1 = ({ formik }) => (
-  <div id="step1">
-    <Input
-      type="email"
-      name="email"
-      placeholder="Email"
-      onChange={formik.handleChange}
-      onBlur={formik.handleBlur}
-      value={formik.values.email}
-    />
-  </div>
-)
-
-const Step2 = ({ formik }) => (
-  <div id="step2">
-    <Input
-      type="text"
-      name="name"
-      placeholder="Name"
-      onChange={formik.handleChange}
-      onBlur={formik.handleBlur}
-      value={formik.values.name}
-    />
-  </div>
-)
-
 export const Default = () => {
   const stepper = useFormikStepper({
-    onSubmit: values => handleSubmit(values),
+    onSubmit: (values, helpers) => handleSubmit(values, helpers),
     initialValues: { name: 'name', email: 'mail@mail.de' },
   })
 
-  const handleSubmit = values => {
-    console.log(values)
+  const handleSubmit = (values, helpers) => {
+    console.log(values, helpers)
   }
+
+  const Step1 = ({ formik }) => (
+    <div id="step1">
+      <Input
+        type="email"
+        name="email"
+        placeholder="Email"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.email}
+      />
+    </div>
+  )
+
+  const Step2 = ({ formik }) => (
+    <div id="step2">
+      <Input
+        type="text"
+        name="name"
+        placeholder="Name"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        value={formik.values.name}
+      />
+    </div>
+  )
 
   return (
     <>

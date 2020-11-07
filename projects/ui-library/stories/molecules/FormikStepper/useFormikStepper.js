@@ -17,7 +17,7 @@ export const useFormikStepper = ({ onSubmit, initialStep = 0, initialValues = {}
       }
       return {}
     },
-    onSubmit: (v, helpers) => handleSubmit(v, helpers),
+    onSubmit: (values, helpers) => handleSubmit(values, helpers),
     enableReinitialize: enableReinitialize,
   })
 
@@ -45,12 +45,12 @@ export const useFormikStepper = ({ onSubmit, initialStep = 0, initialValues = {}
     [step, children]
   )
 
-  const handleSubmit = values => {
+  const handleSubmit = (values, helpers) => {
     const nextStep = getNextStep(values)
     if (nextStep >= 0 && nextStep < children.length) {
       setStep(nextStep)
     } else {
-      onSubmit(values)
+      onSubmit(values, helpers)
     }
   }
 
