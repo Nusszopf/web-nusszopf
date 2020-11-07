@@ -36,7 +36,7 @@ const DescriptionStep1 = () => {
             <Popover />
           </div>
           <div className="flex items-start space-x-4">
-            <Switch size="small" />
+            <Switch color="lilac800" onCheck={console.log} />
             <Text variant="textSm" className="-mt-px">
               Projekt ist abhänging vom Ort
             </Text>
@@ -49,7 +49,7 @@ const DescriptionStep1 = () => {
             <Popover />
           </div>
           <div className="flex items-start space-x-4">
-            <Switch size="small" />
+            <Switch color="lilac800" onCheck={console.log} />
             <Text variant="textSm" className="-mt-px">
               Projektzeitraum ist flexibel
             </Text>

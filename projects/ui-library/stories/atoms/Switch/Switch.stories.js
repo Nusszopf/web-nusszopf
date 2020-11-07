@@ -13,5 +13,4 @@ export default {
   },
 }
 
-export const Small = () => <Switch size="small" onCheck={console.log} />
-export const Large = () => <Switch size="large" onCheck={console.log} />
+export const Default = () => <Switch color="lilac800" onCheck={console.log} />

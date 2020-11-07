@@ -48,7 +48,7 @@ const SettingsStep = () => {
           <Popover />
         </div>
         <div className="flex items-start space-x-4">
-          <Switch size="small" />
+          <Switch color="lilac800" onCheck={console.log} />
           <Text variant="textSm" className="-mt-px">
             Direkt kontaktieren unter finn@nusszopf.org
           </Text>
