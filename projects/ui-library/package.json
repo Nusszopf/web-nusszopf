@@ -25,7 +25,8 @@
 		"slate": "0.59.0",
 		"slate-history": "0.59.0",
 		"slate-react": "0.59.0",
-		"typeface-barlow": "1.1.13"
+		"typeface-barlow": "1.1.13",
+		"yup": "0.29.3"
 	},
 	"devDependencies": {
 		"@storybook/addon-actions": "6.0.26",
