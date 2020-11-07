@@ -7,8 +7,14 @@ import { uniqueId } from 'lodash'
 import { VisuallyHidden } from 'reakit/VisuallyHidden'
 import { SwitchColor, SwitchSize } from './Switch.theme'
 
-const Switch = ({ onCheck = () => {}, className, size = SwitchSize.large, color = 'gray600' }) => {
-  const checkbox = useCheckboxState({ state: true })
+const Switch = ({
+  onCheck = () => {},
+  className,
+  size = SwitchSize.large,
+  color = 'gray600',
+  initialState = false,
+}) => {
+  const checkbox = useCheckboxState({ state: initialState })
   const id = useState(uniqueId())
   useEffect(() => {
     onCheck(checkbox.state)
@@ -51,6 +57,7 @@ Switch.propTypes = {
   className: PropTypes.string,
   size: PropTypes.oneOf(Object.keys(SwitchSize)),
   color: PropTypes.oneOf(Object.keys(SwitchColor)),
+  initialState: PropTypes.bool,
 }
 
 export default Switch
