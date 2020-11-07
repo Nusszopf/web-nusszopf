@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useFormik, validateYupSchema, yupToFormErrors } from 'formik'
 import { object } from 'yup'
 
-export const useFormikStepper = ({ initialStep = 0, initialValues = {}, enableReinitialize = true }) => {
+export const useFormikStepper = ({ onSubmit, initialStep = 0, initialValues = {}, enableReinitialize = true }) => {
   const [step, setStep] = useState(initialStep)
   const [progress, setProgress] = useState(0)
   const [children, setChildren] = useState()
@@ -47,10 +47,10 @@ export const useFormikStepper = ({ initialStep = 0, initialValues = {}, enableRe
 
   const handleSubmit = values => {
     const nextStep = getNextStep(values)
-    if (nextStep > 0) {
+    if (nextStep >= 0 && nextStep < children.length) {
       setStep(nextStep)
     } else {
-      // todo
+      onSubmit(values)
     }
   }
 

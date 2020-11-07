@@ -42,7 +42,15 @@ const Step2 = ({ formik }) => (
 )
 
 export const Default = () => {
-  const stepper = useFormikStepper({ initialValues: { name: 'name', email: 'mail@mail.de' } })
+  const stepper = useFormikStepper({
+    onSubmit: values => handleSubmit(values),
+    initialValues: { name: 'name', email: 'mail@mail.de' },
+  })
+
+  const handleSubmit = values => {
+    console.log(values)
+  }
+
   return (
     <>
       <div className="w-full h-auto px-4 py-6 mb-6 border-2 rounded-lg border-lilac-400">
