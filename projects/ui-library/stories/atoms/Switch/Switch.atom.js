@@ -5,13 +5,9 @@ import { Checkbox, useCheckboxState } from 'reakit/Checkbox'
 import { Tabbable } from 'reakit/Tabbable'
 import { uniqueId } from 'lodash'
 import { VisuallyHidden } from 'reakit/VisuallyHidden'
+import { SwitchColor, SwitchSize } from './Switch.theme'
 
-const SwitchSize = {
-  small: 'small',
-  large: 'large',
-}
-
-const Switch = ({ onCheck = () => {}, className, size = SwitchSize.large }) => {
+const Switch = ({ onCheck = () => {}, className, size = SwitchSize.large, color = 'gray600' }) => {
   const checkbox = useCheckboxState({ state: true })
   const id = useState(uniqueId())
   useEffect(() => {
@@ -26,20 +22,24 @@ const Switch = ({ onCheck = () => {}, className, size = SwitchSize.large }) => {
       <Tabbable
         aria-hidden={true}
         className={classnames(
-          'inline-flex flex-shrink-0 items-center border-gray-600  transform duration-200 ease-out transition-colors rounded-full cursor-pointer outline-none hover:shadow-outline:gray-600',
+          'inline-flex flex-shrink-0 items-center transform duration-200 ease-out transition-colors rounded-full cursor-pointer outline-none',
+          SwitchColor[color].border,
           {
             'w-10 h-6 border-2': size === SwitchSize.small,
             'w-16 h-9 border-2': size === SwitchSize.large,
-            'bg-gray-300': checkbox.state,
+            [`${SwitchColor[color].on}`]: checkbox.state,
+            [`${SwitchColor[color].off}`]: !checkbox.state,
           },
           className
         )}>
         <div
-          className={classnames(' bg-gray-600 rounded-full transform duration-150 transition-transform', {
+          className={classnames('rounded-full transform duration-150 transition-transform', {
             'w-5 h-5 -mt-px': size === SwitchSize.small,
             'w-8 h-8 ': size === SwitchSize.large,
             'translate-x-4': checkbox.state && size === SwitchSize.small,
             'translate-x-7': checkbox.state && size === SwitchSize.large,
+            [`${SwitchColor[color].on}`]: !checkbox.state,
+            [`${SwitchColor[color].off}`]: checkbox.state,
           })}></div>
       </Tabbable>
     </label>
@@ -50,6 +50,7 @@ Switch.propTypes = {
   onCheck: PropTypes.func.isRequired,
   className: PropTypes.string,
   size: PropTypes.oneOf(Object.keys(SwitchSize)),
+  color: PropTypes.oneOf(Object.keys(SwitchColor)),
 }
 
 export default Switch
