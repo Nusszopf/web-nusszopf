@@ -44,7 +44,7 @@ const EditProjectCard = ({ onClick, project, className, ...props }) => (
           },
           {
             type: 'button',
-            text: 'Veröffentlichen',
+            text: project.isVisible ? 'Veröffentlichen' : 'Geheimhalten',
             action: () => console.log('visibillity'),
           },
           {

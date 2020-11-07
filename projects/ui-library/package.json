@@ -11,6 +11,7 @@
 		"build-storybook": "yarn build-storybook"
 	},
 	"dependencies": {
+		"@reach/dialog": "0.11.2",
 		"@reach/menu-button": "0.11.2",
 		"@reach/tabs": "0.11.2",
 		"classnames": "2.2.6",

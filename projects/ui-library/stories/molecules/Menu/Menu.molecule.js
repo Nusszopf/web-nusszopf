@@ -12,7 +12,7 @@ const MyMenu = ({ label, items, color = 'lilac700', variant = 'icon', ...props }
   return (
     <Menu>
       {variant === MenuVariant.button && (
-        <Button as={MenuButton} iconRight={<ChevronDown className="mt-1 -mr-2" />} {...props}>
+        <Button as={MenuButton} iconRight={<ChevronDown className="m-1 -mr-2" />} {...props}>
           {label}
         </Button>
       )}
