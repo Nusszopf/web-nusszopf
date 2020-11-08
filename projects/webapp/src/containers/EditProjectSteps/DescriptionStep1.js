@@ -6,17 +6,28 @@ import { FramedGridCard } from 'ui-library/stories/templates'
 import { createProjectData as data } from '../../assets/data'
 import FieldTitle from './components/FieldTitel'
 
-// todo validation date/time
-// -> mixed().when()
+// todo
+// * validate date and period conditionally -> mixed().when().test()
 
-export const step1ValidationSchema = values =>
-  object({
-    title: string().max(30, 'Nicht mehr als 30 Zeichen').required('Bitte gib einen Namen ein'),
-    goal: string().max(100, 'Nicht mehr als 100 Zeichen').required('Bitte gib ein Ziel ein'),
-    description: mixed().test('description', 'Bitte gib eine Beschreibung ein', () => {
-      return values.description[0].children[0]?.text?.length > 0 ? true : false
+export const step1ValidationSchema = object({
+  title: string().max(30, 'Nicht mehr als 30 Zeichen').required('Bitte gib einen Namen ein'),
+  goal: string().max(100, 'Nicht mehr als 100 Zeichen').required('Bitte gib ein Ziel ein'),
+  description: mixed()
+    .test('description', 'Maximale Zeichenlänge erreicht', value =>
+      JSON.stringify(value)?.length > 6000 ? false : true
+    )
+    .test('description', 'Bitte gib eine Beschreibung ein', value => {
+      if (value?.length <= 1) {
+        if (value[0].children?.length <= 1) {
+          const child = value[0].children[0]
+          if (Object.prototype.hasOwnProperty.call(child, 'text')) {
+            return child.text?.length > 0 ? true : false
+          }
+        }
+      }
+      return true
     }),
-  })
+})
 
 const DescriptionStep1 = ({ formik }) => {
   return (
@@ -26,7 +37,7 @@ const DescriptionStep1 = ({ formik }) => {
           <FieldTitle info={data.descriptionStep1.title.info}>{data.descriptionStep1.title.title}</FieldTitle>
           <Input
             name="title"
-            maxlength="30"
+            maxLength={30}
             value={formik.values.title}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -46,7 +57,7 @@ const DescriptionStep1 = ({ formik }) => {
           <Input
             as="textarea"
             name="goal"
-            maxlength="30"
+            maxLength={30}
             value={formik.values.goal}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
@@ -67,6 +78,7 @@ const DescriptionStep1 = ({ formik }) => {
             name="description"
             onChange={value => formik.setFieldValue('description', value)}
             onBlur={() => formik.setFieldTouched('description')}
+            initialState={formik.values.description}
             placeholder={data.descriptionStep1.project.placeholder}
           />
           {formik?.errors?.description && formik.touched?.description && (

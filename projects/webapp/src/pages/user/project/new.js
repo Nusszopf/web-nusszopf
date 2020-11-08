@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { Text, Button, Progressbar } from 'ui-library/stories/atoms'
 import { FormikStepper, useFormikStepper } from 'ui-library/stories/molecules'
@@ -13,7 +13,7 @@ const EditProject = () => {
   const { user: authUser } = useFetchUser({ required: true })
   const { id } = router.query
   const [project, setProject] = useState()
-  const stepper = useFormikStepper({
+  const { goBack, ...stepper } = useFormikStepper({
     onSubmit: (values, helpers) => () => console.log('submit', values),
     initialValues: {
       title: '',
@@ -58,7 +58,7 @@ const EditProject = () => {
               </Text>
             </div>
             <div className="flex-shrink-0">
-              <Button variant="outline" color="lilac800" className="mr-5" onClick={stepper.goBack}>
+              <Button variant="outline" color="lilac800" className="mr-5" onClick={goBack}>
                 {data.navigation.back}
               </Button>
               <Button variant="outline" color="lilac800" onClick={stepper.formik.submitForm}>

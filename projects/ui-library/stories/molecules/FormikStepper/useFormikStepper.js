@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { useFormik, validateYupSchema, yupToFormErrors } from 'formik'
+import { useFormik } from 'formik'
 import { object } from 'yup'
 
 export const useFormikStepper = ({ onSubmit, initialStep = 0, initialValues = {}, enableReinitialize = true }) => {
@@ -9,14 +9,8 @@ export const useFormikStepper = ({ onSubmit, initialStep = 0, initialValues = {}
   const [currentChild, setCurrentChild] = useState()
   const formik = useFormik({
     initialValues,
-    validate: async values => {
-      try {
-        await validateYupSchema(values, currentChild?.props?.validationSchema(values) ?? object({}))
-      } catch (err) {
-        return yupToFormErrors(err)
-      }
-      return {}
-    },
+    validateOnMount: false,
+    validationSchema: currentChild?.props?.validationSchema ?? object({}),
     onSubmit: (values, helpers) => handleSubmit(values, helpers),
     enableReinitialize: enableReinitialize,
   })
