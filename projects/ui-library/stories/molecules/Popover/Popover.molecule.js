@@ -17,7 +17,10 @@ const MyPopover = ({ color = 'lilac600', children, ...props }) => {
       <Popover
         {...popover}
         aria-label="Info"
-        className={classnames('box-border z-50 p-2 rounded-md focus:outline-none', PopoverColor[color].popover)}>
+        className={classnames(
+          'box-border z-50 p-2 rounded-md focus:outline-none max-w-xs',
+          PopoverColor[color].popover
+        )}>
         <PopoverArrow
           {...popover}
           className={classnames('box-border bg-transparent fill-current', PopoverColor[color].arrow)}

@@ -48,14 +48,14 @@ export default {
   SettingsStep: {
     visibility: {
       title: 'Sichtbarkeit',
-      info: 'Info',
+      info: 'Wähle aus, für wen das Projekt sichtbar sein soll: alle oder Personen mit Zugang zum Link.',
       public: {
         title: 'Öffentlich',
-        description: 'Projekt kann über Nusszopf und Suchmaschinen gefunden werden',
+        description: 'Projekt kann über Nusszopf und Suchmaschinen gefunden werden.',
       },
       private: {
-        title: 'Geheim',
-        description: 'Projekt ist nur zugänglich unter diesem Link: nusszopf.org/nusszopf',
+        title: 'Privat',
+        description: 'Projekt ist nur zugänglich unter einem geheimen Link.',
       },
     },
     contact: {
