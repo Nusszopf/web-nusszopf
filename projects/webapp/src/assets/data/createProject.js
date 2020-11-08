@@ -29,6 +29,7 @@ export default {
         switch: 'Projektzeitraum ist flexibel',
         from: 'Von',
         to: 'Bis',
+        placeholder: 'dd.mm.yyyy',
       },
     },
   },

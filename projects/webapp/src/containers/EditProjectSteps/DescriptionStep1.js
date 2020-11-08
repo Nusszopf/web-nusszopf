@@ -41,13 +41,13 @@ const DescriptionStep1 = () => {
               <Text variant="textXs" className="w-12 uppercase">
                 {data.descriptionStep1.period.action.from}
               </Text>
-              <Input color="whiteLilac800" type="date" />
+              <Input color="whiteLilac800" placeholder={data.descriptionStep1.period.action.placeholder} type="date" />
             </div>
             <div className="flex items-center">
               <Text variant="textXs" className="w-12 uppercase">
                 {data.descriptionStep1.period.action.to}
               </Text>
-              <Input color="whiteLilac800" type="date" />
+              <Input color="whiteLilac800" placeholder={data.descriptionStep1.period.action.placeholder} type="date" />
             </div>
           </div>
         </>
