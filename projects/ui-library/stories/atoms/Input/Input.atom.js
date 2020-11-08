@@ -7,7 +7,7 @@ import { InputColor, InputSize } from './Input.theme'
 const Input = ({ size = 'base', color = 'whiteGray600', className, ...props }) => (
   <ReakitInput
     className={classnames(
-      'inline-block w-full transition-shadow duration-150 ease-in-out rounded-lg shadow-xs appearance-none focus:outline-none disabled:opacity-50 disabled:cursor-default',
+      'inline-block w-full transition-shadow duration-150 ease-in-out rounded-lg appearance-none focus:outline-none disabled:opacity-50 disabled:cursor-default',
       InputColor[color],
       InputSize[size],
       className

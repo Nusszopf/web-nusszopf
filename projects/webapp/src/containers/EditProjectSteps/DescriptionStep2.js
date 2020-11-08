@@ -13,7 +13,7 @@ const DescriptionStep2 = () => {
       </FramedGridCard.Body.Col>
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
         <FieldTitle info={data.descriptionStep2.motto.info}>{data.descriptionStep2.motto.title}</FieldTitle>
-        <Input as="textarea" placeholder={data.descriptionStep2.motto.placeholder} />
+        <Input as="textarea" color="whiteLilac800" placeholder={data.descriptionStep2.motto.placeholder} />
       </FramedGridCard.Body.Col>
     </FramedGridCard.Body>
   )

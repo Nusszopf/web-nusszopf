@@ -13,3 +13,7 @@
 .nz-input-whiteBlue400 {
   @apply text-blue-400 placeholder-blue-400 border-blue-400 hover:shadow-outline:blue-400 focus:placeholder-white focus:shadow-outline:blue-400;
 }
+
+.nz-input-whiteLilac800 {
+  @apply text-lilac-800 placeholder-lilac-800 border-lilac-800 hover:shadow-outline:lilac-700 focus:placeholder-white focus:shadow-outline:lilac-700;
+}
