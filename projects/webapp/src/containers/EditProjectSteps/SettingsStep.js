@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types'
 import { Text, Radiobox, Switch } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { useRadioState, RadioGroup } from 'reakit/Radio'
 import { createProjectData as data } from '../../assets/data'
 import FieldTitle from './components/FieldTitel'
 
-const SettingsStep = () => {
+const SettingsStep = ({ formik }) => {
   const radio = useRadioState({ state: 'private' })
 
   return (
@@ -57,6 +58,10 @@ const SettingsStep = () => {
       </FramedGridCard.Body.Col>
     </FramedGridCard.Body>
   )
+}
+
+SettingsStep.propTypes = {
+  formik: PropTypes.object,
 }
 
 export default SettingsStep

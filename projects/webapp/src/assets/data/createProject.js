@@ -1,5 +1,11 @@
 export default {
   progress: {},
+  title: 'Neues Projekt',
+  navigation: {
+    next: 'Weiter',
+    back: 'Zurück',
+    create: 'Erstellen',
+  },
   descriptionStep1: {
     title: {
       title: 'Titel*',
@@ -20,7 +26,7 @@ export default {
       title: 'Ort*',
       info: 'Info',
       placeholder: 'Ort',
-      action: 'Projekt ist abhänging vom Ort',
+      action: 'Projekt ist unabhänging vom Ort',
     },
     period: {
       title: 'Projektzeitraum*',

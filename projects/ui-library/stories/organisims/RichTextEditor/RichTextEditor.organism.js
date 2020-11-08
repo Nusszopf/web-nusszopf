@@ -9,13 +9,15 @@ import { withHistory } from 'slate-history'
 import { withLinks } from './utils/link'
 import { Element, Leaf, LinkButton, MarkButton, BlockButton } from './components'
 
-const RichTextEditor = ({ className, onChange, ...props }) => {
-  const [value, setValue] = useState([
-    {
-      type: 'paragraph',
-      children: [{ text: '' }],
-    },
-  ])
+export const emptyRichText = [
+  {
+    type: 'paragraph',
+    children: [{ text: '' }],
+  },
+]
+
+const RichTextEditor = ({ className, onChange, placeholder, initialState = emptyRichText, ...props }) => {
+  const [value, setValue] = useState(initialState)
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => <Leaf {...props} />, [])
   const editor = useMemo(() => withLinks(withHistory(withReact(createEditor()))), [])
@@ -39,7 +41,7 @@ const RichTextEditor = ({ className, onChange, ...props }) => {
           className="px-4 py-3 min-h-48"
           renderElement={renderElement}
           renderLeaf={renderLeaf}
-          placeholder="Was muss man über das Projekt wissen?"
+          placeholder={placeholder}
         />
       </Slate>
     </div>
@@ -49,6 +51,8 @@ const RichTextEditor = ({ className, onChange, ...props }) => {
 RichTextEditor.propTypes = {
   className: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  placeholder: PropTypes.string,
+  initialState: PropTypes.array,
 }
 
 export default RichTextEditor
