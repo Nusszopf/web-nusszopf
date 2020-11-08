@@ -12,13 +12,17 @@ const Checkbox = ({ disabled = false, checked = false, label, className, ...prop
       <ReakitCheckbox disabled={disabled} checked={checked} {...props} />
     </VisuallyHidden>
     <span
-      className={classnames('inline-flex', {
-        'opacity-50 cursor-default': disabled,
-        'cursor-pointer': !disabled,
-      })}>
-      {!checked && <Square aria-hidden="true" className={classnames('mt-px flex-shrink-0', className)} />}
-      {checked && <CheckSquare aria-hidden="true" className={classnames('mt-px flex-shrink-0', className)} />}
-      <Text as="span" variant="textSm" className={classnames('ml-2', className)}>
+      className={classnames(
+        'inline-flex',
+        {
+          'opacity-50 cursor-default': disabled,
+          'cursor-pointer': !disabled,
+        },
+        className
+      )}>
+      {!checked && <Square aria-hidden="true" className="flex-shrink-0 mt-px" />}
+      {checked && <CheckSquare aria-hidden="true" className="flex-shrink-0 mt-px" />}
+      <Text as="span" variant="textSm" className="ml-2">
         {label}
       </Text>
     </span>

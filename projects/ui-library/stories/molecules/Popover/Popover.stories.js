@@ -15,6 +15,6 @@ export default {
 
 export const Default = () => (
   <div className="flex justify-center w-full mx-auto">
-    <Popover />
+    <Popover>Info</Popover>
   </div>
 )

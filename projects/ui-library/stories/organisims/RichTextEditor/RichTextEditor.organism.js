@@ -29,11 +29,11 @@ const RichTextEditor = ({ className, onChange, ...props }) => {
       <Slate editor={editor} value={value} onChange={value => setValue(value)}>
         <div className="flex items-center px-1 py-1 bg-lilac-500">
           <MarkButton format="bold" icon={<Bold size={18} />} />
-          <MarkButton format="italic" icon={<Italic size={16} />} />
+          <MarkButton format="italic" icon={<Italic size={18} />} />
           <MarkButton format="underline" icon={<Underline size={18} />} />
-          <BlockButton format="unordered-list" icon={<List size={19} />} />
-          <BlockButton format="ordered-list" icon={<ListOrdered size={19} />} />
-          <LinkButton icon={<Link size={17} />} />
+          <BlockButton format="unordered-list" icon={<List size={18} />} />
+          <BlockButton format="ordered-list" icon={<ListOrdered size={18} />} />
+          <LinkButton icon={<Link size={18} />} />
         </div>
         <Editable
           className="px-4 py-3 min-h-48"

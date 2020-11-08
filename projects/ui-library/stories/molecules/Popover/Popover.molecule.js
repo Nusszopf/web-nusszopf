@@ -6,7 +6,7 @@ import { Info } from 'react-feather'
 import { Text } from '../../atoms'
 import { PopoverColor } from './Popover.theme'
 
-const MyPopover = ({ color = 'lilac600', ...props }) => {
+const MyPopover = ({ color = 'lilac600', children, ...props }) => {
   const popover = usePopoverState({ placement: 'top' })
 
   return (
@@ -23,7 +23,7 @@ const MyPopover = ({ color = 'lilac600', ...props }) => {
           className={classnames('box-border bg-transparent fill-current', PopoverColor[color].arrow)}
         />
         <Text variant="textXs" className="italic">
-          Welcome to Reakit!
+          {children}
         </Text>
       </Popover>
     </div>
@@ -31,6 +31,7 @@ const MyPopover = ({ color = 'lilac600', ...props }) => {
 }
 
 MyPopover.propTypes = {
+  children: PropTypes.node,
   color: PropTypes.oneOf(Object.keys(PopoverColor)),
 }
 

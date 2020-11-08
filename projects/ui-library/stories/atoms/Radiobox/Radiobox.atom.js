@@ -14,17 +14,17 @@ const Radiobox = ({ disabled = false, label, className, ...props }) => {
         <Radio ref={ref} checkeddisabled={disabled} {...props} />
       </VisuallyHidden>
       <span
-        className={classnames('inline-flex', {
-          'opacity-50 cursor-default': disabled,
-          'cursor-pointer': !disabled,
-        })}>
-        {!ref?.current?.checked && (
-          <Circle aria-hidden="true" className={classnames('mt-px flex-shrink-0', className)} />
-        )}
-        {ref?.current?.checked && (
-          <CheckCircle aria-hidden="true" className={classnames('mt-px flex-shrink-0', className)} />
-        )}
-        <Text as="span" variant="textSm" className={classnames('ml-2', className)}>
+        className={classnames(
+          'inline-flex',
+          {
+            'opacity-50 cursor-default': disabled,
+            'cursor-pointer': !disabled,
+          },
+          className
+        )}>
+        {!ref?.current?.checked && <Circle aria-hidden="true" className="flex-shrink-0 mt-px" />}
+        {ref?.current?.checked && <CheckCircle aria-hidden="true" className="flex-shrink-0 mt-px" />}
+        <Text as="span" variant="textSm" className="ml-2">
           {label}
         </Text>
       </span>
