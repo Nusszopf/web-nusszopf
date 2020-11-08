@@ -1,6 +1,7 @@
 import { Text, Radiobox, Switch } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { useRadioState, RadioGroup } from 'reakit/Radio'
+import { createProjectData as data } from '../../assets/data'
 import FieldTitle from './components/FieldTitel'
 
 const SettingsStep = () => {
@@ -9,7 +10,7 @@ const SettingsStep = () => {
   return (
     <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
-        <FieldTitle info="Info">Sichtbarkeit</FieldTitle>
+        <FieldTitle info={data.SettingsStep.visibility.info}>{data.SettingsStep.visibility.title}</FieldTitle>
         <RadioGroup {...radio} aria-label="visibility">
           <Radiobox
             {...radio}
@@ -17,10 +18,10 @@ const SettingsStep = () => {
             label={
               <>
                 <Text as="p" variant="textSmMedium">
-                  Öffentlich
+                  {data.SettingsStep.visibility.public.title}
                 </Text>
                 <Text as="p" variant="textXs">
-                  Projekt kann über Nusszopf und Suchmaschinen gefunden werden
+                  {data.SettingsStep.visibility.public.description}
                 </Text>
               </>
             }
@@ -32,10 +33,10 @@ const SettingsStep = () => {
             label={
               <>
                 <Text as="p" variant="textSmMedium">
-                  Geheim
+                  {data.SettingsStep.visibility.private.title}
                 </Text>
                 <Text as="p" variant="textXs">
-                  Projekt ist nur zugänglich unter diesem Link: nusszopf.org/nusszopf
+                  {data.SettingsStep.visibility.private.description}
                 </Text>
               </>
             }
