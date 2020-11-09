@@ -6,8 +6,3 @@
 @import '../stories/molecules/Tab/Tab.css';
 @import '../stories/molecules/Menu/Menu.css';
 @import '../stories/molecules/Dialog/Dialog.css';
-
-/* Global Stylings */
-#nprogress .bar {
-  @apply h-1 bg-blue-500;
-}
