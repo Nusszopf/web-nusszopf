@@ -64,7 +64,7 @@ const EditProject = () => {
             bodyColor="bg-white lg:bg-lilac-100"
             headerColor="bg-lilac-400 lg:bg-lilac-100">
             <FramedGridCard.Header className="bg-lilac-400">
-              <Progressbar label="Label" progress={stepper.progress ?? 0} />
+              <Progressbar label="Label" progress={stepper?.progress ?? 0} />
               <div className="flex items-end justify-between">
                 <div className="mb-2 break-all lg:mr-12 lg:mb-0">
                   <Text as="h1" variant="textLg">
@@ -72,11 +72,11 @@ const EditProject = () => {
                   </Text>
                 </div>
                 <div className="flex-shrink-0">
-                  <Button variant="outline" color="lilac800" className="mr-5" onClick={stepper.goBack}>
+                  <Button variant="outline" color="lilac800" className="mr-5" onClick={stepper?.goBack}>
                     {data.navigation.back}
                   </Button>
                   <Button variant="outline" color="lilac800" onClick={formik.submitForm}>
-                    {data.navigation.next}
+                    {stepper?.progress === 100 ? data.navigation.create : data.navigation.next}
                   </Button>
                 </div>
               </div>
