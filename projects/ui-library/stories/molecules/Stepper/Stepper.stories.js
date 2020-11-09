@@ -9,7 +9,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: '**Stepper Molecule**, which can be controlled via `useStepper`',
+        component:
+          '**Stepper Molecule**, which can be controlled via `useStepper`. `useStepper` uses [Next.js Router](https://nextjs.org/docs/api-reference/next/router) to determine the current step via url-query.',
       },
     },
   },

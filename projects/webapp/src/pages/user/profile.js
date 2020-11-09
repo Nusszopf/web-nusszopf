@@ -37,7 +37,7 @@ const Profile = () => {
             <Avatar user={authUser} />
             <Button
               color="whiteLilac700"
-              onClick={() => router.push('/user/project/new')}
+              onClick={() => router.push({ pathname: '/user/project/create', query: { step: 0 } })}
               iconLeft={<PlusCircle className="mr-2 -ml-1" />}
               className="hidden md:block">
               {profileData.action}

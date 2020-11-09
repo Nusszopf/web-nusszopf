@@ -16,7 +16,7 @@ const EditProject = () => {
   const { user: authUser } = useFetchUser({ required: true })
   const { id } = router.query
   const [project, setProject] = useState()
-  const stepper = useStepper({})
+  const stepper = useStepper()
 
   const handleSubmit = (values, helpers) => {
     const isFormComplete = stepper.goForward(values, helpers)
@@ -27,7 +27,7 @@ const EditProject = () => {
 
   return (
     <Page
-      navHeader={{ visible: true, goBackUri: 'back' }}
+      navHeader={{ visible: true, goBackUri: '/user/profile' }}
       showFooter={false}
       noindex={true}
       className="text-lilac-800 bg-lilac-100">
@@ -72,9 +72,11 @@ const EditProject = () => {
                   </Text>
                 </div>
                 <div className="flex-shrink-0">
-                  <Button variant="outline" color="lilac800" className="mr-5" onClick={stepper?.goBack}>
-                    {data.navigation.back}
-                  </Button>
+                  {stepper?.step > 0 && (
+                    <Button variant="outline" color="lilac800" className="mr-5" onClick={stepper?.goBack}>
+                      {data.navigation.back}
+                    </Button>
+                  )}
                   <Button variant="outline" color="lilac800" onClick={formik.submitForm}>
                     {stepper?.progress === 100 ? data.navigation.create : data.navigation.next}
                   </Button>
