@@ -1,19 +1,10 @@
 import { useState, useEffect, useCallback } from 'react'
-import { useFormik } from 'formik'
-import { object } from 'yup'
 
-export const useFormikStepper = ({ onSubmit, initialStep = 0, initialValues = {}, enableReinitialize = true }) => {
+const useFormikStepper = ({ initialStep = 0 }) => {
   const [step, setStep] = useState(initialStep)
   const [progress, setProgress] = useState(0)
   const [children, setChildren] = useState()
   const [currentChild, setCurrentChild] = useState()
-  const formik = useFormik({
-    initialValues,
-    validateOnMount: false,
-    validationSchema: currentChild?.props?.validationSchema ?? object({}),
-    onSubmit: (values, helpers) => handleSubmit(values, helpers),
-    enableReinitialize: enableReinitialize,
-  })
 
   useEffect(() => {
     if (children) {
@@ -39,12 +30,14 @@ export const useFormikStepper = ({ onSubmit, initialStep = 0, initialValues = {}
     [step, children]
   )
 
-  const handleSubmit = (values, helpers) => {
+  const goForward = (values, helpers) => {
     const nextStep = getNextStep(values)
     if (nextStep >= 0 && nextStep < children.length) {
+      helpers.setTouched({}, false)
       setStep(nextStep)
+      return false
     } else {
-      onSubmit(values, helpers)
+      return true
     }
   }
 
@@ -52,7 +45,7 @@ export const useFormikStepper = ({ onSubmit, initialStep = 0, initialValues = {}
     setStep(step => (step > 0 ? step - 1 : step))
   }
 
-  return { formik, setChildren, currentChild, goBack, step, progress }
+  return { goForward, setChildren, currentChild, goBack, step, progress }
 }
 
 export default useFormikStepper

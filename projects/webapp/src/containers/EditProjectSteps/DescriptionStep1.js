@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+import { useFormikContext } from 'formik'
 import { mixed, object, string } from 'yup'
 import { Text, Input, Switch } from 'ui-library/stories/atoms'
 import { RichTextEditor } from 'ui-library/stories/organisims'
@@ -29,9 +29,11 @@ export const step1ValidationSchema = object({
     }),
 })
 
-const DescriptionStep1 = ({ formik }) => {
+const DescriptionStep1 = () => {
+  const formik = useFormikContext()
+
   return (
-    <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
+    <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white">
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
         <>
           <FieldTitle info={data.descriptionStep1.title.info}>{data.descriptionStep1.title.title}</FieldTitle>
@@ -139,10 +141,6 @@ const DescriptionStep1 = ({ formik }) => {
       </FramedGridCard.Body.Col>
     </FramedGridCard.Body>
   )
-}
-
-DescriptionStep1.propTypes = {
-  formik: PropTypes.object,
 }
 
 export default DescriptionStep1

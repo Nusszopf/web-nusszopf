@@ -1,11 +1,12 @@
-import PropTypes from 'prop-types'
+import { useFormikContext } from 'formik'
 import { Input } from 'ui-library/stories/atoms'
 import { RichTextEditor } from 'ui-library/stories/organisims'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { createProjectData as data } from '../../assets/data'
 import FieldTitle from './components/FieldTitel'
 
-const DescriptionStep2 = ({ formik }) => {
+const DescriptionStep2 = () => {
+  const formik = useFormikContext()
   return (
     <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
@@ -18,10 +19,6 @@ const DescriptionStep2 = ({ formik }) => {
       </FramedGridCard.Body.Col>
     </FramedGridCard.Body>
   )
-}
-
-DescriptionStep2.propTypes = {
-  formik: PropTypes.object,
 }
 
 export default DescriptionStep2
