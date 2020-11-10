@@ -29,7 +29,7 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
           {profileData.project.searchings}
         </Text>
         <Text variant="textXs">
-          {profileData.project.date} {new Date(project.created_at).toLocaleDateString()}
+          {profileData.project.date} {new Date(project.created_at).toLocaleDateString('de-DE')}
         </Text>
       </div>
     </Clickable>

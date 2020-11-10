@@ -24,9 +24,9 @@ const MyMenu = ({ label, items, color = 'lilac700', variant = 'icon', ...props }
       <MenuList aria-label="Menu" className={classnames(MenuColor[color].menu)}>
         <>
           {items.map((item, index) => (
-            <>
+            <React.Fragment key={`menu-${index}`}>
               {item.type === 'link' && (
-                <MenuItem className={classnames(MenuColor[color].item)} key={`menu-${index}`} onSelect={() => {}}>
+                <MenuItem className={classnames(MenuColor[color].item)} onSelect={() => {}}>
                   <Link href={item.href}>
                     <a>
                       <Text as="span" variant="textSm">
@@ -40,7 +40,6 @@ const MyMenu = ({ label, items, color = 'lilac700', variant = 'icon', ...props }
               {item.type === 'button' && (
                 <MenuItem
                   className={classnames(MenuColor[color].item)}
-                  key={`menu-${index}`}
                   onSelect={() => {
                     item.action()
                   }}>
@@ -49,7 +48,7 @@ const MyMenu = ({ label, items, color = 'lilac700', variant = 'icon', ...props }
                   </Text>
                 </MenuItem>
               )}
-            </>
+            </React.Fragment>
           ))}
         </>
       </MenuList>

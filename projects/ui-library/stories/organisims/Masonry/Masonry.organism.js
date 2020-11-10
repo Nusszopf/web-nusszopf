@@ -16,14 +16,17 @@ const MyMasonry = ({ children, className, columnClassName, itemClassName, breakp
       breakpointCols={breakpointCols}
       {...props}>
       {React.Children.map(children, child =>
-        React.cloneElement(child, { className: classnames('mb-4', child.props.className, itemClassName) })
+        React.cloneElement(child, {
+          key: child.id,
+          className: classnames('mb-4', child.props.className, itemClassName),
+        })
       )}
     </Masonry>
   )
 }
 
 MyMasonry.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.node,
   className: PropTypes.string,
   columnClassName: PropTypes.string,
   itemClassName: PropTypes.string,

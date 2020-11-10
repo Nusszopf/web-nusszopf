@@ -52,7 +52,7 @@ Switch.propTypes = {
   className: PropTypes.string,
   color: PropTypes.oneOf(Object.keys(SwitchColor)),
   initialState: PropTypes.bool,
-  label: PropTypes.string,
+  label: PropTypes.node,
 }
 
 export default Switch

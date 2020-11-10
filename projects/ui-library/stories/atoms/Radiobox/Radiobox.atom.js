@@ -11,7 +11,7 @@ const Radiobox = ({ disabled = false, label, className, ...props }) => {
   return (
     <label>
       <VisuallyHidden>
-        <Radio ref={ref} checkeddisabled={disabled} {...props} />
+        <Radio ref={ref} disabled={disabled} {...props} />
       </VisuallyHidden>
       <span
         className={classnames(
