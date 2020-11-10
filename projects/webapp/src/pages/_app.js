@@ -1,8 +1,10 @@
 /* eslint-disable react/prop-types */
 import { useEffect } from 'react'
 import { ApolloProvider } from '@apollo/client'
+import { Provider as ReakitProvider } from 'reakit'
 import Head from 'next/head'
 import smoothscroll from 'smoothscroll-polyfill'
+
 require('typeface-barlow')
 
 import '../styles/tailwind.css'
@@ -24,9 +26,11 @@ export default function NusszopfApp({ Component, pageProps }) {
       </Head>
       <div id="nusszopf" className="flex flex-col h-screen">
         <ApolloProvider client={apolloClient}>
-          <ToastsProvider>
-            <Component {...pageProps} />
-          </ToastsProvider>
+          <ReakitProvider>
+            <ToastsProvider>
+              <Component {...pageProps} />
+            </ToastsProvider>
+          </ReakitProvider>
         </ApolloProvider>
       </div>
     </>
