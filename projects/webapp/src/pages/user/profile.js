@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { PlusCircle } from 'react-feather'
 import { useRouter } from 'next/router'
 
@@ -7,21 +6,14 @@ import projectMocks from 'ui-library/assets/mocks/projects.mock'
 import { Button } from 'ui-library/stories/atoms'
 import { Masonry } from 'ui-library/stories/organisims'
 import { EditProjectCard, NusszopfCard, Page, Avatar } from '../../containers'
-import { useFetchUser } from '../../utils/services/auth.service'
-import apollo from '../../utils/services/apollo.service'
+import { useUser } from '../../utils/helper'
 import { profileData } from '../../assets/data'
 
 // Todo: hasura request user+lead object
 
 const Profile = () => {
   const router = useRouter()
-  const { user: authUser } = useFetchUser({ required: true })
-  const [loadData, { loading, data: user }] = apollo.useLazyGetUser(authUser?.sub)
-
-  // useEffect(() => {
-  //   if (authUser) loadData()
-  // }, [authUser, loadData])
-
+  const { loading, ...user } = useUser()
   return (
     <Page
       navHeader={{ visible: true, goBackUri: 'back' }}
@@ -34,7 +26,7 @@ const Profile = () => {
         headerColor="bg-gray-200 lg:bg-gray-100">
         <FramedGridCard.Header className="bg-gray-200">
           <div className="flex flex-col md:flex-row md:justify-between md:items-center">
-            <Avatar user={authUser} />
+            <Avatar user={user} />
             <Button
               color="whiteLilac700"
               onClick={() => router.push({ pathname: '/user/project/create', query: { step: 0 } })}

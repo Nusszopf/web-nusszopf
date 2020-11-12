@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/router'
 import { Formik, Form } from 'formik'
 import { object } from 'yup'
 
@@ -7,15 +5,19 @@ import { Text, Button, Progressbar } from 'ui-library/stories/atoms'
 import { Stepper, useStepper } from 'ui-library/stories/molecules'
 import { emptyRichText } from 'ui-library/stories/organisims'
 import { FramedGridCard } from 'ui-library/stories/templates'
-import { Page, DescriptionStep1, DescriptionStep2, SettingsStep, step1ValidationSchema } from '../../../containers'
-import { useFetchUser } from '../../../utils/services/auth.service'
+import { useUser } from '../../../utils/helper'
+import {
+  Page,
+  DescriptionStep1,
+  DescriptionStep2,
+  SettingsStep,
+  step1ValidationSchema,
+  step2ValidationSchema,
+} from '../../../containers'
 import { createProjectData as data } from '../../../assets/data'
 
 const EditProject = () => {
-  const router = useRouter()
-  const { user: authUser } = useFetchUser({ required: true })
-  const { id } = router.query
-  const [project, setProject] = useState()
+  const { loading, ...user } = useUser()
   const stepper = useStepper()
 
   const handleSubmit = (values, helpers) => {
@@ -49,7 +51,7 @@ const EditProject = () => {
             from: '',
             to: '',
           },
-          team: '',
+          team: emptyRichText,
           motto: '',
           visibility: 'private',
           contact: 'mail@nusszopf.org',
@@ -86,7 +88,7 @@ const EditProject = () => {
             <Form>
               <Stepper {...stepper}>
                 <DescriptionStep1 validationSchema={step1ValidationSchema} />
-                <DescriptionStep2 />
+                <DescriptionStep2 validationSchema={step2ValidationSchema} />
                 <SettingsStep />
               </Stepper>
             </Form>

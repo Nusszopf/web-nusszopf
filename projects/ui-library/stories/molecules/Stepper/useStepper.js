@@ -11,7 +11,7 @@ const useFormikStepper = () => {
   useEffect(() => {
     if (!children) return
     const numSteps = children.length
-    const queryStep = parseInt(router.query?.step)
+    const queryStep = parseInt(router.query?.step) // first render is always NaN (https://github.com/vercel/next.js/discussions/11484)
     if (isNaN(queryStep) || queryStep >= numSteps || queryStep < 0) {
       router.push({ pathname: '/user/project/create', query: { step: 0 } })
     } else if (step !== queryStep) {

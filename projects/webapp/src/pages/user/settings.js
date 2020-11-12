@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { object, mixed } from 'yup'
 import { useRouter } from 'next/router'
@@ -7,32 +6,27 @@ import { Text, Link, Checkbox, Route, Button } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { InfoCard } from 'ui-library/stories/molecules'
 import { useToasts } from 'ui-library/services/Toasts.service'
-import { useFetchUser } from '../../utils/services/auth.service'
 import apollo from '../../utils/services/apollo.service'
+import { useUser } from '../../utils/helper'
 import { Page, Avatar } from '../../containers'
 import { settingsData } from '../../assets/data'
 
 const Settings = () => {
-  const { user: authUser } = useFetchUser({ required: true })
+  const { loading, ...user } = useUser()
   const { notify } = useToasts()
   const router = useRouter()
   const [deleteUser] = apollo.useDeleteUser()
   const [addLead] = apollo.useAddLead()
   const [deleteLead] = apollo.useDeleteLead()
-  const [updateLead] = apollo.useUpdateLead(authUser?.sub)
-  const [loadData, { loading, data: user }] = apollo.useLazyGetUser(authUser?.sub)
-
-  useEffect(() => {
-    if (authUser) loadData()
-  }, [authUser, loadData])
+  const [updateLead] = apollo.useUpdateLead(user?.data?.id)
 
   const handleSubscribe = async ({ privacy }) => {
     notify({ type: 'loading', message: 'Du wirst zum Newsletter angemeldet.' })
     try {
       const res = await addLead({
         variables: {
-          email: user.users_by_pk.email,
-          name: authUser.nickname,
+          email: user.data.email,
+          name: user.auth.nickname,
           privacy,
         },
       })
@@ -49,7 +43,7 @@ const Settings = () => {
       notify({ type: 'loading', message: 'Du wirst vom Newsletter abgemeldet.' })
       try {
         await deleteLead({
-          variables: { email: user.users_by_pk.email },
+          variables: { email: user.data.email },
         })
         notify({ type: 'success', message: 'Du bist jetzt abgemeldet.' })
       } catch (error) {
@@ -64,7 +58,7 @@ const Settings = () => {
       notify({ type: 'loading', message: 'Dein Account wird gelöscht.' })
       try {
         await deleteUser({
-          variables: { id: authUser?.sub },
+          variables: { id: user.data.id },
         })
         router.push('/')
         notify({ type: 'success', message: 'Dein Account wurde gelöscht.' })
@@ -89,7 +83,7 @@ const Settings = () => {
             <Text as="h1" variant="textLg">
               {settingsData.title}
             </Text>
-            <Avatar user={{ ...authUser, ...user?.users_by_pk }} className="mt-4 md:mt-0" />
+            <Avatar user={user} className="mt-4 md:mt-0" />
           </div>
         </FramedGridCard.Header>
         <FramedGridCard.Body className="bg-white">
@@ -98,7 +92,7 @@ const Settings = () => {
               <Text variant="textMd" className="mb-2">
                 {settingsData.newsletter.title}
               </Text>
-              {!user?.users_by_pk?.lead?.hasConfirmed ? (
+              {!user?.data?.lead?.hasConfirmed ? (
                 <Formik
                   initialValues={{ privacy: false }}
                   onSubmit={handleSubscribe}

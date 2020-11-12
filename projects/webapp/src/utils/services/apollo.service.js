@@ -7,7 +7,7 @@ import { DELETE_LEAD, INSERT_LEAD, UPDATE_LEAD } from '../hasura/mutations/leads
 const useLazyGetUser = id =>
   useLazyQuery(GET_USER, {
     variables: { id },
-    fetchPolicy: 'cache-and-network',
+    // fetchPolicy: 'cache-and-network',
   })
 
 const useDeleteUser = () => useMutation(DELETE_USER)

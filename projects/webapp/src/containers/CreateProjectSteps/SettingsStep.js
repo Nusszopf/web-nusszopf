@@ -2,11 +2,14 @@ import { useFormikContext } from 'formik'
 import { Text, Radiobox, Switch } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { useRadioState, RadioGroup } from 'reakit/Radio'
+
+import { useUser } from '../../utils/helper'
 import { createProjectData as data } from '../../assets/data'
 import FieldTitle from './components/FieldTitel'
 
 const SettingsStep = () => {
   const formik = useFormikContext()
+  const { loading, ...user } = useUser()
   const radio = useRadioState({ state: 'private' })
 
   return (
@@ -48,11 +51,12 @@ const SettingsStep = () => {
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
         <FieldTitle info="Info">Kontakt</FieldTitle>
         <Switch
+          onCheck={value => formik.setFieldValue('contact', value ? user?.data?.email : 'mail@nusszopf.org')}
+          initialState={formik.values.contact}
           color="lilac800"
-          onCheck={console.log}
           label={
             <>
-              Direkt kontaktieren unter <i>finn@nusszopf.org</i>
+              Direkt kontaktieren unter <i>{user?.data?.email}</i>
             </>
           }
         />
