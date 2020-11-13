@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import apollo from './services/apollo.service'
 import { useFetchUser } from './services/auth.service'
 
@@ -18,11 +18,20 @@ export const sortByDate = (timestampA, timestampB, order) => {
 
 export const useUser = () => {
   const { user } = useFetchUser({ required: true })
-  const [loadData, { loading, data }] = apollo.useLazyGetUser(user?.sub)
+  const [loadData, { called, data }] = apollo.useLazyGetUser(user?.sub)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (user) loadData()
-  }, [user, loadData])
+    if (user && !called) {
+      loadData()
+    }
+  }, [user, loadData, called])
+
+  useEffect(() => {
+    if (data?.users_by_pk) {
+      setLoading(false)
+    }
+  }, [data])
 
   return { auth: user, data: data?.users_by_pk, loading }
 }

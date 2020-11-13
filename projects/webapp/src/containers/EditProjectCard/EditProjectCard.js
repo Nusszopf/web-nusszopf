@@ -6,6 +6,7 @@ import { truncate } from 'lodash'
 
 import { Text } from 'ui-library/stories/atoms'
 import { Menu } from 'ui-library/stories/molecules'
+import { PROJECT } from '../../utils/enums'
 import { profileData } from '../../assets/data'
 
 const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project, className, ...props }) => (
@@ -18,14 +19,14 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
     <Clickable onClick={() => onClick(project.id)} className="flex-1 p-4 text-left focus:outline-none">
       <div className="flex items-center">
         <Text className="mr-4">{project.title}</Text>
-        {project.isVisible ? <Eye /> : <EyeOff />}
+        {project.visibility === PROJECT.visibility.public ? <Eye /> : <EyeOff />}
       </div>
       <Text variant="textSm" className="mt-2">
         {truncate(project.goal, { length: 100 })}
       </Text>
       <div className="flex flex-col mt-6 sm:flex-row lg:flex-col">
         <Text variant="textXs" className="sm:mr-4 lg:mr-0">
-          <span className="mr-2 font-medium">{project.searchings.length}</span>
+          <span className="mr-2 font-medium">todo</span>
           {profileData.project.searchings}
         </Text>
         <Text variant="textXs">
@@ -49,7 +50,7 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
           },
           {
             type: 'button',
-            text: project.isVisible ? 'Veröffentlichen' : 'Geheimhalten',
+            text: project.visibility === PROJECT.visibility.public ? 'Geheimhalten' : 'Veröffentlichen',
             action: () => toggleVisibility(project.id),
           },
           {
@@ -74,7 +75,7 @@ EditProjectCard.propTypes = {
     id: PropTypes.string,
     title: PropTypes.string,
     goal: PropTypes.string,
-    isVisible: PropTypes.bool,
+    visibility: PropTypes.oneOf[('private', 'public')],
     searchings: PropTypes.array,
     created_at: PropTypes.string,
   }),

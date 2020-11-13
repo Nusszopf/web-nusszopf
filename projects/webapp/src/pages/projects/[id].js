@@ -1,21 +1,19 @@
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import { useState } from 'react'
+import PropTypes from 'prop-types'
 import { MapPin, Calendar, Send, Share2 } from 'react-feather'
 
 import { Text, Button } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
-import projectsMock from 'ui-library/assets/mocks/projects.mock'
-import { Page } from '../../../../containers'
+import apollo from '../../utils/services/apollo.service'
+import { Page } from '../../containers'
+import { GET_PROJECT } from '../../utils/hasura/queries/projects.query'
+import { initializeApollo } from '../../utils/libs/apolloClient'
 
-const Project = () => {
-  const router = useRouter()
+// load server side
+
+const Project = ({ id }) => {
+  const { data } = apollo.useGetProject(id)
   const [project, setProject] = useState()
-  const { id } = router.query
-
-  useEffect(() => {
-    const project = projectsMock.find(project => project.id === id)
-    setProject(project)
-  }, [id])
 
   return (
     <Page
@@ -31,10 +29,10 @@ const Project = () => {
           <div className="flex flex-col flex-wrap lg:flex-row lg:justify-between lg:items-center">
             <div className="lg:pr-12 lg:w-7/12">
               <Text as="h1" variant="textLg" className="mb-2">
-                {project?.title}
+                {data?.projects_by_pk?.title}
               </Text>
               <Text variant="textSm" className="hyphens-auto">
-                {project?.goal}
+                {data?.projects_by_pk?.goal}
               </Text>
             </div>
             <div className="flex flex-row items-center order-last mt-5 mb-2 lg:w-5/12 lg:order-none lg:mt-10 lg:mb-0 lg:justify-end">
@@ -65,15 +63,15 @@ const Project = () => {
           <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2">
             <div>
               <Text className="mb-2">Um was geht es?</Text>
-              <Text variant="textSm">{project?.description}</Text>
+              <Text variant="textSm">{data?.projects_by_pk?.description}</Text>
             </div>
             <div className="mt-8">
               <Text className="mb-2">Wer steckt dahinter?</Text>
-              <Text variant="textSm">{project?.team}</Text>
+              <Text variant="textSm">{data?.projects_by_pk?.team}</Text>
             </div>
             <div className="mt-8">
               <Text variant="textSmMedium" className="italic">
-                Motto: {project?.motto}
+                Motto: {data?.projects_by_pk?.motto}
               </Text>
             </div>
           </FramedGridCard.Body.Col>
@@ -81,12 +79,37 @@ const Project = () => {
             <Text>Aktuelle Gesuche</Text>
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="oneCol" className="mt-10">
-            <Text variant="textSm">Erstellt am ...</Text>
+            <Text variant="textSm">Erstellt am {new Date(data?.projects_by_pk?.created_at).toLocaleDateString()}</Text>
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
       </FramedGridCard>
     </Page>
   )
+}
+
+export async function getServerSideProps(ctx) {
+  const { id } = ctx.query
+  const apolloClient = initializeApollo()
+  const res = await apolloClient.query({
+    query: GET_PROJECT,
+    variables: { id },
+  })
+  // next.js v10
+  // if (res?.data?.projects_by_pk) {
+  //   return {
+  //     notFound: true,
+  //   }
+  // }
+  return {
+    props: {
+      id,
+      initialApolloState: apolloClient.cache.extract(),
+    },
+  }
+}
+
+Project.propTypes = {
+  id: PropTypes.string,
 }
 
 export default Project

@@ -1,19 +1,33 @@
+import { useEffect, useState } from 'react'
 import { PlusCircle } from 'react-feather'
 import { useRouter } from 'next/router'
 
 import { FramedGridCard } from 'ui-library/stories/templates'
-import projectMocks from 'ui-library/assets/mocks/projects.mock'
 import { Button } from 'ui-library/stories/atoms'
 import { Masonry } from 'ui-library/stories/organisims'
+import apollo from '../../utils/services/apollo.service'
 import { EditProjectCard, NusszopfCard, Page, Avatar } from '../../containers'
 import { useUser } from '../../utils/helper'
 import { profileData } from '../../assets/data'
 
-// Todo: hasura request user+lead object
-
 const Profile = () => {
   const router = useRouter()
-  const { loading, ...user } = useUser()
+  const { loading: loadingUser, ...user } = useUser()
+  const [loadProjects, { called, data }] = apollo.useLazyGetProjects(user?.data?.id)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    if (!loadingUser && user?.data && !called) {
+      loadProjects()
+    }
+  }, [user, loadProjects, loadingUser, called])
+
+  useEffect(() => {
+    if (data) {
+      setLoading(false)
+    }
+  }, [data])
+
   return (
     <Page
       navHeader={{ visible: true, goBackUri: 'back' }}
@@ -47,13 +61,15 @@ const Profile = () => {
             </Button>
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="oneCol">
-            {projectMocks.length > 0 ? (
+            {loading ? (
+              <>loading...</>
+            ) : data?.projects?.length > 0 ? (
               <Masonry>
-                {projectMocks.map(project => (
+                {data?.projects.map(project => (
                   <EditProjectCard
                     key={project.id}
                     project={project}
-                    onClick={id => router.push(`/user/project/${id}`)}
+                    onClick={id => router.push(`/projects/${id}`)}
                     onEdit={id => router.push(`/user/project/${id}/edit`)}
                     onDelete={id => console.log('onDelete', id)}
                     toggleVisibility={id => console.log('toggleVisibility', id)}

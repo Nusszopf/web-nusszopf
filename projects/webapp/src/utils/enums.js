@@ -8,3 +8,10 @@ export const DELETE_NOTE = 'delete note'
 export const CREATE_NOTE = 'create note'
 
 export const NZ_EMAIL = 'mail@nusszopf.org'
+
+export const PROJECT = {
+  visibility: {
+    public: 'public',
+    private: 'private',
+  },
+}
