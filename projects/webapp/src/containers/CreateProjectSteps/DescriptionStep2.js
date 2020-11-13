@@ -1,5 +1,6 @@
 import { useFormikContext } from 'formik'
 import { mixed, object, string } from 'yup'
+
 import { Text, Input } from 'ui-library/stories/atoms'
 import { RichTextEditor } from 'ui-library/stories/organisims'
 import { FramedGridCard } from 'ui-library/stories/templates'
@@ -7,10 +8,10 @@ import { createProjectData as data } from '../../assets/data'
 import FieldTitle from './components/FieldTitel'
 
 export const step2ValidationSchema = object({
-  team: mixed().test('description', 'Maximale Zeichenlänge erreicht', value =>
+  team: mixed().test('description', data.descriptionStep2.team.error, value =>
     JSON.stringify(value)?.length > 6000 ? false : true
   ),
-  motto: string().max(200, 'Nicht mehr als 200 Zeichen'),
+  motto: string().max(200, data.descriptionStep2.motto.error),
 })
 
 const DescriptionStep2 = () => {

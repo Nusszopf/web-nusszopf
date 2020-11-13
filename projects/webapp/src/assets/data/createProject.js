@@ -50,11 +50,13 @@ export default {
       info: 'Info',
       placeholder:
         'Wer macht alles wie bei dem Projekt mit? Wie arbeitet ihr so zusammen / wollt ihr zusammen arbeiten? Wie organisiert ihr euch? Was gibt es über euch unbedingt zu wissen?',
+      error: 'Maximale Zeichenlänge erreicht',
     },
     motto: {
       title: 'Projektmotto',
       info: 'Info',
       placeholder: 'Was ist das Projektmotto?',
+      error: 'Nicht mehr als 200 Zeichen',
     },
   },
   SettingsStep: {
