@@ -1,8 +1,16 @@
 // cheatsheet: npx tailwind init tailwind-full.config.js --full
 // documentation: https://tailwindcss.com/docs/configuration/
+
+// Known issues: https://github.com/tailwindlabs/tailwindcss/discussions/2728
+
 const defaultTheme = require('tailwindcss/defaultTheme')
+const plugin = require('tailwindcss/plugin')
 
 module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
   experimental: {
     applyComplexClasses: true,
   },
@@ -132,7 +140,7 @@ module.exports = {
   },
   variants: {
     // https://tailwindcss.com/docs/pseudo-class-variants#creating-custom-variants
-    backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
+    backgroundColor: ['responsive', 'hover', 'focus', 'group-hover', 'aria-selected'],
     borderColor: ['responsive', 'active', 'hover', 'focus', 'group-hover'],
     textColor: ['responsive', 'hover', 'focus', 'group-hover'],
     opacity: ['responsive', 'hover', 'focus', 'disabled'],
@@ -140,6 +148,13 @@ module.exports = {
   },
   corePlugins: {},
   plugins: [
-    // third-party-plugins
+    // custom and third-party-plugins
+    plugin(function ({ addVariant, e }) {
+      addVariant('aria-selected', ({ modifySelectors, separator }) => {
+        modifySelectors(({ className }) => {
+          return `.${e(`aria-selected${separator}${className}`)}[aria-selected="true"]`
+        })
+      })
+    }),
   ],
 }

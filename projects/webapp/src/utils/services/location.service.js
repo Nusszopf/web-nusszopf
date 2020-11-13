@@ -8,7 +8,7 @@ const fetchLocations = async searchTerm => {
     limit: 7,
     countrycodes: 'de',
     'accept-language': 'de',
-    key: 'pk.7d433f0b958fb7c6515ca301ebfde756', // process.env.LOCATIONIQ,
+    key: process.env.LOCATIONIQ_KEY,
     tag: 'place:suburb,place:quarter,place:city,place:town,place:village,place:hamlet',
   }
   url.search = new URLSearchParams(params).toString()

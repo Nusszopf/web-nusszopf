@@ -11,22 +11,26 @@ export default {
       title: 'Titel*',
       info: 'Info',
       placeholder: 'Wie heißt das Projekt?',
+      error: ['Nicht mehr als 30 Zeichen', 'Bitte gib einen Titel ein'],
     },
     goal: {
       title: 'Ziel des Projekts*',
       info: 'Info',
       placeholder: 'Wie lässt sich das Ziel des Projektes in einem Satz beschreiben?',
+      error: ['Nicht mehr als 200 Zeichen', 'Bitte gib ein Ziel ein'],
     },
     project: {
       title: 'Projektbeschreibung*',
       info: 'Info',
       placeholder: 'Was muss man über das Projekt wissen?',
+      error: ['Maximale Zeichenlänge erreicht', 'Bitte gib eine Beschreibung ein'],
     },
     location: {
       title: 'Ort*',
       info: 'Info',
       placeholder: 'Ort',
       action: 'Projekt ist unabhänging vom Ort',
+      error: ['Bitte gib einen Ort ein', 'Bitte wähle einen Ort aus der Liste aus'],
     },
     period: {
       title: 'Projektzeitraum*',
@@ -37,6 +41,7 @@ export default {
         to: 'Bis',
         placeholder: 'dd.mm.yyyy',
       },
+      error: ['Bitte gib ein Startdatum ein', 'Nicht im Format dd.mm.yyyy', 'Bitte gib ein Enddatum ein'],
     },
   },
   descriptionStep2: {

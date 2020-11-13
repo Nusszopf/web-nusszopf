@@ -1,25 +1,25 @@
 import { useState } from 'react'
 import { useFormikContext } from 'formik'
 import { mixed, object, string } from 'yup'
+import { isEmpty } from 'lodash'
+import { isMatch } from 'date-fns'
+
 import { Text, Input, Switch } from 'ui-library/stories/atoms'
 import { Combobox } from 'ui-library/stories/molecules'
 import { RichTextEditor } from 'ui-library/stories/organisims'
 import { FramedGridCard } from 'ui-library/stories/templates'
+import { findLocations } from '../../utils/services/location.service'
 import { createProjectData as data } from '../../assets/data'
 import FieldTitle from './components/FieldTitel'
-import { findLocations } from '../../utils/services/location.service'
-
-// todo
-// * validate location and period conditionally -> mixed().when().test()
 
 export const step1ValidationSchema = object({
-  title: string().max(30, 'Nicht mehr als 30 Zeichen').required('Bitte gib einen Namen ein'),
-  goal: string().max(200, 'Nicht mehr als 200 Zeichen').required('Bitte gib ein Ziel ein'),
+  title: string().max(30, data.descriptionStep1.title.error[0]).required(data.descriptionStep1.title.error[1]),
+  goal: string().max(200, data.descriptionStep1.goal.error[0]).required(data.descriptionStep1.goal.error[1]),
   description: mixed()
-    .test('description', 'Maximale Zeichenlänge erreicht', value =>
+    .test('description', data.descriptionStep1.project.error[0], value =>
       JSON.stringify(value)?.length > 6000 ? false : true
     )
-    .test('description', 'Bitte gib eine Beschreibung ein', value => {
+    .test('description', data.descriptionStep1.project.error[1], value => {
       if (value?.length <= 1) {
         if (value[0].children?.length <= 1) {
           const child = value[0].children[0]
@@ -30,21 +30,43 @@ export const step1ValidationSchema = object({
       }
       return true
     }),
+  location: object().shape({
+    searchTerm: string().when(['remote'], {
+      is: false,
+      then: string().required(data.descriptionStep1.location.error[0]),
+    }),
+    data: object().when(['remote', 'searchTerm'], {
+      is: (remote, searchTerm) => !remote && !isEmpty(searchTerm),
+      then: object().test('location.data', data.descriptionStep1.location.error[1], data => !isEmpty(data)),
+    }),
+  }),
+  period: object().shape({
+    from: string().when(['flexible'], {
+      is: false,
+      then: string()
+        .required(data.descriptionStep1.period.error[0])
+        .test('period.form', data.descriptionStep1.period.error[1], date => isMatch(date, 'dd.MM.yyyy')),
+    }),
+    to: string().when(['flexible'], {
+      is: false,
+      then: string()
+        .required(data.descriptionStep1.period.error[2])
+        .test('period.to', data.descriptionStep1.period.error[1], date => isMatch(date, 'dd.MM.yyyy')),
+    }),
+  }),
 })
 
 const DescriptionStep1 = () => {
   const formik = useFormikContext()
   const [locations, setLocations] = useState([])
 
-  const selectLocation = location => {
+  const handleLocationSelect = location => {
     const { value, ...data } = location
-    console.log(data)
-    // const location = locationRef.search.find(l => l.place_id === option.key)
     formik.setFieldValue('location.searchTerm', value)
     formik.setFieldValue('location.data', data)
   }
 
-  const searchForLocations = async event => {
+  const handleSearchTermChange = async event => {
     const searchTerm = event?.target?.value
     formik.setFieldValue('location.searchTerm', searchTerm)
     search(searchTerm)
@@ -58,7 +80,7 @@ const DescriptionStep1 = () => {
     }
   }
 
-  const handleClear = () => {
+  const handleSearchTermClear = () => {
     formik.setFieldValue('location.searchTerm', '')
     formik.setFieldValue('location.data', {})
     setLocations([])
@@ -134,20 +156,32 @@ const DescriptionStep1 = () => {
             checked={formik.values.location.remote}
           />
           {!formik.values.location.remote && (
-            <Combobox
-              id="postalcode"
-              tabIndex="0"
-              name="location.searchTerm"
-              className="mt-4"
-              aria="Suche nach einem Ort"
-              placeholder="Ort"
-              onChange={searchForLocations}
-              onBlur={formik.handleBlur}
-              onSelect={selectLocation}
-              onClear={handleClear}
-              value={formik.values.location.searchTerm}
-              options={locations}
-            />
+            <>
+              <Combobox
+                id="postalcode"
+                tabIndex="0"
+                name="location.searchTerm"
+                className="mt-4"
+                aria="Suche nach einem Ort"
+                placeholder="Ort"
+                onChange={handleSearchTermChange}
+                onBlur={formik.handleBlur}
+                onSelect={handleLocationSelect}
+                onClear={handleSearchTermClear}
+                value={formik.values.location.searchTerm}
+                options={locations}
+              />
+              {formik?.errors?.location?.searchTerm && formik.touched?.location?.searchTerm && (
+                <Text variant="textXs" className="mt-2 italic">
+                  {formik.errors.location?.searchTerm}
+                </Text>
+              )}
+              {formik?.errors?.location?.data && formik.touched?.location?.searchTerm && (
+                <Text variant="textXs" className="mt-2 italic">
+                  {formik.errors.location?.data}
+                </Text>
+              )}
+            </>
           )}
         </>
         <>
@@ -164,25 +198,49 @@ const DescriptionStep1 = () => {
           />
           {!formik.values.period.flexible && (
             <div className="mt-4 space-y-4">
-              <div className="flex items-center">
-                <Text variant="textXs" className="w-12 uppercase">
+              <div className="flex">
+                <Text variant="textXs" className="w-12 mt-3 uppercase">
                   {data.descriptionStep1.period.action.from}
                 </Text>
-                <Input
-                  color="whiteLilac800"
-                  placeholder={data.descriptionStep1.period.action.placeholder}
-                  type="date"
-                />
+                <div className="w-full">
+                  <Input
+                    name="period.from"
+                    value={formik.values.period.from}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    maxLength={10}
+                    color="whiteLilac800"
+                    placeholder={data.descriptionStep1.period.action.placeholder}
+                    type="text"
+                  />
+                  {formik?.errors?.period?.from && formik.touched?.period?.from && (
+                    <Text variant="textXs" className="mt-2 italic">
+                      {formik.errors.period?.from}
+                    </Text>
+                  )}
+                </div>
               </div>
-              <div className="flex items-center">
-                <Text variant="textXs" className="w-12 uppercase">
+              <div className="flex">
+                <Text variant="textXs" className="w-12 mt-3 uppercase">
                   {data.descriptionStep1.period.action.to}
                 </Text>
-                <Input
-                  color="whiteLilac800"
-                  placeholder={data.descriptionStep1.period.action.placeholder}
-                  type="date"
-                />
+                <div className="w-full">
+                  <Input
+                    name="period.to"
+                    value={formik.values.period.to}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    maxLength={10}
+                    color="whiteLilac800"
+                    placeholder={data.descriptionStep1.period.action.placeholder}
+                    type="text"
+                  />
+                  {formik?.errors?.period?.to && formik.touched?.period?.to && (
+                    <Text variant="textXs" className="mt-2 italic">
+                      {formik.errors.period?.to}
+                    </Text>
+                  )}
+                </div>
               </div>
             </div>
           )}
