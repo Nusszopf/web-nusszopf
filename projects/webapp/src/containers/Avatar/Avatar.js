@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { Text } from 'ui-library/stories/atoms'
 
 const Avatar = ({ user, className, ...props }) => (
-  <div className={classnames('flex items-center', className)} {...props}>
+  <div className={classnames('flex items-center break-all', className)} {...props}>
     <img className="w-16 h-16 bg-gray-600 rounded-full" src={user?.auth?.picture} alt="avatar" />
     <div className="ml-4">
       <Text variant="textSmMedium">{user?.auth?.name ?? '-'}</Text>

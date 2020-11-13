@@ -1,9 +1,13 @@
+import { useRouter } from 'next/router'
 import { Formik, Form } from 'formik'
 import { object } from 'yup'
+
+import { useToasts } from 'ui-library/services/Toasts.service'
 import { Text, Button, Progressbar } from 'ui-library/stories/atoms'
 import { Stepper, useStepper } from 'ui-library/stories/molecules'
 import { emptyRichText } from 'ui-library/stories/organisims'
 import { FramedGridCard } from 'ui-library/stories/templates'
+import apollo from '../../../utils/services/apollo.service'
 import { useUser } from '../../../utils/helper'
 import {
   Page,
@@ -17,12 +21,36 @@ import { createProjectData as data } from '../../../assets/data'
 
 const CreateProject = () => {
   const { loading, ...user } = useUser()
+  const router = useRouter()
+  const { notify } = useToasts()
   const stepper = useStepper()
+  const [addProject, { loading: projectLoading }] = apollo.useAddProject()
 
-  const handleSubmit = (values, helpers) => {
+  const handleSubmit = async (values, helpers) => {
     const isFormComplete = stepper.goForward(values, helpers)
     if (isFormComplete) {
-      console.log('send data', values)
+      notify({
+        type: 'loading',
+        message: 'Dein Projekt wird erstellt.',
+      })
+      try {
+        const data = apollo.serializeProject(values, user)
+        const res = await addProject({
+          variables: { project: data },
+        })
+        console.log(res)
+        // update cache
+        router.push('/user/profile')
+        notify({
+          type: 'success',
+          message: 'Dein Projekt wurde erstellt.',
+        })
+      } catch (error) {
+        notify({
+          type: 'loading',
+          message: 'Dein Projekt wird erstellt.',
+        })
+      }
     }
   }
 
@@ -75,7 +103,7 @@ const CreateProject = () => {
                       {data.navigation.back}
                     </Button>
                   )}
-                  <Button variant="outline" color="lilac800" onClick={formik.submitForm}>
+                  <Button disabled={projectLoading} variant="outline" color="lilac800" onClick={formik.submitForm}>
                     {stepper?.progress === 100 ? data.navigation.create : data.navigation.next}
                   </Button>
                 </div>
