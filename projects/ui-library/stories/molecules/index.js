@@ -1,3 +1,4 @@
+export { default as Combobox } from './Combobox/Combobox.molecule'
 export { default as Dialog } from './Dialog/Dialog.molecule'
 export { default as InfoCard } from './InfoCard/InfoCard.molecule'
 export { default as InputGroup } from './InputGroup/InputGroup.molecule'

@@ -1,13 +1,16 @@
+import { useState } from 'react'
 import { useFormikContext } from 'formik'
 import { mixed, object, string } from 'yup'
 import { Text, Input, Switch } from 'ui-library/stories/atoms'
+import { Combobox } from 'ui-library/stories/molecules'
 import { RichTextEditor } from 'ui-library/stories/organisims'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { createProjectData as data } from '../../assets/data'
 import FieldTitle from './components/FieldTitel'
+import { findLocations } from '../../utils/services/location.service'
 
 // todo
-// * validate date and period conditionally -> mixed().when().test()
+// * validate location and period conditionally -> mixed().when().test()
 
 export const step1ValidationSchema = object({
   title: string().max(30, 'Nicht mehr als 30 Zeichen').required('Bitte gib einen Namen ein'),
@@ -31,6 +34,35 @@ export const step1ValidationSchema = object({
 
 const DescriptionStep1 = () => {
   const formik = useFormikContext()
+  const [locations, setLocations] = useState([])
+
+  const selectLocation = location => {
+    const { value, ...data } = location
+    console.log(data)
+    // const location = locationRef.search.find(l => l.place_id === option.key)
+    formik.setFieldValue('location.searchTerm', value)
+    formik.setFieldValue('location.data', data)
+  }
+
+  const searchForLocations = async event => {
+    const searchTerm = event?.target?.value
+    formik.setFieldValue('location.searchTerm', searchTerm)
+    search(searchTerm)
+  }
+
+  const search = async searchTerm => {
+    let newLocations = locations
+    if (searchTerm) {
+      newLocations = await findLocations(searchTerm, locations)
+      setLocations(newLocations)
+    }
+  }
+
+  const handleClear = () => {
+    formik.setFieldValue('location.searchTerm', '')
+    formik.setFieldValue('location.data', {})
+    setLocations([])
+  }
 
   return (
     <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white">
@@ -95,12 +127,27 @@ const DescriptionStep1 = () => {
           <FieldTitle info={data.descriptionStep1.location.info}>{data.descriptionStep1.location.title}</FieldTitle>
           <Switch
             color="lilac800"
+            name="location.remote"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
             label={data.descriptionStep1.location.action}
-            onCheck={value => formik.setFieldValue('location.remote', value)}
-            initialState={formik.values.location.remote}
+            checked={formik.values.location.remote}
           />
           {!formik.values.location.remote && (
-            <Input color="whiteLilac800" className="mt-4" placeholder={data.descriptionStep1.location.placeholder} />
+            <Combobox
+              id="postalcode"
+              tabIndex="0"
+              name="location.searchTerm"
+              className="mt-4"
+              aria="Suche nach einem Ort"
+              placeholder="Ort"
+              onChange={searchForLocations}
+              onBlur={formik.handleBlur}
+              onSelect={selectLocation}
+              onClear={handleClear}
+              value={formik.values.location.searchTerm}
+              options={locations}
+            />
           )}
         </>
         <>
@@ -109,9 +156,11 @@ const DescriptionStep1 = () => {
           </FieldTitle>
           <Switch
             color="lilac800"
+            name="period.flexible"
+            onBlur={formik.handleBlur}
+            onChange={formik.handleChange}
             label={data.descriptionStep1.period.action.switch}
-            onCheck={value => formik.setFieldValue('period.flexible', value)}
-            initialState={formik.values.period.flexible}
+            checked={formik.values.period.flexible}
           />
           {!formik.values.period.flexible && (
             <div className="mt-4 space-y-4">

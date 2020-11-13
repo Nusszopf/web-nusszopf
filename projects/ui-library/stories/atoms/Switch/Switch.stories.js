@@ -13,4 +13,4 @@ export default {
   },
 }
 
-export const Default = () => <Switch color="lilac800" onCheck={console.log} />
+export const Default = () => <Switch color="lilac800" />

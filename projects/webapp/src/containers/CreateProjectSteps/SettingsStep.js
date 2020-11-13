@@ -10,7 +10,7 @@ import FieldTitle from './components/FieldTitel'
 const SettingsStep = () => {
   const formik = useFormikContext()
   const { loading, ...user } = useUser()
-  const radio = useRadioState({ state: 'private' })
+  const radio = useRadioState({ state: formik.values.visibility })
 
   return (
     <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
@@ -19,7 +19,9 @@ const SettingsStep = () => {
         <RadioGroup {...radio} aria-label="visibility">
           <Radiobox
             {...radio}
+            name="visibility"
             value="public"
+            onChange={formik.handleChange}
             label={
               <>
                 <Text as="p" variant="textSmMedium">
@@ -33,6 +35,8 @@ const SettingsStep = () => {
           />
           <Radiobox
             {...radio}
+            name="visibility"
+            onChange={formik.handleChange}
             className="mt-4"
             value="private"
             label={
@@ -51,8 +55,10 @@ const SettingsStep = () => {
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
         <FieldTitle info="Info">Kontakt</FieldTitle>
         <Switch
-          onCheck={value => formik.setFieldValue('contact', value ? user?.data?.email : 'mail@nusszopf.org')}
-          initialState={formik.values.contact}
+          name="contact"
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          checked={formik.values.contact}
           color="lilac800"
           label={
             <>

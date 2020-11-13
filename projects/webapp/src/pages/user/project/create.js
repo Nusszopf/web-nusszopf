@@ -1,6 +1,5 @@
 import { Formik, Form } from 'formik'
 import { object } from 'yup'
-
 import { Text, Button, Progressbar } from 'ui-library/stories/atoms'
 import { Stepper, useStepper } from 'ui-library/stories/molecules'
 import { emptyRichText } from 'ui-library/stories/organisims'
@@ -16,7 +15,7 @@ import {
 } from '../../../containers'
 import { createProjectData as data } from '../../../assets/data'
 
-const EditProject = () => {
+const CreateProject = () => {
   const { loading, ...user } = useUser()
   const stepper = useStepper()
 
@@ -40,11 +39,8 @@ const EditProject = () => {
           description: emptyRichText,
           location: {
             remote: true,
-            name: '',
-            geo: {
-              lat: '',
-              lng: '',
-            },
+            searchTerm: '',
+            data: {},
           },
           period: {
             flexible: true,
@@ -54,7 +50,7 @@ const EditProject = () => {
           team: emptyRichText,
           motto: '',
           visibility: 'private',
-          contact: 'mail@nusszopf.org',
+          contact: false,
         }}
         validationSchema={stepper?.currentChild?.props?.validationSchema ?? object({})}
         onSubmit={handleSubmit}
@@ -99,4 +95,4 @@ const EditProject = () => {
   )
 }
 
-export default EditProject
+export default CreateProject

@@ -1,57 +1,50 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { Switch as HSwitch } from '@headlessui/react'
 import { SwitchColor } from './Switch.theme'
 import { Text } from '../../atoms'
+import { Checkbox as ReakitCheckbox } from 'reakit/Checkbox'
+import { VisuallyHidden } from 'reakit/VisuallyHidden'
 
-const Switch = ({ label = 'asdf', onCheck = () => {}, className, color = 'gray600', initialState = false }) => {
-  const [enabled, setEnabled] = useState(initialState)
-
-  useEffect(() => {
-    onCheck(enabled)
-  }, [enabled])
-
-  return (
-    <HSwitch.Group as="div" className="flex">
-      <HSwitch
-        checked={enabled}
-        onChange={setEnabled}
+const Switch = ({ label, disabled, checked, className, color = 'gray600', ...props }) => (
+  <label>
+    <VisuallyHidden>
+      <ReakitCheckbox disabled={disabled} checked={checked} {...props} />
+    </VisuallyHidden>
+    <span aria-hidden="true" className="inline-flex cursor-pointer">
+      <span
         className={classnames(
           'relative inline-flex h-6 rounded-full w-10 border-2 focus:outline-none flex-shrink-0',
           SwitchColor[color].border,
           {
-            [`${SwitchColor[color].on}`]: enabled,
-            [`${SwitchColor[color].off}`]: !enabled,
+            [`${SwitchColor[color].on}`]: checked,
+            [`${SwitchColor[color].off}`]: !checked,
           },
           className
         )}>
-        <span className="sr-only">Enable notifications</span>
         <span
           className={classnames('inline-block w-5 h-5 transform duration-100 transition-transform rounded-full', {
-            'translate-x-4': enabled,
-            'translate-x-0': !enabled,
-            [`${SwitchColor[color].on}`]: !enabled,
-            [`${SwitchColor[color].off}`]: enabled,
+            'translate-x-4': checked,
+            'translate-x-0': !checked,
+            [`${SwitchColor[color].on}`]: !checked,
+            [`${SwitchColor[color].off}`]: checked,
           })}
         />
-      </HSwitch>
+      </span>
       {label && (
-        <HSwitch.Label>
-          <Text as="span" className="block ml-3 -mt-px" variant="textSm">
-            {label}
-          </Text>
-        </HSwitch.Label>
+        <Text as="span" className="block ml-3 -mt-px" variant="textSm">
+          {label}
+        </Text>
       )}
-    </HSwitch.Group>
-  )
-}
+    </span>
+  </label>
+)
 
 Switch.propTypes = {
-  onCheck: PropTypes.func.isRequired,
   className: PropTypes.string,
   color: PropTypes.oneOf(Object.keys(SwitchColor)),
-  initialState: PropTypes.bool,
+  checked: PropTypes.bool,
+  disabled: PropTypes.bool,
   label: PropTypes.node,
 }
 

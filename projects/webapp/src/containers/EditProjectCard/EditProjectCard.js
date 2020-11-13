@@ -39,6 +39,11 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
         items={[
           {
             type: 'button',
+            text: 'Ansehen',
+            action: () => onClick(project.id),
+          },
+          {
+            type: 'button',
             text: 'Bearbeiten',
             action: () => onEdit(project.id),
           },

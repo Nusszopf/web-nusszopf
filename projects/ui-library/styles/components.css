@@ -1,8 +1,10 @@
 /* Custom Components */
 @import '../stories/atoms/Button/Button.css';
-@import '../stories/atoms/Text/Text.css';
-@import '../stories/atoms/Link/Link.css';
 @import '../stories/atoms/Input/Input.css';
-@import '../stories/molecules/Tab/Tab.css';
-@import '../stories/molecules/Menu/Menu.css';
+@import '../stories/atoms/Link/Link.css';
+@import '../stories/atoms/Text/Text.css';
+
+@import '../stories/molecules/Combobox/Combobox.css';
 @import '../stories/molecules/Dialog/Dialog.css';
+@import '../stories/molecules/Menu/Menu.css';
+@import '../stories/molecules/Tab/Tab.css';
