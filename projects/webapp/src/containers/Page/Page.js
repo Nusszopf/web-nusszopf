@@ -32,6 +32,10 @@ const Page = ({
   const featuredImage = image?.url ?? `${domain}/images/og-image.png`
 
   useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
     if (notFound) {
       router.push('/404')
     }

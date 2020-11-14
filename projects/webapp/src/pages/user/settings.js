@@ -7,12 +7,12 @@ import { FramedGridCard } from 'ui-library/stories/templates'
 import { InfoCard } from 'ui-library/stories/molecules'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import apollo from '../../utils/services/apollo.service'
-import { useUser } from '../../utils/helper'
+import { useEntireUser } from '../../utils/services/auth.service'
 import { Page, Avatar } from '../../containers'
 import { settingsData } from '../../assets/data'
 
 const Settings = () => {
-  const { loading, ...user } = useUser()
+  const { loading, ...user } = useEntireUser()
   const { notify } = useToasts()
   const router = useRouter()
   const [deleteUser] = apollo.useDeleteUser()

@@ -7,12 +7,12 @@ import { Button } from 'ui-library/stories/atoms'
 import { Masonry } from 'ui-library/stories/organisims'
 import apollo from '../../utils/services/apollo.service'
 import { EditProjectCard, NusszopfCard, Page, Avatar } from '../../containers'
-import { useUser } from '../../utils/helper'
+import { useEntireUser } from '../../utils/services/auth.service'
 import { profileData } from '../../assets/data'
 
 const Profile = () => {
   const router = useRouter()
-  const { loading: loadingUser, ...user } = useUser()
+  const { loading: loadingUser, ...user } = useEntireUser()
   const [loadProjects, { called, data }] = apollo.useLazyGetProjects(user?.data?.id)
   const [loading, setLoading] = useState(true)
 

@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react'
-import apollo from './services/apollo.service'
-import { useFetchUser } from './services/auth.service'
+import { formatISO, parse } from 'date-fns'
 
 export const uniqByKeepLast = (array, fn) => {
   return [...new Map(array.map(item => [fn(item), item])).values()]
@@ -16,22 +14,14 @@ export const sortByDate = (timestampA, timestampB, order) => {
   }
 }
 
-export const useUser = () => {
-  const { user } = useFetchUser({ required: true })
-  const [loadData, { called, data }] = apollo.useLazyGetUser(user?.sub)
-  const [loading, setLoading] = useState(true)
+export const parseDate = dateString => {
+  const format = dateString.split('.')[2].length > 2 ? 'dd.MM.yyyy' : 'dd.MM.yy'
+  const date = parse(dateString, format, new Date(2000, 0, 1), { locale: 'de' })
+  return date
+}
 
-  useEffect(() => {
-    if (user && !called) {
-      loadData()
-    }
-  }, [user, loadData, called])
-
-  useEffect(() => {
-    if (data?.users_by_pk) {
-      setLoading(false)
-    }
-  }, [data])
-
-  return { auth: user, data: data?.users_by_pk, loading }
+export const parseDateISOString = dateString => {
+  if (!dateString) return dateString
+  const date = parseDate(dateString)
+  return formatISO(date)
 }

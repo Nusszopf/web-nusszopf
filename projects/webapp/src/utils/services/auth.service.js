@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import apollo from './apollo.service'
 
 export async function fetchUser(cookie = '') {
   if (typeof window !== 'undefined' && window.__user) {
@@ -68,4 +69,24 @@ export function useFetchUser({ required } = {}) {
   )
 
   return { user, loading }
+}
+
+export const useEntireUser = () => {
+  const { user } = useFetchUser({ required: true })
+  const [loadData, { called, data }] = apollo.useLazyGetUser(user?.sub)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    if (user && !called) {
+      loadData()
+    }
+  }, [user, loadData, called])
+
+  useEffect(() => {
+    if (data?.users_by_pk) {
+      setLoading(false)
+    }
+  }, [data])
+
+  return { auth: user, data: data?.users_by_pk, loading }
 }

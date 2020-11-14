@@ -7,6 +7,7 @@ import { DELETE_USER } from '../hasura/mutations/users.mutation'
 import { DELETE_LEAD, INSERT_LEAD, UPDATE_LEAD } from '../hasura/mutations/leads.mutation'
 import { INSERT_PROJECT } from '../hasura/mutations/projects.mutation'
 import { GET_PROJECT, GET_USER_PROJECTS } from '../hasura/queries/projects.query'
+import { parseDateISOString } from '../helper'
 
 // USERS
 const useLazyGetUser = id =>
@@ -46,12 +47,15 @@ const useUpdateLead = id =>
 
 // PROJECTS
 const useGetProject = id => useQuery(GET_PROJECT, { skip: !id, variables: { id }, fetchPolicy: 'cache-and-network' })
+
 const useLazyGetProjects = id =>
   useLazyQuery(GET_USER_PROJECTS, {
     variables: { id },
-    // fetchPolicy: 'cache-and-network',
+    fetchPolicy: 'cache-and-network',
   })
+
 const useAddProject = () => useMutation(INSERT_PROJECT)
+
 const serializeProject = (form, user) => {
   return {
     title: form.title,
@@ -59,7 +63,11 @@ const serializeProject = (form, user) => {
     descriptionTemplate: form.description,
     description: form.description.map(n => Node.string(n)).join(' '),
     location: form.location,
-    period: form.period,
+    period: {
+      flexible: form.period.flexible,
+      from: parseDateISOString(form.period.from),
+      to: parseDateISOString(form.period.to),
+    },
     teamTemplate: form.team,
     team: form.team.map(n => Node.string(n)).join(' '),
     motto: form.motto,

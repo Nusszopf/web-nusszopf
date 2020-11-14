@@ -3,13 +3,13 @@ import { useRadioState, RadioGroup } from 'reakit/Radio'
 
 import { Text, Radiobox, Switch } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
-import { useUser } from '../../utils/helper'
+import { useEntireUser } from '../../utils/services/auth.service'
 import { createProjectData as data } from '../../assets/data'
 import FieldTitle from './components/FieldTitel'
 
 const SettingsStep = () => {
   const formik = useFormikContext()
-  const { loading, ...user } = useUser()
+  const { loading, ...user } = useEntireUser()
   const radio = useRadioState({ state: formik.values.visibility })
 
   return (

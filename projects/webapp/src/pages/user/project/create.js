@@ -8,7 +8,7 @@ import { Stepper, useStepper } from 'ui-library/stories/molecules'
 import { emptyRichText } from 'ui-library/stories/organisims'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import apollo from '../../../utils/services/apollo.service'
-import { useUser } from '../../../utils/helper'
+import { useEntireUser } from '../../../utils/services/auth.service'
 import {
   Page,
   DescriptionStep1,
@@ -20,7 +20,7 @@ import {
 import { createProjectData as data } from '../../../assets/data'
 
 const CreateProject = () => {
-  const { loading, ...user } = useUser()
+  const { loading, ...user } = useEntireUser()
   const router = useRouter()
   const { notify } = useToasts()
   const stepper = useStepper()
@@ -35,11 +35,10 @@ const CreateProject = () => {
       })
       try {
         const data = apollo.serializeProject(values, user)
-        const res = await addProject({
+        await addProject({
           variables: { project: data },
         })
-        console.log(res)
-        // update cache
+        // todo update cache
         router.push('/user/profile')
         notify({
           type: 'success',

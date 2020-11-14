@@ -41,7 +41,12 @@ export default {
         to: 'Bis',
         placeholder: 'dd.mm.yyyy',
       },
-      error: ['Gib ein Startdatum ein', 'Nicht im Format dd.mm.yyyy', 'Gib ein Enddatum ein'],
+      error: [
+        'Gib ein Startdatum ein',
+        'Nicht im Format dd.mm.yyyy',
+        'Gib ein Enddatum ein',
+        'Enddatum vor Startdatum',
+      ],
     },
   },
   descriptionStep2: {

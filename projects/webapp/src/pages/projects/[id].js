@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { MapPin, Calendar, Send, Share2 } from 'react-feather'
+import { isValid } from 'date-fns'
 
 import { Text, Button } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
@@ -9,15 +10,25 @@ import { Page } from '../../containers'
 import { GET_PROJECT } from '../../utils/hasura/queries/projects.query'
 import { initializeApollo } from '../../utils/libs/apolloClient'
 
-// load server side
-
 const Project = ({ id }) => {
   const { data } = apollo.useGetProject(id)
-  const [project, setProject] = useState()
+
+  const period = useMemo(() => {
+    console.log(data.projects_by_pk.period.from)
+    const startDate = new Date(data.projects_by_pk.period.from)
+    const endDate = new Date(data.projects_by_pk.period.to)
+    return isValid(startDate) && isValid(endDate)
+      ? `${startDate.toLocaleDateString('de-DE')} - ${endDate.toLocaleDateString('de-DE')}`
+      : 'flexibler Zeitraum'
+  }, [data])
+
+  const location = useMemo(() => {
+    return 'unabhängig von Ort'
+  }, [data])
 
   return (
     <Page
-      navHeader={{ visible: true, goBackUri: 'back' }}
+      navHeader={{ visible: true, goBackUri: '/user/profile' }}
       showFooter={false}
       noindex={true}
       className="text-lilac-800 bg-lilac-100">
@@ -50,11 +61,11 @@ const Project = ({ id }) => {
             <div className="flex flex-col w-full mt-3 sm:flex-row sm:items-center">
               <div className="flex items-center sm:mr-8">
                 <MapPin size={20} className="mr-2" />
-                <Text variant="textSm">{project?.location ? 'Ort' : 'unabhängig von Ort'}</Text>
+                <Text variant="textSm">{location}</Text>
               </div>
               <div className="flex items-center mt-1 sm:mt-0">
                 <Calendar size={20} className="mr-2" />
-                <Text variant="textSm">{project?.time ? 'Zeit' : 'keine Zeitbegrenzung'}</Text>
+                <Text variant="textSm">{period}</Text>
               </div>
             </div>
           </div>
@@ -79,7 +90,9 @@ const Project = ({ id }) => {
             <Text>Aktuelle Gesuche</Text>
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="oneCol" className="mt-10">
-            <Text variant="textSm">Erstellt am {new Date(data?.projects_by_pk?.created_at).toLocaleDateString()}</Text>
+            <Text variant="textSm">
+              Erstellt am {new Date(data?.projects_by_pk?.created_at).toLocaleDateString('de-DE')}
+            </Text>
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
       </FramedGridCard>
