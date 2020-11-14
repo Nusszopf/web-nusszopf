@@ -1,6 +1,7 @@
 import { useLazyQuery, useQuery, useMutation } from '@apollo/client'
 import { Node } from 'slate'
 
+import { serializeText } from 'ui-library/services/RichTextEditor.service'
 import { NZ_EMAIL } from '../enums'
 import { GET_USER } from '../hasura/queries/users.query'
 import { DELETE_USER } from '../hasura/mutations/users.mutation'
@@ -61,7 +62,11 @@ const serializeProject = (form, user) => {
     title: form.title,
     goal: form.goal,
     descriptionTemplate: form.description,
-    description: form.description.map(n => Node.string(n)).join(' '),
+    description: form.description
+      .map(node => serializeText(node))
+      .join(' ')
+      .replace(/\s+/g, ' ')
+      .trim(),
     location: form.location,
     period: {
       flexible: form.period.flexible,

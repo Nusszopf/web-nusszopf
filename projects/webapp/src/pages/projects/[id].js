@@ -4,7 +4,8 @@ import { MapPin, Calendar, Send, Share2, ExternalLink } from 'react-feather'
 import { isValid } from 'date-fns'
 
 import { Text, Button, Link } from 'ui-library/stories/atoms'
-import { useRichtTextEditor } from 'ui-library/stories/organisims'
+import { InfoCard } from 'ui-library/stories/molecules'
+import { serializeJSX } from 'ui-library/services/RichTextEditor.service'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import apollo from '../../utils/services/apollo.service'
 import { Page } from '../../containers'
@@ -13,7 +14,6 @@ import { initializeApollo } from '../../utils/libs/apolloClient'
 
 const Project = ({ id }) => {
   const { data } = apollo.useGetProject(id)
-  const { serialize } = useRichtTextEditor()
   const period = useMemo(() => {
     const startDate = new Date(data.projects_by_pk.period.from)
     const endDate = new Date(data.projects_by_pk.period.to)
@@ -97,7 +97,7 @@ const Project = ({ id }) => {
           <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2">
             <div>
               <Text className="mb-2">Um was geht es?</Text>
-              <div className="text-lg">{data?.projects_by_pk?.descriptionTemplate.map(node => serialize(node))}</div>
+              <div className="text-lg">{data?.projects_by_pk?.descriptionTemplate.map(node => serializeJSX(node))}</div>
             </div>
             {data?.projects_by_pk?.team && (
               <div className="mt-8">
@@ -115,6 +115,9 @@ const Project = ({ id }) => {
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="twoCols" className="row-start-1 100 lg:row-start-auto lg:ml-16">
             <Text>Aktuelle Gesuche</Text>
+            <InfoCard className="mt-2 text-lilac-800 bg-lilac-400">
+              Alles zopfig! Derzeit gibt es keine Gesuche.
+            </InfoCard>
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="oneCol" className="mt-10">
             <Text variant="textSm">
