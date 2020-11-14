@@ -39,8 +39,8 @@ const RichTextEditor = ({ className, onChange, placeholder, initialState = empty
         </div>
         <Editable
           className="px-4 py-3 min-h-48"
-          renderElement={renderElement}
-          renderLeaf={renderLeaf}
+          renderElement={renderElement} // props => renderElement({...props, color: "..."})
+          renderLeaf={renderLeaf} // props => renderElement({...props, color: "..."})
           placeholder={placeholder}
         />
       </Slate>

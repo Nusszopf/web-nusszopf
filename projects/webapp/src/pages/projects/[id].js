@@ -4,6 +4,7 @@ import { MapPin, Calendar, Send, Share2, ExternalLink } from 'react-feather'
 import { isValid } from 'date-fns'
 
 import { Text, Button, Link } from 'ui-library/stories/atoms'
+import { useRichtTextEditor } from 'ui-library/stories/organisims'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import apollo from '../../utils/services/apollo.service'
 import { Page } from '../../containers'
@@ -12,7 +13,7 @@ import { initializeApollo } from '../../utils/libs/apolloClient'
 
 const Project = ({ id }) => {
   const { data } = apollo.useGetProject(id)
-
+  const { serialize } = useRichtTextEditor()
   const period = useMemo(() => {
     const startDate = new Date(data.projects_by_pk.period.from)
     const endDate = new Date(data.projects_by_pk.period.to)
@@ -96,7 +97,7 @@ const Project = ({ id }) => {
           <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2">
             <div>
               <Text className="mb-2">Um was geht es?</Text>
-              <Text variant="textSm">{data?.projects_by_pk?.description}</Text>
+              <div className="text-lg">{data?.projects_by_pk?.descriptionTemplate.map(node => serialize(node))}</div>
             </div>
             {data?.projects_by_pk?.team && (
               <div className="mt-8">
