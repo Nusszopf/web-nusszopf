@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { MapPin, Calendar, Send, Share2 } from 'react-feather'
+import { MapPin, Calendar, Send, Share2, ExternalLink } from 'react-feather'
 import { isValid } from 'date-fns'
 
-import { Text, Button } from 'ui-library/stories/atoms'
+import { Text, Button, Link } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import apollo from '../../utils/services/apollo.service'
 import { Page } from '../../containers'
@@ -14,7 +14,6 @@ const Project = ({ id }) => {
   const { data } = apollo.useGetProject(id)
 
   const period = useMemo(() => {
-    console.log(data.projects_by_pk.period.from)
     const startDate = new Date(data.projects_by_pk.period.from)
     const endDate = new Date(data.projects_by_pk.period.to)
     return isValid(startDate) && isValid(endDate)
@@ -23,7 +22,14 @@ const Project = ({ id }) => {
   }, [data])
 
   const location = useMemo(() => {
-    return 'unabhängig von Ort'
+    const osm = data?.projects_by_pk?.location?.data?.osm
+    if (osm) {
+      const city = data?.projects_by_pk?.location?.data?.city
+      const link = `https://www.openstreetmap.org/${osm.type}/${osm.id}`
+      return { city, link }
+    } else {
+      return { city: 'unabhängig von Ort', link: null }
+    }
   }, [data])
 
   return (
@@ -61,7 +67,23 @@ const Project = ({ id }) => {
             <div className="flex flex-col w-full mt-3 sm:flex-row sm:items-center">
               <div className="flex items-center sm:mr-8">
                 <MapPin size={20} className="mr-2" />
-                <Text variant="textSm">{location}</Text>
+                {location?.link ? (
+                  <Link
+                    href={location.link}
+                    color="lilac800Transparent"
+                    textVariant="textSm"
+                    title="Zu OpenStreetMap"
+                    ariaLabel="Zu OpenStreetMap">
+                    <span className="inline-flex items-center">
+                      {location.city}
+                      <ExternalLink size={14} className="ml-1" />
+                    </span>
+                  </Link>
+                ) : (
+                  <>
+                    <Text variant="textSm">{location?.city}</Text>
+                  </>
+                )}
               </div>
               <div className="flex items-center mt-1 sm:mt-0">
                 <Calendar size={20} className="mr-2" />
@@ -76,15 +98,19 @@ const Project = ({ id }) => {
               <Text className="mb-2">Um was geht es?</Text>
               <Text variant="textSm">{data?.projects_by_pk?.description}</Text>
             </div>
-            <div className="mt-8">
-              <Text className="mb-2">Wer steckt dahinter?</Text>
-              <Text variant="textSm">{data?.projects_by_pk?.team}</Text>
-            </div>
-            <div className="mt-8">
-              <Text variant="textSmMedium" className="italic">
-                Motto: {data?.projects_by_pk?.motto}
-              </Text>
-            </div>
+            {data?.projects_by_pk?.team && (
+              <div className="mt-8">
+                <Text className="mb-2">Wer steckt dahinter?</Text>
+                <Text variant="textSm">{data.projects_by_pk.team}</Text>
+              </div>
+            )}
+            {data?.projects_by_pk?.motto && (
+              <div className="mt-8">
+                <Text variant="textSmMedium" className="italic">
+                  Motto: {data.projects_by_pk.motto}
+                </Text>
+              </div>
+            )}
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="twoCols" className="row-start-1 100 lg:row-start-auto lg:ml-16">
             <Text>Aktuelle Gesuche</Text>

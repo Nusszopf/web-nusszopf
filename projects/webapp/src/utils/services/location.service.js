@@ -20,6 +20,15 @@ const fetchLocations = async searchTerm => {
   }
 }
 
+const parseCity = address => {
+  const name = address?.name?.toLowerCase()
+  const city = address?.city?.toLowerCase()
+  if (name && city && !name.includes(city) && !city.includes(name)) {
+    return `${address.name}, ${address.city}`
+  }
+  return address.name
+}
+
 export const findLocations = throttle(async (searchTerm, oldLocations) => {
   let results = oldLocations
   const locations = await fetchLocations(searchTerm)
@@ -30,7 +39,7 @@ export const findLocations = throttle(async (searchTerm, oldLocations) => {
     key: location.place_id,
     value: location.display_name,
     postcode: location.address.postcode,
-    city: location.address.name,
+    city: parseCity(location.address),
     countryCode: location.address.country_code,
     geo: {
       lat: location.lat,

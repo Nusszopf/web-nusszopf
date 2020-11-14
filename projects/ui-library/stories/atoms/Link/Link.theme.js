@@ -10,6 +10,7 @@ export const LinkColor = {
   yellow300Pink700: 'nz-link-yellow300Pink700',
   turquoise400Turquoise800: 'nz-link-turquoise400Turquoise800',
   gray500Transparent: 'nz-link-gray500Transparent',
+  lilac800Transparent: 'nz-link-lilac800Transparent',
 }
 
 export const LinkBorder = {

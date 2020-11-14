@@ -17,3 +17,7 @@
 .nz-link-gray500Transparent {
   @apply text-gray-500 bg-transparent border-gray-500;
 }
+
+.nz-link-lilac800Transparent {
+  @apply bg-transparent text-lilac-800 border-lilac-800;
+}

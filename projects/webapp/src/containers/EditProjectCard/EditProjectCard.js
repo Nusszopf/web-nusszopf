@@ -21,8 +21,8 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
         <Text className="mr-4">{project.title}</Text>
         {project.visibility === PROJECT.visibility.public ? <Eye /> : <EyeOff />}
       </div>
-      <Text variant="textSm" className="mt-2">
-        {truncate(project.goal, { length: 100 })}
+      <Text variant="textSm" className="mt-2 hyphens-auto">
+        {truncate(project.goal, { length: 90 })}
       </Text>
       <div className="flex flex-col mt-6 sm:flex-row lg:flex-col">
         <Text variant="textXs" className="sm:mr-4 lg:mr-0">

@@ -3,7 +3,7 @@ import { ProjectFragment } from '../fragments/projects.fragment'
 
 export const GET_USER_PROJECTS = gql`
   query getUserProjects($id: String!) {
-    projects(where: { user_id: { _eq: $id } }) {
+    projects(where: { user_id: { _eq: $id } }, order_by: { created_at: desc }) {
       ...Project
     }
   }
