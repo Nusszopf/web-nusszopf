@@ -89,7 +89,7 @@ const CreateProject = () => {
             bodyColor="bg-white lg:bg-lilac-100"
             headerColor="bg-lilac-400 lg:bg-lilac-100">
             <FramedGridCard.Header className="bg-lilac-400">
-              <Progressbar label="Label" progress={stepper?.progress ?? 0} />
+              <Progressbar label={data.steps[stepper.step]} progress={stepper?.progress ?? 0} />
               <div className="flex items-end justify-between">
                 <div className="mb-2 break-all lg:mr-12 lg:mb-0">
                   <Text as="h1" variant="textLg">

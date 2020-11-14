@@ -32,7 +32,10 @@ const MyCombobox = ({ aria, className, options, onSelect, onClear, color = 'whit
     </InputGroup>
     {options?.length > 0 && (
       <ComboboxPopover
-        className={classnames('p-1 m-0 text-sm border-2 rounded-lg focus:outline-none', ComboboxColor[color].popover)}>
+        className={classnames(
+          'p-1 m-0 text-sm border-2 rounded-lg focus:outline-none shadow-md',
+          ComboboxColor[color].popover
+        )}>
         <ComboboxList className="p-0 m-0 list-none select-none text-bold">
           {options.map(option => (
             <ComboboxOption
