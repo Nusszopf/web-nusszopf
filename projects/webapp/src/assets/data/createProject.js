@@ -18,7 +18,7 @@ export default {
       title: 'Ziel des Projekts*',
       info: 'Info',
       placeholder: 'Wie lässt sich das Ziel des Projektes in einem Satz beschreiben?',
-      error: ['Nicht mehr als 200 Zeichen', 'Gib ein Ziel ein'],
+      error: ['Nicht mehr als 150 Zeichen', 'Gib ein Ziel ein'],
     },
     project: {
       title: 'Projektbeschreibung*',

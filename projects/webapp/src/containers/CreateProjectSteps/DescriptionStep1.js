@@ -15,7 +15,7 @@ import FieldTitle from './components/FieldTitel'
 
 export const step1ValidationSchema = object({
   title: string().max(30, data.descriptionStep1.title.error[0]).required(data.descriptionStep1.title.error[1]),
-  goal: string().max(200, data.descriptionStep1.goal.error[0]).required(data.descriptionStep1.goal.error[1]),
+  goal: string().max(150, data.descriptionStep1.goal.error[0]).required(data.descriptionStep1.goal.error[1]),
   description: mixed()
     .test('description_max', data.descriptionStep1.project.error[0], value =>
       JSON.stringify(value)?.length > 6000 ? false : true
@@ -126,7 +126,7 @@ const DescriptionStep1 = () => {
           <Input
             as="textarea"
             name="goal"
-            maxLength={200}
+            maxLength={150}
             value={formik.values.goal}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}

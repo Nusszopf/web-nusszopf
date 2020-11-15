@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import PropTypes from 'prop-types'
-import { MapPin, Calendar, Send, Share2, ExternalLink } from 'react-feather'
+import { MapPin, Calendar, Send, Share2 } from 'react-feather'
 import { isValid } from 'date-fns'
 
 import { Text, Button, Link } from 'ui-library/stories/atoms'
@@ -44,52 +44,49 @@ const Project = ({ id }) => {
         bodyColor="bg-white lg:bg-lilac-100"
         headerColor="bg-lilac-400 lg:bg-lilac-100">
         <FramedGridCard.Header className="bg-lilac-400">
-          <div className="flex flex-col flex-wrap lg:flex-row lg:justify-between lg:items-center">
-            <div className="lg:pr-12 lg:w-7/12">
+          <div className="flex flex-col flex-wrap lg:flex-row lg:justify-between">
+            <div className="lg:pr-12 lg:w-9/12 hyphens-auto">
               <Text as="h1" variant="textLg" className="mb-2">
                 {data?.projects_by_pk?.title}
               </Text>
-              <Text variant="textSm" className="hyphens-auto">
+              <Text variant="textSm" className="max-w-xl">
                 {data?.projects_by_pk?.goal}
               </Text>
+              <div className="flex flex-col w-full mt-3 sm:flex-row sm:items-center">
+                <div className="flex items-center sm:mr-8">
+                  <MapPin size={20} className="mr-2" />
+                  {location?.link ? (
+                    <Link
+                      href={location.link}
+                      color="lilac800Transparent"
+                      textVariant="textSm"
+                      title="Zu OpenStreetMap"
+                      ariaLabel="Zu OpenStreetMap">
+                      {location.city}
+                    </Link>
+                  ) : (
+                    <>
+                      <Text variant="textSm">{location?.city}</Text>
+                    </>
+                  )}
+                </div>
+                <div className="flex items-center mt-1 sm:mt-0">
+                  <Calendar size={20} className="mr-2" />
+                  <Text variant="textSm">{period}</Text>
+                </div>
+              </div>
             </div>
-            <div className="flex flex-row items-center order-last mt-5 mb-2 lg:w-5/12 lg:order-none lg:mt-10 lg:mb-0 lg:justify-end">
+            <div className="flex mt-5 mb-2 lg:w-3/12 lg:mt-2 lg:items-end lg:flex-col lg:mb-0">
               <Button
                 iconLeft={<Send className="mt-px mr-2 -ml-1" />}
                 variant="outline"
                 color="lilac800"
-                className="mr-5">
+                className="mr-5 lg:mr-0 lg:mb-2">
                 Kontaktieren
               </Button>
               <Button iconLeft={<Share2 className="mt-px mr-2 -ml-1" />} variant="outline" color="lilac800">
                 Teilen
               </Button>
-            </div>
-            <div className="flex flex-col w-full mt-3 sm:flex-row sm:items-center">
-              <div className="flex items-center sm:mr-8">
-                <MapPin size={20} className="mr-2" />
-                {location?.link ? (
-                  <Link
-                    href={location.link}
-                    color="lilac800Transparent"
-                    textVariant="textSm"
-                    title="Zu OpenStreetMap"
-                    ariaLabel="Zu OpenStreetMap">
-                    <span className="inline-flex items-center">
-                      {location.city}
-                      <ExternalLink size={14} className="ml-1" />
-                    </span>
-                  </Link>
-                ) : (
-                  <>
-                    <Text variant="textSm">{location?.city}</Text>
-                  </>
-                )}
-              </div>
-              <div className="flex items-center mt-1 sm:mt-0">
-                <Calendar size={20} className="mr-2" />
-                <Text variant="textSm">{period}</Text>
-              </div>
             </div>
           </div>
         </FramedGridCard.Header>
