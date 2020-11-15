@@ -39,21 +39,21 @@ const Profile = () => {
         bodyColor="bg-white lg:bg-gray-100"
         headerColor="bg-gray-200 lg:bg-gray-100">
         <FramedGridCard.Header className="bg-gray-200">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-center">
+          <div className="flex flex-col lg:flex-row sm:justify-between lg:items-center">
             <Avatar user={user} />
             <Button
               color="whiteLilac700"
               onClick={() => router.push({ pathname: '/user/project/create', query: { step: 0 } })}
               iconLeft={<PlusCircle className="mr-2 -ml-1" />}
-              className="hidden md:block">
+              className="hidden lg:block">
               {profileData.action}
             </Button>
           </div>
         </FramedGridCard.Header>
         <FramedGridCard.Body gap="medium" className="bg-white">
-          <FramedGridCard.Body.Col variant="oneCol" className="md:hidden">
+          <FramedGridCard.Body.Col variant="oneCol" className="lg:hidden">
             <Button
-              className="block mx-auto mb-8"
+              className="block mx-auto mb-8 md:mb-10"
               onClick={() => router.push({ pathname: '/user/project/create', query: { step: 0 } })}
               color="whiteLilac700"
               iconLeft={<PlusCircle className="mr-2 -ml-1" />}>
