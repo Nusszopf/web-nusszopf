@@ -104,9 +104,8 @@ const Project = ({ id }) => {
             )}
             {data?.projects_by_pk?.motto && (
               <div className="mt-8">
-                <Text variant="textSmMedium" className="italic">
-                  Motto: {data.projects_by_pk.motto}
-                </Text>
+                <Text className="mb-2">Motto</Text>
+                <Text variant="textSm">{data.projects_by_pk.motto}</Text>
               </div>
             )}
           </FramedGridCard.Body.Col>
