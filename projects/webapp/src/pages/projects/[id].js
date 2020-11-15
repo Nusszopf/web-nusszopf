@@ -165,21 +165,27 @@ const Project = ({ id }) => {
 export async function getServerSideProps(ctx) {
   const { id } = ctx.query
   const apolloClient = initializeApollo()
-  const res = await apolloClient.query({
-    query: GET_PROJECT,
-    variables: { id },
-  })
-  // next.js v10
-  // if (res?.data?.projects_by_pk) {
-  //   return {
-  //     notFound: true,
-  //   }
-  // }
-  return {
-    props: {
-      id,
-      initialApolloState: apolloClient.cache.extract(),
-    },
+  try {
+    const res = await apolloClient.query({
+      query: GET_PROJECT,
+      variables: { id },
+    })
+    if (!res?.data?.projects_by_pk) {
+      return {
+        notFound: true,
+      }
+    } else {
+      return {
+        props: {
+          id,
+          initialApolloState: apolloClient.cache.extract(),
+        },
+      }
+    }
+  } catch (error) {
+    return {
+      notFound: true,
+    }
   }
 }
 
