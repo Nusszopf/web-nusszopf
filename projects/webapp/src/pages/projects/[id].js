@@ -11,6 +11,7 @@ import apollo from '../../utils/services/apollo.service'
 import { Page } from '../../containers'
 import { GET_PROJECT } from '../../utils/hasura/queries/projects.query'
 import { initializeApollo } from '../../utils/libs/apolloClient'
+import { projectData } from '../../assets/data'
 
 const Project = ({ id }) => {
   const { data } = apollo.useGetProject(id)
@@ -19,7 +20,7 @@ const Project = ({ id }) => {
     const endDate = new Date(data.projects_by_pk.period.to)
     return isValid(startDate) && isValid(endDate)
       ? `${startDate.toLocaleDateString('de-DE')} - ${endDate.toLocaleDateString('de-DE')}`
-      : 'flexibler Zeitraum'
+      : projectData.header.period
   }, [data])
 
   const location = useMemo(() => {
@@ -29,7 +30,7 @@ const Project = ({ id }) => {
       const link = `https://www.openstreetmap.org/${osm.type}/${osm.id}`
       return { city, link }
     } else {
-      return { city: 'unabhängig von Ort', link: null }
+      return { city: projectData.header.location, link: null }
     }
   }, [data])
 
@@ -82,10 +83,10 @@ const Project = ({ id }) => {
                 variant="outline"
                 color="lilac800"
                 className="mr-5 lg:mr-0 lg:mb-2">
-                Kontaktieren
+                {projectData.header.actions.contact}
               </Button>
               <Button iconLeft={<Share2 className="mt-px mr-2 -ml-1" />} variant="outline" color="lilac800">
-                Teilen
+                {projectData.header.actions.share}
               </Button>
             </div>
           </div>
@@ -93,31 +94,29 @@ const Project = ({ id }) => {
         <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
           <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2">
             <div>
-              <Text className="mb-2">Um was geht es?</Text>
+              <Text className="mb-2">{projectData.body.what}</Text>
               <div className="text-lg">{data?.projects_by_pk?.descriptionTemplate.map(node => serializeJSX(node))}</div>
             </div>
             {data?.projects_by_pk?.team && (
               <div className="mt-8">
-                <Text className="mb-2">Wer steckt dahinter?</Text>
+                <Text className="mb-2">{projectData.body.who}</Text>
                 <Text variant="textSm">{data.projects_by_pk.team}</Text>
               </div>
             )}
             {data?.projects_by_pk?.motto && (
               <div className="mt-8">
-                <Text className="mb-2">Motto</Text>
+                <Text className="mb-2">{projectData.body.how}</Text>
                 <Text variant="textSm">{data.projects_by_pk.motto}</Text>
               </div>
             )}
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="twoCols" className="row-start-1 100 lg:row-start-auto lg:ml-16">
             <Text>Aktuelle Gesuche</Text>
-            <InfoCard className="mt-2 text-lilac-800 bg-lilac-400">
-              Alles zopfig! Derzeit gibt es keine Gesuche.
-            </InfoCard>
+            <InfoCard className="mt-2 text-lilac-800 bg-lilac-400">{projectData.body.searchings.info}</InfoCard>
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="oneCol" className="mt-10">
             <Text variant="textSm">
-              Erstellt am {new Date(data?.projects_by_pk?.created_at).toLocaleDateString('de-DE')}
+              {projectData.body.createdAt} {new Date(data?.projects_by_pk?.created_at).toLocaleDateString('de-DE')}
             </Text>
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
