@@ -59,7 +59,10 @@ const Project = ({ id }) => {
     }
   }
 
-  const handleContact = () => {}
+  const handleContact = () => {
+    // todo
+    // open email client or modal
+  }
 
   return (
     <Page
