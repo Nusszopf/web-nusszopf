@@ -4,11 +4,11 @@ import { useRouter } from 'next/router'
 
 import { Text, Link, Checkbox, Route, Button } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
-import { InfoCard } from 'ui-library/stories/molecules'
+import { InfoCard, Avatar } from 'ui-library/stories/molecules'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import apollo from '../../utils/services/apollo.service'
 import { useEntireUser } from '../../utils/services/auth.service'
-import { Page, Avatar } from '../../containers'
+import { Page } from '../../containers'
 import { settingsData } from '../../assets/data'
 
 const Settings = () => {

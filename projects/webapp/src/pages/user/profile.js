@@ -4,9 +4,10 @@ import { useRouter } from 'next/router'
 
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { Button } from 'ui-library/stories/atoms'
+import { Avatar } from 'ui-library/stories/molecules'
 import { Masonry } from 'ui-library/stories/organisims'
 import apollo from '../../utils/services/apollo.service'
-import { EditProjectCard, NusszopfCard, Page, Avatar } from '../../containers'
+import { EditProjectCard, NusszopfCard, Page } from '../../containers'
 import { useEntireUser } from '../../utils/services/auth.service'
 import { profileData } from '../../assets/data'
 

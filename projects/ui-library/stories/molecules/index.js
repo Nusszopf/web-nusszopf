@@ -1,3 +1,4 @@
+export { default as Avatar } from './Avatar/Avatar.molecule'
 export { default as Combobox } from './Combobox/Combobox.molecule'
 export { default as Dialog } from './Dialog/Dialog.molecule'
 export { default as InfoCard } from './InfoCard/InfoCard.molecule'

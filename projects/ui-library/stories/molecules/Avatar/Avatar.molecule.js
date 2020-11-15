@@ -1,7 +1,8 @@
+import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { truncate } from 'lodash'
-import { Text } from 'ui-library/stories/atoms'
+import { Text } from '../../atoms'
 
 const Avatar = ({ user, className, ...props }) => (
   <div className={classnames('flex items-center break-all', className)} {...props}>
