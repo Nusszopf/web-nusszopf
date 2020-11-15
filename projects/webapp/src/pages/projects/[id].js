@@ -5,9 +5,10 @@ import { isValid } from 'date-fns'
 
 import { Text, Button, Link } from 'ui-library/stories/atoms'
 import { InfoCard } from 'ui-library/stories/molecules'
-import { serializeJSX } from 'ui-library/services/RichTextEditor.service'
 import { FramedGridCard } from 'ui-library/stories/templates'
+import { serializeJSX } from 'ui-library/services/RichTextEditor.service'
 import apollo from '../../utils/services/apollo.service'
+import { useToasts } from 'ui-library/services/Toasts.service'
 import { Page } from '../../containers'
 import { GET_PROJECT } from '../../utils/hasura/queries/projects.query'
 import { initializeApollo } from '../../utils/libs/apolloClient'
@@ -15,6 +16,8 @@ import { projectData } from '../../assets/data'
 
 const Project = ({ id }) => {
   const { data } = apollo.useGetProject(id)
+  const { notify } = useToasts()
+
   const period = useMemo(() => {
     const startDate = new Date(data.projects_by_pk.period.from)
     const endDate = new Date(data.projects_by_pk.period.to)
@@ -33,6 +36,30 @@ const Project = ({ id }) => {
       return { city: projectData.header.location, link: null }
     }
   }, [data])
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: data?.projects_by_pk?.title,
+          url: window.location.href,
+        })
+      } catch (error) {
+        notify({ type: 'error', message: 'Sorry, da lief was schief!' })
+      }
+    } else {
+      const dummy = document.createElement('input')
+      const url = window.location.href
+      document.body.appendChild(dummy)
+      dummy.value = url
+      dummy.select()
+      document.execCommand('copy')
+      document.body.removeChild(dummy)
+      notify({ type: 'success', message: 'Link kopiert!' })
+    }
+  }
+
+  const handleContact = () => {}
 
   return (
     <Page
@@ -79,6 +106,7 @@ const Project = ({ id }) => {
             </div>
             <div className="flex mt-5 mb-2 lg:w-3/12 lg:mt-2 lg:items-end lg:flex-col lg:mb-0">
               <Button
+                onClick={handleContact}
                 iconLeft={<Send size={21} className="mt-px mr-2 -ml-1" />}
                 variant="outline"
                 size="small"
@@ -87,6 +115,7 @@ const Project = ({ id }) => {
                 {projectData.header.actions.contact}
               </Button>
               <Button
+                onClick={handleShare}
                 size="small"
                 iconLeft={<Share2 size={21} className="mt-px mr-2 -ml-1" />}
                 variant="outline"
