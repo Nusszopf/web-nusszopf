@@ -16,11 +16,8 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
       className
     )}
     {...props}>
-    <Clickable onClick={() => onClick(project.id)} className="flex-1 p-4 text-left focus:outline-none">
-      <div className="flex items-center">
-        <Text className="mr-4">{project.title}</Text>
-        {project.visibility === PROJECT.visibility.public ? <Eye /> : <EyeOff />}
-      </div>
+    <Clickable onClick={() => onEdit(project.id)} className="flex-1 p-4 text-left focus:outline-none">
+      <Text className="mr-4">{project.title}</Text>
       <Text variant="textSm" className="mt-2 hyphens-auto">
         {truncate(project.goal, { length: 90 })}
       </Text>
@@ -34,7 +31,7 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
         </Text>
       </div>
     </Clickable>
-    <div>
+    <div className="flex flex-col items-end justify-between">
       <Menu
         label={<MoreHorizontal />}
         items={[
@@ -61,6 +58,11 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
           },
         ]}
       />
+      {project.visibility === PROJECT.visibility.public ? (
+        <Eye size={21} className="m-4 text-lilac-600" />
+      ) : (
+        <EyeOff size={21} className="m-4 text-lilac-600" />
+      )}
     </div>
   </div>
 )

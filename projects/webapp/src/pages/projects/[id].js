@@ -79,13 +79,18 @@ const Project = ({ id }) => {
             </div>
             <div className="flex mt-5 mb-2 lg:w-3/12 lg:mt-2 lg:items-end lg:flex-col lg:mb-0">
               <Button
-                iconLeft={<Send className="mt-px mr-2 -ml-1" />}
+                iconLeft={<Send size={21} className="mt-px mr-2 -ml-1" />}
                 variant="outline"
+                size="small"
                 color="lilac800"
                 className="mr-5 lg:mr-0 lg:mb-2">
                 {projectData.header.actions.contact}
               </Button>
-              <Button iconLeft={<Share2 className="mt-px mr-2 -ml-1" />} variant="outline" color="lilac800">
+              <Button
+                size="small"
+                iconLeft={<Share2 size={21} className="mt-px mr-2 -ml-1" />}
+                variant="outline"
+                color="lilac800">
                 {projectData.header.actions.share}
               </Button>
             </div>
