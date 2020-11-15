@@ -5,11 +5,13 @@ import { Text, Radiobox, Switch } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { useEntireUser } from '../../utils/services/auth.service'
 import { createProjectData as data } from '../../assets/data'
-import FieldTitle from './components/FieldTitel'
+import { useScrollTop } from '../../utils/helper'
+import { FieldTitle } from './components'
 
 const SettingsStep = () => {
+  useScrollTop()
   const formik = useFormikContext()
-  const { loading, ...user } = useEntireUser()
+  const user = useEntireUser()
   const radio = useRadioState({ state: formik.values.visibility })
 
   return (
@@ -62,7 +64,7 @@ const SettingsStep = () => {
           color="lilac800"
           label={
             <>
-              Direkt kontaktieren unter <i>{user?.data?.email}</i>
+              Direkt kontaktieren unter <i className="hyphens-auto">{user?.data?.email}</i>
             </>
           }
         />

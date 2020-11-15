@@ -11,6 +11,7 @@ import { Footer } from '../../containers'
 import ErrorBoundary from './ErrorBoundary'
 import { FOOTER_TYPE } from '../Footer/Footer'
 import { seoData } from '../../assets/data'
+import { useScrollTop } from '../../utils/helper'
 
 const Page = ({
   children,
@@ -24,16 +25,13 @@ const Page = ({
   footerType = FOOTER_TYPE.primary,
   className,
 }) => {
+  useScrollTop()
   const router = useRouter()
   const { user } = useFetchUser()
   const domain = `${process.env.DOMAIN}`
   const url = router && router.asPath ? router.asPath : undefined
   const canonical = url && url === '/' ? domain : domain + url
   const featuredImage = image?.url ?? `${domain}/images/og-image.png`
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
 
   useEffect(() => {
     if (notFound) {

@@ -9,9 +9,9 @@ import { Combobox } from 'ui-library/stories/molecules'
 import { RichTextEditor } from 'ui-library/stories/organisims'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { findLocations } from '../../utils/services/location.service'
-import { parseDate } from '../../utils/helper'
+import { parseDate, useScrollTop } from '../../utils/helper'
 import { createProjectData as data } from '../../assets/data'
-import FieldTitle from './components/FieldTitel'
+import { FieldTitle } from './components'
 
 export const step1ValidationSchema = object({
   title: string().max(30, data.descriptionStep1.title.error[0]).required(data.descriptionStep1.title.error[1]),
@@ -70,6 +70,7 @@ export const step1ValidationSchema = object({
 })
 
 const DescriptionStep1 = () => {
+  useScrollTop()
   const formik = useFormikContext()
   const [locations, setLocations] = useState([])
 
@@ -114,7 +115,7 @@ const DescriptionStep1 = () => {
             color="whiteLilac800"
           />
           {formik?.errors?.title && formik.touched?.title && (
-            <Text variant="textXs" className="mt-2 italic">
+            <Text variant="textXs" className="mt-2 ml-4 italic">
               {formik.errors.title}
             </Text>
           )}
@@ -134,7 +135,7 @@ const DescriptionStep1 = () => {
             placeholder={data.descriptionStep1.goal.placeholder}
           />
           {formik?.errors?.goal && formik.touched?.goal && (
-            <Text variant="textXs" className="mt-2 italic">
+            <Text variant="textXs" className="mt-2 ml-4 italic">
               {formik.errors.goal}
             </Text>
           )}
@@ -151,7 +152,7 @@ const DescriptionStep1 = () => {
             placeholder={data.descriptionStep1.project.placeholder}
           />
           {formik?.errors?.description && formik.touched?.description && (
-            <Text variant="textXs" className="mt-2 italic">
+            <Text variant="textXs" className="mt-2 ml-4 italic">
               {formik.errors.description}
             </Text>
           )}
@@ -185,12 +186,12 @@ const DescriptionStep1 = () => {
                 options={locations}
               />
               {formik?.errors?.location?.searchTerm && formik.touched?.location?.searchTerm && (
-                <Text variant="textXs" className="mt-2 italic">
+                <Text variant="textXs" className="mt-2 ml-4 italic">
                   {formik.errors.location?.searchTerm}
                 </Text>
               )}
               {formik?.errors?.location?.data && formik.touched?.location?.searchTerm && (
-                <Text variant="textXs" className="mt-2 italic">
+                <Text variant="textXs" className="mt-2 ml-4 italic">
                   {formik.errors.location?.data}
                 </Text>
               )}
@@ -227,7 +228,7 @@ const DescriptionStep1 = () => {
                     type="text"
                   />
                   {formik?.errors?.period?.from && formik.touched?.period?.from && (
-                    <Text variant="textXs" className="mt-2 italic">
+                    <Text variant="textXs" className="mt-2 ml-4 italic">
                       {formik.errors.period?.from}
                     </Text>
                   )}
@@ -249,7 +250,7 @@ const DescriptionStep1 = () => {
                     type="text"
                   />
                   {formik?.errors?.period?.to && formik.touched?.period?.to && (
-                    <Text variant="textXs" className="mt-2 italic">
+                    <Text variant="textXs" className="mt-2 ml-4 italic">
                       {formik.errors.period?.to}
                     </Text>
                   )}

@@ -1,4 +1,5 @@
 import { formatISO, parse } from 'date-fns'
+import { useEffect } from 'react'
 
 export const uniqByKeepLast = (array, fn) => {
   return [...new Map(array.map(item => [fn(item), item])).values()]
@@ -24,4 +25,10 @@ export const parseDateISOString = dateString => {
   if (!dateString) return dateString
   const date = parseDate(dateString)
   return formatISO(date)
+}
+
+export const useScrollTop = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 }
