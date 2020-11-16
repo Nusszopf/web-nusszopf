@@ -16,7 +16,7 @@
     "@apollo/client": "3.2.5",
     "@auth0/nextjs-auth0": "0.16.0",
     "@sanity/block-content-to-react": "2.0.7",
-    "@sanity/client": "1.150.7",
+    "@sanity/client": "2.0.9",
     "@sanity/image-url": "0.140.19",
     "@sendgrid/client": "7.4.0",
     "@sendgrid/mail": "7.4.0",
