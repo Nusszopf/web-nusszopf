@@ -6,7 +6,7 @@ import { Info } from 'react-feather'
 import { Text } from '../../atoms'
 import { PopoverColor } from './Popover.theme'
 
-const MyPopover = ({ color = 'lilac600', children, ...props }) => {
+const MyPopover = ({ color = 'lilac800', children, ...props }) => {
   const popover = usePopoverState({ placement: 'top' })
 
   return (

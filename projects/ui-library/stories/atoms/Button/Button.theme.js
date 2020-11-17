@@ -72,14 +72,9 @@ export const ButtonColor = {
     outline: 'nz-btn nz-btn-outline-warning',
     filled: 'nz-btn nz-btn-filled--gray500Gray200',
   },
-  whiteLilac700: {
-    clean: '',
-    outline: '',
-    filled: 'nz-btn nz-btn-filled--whiteLilac700',
-  },
   lilac800: {
     clean: '',
     outline: 'nz-btn nz-btn-outline-lilac800',
-    filled: '',
+    filled: 'nz-btn nz-btn-filled--lilac800',
   },
 }

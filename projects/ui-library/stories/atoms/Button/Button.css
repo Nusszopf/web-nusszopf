@@ -46,14 +46,14 @@
   @apply text-blue-400 bg-blue-200 hover:shadow-outline:blue-200 focus:shadow-outline:blue-200;
 }
 
-.nz-btn-filled--whiteLilac700 {
-  @apply text-white bg-lilac-700 hover:shadow-outline:lilac-700 focus:shadow-outline:lilac-700;
+.nz-btn-filled--lilac800 {
+  @apply border-2 text-lilac-800 bg-lilac-300 hover:shadow-outline:lilac-700 focus:shadow-outline:lilac-700 border-lilac-800;
 }
 
 .nz-btn-outline-lilac800 {
-  @apply border-lilac-800 text-lilac-800 border-3 hover:shadow-outline:lilac-700 focus:shadow-outline:lilac-700;
+  @apply border-2 border-lilac-800 text-lilac-800 hover:shadow-outline:lilac-700 focus:shadow-outline:lilac-700;
 }
 
 .nz-btn-outline-warning {
-  @apply border-warning text-warning border-3 hover:shadow-outline:warning focus:shadow-outline:warning;
+  @apply border-2 border-warning text-warning hover:shadow-outline:warning focus:shadow-outline:warning;
 }

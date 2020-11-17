@@ -7,6 +7,7 @@ import { Text, Link } from '../../atoms'
 import { toggleMark, isMarkActive } from './utils/mark'
 import { toggleBlock, isBlockActive } from './utils/block'
 import { insertLink, isLinkActive } from './utils/link'
+import { ThemeColor } from './RichTextEditor.theme'
 
 export const Leaf = ({ attributes, children, leaf }) => {
   if (leaf.bold) {
@@ -54,15 +55,17 @@ export const Element = ({ attributes, children, element }) => {
   }
 }
 
-export const BlockButton = ({ format, icon, className, ...props }) => {
+export const BlockButton = ({ format, icon, className, color, ...props }) => {
   const editor = useSlate()
   return (
     <button
       type="button"
       {...props}
       className={classnames(
-        'text-lilac-800 mx-2 p-2 rounded-full tranform transition-color duration-150 ease-out hover:bg-lilac-300',
-        { 'bg-lilac-300': isBlockActive(editor, format) },
+        'mx-2 p-2 rounded-full tranform transition-color duration-150 ease-out',
+        ThemeColor[color].text,
+        ThemeColor[color].hover,
+        { [`${ThemeColor[color].bg}`]: isBlockActive(editor, format) },
         className
       )}
       onMouseDown={event => {
@@ -76,15 +79,17 @@ export const BlockButton = ({ format, icon, className, ...props }) => {
   )
 }
 
-export const MarkButton = ({ format, icon, className, ...props }) => {
+export const MarkButton = ({ format, icon, className, color, ...props }) => {
   const editor = useSlate()
   return (
     <button
       type="button"
       {...props}
       className={classnames(
-        'text-lilac-800 p-2 mx-1 rounded-full tranform transition-color duration-150 ease-out hover:bg-lilac-300',
-        { 'bg-lilac-300': isMarkActive(editor, format) },
+        'p-2 mx-1 rounded-full tranform transition-color duration-150 ease-out',
+        ThemeColor[color].text,
+        ThemeColor[color].hover,
+        { [`${ThemeColor[color].bg}`]: isMarkActive(editor, format) },
         className
       )}
       onMouseDown={event => {
@@ -98,15 +103,17 @@ export const MarkButton = ({ format, icon, className, ...props }) => {
   )
 }
 
-export const LinkButton = ({ icon, className, ...props }) => {
+export const LinkButton = ({ icon, className, color, ...props }) => {
   const editor = useSlate()
   return (
     <button
       type="button"
       {...props}
       className={classnames(
-        'text-lilac-800 mx-2 p-2 rounded-full tranform transition-color duration-150 ease-out hover:bg-lilac-300',
-        { 'bg-lilac-300': isLinkActive(editor) },
+        'mx-2 p-2 rounded-full tranform transition-color duration-150 ease-out',
+        ThemeColor[color].text,
+        ThemeColor[color].hover,
+        { [`${ThemeColor[color].bg}`]: isLinkActive(editor) },
         className
       )}
       onMouseDown={event => {

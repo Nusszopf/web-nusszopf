@@ -15,7 +15,7 @@
 [data-reach-menu-list],
 [data-reach-menu-items] {
   @apply block mt-1 whitespace-no-wrap border-none focus:outline-none;
-  @apply py-2 text-sm font-medium rounded-md;
+  @apply py-2 text-sm font-medium rounded-md shadow-md;
 }
 
 [data-reach-menu-item] {

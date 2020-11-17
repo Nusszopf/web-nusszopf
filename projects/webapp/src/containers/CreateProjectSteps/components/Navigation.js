@@ -10,7 +10,7 @@ const Navigation = ({ stepper, formik, loading, className, ...props }) => (
         {content.navigation.back}
       </Button>
     )}
-    <Button disabled={loading} variant="outline" color="lilac800" onClick={formik.submitForm}>
+    <Button disabled={loading} color="lilac800" onClick={formik.submitForm}>
       {stepper?.progress === 100 ? content.navigation.create : content.navigation.next}
     </Button>
   </div>

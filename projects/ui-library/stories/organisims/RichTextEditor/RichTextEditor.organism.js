@@ -8,6 +8,7 @@ import { withHistory } from 'slate-history'
 
 import { withLinks } from './utils/link'
 import { Element, Leaf, LinkButton, MarkButton, BlockButton } from './components'
+import { ThemeColor } from './RichTextEditor.theme'
 
 export const emptyRichText = [
   {
@@ -16,7 +17,14 @@ export const emptyRichText = [
   },
 ]
 
-const RichTextEditor = ({ className, onChange, placeholder, initialState = emptyRichText, ...props }) => {
+const RichTextEditor = ({
+  className,
+  color = 'lilac',
+  onChange,
+  placeholder,
+  initialState = emptyRichText,
+  ...props
+}) => {
   const [value, setValue] = useState(initialState)
   const renderElement = useCallback(props => <Element {...props} />, [])
   const renderLeaf = useCallback(props => <Leaf {...props} />, [])
@@ -27,20 +35,20 @@ const RichTextEditor = ({ className, onChange, placeholder, initialState = empty
   }, [value])
 
   return (
-    <div className={classnames('overflow-hidden border-2 rounded-md border-lilac-800', className)} {...props}>
+    <div className={classnames('overflow-hidden border-2 rounded-md', ThemeColor[color].border, className)} {...props}>
       <Slate editor={editor} value={value} onChange={value => setValue(value)}>
-        <div className="flex items-center px-1 py-1 bg-lilac-500">
-          <MarkButton format="bold" icon={<Bold size={18} />} />
-          <MarkButton format="italic" icon={<Italic size={18} />} />
-          <MarkButton format="underline" icon={<Underline size={18} />} />
-          <BlockButton format="unordered-list" icon={<List size={18} />} />
-          <BlockButton format="ordered-list" icon={<ListOrdered size={18} />} />
-          <LinkButton icon={<Link size={18} />} />
+        <div className={classnames('flex items-center px-1 py-1', ThemeColor[color].bg)}>
+          <MarkButton color={color} format="bold" icon={<Bold size={18} />} />
+          <MarkButton color={color} format="italic" icon={<Italic size={18} />} />
+          <MarkButton color={color} format="underline" icon={<Underline size={18} />} />
+          <BlockButton color={color} format="unordered-list" icon={<List size={18} />} />
+          <BlockButton color={color} format="ordered-list" icon={<ListOrdered size={18} />} />
+          <LinkButton color={color} icon={<Link size={18} />} />
         </div>
         <Editable
           className="px-4 py-3 min-h-48"
-          renderElement={renderElement} // props => renderElement({...props, color: "..."})
-          renderLeaf={renderLeaf} // props => renderElement({...props, color: "..."})
+          renderElement={props => renderElement({ ...props, color })}
+          renderLeaf={props => renderLeaf({ ...props, color })}
           placeholder={placeholder}
         />
       </Slate>
@@ -50,6 +58,7 @@ const RichTextEditor = ({ className, onChange, placeholder, initialState = empty
 
 RichTextEditor.propTypes = {
   className: PropTypes.string,
+  color: PropTypes.oneOf(Object.keys(ThemeColor)),
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   initialState: PropTypes.array,
