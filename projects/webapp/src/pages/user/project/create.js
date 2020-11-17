@@ -91,28 +91,29 @@ const CreateProject = () => {
             headerColor="bg-lilac-400 lg:bg-lilac-100">
             <FramedGridCard.Header className="bg-lilac-400">
               <Progressbar label={content.steps[stepper.step]} progress={stepper?.progress ?? 0} />
-              <div className="flex items-end justify-between">
-                <div className="mb-2 break-all lg:mr-12 lg:mb-0">
-                  <Text as="h1" variant="textLg">
-                    {formik?.values?.title?.length > 0 ? formik.values.title : content.title}
-                  </Text>
-                </div>
-                <Navigation className="hidden lg:block" stepper={stepper} formik={formik} loading={projectLoading} />
+              <div className="mt-3 break-all">
+                <Text as="h1" variant="textLg">
+                  {formik?.values?.title?.length > 0 ? formik.values.title : content.title}
+                </Text>
               </div>
             </FramedGridCard.Header>
             <Form>
-              <Stepper {...stepper}>
-                <DescriptionStep1 validationSchema={step1ValidationSchema} />
-                <DescriptionStep2 validationSchema={step2ValidationSchema} />
-                <SettingsStep />
-              </Stepper>
+              <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white">
+                <Stepper {...stepper}>
+                  <DescriptionStep1 validationSchema={step1ValidationSchema} />
+                  <DescriptionStep2 validationSchema={step2ValidationSchema} />
+                  <SettingsStep />
+                </Stepper>
+                <FramedGridCard.Body.Col variant="oneCol" className="mt-12 mb-4 md:mb-0 lg:col-start-2">
+                  <Navigation
+                    className="flex justify-center mx-auto"
+                    stepper={stepper}
+                    formik={formik}
+                    loading={projectLoading}
+                  />
+                </FramedGridCard.Body.Col>
+              </FramedGridCard.Body>
             </Form>
-            <Navigation
-              className="flex justify-center pb-12 mx-auto md:pb-16 lg:hidden"
-              stepper={stepper}
-              formik={formik}
-              loading={projectLoading}
-            />
           </FramedGridCard>
         )}
       </Formik>

@@ -101,7 +101,7 @@ const DescriptionStep1 = () => {
   }
 
   return (
-    <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white">
+    <>
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
         <>
           <FieldTitle info={data.descriptionStep1.title.info}>{data.descriptionStep1.title.title}</FieldTitle>
@@ -260,7 +260,7 @@ const DescriptionStep1 = () => {
           )}
         </>
       </FramedGridCard.Body.Col>
-    </FramedGridCard.Body>
+    </>
   )
 }
 

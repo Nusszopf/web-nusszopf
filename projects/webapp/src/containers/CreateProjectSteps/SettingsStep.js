@@ -15,7 +15,7 @@ const SettingsStep = () => {
   const radio = useRadioState({ state: formik.values.visibility })
 
   return (
-    <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
+    <>
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
         <FieldTitle info={data.SettingsStep.visibility.info}>{data.SettingsStep.visibility.title}</FieldTitle>
         <RadioGroup {...radio} aria-label="visibility">
@@ -69,7 +69,7 @@ const SettingsStep = () => {
           }
         />
       </FramedGridCard.Body.Col>
-    </FramedGridCard.Body>
+    </>
   )
 }
 

@@ -19,7 +19,7 @@ const DescriptionStep2 = () => {
   useScrollTop()
   const formik = useFormikContext()
   return (
-    <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
+    <>
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
         <FieldTitle info={data.descriptionStep2.team.info}>{data.descriptionStep2.team.title}</FieldTitle>
         <RichTextEditor
@@ -53,7 +53,7 @@ const DescriptionStep2 = () => {
           </Text>
         )}
       </FramedGridCard.Body.Col>
-    </FramedGridCard.Body>
+    </>
   )
 }
 
