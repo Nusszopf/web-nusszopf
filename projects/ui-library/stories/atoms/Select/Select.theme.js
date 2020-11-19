@@ -1,3 +1,3 @@
 export const SelectColor = {
-  lilac500: 'bg-lilac-500 text-lilac-800 hover:shadow-outline:lilac-500',
+  lilac800: 'border-2 border-lilac-800 bg-transparent text-lilac-800 hover:shadow-outline:lilac-700',
 }
