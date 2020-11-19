@@ -96,7 +96,7 @@ const NavHeader = ({ user, goBackUri, sticky = false }) => {
           <Menu
             {...menu}
             aria-label="Preferences"
-            className="w-screen px-4 pt-4 pb-8 bg-gray-300 rounded-b-lg lg:w-full lg:max-w-xs focus:outline-none">
+            className="z-10 w-screen px-4 pt-4 pb-8 bg-gray-300 rounded-b-lg lg:w-full lg:max-w-xs focus:outline-none">
             <div className="mx-auto lg:ml-12 max-w-content">
               <MenuItem
                 {...menu}
