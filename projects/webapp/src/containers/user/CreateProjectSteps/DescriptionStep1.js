@@ -12,7 +12,6 @@ import {
   ProjectFieldValidationSchema,
   LocationField,
   LocationFieldValidationSchema,
-  useLocationField,
   PeriodField,
   PeriodFieldValidationSchema,
 } from '../ProjectForm'
@@ -28,24 +27,16 @@ export const step1ValidationSchema = object({
 const DescriptionStep1 = () => {
   useScrollTop()
   const formik = useFormikContext()
-  const { locations, handleLocationSelect, handleSearchTermChange, handleSearchTermClear } = useLocationField(formik)
 
   return (
     <>
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
         <TitleField formik={formik} />
-        <GoalField formik={formik} className="mt-8" />
+        <GoalField formik={formik} className="mt-6" />
         <ProjectField formik={formik} className="mt-6" />
       </FramedGridCard.Body.Col>
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
-        <LocationField
-          className="mt-4 lg:mt-0"
-          formik={formik}
-          handleLocationSelect={handleLocationSelect}
-          handleSearchTermChange={handleSearchTermChange}
-          handleSearchTermClear={handleSearchTermClear}
-          locations={locations}
-        />
+        <LocationField className="mt-4 lg:mt-0" formik={formik} />
         <PeriodField formik={formik} />
       </FramedGridCard.Body.Col>
     </>

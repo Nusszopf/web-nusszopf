@@ -3,11 +3,18 @@ import PropTypes from 'prop-types'
 
 import { Text, Select } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
+import { useEntireUser } from '~/utils/services/auth.service'
 import apollo from '~/utils/services/apollo.service'
 import { Page } from '~/components'
+import { ProjectView } from '~/containers'
+
+const projectEditData = {
+  nav: ['Beschreibung', 'Gesucht', 'Einstellungen'],
+}
 
 const ProjectEdit = ({ id }) => {
-  const [view, setView] = useState('Beschreibung')
+  const user = useEntireUser()
+  const [view, setView] = useState(projectEditData.nav[0])
   const { data, loading } = apollo.useGetProject(id)
 
   console.log(view)
@@ -28,17 +35,13 @@ const ProjectEdit = ({ id }) => {
               {data?.projects_by_pk?.title}
             </Text>
             <Select onChange={e => setView(e.target.value)} className="flex-shrink-0 w-56 mb-2 lg:ml-12 lg:mb-0">
-              <option>Beschreibung</option>
-              <option>Gesuche</option>
-              <option>Einstellungen</option>
+              {projectEditData.nav.map((nav, index) => (
+                <option key={`pn-${index}`}>{nav}</option>
+              ))}
             </Select>
           </div>
         </FramedGridCard.Header>
-        <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
-          <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2">
-            body:col-1
-          </FramedGridCard.Body.Col>
-        </FramedGridCard.Body>
+        {view === projectEditData.nav[0] ? <ProjectView /> : view === projectEditData.nav[1] ? <p>1</p> : <p>2</p>}
       </FramedGridCard>
     </Page>
   )

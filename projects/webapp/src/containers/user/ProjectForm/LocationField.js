@@ -20,7 +20,7 @@ export const LocationFieldValidationSchema = object().shape({
   }),
 })
 
-export const useLocationField = formik => {
+const LocationField = ({ formik, ...props }) => {
   const [locations, setLocations] = useState([])
 
   const handleLocationSelect = location => {
@@ -49,66 +49,53 @@ export const useLocationField = formik => {
     setLocations([])
   }
 
-  return { locations, handleLocationSelect, handleSearchTermChange, handleSearchTermClear }
+  return (
+    <>
+      <FieldTitle info={data.descriptionStep1.location.info} {...props}>
+        {data.descriptionStep1.location.title}
+      </FieldTitle>
+      <Switch
+        color="lilac800"
+        name="location.remote"
+        onBlur={formik.handleBlur}
+        onChange={formik.handleChange}
+        label={data.descriptionStep1.location.action}
+        checked={formik.values.location.remote}
+      />
+      {!formik.values.location.remote && (
+        <>
+          <Combobox
+            id="postalcode"
+            tabIndex="0"
+            name="location.searchTerm"
+            className="mt-4"
+            aria="Suche nach einem Ort"
+            placeholder="Ort"
+            onChange={handleSearchTermChange}
+            onBlur={formik.handleBlur}
+            onSelect={handleLocationSelect}
+            onClear={handleSearchTermClear}
+            value={formik.values.location.searchTerm}
+            options={locations}
+          />
+          {formik?.errors?.location?.searchTerm && formik.touched?.location?.searchTerm && (
+            <Text variant="textXs" className="mt-2 ml-4 italic">
+              {formik.errors.location?.searchTerm}
+            </Text>
+          )}
+          {formik?.errors?.location?.data && formik.touched?.location?.searchTerm && (
+            <Text variant="textXs" className="mt-2 ml-4 italic">
+              {formik.errors.location?.data}
+            </Text>
+          )}
+        </>
+      )}
+    </>
+  )
 }
-
-const LocationField = ({
-  formik,
-  handleLocationSelect,
-  handleSearchTermChange,
-  handleSearchTermClear,
-  locations,
-  ...props
-}) => (
-  <>
-    <FieldTitle info={data.descriptionStep1.location.info} {...props}>
-      {data.descriptionStep1.location.title}
-    </FieldTitle>
-    <Switch
-      color="lilac800"
-      name="location.remote"
-      onBlur={formik.handleBlur}
-      onChange={formik.handleChange}
-      label={data.descriptionStep1.location.action}
-      checked={formik.values.location.remote}
-    />
-    {!formik.values.location.remote && (
-      <>
-        <Combobox
-          id="postalcode"
-          tabIndex="0"
-          name="location.searchTerm"
-          className="mt-4"
-          aria="Suche nach einem Ort"
-          placeholder="Ort"
-          onChange={handleSearchTermChange}
-          onBlur={formik.handleBlur}
-          onSelect={handleLocationSelect}
-          onClear={handleSearchTermClear}
-          value={formik.values.location.searchTerm}
-          options={locations}
-        />
-        {formik?.errors?.location?.searchTerm && formik.touched?.location?.searchTerm && (
-          <Text variant="textXs" className="mt-2 ml-4 italic">
-            {formik.errors.location?.searchTerm}
-          </Text>
-        )}
-        {formik?.errors?.location?.data && formik.touched?.location?.searchTerm && (
-          <Text variant="textXs" className="mt-2 ml-4 italic">
-            {formik.errors.location?.data}
-          </Text>
-        )}
-      </>
-    )}
-  </>
-)
 
 LocationField.propTypes = {
   formik: PropTypes.object.isRequired,
-  handleLocationSelect: PropTypes.func.isRequired,
-  handleSearchTermChange: PropTypes.func.isRequired,
-  handleSearchTermClear: PropTypes.func.isRequired,
-  locations: PropTypes.array.isRequired,
 }
 
 export default LocationField

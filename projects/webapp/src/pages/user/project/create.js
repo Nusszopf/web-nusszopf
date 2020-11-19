@@ -81,9 +81,7 @@ const CreateProject = () => {
           contact: false,
         }}
         validationSchema={stepper?.currentChild?.props?.validationSchema ?? object({})}
-        onSubmit={handleSubmit}
-        validateOnMount={false}
-        enableReinitialize={false}>
+        onSubmit={handleSubmit}>
         {formik => (
           <FramedGridCard
             className="lg:mb-20 lg:mt-12"
