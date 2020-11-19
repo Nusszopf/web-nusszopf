@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+
 import { Button } from 'ui-library/stories/atoms'
-import { createProjectData as content } from '../../../assets/data'
+import { createProjectData as content } from '~/assets/data'
 
 const Navigation = ({ stepper, formik, loading, className, ...props }) => (
   <div className={classnames('flex-shrink-0', className)} {...props}>

@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+
 import { Text } from 'ui-library/stories/atoms'
 import { Frame } from 'ui-library/stories/templates'
+import { newsletterData } from '~/assets/data'
 import NewsletterForm from './NewsletterForm'
-import { newsletterData } from '../../assets/data'
 
 const NewsletterSection = ({ className }) => {
   return (

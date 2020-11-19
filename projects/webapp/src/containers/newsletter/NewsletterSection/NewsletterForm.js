@@ -1,8 +1,9 @@
 import { Field, Form, Formik, ErrorMessage } from 'formik'
 import { object, string, mixed } from 'yup'
+
 import { Route, Button, Input, Text, Checkbox } from 'ui-library/stories/atoms'
-import useNewsletter from '../../utils/services/newsletter.service'
-import { newsletterData } from '../../assets/data'
+import useNewsletter from '~/utils/services/newsletter.service'
+import { newsletterData } from '~/assets/data'
 
 const MAX_NAME_LEN = 50
 

@@ -6,12 +6,11 @@ import { truncate } from 'lodash'
 import classnames from 'classnames'
 
 import { NavHeader } from 'ui-library/stories/organisims'
-import { useFetchUser } from '../../utils/services/auth.service'
-import { Footer } from '../../containers'
+import { useFetchUser } from '~/utils/services/auth.service'
+import { seoData } from '~/assets/data'
+import { useScrollTop } from '~/utils/helper'
+import Footer, { FOOTER_TYPE } from '../Footer/Footer'
 import ErrorBoundary from './ErrorBoundary'
-import { FOOTER_TYPE } from '../Footer/Footer'
-import { seoData } from '../../assets/data'
-import { useScrollTop } from '../../utils/helper'
 
 const Page = ({
   children,

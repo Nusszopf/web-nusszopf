@@ -7,12 +7,12 @@ import { Text, Button, Link } from 'ui-library/stories/atoms'
 import { InfoCard } from 'ui-library/stories/molecules'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { serializeJSX } from 'ui-library/services/RichTextEditor.service'
-import apollo from '../../utils/services/apollo.service'
 import { useToasts } from 'ui-library/services/Toasts.service'
-import { Page } from '../../containers'
-import { GET_PROJECT } from '../../utils/hasura/queries/projects.query'
-import { initializeApollo } from '../../utils/libs/apolloClient'
-import { projectData } from '../../assets/data'
+import apollo from '~/utils/services/apollo.service'
+import { Page } from '~/components'
+import { GET_PROJECT } from '~/utils/hasura/queries/projects.query'
+import { initializeApollo } from '~/utils/libs/apolloClient'
+import { projectData } from '~/assets/data'
 
 const Project = ({ id }) => {
   const { data } = apollo.useGetProject(id)

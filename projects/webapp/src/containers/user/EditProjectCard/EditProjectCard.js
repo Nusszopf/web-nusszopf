@@ -6,8 +6,8 @@ import { truncate } from 'lodash'
 
 import { Text } from 'ui-library/stories/atoms'
 import { Menu } from 'ui-library/stories/molecules'
-import { PROJECT } from '../../utils/enums'
-import { profileData } from '../../assets/data'
+import { PROJECT } from '~/utils/enums'
+import { profileData } from '~/assets/data'
 
 const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project, className, ...props }) => (
   <div

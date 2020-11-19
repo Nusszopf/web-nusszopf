@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { ErrorPage } from '../containers'
+import { ErrorPage } from '~/components'
 
 const CustomError = ({ statusCode }) => <ErrorPage statusCode={statusCode} />
 

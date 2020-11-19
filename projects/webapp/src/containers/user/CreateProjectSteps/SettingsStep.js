@@ -3,9 +3,9 @@ import { useRadioState, RadioGroup } from 'reakit/Radio'
 
 import { Text, Radiobox, Switch } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
-import { useEntireUser } from '../../utils/services/auth.service'
-import { createProjectData as data } from '../../assets/data'
-import { useScrollTop } from '../../utils/helper'
+import { useEntireUser } from '~/utils/services/auth.service'
+import { createProjectData as data } from '~/assets/data'
+import { useScrollTop } from '~/utils/helper'
 import { FieldTitle } from './components'
 
 const SettingsStep = () => {

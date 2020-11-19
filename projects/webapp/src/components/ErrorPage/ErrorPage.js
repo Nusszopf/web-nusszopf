@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import { Route, Link, Text } from 'ui-library/stories/atoms'
 import { FrameFullCenter } from 'ui-library/stories/templates'
-import { Page, PageBrand } from '../../containers'
+import { Page, PageBrand } from '~/components'
 import errorData from './error.data'
 
 const ErrorPage = ({ statusCode }) => (

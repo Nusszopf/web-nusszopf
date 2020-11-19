@@ -4,8 +4,8 @@ import { mixed, object, string } from 'yup'
 import { Text, Input } from 'ui-library/stories/atoms'
 import { RichTextEditor } from 'ui-library/stories/organisims'
 import { FramedGridCard } from 'ui-library/stories/templates'
-import { createProjectData as data } from '../../assets/data'
-import { useScrollTop } from '../../utils/helper'
+import { createProjectData as data } from '~/assets/data'
+import { useScrollTop } from '~/utils/helper'
 import { FieldTitle } from './components'
 
 export const step2ValidationSchema = object({

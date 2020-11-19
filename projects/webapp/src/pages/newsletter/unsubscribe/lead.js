@@ -1,13 +1,12 @@
 import { Field, Form, Formik, ErrorMessage } from 'formik'
 import { object, string } from 'yup'
 
-import { Page } from '../../../containers'
 import { Input, Button, Text, Route } from 'ui-library/stories/atoms'
 import { FramedCard } from 'ui-library/stories/templates'
-import useNewsletter from '../../../utils/services/newsletter.service'
-import { FOOTER_TYPE } from '../../../containers/Footer/Footer'
-import { SVGNusszopfLogoBig } from '../../../assets/logos'
-import { newsletterData } from '../../../assets/data'
+import useNewsletter from '~/utils/services/newsletter.service'
+import { Page, FOOTER_TYPE } from '~/components'
+import { SVGNusszopfLogoBig } from '~/assets/logos'
+import { newsletterData } from '~/assets/data'
 
 const UnsubscribeLead = () => {
   const { loading, unsubscribeFromNewsletter } = useNewsletter()

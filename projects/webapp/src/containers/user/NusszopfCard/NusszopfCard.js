@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+
 import { Text } from 'ui-library/stories/atoms'
-import { SVGNusszopfLogoSmall } from '../../assets/logos'
+import { SVGNusszopfLogoSmall } from '~/assets/logos'
 
 const NusszopfCard = ({ title, description, greetings, className, ...props }) => (
   <div

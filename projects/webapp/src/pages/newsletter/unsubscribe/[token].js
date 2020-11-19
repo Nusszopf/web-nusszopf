@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types'
-import { Page, FOOTER_TYPE } from '../../../containers'
+
 import { Route, Link, Text } from 'ui-library/stories/atoms'
-import { confirmNewsletterUnsubscription } from '../../../utils/services/newsletter.service'
 import { FramedCard } from 'ui-library/stories/templates'
-import { SVGNusszopfLogoBig } from '../../../assets/logos'
-import { newsletterData } from '../../../assets/data'
+import { Page, FOOTER_TYPE } from '~/components'
+import { confirmNewsletterUnsubscription } from '~/utils/services/newsletter.service'
+import { SVGNusszopfLogoBig } from '~/assets/logos'
+import { newsletterData } from '~/assets/data'
 
 const UnsubscribeConfirm = ({ lead }) => (
   <Page

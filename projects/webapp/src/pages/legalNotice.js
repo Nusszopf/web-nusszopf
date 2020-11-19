@@ -1,7 +1,7 @@
-import { Page, PageBrand, NavHeader } from '../containers'
 import { Frame } from 'ui-library/stories/templates'
 import { Link, Text } from 'ui-library/stories/atoms'
-import { legalNoticeData } from '../assets/data'
+import { Page, PageBrand, NavHeader } from '~/components'
+import { legalNoticeData } from '~/assets/data'
 
 const LegalNotice = () => (
   <Page className="bg-turquoise-700 text-turquoise-300" showFooter={false}>

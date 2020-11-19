@@ -8,9 +8,9 @@ import { Text, Input, Switch } from 'ui-library/stories/atoms'
 import { Combobox } from 'ui-library/stories/molecules'
 import { RichTextEditor } from 'ui-library/stories/organisims'
 import { FramedGridCard } from 'ui-library/stories/templates'
-import { findLocations } from '../../utils/services/location.service'
-import { parseDate, useScrollTop } from '../../utils/helper'
-import { createProjectData as data } from '../../assets/data'
+import { findLocations } from '~/utils/services/location.service'
+import { parseDate, useScrollTop } from '~/utils/helper'
+import { createProjectData as data } from '~/assets/data'
 import { FieldTitle } from './components'
 
 export const step1ValidationSchema = object({

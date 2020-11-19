@@ -1,8 +1,9 @@
 import classnames from 'classnames'
-import { Page, NewsletterSection } from '../containers'
+import { NewsletterSection } from '../containers'
 import { Button, Link, Text } from 'ui-library/stories/atoms'
 import { Frame } from 'ui-library/stories/templates'
-import { headerData, hintData, featuresData, contestData, fellowsData } from '../assets/data'
+import { Page } from '~/components'
+import { headerData, hintData, featuresData, contestData, fellowsData } from '~/assets/data'
 
 const Index = () => {
   const scrollIntoView = id => {

@@ -1,7 +1,7 @@
-import { Page, PageBrand, NavHeader } from '../containers'
 import { Frame } from 'ui-library/stories/templates'
 import { Link, Text } from 'ui-library/stories/atoms'
-import { privacyData } from '../assets/data'
+import { Page, PageBrand, NavHeader } from '~/components'
+import { privacyData } from '~/assets/data'
 
 const Privacy = () => (
   <Page className="bg-turquoise-700 text-turquoise-300" showFooter={false}>

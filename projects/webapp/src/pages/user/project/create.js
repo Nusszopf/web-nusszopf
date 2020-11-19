@@ -7,18 +7,18 @@ import { Text, Progressbar } from 'ui-library/stories/atoms'
 import { Stepper, useStepper } from 'ui-library/stories/molecules'
 import { emptyRichText } from 'ui-library/stories/organisims'
 import { FramedGridCard } from 'ui-library/stories/templates'
-import apollo from '../../../utils/services/apollo.service'
-import { useEntireUser } from '../../../utils/services/auth.service'
+import apollo from '~/utils/services/apollo.service'
+import { useEntireUser } from '~/utils/services/auth.service'
+import { Page } from '~/components'
 import {
-  Page,
   DescriptionStep1,
   DescriptionStep2,
   SettingsStep,
   Navigation,
   step1ValidationSchema,
   step2ValidationSchema,
-} from '../../../containers'
-import { createProjectData as content } from '../../../assets/data'
+} from '~/containers'
+import { createProjectData as content } from '~/assets/data'
 
 const CreateProject = () => {
   const user = useEntireUser()
