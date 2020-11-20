@@ -17,3 +17,12 @@ export const DELETE_PROJECT = gql`
     }
   }
 `
+
+export const UPDATE_PROJECT = gql`
+  mutation updateProject($id: uuid!, $project: projects_set_input!) {
+    update_projects_by_pk(pk_columns: { id: $id }, _set: $project) {
+      ...Project
+    }
+  }
+  ${ProjectFragment}
+`

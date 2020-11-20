@@ -3,6 +3,7 @@ import { Form, Formik } from 'formik'
 import { object } from 'yup'
 import { isValid, parseISO } from 'date-fns'
 
+import useProjectsService from '~/utils/services/projects.service'
 import { Button } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import {
@@ -22,7 +23,9 @@ import {
   PeriodFieldValidationSchema,
 } from '../ProjectForm'
 
-const ProjectView = ({ project }) => {
+const ProjectView = ({ user, project }) => {
+  const { updateProject, updateLoading, serializeProjectDescription } = useProjectsService()
+
   const parseDate = _date => {
     const date = parseISO(_date)
     if (isValid(date)) {
@@ -33,7 +36,8 @@ const ProjectView = ({ project }) => {
   }
 
   const handleSubmit = values => {
-    console.log(values)
+    const description = serializeProjectDescription(user, values)
+    updateProject(project.id, description)
   }
 
   return (
@@ -80,7 +84,7 @@ const ProjectView = ({ project }) => {
               <MottoField formik={formik} className="mt-6" />
             </FramedGridCard.Body.Col>
             <FramedGridCard.Body.Col variant="oneCol" className="flex justify-center mt-12 mb-4 md:mb-0 lg:col-start-2">
-              <Button type="submit" size="large" color="lilac800">
+              <Button type="submit" size="large" color="lilac800" disabled={updateLoading}>
                 Speichern
               </Button>
             </FramedGridCard.Body.Col>
@@ -92,6 +96,7 @@ const ProjectView = ({ project }) => {
 }
 
 ProjectView.propTypes = {
+  user: PropTypes.object.isRequired,
   project: PropTypes.object.isRequired,
 }
 

@@ -50,7 +50,7 @@ const ProjectEdit = ({ id }) => {
         {loading || !data ? (
           <>Project wird geladen...</>
         ) : view === projectEditData.nav[0] ? (
-          <ProjectView project={data?.projects_by_pk} />
+          <ProjectView user={user} project={data?.projects_by_pk} />
         ) : view === projectEditData.nav[1] ? (
           <RequestsView project={data?.projects_by_pk} />
         ) : (

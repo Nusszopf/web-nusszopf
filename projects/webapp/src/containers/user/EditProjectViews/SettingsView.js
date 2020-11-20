@@ -8,15 +8,16 @@ import useProjectsService from '~/utils/services/projects.service'
 import { VisibilityField, ContactField } from '../ProjectForm'
 
 const SettingsView = ({ user, project }) => {
-  const { deleteProject } = useProjectsService()
+  const { deleteProject, serializeProjectSettings, updateProject, deleteLoading, updateLoading } = useProjectsService()
   const router = useRouter()
 
   const handleSubmit = values => {
-    console.log(values)
+    const settings = serializeProjectSettings(user, values)
+    updateProject(project.id, settings)
   }
 
-  const handleDelete = () => {
-    const isDeleted = deleteProject(project.id)
+  const handleDelete = async () => {
+    const isDeleted = await deleteProject(project.id)
     if (isDeleted) {
       router.push('/user/profile')
     }
@@ -36,7 +37,7 @@ const SettingsView = ({ user, project }) => {
               <VisibilityField formik={formik} />
               <ContactField formik={formik} user={user} className="mt-6" />
               <div className="mt-12">
-                <Button type="submit" color="lilac800">
+                <Button type="submit" color="lilac800" disabled={updateLoading}>
                   Speichern
                 </Button>
               </div>
@@ -46,7 +47,7 @@ const SettingsView = ({ user, project }) => {
               <Text className="mb-6" variant="textSm">
                 Nach dem Löschen können die Daten nicht wieder hergestellt werden.
               </Text>
-              <Button variant="outline" color="warning" onClick={handleDelete}>
+              <Button variant="outline" color="warning" onClick={handleDelete} disabled={deleteLoading}>
                 Projekt löschen
               </Button>
             </FramedGridCard.Body.Col>
