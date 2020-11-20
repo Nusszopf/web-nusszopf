@@ -35,7 +35,8 @@ const Profile = () => {
 
   const handleVisibility = (id, _visibility) => {
     if (!updateLoading) {
-      const visibility = _visibility === PROJECT.public ? PROJECT.private : PROJECT.public
+      const visibility =
+        _visibility === PROJECT.visibility.public ? PROJECT.visibility.private : PROJECT.visibility.public
       updateProject(id, { visibility })
     }
   }
