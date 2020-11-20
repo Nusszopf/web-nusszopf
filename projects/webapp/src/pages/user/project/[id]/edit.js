@@ -17,8 +17,6 @@ const ProjectEdit = ({ id }) => {
   const [view, setView] = useState(projectEditData.nav[0])
   const { data, loading } = apollo.useGetProject(id)
 
-  console.log(view)
-
   return (
     <Page
       navHeader={{ visible: true, goBackUri: '/user/profile' }}
@@ -41,12 +39,14 @@ const ProjectEdit = ({ id }) => {
             </Select>
           </div>
         </FramedGridCard.Header>
-        {view === projectEditData.nav[0] ? (
-          <ProjectView />
+        {loading ? (
+          <>Project wird geladen...</>
+        ) : view === projectEditData.nav[0] ? (
+          <ProjectView project={data.projects_by_pk} />
         ) : view === projectEditData.nav[1] ? (
-          <RequestsView />
+          <RequestsView project={data.projects_by_pk} />
         ) : (
-          <SettingsView />
+          <SettingsView user={user} project={data.projects_by_pk} />
         )}
       </FramedGridCard>
     </Page>

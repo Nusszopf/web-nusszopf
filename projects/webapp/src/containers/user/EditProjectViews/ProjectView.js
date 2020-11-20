@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types'
 import { Form, Formik } from 'formik'
 import { object } from 'yup'
+import { isValid, parseISO } from 'date-fns'
 
 import { Button } from 'ui-library/stories/atoms'
-import { emptyRichText } from 'ui-library/stories/organisims'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import {
   MottoField,
@@ -21,7 +22,16 @@ import {
   PeriodFieldValidationSchema,
 } from '../ProjectForm'
 
-const ProjectView = () => {
+const ProjectView = ({ project }) => {
+  const parseDate = _date => {
+    const date = parseISO(_date)
+    if (isValid(date)) {
+      return date.toLocaleDateString('de-DE')
+    } else {
+      return ''
+    }
+  }
+
   const handleSubmit = values => {
     console.log(values)
   }
@@ -29,21 +39,21 @@ const ProjectView = () => {
   return (
     <Formik
       initialValues={{
-        title: '',
-        goal: '',
-        description: emptyRichText,
+        title: project.title,
+        goal: project.goal,
+        description: project.descriptionTemplate,
         location: {
-          remote: true,
-          searchTerm: '',
-          data: {},
+          remote: project.location.remote,
+          searchTerm: project.location.searchTerm,
+          data: project.location.data,
         },
         period: {
-          flexible: true,
-          from: '',
-          to: '',
+          flexible: project.period.flexible,
+          from: parseDate(project.period.from),
+          to: parseDate(project.period.to),
         },
-        team: emptyRichText,
-        motto: '',
+        team: project.teamTemplate,
+        motto: project.motto,
       }}
       validationSchema={object({
         title: TitleFieldValidationSchema,
@@ -79,6 +89,10 @@ const ProjectView = () => {
       )}
     </Formik>
   )
+}
+
+ProjectView.propTypes = {
+  project: PropTypes.object.isRequired,
 }
 
 export default ProjectView

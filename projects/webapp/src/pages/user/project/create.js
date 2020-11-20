@@ -77,7 +77,7 @@ const CreateProject = () => {
           },
           team: emptyRichText,
           motto: '',
-          visibility: 'private',
+          visibility: 'public',
           contact: false,
         }}
         validationSchema={stepper?.currentChild?.props?.validationSchema ?? object({})}
