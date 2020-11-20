@@ -65,7 +65,7 @@ export const BlockButton = ({ format, icon, className, color, ...props }) => {
         'mx-2 p-2 rounded-full tranform transition-color duration-150 ease-out',
         ThemeColor[color].text,
         ThemeColor[color].hover,
-        { [`${ThemeColor[color].bg}`]: isBlockActive(editor, format) },
+        { [`${ThemeColor[color].active}`]: isBlockActive(editor, format) },
         className
       )}
       onMouseDown={event => {
@@ -89,7 +89,7 @@ export const MarkButton = ({ format, icon, className, color, ...props }) => {
         'p-2 mx-1 rounded-full tranform transition-color duration-150 ease-out',
         ThemeColor[color].text,
         ThemeColor[color].hover,
-        { [`${ThemeColor[color].bg}`]: isMarkActive(editor, format) },
+        { [`${ThemeColor[color].active}`]: isMarkActive(editor, format) },
         className
       )}
       onMouseDown={event => {
@@ -113,7 +113,7 @@ export const LinkButton = ({ icon, className, color, ...props }) => {
         'mx-2 p-2 rounded-full tranform transition-color duration-150 ease-out',
         ThemeColor[color].text,
         ThemeColor[color].hover,
-        { [`${ThemeColor[color].bg}`]: isLinkActive(editor) },
+        { [`${ThemeColor[color].active}`]: isLinkActive(editor) },
         className
       )}
       onMouseDown={event => {
