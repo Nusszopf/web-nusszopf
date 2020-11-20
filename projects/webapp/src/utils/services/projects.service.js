@@ -77,20 +77,21 @@ const useProjectsService = () => {
   const updateProject = async (id, project) => {
     notify({
       type: 'loading',
-      message: 'Update speichern...',
+      message: 'Änderungen speichern...',
     })
     try {
+      // todo update cache
       await apolloUpdateProject({
         variables: { id, project },
       })
       notify({
         type: 'success',
-        message: 'Deine Einstellungen wurden aktuallisiert.',
+        message: 'Deine Projekt wurde aktualisiert.',
       })
     } catch (error) {
       notify({
         type: 'error',
-        message: 'Sorry, dein Update konnte nicht gepeichert werden.',
+        message: 'Sorry, deine Änderungen konnte nicht gepeichert werden.',
       })
     }
   }

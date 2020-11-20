@@ -8,6 +8,7 @@ import { Avatar } from 'ui-library/stories/molecules'
 import { Masonry } from 'ui-library/stories/organisims'
 import apollo from '~/utils/services/apollo.service'
 import useProjectsService from '~/utils/services/projects.service'
+import { PROJECT } from '~/utils/enums'
 import { EditProjectCard, NusszopfCard } from '~/containers'
 import { Page } from '~/components'
 import { useEntireUser } from '~/utils/services/auth.service'
@@ -17,7 +18,7 @@ const Profile = () => {
   const router = useRouter()
   const { loading: loadingUser, ...user } = useEntireUser()
   const [loadProjects, { called, data }] = apollo.useLazyGetProjects(user?.data?.id)
-  const { deleteProject } = useProjectsService()
+  const { deleteProject, updateProject, updateLoading } = useProjectsService()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -31,6 +32,13 @@ const Profile = () => {
       setLoading(false)
     }
   }, [data])
+
+  const handleVisibility = (id, _visibility) => {
+    if (!updateLoading) {
+      const visibility = _visibility === PROJECT.public ? PROJECT.private : PROJECT.public
+      updateProject(id, { visibility })
+    }
+  }
 
   return (
     <Page
@@ -76,7 +84,7 @@ const Profile = () => {
                     onClick={id => router.push(`/projects/${id}`)}
                     onEdit={id => router.push(`/user/project/${id}/edit`)}
                     onDelete={deleteProject}
-                    toggleVisibility={id => console.log('toggleVisibility', id)}
+                    toggleVisibility={handleVisibility}
                   />
                 ))}
               </Masonry>

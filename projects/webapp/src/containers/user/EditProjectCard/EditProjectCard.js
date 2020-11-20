@@ -48,7 +48,7 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
           {
             type: 'button',
             text: project.visibility === PROJECT.visibility.public ? 'Geheimhalten' : 'Veröffentlichen',
-            action: () => toggleVisibility(project.id),
+            action: () => toggleVisibility(project.id, project.visibility),
           },
           {
             type: 'button',
