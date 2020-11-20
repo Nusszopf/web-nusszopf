@@ -57,9 +57,8 @@ const useLazyGetProjects = id =>
 
 const useAddProject = () => useMutation(INSERT_PROJECT)
 
-const useDeleteProject = id =>
+const useDeleteProject = () =>
   useMutation(DELETE_PROJECT, {
-    variables: { id },
     update: (cache, { data }) => {
       cache.evict({ id: `projects:${data.delete_projects_by_pk.id}` })
     },

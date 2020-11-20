@@ -7,6 +7,7 @@ import { Button } from 'ui-library/stories/atoms'
 import { Avatar } from 'ui-library/stories/molecules'
 import { Masonry } from 'ui-library/stories/organisims'
 import apollo from '~/utils/services/apollo.service'
+import useProjectsService from '~/utils/services/projects.service'
 import { EditProjectCard, NusszopfCard } from '~/containers'
 import { Page } from '~/components'
 import { useEntireUser } from '~/utils/services/auth.service'
@@ -16,6 +17,7 @@ const Profile = () => {
   const router = useRouter()
   const { loading: loadingUser, ...user } = useEntireUser()
   const [loadProjects, { called, data }] = apollo.useLazyGetProjects(user?.data?.id)
+  const { deleteProject } = useProjectsService()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -73,7 +75,7 @@ const Profile = () => {
                     project={project}
                     onClick={id => router.push(`/projects/${id}`)}
                     onEdit={id => router.push(`/user/project/${id}/edit`)}
-                    onDelete={id => console.log('onDelete', id)}
+                    onDelete={deleteProject}
                     toggleVisibility={id => console.log('toggleVisibility', id)}
                   />
                 ))}
