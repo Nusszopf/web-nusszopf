@@ -6,7 +6,7 @@ import { FramedGridCard } from 'ui-library/stories/templates'
 import { useEntireUser } from '~/utils/services/auth.service'
 import apollo from '~/utils/services/apollo.service'
 import { Page } from '~/components'
-import { ProjectView } from '~/containers'
+import { ProjectView, RequestsView, SettingsView } from '~/containers'
 
 const projectEditData = {
   nav: ['Beschreibung', 'Gesucht', 'Einstellungen'],
@@ -41,7 +41,13 @@ const ProjectEdit = ({ id }) => {
             </Select>
           </div>
         </FramedGridCard.Header>
-        {view === projectEditData.nav[0] ? <ProjectView /> : view === projectEditData.nav[1] ? <p>1</p> : <p>2</p>}
+        {view === projectEditData.nav[0] ? (
+          <ProjectView />
+        ) : view === projectEditData.nav[1] ? (
+          <RequestsView />
+        ) : (
+          <SettingsView />
+        )}
       </FramedGridCard>
     </Page>
   )

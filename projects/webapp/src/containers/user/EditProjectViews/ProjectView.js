@@ -1,6 +1,7 @@
 import { Form, Formik } from 'formik'
 import { object } from 'yup'
 
+import { Button } from 'ui-library/stories/atoms'
 import { emptyRichText } from 'ui-library/stories/organisims'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import {
@@ -68,8 +69,10 @@ const ProjectView = () => {
               <TeamField formik={formik} className="mt-6" />
               <MottoField formik={formik} className="mt-6" />
             </FramedGridCard.Body.Col>
-            <FramedGridCard.Body.Col variant="oneCol" className="mt-12 mb-4 md:mb-0 lg:col-start-2">
-              <button type="submit">Submit</button>
+            <FramedGridCard.Body.Col variant="oneCol" className="flex justify-center mt-12 mb-4 md:mb-0 lg:col-start-2">
+              <Button type="submit" size="large" color="lilac800">
+                Speichern
+              </Button>
             </FramedGridCard.Body.Col>
           </FramedGridCard.Body>
         </Form>
