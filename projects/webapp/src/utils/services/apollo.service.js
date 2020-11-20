@@ -6,7 +6,7 @@ import { NZ_EMAIL } from '../enums'
 import { GET_USER } from '../hasura/queries/users.query'
 import { DELETE_USER } from '../hasura/mutations/users.mutation'
 import { DELETE_LEAD, INSERT_LEAD, UPDATE_LEAD } from '../hasura/mutations/leads.mutation'
-import { INSERT_PROJECT } from '../hasura/mutations/projects.mutation'
+import { INSERT_PROJECT, DELETE_PROJECT } from '../hasura/mutations/projects.mutation'
 import { GET_PROJECT, GET_USER_PROJECTS } from '../hasura/queries/projects.query'
 import { parseDateISOString } from '../helper'
 
@@ -31,14 +31,14 @@ const useDeleteLead = () =>
 
 const useUpdateLead = id =>
   useMutation(UPDATE_LEAD, {
-    update: (cache, { data: { update_leads_by_pk } }) => {
+    update: (cache, { data }) => {
       cache.writeQuery({
         query: GET_USER,
         variables: { id },
         data: {
           users_by_pk: {
             lead: {
-              id: update_leads_by_pk.id,
+              id: data.update_leads_by_pk.id,
             },
           },
         },
@@ -56,6 +56,14 @@ const useLazyGetProjects = id =>
   })
 
 const useAddProject = () => useMutation(INSERT_PROJECT)
+
+const useDeleteProject = id =>
+  useMutation(DELETE_PROJECT, {
+    variables: { id },
+    update: (cache, { data }) => {
+      cache.evict({ id: `projects:${data.delete_projects_by_pk.id}` })
+    },
+  })
 
 const serializeProject = (form, user) => {
   return {
@@ -91,5 +99,6 @@ export default {
   useGetProject,
   useLazyGetProjects,
   useAddProject,
+  useDeleteProject,
   serializeProject,
 }

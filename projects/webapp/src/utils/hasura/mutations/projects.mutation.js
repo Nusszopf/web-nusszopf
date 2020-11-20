@@ -9,3 +9,11 @@ export const INSERT_PROJECT = gql`
   }
   ${ProjectFragment}
 `
+
+export const DELETE_PROJECT = gql`
+  mutation deleteProject($id: uuid!) {
+    delete_projects_by_pk(id: $id) {
+      id
+    }
+  }
+`

@@ -59,6 +59,9 @@ function createApolloClient() {
             users_by_pk: {
               merge: true,
             },
+            projects_by_pk: {
+              merge: true,
+            },
             // allPosts: concatPagination(),
           },
         },

@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useRouter } from 'next/router'
 
 import { Text, Select } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
@@ -13,9 +14,16 @@ const projectEditData = {
 }
 
 const ProjectEdit = ({ id }) => {
+  const router = useRouter()
   const user = useEntireUser()
   const [view, setView] = useState(projectEditData.nav[0])
   const { data, loading } = apollo.useGetProject(id)
+
+  useEffect(() => {
+    if (!loading && !data) {
+      router.push('/404')
+    }
+  }, [loading, data, router])
 
   return (
     <Page
@@ -39,14 +47,14 @@ const ProjectEdit = ({ id }) => {
             </Select>
           </div>
         </FramedGridCard.Header>
-        {loading ? (
+        {loading || !data ? (
           <>Project wird geladen...</>
         ) : view === projectEditData.nav[0] ? (
-          <ProjectView project={data.projects_by_pk} />
+          <ProjectView project={data?.projects_by_pk} />
         ) : view === projectEditData.nav[1] ? (
-          <RequestsView project={data.projects_by_pk} />
+          <RequestsView project={data?.projects_by_pk} />
         ) : (
-          <SettingsView user={user} project={data.projects_by_pk} />
+          <SettingsView user={user} project={data?.projects_by_pk} />
         )}
       </FramedGridCard>
     </Page>

@@ -47,8 +47,8 @@ const CreateProject = () => {
         })
       } catch (error) {
         notify({
-          type: 'loading',
-          message: 'Dein Projekt wird erstellt.',
+          type: 'error',
+          message: 'Sorry, da lief was schief...',
         })
       }
     }
