@@ -22,7 +22,7 @@ import { createProjectData as content } from '~/assets/data'
 
 const CreateProject = () => {
   const user = useEntireUser()
-  const { addProject, addLoading } = useProjectsService()
+  const { addProject, addLoading, addRequestsLoading } = useProjectsService()
   const router = useRouter()
   const stepper = useStepper()
 
@@ -89,7 +89,7 @@ const CreateProject = () => {
                     className="flex justify-center mx-auto"
                     stepper={stepper}
                     formik={formik}
-                    loading={addLoading}
+                    loading={addLoading || addRequestsLoading}
                   />
                 </FramedGridCard.Body.Col>
               </FramedGridCard.Body>

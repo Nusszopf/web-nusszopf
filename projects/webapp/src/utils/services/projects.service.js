@@ -11,6 +11,22 @@ const useProjectsService = () => {
   const [apolloDeleteProject, { loading: deleteLoading }] = apollo.useDeleteProject()
   const [apolloUpdateProject, { loading: updateLoading }] = apollo.useUpdateProject()
   const [apolloAddProject, { loading: addLoading }] = apollo.useAddProject()
+  const [apolloAddRequests, { loading: addRequestsLoading }] = apollo.useAddRequests()
+
+  const serializeRequest = (id, request) => {
+    return {
+      title: request.title,
+      category: request.category,
+      description: request.description
+        .map(node => serializeText(node))
+        .join(' ')
+        .replace(/\s+/g, ' ')
+        .trim(),
+      descriptionTemplate: request.description,
+      created_at: request.created_at,
+      project_id: id,
+    }
+  }
 
   const serializeProject = (user, form) => {
     return {
@@ -57,9 +73,13 @@ const useProjectsService = () => {
     })
     try {
       // todo update cache
-      await apolloAddProject({
+      const res = await apolloAddProject({
         variables: { project },
       })
+      if (form.requests.length > 0) {
+        const requests = form.requests.map(request => serializeRequest(res.data.insert_projects_one.id, request))
+        await apolloAddRequests({ variables: { requests } })
+      }
       notify({
         type: 'success',
         message: 'Dein Projekt wurde erstellt.',
@@ -134,6 +154,7 @@ const useProjectsService = () => {
     addLoading,
     updateLoading,
     deleteLoading,
+    addRequestsLoading,
     serializeProjectSettings,
     serializeProjectDescription,
     serializeProject,

@@ -149,7 +149,15 @@ const Project = ({ id }) => {
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="twoCols" className="row-start-1 100 lg:row-start-auto lg:ml-16">
             <Text>Aktuelle Gesuche</Text>
-            <InfoCard className="mt-2 text-lilac-800 bg-lilac-400">{projectData.body.searchings.info}</InfoCard>
+            {data?.projects_by_pk?.requests?.length > 0 ? (
+              <>
+                {data.projects_by_pk.requests.map((request, index) => (
+                  <p key={`requests-${index}`}>{request.title}</p>
+                ))}
+              </>
+            ) : (
+              <InfoCard className="mt-2 text-lilac-800 bg-lilac-400">{projectData.body.searchings.info}</InfoCard>
+            )}
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="oneCol" className="mt-10">
             <Text variant="textSm">

@@ -5,6 +5,7 @@ import { DELETE_USER } from '../hasura/mutations/users.mutation'
 import { DELETE_LEAD, INSERT_LEAD, UPDATE_LEAD } from '../hasura/mutations/leads.mutation'
 import { INSERT_PROJECT, DELETE_PROJECT, UPDATE_PROJECT } from '../hasura/mutations/projects.mutation'
 import { GET_PROJECT, GET_USER_PROJECTS } from '../hasura/queries/projects.query'
+import { INSERT_REQUESTS } from '../hasura/mutations/requests.mutation'
 
 // USERS
 const useLazyGetUser = id =>
@@ -62,6 +63,9 @@ const useDeleteProject = () =>
     },
   })
 
+// REQUESTS
+const useAddRequests = () => useMutation(INSERT_REQUESTS)
+
 export default {
   useAddLead,
   useUpdateLead,
@@ -73,4 +77,5 @@ export default {
   useAddProject,
   useUpdateProject,
   useDeleteProject,
+  useAddRequests,
 }

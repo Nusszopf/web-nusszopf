@@ -11,7 +11,7 @@ export const GET_USER_PROJECTS = gql`
 `
 
 export const GET_PROJECT = gql`
-  query getProject($id: uuid!) {
+  query getProject($id: String!) {
     projects_by_pk(id: $id) {
       ...Project
     }
