@@ -16,7 +16,7 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
       className
     )}
     {...props}>
-    <Clickable onClick={() => onEdit(project.id)} className="flex-1 p-4 text-left focus:outline-none">
+    <Clickable onClick={() => onEdit(project.id)} className="flex-1 p-4 text-left focus:outline-none" type="button">
       <Text className="mr-4">{project.title}</Text>
       <Text variant="textSm" className="mt-2 hyphens-auto">
         {truncate(project.goal, { length: 90 })}

@@ -6,7 +6,7 @@ export default {
     back: 'Zurück',
     create: 'Erstellen',
   },
-  steps: ['Beschreibung 1/2', 'Beschreibung 2/2', 'Einstellungen'],
+  steps: ['Beschreibung 1/2', 'Beschreibung 2/2', 'Gesuche', 'Einstellungen'],
   descriptionStep1: {
     title: {
       title: 'Titel*',

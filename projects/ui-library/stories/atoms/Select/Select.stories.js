@@ -14,4 +14,10 @@ export default {
   },
 }
 
-export const Default = () => <Select placeholder="placeholder"></Select>
+export const Default = () => (
+  <Select placeholder="placeholder">
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+  </Select>
+)

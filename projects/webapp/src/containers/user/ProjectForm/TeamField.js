@@ -4,7 +4,7 @@ import { mixed } from 'yup'
 import { Text } from 'ui-library/stories/atoms'
 import { RichTextEditor } from 'ui-library/stories/organisims'
 import { createProjectData as data } from '~/assets/data'
-import FieldTitle from './FieldTitle'
+import { FieldTitle } from '~/components'
 
 export const TeamFieldValidationSchema = mixed().test('description', data.descriptionStep2.team.error, value =>
   JSON.stringify(value)?.length > 6000 ? false : true

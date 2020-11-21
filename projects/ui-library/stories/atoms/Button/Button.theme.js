@@ -69,12 +69,17 @@ export const ButtonColor = {
   },
   warning: {
     clean: '',
-    outline: 'nz-btn nz-btn-outline-warning',
+    outline: 'nz-btn nz-btn-outline--warning',
     filled: 'nz-btn nz-btn-filled--gray500Gray200',
   },
   lilac800: {
     clean: '',
-    outline: 'nz-btn nz-btn-outline-lilac800',
+    outline: 'nz-btn nz-btn-outline--lilac800',
     filled: 'nz-btn nz-btn-filled--lilac800',
+  },
+  livid800: {
+    clean: '',
+    outline: 'nz-btn nz-btn-outline--livid800',
+    filled: 'nz-btn nz-btn-filled--livid800',
   },
 }

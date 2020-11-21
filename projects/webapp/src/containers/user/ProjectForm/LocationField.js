@@ -7,7 +7,7 @@ import { Text, Switch } from 'ui-library/stories/atoms'
 import { Combobox } from 'ui-library/stories/molecules'
 import { findLocations } from '~/utils/services/location.service'
 import { createProjectData as data } from '~/assets/data'
-import FieldTitle from './FieldTitle'
+import { FieldTitle } from '~/components'
 
 export const LocationFieldValidationSchema = object().shape({
   searchTerm: string().when(['remote'], {

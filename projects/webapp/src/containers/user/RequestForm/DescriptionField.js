@@ -6,7 +6,7 @@ import { Text } from 'ui-library/stories/atoms'
 import { createProjectData as data } from '~/assets/data'
 import { FieldTitle } from '~/components'
 
-export const ProjectFieldValidationSchema = mixed()
+export const DescriptionFieldValidationSchema = mixed()
   .test('description_max', data.descriptionStep1.project.error[0], value =>
     JSON.stringify(value)?.length > 6000 ? false : true
   )
@@ -22,7 +22,7 @@ export const ProjectFieldValidationSchema = mixed()
     return true
   })
 
-const ProjectField = ({ formik, ...props }) => (
+const DescriptionField = ({ formik, ...props }) => (
   <>
     <FieldTitle info={data.descriptionStep1.project.info} {...props}>
       {data.descriptionStep1.project.title}
@@ -42,8 +42,8 @@ const ProjectField = ({ formik, ...props }) => (
   </>
 )
 
-ProjectField.propTypes = {
+DescriptionField.propTypes = {
   formik: PropTypes.object.isRequired,
 }
 
-export default ProjectField
+export default DescriptionField

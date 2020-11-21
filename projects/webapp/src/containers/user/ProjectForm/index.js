@@ -1,5 +1,3 @@
-export { default as FieldTitle } from './FieldTitle'
-
 export { default as TitleField } from './TitleField'
 export * from './TitleField'
 export { default as GoalField } from './GoalField'

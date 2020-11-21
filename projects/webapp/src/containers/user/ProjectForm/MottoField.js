@@ -3,7 +3,7 @@ import { string } from 'yup'
 
 import { Text, Input } from 'ui-library/stories/atoms'
 import { createProjectData as data } from '~/assets/data'
-import FieldTitle from './FieldTitle'
+import { FieldTitle } from '~/components'
 
 export const MottoFieldValidationSchema = string().max(200, data.descriptionStep2.motto.error)
 

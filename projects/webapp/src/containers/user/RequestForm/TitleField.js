@@ -1,23 +1,21 @@
 import PropTypes from 'prop-types'
 import { string } from 'yup'
+
 import { Text, Input } from 'ui-library/stories/atoms'
-import { createProjectData as data } from '~/assets/data'
 import { FieldTitle } from '~/components'
 
-export const TitleFieldValidationSchema = string()
-  .max(30, data.descriptionStep1.title.error[0])
-  .required(data.descriptionStep1.title.error[1])
+export const TitleFieldValidationSchema = string().max(30, 'max length error').required('required error')
 
 const TitleField = ({ formik }) => (
   <>
-    <FieldTitle info={data.descriptionStep1.title.info}>{data.descriptionStep1.title.title}</FieldTitle>
+    <FieldTitle info="info">Titel*</FieldTitle>
     <Input
       name="title"
       maxLength={30}
       value={formik.values.title}
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
-      placeholder={data.descriptionStep1.title.placeholder}
+      placeholder="Wer oder was wird gesucht?"
       color="whiteLilac800"
     />
     {formik?.errors?.title && formik.touched?.title && (

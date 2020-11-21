@@ -50,10 +50,18 @@
   @apply border-2 text-lilac-800 bg-lilac-300 hover:shadow-outline:lilac-700 focus:shadow-outline:lilac-700 border-lilac-800;
 }
 
-.nz-btn-outline-lilac800 {
+.nz-btn-filled--livid800 {
+  @apply border-2 text-livid-800 bg-livid-200 border-livid-800 hover:shadow-outline:livid-700 focus:shadow-outline:livid-700;
+}
+
+.nz-btn-outline--livid800 {
+  @apply border-2 border-livid-800 text-livid-800 hover:shadow-outline:livid-700 focus:shadow-outline:livid-700;
+}
+
+.nz-btn-outline--lilac800 {
   @apply border-2 border-lilac-800 text-lilac-800 hover:shadow-outline:lilac-700 focus:shadow-outline:lilac-700;
 }
 
-.nz-btn-outline-warning {
+.nz-btn-outline--warning {
   @apply border-2 border-warning text-warning hover:shadow-outline:warning focus:shadow-outline:warning;
 }

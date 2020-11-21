@@ -3,7 +3,7 @@ import { useRadioState, RadioGroup } from 'reakit/Radio'
 
 import { Text, Radiobox } from 'ui-library/stories/atoms'
 import { createProjectData as data } from '~/assets/data'
-import FieldTitle from './FieldTitle'
+import { FieldTitle } from '~/components'
 
 const VisibilityField = ({ formik, ...props }) => {
   const radio = useRadioState({ state: formik.values.visibility })

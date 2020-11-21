@@ -5,8 +5,10 @@ import { SelectColor } from './Select.theme'
 import { ChevronDown } from 'react-feather'
 
 const Select = ({ children, className, placeholder, color = 'lilac800', ...props }) => (
-  <div className={classnames('relative rounded-md cursor-pointer', SelectColor[color], className)} {...props}>
-    <select className="inline-block w-full py-2 pl-3 pr-10 font-semibold bg-transparent appearance-none cursor-pointer text-md focus:outline-none">
+  <div className={classnames('relative rounded-md cursor-pointer', SelectColor[color], className)}>
+    <select
+      className="inline-block w-full py-2 pl-3 pr-10 font-semibold bg-transparent appearance-none cursor-pointer text-md focus:outline-none"
+      {...props}>
       {placeholder && <option>{placeholder}</option>}
       {children}
     </select>

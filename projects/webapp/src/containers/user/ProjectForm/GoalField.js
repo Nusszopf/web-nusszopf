@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { string } from 'yup'
 import { Text, Input } from 'ui-library/stories/atoms'
 import { createProjectData as data } from '~/assets/data'
-import FieldTitle from './FieldTitle'
+import { FieldTitle } from '~/components'
 
 export const GoalFieldValidationSchema = string()
   .max(150, data.descriptionStep1.goal.error[0])

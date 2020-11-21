@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 import { Switch } from 'ui-library/stories/atoms'
-import FieldTitle from './FieldTitle'
+import { FieldTitle } from '~/components'
 
 const ContactField = ({ formik, user, ...props }) => (
   <>

@@ -8,5 +8,5 @@
 }
 
 [data-reach-dialog-content] {
-  @apply w-full h-auto mx-auto outline-none sm:max-w-xl sm:mt-12;
+  @apply w-full h-auto mx-auto outline-none sm:max-w-xl sm:my-12;
 }

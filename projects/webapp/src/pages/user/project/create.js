@@ -13,6 +13,7 @@ import {
   DescriptionStep1,
   DescriptionStep2,
   SettingsStep,
+  RequestsStep,
   Navigation,
   step1ValidationSchema,
   step2ValidationSchema,
@@ -46,6 +47,7 @@ const CreateProject = () => {
           title: '',
           goal: '',
           description: emptyRichText,
+          requests: [],
           location: {
             remote: true,
             searchTerm: '',
@@ -79,6 +81,7 @@ const CreateProject = () => {
                 <Stepper {...stepper}>
                   <DescriptionStep1 validationSchema={step1ValidationSchema} />
                   <DescriptionStep2 validationSchema={step2ValidationSchema} />
+                  <RequestsStep />
                   <SettingsStep />
                 </Stepper>
                 <FramedGridCard.Body.Col variant="oneCol" className="mt-12 mb-4 md:mb-0 lg:col-start-2">

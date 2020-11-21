@@ -5,7 +5,7 @@ import { isMatch, compareDesc } from 'date-fns'
 import { Text, Input, Switch } from 'ui-library/stories/atoms'
 import { parseDate } from '~/utils/helper'
 import { createProjectData as data } from '~/assets/data'
-import FieldTitle from './FieldTitle'
+import { FieldTitle } from '~/components'
 
 export const PeriodFieldValidationSchema = object().shape({
   from: string().when(['flexible'], {
