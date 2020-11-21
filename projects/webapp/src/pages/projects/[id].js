@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 import { MapPin, Calendar, Send, Share2 } from 'react-feather'
 import { isValid } from 'date-fns'
@@ -13,9 +13,11 @@ import { GET_PROJECT } from '~/utils/hasura/queries/projects.query'
 import { initializeApollo } from '~/utils/libs/apolloClient'
 import { projectData } from '~/assets/data'
 import { Page } from '~/components'
-import { RequestCard } from '~/containers/projects'
+import { RequestCard, RequestDialog } from '~/containers/projects'
 
 const Project = ({ id }) => {
+  const [currentRequest, setCurrentRequest] = useState()
+  const [showDialog, setShowDialog] = useState(false)
   const { data } = apollo.useGetProject(id)
   const { notify } = useToasts()
 
@@ -60,9 +62,20 @@ const Project = ({ id }) => {
     }
   }
 
+  const openRequest = request => {
+    setShowDialog(true)
+    setCurrentRequest(request)
+  }
+
+  const closeRequest = () => {
+    setShowDialog(false)
+    setCurrentRequest(null)
+  }
+
   const handleContact = () => {
     // todo
     // open email client or modal
+    console.log('contact')
   }
 
   return (
@@ -153,7 +166,7 @@ const Project = ({ id }) => {
             {data?.projects_by_pk?.requests?.length > 0 ? (
               <>
                 {data.projects_by_pk.requests.map((request, index) => (
-                  <RequestCard key={`requests-${index}`} request={request} className="mt-4" onClick={console.log} />
+                  <RequestCard key={`requests-${index}`} request={request} className="mt-4" onClick={openRequest} />
                 ))}
               </>
             ) : (
@@ -167,6 +180,7 @@ const Project = ({ id }) => {
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
       </FramedGridCard>
+      <RequestDialog isOpen={showDialog} onDismiss={closeRequest} onContact={handleContact} request={currentRequest} />
     </Page>
   )
 }
