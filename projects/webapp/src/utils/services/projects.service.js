@@ -12,6 +12,9 @@ const useProjectsService = () => {
   const [apolloUpdateProject, { loading: updateLoading }] = apollo.useUpdateProject()
   const [apolloAddProject, { loading: addLoading }] = apollo.useAddProject()
   const [apolloAddRequests, { loading: addRequestsLoading }] = apollo.useAddRequests()
+  const [apolloAddRequest, { loading: addRequestLoading }] = apollo.useAddRequest()
+  const [apolloUpdateRequest, { loading: updateRequestLoading }] = apollo.useUpdateRequest()
+  const [apolloDeleteRequest, { loading: deleteRequestLoading }] = apollo.useDeleteRequest()
 
   const serializeRequest = (id, request) => {
     return {
@@ -73,9 +76,7 @@ const useProjectsService = () => {
     })
     try {
       // todo update cache
-      const res = await apolloAddProject({
-        variables: { project },
-      })
+      const res = await apolloAddProject({ variables: { project } })
       if (form.requests.length > 0) {
         const requests = form.requests.map(request => serializeRequest(res.data.insert_projects_one.id, request))
         await apolloAddRequests({ variables: { requests } })
@@ -147,14 +148,98 @@ const useProjectsService = () => {
     }
   }
 
+  const addRequest = async (id, _request) => {
+    notify({
+      type: 'loading',
+      message: 'Gesuch erstellen...',
+    })
+    try {
+      const request = serializeRequest(id, _request)
+      await apolloAddRequest({ variables: { request } })
+      notify({
+        type: 'success',
+        message: 'Dein Gesuch wurde erstellt.',
+      })
+      return true
+    } catch (error) {
+      notify({
+        type: 'error',
+        message: 'Sorry, dein Gesuch konnte nicht erstellt werden.',
+      })
+      return false
+    }
+  }
+
+  const updateRequest = async _request => {
+    notify({
+      type: 'loading',
+      message: 'Änderungen speichern...',
+    })
+    try {
+      const { created_at, ...request } = serializeRequest(_request.project_id, _request)
+      console.log(request)
+      await apolloUpdateRequest({ variables: { id: _request.id, request } })
+      notify({
+        type: 'success',
+        message: 'Dein Gesuch wurde aktualisiert.',
+      })
+      return true
+    } catch (error) {
+      notify({
+        type: 'error',
+        message: 'Sorry, dein Gesuch konnte nicht aktualisiert werden.',
+      })
+      return false
+    }
+  }
+
+  const deleteRequest = async id => {
+    const hasConfirmed = confirm('Möchtest Du dein Gesuch wirklich löschen?')
+    if (hasConfirmed) {
+      notify({
+        type: 'loading',
+        message: 'Löschen...',
+      })
+      try {
+        await apolloDeleteRequest({
+          variables: { id },
+          update: (cache, { data }) => {
+            // todo
+            console.log(cache)
+            cache.evict({ id: `requests:${data.delete_requests_by_pk.id}` })
+          },
+        })
+        notify({
+          type: 'success',
+          message: 'Dein Gesuch wurde gelöscht.',
+        })
+        return true
+      } catch (error) {
+        notify({
+          type: 'error',
+          message: 'Sorry, dein Gesuch konnte nicht gelöscht werden.',
+        })
+        return false
+      }
+    } else {
+      return false
+    }
+  }
+
   return {
     addProject,
     updateProject,
     deleteProject,
+    deleteRequest,
+    addRequest,
+    updateRequest,
     addLoading,
     updateLoading,
     deleteLoading,
     addRequestsLoading,
+    addRequestLoading,
+    deleteRequestLoading,
+    updateRequestLoading,
     serializeProjectSettings,
     serializeProjectDescription,
     serializeProject,
