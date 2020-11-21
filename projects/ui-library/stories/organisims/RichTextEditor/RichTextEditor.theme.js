@@ -41,4 +41,11 @@ export const ThemeColor = {
     text: 'text-lilac-800',
     active: 'bg-lilac-300',
   },
+  livid: {
+    border: 'border-livid-800',
+    bg: 'bg-livid-400',
+    hover: 'hover:bg-livid-300',
+    text: 'text-livid-800',
+    active: 'bg-livid-300',
+  },
 }

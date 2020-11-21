@@ -8,7 +8,9 @@ export const TitleFieldValidationSchema = string().max(30, 'max length error').r
 
 const TitleField = ({ formik }) => (
   <>
-    <FieldTitle info="info">Titel*</FieldTitle>
+    <FieldTitle color="livid800" info="info">
+      Titel*
+    </FieldTitle>
     <Input
       name="title"
       maxLength={30}
@@ -16,7 +18,7 @@ const TitleField = ({ formik }) => (
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
       placeholder="Wer oder was wird gesucht?"
-      color="whiteLilac800"
+      color="livid800"
     />
     {formik?.errors?.title && formik.touched?.title && (
       <Text variant="textXs" className="mt-2 ml-4 italic">

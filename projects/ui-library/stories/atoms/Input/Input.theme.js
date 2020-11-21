@@ -9,4 +9,5 @@ export const InputColor = {
   yellow300Blue400: 'nz-input-yellow300Blue400',
   whiteBlue400: 'nz-input-whiteBlue400',
   whiteLilac800: 'nz-input-whiteLilac800',
+  livid800: 'nz-input-livid800',
 }

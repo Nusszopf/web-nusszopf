@@ -9,7 +9,7 @@ const Input = ({ as = ReakitInput, size = 'base', color = 'whiteGray600', classN
   <Box
     as={as}
     className={classnames(
-      'inline-block w-full transition-shadow duration-150 ease-in-out rounded-lg appearance-none focus:outline-none disabled:opacity-50 disabled:cursor-default',
+      'inline-block w-full bg-transparent transition-shadow duration-150 ease-in-out rounded-lg appearance-none focus:outline-none focus:placeholder-transparent disabled:opacity-50 disabled:cursor-default',
       InputColor[color],
       InputSize[size],
       className

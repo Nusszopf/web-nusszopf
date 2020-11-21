@@ -24,11 +24,12 @@ export const DescriptionFieldValidationSchema = mixed()
 
 const DescriptionField = ({ formik, ...props }) => (
   <>
-    <FieldTitle info={data.descriptionStep1.project.info} {...props}>
+    <FieldTitle color="livid800" info={data.descriptionStep1.project.info} {...props}>
       {data.descriptionStep1.project.title}
     </FieldTitle>
     <RichTextEditor
       name="description"
+      color="livid"
       onChange={value => formik.setFieldValue('description', value)}
       onBlur={() => formik.setFieldTouched('description')}
       initialState={formik.values.description}
