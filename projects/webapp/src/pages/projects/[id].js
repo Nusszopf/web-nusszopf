@@ -9,10 +9,11 @@ import { FramedGridCard } from 'ui-library/stories/templates'
 import { serializeJSX } from 'ui-library/services/RichTextEditor.service'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import apollo from '~/utils/services/apollo.service'
-import { Page } from '~/components'
 import { GET_PROJECT } from '~/utils/hasura/queries/projects.query'
 import { initializeApollo } from '~/utils/libs/apolloClient'
 import { projectData } from '~/assets/data'
+import { Page } from '~/components'
+import { RequestCard } from '~/containers/projects'
 
 const Project = ({ id }) => {
   const { data } = apollo.useGetProject(id)
@@ -152,7 +153,7 @@ const Project = ({ id }) => {
             {data?.projects_by_pk?.requests?.length > 0 ? (
               <>
                 {data.projects_by_pk.requests.map((request, index) => (
-                  <p key={`requests-${index}`}>{request.title}</p>
+                  <RequestCard key={`requests-${index}`} request={request} className="mt-4" onClick={console.log} />
                 ))}
               </>
             ) : (
