@@ -197,7 +197,7 @@ const Project = ({ id, user }) => {
 
 export async function getServerSideProps(ctx) {
   const { id } = ctx.query
-  const apolloClient = initializeApollo()
+  const apolloClient = initializeApollo(null, ctx)
   try {
     const res = await apolloClient.query({
       query: GET_PROJECT,

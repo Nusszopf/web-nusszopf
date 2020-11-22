@@ -42,11 +42,7 @@ const Profile = () => {
   }
 
   return (
-    <Page
-      navHeader={{ visible: true, goBackUri: 'back' }}
-      showFooter={false}
-      noindex={true}
-      className="text-gray-600 bg-gray-100">
+    <Page navHeader={{ visible: true }} showFooter={false} noindex={true} className="text-gray-600 bg-gray-100">
       <FramedGridCard
         className="lg:mb-20 lg:mt-12"
         bodyColor="bg-white lg:bg-gray-100"
