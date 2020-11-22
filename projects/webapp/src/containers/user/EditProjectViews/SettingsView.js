@@ -42,7 +42,7 @@ const SettingsView = ({ user, project }) => {
                 </Button>
               </div>
             </FramedGridCard.Body.Col>
-            <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4 text-warning">
+            <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4 text-warning-400">
               <Text className="mb-2">Projekt löschen</Text>
               <Text className="mb-6" variant="textSm">
                 Nach dem Löschen können die Daten nicht wieder hergestellt werden.

@@ -33,7 +33,15 @@ module.exports = {
       current: 'currentColor',
       black: '#000',
       white: '#fff',
-      warning: '#EA5E12',
+      warning: {
+        100: '#FFEEE5',
+        200: '#FDD1B9',
+        300: '#F8A87C',
+        400: '#EA5E12',
+        500: '#D5520B',
+        600: '#B84405',
+        700: '#993600',
+      },
       gray: {
         50: '#F6F8F9',
         100: '#ECEFF1',

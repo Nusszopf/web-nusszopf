@@ -177,7 +177,7 @@ const Settings = () => {
             </InfoCard>
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2">
-            <div id="delete" className="mt-10 text-warning">
+            <div id="delete" className="mt-10 text-warning-400">
               <Text variant="textMd" className="mb-2">
                 {settingsData.delete.title}
               </Text>

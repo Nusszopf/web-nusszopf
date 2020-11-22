@@ -63,5 +63,5 @@
 }
 
 .nz-btn-outline--warning {
-  @apply border-2 border-warning text-warning hover:shadow-outline:warning focus:shadow-outline:warning;
+  @apply border-2 border-warning-400 text-warning-400 hover:shadow-outline:warning focus:shadow-outline:warning;
 }

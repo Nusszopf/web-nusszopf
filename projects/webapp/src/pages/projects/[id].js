@@ -2,20 +2,22 @@ import { useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 import { MapPin, Calendar, Send, Share2 } from 'react-feather'
 import { isValid } from 'date-fns'
+import classnames from 'classnames'
 
 import { Text, Button, Link } from 'ui-library/stories/atoms'
 import { InfoCard } from 'ui-library/stories/molecules'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { serializeJSX } from 'ui-library/services/RichTextEditor.service'
 import { useToasts } from 'ui-library/services/Toasts.service'
+import auth0 from '~/utils/libs/auth0'
 import apollo from '~/utils/services/apollo.service'
 import { GET_PROJECT } from '~/utils/hasura/queries/projects.query'
 import { initializeApollo } from '~/utils/libs/apolloClient'
 import { projectData } from '~/assets/data'
 import { Page } from '~/components'
-import { RequestCard, RequestDialog } from '~/containers/projects'
+import { RequestCard, RequestDialog, Banner } from '~/containers/projects'
 
-const Project = ({ id }) => {
+const Project = ({ id, user }) => {
   const [currentRequest, setCurrentRequest] = useState()
   const [showDialog, setShowDialog] = useState(false)
   const { data } = apollo.useGetProject(id)
@@ -86,6 +88,7 @@ const Project = ({ id }) => {
       showFooter={false}
       noindex={true}
       className="text-lilac-800 bg-lilac-100">
+      <Banner project={data.projects_by_pk} user={user} />
       <FramedGridCard
         className="lg:mb-20 lg:mt-12"
         bodyColor="bg-white lg:bg-lilac-100"
@@ -164,11 +167,16 @@ const Project = ({ id }) => {
             )}
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="twoCols" className="row-start-1 100 lg:row-start-auto lg:ml-16">
-            <Text>Aktuelle Gesuche</Text>
+            <Text className="mb-4">Aktuelle Gesuche</Text>
             {data?.projects_by_pk?.requests?.length > 0 ? (
               <>
                 {data.projects_by_pk.requests.map((request, index) => (
-                  <RequestCard key={`requests-${index}`} request={request} className="mt-4" onClick={openRequest} />
+                  <RequestCard
+                    key={`requests-${index}`}
+                    request={request}
+                    className={classnames({ 'mt-2': index > 0 })}
+                    onClick={openRequest}
+                  />
                 ))}
               </>
             ) : (
@@ -200,14 +208,23 @@ export async function getServerSideProps(ctx) {
         notFound: true,
       }
     } else {
+      let user = 'anonymous'
+      try {
+        const session = await auth0.getSession(ctx.req)
+        user = session.user.sub
+      } catch (error) {
+        console.log(error)
+      }
       return {
         props: {
           id,
+          user: user,
           initialApolloState: apolloClient.cache.extract(),
         },
       }
     }
   } catch (error) {
+    console.log(error)
     return {
       notFound: true,
     }
@@ -216,6 +233,7 @@ export async function getServerSideProps(ctx) {
 
 Project.propTypes = {
   id: PropTypes.string,
+  user: PropTypes.string,
 }
 
 export default Project

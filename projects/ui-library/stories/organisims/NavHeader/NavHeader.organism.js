@@ -146,7 +146,10 @@ const NavHeader = ({ user, goBackUri, sticky = false }) => {
                 <Text variant="textSmMedium">Datenschutz</Text>
               </MenuItem>
               {user && (
-                <MenuItem {...menu} onClick={handleLogout} className="block py-2 ml-10 focus:outline-none text-warning">
+                <MenuItem
+                  {...menu}
+                  onClick={handleLogout}
+                  className="block py-2 ml-10 focus:outline-none text-warning-400">
                   <Text variant="textSmMedium">Ausloggen</Text>
                 </MenuItem>
               )}
