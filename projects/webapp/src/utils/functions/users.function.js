@@ -12,7 +12,6 @@ export const handleDeleteUser = async ({ id, email }, res) => {
     domain: process.env.AUTH0_MANAGEMENT_DOMAIN,
     scope: 'delete:users',
   })
-  // projects / searchings / offers / ...
   await deleteLead(email)
   await management.deleteUser({ id })
 

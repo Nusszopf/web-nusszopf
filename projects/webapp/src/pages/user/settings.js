@@ -60,7 +60,7 @@ const Settings = () => {
         await deleteUser({
           variables: { id: user.data.id },
         })
-        router.push('/')
+        router.push('/api/logout')
         notify({ type: 'success', message: 'Dein Account wurde gelöscht.' })
       } catch (error) {
         notify({ type: 'error', message: 'Sorry, da lief was schief.' })

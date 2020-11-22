@@ -7,7 +7,7 @@ import { truncate } from 'lodash'
 import { Text } from 'ui-library/stories/atoms'
 import { Menu } from 'ui-library/stories/molecules'
 import { PROJECT } from '~/utils/enums'
-import { profileData } from '~/assets/data'
+import { RequestCard } from '~/components'
 
 const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project, className, ...props }) => (
   <div
@@ -21,14 +21,10 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
       <Text variant="textSm" className="mt-2 hyphens-auto">
         {truncate(project.goal, { length: 90 })}
       </Text>
-      <div className="flex flex-col mt-6 sm:flex-row lg:flex-col">
-        <Text variant="textXs" className="sm:mr-4 lg:mr-0">
-          <span className="mr-2 font-medium">todo</span>
-          {profileData.project.searchings}
-        </Text>
-        <Text variant="textXs">
-          {profileData.project.date} {new Date(project.created_at).toLocaleDateString('de-DE')}
-        </Text>
+      <div className="flex flex-col mt-4 sm:flex-row lg:flex-col">
+        {project?.requests?.map((request, index) => (
+          <RequestCard key={`rq-${index}`} request={request} className={index > 0 && 'mt-2'} />
+        ))}
       </div>
     </Clickable>
     <div className="flex flex-col items-end justify-between">
@@ -80,6 +76,7 @@ EditProjectCard.propTypes = {
     visibility: PropTypes.oneOf[('private', 'public')],
     searchings: PropTypes.array,
     created_at: PropTypes.string,
+    requests: PropTypes.array,
   }),
 }
 
