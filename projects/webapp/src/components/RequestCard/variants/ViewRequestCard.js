@@ -4,9 +4,9 @@ import classnames from 'classnames'
 import { ChevronRight } from 'react-feather'
 
 import { Text } from 'ui-library/stories/atoms'
-import { RequestCategoryColor } from '~/styles/theme'
+import { RequestCategoryColor } from '../RequestCard.theme'
 
-const RequestCard = ({ onClick, request, className, ...props }) => (
+const ViewRequestCard = ({ onClick, request, className, ...props }) => (
   <Clickable
     onClick={() => onClick(request)}
     className={classnames(
@@ -23,10 +23,10 @@ const RequestCard = ({ onClick, request, className, ...props }) => (
   </Clickable>
 )
 
-RequestCard.propTypes = {
+ViewRequestCard.propTypes = {
   className: PropTypes.string,
   onClick: PropTypes.func,
   request: PropTypes.object,
 }
 
-export default RequestCard
+export default ViewRequestCard

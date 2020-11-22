@@ -5,7 +5,7 @@ import { MoreHorizontal } from 'react-feather'
 
 import { Text } from 'ui-library/stories/atoms'
 import { Menu } from 'ui-library/stories/molecules'
-import { RequestCategoryColor } from '~/styles/theme'
+import { RequestCategoryColor } from '../RequestCard.theme'
 
 const EditRequestCard = ({ onEdit, onDelete, request, className, ...props }) => (
   <div

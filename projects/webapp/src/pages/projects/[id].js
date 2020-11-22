@@ -14,8 +14,8 @@ import apollo from '~/utils/services/apollo.service'
 import { GET_PROJECT } from '~/utils/hasura/queries/projects.query'
 import { initializeApollo } from '~/utils/libs/apolloClient'
 import { projectData } from '~/assets/data'
-import { Page } from '~/components'
-import { RequestCard, RequestDialog, Banner } from '~/containers/projects'
+import { Page, RequestCard } from '~/components'
+import { RequestDialog, Banner } from '~/containers/projects'
 
 const Project = ({ id, user }) => {
   const [currentRequest, setCurrentRequest] = useState()
@@ -148,7 +148,7 @@ const Project = ({ id, user }) => {
           </div>
         </FramedGridCard.Header>
         <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
-          <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2">
+          <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2 lg:pr-4">
             <div>
               <Text className="mb-2">{projectData.body.what}</Text>
               <div className="text-lg">{data?.projects_by_pk?.descriptionTemplate.map(node => serializeJSX(node))}</div>
@@ -166,13 +166,14 @@ const Project = ({ id, user }) => {
               </div>
             )}
           </FramedGridCard.Body.Col>
-          <FramedGridCard.Body.Col variant="twoCols" className="row-start-1 100 lg:row-start-auto lg:ml-16">
+          <FramedGridCard.Body.Col variant="twoCols" className="row-start-1 100 lg:row-start-auto lg:pl-4">
             <Text className="mb-4">Aktuelle Gesuche</Text>
             {data?.projects_by_pk?.requests?.length > 0 ? (
               <>
                 {data.projects_by_pk.requests.map((request, index) => (
                   <RequestCard
                     key={`requests-${index}`}
+                    variant="view"
                     request={request}
                     className={classnames({ 'mt-2': index > 0 })}
                     onClick={openRequest}

@@ -1,5 +1,10 @@
+export const RequestVariant = {
+  view: 'view',
+  preview: 'preview',
+  edit: 'edit',
+}
+
 export const RequestCategoryColor = {
-  default: 'bg-lilac-300',
   companions: 'bg-red-300',
   rooms: 'bg-yellow-300',
   materials: 'bg-turquoise-300',

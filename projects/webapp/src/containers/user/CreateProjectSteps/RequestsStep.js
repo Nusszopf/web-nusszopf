@@ -8,7 +8,8 @@ import { FramedGridCard } from 'ui-library/stories/templates'
 import { Text, Button } from 'ui-library/stories/atoms'
 import { InfoCard } from 'ui-library/stories/molecules'
 import { useScrollTop } from '~/utils/helper'
-import { EditRequestCard, EditRequestDialog } from '~/containers'
+import { EditRequestDialog } from '~/containers'
+import { RequestCard } from '~/components'
 
 const RequestsStep = () => {
   useScrollTop()
@@ -71,8 +72,9 @@ const RequestsStep = () => {
         {projectFormik.values.requests.length > 0 ? (
           <>
             {projectFormik.values.requests.map((request, index) => (
-              <EditRequestCard
+              <RequestCard
                 key={`r-${index}`}
+                variant="edit"
                 request={request}
                 onEdit={onEdit}
                 onDelete={handleDelete}

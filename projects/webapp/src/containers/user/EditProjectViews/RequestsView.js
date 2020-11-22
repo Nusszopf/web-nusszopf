@@ -6,6 +6,7 @@ import classnames from 'classnames'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { Button, Text } from 'ui-library/stories/atoms'
 import { EditRequestCard, EditRequestDialog } from '~/containers'
+import { RequestCard } from '~/components'
 import { InfoCard } from 'ui-library/stories/molecules'
 import useProjectsService from '~/utils/services/projects.service'
 
@@ -66,8 +67,9 @@ const RequestsView = ({ project }) => {
         {project?.requests?.length > 0 ? (
           <>
             {project?.requests?.map((request, index) => (
-              <EditRequestCard
+              <RequestCard
                 key={`r-${index}`}
+                variant="edit"
                 request={request}
                 onEdit={onEdit}
                 onDelete={handleDelete}

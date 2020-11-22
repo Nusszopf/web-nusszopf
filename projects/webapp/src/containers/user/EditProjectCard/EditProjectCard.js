@@ -23,7 +23,7 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
       </Text>
       <div className="flex flex-col mt-4 sm:flex-row lg:flex-col">
         {project?.requests?.map((request, index) => (
-          <RequestCard key={`rq-${index}`} request={request} className={index > 0 && 'mt-2'} />
+          <RequestCard key={`rq-${index}`} variant="preview" request={request} className={index > 0 && 'mt-2'} />
         ))}
       </div>
     </Clickable>
