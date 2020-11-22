@@ -14,7 +14,9 @@ const Banner = ({ project, user }) => {
       <Frame className="text-warning-700">
         <div className="relative flex items-center">
           <Text variant="textSm" className="pr-18">
-            So sieht dein Projekt für andere Nusszöpfe aus.{' '}
+            {project.visibility === 'public'
+              ? 'So sieht dein Projekt für andere Nusszöpfe aus.'
+              : 'Dein Projekt ist gerade nur für dich sichtbar!'}{' '}
             <Route
               href={`/user/project/${project.id}/edit`}
               title="Projekt bearbeiten"

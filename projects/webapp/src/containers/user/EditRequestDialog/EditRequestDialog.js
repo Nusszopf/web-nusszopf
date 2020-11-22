@@ -15,7 +15,6 @@ import {
   CategoryField,
   CategoryFieldValidationSchema,
 } from '~/containers/user/RequestForm'
-import { CategoryColor } from './EditRequestDialog.theme'
 
 const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValues }) => {
   const handleSubmit = values => {
@@ -27,13 +26,7 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
   }
 
   return (
-    <Dialog
-      isOpen={isOpen}
-      onDismiss={onDismiss}
-      className={classnames('text-livid-800', {
-        'bg-livid-200': !initialValues,
-        [`${CategoryColor[initialValues?.category]}`]: initialValues,
-      })}>
+    <Dialog isOpen={isOpen} onDismiss={onDismiss} className="text-livid-800 bg-livid-200">
       <Formik
         initialValues={
           initialValues ?? {

@@ -71,11 +71,11 @@ export default {
       info: 'Wähle aus, für wen das Projekt sichtbar sein soll: alle oder Personen mit Zugang zum Link.',
       public: {
         title: 'Öffentlich',
-        description: 'Projekt kann über Nusszopf und Suchmaschinen gefunden werden.',
+        description: 'Dein Projekt kann geteilt werden und über Nusszopf und Suchmaschinen gefunden werden.',
       },
       private: {
         title: 'Privat',
-        description: 'Projekt ist nur zugänglich unter einem geheimen Link.',
+        description: 'Dein Projekt ist erstmal nur für dich sichtbar und kann später veröffentlicht werden.',
       },
     },
     contact: {

@@ -5,13 +5,13 @@ import { MoreHorizontal } from 'react-feather'
 
 import { Text } from 'ui-library/stories/atoms'
 import { Menu } from 'ui-library/stories/molecules'
-import { CategoryColor } from './EditRequestCard.theme'
+import { RequestCategoryColor } from '~/styles/theme'
 
 const EditRequestCard = ({ onEdit, onDelete, request, className, ...props }) => (
   <div
     className={classnames(
       'w-full flex hyphens-auto text-livid-800 transition-shadow duration-150 ease-in-out rounded-lg cursor-pointer hover:shadow-outline:lilac-700 focus:shadow-outline:lilac-700',
-      CategoryColor[request.category],
+      RequestCategoryColor[request.category],
       className
     )}
     {...props}>

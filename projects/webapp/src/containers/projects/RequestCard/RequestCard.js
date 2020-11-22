@@ -4,14 +4,14 @@ import classnames from 'classnames'
 import { ChevronRight } from 'react-feather'
 
 import { Text } from 'ui-library/stories/atoms'
-import { CategoryColor } from './RequestCard.theme'
+import { RequestCategoryColor } from '~/styles/theme'
 
 const RequestCard = ({ onClick, request, className, ...props }) => (
   <Clickable
     onClick={() => onClick(request)}
     className={classnames(
       'w-full flex focus:outline-none text-livid-800 p-4 justify-between items-center transition-shadow duration-150 ease-in-out rounded-lg cursor-pointer hover:shadow-outline:lilac-700 focus:shadow-outline:lilac-700',
-      CategoryColor[request.category],
+      RequestCategoryColor[request.category],
       className
     )}
     {...props}>
