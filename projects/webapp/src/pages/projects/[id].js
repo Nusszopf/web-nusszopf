@@ -81,6 +81,8 @@ const Project = ({ id }) => {
   return (
     <Page
       navHeader={{ visible: true, goBackUri: '/user/profile' }}
+      title={data.projects_by_pk.title}
+      description={data.projects_by_pk.goal}
       showFooter={false}
       noindex={true}
       className="text-lilac-800 bg-lilac-100">

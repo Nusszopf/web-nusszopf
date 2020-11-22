@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "babel-plugin-graphql-tag": "3.1.0",
-    "globby": "11.0.1"
+    "globby": "11.0.1",
+    "node-fetch": "2.6.1"
   }
 }
