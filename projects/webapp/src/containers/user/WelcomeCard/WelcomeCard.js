@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import { Text } from 'ui-library/stories/atoms'
 import { SVGNusszopfLogoSmall } from '~/assets/logos'
 
-const NusszopfCard = ({ title, description, greetings, className, ...props }) => (
+const WelcomeCard = ({ title, description, greetings, className, ...props }) => (
   <div
     className={classnames(
       'flex flex-col w-full items-center justify-end p-6 rounded-lg md:p-8 md:px-12 lg:px-16 md:flex-row-reverse md:flex-row bg-lilac-300 text-lilac-800',
@@ -26,11 +26,11 @@ const NusszopfCard = ({ title, description, greetings, className, ...props }) =>
   </div>
 )
 
-NusszopfCard.propTypes = {
+WelcomeCard.propTypes = {
   className: PropTypes.string,
   title: PropTypes.string,
   description: PropTypes.string,
   greetings: PropTypes.string,
 }
 
-export default NusszopfCard
+export default WelcomeCard

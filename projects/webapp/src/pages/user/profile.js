@@ -9,7 +9,7 @@ import { Masonry } from 'ui-library/stories/organisims'
 import apollo from '~/utils/services/apollo.service'
 import useProjectsService from '~/utils/services/projects.service'
 import { PROJECT } from '~/utils/enums'
-import { EditProjectCard, NusszopfCard } from '~/containers'
+import { EditProjectCard, WelcomeCard } from '~/containers'
 import { Page } from '~/components'
 import { useEntireUser } from '~/utils/services/auth.service'
 import { profileData } from '~/assets/data'
@@ -86,7 +86,7 @@ const Profile = () => {
                 ))}
               </Masonry>
             ) : (
-              <NusszopfCard
+              <WelcomeCard
                 title={profileData.welcome.title}
                 description={profileData.welcome.description}
                 greetings={profileData.welcome.greetings}
