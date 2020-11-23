@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import { Formik, Form } from 'formik'
 import { object } from 'yup'
-import classnames from 'classnames'
 import { X } from 'react-feather'
 
 import { Button } from 'ui-library/stories/atoms'

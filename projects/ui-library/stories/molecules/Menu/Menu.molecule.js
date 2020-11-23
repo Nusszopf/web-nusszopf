@@ -17,7 +17,7 @@ const MyMenu = ({ label, items, color = 'lilac700', variant = 'icon', ...props }
         </Button>
       )}
       {variant === MenuVariant.icon && (
-        <MenuButton className="m-4 focus:outline-none" {...props}>
+        <MenuButton className="mx-4 my-2 focus:outline-none" {...props}>
           {label}
         </MenuButton>
       )}
