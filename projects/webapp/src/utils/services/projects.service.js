@@ -6,13 +6,14 @@ import { serializeText } from 'ui-library/services/RichTextEditor.service'
 import { NZ_EMAIL } from '../enums'
 import { parseDateISOString } from '../helper'
 
-const useProjectsService = () => {
+const useProjectsService = props => {
   const { notify } = useToasts()
   const [apolloDeleteProject, { loading: deleteLoading }] = apollo.useDeleteProject()
   const [apolloUpdateProject, { loading: updateLoading }] = apollo.useUpdateProject()
-  const [apolloAddProject, { loading: addLoading }] = apollo.useAddProject()
+  const [apolloAddProject, { loading: addLoading }] = apollo.useAddProject(props?.user?.data?.id)
+
   const [apolloAddRequests, { loading: addRequestsLoading }] = apollo.useAddRequests()
-  const [apolloAddRequest, { loading: addRequestLoading }] = apollo.useAddRequest()
+  const [apolloAddRequest, { loading: addRequestLoading }] = apollo.useAddRequest(props?.project?.id)
   const [apolloUpdateRequest, { loading: updateRequestLoading }] = apollo.useUpdateRequest()
   const [apolloDeleteRequest, { loading: deleteRequestLoading }] = apollo.useDeleteRequest()
 
@@ -177,7 +178,6 @@ const useProjectsService = () => {
     })
     try {
       const { created_at, ...request } = serializeRequest(_request.project_id, _request)
-      console.log(request)
       await apolloUpdateRequest({ variables: { id: _request.id, request } })
       notify({
         type: 'success',

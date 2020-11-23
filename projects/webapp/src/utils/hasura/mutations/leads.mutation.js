@@ -19,6 +19,7 @@ export const UPDATE_LEAD = gql`
       id
       email
       name
+      hasConfirmed
     }
   }
 `

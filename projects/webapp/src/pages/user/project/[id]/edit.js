@@ -10,7 +10,7 @@ import { Page } from '~/components'
 import { ProjectView, RequestsView, SettingsView } from '~/containers'
 
 const projectEditData = {
-  nav: ['Beschreibung', 'Gesucht', 'Einstellungen'],
+  nav: ['Beschreibung', 'Gesuche', 'Einstellungen'],
 }
 
 const ProjectEdit = ({ id }) => {

@@ -5,7 +5,7 @@ import classnames from 'classnames'
 
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { Button, Text } from 'ui-library/stories/atoms'
-import { EditRequestCard, EditRequestDialog } from '~/containers'
+import { EditRequestDialog } from '~/containers'
 import { RequestCard } from '~/components'
 import { InfoCard } from 'ui-library/stories/molecules'
 import useProjectsService from '~/utils/services/projects.service'
@@ -18,7 +18,7 @@ const RequestsView = ({ project }) => {
     updateRequestLoading,
     addRequestLoading,
     deleteRequestLoading,
-  } = useProjectsService()
+  } = useProjectsService({ project })
   const [currentRequest, setCurrentRequest] = useState()
   const [showDialog, setShowDialog] = useState(false)
 
@@ -42,17 +42,13 @@ const RequestsView = ({ project }) => {
   }
 
   const handleCreate = async request => {
-    const isCreated = await addRequest(project.id, request)
-    if (isCreated) {
-      closeDialog()
-    }
+    await addRequest(project.id, request)
+    closeDialog()
   }
 
   const handleUpdate = async request => {
-    const isUpdated = await updateRequest(request)
-    if (isUpdated) {
-      closeDialog()
-    }
+    await updateRequest(request)
+    closeDialog()
   }
 
   return (

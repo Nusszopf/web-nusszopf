@@ -22,7 +22,7 @@ import { createProjectData as content } from '~/assets/data'
 
 const CreateProject = () => {
   const user = useEntireUser()
-  const { addProject, addLoading, addRequestsLoading } = useProjectsService()
+  const { addProject, addLoading, addRequestsLoading } = useProjectsService({ user })
   const router = useRouter()
   const stepper = useStepper()
 

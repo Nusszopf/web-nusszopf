@@ -29,13 +29,15 @@ const useDeleteLead = () =>
 const useUpdateLead = id =>
   useMutation(UPDATE_LEAD, {
     update: (cache, { data }) => {
+      const res = cache.readQuery({ query: GET_USER, variables: { id } })
       cache.writeQuery({
         query: GET_USER,
         variables: { id },
         data: {
           users_by_pk: {
+            ...res.users_by_pk,
             lead: {
-              id: data.update_leads_by_pk.id,
+              ...data.update_leads_by_pk,
             },
           },
         },
@@ -49,10 +51,19 @@ const useGetProject = id => useQuery(GET_PROJECT, { skip: !id, variables: { id }
 const useLazyGetProjects = id =>
   useLazyQuery(GET_USER_PROJECTS, {
     variables: { id },
-    fetchPolicy: 'cache-and-network',
   })
 
-const useAddProject = () => useMutation(INSERT_PROJECT)
+const useAddProject = id =>
+  useMutation(INSERT_PROJECT, {
+    update: (cache, { data }) => {
+      const res = cache.readQuery({ query: GET_USER_PROJECTS, variables: { id } })
+      cache.writeQuery({
+        query: GET_USER_PROJECTS,
+        variables: { id },
+        data: { projects: [data?.insert_projects_one, ...res.projects] },
+      })
+    },
+  })
 
 const useUpdateProject = () => useMutation(UPDATE_PROJECT)
 
@@ -65,9 +76,25 @@ const useDeleteProject = () =>
 
 // REQUESTS
 const useAddRequests = () => useMutation(INSERT_REQUESTS)
-const useAddRequest = () => useMutation(INSERT_REQUEST)
+const useAddRequest = id =>
+  useMutation(INSERT_REQUEST, {
+    update: (cache, { data }) => {
+      const res = cache.readQuery({ query: GET_PROJECT, variables: { id } })
+      const requests = [data.insert_requests_one, ...res.projects_by_pk.requests]
+      cache.writeQuery({
+        query: GET_PROJECT,
+        variables: { id },
+        data: { projects_by_pk: { ...res.projects_by_pk, requests } },
+      })
+    },
+  })
 const useUpdateRequest = () => useMutation(UPDATE_REQUEST)
-const useDeleteRequest = () => useMutation(DELETE_REQUEST)
+const useDeleteRequest = () =>
+  useMutation(DELETE_REQUEST, {
+    update: (cache, { data }) => {
+      cache.evict({ id: `requests:${data.delete_requests_by_pk.id}` })
+    },
+  })
 
 export default {
   useAddLead,

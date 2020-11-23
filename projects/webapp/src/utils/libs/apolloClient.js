@@ -37,7 +37,6 @@ const httpLink = new HttpLink({
   fetch,
 })
 
-// return the headers to the context so httpLink can read them
 const authLink = ctx =>
   setContext(async (req, { headers }) => {
     if (typeof window === 'undefined') {
@@ -59,7 +58,6 @@ const authLink = ctx =>
     }
   })
 
-// remove cached token on 401 from the server
 const resetTokenLink = onError(({ networkError }) => {
   if (networkError && networkError.name === 'ServerError' && networkError.statusCode === 401) {
     accessToken = null

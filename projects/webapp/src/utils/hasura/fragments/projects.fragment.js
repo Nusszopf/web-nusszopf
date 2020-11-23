@@ -17,7 +17,7 @@ export const ProjectFragment = gql`
     motto
     visibility
     contact
-    requests {
+    requests(order_by: { created_at: desc }) {
       ...Request
     }
   }
