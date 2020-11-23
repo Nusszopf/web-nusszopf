@@ -97,7 +97,7 @@ const NavHeader = ({ user, goBackUri, sticky = false }) => {
             {...menu}
             aria-label="Preferences"
             className="z-10 w-screen px-4 pt-4 pb-8 bg-gray-300 rounded-b-lg lg:w-full lg:max-w-xs focus:outline-none">
-            <div className="mx-auto lg:ml-12 max-w-content">
+            <div className="mx-auto max-w-content lg:ml-12">
               <MenuItem
                 {...menu}
                 onClick={handleSearch}
@@ -130,7 +130,7 @@ const NavHeader = ({ user, goBackUri, sticky = false }) => {
                   {...menu}
                   onClick={handleLoginSignup}
                   className="block py-2 ml-10 focus:outline-none hover:text-gray-500">
-                  <Text variant="textSmMedium">Anmelden | Einloggen</Text>
+                  <Text variant="textSmMedium">Anmelden</Text>
                 </MenuItem>
               )}
               <MenuItem
