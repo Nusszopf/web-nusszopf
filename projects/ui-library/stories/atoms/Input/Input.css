@@ -1,23 +1,27 @@
+.nz-input {
+  @apply ring-3 ring-transparent;
+}
+
 .nz-input-whiteGray600 {
-  @apply text-gray-600 placeholder-gray-600 border-gray-600 hover:shadow-outline:gray-600 focus:shadow-outline:gray-600;
+  @apply text-gray-600 placeholder-gray-600 border-gray-600 hover:ring-gray-600 focus:ring-gray-600 focus:ring-opacity-50 hover:ring-opacity-50;
 }
 
 .nz-input-whiteGray500 {
-  @apply text-gray-500 placeholder-gray-500 border-gray-500 hover:shadow-outline:gray-500 focus:shadow-outline:gray-500;
+  @apply text-gray-500 placeholder-gray-500 border-gray-500 hover:ring-gray-500 focus:ring-gray-500 focus:ring-opacity-50 hover:ring-opacity-50;
 }
 
 .nz-input-yellow300Blue400 {
-  @apply text-yellow-300 placeholder-yellow-300 border-yellow-300 hover:shadow-outline:yellow-300 focus:shadow-outline:yellow-300;
+  @apply text-yellow-300 placeholder-yellow-300 border-yellow-300 hover:ring-yellow-300 focus:ring-yellow-300 focus:ring-opacity-50 hover:ring-opacity-50;
 }
 
 .nz-input-whiteBlue400 {
-  @apply text-blue-400 placeholder-blue-400 border-blue-400 hover:shadow-outline:blue-400 focus:shadow-outline:blue-400;
+  @apply text-blue-400 placeholder-blue-400 border-blue-400 hover:ring-blue-400 focus:ring-blue-400 focus:ring-opacity-50 hover:ring-opacity-50;
 }
 
 .nz-input-whiteLilac800 {
-  @apply text-lilac-800 placeholder-lilac-800 border-lilac-800 hover:shadow-outline:lilac-700 focus:shadow-outline:lilac-700;
+  @apply text-lilac-800 placeholder-lilac-800 border-lilac-800 hover:ring-lilac-700 focus:ring-lilac-700 focus:ring-opacity-50 hover:ring-opacity-50;
 }
 
 .nz-input-livid800 {
-  @apply text-livid-800 placeholder-livid-800 border-livid-800 hover:shadow-outline:livid-700 focus:shadow-outline:livid-700;
+  @apply text-livid-800 placeholder-livid-800 border-livid-800 hover:ring-livid-700 focus:ring-livid-700 focus:ring-opacity-50 hover:ring-opacity-50;
 }

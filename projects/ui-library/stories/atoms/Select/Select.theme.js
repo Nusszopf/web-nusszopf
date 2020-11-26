@@ -1,9 +1,9 @@
 export const SelectColor = {
-  lilac800: 'border-2 border-lilac-800 bg-transparent text-lilac-800 hover:shadow-outline:lilac-700',
-  livid800: 'border-2 border-livid-800 bg-transparent text-livid-800 hover:shadow-outline:livid-700',
-  redLivid800: 'border-2 border-livid-800 bg-red-300 text-livid-800 hover:shadow-outline:livid-700',
-  yellowLivid800: 'border-2 border-livid-800 bg-yellow-300 text-livid-800 hover:shadow-outline:livid-700',
-  turquoiseLivid800: 'border-2 border-livid-800 bg-turquoise-300 text-livid-800 hover:shadow-outline:livid-700',
-  blueLivid800: 'border-2 border-livid-800 bg-blue-300 text-livid-800 hover:shadow-outline:livid-700',
-  pinkLivid800: 'border-2 border-livid-800 bg-pink-300 text-livid-800 hover:shadow-outline:livid-700',
+  lilac800: 'nz-select nz-select-lilac800',
+  livid800: 'nz-select nz-select-livid800',
+  redLivid800: 'nz-select nz-select-redLivid800',
+  yellowLivid800: 'nz-select nz-select-yellowLivid800',
+  turquoiseLivid800: 'nz-select nz-select-turquoiseLivid800',
+  blueLivid800: 'nz-select nz-select-blueLivid800',
+  pinkLivid800: 'nz-select nz-select-pinkLivid800',
 }

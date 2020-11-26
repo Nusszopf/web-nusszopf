@@ -1,0 +1,31 @@
+.nz-select {
+  @apply border-2 ring-3 ring-transparent;
+}
+
+.nz-select-pinkLivid800 {
+  @apply bg-pink-300 border-livid-800 text-livid-800 hover:ring-livid-700 focus:ring-opacity-50 hover:ring-opacity-50;
+}
+
+.nz-select-blueLivid800 {
+  @apply bg-blue-300 border-livid-800 text-livid-800 hover:ring-livid-700 focus:ring-opacity-50 hover:ring-opacity-50;
+}
+
+.nz-select-turquoiseLivid800 {
+  @apply border-livid-800 bg-turquoise-300 text-livid-800 hover:ring-livid-700 focus:ring-opacity-50 hover:ring-opacity-50;
+}
+
+.nz-select-yellowLivid800 {
+  @apply bg-yellow-300 border-livid-800 text-livid-800 hover:ring-livid-700 focus:ring-opacity-50 hover:ring-opacity-50;
+}
+
+.nz-select-redLivid800 {
+  @apply bg-red-300 border-livid-800 text-livid-800 hover:ring-livid-700 focus:ring-opacity-50 hover:ring-opacity-50;
+}
+
+.nz-select-livid800 {
+  @apply bg-transparent border-livid-800 text-livid-800 hover:ring-livid-700 focus:ring-opacity-50 hover:ring-opacity-50;
+}
+
+.nz-select-lilac800 {
+  @apply bg-transparent border-lilac-800 text-lilac-800 hover:ring-lilac-700 focus:ring-opacity-50 hover:ring-opacity-50;
+}

@@ -4,10 +4,10 @@ export const InputSize = {
 }
 
 export const InputColor = {
-  whiteGray600: 'nz-input-whiteGray600',
-  whiteGray500: 'nz-input-whiteGray500',
-  yellow300Blue400: 'nz-input-yellow300Blue400',
-  whiteBlue400: 'nz-input-whiteBlue400',
-  whiteLilac800: 'nz-input-whiteLilac800',
-  livid800: 'nz-input-livid800',
+  whiteGray600: 'nz-input nz-input-whiteGray600',
+  whiteGray500: 'nz-input nz-input-whiteGray500',
+  yellow300Blue400: 'nz-input nz-input-yellow300Blue400',
+  whiteBlue400: 'nz-input nz-input-whiteBlue400',
+  whiteLilac800: 'nz-input nz-input-whiteLilac800',
+  livid800: 'nz-input nz-input-livid800',
 }

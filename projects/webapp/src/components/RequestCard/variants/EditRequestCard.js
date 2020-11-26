@@ -10,7 +10,7 @@ import { RequestCategoryColor } from '../RequestCard.theme'
 const EditRequestCard = ({ onEdit, onDelete, request, className, ...props }) => (
   <div
     className={classnames(
-      'w-full flex hyphens-auto text-livid-800 transition-shadow duration-150 ease-in-out rounded-lg cursor-pointer hover:shadow-outline:lilac-700 focus:shadow-outline:lilac-700',
+      'w-full flex hyphens-auto text-livid-800 transition-shadow duration-150 ease-in-out rounded-lg cursor-pointer ring-3 ring-transparent hover:ring-lilac-700 focus:ring-lilac-700 focus:ring-opacity-50 hover:ring-opacity-50',
       RequestCategoryColor[request.category],
       className
     )}

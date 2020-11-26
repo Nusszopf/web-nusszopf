@@ -1,0 +1,11 @@
+.nz-switch {
+  @apply ring-3 ring-transparent;
+}
+
+.nz-switch-gray600 {
+  @apply border-gray-600 hover:ring-gray-600 focus:ring-opacity-50 hover:ring-opacity-50;
+}
+
+.nz-switch-lilac800 {
+  @apply border-lilac-800 hover:ring-lilac-700 focus:ring-opacity-50 hover:ring-opacity-50;
+}

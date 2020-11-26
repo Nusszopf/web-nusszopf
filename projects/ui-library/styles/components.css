@@ -3,6 +3,8 @@
 @import '../stories/atoms/Input/Input.css';
 @import '../stories/atoms/Link/Link.css';
 @import '../stories/atoms/Text/Text.css';
+@import '../stories/atoms/Select/Select.css';
+@import '../stories/atoms/Switch/Switch.css';
 
 @import '../stories/molecules/Combobox/Combobox.css';
 @import '../stories/molecules/Dialog/Dialog.css';

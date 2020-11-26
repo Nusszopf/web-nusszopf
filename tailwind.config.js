@@ -7,13 +7,6 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 const plugin = require('tailwindcss/plugin')
 
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
-  experimental: {
-    applyComplexClasses: true,
-  },
   purge: {
     content: [
       './src/containers/**/*.{js,jsx}',
@@ -135,21 +128,6 @@ module.exports = {
     },
     extend: {
       // additions
-      boxShadow: {
-        'outline:yellow-300': '0 0 0 3px rgba(250, 252, 136, 0.5)',
-        'outline:yellow-700': '0 0 0 3px rgba(87, 72, 0, 0.5)',
-        'outline:blue-200': '0 0 0 3px rgba(203, 223, 251, 0.5)',
-        'outline:blue-400': '0 0 0 3px rgba(99, 150, 220, 0.5)',
-        'outline:blue-700': '0 0 0 3px rgba(0, 57, 138, 0.5)',
-        'outline:gray-600': '0 0 0 3px rgba(38, 50, 56, 0.5)',
-        'outline:gray-500': '0 0 0 3px rgba(84, 110, 122, 0.5)',
-        'outline:gray-200': '0 0 0 3px rgba(207, 216, 220, 0.5)',
-        'outline:warning': '0 0 0 3px rgba(234, 94, 18, 0.5)',
-        'outline:turquoise-600-bright': '0 0 0 3px rgba(104, 217, 185, 0.25)',
-        'outline:lilac-700': '0 0 0 3px rgba(100, 91, 110, 0.5)',
-        'outline:lilac-500': '0 0 0 3px rgba(203, 198, 208, 0.5)',
-        'outline:livid-700': '0 0 0 3px rgba(52, 98, 108, 0.5)',
-      },
       borderWidth: {
         3: '3px',
       },
@@ -162,6 +140,9 @@ module.exports = {
         84: '21rem',
         96: '24rem',
       },
+      ringWidth: {
+        3: '3px',
+      },
       translate: {
         7: '1.75rem',
       },
@@ -169,11 +150,13 @@ module.exports = {
   },
   variants: {
     // https://tailwindcss.com/docs/pseudo-class-variants#creating-custom-variants
-    backgroundColor: ['responsive', 'hover', 'focus', 'group-hover', 'aria-selected'],
-    borderColor: ['responsive', 'active', 'hover', 'focus', 'group-hover'],
-    textColor: ['responsive', 'hover', 'focus', 'group-hover'],
-    opacity: ['responsive', 'hover', 'focus', 'disabled'],
-    cursor: ['responsive', 'disabled'],
+    extend: {
+      backgroundColor: ['aria-selected'],
+      cursor: ['disabled'],
+      ringColor: ['hover'],
+      ringOpacity: ['hover'],
+      opacity: ['disabled'],
+    },
   },
   corePlugins: {},
   plugins: [
