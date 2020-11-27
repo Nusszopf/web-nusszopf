@@ -32,7 +32,7 @@ export const ToastsProvider = ({ children, ...props }) => {
       {children}
       <ReakitPortal>
         {toasts.length > 0 && (
-          <div className="fixed top-0 right-0 z-50 w-full p-3 sm:w-auto">
+          <div className="fixed right-0 z-50 w-full p-3 top-10 lg:top-12 sm:w-auto">
             {toasts.map((toast, index) => (
               <Toast
                 key={toast.id}

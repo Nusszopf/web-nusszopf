@@ -68,7 +68,11 @@ const Page = ({
         }}
       />
       <ErrorBoundary>
-        {navHeader?.visible && <NavHeader user={user} {...navHeader} />}
+        {navHeader?.visible && (
+          <div className="w-full mt-10 lg:mt-12">
+            <NavHeader fixed user={user} {...navHeader} />
+          </div>
+        )}
         <main className={classnames('flex-1', className)}>{children}</main>
         {showFooter && <Footer type={footerType} />}
       </ErrorBoundary>

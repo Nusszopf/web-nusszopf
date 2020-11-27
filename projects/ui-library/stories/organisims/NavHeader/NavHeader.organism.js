@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
@@ -11,10 +11,26 @@ import { Text } from '../../atoms'
 import { Frame } from '../../templates'
 import { useToasts } from '../../../services/Toasts.service'
 
-const NavHeader = ({ user, goBackUri, sticky = false }) => {
+const NavHeader = ({ user, goBackUri, fixed = false }) => {
+  const [hasScrolled, setHasScrolled] = useState(false)
   const { notify } = useToasts()
   const router = useRouter()
   const menu = useMenuState()
+
+  useEffect(() => {
+    if (fixed) {
+      window.addEventListener('scroll', handleScroll)
+      return () => window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+
+  const handleScroll = () => {
+    if (window.scrollY > 0) {
+      setHasScrolled(true)
+    } else {
+      setHasScrolled(false)
+    }
+  }
 
   const handleLoginSignup = () => {
     menu.hide()
@@ -63,7 +79,12 @@ const NavHeader = ({ user, goBackUri, sticky = false }) => {
 
   return (
     <>
-      <Frame as="nav" className={classnames(' bg-gray-300 text-gray-600', { 'sticky top-0': sticky })}>
+      <Frame
+        as="nav"
+        className={classnames(' bg-gray-300 text-gray-600 z-10', {
+          'fixed top-0 left-0 right-0': fixed,
+          shadow: hasScrolled,
+        })}>
         <div className={classnames('flex items-center w-full h-10 lg:h-12 justify-between relative')}>
           <div className="flex items-center">
             {goBackUri && (
@@ -164,7 +185,7 @@ const NavHeader = ({ user, goBackUri, sticky = false }) => {
 NavHeader.propTypes = {
   children: PropTypes.node,
   user: PropTypes.object,
-  sticky: PropTypes.bool,
+  fixed: PropTypes.bool,
   goBackUri: PropTypes.string,
 }
 
