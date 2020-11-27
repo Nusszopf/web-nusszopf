@@ -27,7 +27,7 @@ const ProjectEdit = ({ id }) => {
 
   return (
     <Page
-      navHeader={{ visible: true, goBackUri: '/user/profile' }}
+      navHeader={{ visible: true, fixed: true, goBackUri: '/user/profile' }}
       showFooter={false}
       noindex={true}
       className="text-lilac-800 bg-lilac-100">

@@ -22,7 +22,7 @@ const NavHeader = ({ user, goBackUri, fixed = false }) => {
       window.addEventListener('scroll', handleScroll)
       return () => window.removeEventListener('scroll', handleScroll)
     }
-  }, [])
+  }, [fixed])
 
   const handleScroll = () => {
     if (window.scrollY > 0) {
