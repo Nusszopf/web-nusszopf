@@ -122,6 +122,16 @@ module.exports = {
         600: '#8A8C26',
         700: '#63641B',
       },
+      stone: {
+        100: '#F7F7F7',
+        200: '#F2F2F2',
+        300: '#E0E0E0',
+        400: '#C7C7C7',
+        500: '#AAAAAA',
+        600: '#828282',
+        700: '#616161',
+        800: '#404040',
+      },
     },
     fontFamily: {
       sans: ['Barlow', ...defaultTheme.fontFamily.sans],
@@ -136,15 +146,10 @@ module.exports = {
       },
       spacing: {
         18: '4.75rem',
-        72: '18rem',
         84: '21rem',
-        96: '24rem',
       },
       ringWidth: {
         3: '3px',
-      },
-      translate: {
-        7: '1.75rem',
       },
     },
   },

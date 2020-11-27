@@ -13,13 +13,15 @@ import auth0 from '~/utils/libs/auth0'
 import apollo from '~/utils/services/apollo.service'
 import { GET_PROJECT } from '~/utils/hasura/queries/projects.query'
 import { initializeApollo } from '~/utils/libs/apolloClient'
+import { NZ_EMAIL } from '~/utils/enums'
 import { projectData } from '~/assets/data'
 import { Page, RequestCard } from '~/components'
-import { RequestDialog, Banner } from '~/containers/projects'
+import { RequestDialog, ContactDialog, Banner } from '~/containers/projects'
 
 const Project = ({ id, user }) => {
   const [currentRequest, setCurrentRequest] = useState()
-  const [showDialog, setShowDialog] = useState(false)
+  const [showRequestDialog, setShowRequestDialog] = useState(false)
+  const [showContactDialog, setShowContactDialog] = useState(false)
   const { data } = apollo.useGetProject(id)
   const { notify } = useToasts()
 
@@ -65,19 +67,21 @@ const Project = ({ id, user }) => {
   }
 
   const openRequest = request => {
-    setShowDialog(true)
+    setShowRequestDialog(true)
     setCurrentRequest(request)
   }
 
   const closeRequest = () => {
-    setShowDialog(false)
+    setShowRequestDialog(false)
     setCurrentRequest(null)
   }
 
   const handleContact = () => {
-    // todo
-    // open email client or modal
-    console.log('contact')
+    if (data.projects_by_pk.contact === NZ_EMAIL) {
+      setShowContactDialog(true)
+    } else {
+      window.location.href = `mailto:${data.projects_by_pk.contact}?subject=Nusszopf – Nussige Nachricht`
+    }
   }
 
   return (
@@ -191,7 +195,17 @@ const Project = ({ id, user }) => {
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
       </FramedGridCard>
-      <RequestDialog isOpen={showDialog} onDismiss={closeRequest} onContact={handleContact} request={currentRequest} />
+      <RequestDialog
+        isOpen={showRequestDialog}
+        onDismiss={closeRequest}
+        onContact={handleContact}
+        request={currentRequest}
+      />
+      <ContactDialog
+        isOpen={showContactDialog}
+        onDismiss={() => setShowContactDialog(false)}
+        project={data?.projects_by_pk}
+      />
     </Page>
   )
 }
