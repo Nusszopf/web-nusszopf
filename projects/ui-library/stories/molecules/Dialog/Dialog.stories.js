@@ -22,7 +22,7 @@ export const Checked = () => {
   return (
     <>
       <Button onClick={open}>Open Dialog</Button>
-      <Dialog isOpen={showDialog} onDismiss={close} className="bg-lilac-400">
+      <Dialog isOpen={showDialog} onDismiss={close} className="bg-lilac-400" aria-label="Test dialog">
         <p>Hello there. I am a dialog</p>
       </Dialog>
     </>

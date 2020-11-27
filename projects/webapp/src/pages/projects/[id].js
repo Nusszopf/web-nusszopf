@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { Fragment, useMemo, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { MapPin, Calendar, Send, Share2 } from 'react-feather'
 import { isValid } from 'date-fns'
@@ -66,10 +66,11 @@ const Project = ({ id, user }) => {
     }
   }
 
-  const openRequest = request => {
-    setShowRequestDialog(true)
-    setCurrentRequest(request)
-  }
+  useEffect(() => {
+    if (currentRequest) {
+      setShowRequestDialog(true)
+    }
+  }, [currentRequest])
 
   const closeRequest = () => {
     setShowRequestDialog(false)
@@ -155,7 +156,11 @@ const Project = ({ id, user }) => {
           <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2 lg:pr-4">
             <div>
               <Text className="mb-2">{projectData.body.what}</Text>
-              <div className="text-lg">{data?.projects_by_pk?.descriptionTemplate.map(node => serializeJSX(node))}</div>
+              <div className="text-lg">
+                {data?.projects_by_pk?.descriptionTemplate.map((node, idx) => (
+                  <Fragment key={`rq-${idx}`}>{serializeJSX(node)}</Fragment>
+                ))}
+              </div>
             </div>
             {data?.projects_by_pk?.team && (
               <div className="mt-8">
@@ -180,7 +185,7 @@ const Project = ({ id, user }) => {
                     variant="view"
                     request={request}
                     className={classnames({ 'mt-2': index > 0 })}
-                    onClick={openRequest}
+                    onClick={request => setCurrentRequest(request)}
                   />
                 ))}
               </>

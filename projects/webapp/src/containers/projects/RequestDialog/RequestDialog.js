@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { X } from 'react-feather'
@@ -7,11 +8,13 @@ import { Dialog } from 'ui-library/stories/molecules'
 import { serializeJSX } from 'ui-library/services/RichTextEditor.service'
 import { CategoryColor } from './RequestDialog.theme'
 
-const RequestDialog = ({ isOpen, onDismiss, onContact, request }) => (
+const RequestDialog = ({ isOpen, onDismiss, onContact, request, ...props }) => (
   <Dialog
+    aria-label="Request Infos"
     isOpen={isOpen}
     onDismiss={onDismiss}
-    className={classnames('text-livid-800', CategoryColor[request?.category])}>
+    className={classnames('text-livid-800', CategoryColor[request?.category])}
+    {...props}>
     <div className="h-6">
       <Button className="float-right" variant="clean" size="baseClean" onClick={onDismiss}>
         <X />
@@ -19,7 +22,11 @@ const RequestDialog = ({ isOpen, onDismiss, onContact, request }) => (
     </div>
     <div>
       <Text className="mb-2">{request?.title}</Text>
-      <div className="text-lg">{request?.descriptionTemplate?.map(node => serializeJSX(node))}</div>
+      <div className="text-lg">
+        {request?.descriptionTemplate?.map((node, idx) => (
+          <Fragment key={`rq-${idx}`}>{serializeJSX(node)}</Fragment>
+        ))}
+      </div>
       <Text variant="textSm" className="mt-6">
         Erstellt am {new Date(request?.created_at).toLocaleDateString('de-DE')}
       </Text>

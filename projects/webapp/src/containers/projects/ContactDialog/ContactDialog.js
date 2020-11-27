@@ -8,7 +8,7 @@ import { Button, Text, Input } from 'ui-library/stories/atoms'
 import { Dialog } from 'ui-library/stories/molecules'
 import { FieldTitle } from '~/components'
 
-const ContactDialog = ({ isOpen, onDismiss, onContact, project }) => {
+const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
   const { notify } = useToasts()
   const handleSubmit = async values => {
     notify({ type: 'loading', message: 'Nachricht wird versendet...' })
@@ -35,7 +35,12 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project }) => {
   }
 
   return (
-    <Dialog isOpen={isOpen} onDismiss={onDismiss} className="text-lilac-800 bg-lilac-300">
+    <Dialog
+      isOpen={isOpen}
+      onDismiss={onDismiss}
+      className="text-lilac-800 bg-lilac-300"
+      aria-label="Contact Dialog"
+      {...props}>
       <div className="h-6">
         <Button className="float-right" variant="clean" size="baseClean" onClick={onDismiss}>
           <X />

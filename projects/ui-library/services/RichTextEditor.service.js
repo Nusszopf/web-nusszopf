@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import escapeHtml from 'escape-html'
 import { Text as SText } from 'slate'
 import classnames from 'classnames'
@@ -42,7 +42,7 @@ export const serializeJSX = node => {
     )
   }
 
-  const children = node.children.map(n => serializeJSX(n))
+  const children = node.children.map((n, idx) => <Fragment key={`node-${idx}`}>{serializeJSX(n)}</Fragment>)
 
   switch (node.type) {
     case 'unordered-list':
