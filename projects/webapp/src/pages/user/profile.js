@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { PlusCircle } from 'react-feather'
 import { useRouter } from 'next/router'
 
@@ -17,21 +16,8 @@ import { profileData } from '~/assets/data'
 const Profile = () => {
   const router = useRouter()
   const { loading: loadingUser, ...user } = useEntireUser()
-  const [loadProjects, { called, data }] = apollo.useLazyGetProjects(user?.data?.id)
+  const { data, loading: loadingProjects } = apollo.useGetProjects(user?.data?.id, { skip: loadingUser || !user?.data })
   const { deleteProject, updateProject, updateLoading } = useProjectsService()
-  const [loading, setLoading] = useState(true)
-
-  useEffect(() => {
-    if (!loadingUser && user?.data && !called) {
-      loadProjects()
-    }
-  }, [user, loadProjects, loadingUser, called])
-
-  useEffect(() => {
-    if (data) {
-      setLoading(false)
-    }
-  }, [data])
 
   const handleVisibility = (id, _visibility) => {
     if (!updateLoading) {
@@ -70,7 +56,7 @@ const Profile = () => {
             </Button>
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="oneCol">
-            {loading ? (
+            {loadingProjects || loadingUser ? (
               <>loading...</>
             ) : data?.projects?.length > 0 ? (
               <Masonry>

@@ -1,4 +1,4 @@
-import { useLazyQuery, useQuery, useMutation } from '@apollo/client'
+import { useQuery, useMutation } from '@apollo/client'
 
 import { GET_USER } from '../hasura/queries/users.query'
 import { DELETE_USER } from '../hasura/mutations/users.mutation'
@@ -8,11 +8,7 @@ import { GET_PROJECT, GET_USER_PROJECTS } from '../hasura/queries/projects.query
 import { INSERT_REQUESTS, INSERT_REQUEST, UPDATE_REQUEST, DELETE_REQUEST } from '../hasura/mutations/requests.mutation'
 
 // USERS
-const useLazyGetUser = id =>
-  useLazyQuery(GET_USER, {
-    variables: { id },
-    // fetchPolicy: 'cache-and-network',
-  })
+const useGetUser = id => useQuery(GET_USER, { skip: !id, variables: { id } })
 
 const useDeleteUser = () => useMutation(DELETE_USER)
 
@@ -48,8 +44,9 @@ const useUpdateLead = id =>
 // PROJECTS
 const useGetProject = id => useQuery(GET_PROJECT, { skip: !id, variables: { id } })
 
-const useLazyGetProjects = id =>
-  useLazyQuery(GET_USER_PROJECTS, {
+const useGetProjects = (id, options = {}) =>
+  useQuery(GET_USER_PROJECTS, {
+    ...options,
     variables: { id },
   })
 
@@ -100,10 +97,10 @@ export default {
   useAddLead,
   useUpdateLead,
   useDeleteLead,
-  useLazyGetUser,
+  useGetUser,
   useDeleteUser,
   useGetProject,
-  useLazyGetProjects,
+  useGetProjects,
   useAddProject,
   useUpdateProject,
   useDeleteProject,

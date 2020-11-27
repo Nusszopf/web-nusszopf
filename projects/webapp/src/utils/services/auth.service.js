@@ -73,20 +73,7 @@ export function useFetchUser({ required } = {}) {
 
 export const useEntireUser = () => {
   const { user } = useFetchUser({ required: true })
-  const [loadData, { called, data }] = apollo.useLazyGetUser(user?.sub)
-  const [loading, setLoading] = useState(true)
+  const { data } = apollo.useGetUser(user?.sub)
 
-  useEffect(() => {
-    if (user && !called) {
-      loadData()
-    }
-  }, [user, loadData, called])
-
-  useEffect(() => {
-    if (data?.users_by_pk) {
-      setLoading(false)
-    }
-  }, [data])
-
-  return { auth: user, data: data?.users_by_pk, loading }
+  return { auth: user, data: data?.users_by_pk, loading: !data?.users_by_pk }
 }
