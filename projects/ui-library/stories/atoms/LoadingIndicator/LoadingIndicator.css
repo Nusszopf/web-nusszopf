@@ -1,0 +1,26 @@
+.rainbow {
+  @apply absolute top-0 left-0 right-0 h-1 shadow;
+  z-index: 100;
+  background-image: repeating-linear-gradient(
+    to right,
+    #f4f651 0%,
+    #fa7061 20%,
+    #b1eed7 40%,
+    #ffccd5 60%,
+    #8ab2f1 80%,
+    #f4f651 100%
+  );
+  background-size: 200% auto;
+  background-position: 0 100%;
+  animation: gradient 2s infinite;
+  animation-fill-mode: forwards;
+  animation-timing-function: linear;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

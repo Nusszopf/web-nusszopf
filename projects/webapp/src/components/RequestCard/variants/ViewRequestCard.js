@@ -10,7 +10,7 @@ const ViewRequestCard = ({ onClick, request, className, ...props }) => (
   <Clickable
     onClick={() => onClick(request)}
     className={classnames(
-      'w-full flex text-stone-800 p-4 justify-between  items-center ring-2 ring-transparent duration-150 ease-in-out rounded-lg cursor-pointer focus:outline-none',
+      'w-full flex text-stone-800 p-4 justify-between  items-center ring-1 ring-transparent duration-150 ease-in-out rounded-lg cursor-pointer focus:outline-none',
       RequestCategoryColor[request.category],
       className
     )}
