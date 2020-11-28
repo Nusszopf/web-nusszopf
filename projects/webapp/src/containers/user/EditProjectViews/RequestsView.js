@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Plus } from 'react-feather'
+import { PlusCircle } from 'react-feather'
 import classnames from 'classnames'
 
 import { FramedGridCard } from 'ui-library/stories/templates'
@@ -51,7 +51,7 @@ const RequestsView = ({ project }) => {
           onClick={openDialog}
           color="stone"
           className="bg-stone-300"
-          iconLeft={<Plus className="mr-2 -ml-2" />}
+          iconLeft={<PlusCircle className="mr-2 -ml-2" />}
           size="large">
           Neues Gesuch erstellen
         </Button>
