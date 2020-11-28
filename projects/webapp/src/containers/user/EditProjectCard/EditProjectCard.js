@@ -12,7 +12,7 @@ import { RequestCard } from '~/components'
 const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project, className, ...props }) => (
   <div
     className={classnames(
-      'w-full relative flex hyphens-auto text-lilac-800 transition-shadow duration-150 ease-in-out rounded-lg cursor-pointer bg-lilac-300 ring-3 ring-transparent hover:ring-lilac-700 focus:ring-lilac-700 focus:ring-opacity-50 hover:ring-opacity-50',
+      'w-full relative flex hyphens-auto border border-lilac-300 text-lilac-800 transition-shadow duration-150 ease-in-out rounded-lg cursor-pointer bg-lilac-200 ring-2 ring-transparent hover:ring-lilac-300',
       className
     )}
     {...props}>

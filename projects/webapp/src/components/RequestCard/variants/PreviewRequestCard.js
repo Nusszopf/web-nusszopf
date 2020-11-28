@@ -7,7 +7,7 @@ import { RequestCategoryColor } from '../RequestCard.theme'
 const PreviewRequestCard = ({ request, className, ...props }) => (
   <div
     className={classnames(
-      'w-full rounded-lg px-3 py-2 text-livid-800',
+      'w-full rounded-lg px-3 py-2 text-stone-800',
       RequestCategoryColor[request.category],
       className
     )}

@@ -4,8 +4,7 @@ export const InputSize = {
 }
 
 export const InputColor = {
-  steel: 'nz-input-steel',
-  stone: 'nz-input-stone',
-  lilac: 'nz-input-lilac',
-  yellow: 'nz-input-yellow',
+  lilac: 'text-current border-current hover:ring-lilac-800 focus:ring-lilac-800',
+  stone: 'text-current border-current hover:ring-stone-800 focus:ring-stone-800',
+  steel: 'text-current border-current hover:ring-steel-700 focus:ring-steel-700',
 }

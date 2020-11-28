@@ -8,7 +8,7 @@ export const ButtonSize = {
   base: 'font-medium text-lg py-2 px-4',
   baseClean: 'font-medium text-lg p-0',
   small: 'font-medium text-lg py-1 px-3',
-  large: 'font-semibold text-lg py-4 px-8',
+  large: 'font-semibold text-lg py-3 px-6',
   circle: 'text-lg p-2',
 }
 

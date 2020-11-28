@@ -80,6 +80,7 @@ const Project = ({ id, user }) => {
   const handleContact = () => {
     if (data.projects_by_pk.contact === NZ_EMAIL) {
       setShowContactDialog(true)
+      closeRequest()
     } else {
       window.location.href = `mailto:${data.projects_by_pk.contact}?subject=Nusszopf – Nussige Nachricht`
     }
@@ -97,8 +98,8 @@ const Project = ({ id, user }) => {
       <FramedGridCard
         className="lg:mb-20 lg:mt-12"
         bodyColor="bg-white lg:bg-lilac-100"
-        headerColor="bg-lilac-400 lg:bg-lilac-100">
-        <FramedGridCard.Header className="bg-lilac-400">
+        headerColor="bg-lilac-300 lg:bg-lilac-100">
+        <FramedGridCard.Header className="bg-lilac-300">
           <div className="flex flex-col flex-wrap lg:flex-row lg:justify-between">
             <div className="lg:pr-12 lg:w-9/12 hyphens-auto">
               <Text as="h1" variant="textLg" className="mb-2">
@@ -134,7 +135,7 @@ const Project = ({ id, user }) => {
               <Button
                 onClick={handleContact}
                 iconLeft={<Send size={21} className="mt-px mr-2 -ml-1" />}
-                variant="outline"
+                color="lilac"
                 size="small"
                 className="mr-5 lg:mr-0 lg:mb-2">
                 {projectData.header.actions.contact}
@@ -143,7 +144,7 @@ const Project = ({ id, user }) => {
                 onClick={handleShare}
                 size="small"
                 iconLeft={<Share2 size={21} className="mt-px mr-2 -ml-1" />}
-                variant="outline">
+                color="lilac">
                 {projectData.header.actions.share}
               </Button>
             </div>
@@ -172,7 +173,9 @@ const Project = ({ id, user }) => {
               </div>
             )}
           </FramedGridCard.Body.Col>
-          <FramedGridCard.Body.Col variant="twoCols" className="row-start-1 100 lg:row-start-auto lg:pl-4">
+          <FramedGridCard.Body.Col
+            variant="twoCols"
+            className="row-start-1 100 lg:row-start-auto lg:pl-4 text-stone-800">
             <Text className="mb-4">Aktuelle Gesuche</Text>
             {data?.projects_by_pk?.requests?.length > 0 ? (
               <>

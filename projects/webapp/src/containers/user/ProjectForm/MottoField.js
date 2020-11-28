@@ -14,6 +14,7 @@ const MottoField = ({ formik, ...props }) => (
     </FieldTitle>
     <Input
       as="textarea"
+      color="lilac"
       name="motto"
       maxLength={200}
       value={formik.values.motto}

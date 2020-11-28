@@ -71,7 +71,7 @@ const ProjectView = ({ user, project }) => {
       onSubmit={handleSubmit}>
       {formik => (
         <Form>
-          <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
+          <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white text-lilac-800">
             <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
               <TitleField formik={formik} />
               <GoalField formik={formik} className="mt-6" />
@@ -84,7 +84,7 @@ const ProjectView = ({ user, project }) => {
               <MottoField formik={formik} className="mt-6" />
             </FramedGridCard.Body.Col>
             <FramedGridCard.Body.Col variant="oneCol" className="flex justify-center mt-12 mb-4 md:mb-0 lg:col-start-2">
-              <Button type="submit" size="large" disabled={updateLoading}>
+              <Button className="bg-lilac-200" type="submit" color="lilac" size="large" disabled={updateLoading}>
                 Speichern
               </Button>
             </FramedGridCard.Body.Col>

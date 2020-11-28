@@ -1,7 +1,7 @@
 export const ProgressbarColor = {
-  lilac700: {
-    bar: 'bg-lilac-500',
-    progress: 'bg-lilac-800',
+  lilac: {
+    bar: 'bg-lilac-400',
+    progress: 'bg-lilac-600',
     label: 'text-lilac-800',
   },
 }

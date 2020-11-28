@@ -5,7 +5,7 @@ import { Text } from '../../atoms'
 import { ProgressbarColor } from './Progressbar.theme'
 import { VisuallyHidden } from 'reakit/VisuallyHidden'
 
-const ProgressBar = ({ className, progress, label, color = 'lilac700' }) => (
+const ProgressBar = ({ className, progress, label, color = 'lilac' }) => (
   <div className={className}>
     <div aria-hidden="true" className={classnames('w-full h-3 rounded-full', ProgressbarColor[color].bar)}>
       <div

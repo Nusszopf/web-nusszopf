@@ -69,8 +69,8 @@ const CreateProject = () => {
           <FramedGridCard
             className="lg:mb-20 lg:mt-12"
             bodyColor="bg-white lg:bg-lilac-100"
-            headerColor="bg-lilac-400 lg:bg-lilac-100">
-            <FramedGridCard.Header className="bg-lilac-400">
+            headerColor="bg-lilac-300 lg:bg-lilac-100">
+            <FramedGridCard.Header className="bg-lilac-300">
               <Progressbar label={content.steps[stepper.step]} progress={stepper?.progress ?? 0} />
               <Text as="h1" variant="textLg" className="block mt-3 break-all">
                 {formik?.values?.title?.length > 0 ? formik.values.title : content.title}
@@ -86,7 +86,7 @@ const CreateProject = () => {
                 </Stepper>
                 <FramedGridCard.Body.Col variant="oneCol" className="mt-12 mb-4 md:mb-0 lg:col-start-2">
                   <Navigation
-                    className="flex justify-center mx-auto"
+                    className="flex items-center justify-center mx-auto"
                     stepper={stepper}
                     formik={formik}
                     loading={addLoading || addRequestsLoading}

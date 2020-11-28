@@ -32,7 +32,7 @@ class CustomDocument extends Document {
             />
           )}
         </Head>
-        <body className="bg-gray-700">
+        <body className="bg-steel-700">
           <Main />
           <NextScript />
         </body>

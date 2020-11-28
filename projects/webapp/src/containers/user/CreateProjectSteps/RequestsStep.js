@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useFormikContext } from 'formik'
-import { Plus } from 'react-feather'
+import { PlusCircle } from 'react-feather'
 import { isEqual } from 'lodash'
 import classnames from 'classnames'
 
@@ -58,7 +58,12 @@ const RequestsStep = () => {
         <Text variant="textSm">
           Gesuche für dein Projekt kannst Du entweder jetzt oder zu einem späteren Zeitpunkt erstellen.
         </Text>
-        <Button onClick={openDialog} className="mt-6" iconLeft={<Plus className="mr-2 -ml-2" />} size="large">
+        <Button
+          onClick={openDialog}
+          color="stone"
+          className="mt-6 bg-stone-300"
+          iconLeft={<PlusCircle className="mr-2 -ml-2" />}
+          size="large">
           Neues Gesuch erstellen
         </Button>
       </FramedGridCard.Body.Col>
@@ -78,7 +83,7 @@ const RequestsStep = () => {
             ))}
           </>
         ) : (
-          <InfoCard className="bg-livid-200 text-livid-700">Alles zopfig! Derzeit gibt es keine Gesuche.</InfoCard>
+          <InfoCard className="bg-livid-200 text-livid-700">Noch keine Gesuche.</InfoCard>
         )}
       </FramedGridCard.Body.Col>
       <EditRequestDialog

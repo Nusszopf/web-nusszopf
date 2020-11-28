@@ -34,13 +34,16 @@ const ProjectEdit = ({ id }) => {
       <FramedGridCard
         className="lg:mb-20 lg:mt-12"
         bodyColor="bg-white lg:bg-lilac-100"
-        headerColor="bg-lilac-400 lg:bg-lilac-100">
-        <FramedGridCard.Header className="bg-lilac-400">
+        headerColor="bg-lilac-300 lg:bg-lilac-100">
+        <FramedGridCard.Header className="bg-lilac-300">
           <div className="flex flex-col justify-between lg:items-center lg:flex-row">
             <Text as="h1" variant="textLg" className="mb-4 lg:mb-0 hyphens-auto">
               {data?.projects_by_pk?.title}
             </Text>
-            <Select onChange={e => setView(e.target.value)} className="flex-shrink-0 w-56 mb-2 lg:ml-12 lg:mb-0">
+            <Select
+              onChange={e => setView(e.target.value)}
+              color="lilac"
+              className="flex-shrink-0 w-56 mb-2 lg:ml-12 lg:mb-0">
               {projectEditData.nav.map((nav, index) => (
                 <option key={`pn-${index}`}>{nav}</option>
               ))}

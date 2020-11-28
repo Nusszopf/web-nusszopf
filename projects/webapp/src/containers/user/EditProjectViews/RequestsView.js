@@ -47,7 +47,12 @@ const RequestsView = ({ project }) => {
   return (
     <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
-        <Button onClick={openDialog} iconLeft={<Plus className="mr-2 -ml-2" />} size="large">
+        <Button
+          onClick={openDialog}
+          color="stone"
+          className="bg-stone-300"
+          iconLeft={<Plus className="mr-2 -ml-2" />}
+          size="large">
           Neues Gesuch erstellen
         </Button>
       </FramedGridCard.Body.Col>

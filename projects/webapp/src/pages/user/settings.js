@@ -73,12 +73,12 @@ const Settings = () => {
       navHeader={{ visible: true, fixed: true, goBackUri: 'back' }}
       showFooter={false}
       noindex={true}
-      className="text-gray-600 bg-gray-100">
+      className="text-steel-700 bg-steel-100">
       <FramedGridCard
         className="lg:mb-20 lg:mt-12"
-        bodyColor="bg-white lg:bg-gray-100"
-        headerColor="bg-gray-200 lg:bg-gray-100">
-        <FramedGridCard.Header className="bg-gray-200">
+        bodyColor="bg-white lg:bg-steel-100"
+        headerColor="bg-steel-200 lg:bg-steel-100">
+        <FramedGridCard.Header className="bg-steel-200">
           <div id="header" className="flex flex-col md:flex-row md:justify-between md:flex-row-reverse md:items-center">
             <Text as="h1" variant="textLg">
               {settingsData.title}
@@ -129,7 +129,7 @@ const Settings = () => {
                         className="mt-1 mb-3 ml-6 italic"
                         component={Text}
                       />
-                      <Button type="submit" className="block mt-4">
+                      <Button type="submit" className="block mt-4 bg-steel-100">
                         {settingsData.newsletter.subscribe.action}
                       </Button>
                     </Form>
@@ -140,7 +140,7 @@ const Settings = () => {
                   <Text variant="textSm" className="mb-2">
                     {settingsData.newsletter.unsubscribe.description}
                   </Text>
-                  <Button onClick={handleUnsubscribe} className="block mt-4">
+                  <Button onClick={handleUnsubscribe} className="block mt-4 bg-steel-100">
                     {settingsData.newsletter.unsubscribe.action}
                   </Button>
                 </>
@@ -153,7 +153,7 @@ const Settings = () => {
               <Text variant="textSm">{settingsData.sponsoring.description}</Text>
               <Link
                 variant="button"
-                className="block mt-4"
+                className="block mt-4 bg-steel-100"
                 title={settingsData.sponsoring.action.meta}
                 ariaLabel={settingsData.sponsoring.action.meta}
                 href={settingsData.sponsoring.action.href}>
@@ -180,7 +180,7 @@ const Settings = () => {
                 {settingsData.delete.title}
               </Text>
               <Text variant="textSm">{settingsData.delete.description}</Text>
-              <Button onClick={handleDelete} variant="outline" className="block mt-4">
+              <Button onClick={handleDelete} variant="outline" color="warning" className="block mt-4">
                 {settingsData.delete.action}
               </Button>
             </div>

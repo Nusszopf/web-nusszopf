@@ -41,6 +41,7 @@ const PeriodField = ({ formik }) => (
     </FieldTitle>
     <Switch
       name="period.flexible"
+      color="lilac"
       onBlur={formik.handleBlur}
       onChange={formik.handleChange}
       label={data.descriptionStep1.period.action.switch}
@@ -55,6 +56,7 @@ const PeriodField = ({ formik }) => (
           <div className="w-full">
             <Input
               name="period.from"
+              color="lilac"
               value={formik.values.period.from}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
@@ -76,6 +78,7 @@ const PeriodField = ({ formik }) => (
           <div className="w-full">
             <Input
               name="period.to"
+              color="lilac"
               value={formik.values.period.to}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}

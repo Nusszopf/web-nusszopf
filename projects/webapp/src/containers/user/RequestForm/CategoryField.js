@@ -9,17 +9,17 @@ const CategoryField = ({ formik, ...props }) => {
   const mapCategoryToColor = category => {
     switch (category) {
       case 'companions':
-        return 'redLivid800'
+        return 'bg-red-200'
       case 'rooms':
-        return 'yellowLivid800'
+        return 'bg-yellow-200'
       case 'materials':
-        return 'turquoiseLivid800'
+        return 'bg-turquoise-200'
       case 'financials':
-        return 'blueLivid800'
+        return 'bg-blue-200'
       case 'others':
-        return 'pinkLivid800'
+        return 'bg-pink-200'
       default:
-        return 'livid800'
+        return 'bg-stone-400'
     }
   }
 
@@ -33,7 +33,8 @@ const CategoryField = ({ formik, ...props }) => {
         value={formik.values.category}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
-        color={mapCategoryToColor(formik.values.category)}>
+        className={mapCategoryToColor(formik.values.category)}
+        color="stone">
         <option value="">Kategorie</option>
         <option value="companions">Mitstreiter:innen</option>
         <option value="rooms">Räume</option>

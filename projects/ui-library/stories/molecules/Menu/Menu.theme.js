@@ -5,7 +5,7 @@ export const MenuVariant = {
 
 export const MenuColor = {
   lilac: {
-    menu: 'text-lilac-800 bg-lilac-200 border border-lilic-500',
+    menu: 'text-lilac-800 bg-lilac-200 border border-lilac-500',
     item: 'hover:bg-lilac-100 focus:lilac-100',
   },
   red: {

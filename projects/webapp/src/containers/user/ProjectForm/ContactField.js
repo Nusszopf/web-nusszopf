@@ -10,6 +10,7 @@ const ContactField = ({ formik, user, ...props }) => (
     </FieldTitle>
     <Switch
       name="contact"
+      color="lilac"
       onBlur={formik.handleBlur}
       onChange={formik.handleChange}
       checked={formik.values.contact}

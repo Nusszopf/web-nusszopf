@@ -25,7 +25,7 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
   }
 
   return (
-    <Dialog isOpen={isOpen} onDismiss={onDismiss} className="text-livid-800 bg-livid-200">
+    <Dialog isOpen={isOpen} onDismiss={onDismiss} className="text-stone-800 bg-stone-200">
       <Formik
         initialValues={
           initialValues ?? {
@@ -53,10 +53,10 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
             <CategoryField className="mt-4" formik={formik} />
             <DescriptionField className="mt-4" formik={formik} />
             <div className="flex justify-center mt-6 space-x-4">
-              <Button variant="outline" type="submit">
+              <Button className="bg-stone-400" color="stone" variant="outline" type="submit">
                 {initialValues ? 'Speichern' : 'Erstellen'}
               </Button>
-              <Button variant="outline" onClick={onDismiss}>
+              <Button color="stone" variant="outline" onClick={onDismiss}>
                 Abbrechen
               </Button>
             </div>

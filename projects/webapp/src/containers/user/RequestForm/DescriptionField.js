@@ -29,6 +29,7 @@ const DescriptionField = ({ formik, ...props }) => (
     </FieldTitle>
     <RichTextEditor
       name="description"
+      color="stone"
       onChange={value => formik.setFieldValue('description', value)}
       onBlur={() => formik.setFieldTouched('description')}
       initialState={formik.values.description}

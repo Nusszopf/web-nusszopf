@@ -5,12 +5,12 @@ import { MoreHorizontal } from 'react-feather'
 
 import { Text } from 'ui-library/stories/atoms'
 import { Menu } from 'ui-library/stories/molecules'
-import { RequestCategoryColor } from '../RequestCard.theme'
+import { RequestCategoryColor, RequestCategoryMenu } from '../RequestCard.theme'
 
 const EditRequestCard = ({ onEdit, onDelete, request, className, ...props }) => (
   <div
     className={classnames(
-      'w-full flex hyphens-auto text-livid-800 transition-shadow duration-150 ease-in-out rounded-lg cursor-pointer ring-3 ring-transparent hover:ring-lilac-700 focus:ring-lilac-700 focus:ring-opacity-50 hover:ring-opacity-50',
+      'w-full flex hyphens-auto text-stone-800 rounded-lg cursor-pointer transition duration-150 ease-in-out ring-2 ring-transparent focus:outline-none',
       RequestCategoryColor[request.category],
       className
     )}
@@ -22,6 +22,7 @@ const EditRequestCard = ({ onEdit, onDelete, request, className, ...props }) => 
     <div className="flex flex-col items-end justify-between">
       <Menu
         label={<MoreHorizontal />}
+        color={RequestCategoryMenu[request.category]}
         items={[
           {
             type: 'button',

@@ -38,7 +38,7 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
     <Dialog
       isOpen={isOpen}
       onDismiss={onDismiss}
-      className="text-lilac-800 bg-lilac-300"
+      className="text-lilac-800 bg-lilac-200"
       aria-label="Contact Dialog"
       {...props}>
       <div className="h-6">
@@ -64,6 +64,7 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
               <Field
                 as={Input}
                 name="email"
+                color="lilac"
                 type="email"
                 maxLength={100}
                 value={formik.values.title}
@@ -78,6 +79,7 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
               <Input
                 as="textarea"
                 className="min-h-48"
+                color="lilac"
                 name="msg"
                 maxLength={2000}
                 value={formik.values.msg}
@@ -88,10 +90,10 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
               <ErrorMessage name="msg" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
             </>
             <div className="flex justify-center mt-12 mb-6 space-x-4">
-              <Button type="submit" variant="outline" onClick={onContact}>
+              <Button type="submit" className="bg-lilac-300" onClick={onContact}>
                 Senden
               </Button>
-              <Button type="button" variant="outline" onClick={onDismiss}>
+              <Button type="button" onClick={onDismiss}>
                 Abbrechen
               </Button>
             </div>

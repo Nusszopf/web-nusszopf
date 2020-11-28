@@ -32,18 +32,19 @@ const Profile = () => {
       navHeader={{ visible: true, fixed: true }}
       showFooter={false}
       noindex={true}
-      className="text-gray-600 bg-gray-100">
+      className="text-steel-700 bg-steel-100">
       <FramedGridCard
         className="lg:mb-20 lg:mt-12"
-        bodyColor="bg-white lg:bg-gray-100"
-        headerColor="bg-gray-200 lg:bg-gray-100">
-        <FramedGridCard.Header className="bg-gray-200">
+        bodyColor="bg-white lg:bg-steel-100"
+        headerColor="bg-steel-200 lg:bg-steel-100">
+        <FramedGridCard.Header className="bg-steel-200">
           <div className="flex flex-col lg:flex-row sm:justify-between lg:items-center">
             <Avatar user={user} />
             <Button
               onClick={() => router.push({ pathname: '/user/project/create', query: { step: 0 } })}
               iconLeft={<PlusCircle className="mr-2 -ml-1" />}
-              className="hidden lg:block">
+              color="lilac"
+              className="hidden lg:block bg-lilac-200">
               {profileData.action}
             </Button>
           </div>
