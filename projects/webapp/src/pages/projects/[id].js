@@ -113,7 +113,6 @@ const Project = ({ id, user }) => {
                   {location?.link ? (
                     <Link
                       href={location.link}
-                      color="lilac800Transparent"
                       textVariant="textSm"
                       title="Zu OpenStreetMap"
                       ariaLabel="Zu OpenStreetMap">
@@ -137,7 +136,6 @@ const Project = ({ id, user }) => {
                 iconLeft={<Send size={21} className="mt-px mr-2 -ml-1" />}
                 variant="outline"
                 size="small"
-                color="lilac800"
                 className="mr-5 lg:mr-0 lg:mb-2">
                 {projectData.header.actions.contact}
               </Button>
@@ -145,8 +143,7 @@ const Project = ({ id, user }) => {
                 onClick={handleShare}
                 size="small"
                 iconLeft={<Share2 size={21} className="mt-px mr-2 -ml-1" />}
-                variant="outline"
-                color="lilac800">
+                variant="outline">
                 {projectData.header.actions.share}
               </Button>
             </div>

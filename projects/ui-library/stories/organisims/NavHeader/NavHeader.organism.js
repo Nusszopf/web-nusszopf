@@ -81,14 +81,14 @@ const NavHeader = ({ user, goBackUri, fixed = false }) => {
     <>
       <Frame
         as="nav"
-        className={classnames(' bg-gray-300 text-gray-600 z-10', {
+        className={classnames(' bg-steel-400 text-steel-800 z-10', {
           'fixed top-0 left-0 right-0': fixed,
           shadow: hasScrolled,
         })}>
         <div className={classnames('flex items-center w-full h-10 lg:h-12 justify-between relative')}>
           <div className="flex items-center">
             {goBackUri && (
-              <Clickable onClick={handleGoBack} className={classnames(' focus:outline-none hover:text-gray-500')}>
+              <Clickable onClick={handleGoBack} className={classnames(' focus:outline-none hover:text-steel-600')}>
                 <ChevronLeft size={28} strokeWidth={2} />
               </Clickable>
             )}
@@ -96,7 +96,7 @@ const NavHeader = ({ user, goBackUri, fixed = false }) => {
           <div className="flex items-center">
             <Clickable
               onClick={handleSearch}
-              className={classnames('mr-6 sm:mr-8 focus:outline-none hover:text-gray-500', {
+              className={classnames('mr-6 sm:mr-8 focus:outline-none hover:text-steel-600', {
                 hidden: menu.visible,
               })}>
               <Search />
@@ -104,25 +104,25 @@ const NavHeader = ({ user, goBackUri, fixed = false }) => {
             {user && (
               <Clickable
                 onClick={handleProfile}
-                className={classnames('mr-6 sm:mr-8 focus:outline-none hover:text-gray-500', {
+                className={classnames('mr-6 sm:mr-8 focus:outline-none hover:text-steel-600', {
                   hidden: menu.visible,
                 })}>
                 <User />
               </Clickable>
             )}
-            <MenuButton {...menu} className="focus:outline-none hover:text-gray-500">
+            <MenuButton {...menu} className="focus:outline-none hover:text-steel-600">
               {menu?.visible ? <X /> : <RMenu />}
             </MenuButton>
           </div>
           <Menu
             {...menu}
             aria-label="Preferences"
-            className="z-10 w-screen px-4 pt-4 pb-8 bg-gray-300 rounded-b-lg lg:w-full lg:max-w-xs focus:outline-none">
+            className="z-10 w-screen px-4 pt-4 pb-8 rounded-b-lg bg-steel-400 lg:w-full lg:max-w-xs focus:outline-none">
             <div className="mx-auto max-w-content lg:ml-12">
               <MenuItem
                 {...menu}
                 onClick={handleSearch}
-                className="flex block py-2 focus:outline-none hover:text-gray-500">
+                className="flex block py-2 focus:outline-none hover:text-steel-600">
                 <Search />
                 <Text variant="textSmMedium" className="ml-4">
                   Suchen & Finden
@@ -133,7 +133,7 @@ const NavHeader = ({ user, goBackUri, fixed = false }) => {
                   <MenuItem
                     {...menu}
                     onClick={handleProfile}
-                    className="flex block py-2 focus:outline-none hover:text-gray-500">
+                    className="flex block py-2 focus:outline-none hover:text-steel-600">
                     <User />
                     <Text variant="textSmMedium" className="ml-4">
                       {truncate(user?.name ?? 'Dein Bereich', { length: 14 })}
@@ -142,7 +142,7 @@ const NavHeader = ({ user, goBackUri, fixed = false }) => {
                   <MenuItem
                     {...menu}
                     onClick={handleSettings}
-                    className="block py-2 ml-10 focus:outline-none hover:text-gray-500">
+                    className="block py-2 ml-10 focus:outline-none hover:text-steel-600">
                     <Text variant="textSmMedium">Einstellungen</Text>
                   </MenuItem>
                 </>
@@ -150,27 +150,27 @@ const NavHeader = ({ user, goBackUri, fixed = false }) => {
                 <MenuItem
                   {...menu}
                   onClick={handleLoginSignup}
-                  className="block py-2 ml-10 focus:outline-none hover:text-gray-500">
+                  className="block py-2 ml-10 focus:outline-none hover:text-steel-600">
                   <Text variant="textSmMedium">Anmelden</Text>
                 </MenuItem>
               )}
               <MenuItem
                 {...menu}
                 onClick={handeLegals}
-                className="block py-2 ml-10 focus:outline-none hover:text-gray-500">
+                className="block py-2 ml-10 focus:outline-none hover:text-steel-600">
                 <Text variant="textSmMedium">Impressum</Text>
               </MenuItem>
               <MenuItem
                 {...menu}
                 onClick={handlePrivacy}
-                className="block py-2 ml-10 focus:outline-none hover:text-gray-500">
+                className="block py-2 ml-10 focus:outline-none hover:text-steel-600">
                 <Text variant="textSmMedium">Datenschutz</Text>
               </MenuItem>
               {user && (
                 <MenuItem
                   {...menu}
                   onClick={handleLogout}
-                  className="block py-2 ml-10 focus:outline-none text-warning-400">
+                  className="block py-2 ml-10 focus:outline-none text-warning-700">
                   <Text variant="textSmMedium">Ausloggen</Text>
                 </MenuItem>
               )}

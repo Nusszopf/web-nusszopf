@@ -1,5 +1,6 @@
 import React from 'react'
 import Switch from './Switch.atom'
+import { SwitchColor } from './Switch.theme'
 
 export default {
   title: 'Design System/Atoms/Switch',
@@ -11,6 +12,20 @@ export default {
       },
     },
   },
+  argTypes: {
+    color: {
+      control: {
+        type: 'select',
+        options: Object.keys(SwitchColor),
+      },
+    },
+    disabled: {
+      control: {
+        type: 'boolean',
+      },
+    },
+  },
 }
 
-export const Default = () => <Switch color="lilac800" />
+const Template = args => <Switch {...args} />
+export const Main = Template.bind({})

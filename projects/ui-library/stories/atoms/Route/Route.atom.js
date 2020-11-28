@@ -4,21 +4,19 @@ import NLink from 'next/link'
 import classnames from 'classnames'
 import { Text, Button } from '../../atoms'
 import { TextVariant } from '../Text/Text.theme'
-import { ButtonColor } from '../Button/Button.theme'
-import { RouterBorder, RouteColor, RouteVariant } from './Route.theme'
+import { RouteBorder, RouteVariant } from './Route.theme'
 
 const Route = ({
+  as = 'span',
+  active = false,
+  ariaLabel,
+  border = RouteBorder.small,
+  className,
   children,
   href,
-  ariaLabel,
-  as = 'span',
-  border = RouterBorder.small,
-  title,
-  className,
   textVariant = 'textSm',
-  active = false,
+  title,
   variant = RouteVariant.text,
-  color = 'gray700',
   ...props
 }) => {
   switch (variant) {
@@ -28,17 +26,13 @@ const Route = ({
           <a className={classnames('cursor-pointer group', className)} href={href} title={title} aria-label={ariaLabel}>
             <Text
               as={as}
+              active={active}
               variant={textVariant}
-              className={classnames(
-                'inline-block',
-                {
-                  'border-transparent': !active,
-                  'border-b-2': border === RouterBorder.small,
-                  'border-b-3': border === RouterBorder.medium,
-                  'border-b-4': border === RouterBorder.large,
-                },
-                RouteColor[color](active)
-              )}>
+              className={classnames('inline-block text-current active:border-current hover:border-current', {
+                'border-b-2': border === RouteBorder.small,
+                'border-b-3': border === RouteBorder.medium,
+                'border-b-4': border === RouteBorder.large,
+              })}>
               {children}
             </Text>
           </a>
@@ -60,7 +54,6 @@ const Route = ({
           <Button
             as="a"
             className={classnames('inline-block', className)}
-            color={color}
             aria-label={ariaLabel}
             title={title}
             {...props}>
@@ -76,9 +69,8 @@ Route.propTypes = {
   as: PropTypes.string,
   active: PropTypes.bool,
   ariaLabel: PropTypes.string.isRequired,
-  border: PropTypes.oneOf(Object.keys(RouterBorder)),
+  border: PropTypes.oneOf(Object.keys(RouteBorder)),
   children: PropTypes.node,
-  color: PropTypes.oneOf([...Object.keys(RouteColor), ...Object.keys(ButtonColor)]),
   className: PropTypes.string,
   href: PropTypes.string.isRequired,
   textVariant: PropTypes.oneOf(Object.keys(TextVariant)),

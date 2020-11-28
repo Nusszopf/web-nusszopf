@@ -1,5 +1,6 @@
 import React from 'react'
 import Menu from './Menu.molecule'
+import { MenuColor } from './Menu.theme'
 
 export default {
   title: 'Design System/Molecules/Menu',
@@ -12,43 +13,50 @@ export default {
       },
     },
   },
+  argTypes: {
+    color: {
+      control: {
+        type: 'select',
+        options: Object.keys(MenuColor),
+      },
+    },
+  },
 }
 
-export const Icon = () => (
-  <Menu
-    variant="icon"
-    label="Menü"
-    items={[
-      {
-        type: 'button',
-        text: 'Beschreibung',
-        action: () => console.log('action'),
-      },
-      {
-        type: 'link',
-        text: 'Einstellungen',
-        href: '/',
-      },
-    ]}
-  />
-)
+const Template = args => <Menu {...args} />
 
-export const Button = () => (
-  <Menu
-    label="Menü"
-    variant="button"
-    color="gray200"
-    items={[
-      {
-        type: 'button',
-        text: 'Beschreibung',
-        action: () => console.log('action'),
-      },
-      {
-        type: 'link',
-        text: 'Einstellungen',
-        href: '/',
-      },
-    ]}
-  />
-)
+export const Icon = Template.bind({})
+Icon.args = {
+  label: 'Menü',
+  variant: 'icon',
+  items: [
+    {
+      type: 'button',
+      text: 'Beschreibung',
+      action: () => console.log('action'),
+    },
+    {
+      type: 'link',
+      text: 'Einstellungen',
+      href: '/',
+    },
+  ],
+}
+
+export const Button = Template.bind({})
+Button.args = {
+  label: 'Menü',
+  variant: 'button',
+  items: [
+    {
+      type: 'button',
+      text: 'Beschreibung',
+      action: () => console.log('action'),
+    },
+    {
+      type: 'link',
+      text: 'Einstellungen',
+      href: '/',
+    },
+  ],
+}

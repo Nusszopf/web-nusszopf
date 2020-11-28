@@ -15,7 +15,6 @@ const ErrorPage = ({ statusCode }) => (
         <Text className="mt-8">
           {errorData.message.text}{' '}
           <Link
-            color="yellow300Pink700"
             href={errorData.message.link.href}
             title={errorData.message.link.meta}
             ariaLabel={errorData.message.link.meta}>
@@ -26,7 +25,6 @@ const ErrorPage = ({ statusCode }) => (
         <div className="text-center">
           <Route
             variant="button"
-            color="pink600Yellow300"
             size="large"
             className="mt-16"
             href="/"

@@ -22,7 +22,7 @@ const Tab = ({ className, children, labelLeft, labelRight, initialIndex = 0, loa
         <div className={classnames('w-full h-full')} aria-hidden="true">
           <div
             className={classnames(
-              'border-2 border-gray-500 text-lg font-medium h-full bg-gray-500 transform transition-all duration-200 ease-in-out w-1/2 px-4 py-2',
+              'border-2 border-steel-700 text-lg font-medium h-full bg-steel-700 transform transition-all duration-200 ease-in-out w-1/2 px-4 py-2',
               {
                 'translate-x-0 rounded-l-full': tabIndex === 0,
                 'translate-x-full rounded-r-full': tabIndex === 1,
@@ -36,7 +36,7 @@ const Tab = ({ className, children, labelLeft, labelRight, initialIndex = 0, loa
               key={`tab-${index}`}
               disabled={loading}
               className={classnames({
-                'text-gray-500': tabIndex !== index,
+                'text-steel-700': tabIndex !== index,
               })}>
               {label}
             </ReachTab>

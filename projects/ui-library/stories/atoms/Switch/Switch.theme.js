@@ -1,11 +1,16 @@
 export const SwitchColor = {
-  gray600: {
-    border: 'nz-switch-gray600',
-    on: 'bg-gray-600',
+  steel: {
+    border: 'nz-switch-steel',
+    on: 'bg-steel-700',
     off: 'bg-white',
   },
-  lilac800: {
-    border: 'nz-switch-lilac800',
+  stone: {
+    border: 'nz-switch-stone',
+    on: 'bg-stone-800',
+    off: 'bg-white',
+  },
+  lilac: {
+    border: 'nz-switch-lilac',
     on: 'bg-lilac-800',
     off: 'bg-white',
   },

@@ -1,6 +1,7 @@
 import React from 'react'
-import { ArrowLeft, ArrowRight } from 'react-feather'
+import { ArrowLeft } from 'react-feather'
 import Route from './Route.atom'
+import { RouteBorder, RouteVariant } from './Route.theme'
 
 export default {
   title: 'Design System/Atoms/Route',
@@ -12,21 +13,43 @@ export default {
       },
     },
   },
+  argTypes: {
+    border: {
+      control: {
+        type: 'select',
+        options: Object.keys.bind(RouteBorder),
+      },
+    },
+    variant: {
+      control: {
+        type: 'select',
+        options: Object.keys(RouteVariant),
+      },
+    },
+    active: {
+      control: {
+        type: 'boolean',
+      },
+    },
+  },
 }
 
-export const Text = () => (
-  <div className="space-x-3">
-    <Route href="/" title="title" ariaLabel="arial label">
-      Home <ArrowRight className="inline h-5 mb-px -ml-1" />
-    </Route>
-    <Route href="/" title="title" ariaLabel="arial label" active={true}>
-      Home (active)
-    </Route>
-  </div>
-)
+const Template = args => <Route {...args}>{args.children}</Route>
 
-export const Button = () => (
-  <Route variant="button" href="/" title="title" ariaLabel="arial label" size="circle" color="gray600Gray200">
-    <ArrowLeft size={27} />
-  </Route>
-)
+export const Main = Template.bind({})
+Main.args = {
+  href: '/',
+  ariaLabel: 'arial label',
+  title: 'title',
+  children: 'Route',
+}
+
+export const Button = Template.bind({})
+Button.args = {
+  variant: 'button',
+  href: '/',
+  title: 'title',
+  ariaLabel: 'arial label',
+  size: 'circle',
+  children: <ArrowLeft size={27} />,
+}

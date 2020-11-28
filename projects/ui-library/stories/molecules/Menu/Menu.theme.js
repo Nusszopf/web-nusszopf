@@ -4,12 +4,28 @@ export const MenuVariant = {
 }
 
 export const MenuColor = {
-  gray200: {
-    menu: 'text-gray-600 bg-gray-200',
-    item: 'hover:bg-gray-300 focus:bg-gray-300',
+  lilac: {
+    menu: 'text-lilac-800 bg-lilac-200 border border-lilic-500',
+    item: 'hover:bg-lilac-100 focus:lilac-100',
   },
-  lilac700: {
-    menu: 'text-white bg-lilac-700',
-    item: 'hover:bg-lilac-600 focus:lilac-600',
+  red: {
+    menu: 'text-stone-800 bg-red-200 border border-red-500',
+    item: 'hover:bg-red-100 focus:red-100',
+  },
+  yellow: {
+    menu: 'text-stone-800 bg-yellow-200 border border-yellow-500',
+    item: 'hover:bg-yellow-100 focus:yellow-100',
+  },
+  pink: {
+    menu: 'text-stone-800 bg-pink-200 border border-pink-500',
+    item: 'hover:bg-pink-100 focus:pink-100',
+  },
+  blue: {
+    menu: 'text-stone-800 bg-blue-200 border border-blue-500',
+    item: 'hover:bg-blue-100 focus:blue-100',
+  },
+  turquoise: {
+    menu: 'text-stone-800 bg-turquoise-200 border border-turquoise-500',
+    item: 'hover:bg-turquoise-100 focus:turquoise-100',
   },
 }

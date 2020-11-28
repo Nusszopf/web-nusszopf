@@ -7,7 +7,7 @@ import { SVGNusszopfLogoSmall } from '~/assets/logos'
 const WelcomeCard = ({ title, description, greetings, className, ...props }) => (
   <div
     className={classnames(
-      'flex flex-col w-full items-center justify-end p-6 rounded-lg md:p-8 md:px-12 lg:px-16 md:flex-row-reverse md:flex-row bg-lilac-300 text-lilac-800',
+      'flex flex-col w-full items-center justify-end p-6 rounded-lg md:p-8 md:px-12 lg:px-16 md:flex-row-reverse md:flex-row bg-steel-300 text-steel-700',
       className
     )}
     {...props}>

@@ -33,19 +33,15 @@ const Index = () => {
           </div>
         </div>
       </Frame>
-      <Frame className="pt-12 pb-16 text-yellow-700 bg-yellow-400 sm:pt-16 sm:pb-18">
+      <Frame className="pt-12 pb-16 text-yellow-800 bg-yellow-300 sm:pt-16 sm:pb-18">
         <div className="flex flex-col max-w-2xl mx-auto xl:max-w-3xl">
           <Text variant="textXl">{hintData.message}</Text>
-          <Button
-            color="yellow400Yellow700"
-            size="large"
-            onClick={() => scrollIntoView('newsletter')}
-            className="self-center mt-10 sm:mt-12">
+          <Button size="large" onClick={() => scrollIntoView('newsletter')} className="self-center mt-10 sm:mt-12">
             {hintData.action}
           </Button>
         </div>
       </Frame>
-      <Frame className="pt-12 pb-16 text-pink-600 bg-turquoise-400 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
+      <Frame className="pt-12 pb-16 text-pink-700 bg-turquoise-300 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
         <Text as="h3" variant="titleMd" className="mb-8 sm:max-w-sm xl:max-w-full xl:mb-10">
           {featuresData.heading}
         </Text>
@@ -88,7 +84,7 @@ const Index = () => {
           </div>
         </div>
       </Frame>
-      <Frame id="bmbf" className="pt-12 pb-16 text-yellow-100 bg-red-400 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
+      <Frame id="bmbf" className="pt-12 pb-16 text-yellow-100 bg-red-500 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
         <div className="lg:flex">
           <div className="lg:w-2/3 xl:w-7/12">
             <Text as="h3" variant="titleMd" className="mb-8 xl:mb-10">
@@ -100,7 +96,6 @@ const Index = () => {
               <Link
                 href={contestData.infoLink.href}
                 title={contestData.infoLink.meta}
-                color="yellow100Red500"
                 ariaLabel={contestData.infoLink.meta}>
                 {contestData.infoLink.text}
               </Link>
@@ -118,7 +113,7 @@ const Index = () => {
           </div>
         </div>
       </Frame>
-      <Frame className="pt-12 pb-16 text-blue-700 bg-pink-400 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
+      <Frame className="pt-12 pb-16 text-blue-700 bg-pink-200 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
         <Text as="h3" variant="titleMd" className="mb-6">
           {fellowsData.heading}
         </Text>
@@ -147,7 +142,6 @@ const Index = () => {
               <div className="w-full mt-8 text-center lg:text-left">
                 <Link
                   variant="button"
-                  color="pink400Blue700"
                   title={fellow.action.meta}
                   ariaLabel={fellow.action.meta}
                   href={fellow.action.href}>

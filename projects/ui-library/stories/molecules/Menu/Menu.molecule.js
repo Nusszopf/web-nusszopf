@@ -8,7 +8,7 @@ import { Menu, MenuButton, MenuList, MenuItem } from '@reach/menu-button'
 import { Button, Text } from '../../atoms'
 import { MenuColor, MenuVariant } from './Menu.theme'
 
-const MyMenu = ({ label, items, color = 'lilac700', variant = 'icon', ...props }) => {
+const MyMenu = ({ label, items, color = 'lilac', variant = 'icon', ...props }) => {
   return (
     <Menu>
       {variant === MenuVariant.button && (
@@ -36,7 +36,6 @@ const MyMenu = ({ label, items, color = 'lilac700', variant = 'icon', ...props }
                   </Link>
                 </MenuItem>
               )}
-              {item?.seperator && <div className="w-full h-px my-2 bg-white opacity-25"></div>}
               {item.type === 'button' && (
                 <MenuItem
                   className={classnames(MenuColor[color].item)}

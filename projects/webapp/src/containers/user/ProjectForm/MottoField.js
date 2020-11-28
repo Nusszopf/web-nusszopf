@@ -19,7 +19,6 @@ const MottoField = ({ formik, ...props }) => (
       value={formik.values.motto}
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
-      color="whiteLilac800"
       placeholder={data.descriptionStep2.motto.placeholder}
     />
     {formik?.errors?.motto && formik.touched?.motto && (

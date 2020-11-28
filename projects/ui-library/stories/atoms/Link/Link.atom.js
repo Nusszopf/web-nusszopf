@@ -14,7 +14,7 @@ const Link = ({
   title,
   variant = LinkVariant.text,
   textVariant = 'textMd',
-  color = 'gray700Blue200',
+  color = 'steel',
   border = LinkBorder.medium,
   ...props
 }) => {

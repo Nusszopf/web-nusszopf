@@ -25,7 +25,7 @@ const CategoryField = ({ formik, ...props }) => {
 
   return (
     <>
-      <FieldTitle color="livid800" info="info" {...props}>
+      <FieldTitle info="info" {...props}>
         Kategorie*
       </FieldTitle>
       <Select

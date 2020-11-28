@@ -15,7 +15,7 @@ export default {
 }
 
 export const Row = () => (
-  <Footer className="bg-turquoise-700">
+  <Footer className="bg-turquoise-500">
     <Footer.LeftElement>Left Element</Footer.LeftElement>
     <Footer.RightElement sponsors={['vercel']} />
   </Footer>

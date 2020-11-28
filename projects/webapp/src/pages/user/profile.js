@@ -41,7 +41,6 @@ const Profile = () => {
           <div className="flex flex-col lg:flex-row sm:justify-between lg:items-center">
             <Avatar user={user} />
             <Button
-              color="lilac800"
               onClick={() => router.push({ pathname: '/user/project/create', query: { step: 0 } })}
               iconLeft={<PlusCircle className="mr-2 -ml-1" />}
               className="hidden lg:block">
@@ -54,7 +53,6 @@ const Profile = () => {
             <Button
               className="block mx-auto mb-8 md:mb-10"
               onClick={() => router.push({ pathname: '/user/project/create', query: { step: 0 } })}
-              color="lilac800"
               iconLeft={<PlusCircle className="mr-2 -ml-1" />}>
               {profileData.action}
             </Button>

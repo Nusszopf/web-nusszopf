@@ -5,7 +5,7 @@ import { Info } from 'react-feather'
 import { Text } from '../../atoms'
 
 const InfoCard = ({ children, className }) => (
-  <div className={classnames('flex p-4 rounded-lg', className)}>
+  <div className={classnames('flex p-4 rounded-lg bg-livid-300 text-livid-800', className)}>
     <Info className="flex-shrink-0 mr-2" size={25} />
     <Text as="span" variant="textSm" className="leading-snug text-left">
       {children}

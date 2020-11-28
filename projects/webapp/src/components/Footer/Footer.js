@@ -16,13 +16,12 @@ const Footer = ({ type = FOOTER_TYPE.primary }) => (
         <UIFooter.LeftElement>
           <Route
             className="mr-8 sm:mr-10"
-            color="turquoise400"
             href="/legalNotice"
             title={footerData.nav.legalNotice}
             ariaLabel={footerData.nav.legalNotice}>
             {footerData.nav.legalNotice}
           </Route>
-          <Route color="turquoise400" href="/privacy" title={footerData.nav.privacy} ariaLabel={footerData.nav.privacy}>
+          <Route href="/privacy" title={footerData.nav.privacy} ariaLabel={footerData.nav.privacy}>
             {footerData.nav.privacy}
           </Route>
         </UIFooter.LeftElement>
@@ -32,12 +31,7 @@ const Footer = ({ type = FOOTER_TYPE.primary }) => (
     {type === FOOTER_TYPE.secondary && (
       <UIFooter className="bg-blue-300">
         <UIFooter.LeftElement>
-          <Route
-            color="gray600"
-            textVariant="textSmMedium"
-            href="/"
-            title={footerData.nav.home}
-            ariaLabel={footerData.nav.home}>
+          <Route textVariant="textSmMedium" href="/" title={footerData.nav.home} ariaLabel={footerData.nav.home}>
             {footerData.nav.home}
           </Route>
         </UIFooter.LeftElement>

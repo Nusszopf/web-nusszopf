@@ -55,7 +55,6 @@ const LocationField = ({ formik, ...props }) => {
         {data.descriptionStep1.location.title}
       </FieldTitle>
       <Switch
-        color="lilac800"
         name="location.remote"
         onBlur={formik.handleBlur}
         onChange={formik.handleChange}

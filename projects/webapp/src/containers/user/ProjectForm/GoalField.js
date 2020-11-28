@@ -20,7 +20,6 @@ const GoalField = ({ formik, ...props }) => (
       value={formik.values.goal}
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
-      color="whiteLilac800"
       placeholder={data.descriptionStep1.goal.placeholder}
     />
     {formik?.errors?.goal && formik.touched?.goal && (

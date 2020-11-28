@@ -7,11 +7,11 @@ import { createProjectData as content } from '~/assets/data'
 const Navigation = ({ stepper, formik, loading, className, ...props }) => (
   <div className={classnames('flex-shrink-0', className)} {...props}>
     {stepper?.step > 0 && (
-      <Button variant="outline" color="lilac800" className="mr-5" onClick={stepper?.goBack}>
+      <Button variant="outline" className="mr-5" onClick={stepper?.goBack}>
         {content.navigation.back}
       </Button>
     )}
-    <Button disabled={loading} color="lilac800" onClick={formik.submitForm}>
+    <Button disabled={loading} onClick={formik.submitForm}>
       {stepper?.progress === 100 ? content.navigation.create : content.navigation.next}
     </Button>
   </div>

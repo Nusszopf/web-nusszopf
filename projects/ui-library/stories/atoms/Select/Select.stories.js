@@ -1,5 +1,6 @@
 import React from 'react'
 import Select from './Select.atom'
+import { SelectColor } from './Select.theme'
 
 export default {
   title: 'Design System/Atoms/Select',
@@ -12,12 +13,29 @@ export default {
       },
     },
   },
+  argTypes: {
+    color: {
+      control: {
+        type: 'select',
+        options: Object.keys(SelectColor),
+      },
+    },
+    disabled: {
+      control: {
+        type: 'boolean',
+      },
+    },
+  },
 }
 
-export const Default = () => (
-  <Select placeholder="placeholder">
+const Template = args => (
+  <Select {...args}>
     <option>A</option>
     <option>B</option>
     <option>C</option>
   </Select>
 )
+export const Main = Template.bind({})
+Main.args = {
+  placeholder: 'ABC',
+}

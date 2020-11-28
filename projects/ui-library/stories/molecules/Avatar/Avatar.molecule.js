@@ -6,7 +6,7 @@ import { Text } from '../../atoms'
 
 const Avatar = ({ user, className, ...props }) => (
   <div className={classnames('flex items-center break-all', className)} {...props}>
-    <img className="w-16 h-16 bg-gray-600 rounded-full" src={user?.auth?.picture} alt="avatar" />
+    <img className="w-16 h-16 rounded-full bg-stone-700" src={user?.auth?.picture} alt="avatar" />
     <div className="ml-4">
       <Text variant="textSmMedium">{truncate(user?.auth?.name ?? '-', { length: 33 })}</Text>
       {user?.data?.email && <Text variant="textSm">{truncate(user?.data?.email ?? '-', { length: 33 })}</Text>}

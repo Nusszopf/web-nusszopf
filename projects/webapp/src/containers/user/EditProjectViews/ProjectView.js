@@ -84,7 +84,7 @@ const ProjectView = ({ user, project }) => {
               <MottoField formik={formik} className="mt-6" />
             </FramedGridCard.Body.Col>
             <FramedGridCard.Body.Col variant="oneCol" className="flex justify-center mt-12 mb-4 md:mb-0 lg:col-start-2">
-              <Button type="submit" size="large" color="lilac800" disabled={updateLoading}>
+              <Button type="submit" size="large" disabled={updateLoading}>
                 Speichern
               </Button>
             </FramedGridCard.Body.Col>

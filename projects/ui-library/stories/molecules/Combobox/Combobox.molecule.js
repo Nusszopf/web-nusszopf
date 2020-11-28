@@ -6,7 +6,7 @@ import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption 
 import { InputGroup } from '../../molecules'
 import { ComboboxColor } from './Combobox.theme'
 
-const MyCombobox = ({ aria, className, options, onSelect, onClear, color = 'whiteLilac800', ...props }) => (
+const MyCombobox = ({ aria, className, options, onSelect, onClear, color = 'lilac', ...props }) => (
   <Combobox
     className={classnames(ComboboxColor[color].box, className)}
     aria-label={aria}

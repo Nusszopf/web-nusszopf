@@ -10,7 +10,7 @@ const NewsletterSection = ({ className }) => {
   return (
     <Frame
       id="newsletter"
-      className={classnames('pt-12 pb-16 bg-blue-400 text-yellow-300 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20', className)}>
+      className={classnames('pt-12 pb-16 bg-blue-500 text-yellow-300 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20', className)}>
       <Text as="h3" variant="titleMd" className="mb-8 xl:mb-10">
         {newsletterData.subscribe.heading}
       </Text>

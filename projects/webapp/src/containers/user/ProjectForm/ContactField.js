@@ -13,7 +13,6 @@ const ContactField = ({ formik, user, ...props }) => (
       onBlur={formik.handleBlur}
       onChange={formik.handleChange}
       checked={formik.values.contact}
-      color="lilac800"
       label={
         <>
           Direkt kontaktieren unter <i className="hyphens-auto">{user?.data?.email}</i>

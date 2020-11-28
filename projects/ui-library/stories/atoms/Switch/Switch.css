@@ -1,11 +1,14 @@
-.nz-switch {
-  @apply ring-3 ring-transparent;
+.nz-switch-steel {
+  @apply border-steel-700 ring-3 ring-transparent;
+  @apply hover:ring-steel-700 focus:ring-steel-700 hover:ring-opacity-50 focus:ring-opacity-50;
 }
 
-.nz-switch-gray600 {
-  @apply border-gray-600 hover:ring-gray-600 focus:ring-opacity-50 hover:ring-opacity-50;
+.nz-switch-stone {
+  @apply border-stone-800 ring-3 ring-transparent;
+  @apply hover:ring-stone-800 focus:ring-stone-800 hover:ring-opacity-50 focus:ring-opacity-50;
 }
 
-.nz-switch-lilac800 {
-  @apply border-lilac-800 hover:ring-lilac-700 focus:ring-opacity-50 hover:ring-opacity-50;
+.nz-switch-lilac {
+  @apply ring-3 ring-transparent border-lilac-800;
+  @apply hover:ring-lilac-800 focus:ring-lilac-800 hover:ring-opacity-50 focus:ring-opacity-50;
 }

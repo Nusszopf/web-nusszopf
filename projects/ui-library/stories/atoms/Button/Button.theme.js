@@ -13,74 +13,39 @@ export const ButtonSize = {
 }
 
 export const ButtonColor = {
-  whiteGray600: {
+  stone: {
     clean: '',
-    outline: '',
-    filled: 'nz-btn-filled--whiteGray600 nz-btn',
+    outline: 'nz-btn-stone',
+    filled: 'nz-btn-stone',
   },
-  whiteGray500: {
+  steel: {
     clean: '',
-    outline: '',
-    filled: 'nz-btn-filled--whiteGray500 nz-btn',
+    outline: 'nz-btn-steel',
+    filled: 'nz-btn-steel',
   },
-  blue400Yellow300: {
+  lilac: {
     clean: '',
-    outline: '',
-    filled: 'nz-btn-filled--blue400Yellow300 nz-btn',
-  },
-  whiteBlue400: {
-    clean: '',
-    outline: '',
-    filled: 'nz-btn-filled--whiteBlue400 nz-btn',
-  },
-  pink400Blue700: {
-    clean: '',
-    outline: '',
-    filled: 'nz-btn-filled--pink400Blue700 nz-btn',
-  },
-  pink600Yellow300: {
-    clean: '',
-    outline: '',
-    filled: 'nz-btn-filled--pink600Yellow300 nz-btn',
-  },
-  yellow400Yellow700: {
-    clean: '',
-    outline: '',
-    filled: 'nz-btn-filled--yellow400Yellow700 nz-btn',
-  },
-  turquoise700Turquoise500: {
-    clean: '',
-    outline: '',
-    filled: 'nz-btn-filled--turquoise700Turquoise600 nz-btn',
-  },
-  blue400Blue200: {
-    clean: '',
-    outline: '',
-    filled: 'nz-btn-filled--blue400Blue200 nz-btn',
-  },
-  gray600Gray200: {
-    clean: '',
-    outline: '',
-    filled: 'nz-btn-filled--gray600Gray200 nz-btn',
-  },
-  gray500Gray200: {
-    clean: '',
-    outline: '',
-    filled: 'nz-btn-filled--gray500Gray200 nz-btn',
+    outline: 'nz-btn-lilac',
+    filled: 'nz-btn-lilac',
   },
   warning: {
     clean: '',
-    outline: 'nz-btn-outline--warning nz-btn',
-    filled: 'nz-btn-filled--gray500Gray200 nz-btn',
+    outline: 'nz-btn-warning',
+    filled: 'nz-btn-warning',
   },
-  lilac800: {
+  blue: {
     clean: '',
-    outline: 'nz-btn-outline--lilac800 nz-btn',
-    filled: 'nz-btn-filled--lilac800 nz-btn',
+    outline: 'nz-btn-blue',
+    filled: 'nz-btn-blue',
   },
-  livid800: {
+  turquoise: {
     clean: '',
-    outline: 'nz-btn-outline--livid800 nz-btn',
-    filled: 'nz-btn-filled--livid800 nz-btn',
+    outline: 'nz-btn-turquoise',
+    filled: 'nz-btn-turquoise',
+  },
+  yellow: {
+    clean: '',
+    outline: 'nz-btn-yellow',
+    filled: 'nz-btn-yellow',
   },
 }

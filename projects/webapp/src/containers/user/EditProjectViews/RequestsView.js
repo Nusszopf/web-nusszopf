@@ -11,14 +11,7 @@ import { InfoCard } from 'ui-library/stories/molecules'
 import useProjectsService from '~/utils/services/projects.service'
 
 const RequestsView = ({ project }) => {
-  const {
-    deleteRequest,
-    addRequest,
-    updateRequest,
-    updateRequestLoading,
-    addRequestLoading,
-    deleteRequestLoading,
-  } = useProjectsService({ project })
+  const { deleteRequest, addRequest, updateRequest } = useProjectsService({ project })
   const [currentRequest, setCurrentRequest] = useState()
   const [showDialog, setShowDialog] = useState(false)
 
@@ -54,7 +47,7 @@ const RequestsView = ({ project }) => {
   return (
     <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
-        <Button onClick={openDialog} color="livid800" iconLeft={<Plus className="mr-2 -ml-2" />} size="large">
+        <Button onClick={openDialog} iconLeft={<Plus className="mr-2 -ml-2" />} size="large">
           Neues Gesuch erstellen
         </Button>
       </FramedGridCard.Body.Col>

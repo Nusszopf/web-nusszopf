@@ -8,7 +8,7 @@
 
 [data-reach-tab-list] {
   @apply absolute top-0 left-0 right-0;
-  @apply flex w-full h-full text-white bg-transparent border-2 border-gray-500 rounded-full;
+  @apply flex w-full h-full text-white bg-transparent border-2 rounded-full border-steel-700;
 }
 
 [data-reach-tab-list][aria-orientation='vertical'] {

@@ -13,7 +13,6 @@ const NavHeader = ({ router }) => (
         className="md:absolute md:top-0 md:left-0 md:-ml-16 md:-mt-1 lg:-ml-24"
         variant="button"
         size="circle"
-        color="turquoise700Turquoise500"
         href="/"
         title={navHeaderData.home.meta}
         ariaLabel={navHeaderData.home.meta}>
@@ -22,7 +21,6 @@ const NavHeader = ({ router }) => (
       <Route
         className="ml-4 sm:ml-6 md:ml-0"
         textType="text-lg sm:text-xl sm:font-medium sm:leading-snug"
-        color="turquoise400"
         textVariant="textMd"
         href="/legalNotice"
         as={router?.route === '/legalNotice' ? 'h1' : 'h3'}
@@ -33,7 +31,6 @@ const NavHeader = ({ router }) => (
       </Route>
       <Route
         className="ml-4 sm:ml-6"
-        color="turquoise400"
         textVariant="textMd"
         textType="text-lg sm:text-xl sm:font-medium sm:leading-snug"
         href="/privacy"

@@ -18,7 +18,6 @@ const TitleField = ({ formik }) => (
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
       placeholder={data.descriptionStep1.title.placeholder}
-      color="whiteLilac800"
     />
     {formik?.errors?.title && formik.touched?.title && (
       <Text variant="textXs" className="mt-2 ml-4 italic">

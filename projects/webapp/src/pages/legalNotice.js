@@ -20,7 +20,6 @@ const LegalNotice = () => (
           <Text variant="textSm" className="italic">
             {legalNoticeData.source.text}{' '}
             <Link
-              color="turquoise400Turquoise800"
               textVariant="textSm"
               href={legalNoticeData.source.link.href}
               ariaLabel={legalNoticeData.source.link.meta}

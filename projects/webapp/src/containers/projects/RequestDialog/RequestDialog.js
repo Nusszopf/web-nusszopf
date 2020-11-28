@@ -32,10 +32,10 @@ const RequestDialog = ({ isOpen, onDismiss, onContact, request, ...props }) => (
       </Text>
     </div>
     <div className="flex justify-center mt-6 space-x-4">
-      <Button color="livid800" variant="outline" onClick={onContact}>
+      <Button variant="outline" onClick={onContact}>
         Kontaktieren
       </Button>
-      <Button color="livid800" variant="outline" onClick={onDismiss}>
+      <Button variant="outline" onClick={onDismiss}>
         Schließen
       </Button>
     </div>

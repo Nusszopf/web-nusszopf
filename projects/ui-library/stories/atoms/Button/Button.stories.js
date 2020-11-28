@@ -1,6 +1,7 @@
 import React from 'react'
 import { ChevronDown, ChevronLeft, ArrowLeft } from 'react-feather'
 import Button from './Button.atom'
+import { ButtonColor, ButtonSize, ButtonVariant } from './Button.theme'
 
 export default {
   title: 'Design System/Atoms/Button',
@@ -13,14 +14,46 @@ export default {
       },
     },
   },
+  argTypes: {
+    size: {
+      control: {
+        type: 'select',
+        options: Object.keys(ButtonSize),
+      },
+    },
+    color: {
+      control: {
+        type: 'select',
+        options: Object.keys(ButtonColor),
+      },
+    },
+    variant: {
+      control: {
+        type: 'select',
+        options: Object.keys(ButtonVariant),
+      },
+    },
+    disabled: {
+      control: {
+        type: 'boolean',
+      },
+    },
+  },
 }
 
-export const Filled = () => <Button color="gray600Gray200">Button</Button>
+const Template = args => <Button {...args}>{args.children}</Button>
 
-export const Disabled = () => <Button disabled>Button</Button>
+export const Main = Template.bind({})
+Main.args = { children: 'Button' }
+
+export const Filled = Template.bind({})
+Filled.args = {
+  className: 'bg-red-300',
+  children: 'Button',
+}
 
 export const Circle = () => (
-  <Button size="circle" color="gray600Gray200">
+  <Button size="circle">
     <ArrowLeft size={27} />
   </Button>
 )
@@ -33,15 +66,4 @@ export const IconRight = () => (
   </Button>
 )
 
-export const As = () => (
-  <Button
-    as="a"
-    color="gray600Gray200"
-    href="https://nusszopf.org"
-    rel="noopener noreferrer"
-    target="_blank"
-    title="Zum Nusszopf"
-    aria-label="Zum Nusszopf">
-    As Link
-  </Button>
-)
+export const As = () => <Button as="p">As Paragraph</Button>

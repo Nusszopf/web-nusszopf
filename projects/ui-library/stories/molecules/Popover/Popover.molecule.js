@@ -1,31 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
+
 import { usePopoverState, Popover, PopoverDisclosure, PopoverArrow } from 'reakit/Popover'
 import { Info } from 'react-feather'
 import { Text } from '../../atoms'
-import { PopoverColor } from './Popover.theme'
 
-const MyPopover = ({ color = 'lilac800', children, ...props }) => {
+const MyPopover = ({ children, ...props }) => {
   const popover = usePopoverState({ placement: 'top' })
 
   return (
     <div {...props}>
-      <PopoverDisclosure {...popover} className="focus:outline-none">
-        <Info className={classnames(PopoverColor[color].disclosure)} />
+      <PopoverDisclosure {...popover} className="focus:outline-none text-livid-500">
+        <Info />
       </PopoverDisclosure>
       <Popover
         {...popover}
         aria-label="Info"
-        className={classnames(
-          'box-border z-50 p-2 rounded-md focus:outline-none max-w-xs',
-          PopoverColor[color].popover
-        )}>
-        <PopoverArrow
-          {...popover}
-          className={classnames('box-border bg-transparent fill-current', PopoverColor[color].arrow)}
-        />
-        <Text variant="textXs" className="italic">
+        className="z-50 max-w-xs p-2 border-2 rounded-md shadow-md text-livid-300 bg-livid-300 focus:outline-none border-livid-300">
+        <PopoverArrow {...popover} className="fill-current" />
+        <Text variant="textXs" className="italic text-livid-800">
           {children}
         </Text>
       </Popover>
@@ -35,7 +28,6 @@ const MyPopover = ({ color = 'lilac800', children, ...props }) => {
 
 MyPopover.propTypes = {
   children: PropTypes.node,
-  color: PropTypes.oneOf(Object.keys(PopoverColor)),
 }
 
 export default MyPopover

@@ -6,7 +6,7 @@ import { Text } from '../../atoms'
 import { Checkbox as ReakitCheckbox } from 'reakit/Checkbox'
 import { VisuallyHidden } from 'reakit/VisuallyHidden'
 
-const Switch = ({ label, disabled, checked, className, color = 'gray600', ...props }) => (
+const Switch = ({ label, disabled, checked, className, color = 'steel', ...props }) => (
   <label>
     <VisuallyHidden>
       <ReakitCheckbox disabled={disabled} checked={checked} {...props} />

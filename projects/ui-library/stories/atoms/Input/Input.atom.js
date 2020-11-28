@@ -5,7 +5,7 @@ import { Input as ReakitInput } from 'reakit/Input'
 import { Box } from 'reakit/Box'
 import { InputColor, InputSize } from './Input.theme'
 
-const Input = ({ as = ReakitInput, size = 'base', color = 'whiteGray600', className, ...props }) => (
+const Input = ({ as = ReakitInput, size = 'base', color = 'steel', className, ...props }) => (
   <Box
     as={as}
     className={classnames(

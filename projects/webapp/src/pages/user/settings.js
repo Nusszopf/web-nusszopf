@@ -115,7 +115,6 @@ const Settings = () => {
                             {settingsData.newsletter.subscribe.privacy[0]}{' '}
                             <Route
                               className="italic"
-                              color="gray600"
                               href={settingsData.newsletter.subscribe.privacy[1].href}
                               title={settingsData.newsletter.subscribe.privacy[1].meta}
                               ariaLabel={settingsData.newsletter.subscribe.privacy[1].meta}>
@@ -130,7 +129,7 @@ const Settings = () => {
                         className="mt-1 mb-3 ml-6 italic"
                         component={Text}
                       />
-                      <Button type="submit" color="whiteGray600" className="block mt-4">
+                      <Button type="submit" className="block mt-4">
                         {settingsData.newsletter.subscribe.action}
                       </Button>
                     </Form>
@@ -141,7 +140,7 @@ const Settings = () => {
                   <Text variant="textSm" className="mb-2">
                     {settingsData.newsletter.unsubscribe.description}
                   </Text>
-                  <Button onClick={handleUnsubscribe} color="whiteGray600" className="block mt-4">
+                  <Button onClick={handleUnsubscribe} className="block mt-4">
                     {settingsData.newsletter.unsubscribe.action}
                   </Button>
                 </>
@@ -154,7 +153,6 @@ const Settings = () => {
               <Text variant="textSm">{settingsData.sponsoring.description}</Text>
               <Link
                 variant="button"
-                color="whiteGray600"
                 className="block mt-4"
                 title={settingsData.sponsoring.action.meta}
                 ariaLabel={settingsData.sponsoring.action.meta}
@@ -177,12 +175,12 @@ const Settings = () => {
             </InfoCard>
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2">
-            <div id="delete" className="mt-10 text-warning-400">
+            <div id="delete" className="mt-10 text-warning-700">
               <Text variant="textMd" className="mb-2">
                 {settingsData.delete.title}
               </Text>
               <Text variant="textSm">{settingsData.delete.description}</Text>
-              <Button onClick={handleDelete} variant="outline" color="warning" className="block mt-4">
+              <Button onClick={handleDelete} variant="outline" className="block mt-4">
                 {settingsData.delete.action}
               </Button>
             </div>

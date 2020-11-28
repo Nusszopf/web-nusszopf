@@ -37,17 +37,17 @@ const SettingsView = ({ user, project }) => {
               <VisibilityField formik={formik} />
               <ContactField formik={formik} user={user} className="mt-6" />
               <div className="mt-12">
-                <Button type="submit" color="lilac800" disabled={updateLoading}>
+                <Button type="submit" disabled={updateLoading}>
                   Speichern
                 </Button>
               </div>
             </FramedGridCard.Body.Col>
-            <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4 text-warning-400">
+            <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4 text-warning-700">
               <Text className="mb-2">Projekt löschen</Text>
               <Text className="mb-6" variant="textSm">
                 Nach dem Löschen können die Daten nicht wieder hergestellt werden.
               </Text>
-              <Button variant="outline" color="warning" onClick={handleDelete} disabled={deleteLoading}>
+              <Button variant="outline" onClick={handleDelete} disabled={deleteLoading}>
                 Projekt löschen
               </Button>
             </FramedGridCard.Body.Col>

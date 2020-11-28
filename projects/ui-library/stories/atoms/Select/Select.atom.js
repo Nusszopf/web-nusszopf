@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { SelectColor } from './Select.theme'
 import { ChevronDown } from 'react-feather'
+import { SelectColor } from './Select.theme'
 
-const Select = ({ children, className, placeholder, color = 'lilac800', ...props }) => (
+const Select = ({ children, className, placeholder, color = 'steel', ...props }) => (
   <div className={classnames('relative rounded-md cursor-pointer', SelectColor[color], className)}>
     <select
       className="inline-block w-full py-2 pl-3 pr-10 font-semibold bg-transparent appearance-none cursor-pointer text-md focus:outline-none"

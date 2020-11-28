@@ -30,7 +30,6 @@ const Privacy = () => (
           <Text variant="textSm">
             {privacyData[2].description[0]}{' '}
             <Link
-              color="turquoise400Turquoise800"
               textVariant="textSm"
               href={privacyData[2].description[1].href}
               title={privacyData[2].description[1].meta}
@@ -78,7 +77,6 @@ const Privacy = () => (
           </Text>
           <Text variant="textSm">
             <Link
-              color="turquoise400Turquoise800"
               textVariant="textSm"
               href={privacyData[7].description[0].href}
               title={privacyData[7].description[0].meta}
@@ -100,7 +98,6 @@ const Privacy = () => (
           <Text variant="textSm" className="italic">
             {privacyData[9].text}{' '}
             <Link
-              color="turquoise400Turquoise800"
               textVariant="textSm"
               href={privacyData[9].link.href}
               ariaLabel={privacyData[9].link.meta}

@@ -10,7 +10,7 @@ const Button = ({
   children,
   variant = ButtonVariant.filled,
   size = 'base',
-  color = 'gray600Gray200',
+  color = 'steel',
   as = ReakitButton,
   iconLeft,
   iconRight,

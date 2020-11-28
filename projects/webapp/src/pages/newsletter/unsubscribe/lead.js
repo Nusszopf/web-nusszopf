@@ -52,11 +52,10 @@ const UnsubscribeLead = () => {
                 aria-label={newsletterData.unsubscribe.email.meta}
                 placeholder={newsletterData.unsubscribe.email.meta}
                 disabled={loading}
-                color="whiteBlue400"
               />
               <ErrorMessage variant="textSm" className="mt-2 ml-6 italic" component={Text} name="email" />
               <div className="mt-6 text-center">
-                <Button color="whiteBlue400" type="submit" disabled={loading}>
+                <Button type="submit" disabled={loading}>
                   Abmelden
                 </Button>
               </div>

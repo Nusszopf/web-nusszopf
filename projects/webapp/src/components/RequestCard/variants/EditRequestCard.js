@@ -31,7 +31,6 @@ const EditRequestCard = ({ onEdit, onDelete, request, className, ...props }) => 
           {
             type: 'button',
             text: 'Löschen',
-            seperator: true,
             action: () => onDelete(request),
           },
         ]}

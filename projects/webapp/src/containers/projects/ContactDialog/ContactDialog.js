@@ -68,7 +68,6 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
                 maxLength={100}
                 value={formik.values.title}
                 placeholder="beispiel@mail.de"
-                color="whiteLilac800"
               />
               <ErrorMessage name="email" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
             </>
@@ -78,7 +77,6 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
               </FieldTitle>
               <Input
                 as="textarea"
-                color="whiteLilac800"
                 className="min-h-48"
                 name="msg"
                 maxLength={2000}
@@ -90,10 +88,10 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
               <ErrorMessage name="msg" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
             </>
             <div className="flex justify-center mt-12 mb-6 space-x-4">
-              <Button type="submit" color="lilac800" variant="outline" onClick={onContact}>
+              <Button type="submit" variant="outline" onClick={onContact}>
                 Senden
               </Button>
-              <Button type="button" color="lilac800" variant="outline" onClick={onDismiss}>
+              <Button type="button" variant="outline" onClick={onDismiss}>
                 Abbrechen
               </Button>
             </div>

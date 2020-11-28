@@ -58,12 +58,7 @@ const RequestsStep = () => {
         <Text variant="textSm">
           Gesuche für dein Projekt kannst Du entweder jetzt oder zu einem späteren Zeitpunkt erstellen.
         </Text>
-        <Button
-          onClick={openDialog}
-          className="mt-6"
-          color="livid800"
-          iconLeft={<Plus className="mr-2 -ml-2" />}
-          size="large">
+        <Button onClick={openDialog} className="mt-6" iconLeft={<Plus className="mr-2 -ml-2" />} size="large">
           Neues Gesuch erstellen
         </Button>
       </FramedGridCard.Body.Col>

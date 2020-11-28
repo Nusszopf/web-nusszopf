@@ -61,7 +61,6 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
           {
             type: 'button',
             text: 'Löschen',
-            seperator: true,
             action: () => onDelete(project.id),
           },
         ]}

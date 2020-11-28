@@ -1,31 +1,14 @@
-.nz-select {
-  @apply border-2 ring-3 ring-transparent;
+.nz-select-steel {
+  @apply bg-transparent border-2 ring-3 ring-transparent border-steel-700 text-steel-700;
+  @apply hover:ring-steel-700 focus:ring-opacity-50 hover:ring-opacity-50;
 }
 
-.nz-select-pinkLivid800 {
-  @apply bg-pink-300 border-livid-800 text-livid-800 hover:ring-livid-700 focus:ring-opacity-50 hover:ring-opacity-50;
+.nz-select-stone {
+  @apply bg-transparent border-2 ring-3 ring-transparent border-stone-800 text-stone-800;
+  @apply hover:ring-stone-800 focus:ring-opacity-50 hover:ring-opacity-50;
 }
 
-.nz-select-blueLivid800 {
-  @apply bg-blue-300 border-livid-800 text-livid-800 hover:ring-livid-700 focus:ring-opacity-50 hover:ring-opacity-50;
-}
-
-.nz-select-turquoiseLivid800 {
-  @apply border-livid-800 bg-turquoise-300 text-livid-800 hover:ring-livid-700 focus:ring-opacity-50 hover:ring-opacity-50;
-}
-
-.nz-select-yellowLivid800 {
-  @apply bg-yellow-300 border-livid-800 text-livid-800 hover:ring-livid-700 focus:ring-opacity-50 hover:ring-opacity-50;
-}
-
-.nz-select-redLivid800 {
-  @apply bg-red-300 border-livid-800 text-livid-800 hover:ring-livid-700 focus:ring-opacity-50 hover:ring-opacity-50;
-}
-
-.nz-select-livid800 {
-  @apply bg-transparent border-livid-800 text-livid-800 hover:ring-livid-700 focus:ring-opacity-50 hover:ring-opacity-50;
-}
-
-.nz-select-lilac800 {
-  @apply bg-transparent border-lilac-800 text-lilac-800 hover:ring-lilac-700 focus:ring-opacity-50 hover:ring-opacity-50;
+.nz-select-lilac {
+  @apply bg-transparent border-2 ring-3 ring-transparent border-lilac-800 text-lilac-800;
+  @apply hover:ring-lilac-800 focus:ring-opacity-50 hover:ring-opacity-50;
 }

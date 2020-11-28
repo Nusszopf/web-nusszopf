@@ -13,4 +13,4 @@ export default {
   },
 }
 
-export const Default = () => <InfoCard className="text-blue-700 bg-gray-300">Info Message</InfoCard>
+export const Default = () => <InfoCard>Info Message</InfoCard>

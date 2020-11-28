@@ -13,4 +13,4 @@ export default {
   },
 }
 
-export const Default = () => <RichTextEditor onChange={console.log} />
+export const Default = () => <RichTextEditor color="stone" onChange={console.log} />
