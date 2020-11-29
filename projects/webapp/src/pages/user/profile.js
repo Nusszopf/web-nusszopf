@@ -52,7 +52,8 @@ const Profile = () => {
         <FramedGridCard.Body gap="medium" className="bg-white">
           <FramedGridCard.Body.Col variant="oneCol" className="lg:hidden">
             <Button
-              className="block mx-auto mb-8 md:mb-10"
+              className="block mx-auto mb-8 md:mb-10 bg-lilac-200"
+              color="lilac"
               onClick={() => router.push({ pathname: '/user/project/create', query: { step: 0 } })}
               iconLeft={<PlusCircle className="mr-2 -ml-1" />}>
               {profileData.action}
