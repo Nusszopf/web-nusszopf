@@ -118,7 +118,7 @@ const NavHeader = ({ user, goBackUri, fixed = false }) => {
             {...menu}
             aria-label="Preferences"
             className="z-10 w-screen px-4 pt-4 pb-8 rounded-b-lg bg-steel-400 lg:w-full lg:max-w-xs focus:outline-none">
-            <div className="mx-auto max-w-content lg:ml-12">
+            <div className="mx-auto max-w-max lg:ml-12">
               <MenuItem
                 {...menu}
                 onClick={handleSearch}

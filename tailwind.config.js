@@ -4,7 +4,6 @@
 // Known issues: https://github.com/tailwindlabs/tailwindcss/discussions/2728
 
 const defaultTheme = require('tailwindcss/defaultTheme')
-const plugin = require('tailwindcss/plugin')
 
 module.exports = {
   purge: {
@@ -125,7 +124,6 @@ module.exports = {
   variants: {
     // https://tailwindcss.com/docs/pseudo-class-variants#creating-custom-variants
     extend: {
-      backgroundColor: ['aria-selected'],
       borderColor: ['active'],
       cursor: ['disabled'],
       ringColor: ['hover'],
@@ -136,12 +134,5 @@ module.exports = {
   corePlugins: {},
   plugins: [
     // custom and third-party-plugins
-    plugin(function ({ addVariant, e }) {
-      addVariant('aria-selected', ({ modifySelectors, separator }) => {
-        modifySelectors(({ className }) => {
-          return `.${e(`aria-selected${separator}${className}`)}[aria-selected="true"]`
-        })
-      })
-    }),
   ],
 }
