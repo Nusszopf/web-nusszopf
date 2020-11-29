@@ -26,7 +26,7 @@ const Route = ({
           <a className={classnames('cursor-pointer group', className)} href={href} title={title} aria-label={ariaLabel}>
             <Text
               as={as}
-              active={active}
+              active={active ? 'true' : 'false'}
               variant={textVariant}
               className={classnames('inline-block text-current active:border-current hover:border-current', {
                 'border-b-2': border === RouteBorder.small,

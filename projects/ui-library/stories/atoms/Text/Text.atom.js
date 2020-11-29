@@ -12,7 +12,7 @@ const Text = ({ as = 'p', children, className, variant = 'textMd', ...props }) =
 
 Text.propTypes = {
   as: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string]),
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   className: PropTypes.string,
   variant: PropTypes.oneOf(Object.keys(TextVariant)),
 }
