@@ -1,3 +1,4 @@
+export { default as bannerData } from './banner'
 export { default as contestData } from './contest'
 export { default as createProjectData } from './createProject'
 export { default as featuresData } from './features'
