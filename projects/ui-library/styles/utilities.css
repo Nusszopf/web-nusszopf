@@ -1,5 +1,10 @@
-.hyphens-auto {
-  hyphens: auto;
-  overflow-wrap: break-word;
-  word-break: break-word;
+@layer utilities {
+  .hyphens-auto {
+    hyphens: auto;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  @responsive {
+    /* custom responsive utilities */
+  }
 }
