@@ -1,14 +1,12 @@
-@layer components {
-  :root {
-    --reach-dialog: 1;
-  }
+:root {
+  --reach-dialog: 1;
+}
 
-  [data-reach-dialog-overlay] {
-    @apply fixed top-0 bottom-0 left-0 right-0 z-10 w-screen overflow-auto;
-    background: hsla(0, 0%, 0%, 0.2);
-  }
+[data-reach-dialog-overlay] {
+  @apply fixed top-0 bottom-0 left-0 right-0 z-10 w-screen overflow-auto;
+  background: hsla(0, 0%, 0%, 0.2);
+}
 
-  [data-reach-dialog-content] {
-    @apply w-full h-auto mx-auto outline-none sm:max-w-xl sm:my-12;
-  }
+[data-reach-dialog-content] {
+  @apply w-full h-auto mx-auto outline-none sm:max-w-xl sm:my-12;
 }
