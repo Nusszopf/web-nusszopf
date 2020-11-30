@@ -25,7 +25,11 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
   }
 
   return (
-    <Dialog isOpen={isOpen} onDismiss={onDismiss} className="text-stone-800 bg-stone-200">
+    <Dialog
+      isOpen={isOpen}
+      onDismiss={onDismiss}
+      className="text-stone-800 bg-stone-200"
+      aria-label="Gesuch bearbeiten">
       <Formik
         initialValues={
           initialValues ?? {

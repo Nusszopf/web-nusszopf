@@ -1,18 +1,20 @@
-:root {
-  --reach-combobox: 1;
-}
+@layer components {
+  :root {
+    --reach-combobox: 1;
+  }
 
-[data-user-value] {
-  @apply font-bold;
-}
+  [data-user-value] {
+    @apply font-bold;
+  }
 
-[data-suggested-value] {
-  @apply font-medium;
-}
+  [data-suggested-value] {
+    @apply font-medium;
+  }
 
-.nz-combobox-lilac {
-  @apply bg-white hover:bg-lilac-100 focus:bg-lilac-100;
-  &[aria-selected='true'] {
-    @apply bg-lilac-100;
+  .nz-combobox-lilac {
+    @apply bg-white hover:bg-lilac-100 focus:bg-lilac-100;
+    &[aria-selected='true'] {
+      @apply bg-lilac-100;
+    }
   }
 }

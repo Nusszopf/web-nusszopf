@@ -3,8 +3,9 @@
 
 module.exports = {
   plugins: {
+    'postcss-import': {}, // -> sinnvoll? test läuft nicht...
     tailwindcss: {},
-    'postcss-nested': {},
+    'postcss-nesting': {},
     autoprefixer: {},
     'postcss-flexbugs-fixes': {},
     'postcss-preset-env': {},

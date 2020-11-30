@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import Head from 'next/head'
 require('typeface-barlow')
-import '../styles/tailwind.css'
+import 'ui-library/styles/tailwind.css'
 import { ToastsProvider } from 'ui-library/services/Toasts.service'
 
 function App({ Component, pageProps }) {

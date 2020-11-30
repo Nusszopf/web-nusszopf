@@ -8,7 +8,7 @@ import smoothscroll from 'smoothscroll-polyfill'
 
 require('typeface-barlow')
 
-import '../styles/tailwind.css'
+import 'ui-library/styles/tailwind.css'
 import { LoadingIndicator } from 'ui-library/stories/atoms'
 import { ToastsProvider } from 'ui-library/services/Toasts.service'
 import { useApollo } from '../utils/libs/apolloClient'
