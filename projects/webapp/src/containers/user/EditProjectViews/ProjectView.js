@@ -22,6 +22,7 @@ import {
   PeriodField,
   PeriodFieldValidationSchema,
 } from '../ProjectForm'
+import { editProjectsViewsData as cms } from '~/assets/data'
 
 const ProjectView = ({ user, project }) => {
   const { updateProject, updateLoading, serializeProjectDescription } = useProjectsService()
@@ -85,7 +86,7 @@ const ProjectView = ({ user, project }) => {
             </FramedGridCard.Body.Col>
             <FramedGridCard.Body.Col variant="oneCol" className="flex justify-center mt-12 mb-4 md:mb-0 lg:col-start-2">
               <Button className="bg-lilac-200" type="submit" color="lilac" size="large" disabled={updateLoading}>
-                Speichern
+                {cms.projectView.save}
               </Button>
             </FramedGridCard.Body.Col>
           </FramedGridCard.Body>

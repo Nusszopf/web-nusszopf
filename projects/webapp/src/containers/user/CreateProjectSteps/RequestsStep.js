@@ -10,6 +10,7 @@ import { InfoCard } from 'ui-library/stories/molecules'
 import { useScrollTop } from '~/utils/helper'
 import { EditRequestDialog } from '~/containers'
 import { RequestCard } from '~/components'
+import { createProjectData as cms } from '~/assets/data'
 
 const RequestsStep = () => {
   useScrollTop()
@@ -54,21 +55,19 @@ const RequestsStep = () => {
   return (
     <>
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
-        <Text className="mb-2">Neues Gesuch</Text>
-        <Text variant="textSm">
-          Gesuche für dein Projekt kannst Du entweder jetzt oder zu einem späteren Zeitpunkt erstellen.
-        </Text>
+        <Text className="mb-2">{cms.requestsStep.title[0]}</Text>
+        <Text variant="textSm">{cms.requestsStep.description}</Text>
         <Button
           onClick={openDialog}
           color="stone"
           className="mt-6 bg-stone-300"
           iconLeft={<PlusCircle className="mr-2 -ml-2" />}
           size="large">
-          Neues Gesuch erstellen
+          {cms.requestsStep.action}
         </Button>
       </FramedGridCard.Body.Col>
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
-        <Text className="mt-4 mb-4 lg:mt-0">Gesuche</Text>
+        <Text className="mt-4 mb-4 lg:mt-0">{cms.requestsStep.title[1]}</Text>
         {projectFormik.values.requests.length > 0 ? (
           <>
             {projectFormik.values.requests.map((request, index) => (
@@ -83,7 +82,7 @@ const RequestsStep = () => {
             ))}
           </>
         ) : (
-          <InfoCard className="bg-livid-200 text-livid-700">Noch keine Gesuche.</InfoCard>
+          <InfoCard className="bg-livid-200 text-livid-700">{cms.requestsStep.info}</InfoCard>
         )}
       </FramedGridCard.Body.Col>
       <EditRequestDialog

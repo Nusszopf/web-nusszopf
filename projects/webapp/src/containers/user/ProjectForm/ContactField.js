@@ -2,11 +2,12 @@ import PropTypes from 'prop-types'
 
 import { Switch } from 'ui-library/stories/atoms'
 import { FieldTitle } from '~/components'
+import { projectFormData as cms } from '~/assets/data'
 
 const ContactField = ({ formik, user, ...props }) => (
   <>
     <FieldTitle info="Info" {...props}>
-      Kontakt
+      {cms.contact.title}
     </FieldTitle>
     <Switch
       name="contact"
@@ -16,7 +17,7 @@ const ContactField = ({ formik, user, ...props }) => (
       checked={formik.values.contact}
       label={
         <>
-          Direkt kontaktieren unter <i className="hyphens-auto">{user?.data?.email}</i>
+          {cms.contact.label} <i className="hyphens-auto">{user?.data?.email}</i>
         </>
       }
     />

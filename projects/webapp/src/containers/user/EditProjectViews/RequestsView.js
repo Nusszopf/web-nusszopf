@@ -9,6 +9,7 @@ import { EditRequestDialog } from '~/containers'
 import { RequestCard } from '~/components'
 import { InfoCard } from 'ui-library/stories/molecules'
 import useProjectsService from '~/utils/services/projects.service'
+import { editProjectsViewsData as cms } from '~/assets/data'
 
 const RequestsView = ({ project }) => {
   const { deleteRequest, addRequest, updateRequest } = useProjectsService({ project })
@@ -53,7 +54,7 @@ const RequestsView = ({ project }) => {
           className="bg-stone-300"
           iconLeft={<PlusCircle className="mr-2 -ml-2" />}
           size="large">
-          Neues Gesuch erstellen
+          {cms.requestsView.create}
         </Button>
       </FramedGridCard.Body.Col>
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
@@ -72,7 +73,7 @@ const RequestsView = ({ project }) => {
             ))}
           </>
         ) : (
-          <InfoCard className="bg-livid-200 text-livid-700">Alles zopfig! Derzeit gibt es keine Gesuche.</InfoCard>
+          <InfoCard className="bg-livid-200 text-livid-700">{cms.requestsView.info}</InfoCard>
         )}
       </FramedGridCard.Body.Col>
       <EditRequestDialog

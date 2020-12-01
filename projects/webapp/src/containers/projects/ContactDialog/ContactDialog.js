@@ -6,12 +6,13 @@ import { object, string } from 'yup'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import { Button, Text, Input } from 'ui-library/stories/atoms'
 import { Dialog } from 'ui-library/stories/molecules'
+import { contactDialogData as cms } from '~/assets/data'
 import { FieldTitle } from '~/components'
 
 const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
   const { notify } = useToasts()
   const handleSubmit = async values => {
-    notify({ type: 'loading', message: 'Nachricht wird versendet...' })
+    notify({ type: 'loading', message: cms.notify.loading })
     try {
       const res = await fetch(`${process.env.DOMAIN}/api/contact`, {
         method: 'POST',
@@ -24,13 +25,13 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
         }),
       })
       if (res.ok) {
-        notify({ type: 'success', message: 'Nachricht versendet!' })
+        notify({ type: 'success', message: cms.notify.success })
         onDismiss()
       } else {
-        notify({ type: 'error', message: 'Nachricht konnte nicht versendet werden' })
+        notify({ type: 'error', message: cms.notify.error })
       }
     } catch (error) {
-      notify({ type: 'error', message: 'Nachricht konnte nicht versendet werden' })
+      notify({ type: 'error', message: cms.notify.error })
     }
   }
 
@@ -39,7 +40,7 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
       isOpen={isOpen}
       onDismiss={onDismiss}
       className="text-lilac-800 bg-lilac-200"
-      aria-label="Contact Dialog"
+      aria-label={cms.dialog.aria}
       {...props}>
       <div className="h-6">
         <Button className="float-right" variant="clean" size="baseClean" onClick={onDismiss}>
@@ -47,19 +48,19 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
         </Button>
       </div>
       <Text variant="textLg">{project.title}</Text>
-      <Text variant="textSm">Deine Nachricht wird über den Nusszopf versendet. Mehr Erklärung...</Text>
+      <Text variant="textSm">{cms.dialog.description}</Text>
       <Formik
         initialValues={{ email: '', msg: '' }}
         onSubmit={handleSubmit}
         validationSchema={object({
-          email: string().email('Bitte gib eine valide E-Mail-Adresse ein').required('Bitte gib E-Mail-Adresse ein'),
-          msg: string().max(2000, 'Maximal 2000 Zeichen').required('Bitte gib eine Nachricht ein'),
+          email: string().email(cms.validation.email[0]).required(cms.validation.email[1]),
+          msg: string().max(2000, cms.validation.msg[0]).required(cms.validation.msg[1]),
         })}>
         {formik => (
           <Form>
             <>
               <FieldTitle info="info" className="mt-6">
-                Deine E-Mail-Adresse*
+                {cms.fields.email.title}
               </FieldTitle>
               <Field
                 as={Input}
@@ -68,13 +69,13 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
                 type="email"
                 maxLength={100}
                 value={formik.values.title}
-                placeholder="beispiel@mail.de"
+                placeholder={cms.fields.email.placeholder}
               />
               <ErrorMessage name="email" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
             </>
             <>
               <FieldTitle info="info" className="mt-6">
-                Deine Nachricht*
+                {cms.fields.msg.title}
               </FieldTitle>
               <Input
                 as="textarea"
@@ -85,7 +86,7 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
                 value={formik.values.msg}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
-                placeholder="Nachricht..."
+                placeholder={cms.fields.msg.placeholder}
               />
               <ErrorMessage name="msg" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
             </>

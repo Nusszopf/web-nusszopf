@@ -2,15 +2,15 @@ import PropTypes from 'prop-types'
 import { string } from 'yup'
 
 import { Text, Input } from 'ui-library/stories/atoms'
-import { createProjectData as data } from '~/assets/data'
 import { FieldTitle } from '~/components'
+import { projectFormData as cms } from '~/assets/data'
 
-export const MottoFieldValidationSchema = string().max(200, data.descriptionStep2.motto.error)
+export const MottoFieldValidationSchema = string().max(200, cms.motto.error)
 
 const MottoField = ({ formik, ...props }) => (
   <>
-    <FieldTitle info={data.descriptionStep2.motto.info} {...props}>
-      {data.descriptionStep2.motto.title}
+    <FieldTitle info={cms.motto.info} {...props}>
+      {cms.motto.title}
     </FieldTitle>
     <Input
       as="textarea"
@@ -20,7 +20,7 @@ const MottoField = ({ formik, ...props }) => (
       value={formik.values.motto}
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
-      placeholder={data.descriptionStep2.motto.placeholder}
+      placeholder={cms.motto.placeholder}
     />
     {formik?.errors?.motto && formik.touched?.motto && (
       <Text variant="textXs" className="mt-2 ml-4 italic">

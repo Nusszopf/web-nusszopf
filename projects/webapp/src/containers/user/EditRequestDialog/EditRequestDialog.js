@@ -14,6 +14,7 @@ import {
   CategoryField,
   CategoryFieldValidationSchema,
 } from '~/containers/user/RequestForm'
+import { editRequestDialogData as cms } from '~/assets/data'
 
 const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValues }) => {
   const handleSubmit = values => {
@@ -58,10 +59,10 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
             <DescriptionField className="mt-4" formik={formik} />
             <div className="flex justify-center mt-6 space-x-4">
               <Button className="bg-stone-400" color="stone" variant="outline" type="submit">
-                {initialValues ? 'Speichern' : 'Erstellen'}
+                {initialValues ? cms.save : cms.create}
               </Button>
               <Button color="stone" variant="outline" onClick={onDismiss}>
-                Abbrechen
+                {cms.cancel}
               </Button>
             </div>
           </Form>

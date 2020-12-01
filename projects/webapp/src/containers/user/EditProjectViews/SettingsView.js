@@ -6,6 +6,7 @@ import { Button, Text } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import useProjectsService from '~/utils/services/projects.service'
 import { VisibilityField, ContactField } from '../ProjectForm'
+import { editProjectsViewsData as cms } from '~/assets/data'
 
 const SettingsView = ({ user, project }) => {
   const { deleteProject, serializeProjectSettings, updateProject, deleteLoading, updateLoading } = useProjectsService()
@@ -38,17 +39,17 @@ const SettingsView = ({ user, project }) => {
               <ContactField formik={formik} user={user} className="mt-6" />
               <div className="mt-12">
                 <Button type="submit" className="bg-lilac-200" color="lilac" disabled={updateLoading}>
-                  Speichern
+                  {cms.settingsView.save}
                 </Button>
               </div>
             </FramedGridCard.Body.Col>
             <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4 text-warning-700">
               <Text className="mb-2">Projekt löschen</Text>
               <Text className="mb-6" variant="textSm">
-                Nach dem Löschen können die Daten nicht wieder hergestellt werden.
+                {cms.settingsView.alert}
               </Text>
               <Button variant="outline" color="warning" onClick={handleDelete} disabled={deleteLoading}>
-                Projekt löschen
+                {cms.settingsView.delete}
               </Button>
             </FramedGridCard.Body.Col>
           </FramedGridCard.Body>

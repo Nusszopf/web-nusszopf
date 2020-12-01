@@ -6,17 +6,17 @@ import { isEmpty } from 'lodash'
 import { Text, Switch } from 'ui-library/stories/atoms'
 import { Combobox } from 'ui-library/stories/molecules'
 import { findLocations } from '~/utils/services/location.service'
-import { createProjectData as data } from '~/assets/data'
 import { FieldTitle } from '~/components'
+import { projectFormData as cms } from '~/assets/data'
 
 export const LocationFieldValidationSchema = object().shape({
   searchTerm: string().when(['remote'], {
     is: false,
-    then: string().required(data.descriptionStep1.location.error[0]),
+    then: string().required(cms.location.error[0]),
   }),
   data: object().when(['remote', 'searchTerm'], {
     is: (remote, searchTerm) => !remote && !isEmpty(searchTerm),
-    then: object().test('location_data_geodata', data.descriptionStep1.location.error[1], data => !isEmpty(data)),
+    then: object().test('location_data_geodata', cms.location.error[1], data => !isEmpty(data)),
   }),
 })
 
@@ -51,15 +51,15 @@ const LocationField = ({ formik, ...props }) => {
 
   return (
     <>
-      <FieldTitle info={data.descriptionStep1.location.info} {...props}>
-        {data.descriptionStep1.location.title}
+      <FieldTitle info={cms.location.info} {...props}>
+        {cms.location.title}
       </FieldTitle>
       <Switch
         color="lilac"
         name="location.remote"
         onBlur={formik.handleBlur}
         onChange={formik.handleChange}
-        label={data.descriptionStep1.location.action}
+        label={cms.location.action}
         checked={formik.values.location.remote}
       />
       {!formik.values.location.remote && (

@@ -21,9 +21,9 @@ const Banner = ({ project, user }) => {
               title={bannerData.edit.meta}
               ariaLabel={bannerData.edit.meta}
               active={true}>
-              bannerData.edit.text[0]
+              {bannerData.edit.text[0]}
             </Route>
-            bannerData.edit.text[1]
+            {bannerData.edit.text[1]}
           </Text>
           <Clickable onClick={() => setIsVisible(false)}>
             <X size={21} className="absolute top-0 right-0" />

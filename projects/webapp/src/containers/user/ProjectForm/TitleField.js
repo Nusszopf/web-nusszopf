@@ -1,16 +1,14 @@
 import PropTypes from 'prop-types'
 import { string } from 'yup'
 import { Text, Input } from 'ui-library/stories/atoms'
-import { createProjectData as data } from '~/assets/data'
 import { FieldTitle } from '~/components'
+import { projectFormData as cms } from '~/assets/data'
 
-export const TitleFieldValidationSchema = string()
-  .max(30, data.descriptionStep1.title.error[0])
-  .required(data.descriptionStep1.title.error[1])
+export const TitleFieldValidationSchema = string().max(30, cms.title.error[0]).required(cms.title.error[1])
 
 const TitleField = ({ formik }) => (
   <>
-    <FieldTitle info={data.descriptionStep1.title.info}>{data.descriptionStep1.title.title}</FieldTitle>
+    <FieldTitle info={cms.title.info}>{cms.title.title}</FieldTitle>
     <Input
       name="title"
       color="lilac"
@@ -18,7 +16,7 @@ const TitleField = ({ formik }) => (
       value={formik.values.title}
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
-      placeholder={data.descriptionStep1.title.placeholder}
+      placeholder={cms.title.placeholder}
     />
     {formik?.errors?.title && formik.touched?.title && (
       <Text variant="textXs" className="mt-2 ml-4 italic">

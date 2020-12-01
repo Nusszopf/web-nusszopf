@@ -15,3 +15,11 @@ export const PROJECT = {
     private: 'private',
   },
 }
+
+export const REQUEST_CATEGORY = {
+  companions: 'companions',
+  rooms: 'rooms',
+  materials: 'materials',
+  financials: 'financials',
+  others: 'others',
+}

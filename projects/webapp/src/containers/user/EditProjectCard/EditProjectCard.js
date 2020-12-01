@@ -8,6 +8,7 @@ import { Text } from 'ui-library/stories/atoms'
 import { Menu } from 'ui-library/stories/molecules'
 import { PROJECT } from '~/utils/enums'
 import { RequestCard } from '~/components'
+import { editProjectCardData as cms } from '~/assets/data'
 
 const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project, className, ...props }) => (
   <div
@@ -45,22 +46,22 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
         items={[
           {
             type: 'button',
-            text: 'Ansehen',
+            text: cms.actions[0],
             action: () => onClick(project.id),
           },
           {
             type: 'button',
-            text: 'Bearbeiten',
+            text: cms.actions[1],
             action: () => onEdit(project.id),
           },
           {
             type: 'button',
-            text: project.visibility === PROJECT.visibility.public ? 'Geheimhalten' : 'Veröffentlichen',
+            text: project.visibility === PROJECT.visibility.public ? cms.actions[2] : cms.actions[3],
             action: () => toggleVisibility(project.id, project.visibility),
           },
           {
             type: 'button',
-            text: 'Löschen',
+            text: cms.actions[4],
             action: () => onDelete(project.id),
           },
         ]}

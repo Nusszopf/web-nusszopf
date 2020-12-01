@@ -2,15 +2,15 @@ import PropTypes from 'prop-types'
 import { useRadioState, RadioGroup } from 'reakit/Radio'
 
 import { Text, Radiobox } from 'ui-library/stories/atoms'
-import { createProjectData as data } from '~/assets/data'
 import { FieldTitle } from '~/components'
+import { projectFormData as cms } from '~/assets/data'
 
 const VisibilityField = ({ formik, ...props }) => {
   const radio = useRadioState({ state: formik.values.visibility })
   return (
     <>
-      <FieldTitle info={data.SettingsStep.visibility.info} {...props}>
-        {data.SettingsStep.visibility.title}
+      <FieldTitle info={cms.visibility.info} {...props}>
+        {cms.visibility.title}
       </FieldTitle>
       <RadioGroup {...radio} aria-label="visibility">
         <Radiobox
@@ -20,8 +20,8 @@ const VisibilityField = ({ formik, ...props }) => {
           onChange={formik.handleChange}
           label={
             <>
-              <Text variant="textSmMedium">{data.SettingsStep.visibility.public.title}</Text>
-              <Text variant="textXs">{data.SettingsStep.visibility.public.description}</Text>
+              <Text variant="textSmMedium">{cms.visibility.public.title}</Text>
+              <Text variant="textXs">{cms.visibility.public.description}</Text>
             </>
           }
         />
@@ -33,8 +33,8 @@ const VisibilityField = ({ formik, ...props }) => {
           value="private"
           label={
             <>
-              <Text variant="textSmMedium">{data.SettingsStep.visibility.private.title}</Text>
-              <Text variant="textXs">{data.SettingsStep.visibility.private.description}</Text>
+              <Text variant="textSmMedium">{cms.visibility.private.title}</Text>
+              <Text variant="textXs">{cms.visibility.private.description}</Text>
             </>
           }
         />

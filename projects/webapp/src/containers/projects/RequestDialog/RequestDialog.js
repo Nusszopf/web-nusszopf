@@ -7,19 +7,21 @@ import { Button, Text } from 'ui-library/stories/atoms'
 import { Dialog } from 'ui-library/stories/molecules'
 import { serializeJSX } from 'ui-library/services/RichTextEditor.service'
 import { CategoryColor } from './RequestDialog.theme'
+import { REQUEST_CATEGORY } from '~/utils/enums'
+import { requestDialogData as cms } from '~/assets/data'
 
 const RequestDialog = ({ isOpen, onDismiss, onContact, request, ...props }) => {
   const mapCategoryToColor = category => {
     switch (category) {
-      case 'companions':
+      case REQUEST_CATEGORY.companions:
         return 'bg-red-300'
-      case 'rooms':
+      case REQUEST_CATEGORY.rooms:
         return 'bg-yellow-300'
-      case 'materials':
+      case REQUEST_CATEGORY.materials:
         return 'bg-turquoise-300'
-      case 'financials':
+      case REQUEST_CATEGORY.financials:
         return 'bg-blue-300'
-      case 'others':
+      case REQUEST_CATEGORY.others:
         return 'bg-pink-300'
       default:
         return ''
@@ -46,15 +48,15 @@ const RequestDialog = ({ isOpen, onDismiss, onContact, request, ...props }) => {
           ))}
         </div>
         <Text variant="textSm" className="mt-6">
-          Erstellt am {new Date(request?.created_at).toLocaleDateString('de-DE')}
+          {cms.created_at} {new Date(request?.created_at).toLocaleDateString('de-DE')}
         </Text>
       </div>
       <div className="flex justify-center mt-6 space-x-4">
         <Button color="stone" className={mapCategoryToColor(request?.category)} onClick={onContact}>
-          Kontaktieren
+          {cms.actions.contact}
         </Button>
         <Button color="stone" onClick={onDismiss}>
-          Schließen
+          {cms.actions.close}
         </Button>
       </div>
     </Dialog>

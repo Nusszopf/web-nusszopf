@@ -3,12 +3,13 @@ import { string } from 'yup'
 
 import { Text, Input } from 'ui-library/stories/atoms'
 import { FieldTitle } from '~/components'
+import { requestFormData as cms } from '~/assets/data'
 
 export const TitleFieldValidationSchema = string().max(30, 'max length error').required('required error')
 
 const TitleField = ({ formik }) => (
   <>
-    <FieldTitle info="info">Titel*</FieldTitle>
+    <FieldTitle info="info">{cms.title.title}</FieldTitle>
     <Input
       color="stone"
       name="title"
@@ -16,7 +17,7 @@ const TitleField = ({ formik }) => (
       value={formik.values.title}
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
-      placeholder="Wer oder was wird gesucht?"
+      placeholder={cms.title.placeholder}
     />
     {formik?.errors?.title && formik.touched?.title && (
       <Text variant="textXs" className="mt-2 ml-4 italic">
