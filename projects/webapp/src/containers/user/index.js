@@ -1,6 +1,7 @@
 export { default as WelcomeCard } from './WelcomeCard/WelcomeCard'
 export { default as EditProjectCard } from './EditProjectCard/EditProjectCard'
 export { default as EditRequestDialog } from './EditRequestDialog/EditRequestDialog'
+export { default as ProjectsSkeleton } from './ProjectsSkeleton/ProjectsSkeleton'
 export * from './ProjectForm'
 export * from './CreateProjectSteps'
 export * from './EditProjectViews'

@@ -8,7 +8,7 @@ import { Masonry } from 'ui-library/stories/organisims'
 import apollo from '~/utils/services/apollo.service'
 import useProjectsService from '~/utils/services/projects.service'
 import { PROJECT } from '~/utils/enums'
-import { EditProjectCard, WelcomeCard } from '~/containers'
+import { EditProjectCard, WelcomeCard, ProjectsSkeleton } from '~/containers'
 import { Page } from '~/components'
 import { useEntireUser } from '~/utils/services/auth.service'
 import { profileData } from '~/assets/data'
@@ -32,7 +32,7 @@ const Profile = () => {
       navHeader={{ visible: true, fixed: true }}
       showFooter={false}
       noindex={true}
-      className="text-steel-700 bg-steel-100">
+      className="bg-white text-steel-700 lg:bg-steel-100">
       <FramedGridCard
         className="lg:mb-20 lg:mt-12"
         bodyColor="bg-white lg:bg-steel-100"
@@ -61,7 +61,7 @@ const Profile = () => {
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="oneCol">
             {loadingProjects || loadingUser ? (
-              <>loading...</>
+              <ProjectsSkeleton />
             ) : data?.projects?.length > 0 ? (
               <Masonry>
                 {data?.projects.map(project => (
