@@ -9,7 +9,7 @@ import {
   TabPanel as ReachTabPanel,
 } from '@reach/tabs'
 
-const Tab = ({ className, children, labelLeft, labelRight, initialIndex = 0, loading = false }) => {
+const Tab = ({ className, children, labelLeft, labelRight, initialIndex = 0 }) => {
   const [tabIndex, setTabIndex] = useState(initialIndex)
 
   const handleTabsChange = index => {
@@ -30,15 +30,13 @@ const Tab = ({ className, children, labelLeft, labelRight, initialIndex = 0, loa
               {
                 'translate-x-0 rounded-l-full': tabIndex === 0,
                 'translate-x-full rounded-r-full': tabIndex === 1,
-                'opacity-50': loading,
               }
             )}></div>
         </div>
-        <ReachTabList className={classnames({ 'opacity-50': loading })}>
+        <ReachTabList>
           {[labelLeft, labelRight].map((label, index) => (
             <ReachTab
               key={`tab-${index}`}
-              disabled={loading}
               className={classnames({
                 'text-steel-700': tabIndex !== index,
               })}>
@@ -68,7 +66,6 @@ Tab.propTypes = {
   initialIndex: PropTypes.number,
   labelLeft: PropTypes.string,
   labelRight: PropTypes.string,
-  loading: PropTypes.bool,
 }
 
 Tab.Panel = ({ children }) => <>{children}</>

@@ -42,7 +42,7 @@ const Page = ({ children, className }) => {
       />
       <NavHeader mode="external" goBackUri="https://nusszopf.org" />
       <main className={classnames('flex-1 bg-white sm:bg-steel-100', className)}>{children}</main>
-      <footer className="flex justify-center w-full p-6 bg-white bg-steel-100">
+      <footer className="flex justify-center w-full p-6 bg-white sm:bg-steel-100">
         <Link
           variant="svg"
           href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"

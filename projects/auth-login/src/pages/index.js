@@ -187,12 +187,7 @@ export default function IndexPage() {
             }}
           />
         ) : (
-          <Tab
-            ariaLabel="Auth Navigation"
-            className="mt-12"
-            labelLeft={cms.tab[0]}
-            labelRight={cms.tab[1]}
-            loading={loading}>
+          <Tab ariaLabel="Auth Navigation" className="mt-12" labelLeft={cms.tab[0]} labelRight={cms.tab[1]}>
             <Tab.Panel>
               <LoginForm
                 loading={loading}
