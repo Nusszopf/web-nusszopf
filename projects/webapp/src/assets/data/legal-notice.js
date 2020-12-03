@@ -1,4 +1,5 @@
 export default {
+  title: 'Impressum',
   list: [
     {
       title: <>Angaben gemäß § 5 TMG</>,

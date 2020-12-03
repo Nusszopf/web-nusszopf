@@ -12,7 +12,7 @@ export const FOOTER_TYPE = {
 const Footer = ({ type = FOOTER_TYPE.primary }) => (
   <>
     {type === FOOTER_TYPE.primary && (
-      <UIFooter variant="col" className="bg-turquoise-700">
+      <UIFooter variant="col" className="bg-steel-200 text-steel-800">
         <UIFooter.LeftElement>
           <Route
             className="mr-8 sm:mr-10"

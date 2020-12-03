@@ -1,14 +1,20 @@
 import { Frame } from 'ui-library/stories/templates'
 import { Link, Text } from 'ui-library/stories/atoms'
-import { Page, PageBrand, NavHeader } from '~/components'
-import { legalNoticeData } from '~/assets/data'
+import { Page, PageBrand } from '~/components'
+import { legalNoticeData as cms } from '~/assets/data'
 
 const LegalNotice = () => (
-  <Page className="bg-turquoise-700 text-turquoise-300" showFooter={false}>
-    <NavHeader />
+  <Page
+    className="bg-steel-200 text-steel-800"
+    showFooter={false}
+    back="/"
+    navHeader={{ visible: process.env.ENV !== 'production', goBackUri: '/' }}>
     <Frame className="my-12 sm:my-20 hyphens-auto">
       <div className="max-w-2xl mx-auto">
-        {legalNoticeData.list.map((section, index) => (
+        <Text as="h1" variant="titleMd" className="mb-8">
+          {cms.title}
+        </Text>
+        {cms.list.map((section, index) => (
           <div key={`section-${index}`} className="mb-10">
             <Text as="h2" variant="titleSmSemi" className="mb-3">
               {section.title}
@@ -18,13 +24,13 @@ const LegalNotice = () => (
         ))}
         <div>
           <Text variant="textSm" className="italic">
-            {legalNoticeData.source.text}{' '}
+            {cms.source.text}{' '}
             <Link
               textVariant="textSm"
-              href={legalNoticeData.source.link.href}
-              ariaLabel={legalNoticeData.source.link.meta}
-              title={legalNoticeData.source.link.meta}>
-              {legalNoticeData.source.link.text}
+              href={cms.source.link.href}
+              ariaLabel={cms.source.link.meta}
+              title={cms.source.link.meta}>
+              {cms.source.link.text}
             </Link>
             .
           </Text>

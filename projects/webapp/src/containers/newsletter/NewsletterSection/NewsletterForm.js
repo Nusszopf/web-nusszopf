@@ -30,33 +30,36 @@ const NewsletterForm = props => {
       {...props}>
       {({ values }) => (
         <Form>
-          <Field
-            as={Input}
-            size="large"
-            autoComplete="off"
-            name="name"
-            type="text"
-            aria-label={newsletterData.subscribe.name.meta}
-            placeholder={newsletterData.subscribe.name.meta}
-            disabled={loading}
-          />
-          <ErrorMessage variant="textSm" className="mt-2 ml-6 italic text-yellow-100" component={Text} name="name" />
-          <Field
-            as={Input}
-            size="large"
-            className="mt-6"
-            autoComplete="off"
-            name="email"
-            type="email"
-            aria-label={newsletterData.subscribe.email.meta}
-            placeholder={newsletterData.subscribe.email.meta}
-            disabled={loading}
-          />
-          <ErrorMessage variant="textSm" className="mt-2 ml-6 italic text-yellow-100" component={Text} name="email" />
-          <div className="mt-6">
+          <div className="w-full lg:flex">
+            <div className="lg:w-1/2 lg:mr-2">
+              <Field
+                as={Input}
+                autoComplete="off"
+                name="name"
+                type="text"
+                aria-label={newsletterData.subscribe.name.meta}
+                placeholder={newsletterData.subscribe.name.meta}
+                disabled={loading}
+              />
+              <ErrorMessage variant="textSm" className="mt-2 ml-4 italic" component={Text} name="name" />
+            </div>
+            <div className="lg:w-1/2 lg:ml-2">
+              <Field
+                as={Input}
+                className="mt-4 lg:mt-0"
+                autoComplete="off"
+                name="email"
+                type="email"
+                aria-label={newsletterData.subscribe.email.meta}
+                placeholder={newsletterData.subscribe.email.meta}
+                disabled={loading}
+              />
+              <ErrorMessage variant="textSm" className="mt-2 ml-4 italic" component={Text} name="email" />
+            </div>
+          </div>
+          <div className="mt-4">
             <Field
               as={Checkbox}
-              className="text-yellow-300"
               checked={values.privacy}
               disabled={loading}
               name="privacy"
@@ -75,9 +78,10 @@ const NewsletterForm = props => {
               }
             />
           </div>
-          <ErrorMessage variant="textSm" className="mt-2 ml-8 italic text-yellow-100" component={Text} name="privacy" />
+          <ErrorMessage variant="textSm" className="mt-2 ml-6 italic" component={Text} name="privacy" />
+
           <div className="flex justify-center">
-            <Button className="mt-10 sm:mt-12" type="submit" size="large" disabled={loading}>
+            <Button className="mt-10 bg-blue-400 sm:mt-12" type="submit" size="large" disabled={loading}>
               Anmelden
             </Button>
           </div>
