@@ -1,5 +1,5 @@
 @layer components {
   .nz-link-steel {
-    @apply bg-blue-200 border-blue-500 text-steel-700 group-hover:border-steel-700 group-hover:bg-blue-500;
+    @apply border-steel-700 bg-steel-100 text-steel-700 group-hover:border-steel-700 group-hover:bg-steel-200;
   }
 }

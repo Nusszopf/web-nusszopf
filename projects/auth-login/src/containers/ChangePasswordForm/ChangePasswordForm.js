@@ -3,44 +3,43 @@ import { Formik, Form, Field, ErrorMessage } from 'formik'
 import classnames from 'classnames'
 import { object, string } from 'yup'
 import { Text, Button, Input } from 'ui-library/stories/atoms'
+import { formsData as cms } from '../../assets/data'
 
 const ChangePasswordForm = ({ className, loading, onSubmit, onCancel }) => (
-  <div className={classnames('w-full text-gray-500', className)} data-test="signup form">
+  <div className={classnames('w-full text-steel-700', className)} data-test="signup form">
     <Text as="h1" variant="textXl" className="mb-5 text-center">
-      Passwort vergessen
+      {cms.changePassword.title}
     </Text>
     <Text variant="textSmMedium" className="mb-4">
-      Wir senden dir einen Link zu, mit dem du ein neues Passwort setzen kannst.
+      {cms.changePassword.description}
     </Text>
     <Formik
       initialValues={{ email: '' }}
       onSubmit={onSubmit}
       validationSchema={object({
-        email: string().email('Bitte gib eine valide E-Mail-Adresse ein').required('Bitte gib eine E-Mail-Adresse ein'),
+        email: string()
+          .email(cms.changePassword.fields.email.validation[0])
+          .required(cms.changePassword.fields.email.validation[1]),
       })}>
-      {formikProps => (
-        <Form>
-          <Field
-            as={Input}
-            autoComplete="off"
-            name="email"
-            type="email"
-            aria-label="E-Mail-Adresse"
-            placeholder="E-Mail-Adresse"
-            disabled={loading}
-            color="whiteGray500"
-          />
-          <ErrorMessage name="email" variant="textSm" className="mt-2 ml-6 italic" component={Text} />
-          <div className="mt-6 space-x-4 text-center">
-            <Button type="submit" color="whiteGray500" disabled={loading}>
-              Senden
-            </Button>
-            <Button onClick={onCancel} color="gray500Gray200" disabled={loading}>
-              Abbrechen
-            </Button>
-          </div>
-        </Form>
-      )}
+      <Form>
+        <Field
+          as={Input}
+          autoComplete="off"
+          name="email"
+          type="email"
+          aria-label={cms.changePassword.fields.email.aria}
+          placeholder={cms.changePassword.fields.email.placeholder}
+        />
+        <ErrorMessage name="email" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
+        <div className="mt-6 space-x-4 text-center">
+          <Button type="submit" className="bg-steel-100" disabled={loading}>
+            {cms.changePassword.actions.send}
+          </Button>
+          <Button onClick={onCancel} disabled={loading}>
+            {cms.changePassword.actions.cancel}
+          </Button>
+        </div>
+      </Form>
     </Formik>
   </div>
 )

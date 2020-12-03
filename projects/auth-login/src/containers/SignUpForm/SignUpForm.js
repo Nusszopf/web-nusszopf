@@ -3,33 +3,34 @@ import PropTypes from 'prop-types'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import classnames from 'classnames'
 import { object, string, mixed } from 'yup'
+import { Eye, EyeOff } from 'react-feather'
 
 import { Text, Button, Input, Link, Checkbox } from 'ui-library/stories/atoms'
 import { InputGroup } from 'ui-library/stories/molecules'
-import { Eye, EyeOff } from 'react-feather'
+import { formsData as cms } from '../../assets/data'
 
 const SignUpForm = ({ loading, className, onSubmit }) => {
   const [isEyeOpen, setEye] = useState(false)
   return (
-    <div className={classnames('w-full text-gray-500', className)} data-test="signup form">
+    <div className={classnames('w-full text-steel-700', className)} data-test="signup form">
       <Formik
         initialValues={{ username: '', password: '', email: '', privacy: false, newsletter: false }}
         onSubmit={onSubmit}
         validationSchema={object({
           username: string()
-            .matches(/^\S*$/, 'Keine Leerzeichen')
-            .max(15, 'Maximal 15 Zeichen')
-            .required('Bitte gib einen Namen ein'),
-          email: string().email('Keine valide E-Mail-Adresse').required('Bitte gib eine E-Mail-Adresse ein'),
+            .matches(/^\S*$/, cms.signup.fields.username.validation[0])
+            .max(15, cms.signup.fields.username.validation[1])
+            .required(cms.signup.fields.username.validation[2]),
+          email: string().email(cms.signup.fields.email.validation[0]).required(cms.signup.fields.email.validation[1]),
           // Auth0 Password Strength: Dashboard/Authentication/Database/PasswordPolicy
           password: string()
-            .min(8, 'Mindestens 8 Zeichen')
-            .matches(/[a-z]/, 'Mindestens ein Kleinbuchstabe')
-            .matches(/[A-Z]/, 'Mindestens ein Großbuchstabe')
-            .matches(/\d/, 'Mindestens eine Ziffer')
-            .matches(/[!@#$%^&*]/, 'Mindestens ein Sonderzeichen (!@#$%^&*)')
-            .required('Bitte gib ein Passwort ein'),
-          privacy: mixed().oneOf([true], 'Bitte bestätige die Datenschutzerklärung'),
+            .min(8, cms.signup.fields.password.validation[0])
+            .matches(/[a-z]/, cms.signup.fields.password.validation[1])
+            .matches(/[A-Z]/, cms.signup.fields.password.validation[2])
+            .matches(/\d/, cms.signup.fields.password.validation[3])
+            .matches(/[!@#$%^&*]/, cms.signup.fields.password.validation[4])
+            .required(cms.signup.fields.password.validation[5]),
+          privacy: mixed().oneOf([true], cms.signup.fields.privacy.validation[0]),
         })}>
         {formikProps => (
           <Form>
@@ -39,12 +40,10 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                 autoComplete="off"
                 name="username"
                 type="username"
-                aria-label="Name"
-                placeholder="Name"
-                disabled={loading}
-                color="whiteGray500"
+                aria-label={cms.signup.fields.username.aria}
+                placeholder={cms.signup.fields.username.placeholder}
               />
-              <ErrorMessage name="username" variant="textSm" className="mt-2 ml-6 italic" component={Text} />
+              <ErrorMessage name="username" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
             </div>
             <div className="mt-4">
               <Field
@@ -52,12 +51,10 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                 autoComplete="off"
                 name="email"
                 type="email"
-                aria-label="E-Mail-Adresse"
-                placeholder="E-Mail-Adresse"
-                disabled={loading}
-                color="whiteGray500"
+                aria-label={cms.signup.fields.email.aria}
+                placeholder={cms.signup.fields.email.placeholder}
               />
-              <ErrorMessage name="email" variant="textSm" className="mt-2 ml-6 italic" component={Text} />
+              <ErrorMessage name="email" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
             </div>
             <div className="mt-4">
               <InputGroup>
@@ -66,22 +63,16 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                   name="password"
                   type={isEyeOpen ? 'text' : 'password'}
                   value={formikProps.values.password}
-                  aria-label="Passwort"
-                  placeholder="Passwort"
-                  disabled={loading}
-                  color="whiteGray500"
+                  aria-label={cms.signup.fields.password.aria}
+                  placeholder={cms.signup.fields.password.placeholder}
                   onChange={formikProps.handleChange}
                   onBlur={formikProps.handleBlur}
                 />
                 <InputGroup.RightElement onClick={() => setEye(isEyeOpen => !isEyeOpen)}>
-                  {isEyeOpen ? (
-                    <Eye size={26} className={classnames({ 'opacity-50': loading })} />
-                  ) : (
-                    <EyeOff size={26} className={classnames({ 'opacity-50': loading })} />
-                  )}
+                  {isEyeOpen ? <Eye size={26} /> : <EyeOff size={26} />}
                 </InputGroup.RightElement>
               </InputGroup>
-              <ErrorMessage name="password" variant="textSm" className="mt-2 ml-6 italic" component={Text} />
+              <ErrorMessage name="password" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
             </div>
             <div className="mt-4">
               <Field
@@ -89,23 +80,21 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                 disabled={loading}
                 checked={formikProps.values.privacy}
                 name="privacy"
-                aria-label="Datenschutzerklärung"
+                aria-label={cms.signup.fields.privacy.aria}
                 label={
                   <>
-                    Bestätigung der{' '}
+                    {cms.signup.fields.privacy.link.label[0]}{' '}
                     <Link
                       href="https://nusszopf.org/privacy"
                       textVariant="textSm"
-                      border="small"
-                      color="gray500Transparent"
-                      title="Zum Datenschutz"
-                      ariaLabel="Zum Datenschutz">
-                      Datenschutzerklärung
+                      title={cms.signup.fields.privacy.link.meta}
+                      ariaLabel={cms.signup.fields.privacy.link.meta}>
+                      {cms.signup.fields.privacy.link.label[1]}
                     </Link>
                   </>
                 }
               />
-              <ErrorMessage name="privacy" variant="textSm" className="mt-1 mb-3 ml-6 italic" component={Text} />
+              <ErrorMessage name="privacy" variant="textSm" className="mt-1 mb-3 ml-4 italic" component={Text} />
             </div>
             <div className="mt-2">
               <Field
@@ -113,13 +102,13 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                 disabled={loading}
                 checked={formikProps.values.newsletter}
                 name="newsletter"
-                aria-label="Nussigen Newsletter abon­nie­ren"
-                label="Nussigen Newsletter abon­nie­ren"
+                aria-label={cms.signup.fields.newsletter.aria}
+                label={cms.signup.fields.newsletter.label}
               />
             </div>
             <div className="mt-6 text-center">
-              <Button type="submit" color="whiteGray500" disabled={loading}>
-                Registrieren
+              <Button type="submit" className="bg-steel-100" disabled={loading}>
+                {cms.signup.action}
               </Button>
             </div>
           </Form>

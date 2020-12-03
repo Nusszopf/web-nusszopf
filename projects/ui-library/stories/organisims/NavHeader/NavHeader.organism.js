@@ -11,7 +11,7 @@ import { Text } from '../../atoms'
 import { Frame } from '../../templates'
 import { useToasts } from '../../../services/Toasts.service'
 
-const NavHeader = ({ user, goBackUri, fixed = false }) => {
+const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = false }) => {
   const [hasScrolled, setHasScrolled] = useState(false)
   const { notify } = useToasts()
   const router = useRouter()
@@ -35,7 +35,11 @@ const NavHeader = ({ user, goBackUri, fixed = false }) => {
   const handleLoginSignup = () => {
     menu.hide()
     notify({ type: 'loading', message: 'Du wirst einloggt oder weitergeleitet.' })
-    router.push('/api/login')
+    if (mode === 'external') {
+      router.push('https://nusszopf.org/api/login')
+    } else {
+      router.push('/api/login')
+    }
   }
 
   const handleLogout = () => {
@@ -46,7 +50,11 @@ const NavHeader = ({ user, goBackUri, fixed = false }) => {
 
   const handleSearch = () => {
     menu.hide()
-    router.push('/search')
+    if (mode === 'external') {
+      router.push('https://nusszopf.org/search')
+    } else {
+      router.push('/search')
+    }
   }
 
   const handleProfile = () => {
@@ -61,12 +69,20 @@ const NavHeader = ({ user, goBackUri, fixed = false }) => {
 
   const handlePrivacy = () => {
     menu.hide()
-    router.push('/privacy')
+    if (mode === 'external') {
+      router.push('https://nusszopf.org/privacy')
+    } else {
+      router.push('/privacy')
+    }
   }
 
   const handeLegals = () => {
     menu.hide()
-    router.push('/legalNotice')
+    if (mode === 'external') {
+      router.push('https://nusszopf.org/legalNotice')
+    } else {
+      router.push('/legalNotice')
+    }
   }
 
   const handleGoBack = () => {
@@ -187,6 +203,7 @@ NavHeader.propTypes = {
   user: PropTypes.object,
   fixed: PropTypes.bool,
   goBackUri: PropTypes.string,
+  mode: PropTypes.oneOf(['internal', 'external']),
 }
 
 export default NavHeader

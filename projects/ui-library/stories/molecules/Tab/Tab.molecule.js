@@ -18,7 +18,11 @@ const Tab = ({ className, children, labelLeft, labelRight, initialIndex = 0, loa
 
   return (
     <ReachTabs index={tabIndex} onChange={handleTabsChange} className="w-full">
-      <div className={classnames('relative w-full h-12', className)}>
+      <div
+        className={classnames(
+          'relative w-full h-12 ring-transparent hover:ring-steel-700 hover:ring-opacity-25 ring-2 rounded-full transition duration-200',
+          className
+        )}>
         <div className={classnames('w-full h-full')} aria-hidden="true">
           <div
             className={classnames(
