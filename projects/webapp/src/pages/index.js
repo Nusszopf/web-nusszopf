@@ -123,7 +123,7 @@ const Index = () => {
         <div className="flex flex-wrap items-center mb-8 -ml-4">
           {fellowsData.list.map((fellow, index) => (
             <Link key={`fellow-${index}`} variant="svg" href={fellow.href} title={fellow.meta} ariaLabel={fellow.meta}>
-              <fellow.logo className="w-32 p-4" />
+              <fellow.logo className="w-32 p-4 fill-current" />
             </Link>
           ))}
         </div>
