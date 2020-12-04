@@ -15,10 +15,10 @@ const Settings = () => {
   const { loading, ...user } = useEntireUser()
   const { notify } = useToasts()
   const router = useRouter()
-  const [deleteUser] = apollo.useDeleteUser()
-  const [addLead] = apollo.useAddLead()
-  const [deleteLead] = apollo.useDeleteLead()
-  const [updateLead] = apollo.useUpdateLead(user?.data?.id)
+  const [deleteUser, { loading: loadingDeleteUser }] = apollo.useDeleteUser()
+  const [addLead, { loading: loadingAddLead }] = apollo.useAddLead()
+  const [deleteLead, { loading: loadingDeleteLead }] = apollo.useDeleteLead()
+  const [updateLead, { loading: loadingUpdateLead }] = apollo.useUpdateLead(user?.data?.id)
 
   const handleSubscribe = async ({ privacy }) => {
     notify({ type: 'loading', message: cms.newsletter.subscribe.notify.loading })
@@ -129,7 +129,10 @@ const Settings = () => {
                         className="mt-1 mb-3 ml-6 italic"
                         component={Text}
                       />
-                      <Button type="submit" className="block mt-4 bg-steel-100">
+                      <Button
+                        type="submit"
+                        className="block mt-4 bg-steel-100"
+                        disabled={loadingUpdateLead || loadingAddLead}>
                         {cms.newsletter.subscribe.action}
                       </Button>
                     </Form>
@@ -140,7 +143,7 @@ const Settings = () => {
                   <Text variant="textSm" className="mb-2">
                     {cms.newsletter.unsubscribe.description}
                   </Text>
-                  <Button onClick={handleUnsubscribe} className="block mt-4 bg-steel-100">
+                  <Button onClick={handleUnsubscribe} className="block mt-4 bg-steel-100" disabled={loadingDeleteLead}>
                     {cms.newsletter.unsubscribe.action}
                   </Button>
                 </>
@@ -181,7 +184,12 @@ const Settings = () => {
                 {cms.delete.title}
               </Text>
               <Text variant="textSm">{cms.delete.description}</Text>
-              <Button onClick={handleDelete} variant="outline" color="warning" className="block mt-4">
+              <Button
+                onClick={handleDelete}
+                variant="outline"
+                color="warning"
+                className="block mt-4"
+                disabled={loadingDeleteUser}>
                 {cms.delete.action}
               </Button>
             </div>

@@ -12,7 +12,7 @@ const useProjectsService = props => {
   const [apolloUpdateProject, { loading: updateLoading }] = apollo.useUpdateProject()
   const [apolloAddProject, { loading: addLoading }] = apollo.useAddProject(props?.user?.data?.id)
 
-  const [apolloAddRequests, { loading: addRequestsLoading }] = apollo.useAddRequests()
+  const [apolloAddRequests, { loading: addRequestsLoading }] = apollo.useAddRequests(props?.user?.data?.id)
   const [apolloAddRequest, { loading: addRequestLoading }] = apollo.useAddRequest(props?.project?.id)
   const [apolloUpdateRequest, { loading: updateRequestLoading }] = apollo.useUpdateRequest()
   const [apolloDeleteRequest, { loading: deleteRequestLoading }] = apollo.useDeleteRequest()
@@ -76,7 +76,6 @@ const useProjectsService = props => {
       message: 'Projekt erstellen...',
     })
     try {
-      // todo update cache
       const res = await apolloAddProject({ variables: { project } })
       if (form.requests.length > 0) {
         const requests = form.requests.map(request => serializeRequest(res.data.insert_projects_one.id, request))
@@ -102,7 +101,6 @@ const useProjectsService = props => {
       message: 'Änderungen speichern...',
     })
     try {
-      // todo update cache
       await apolloUpdateProject({
         variables: { id, project },
       })

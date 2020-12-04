@@ -72,7 +72,20 @@ const useDeleteProject = () =>
   })
 
 // REQUESTS
-const useAddRequests = () => useMutation(INSERT_REQUESTS)
+const useAddRequests = id =>
+  useMutation(INSERT_REQUESTS, {
+    update: (cache, { data }) => {
+      const projectId = data.insert_requests.returning[0].project_id
+      const requests = data.insert_requests.returning
+      const { projects } = cache.readQuery({ query: GET_USER_PROJECTS, variables: { id } })
+      const updatedProjects = projects.map(project => (project.id === projectId ? { ...project, requests } : project))
+      cache.writeQuery({
+        query: GET_USER_PROJECTS,
+        variables: { id },
+        data: { projects: updatedProjects },
+      })
+    },
+  })
 const useAddRequest = id =>
   useMutation(INSERT_REQUEST, {
     update: (cache, { data }) => {
