@@ -66,20 +66,20 @@ const NewsletterForm = props => {
               aria-label={newsletterData.subscribe.privacy.meta}
               label={
                 <>
-                  {newsletterData.subscribe.privacy.label.textA}{' '}
+                  {newsletterData.subscribe.privacy.label.text[0]}{' '}
                   <Route
                     className="italic"
                     href="/privacy"
                     title={newsletterData.subscribe.privacy.label.meta}
                     ariaLabel={newsletterData.subscribe.privacy.label.meta}>
-                    {newsletterData.subscribe.privacy.label.textB}
-                  </Route>
+                    {newsletterData.subscribe.privacy.label.text[1]}
+                  </Route>{' '}
+                  {newsletterData.subscribe.privacy.label.text[2]}
                 </>
               }
             />
           </div>
           <ErrorMessage variant="textSm" className="mt-2 ml-6 italic" component={Text} name="privacy" />
-
           <div className="flex justify-center">
             <Button className="mt-10 bg-blue-400 sm:mt-12" type="submit" size="large" disabled={loading}>
               Anmelden

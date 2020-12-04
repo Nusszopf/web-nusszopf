@@ -17,10 +17,9 @@ export default {
     },
     privacy: {
       meta: 'Bestätigung der Datenschutzerklärung',
-      errorMessages: ['Bestätige die Datenschutzerklärung'],
+      errorMessages: ['Bitte bestätigen'],
       label: {
-        textA: 'Bestätigung der',
-        textB: 'Datenschutzerklärung',
+        text: ['Ich stimme den', 'Datenschutzbestimmungen', 'zu'],
         meta: 'Zum Datenschutz',
       },
     },
