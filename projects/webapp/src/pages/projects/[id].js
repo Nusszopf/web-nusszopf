@@ -191,7 +191,7 @@ const Project = ({ id, user }) => {
                 ))}
               </>
             ) : (
-              <InfoCard className="mt-2 text-lilac-800 bg-lilac-400">{projectData.body.searchings.info}</InfoCard>
+              <InfoCard className="mt-2">{projectData.body.searchings.info}</InfoCard>
             )}
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="oneCol" className="mt-10">
