@@ -3,7 +3,7 @@ export default {
     save: 'Speichern',
   },
   requestsView: {
-    create: 'Neues Gesuch erstellen',
+    create: 'Gesuch erstellen',
     info: 'Alles zopfig! Derzeit gibt es keine Gesuche.',
   },
   settingsView: {
