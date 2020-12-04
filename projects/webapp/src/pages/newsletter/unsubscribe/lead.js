@@ -4,7 +4,7 @@ import { object, string } from 'yup'
 import { Input, Button, Text, Route } from 'ui-library/stories/atoms'
 import { FramedCard } from 'ui-library/stories/templates'
 import useNewsletter from '~/utils/services/newsletter.service'
-import { Page, FOOTER_TYPE } from '~/components'
+import { Page } from '~/components'
 import { SVGNusszopfLogoBig } from '~/assets/logos'
 import { newsletterData } from '~/assets/data'
 
@@ -13,14 +13,14 @@ const UnsubscribeLead = () => {
 
   return (
     <Page
-      className="text-blue-400 bg-white sm:bg-blue-400"
-      showFooter={true}
-      footerType={FOOTER_TYPE.secondary}
+      className="bg-blue-300 text-steel-700"
+      navHeader={{ visible: process.env.ENV !== 'production', goBackUri: '/' }}
+      footer={{ className: 'bg-blue-300' }}
       noindex={true}>
       <FramedCard className="bg-white">
         <Route
           variant="svg"
-          className="block w-40 mx-auto"
+          className="block mx-auto mt-6 w-36 sm:mt-0"
           href="/"
           title={newsletterData.unsubscribe.logo}
           ariaLabel={newsletterData.unsubscribe.logo}>
@@ -51,11 +51,10 @@ const UnsubscribeLead = () => {
                 type="email"
                 aria-label={newsletterData.unsubscribe.email.meta}
                 placeholder={newsletterData.unsubscribe.email.meta}
-                disabled={loading}
               />
-              <ErrorMessage variant="textSm" className="mt-2 ml-6 italic" component={Text} name="email" />
+              <ErrorMessage variant="textSm" className="mt-2 ml-4 italic" component={Text} name="email" />
               <div className="mt-6 text-center">
-                <Button type="submit" disabled={loading}>
+                <Button type="submit" disabled={loading} className="bg-steel-100">
                   Abmelden
                 </Button>
               </div>

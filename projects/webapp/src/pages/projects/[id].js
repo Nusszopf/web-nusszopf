@@ -91,7 +91,7 @@ const Project = ({ id, user }) => {
       navHeader={{ visible: true, fixed: data?.projects_by_pk?.user_id === user, goBackUri: '/user/profile' }}
       title={data.projects_by_pk.title}
       description={data.projects_by_pk.goal}
-      showFooter={false}
+      footer={{ className: 'bg-white lg:bg-lilac-100' }}
       noindex={true}
       className="text-lilac-800 bg-lilac-100">
       <Banner project={data.projects_by_pk} user={user} />

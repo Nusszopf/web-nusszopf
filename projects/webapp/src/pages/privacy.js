@@ -1,12 +1,12 @@
 import { Frame } from 'ui-library/stories/templates'
 import { Link, Text } from 'ui-library/stories/atoms'
-import { Page, PageBrand } from '~/components'
+import { Page } from '~/components'
 import { privacyData as cms } from '~/assets/data'
 
 const Privacy = () => (
   <Page
     className="bg-steel-200 text-steel-800"
-    showFooter={false}
+    footer={{ className: 'bg-steel-200' }}
     navHeader={{ visible: process.env.ENV !== 'production', goBackUri: '/' }}>
     <Frame className="my-12 sm:my-20 hyphens-auto">
       <div className="max-w-2xl mx-auto">
@@ -113,7 +113,6 @@ const Privacy = () => (
           </Text>
         </div>
       </div>
-      <PageBrand className="mt-16 sm:mt-24" />
     </Frame>
   </Page>
 )

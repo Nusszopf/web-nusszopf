@@ -9,15 +9,15 @@ export default {
     ),
     name: {
       meta: 'Name',
-      errorMessages: ['Der Name sollte nicht länger als 50 Zeichen sein', 'Bitte trage einen Namen ein.'],
+      errorMessages: ['Maximal 50 Zeichen', 'Trage einen Namen ein'],
     },
     email: {
       meta: 'E-Mail-Adresse',
-      errorMessages: ['Bitte trage eine valide E-Mail-Adresse ein.', 'Bitte trage eine E-Mail-Adresse ein.'],
+      errorMessages: ['Keine valide E-Mail-Adresse', 'Trage eine E-Mail-Adresse ein'],
     },
     privacy: {
       meta: 'Bestätigung der Datenschutzerklärung',
-      errorMessages: ['Bitte bestätige die Datenschutzerklärung.'],
+      errorMessages: ['Bestätige die Datenschutzerklärung'],
       label: {
         textA: 'Bestätigung der',
         textB: 'Datenschutzerklärung',
@@ -42,7 +42,7 @@ export default {
     logo: 'Zum Nusszopf',
     email: {
       meta: 'E-Mail-Adresse',
-      errorMessages: ['Bitte trage eine valide E-Mail-Adresse ein.', 'Bitte trage eine E-Mail-Adresse ein.'],
+      errorMessages: ['Keine valide E-Mail-Adresse.', 'Trage eine E-Mail-Adresse ein.'],
     },
     alerts: {
       loading: 'Deine Abmeldung wird bearbeitet.',

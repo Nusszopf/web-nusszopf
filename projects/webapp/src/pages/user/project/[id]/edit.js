@@ -28,7 +28,7 @@ const ProjectEdit = ({ id }) => {
   return (
     <Page
       navHeader={{ visible: true, fixed: true, goBackUri: '/user/profile' }}
-      showFooter={false}
+      footer={{ className: 'bg-white lg:bg-lilac-100' }}
       noindex={true}
       className="text-lilac-800 bg-lilac-100">
       <FramedGridCard

@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types'
 import { Route, Link, Text } from 'ui-library/stories/atoms'
 import { FrameFullCenter } from 'ui-library/stories/templates'
-import { Page, PageBrand } from '~/components'
+import { Page } from '~/components'
 import errorData from './error.data'
 
 const ErrorPage = ({ statusCode }) => (
-  <Page showFooter={false}>
-    <FrameFullCenter className="text-yellow-300 bg-warning-700" brand={<PageBrand className="mt-12 " />}>
+  <Page footer={{ className: 'bg-warning-200' }}>
+    <FrameFullCenter fullScreen={false} className="text-stone-800 bg-warning-200">
       <div className="max-w-xl mx-auto">
         <Text as="h1" variant="titleLg" className="sm:text-center">
           {statusCode && `${statusCode} – `}
@@ -26,7 +26,7 @@ const ErrorPage = ({ statusCode }) => (
           <Route
             variant="button"
             size="large"
-            className="mt-16"
+            className="mt-16 bg-warning-300"
             href="/"
             title={errorData.nav.home}
             ariaLabel={errorData.nav.home}>

@@ -1,6 +1,5 @@
 import React from 'react'
 import Footer from './Footer.organism'
-import { Text } from '../../atoms'
 
 export default {
   title: 'Design System/Organisms/Footer',
@@ -14,20 +13,6 @@ export default {
   },
 }
 
-export const Row = () => (
-  <Footer className="bg-turquoise-500">
-    <Footer.LeftElement>Left Element</Footer.LeftElement>
-    <Footer.RightElement sponsors={['vercel']} />
-  </Footer>
-)
-
-export const Col = () => (
-  <Footer variant="col" className="bg-blue-500">
-    <Footer.LeftElement>Left Element</Footer.LeftElement>
-    <Footer.RightElement sponsors={['auth0', 'vercel']}>
-      <Text variant="textXs" className="hidden mr-6 md:block">
-        Unterstützt von:
-      </Text>
-    </Footer.RightElement>
-  </Footer>
-)
+export const Classy = () => <Footer className="bg-moss-400" variant="classy" />
+export const Vercel = () => <Footer className="bg-moss-400" />
+export const Auth0 = () => <Footer className="bg-moss-400" variant="auth0" />

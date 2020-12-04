@@ -5,11 +5,10 @@ import { NextSeo } from 'next-seo'
 import { truncate } from 'lodash'
 import classnames from 'classnames'
 
-import { NavHeader } from 'ui-library/stories/organisims'
+import { NavHeader, Footer } from 'ui-library/stories/organisims'
 import { useFetchUser } from '~/utils/services/auth.service'
 import { seoData } from '~/assets/data'
 import { useScrollTop } from '~/utils/helper'
-import Footer, { FOOTER_TYPE } from '../Footer/Footer'
 import ErrorBoundary from './ErrorBoundary'
 
 const Page = ({
@@ -19,9 +18,8 @@ const Page = ({
   description = seoData.description,
   noindex = false,
   notFound = false,
-  showFooter = true,
   navHeader,
-  footerType = FOOTER_TYPE.primary,
+  footer,
   className,
 }) => {
   useScrollTop()
@@ -74,7 +72,7 @@ const Page = ({
           </div>
         )}
         <main className={classnames('flex-1', className)}>{children}</main>
-        {showFooter && <Footer type={footerType} />}
+        <Footer {...footer} />
       </ErrorBoundary>
     </>
   )
@@ -87,10 +85,9 @@ Page.propTypes = {
   noindex: PropTypes.bool,
   notFound: PropTypes.bool,
   title: PropTypes.string,
-  showFooter: PropTypes.bool,
   navHeader: PropTypes.object,
   className: PropTypes.string,
-  footerType: PropTypes.string,
+  footer: PropTypes.object,
 }
 
 export default Page

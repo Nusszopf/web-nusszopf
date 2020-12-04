@@ -39,7 +39,7 @@ const CreateProject = () => {
   return (
     <Page
       navHeader={{ visible: true, fixed: true, goBackUri: '/user/profile' }}
-      showFooter={false}
+      footer={{ className: 'bg-white lg:bg-lilac-100' }}
       noindex={true}
       className="bg-white text-lilac-800 lg:bg-lilac-100">
       <Formik

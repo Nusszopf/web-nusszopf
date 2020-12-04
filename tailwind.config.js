@@ -26,6 +26,9 @@ module.exports = {
       black: '#000',
       white: '#fff',
       warning: {
+        100: '#FFEEE5',
+        200: '#FDD1B9',
+        300: '#F8A87C',
         700: '#B84405',
       },
       steel: {
