@@ -3,10 +3,8 @@ import { NextSeo } from 'next-seo'
 import { truncate } from 'lodash'
 import classnames from 'classnames'
 
-import { Link } from 'ui-library/stories/atoms'
-import { NavHeader } from 'ui-library/stories/organisims'
+import { NavHeader, Footer } from 'ui-library/stories/organisims'
 import { pageData as cms } from '../../assets/data'
-import { SVGPoweredByVercel } from '../../assets/images'
 
 const Page = ({ children, className }) => {
   const domain = 'https://auth.nusszopf.org'
@@ -42,15 +40,7 @@ const Page = ({ children, className }) => {
       />
       <NavHeader mode="external" goBackUri="https://nusszopf.org" />
       <main className={classnames('flex-1 bg-white sm:bg-steel-100', className)}>{children}</main>
-      <footer className="flex justify-center w-full p-6 bg-white sm:bg-steel-100">
-        <Link
-          variant="svg"
-          href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"
-          title={cms.footer.vercel}
-          ariaLabel={cms.footer.vercel}>
-          <SVGPoweredByVercel className="w-32 h-full" />
-        </Link>
-      </footer>
+      <Footer variant="auth0" className="bg-white sm:bg-steel-100" />
     </>
   )
 }
