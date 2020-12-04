@@ -15,6 +15,7 @@ const ErrorPage = ({ statusCode }) => (
         <Text className="mt-8">
           {errorData.message.text}{' '}
           <Link
+            color="warning"
             href={errorData.message.link.href}
             title={errorData.message.link.meta}
             ariaLabel={errorData.message.link.meta}>

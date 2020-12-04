@@ -113,6 +113,7 @@ const Project = ({ id, user }) => {
                   <MapPin size={20} className="mr-2" />
                   {location?.link ? (
                     <Link
+                      color="lilac"
                       href={location.link}
                       textVariant="textSm"
                       title="Zu OpenStreetMap"

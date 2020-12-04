@@ -165,6 +165,7 @@ const Settings = () => {
             <InfoCard className="mt-12 text-gray-700 bg-gray-200 lg:ml-16 lg:mt-0">
               {settingsData.info[0]}
               <Link
+                color="livid"
                 href={settingsData.info[1].href}
                 textVariant="textSm"
                 title={settingsData.info[1].meta}

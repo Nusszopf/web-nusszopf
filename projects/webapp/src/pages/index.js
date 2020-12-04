@@ -100,6 +100,7 @@ const Index = () => {
             <Text>
               {contestData.infoText}{' '}
               <Link
+                color="red"
                 href={contestData.infoLink.href}
                 title={contestData.infoLink.meta}
                 ariaLabel={contestData.infoLink.meta}>
