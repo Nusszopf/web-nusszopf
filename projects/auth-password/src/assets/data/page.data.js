@@ -3,7 +3,7 @@ export default {
     meta: 'Zum Nusszopf',
   },
   notify: {
-    loading: 'Passwort wird geändert...',
+    loading: 'Dein Passwort wird geändert.',
     success: 'Passwort geändert! Weiterleitung zum Login.',
     error: 'Sorry, das hat gerade nicht geklappt.',
   },

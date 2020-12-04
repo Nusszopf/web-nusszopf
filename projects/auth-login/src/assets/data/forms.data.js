@@ -1,7 +1,7 @@
 export default {
   changePassword: {
     title: 'Passwort vergessen',
-    description: 'Wir senden dir einen Link zu, mit dem du ein neues Passwort setzen kannst.',
+    description: 'Wir senden dir einen Link zu, mit dem Du ein neues Passwort erstellen kannst.',
     fields: {
       email: {
         aria: 'E-Mail-Adresse',
@@ -62,7 +62,7 @@ export default {
         aria: 'Datenschutzerklärung',
         validation: ['Bitte bestätigen'],
         link: {
-          label: ['Bestätigung der', 'Datenschutzerklärung'],
+          label: ['Ich stimme den', 'Datenschutzbedingungen', 'zu'],
           meta: 'Zum Datenschutz',
         },
       },

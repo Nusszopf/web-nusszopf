@@ -8,9 +8,10 @@ export default {
   },
   steps: ['Beschreibung 1/2', 'Beschreibung 2/2', 'Gesuche', 'Einstellungen'],
   requestsStep: {
-    title: ['Neues Gesuch', 'Gesuche'],
-    description: 'Gesuche für dein Projekt kannst Du entweder jetzt oder zu einem späteren Zeitpunkt erstellen.',
-    action: 'Neues Gesuch erstellen',
-    info: 'Noch keine Gesuche.',
+    title: ['Gesuche', 'Erstellte Gesuche'],
+    description:
+      'Gesuche in dem Projekt zeigen anderen Nusszopfer:innen, was für die Projektumsetzung noch alles benötigt wird.',
+    action: 'Gesuch erstellen',
+    info: 'Gesuche für das Projekt kannst Du entweder jetzt oder später erstellen.',
   },
 }

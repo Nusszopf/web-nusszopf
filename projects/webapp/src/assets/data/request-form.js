@@ -1,6 +1,12 @@
 export default {
+  title: {
+    title: 'Titel*',
+    info: 'Wie soll das Gesuch heißen?',
+    placeholder: 'Wer oder was wird gesucht?',
+  },
   category: {
     title: 'Kategorie*',
+    info: 'Wähle eine passende Kategorie für das Gesuch aus!',
     options: {
       placeholder: 'Kategorie',
       companions: 'Mitstreiter:innen',
@@ -12,12 +18,8 @@ export default {
   },
   description: {
     title: 'Beschreibung*',
-    info: 'Info',
+    info: 'Beschreibe das Gesuch: Was wird gesucht und wozu? Wann wird es gebraucht?',
     placeholder: 'Was muss man über das Gesuch wissen?',
     error: ['Maximale Zeichenlänge erreicht', 'Gib eine Beschreibung ein'],
-  },
-  title: {
-    title: 'Titel*',
-    placeholder: 'Wer oder was wird gesucht?',
   },
 }

@@ -9,7 +9,7 @@ import { useToasts } from 'ui-library/services/Toasts.service'
 import apollo from '~/utils/services/apollo.service'
 import { useEntireUser } from '~/utils/services/auth.service'
 import { Page } from '~/components'
-import { settingsData } from '~/assets/data'
+import { settingsData as cms } from '~/assets/data'
 
 const Settings = () => {
   const { loading, ...user } = useEntireUser()
@@ -21,7 +21,7 @@ const Settings = () => {
   const [updateLead] = apollo.useUpdateLead(user?.data?.id)
 
   const handleSubscribe = async ({ privacy }) => {
-    notify({ type: 'loading', message: 'Du wirst zum Newsletter angemeldet.' })
+    notify({ type: 'loading', message: cms.newsletter.subscribe.notify.loading })
     try {
       const res = await addLead({
         variables: {
@@ -31,39 +31,39 @@ const Settings = () => {
         },
       })
       await updateLead({ variables: { id: res.data.insert_leads_one.id } })
-      notify({ type: 'success', message: 'Du bist jetzt angemeldet.' })
+      notify({ type: 'success', message: cms.newsletter.subscribe.notify.success })
     } catch (error) {
-      notify({ type: 'error', message: 'Sorry, da lief was schief.' })
+      notify({ type: 'error', message: cms.newsletter.subscribe.notify.error })
     }
   }
 
   const handleUnsubscribe = async () => {
-    const isConfirmed = confirm(settingsData.newsletter.unsubscribe.confirm)
+    const isConfirmed = confirm(cms.newsletter.unsubscribe.confirm)
     if (isConfirmed) {
-      notify({ type: 'loading', message: 'Du wirst vom Newsletter abgemeldet.' })
+      notify({ type: 'loading', message: cms.newsletter.unsubscribe.notify.loading })
       try {
         await deleteLead({
           variables: { email: user.data.email },
         })
-        notify({ type: 'success', message: 'Du bist jetzt abgemeldet.' })
+        notify({ type: 'success', message: cms.newsletter.unsubscribe.notify.success })
       } catch (error) {
-        notify({ type: 'error', message: 'Sorry, da lief was schief.' })
+        notify({ type: 'error', message: cms.newsletter.unsubscribe.notify.error })
       }
     }
   }
 
   const handleDelete = async () => {
-    const isConfirmed = confirm(settingsData.delete.confirm)
+    const isConfirmed = confirm(cms.delete.confirm)
     if (isConfirmed) {
-      notify({ type: 'loading', message: 'Dein Account wird gelöscht.' })
+      notify({ type: 'loading', message: cms.delete.notify.loading })
       try {
         await deleteUser({
           variables: { id: user.data.id },
         })
         router.push('/api/logout')
-        notify({ type: 'success', message: 'Dein Account wurde gelöscht.' })
+        notify({ type: 'success', message: cms.delete.notify.success })
       } catch (error) {
-        notify({ type: 'error', message: 'Sorry, da lief was schief.' })
+        notify({ type: 'error', message: cms.delete.notify.error })
       }
     }
   }
@@ -81,7 +81,7 @@ const Settings = () => {
         <FramedGridCard.Header className="bg-steel-200">
           <div id="header" className="flex flex-col md:flex-row md:justify-between md:flex-row-reverse md:items-center">
             <Text as="h1" variant="textLg">
-              {settingsData.title}
+              {cms.title}
             </Text>
             <Avatar user={user} className="mt-4 md:mt-0" />
           </div>
@@ -90,36 +90,36 @@ const Settings = () => {
           <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2">
             <div id="newsletter">
               <Text variant="textMd" className="mb-2">
-                {settingsData.newsletter.title}
+                {cms.newsletter.title}
               </Text>
               {!user?.data?.lead?.hasConfirmed ? (
                 <Formik
                   initialValues={{ privacy: false }}
                   onSubmit={handleSubscribe}
                   validationSchema={object({
-                    privacy: mixed().oneOf([true], 'Bitte bestätige die Datenschutzerklärung'),
+                    privacy: mixed().oneOf([true], cms.newsletter.subscribe.field.validation),
                   })}>
                   {formikProps => (
                     <Form>
                       <Text variant="textSm" className="mb-2">
-                        {settingsData.newsletter.subscribe.description}
+                        {cms.newsletter.subscribe.description}
                       </Text>
                       <Field
                         as={Checkbox}
                         name="privacy"
-                        aria-label="Datenschutzerklärung"
-                        disabled={loading}
+                        aria-label={cms.newsletter.subscribe.field.aria}
                         checked={formikProps.values.privacy}
                         label={
                           <>
-                            {settingsData.newsletter.subscribe.privacy[0]}{' '}
+                            {cms.newsletter.subscribe.field.label[0]}{' '}
                             <Route
                               className="italic"
-                              href={settingsData.newsletter.subscribe.privacy[1].href}
-                              title={settingsData.newsletter.subscribe.privacy[1].meta}
-                              ariaLabel={settingsData.newsletter.subscribe.privacy[1].meta}>
-                              {settingsData.newsletter.subscribe.privacy[1].text}
-                            </Route>
+                              href={cms.newsletter.subscribe.field.label[1].href}
+                              title={cms.newsletter.subscribe.field.label[1].meta}
+                              ariaLabel={cms.newsletter.subscribe.field.label[1].meta}>
+                              {cms.newsletter.subscribe.field.label[1].text}
+                            </Route>{' '}
+                            {cms.newsletter.subscribe.field.label[2]}
                           </>
                         }
                       />
@@ -130,7 +130,7 @@ const Settings = () => {
                         component={Text}
                       />
                       <Button type="submit" className="block mt-4 bg-steel-100">
-                        {settingsData.newsletter.subscribe.action}
+                        {cms.newsletter.subscribe.action}
                       </Button>
                     </Form>
                   )}
@@ -138,51 +138,51 @@ const Settings = () => {
               ) : (
                 <>
                   <Text variant="textSm" className="mb-2">
-                    {settingsData.newsletter.unsubscribe.description}
+                    {cms.newsletter.unsubscribe.description}
                   </Text>
                   <Button onClick={handleUnsubscribe} className="block mt-4 bg-steel-100">
-                    {settingsData.newsletter.unsubscribe.action}
+                    {cms.newsletter.unsubscribe.action}
                   </Button>
                 </>
               )}
             </div>
             <div id="sponsoring" className="mt-12">
               <Text variant="textMd" className="mb-2">
-                {settingsData.sponsoring.title}
+                {cms.sponsoring.title}
               </Text>
-              <Text variant="textSm">{settingsData.sponsoring.description}</Text>
+              <Text variant="textSm">{cms.sponsoring.description}</Text>
               <Link
                 variant="button"
                 className="block mt-4 bg-steel-100"
-                title={settingsData.sponsoring.action.meta}
-                ariaLabel={settingsData.sponsoring.action.meta}
-                href={settingsData.sponsoring.action.href}>
-                {settingsData.sponsoring.action.text}
+                title={cms.sponsoring.action.meta}
+                ariaLabel={cms.sponsoring.action.meta}
+                href={cms.sponsoring.action.href}>
+                {cms.sponsoring.action.text}
               </Link>
             </div>
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="twoCols">
             <InfoCard className="mt-12 text-gray-700 bg-gray-200 lg:ml-16 lg:mt-0">
-              {settingsData.info[0]}
+              {cms.info[0]}
               <Link
                 color="livid"
-                href={settingsData.info[1].href}
+                href={cms.info[1].href}
                 textVariant="textSm"
-                title={settingsData.info[1].meta}
-                ariaLabel={settingsData.info[1].meta}>
-                {settingsData.info[1].text}
+                title={cms.info[1].meta}
+                ariaLabel={cms.info[1].meta}>
+                {cms.info[1].text}
               </Link>{' '}
-              {settingsData.info[2]}
+              {cms.info[2]}
             </InfoCard>
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2">
             <div id="delete" className="mt-10 text-warning-700">
               <Text variant="textMd" className="mb-2">
-                {settingsData.delete.title}
+                {cms.delete.title}
               </Text>
-              <Text variant="textSm">{settingsData.delete.description}</Text>
+              <Text variant="textSm">{cms.delete.description}</Text>
               <Button onClick={handleDelete} variant="outline" color="warning" className="block mt-4">
-                {settingsData.delete.action}
+                {cms.delete.action}
               </Button>
             </div>
           </FramedGridCard.Body.Col>

@@ -1,6 +1,6 @@
 export default {
   action: 'Speichern',
-  title: 'Neues Passwort vergeben',
+  title: 'Neues Passwort erstellen',
   description: 'Nach dem Speichern kannst Du dich gleich wieder wie gewohnt einloggen.',
   field: {
     aria: 'Passwort',

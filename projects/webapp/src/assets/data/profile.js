@@ -3,7 +3,7 @@ export default {
   welcome: {
     title: 'Willkommen in Deinem Bereich!',
     description:
-      'Zukünftig findest Du hier eine Übersersicht deiner Ideen und Projekte, kannst alles mögliche editieren, konfigurieren und natürlich neue Ideen und Projekte anlegen.',
+      'Hier kannst Du Projekte mit Gesuchen erstellen und verwalten. Am besten legst Du gleich los und backst dir die Welt, wie sie dir gefällt!',
     greetings: 'Viel Spaß im nussigsten Netzwerk aller Zeiten!',
   },
   project: {

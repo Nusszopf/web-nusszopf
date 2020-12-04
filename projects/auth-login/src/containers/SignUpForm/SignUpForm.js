@@ -90,7 +90,8 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                       title={cms.signup.fields.privacy.link.meta}
                       ariaLabel={cms.signup.fields.privacy.link.meta}>
                       {cms.signup.fields.privacy.link.label[1]}
-                    </Link>
+                    </Link>{' '}
+                    {cms.signup.fields.privacy.link.label[2]}
                   </>
                 }
               />
@@ -98,6 +99,7 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
             </div>
             <div className="mt-2">
               <Field
+                className="whitespace-normal"
                 as={Checkbox}
                 disabled={loading}
                 checked={formikProps.values.newsletter}

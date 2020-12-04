@@ -9,7 +9,7 @@ export const TitleFieldValidationSchema = string().max(30, 'max length error').r
 
 const TitleField = ({ formik }) => (
   <>
-    <FieldTitle info="info">{cms.title.title}</FieldTitle>
+    <FieldTitle info={cms.title.info}>{cms.title.title}</FieldTitle>
     <Input
       color="stone"
       name="title"

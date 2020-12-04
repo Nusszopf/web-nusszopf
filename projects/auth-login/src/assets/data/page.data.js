@@ -5,8 +5,8 @@ export default {
   },
   notify: {
     change: {
-      loading: 'Anfrage wird bearbeitet',
-      success: 'E-Mail verschickt! Schaue bitte in dein Postfach.',
+      loading: 'Deine Anfrage wird bearbeitet.',
+      success: 'E-Mail verschickt!',
     },
     signup: {
       loading: 'Du wirst registriert und eingeloggt.',

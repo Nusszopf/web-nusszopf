@@ -6,7 +6,7 @@ import { projectFormData as cms } from '~/assets/data'
 
 const ContactField = ({ formik, user, ...props }) => (
   <>
-    <FieldTitle info="Info" {...props}>
+    <FieldTitle info={cms.contact.info} {...props}>
       {cms.contact.title}
     </FieldTitle>
     <Switch
@@ -17,7 +17,7 @@ const ContactField = ({ formik, user, ...props }) => (
       checked={formik.values.contact}
       label={
         <>
-          {cms.contact.label} <i className="hyphens-auto">{user?.data?.email}</i>
+          {cms.contact.label[0]} <i className="hyphens-auto">{user?.data?.email}</i> {cms.contact.label[1]}
         </>
       }
     />

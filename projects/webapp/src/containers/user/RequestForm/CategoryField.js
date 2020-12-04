@@ -28,7 +28,7 @@ const CategoryField = ({ formik, ...props }) => {
 
   return (
     <>
-      <FieldTitle info="info" {...props}>
+      <FieldTitle info={cms.category.info} {...props}>
         {cms.category.title}
       </FieldTitle>
       <Select
