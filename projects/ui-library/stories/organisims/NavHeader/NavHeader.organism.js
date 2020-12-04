@@ -98,7 +98,7 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = false }) => {
       <Frame
         as="nav"
         className={classnames(' bg-steel-400 text-steel-800 z-10', {
-          'fixed top-0 left-0 right-0': fixed,
+          'sticky top-0 left-0 right-0': fixed,
           shadow: hasScrolled,
         })}>
         <div className={classnames('flex items-center w-full h-10 lg:h-12 justify-between relative')}>

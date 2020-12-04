@@ -50,6 +50,7 @@ module.exports = {
       },
       livid: {
         100: '#EEF5F7',
+        200: '#CBE1E6',
         300: '#BAD7DE',
         500: '#64A6B4',
         800: '#213E45',

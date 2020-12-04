@@ -66,11 +66,7 @@ const Page = ({
         }}
       />
       <ErrorBoundary>
-        {navHeader?.visible && (
-          <div className={classnames('w-full', { 'mt-10 lg:mt-12': navHeader.fixed })}>
-            <NavHeader user={user} {...navHeader} />
-          </div>
-        )}
+        {navHeader?.visible && <NavHeader user={user} {...navHeader} />}
         <main className={classnames('flex-1', className)}>{children}</main>
         <Footer {...footer} />
       </ErrorBoundary>
@@ -85,6 +81,7 @@ Page.propTypes = {
   noindex: PropTypes.bool,
   notFound: PropTypes.bool,
   title: PropTypes.string,
+  showFooter: PropTypes.bool,
   navHeader: PropTypes.object,
   className: PropTypes.string,
   footer: PropTypes.object,
