@@ -75,8 +75,11 @@ function createApolloClient(ctx) {
             users_by_pk: {
               merge: true,
             },
-            projects_by_pk: {
-              merge: true,
+            projects_by_pk(_, { args, toReference }) {
+              return toReference({
+                __typename: 'projects',
+                id: args.id,
+              })
             },
             // allPosts: concatPagination(),
           },
