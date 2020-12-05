@@ -74,9 +74,7 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
               <ErrorMessage name="email" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
             </>
             <>
-              <FieldTitle info={cms.fields.msg.info} className="mt-6">
-                {cms.fields.msg.title}
-              </FieldTitle>
+              <Text className="mt-6 mb-3">{cms.fields.msg.title}</Text>
               <Input
                 as="textarea"
                 className="min-h-48"

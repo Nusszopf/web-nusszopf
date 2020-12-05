@@ -20,8 +20,7 @@ export default {
     },
     msg: {
       title: 'Deine Nachricht*',
-      placeholder: 'Nachricht...',
-      info: 'DELETE',
+      placeholder: '...',
     },
   },
   actions: {
