@@ -6,7 +6,7 @@ export default {
   },
   dialog: {
     aria: 'Kontaktieren',
-    description: 'Deine Nachricht wird über den Nusszopf versendet. Mehr Erklärung...',
+    description: 'TODO',
   },
   validation: {
     email: ['Bitte gib eine valide E-Mail-Adresse ein', 'Bitte gib eine E-Mail-Adresse ein'],
@@ -16,10 +16,12 @@ export default {
     email: {
       title: 'Deine E-Mail-Adresse*',
       placeholder: 'beispiel@mail.de',
+      info: 'TODO',
     },
     msg: {
       title: 'Deine Nachricht*',
       placeholder: 'Nachricht...',
+      info: 'TODO',
     },
   },
   actions: {

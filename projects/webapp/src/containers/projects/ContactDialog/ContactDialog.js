@@ -59,7 +59,7 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
         {formik => (
           <Form>
             <>
-              <FieldTitle info="info" className="mt-6">
+              <FieldTitle info={cms.fields.email.info} className="mt-6">
                 {cms.fields.email.title}
               </FieldTitle>
               <Field
@@ -74,7 +74,7 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
               <ErrorMessage name="email" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
             </>
             <>
-              <FieldTitle info="info" className="mt-6">
+              <FieldTitle info={cms.fields.msg.info} className="mt-6">
                 {cms.fields.msg.title}
               </FieldTitle>
               <Input
@@ -92,10 +92,10 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
             </>
             <div className="flex justify-center mt-12 mb-6 space-x-4">
               <Button type="submit" className="bg-lilac-300" onClick={onContact}>
-                Senden
+                {cms.actions.submit}
               </Button>
               <Button type="button" onClick={onDismiss}>
-                Abbrechen
+                {cms.actions.cancel}
               </Button>
             </div>
           </Form>
