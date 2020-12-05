@@ -8,8 +8,8 @@ const MenuItem = ({ className, children, hasIcon, ...props }) => (
     className={classnames(
       'block w-full py-1.5 text-left hover:bg-steel-300 focus:outline-none',
       {
-        'pr-5 pl-14': !hasIcon,
-        'px-5': hasIcon,
+        'pr-7 pl-14': !hasIcon,
+        'px-7': hasIcon,
       },
       className
     )}

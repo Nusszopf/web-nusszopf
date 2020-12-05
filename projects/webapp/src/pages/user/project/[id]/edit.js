@@ -7,7 +7,7 @@ import { FramedGridCard } from 'ui-library/stories/templates'
 import { useEntireUser } from '~/utils/services/auth.service'
 import apollo from '~/utils/services/apollo.service'
 import { Page } from '~/components'
-import { ProjectView, RequestsView, SettingsView } from '~/containers'
+import { ProjectView, RequestsView, SettingsView, SkeletonView } from '~/containers'
 
 const projectEditData = {
   nav: ['Beschreibung', 'Gesuche', 'Einstellungen'],
@@ -51,7 +51,7 @@ const ProjectEdit = ({ id }) => {
           </div>
         </FramedGridCard.Header>
         {loading || !data ? (
-          <>Project wird geladen...</>
+          <SkeletonView />
         ) : view === projectEditData.nav[0] ? (
           <ProjectView user={user} project={data?.projects_by_pk} />
         ) : view === projectEditData.nav[1] ? (
