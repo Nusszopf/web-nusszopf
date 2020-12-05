@@ -127,16 +127,12 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = false }) => {
           {...menu}
           aria-label="Navigation"
           className={classnames(
-            'z-20 py-3 text-sm mt-4 lg:mt-6 font-medium rounded-md shadow-md text-steel-800 bg-steel-400 focus:outline-none',
+            'z-20 py-4 text-sm mt-4 lg:mt-6 font-medium rounded-md shadow-md text-steel-800 bg-steel-400 focus:outline-none',
             { shadow: hasScrolled }
           )}>
-          <MenuItem
-            {...menu}
-            hasIcon={true}
-            onClick={handleSearch}
-            className="block w-full px-5 py-1.5 hover:bg-steel-300 focus:outline-none">
+          <MenuItem {...menu} hasIcon={true} onClick={handleSearch}>
             <div className="flex items-center ">
-              <Search />
+              <Search className="-ml-2" />
               <Text variant="textSmMedium" className="inline-block ml-3">
                 {cms.items[0]}
               </Text>
@@ -146,7 +142,7 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = false }) => {
             <>
               <MenuItem {...menu} hasIcon={true} onClick={handleProfile}>
                 <div className="flex items-center">
-                  <User />
+                  <User className="-ml-2" />
                   <Text variant="textSmMedium" className="inline-block ml-3">
                     {truncate(user?.name ?? cms.items[1], { length: 14 })}
                   </Text>
