@@ -11,7 +11,7 @@ const MyPopover = ({ children, ...props }) => {
   return (
     <div {...props}>
       <PopoverDisclosure {...popover} className="focus:outline-none text-livid-500">
-        <Info />
+        <Info size={21} />
       </PopoverDisclosure>
       <Popover
         {...popover}
