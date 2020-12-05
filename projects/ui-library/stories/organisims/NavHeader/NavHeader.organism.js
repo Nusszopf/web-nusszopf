@@ -3,13 +3,15 @@ import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { truncate } from 'lodash'
-import { Menu as RMenu, Search, ChevronLeft, User, X } from 'react-feather'
+import { Menu as RMenu, Search, ChevronLeft, User } from 'react-feather'
 import { Clickable } from 'reakit/Clickable'
-import { useMenuState, Menu, MenuItem, MenuButton } from 'reakit/Menu'
+import { useMenuState, Menu, MenuButton } from 'reakit/Menu'
 
 import { Text } from '../../atoms'
 import { Frame } from '../../templates'
 import { useToasts } from '../../../services/Toasts.service'
+import { navHeaderData as cms } from '../../../assets/data'
+import MenuItem from './MenuItem'
 
 const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = false }) => {
   const [hasScrolled, setHasScrolled] = useState(false)
@@ -34,7 +36,7 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = false }) => {
 
   const handleLoginSignup = () => {
     menu.hide()
-    notify({ type: 'loading', message: 'Du wirst einloggt oder weitergeleitet.' })
+    notify({ type: 'loading', message: cms.notify.login })
     if (mode === 'external') {
       router.push('https://nusszopf.org/api/login')
     } else {
@@ -44,7 +46,7 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = false }) => {
 
   const handleLogout = () => {
     menu.hide()
-    notify({ type: 'loading', message: 'Du wirst abgemeldet.' })
+    notify({ type: 'loading', message: cms.notify.logout })
     router.push('/api/logout')
   }
 
@@ -94,107 +96,87 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = false }) => {
   }
 
   return (
-    <>
-      <Frame
-        as="nav"
-        className={classnames(' bg-steel-400 text-steel-800 z-10', {
-          'sticky top-0 left-0 right-0': fixed,
-          shadow: hasScrolled,
-        })}>
-        <div className={classnames('flex items-center w-full h-10 lg:h-12 justify-between relative')}>
-          <div className="flex items-center">
-            {goBackUri && (
-              <Clickable onClick={handleGoBack} className={classnames(' focus:outline-none hover:text-steel-600')}>
-                <ChevronLeft size={28} strokeWidth={2} />
-              </Clickable>
-            )}
-          </div>
-          <div className="flex items-center">
-            <Clickable
-              onClick={handleSearch}
-              className={classnames('mr-6 sm:mr-8 focus:outline-none hover:text-steel-600', {
-                hidden: menu.visible,
-              })}>
-              <Search />
+    <Frame
+      as="nav"
+      className={classnames(' bg-steel-400 text-steel-800 z-20', {
+        'sticky top-0 left-0 right-0': fixed,
+        shadow: hasScrolled,
+      })}>
+      <div className={classnames('flex items-center w-full h-10 lg:h-12 justify-between relative')}>
+        <div className="flex items-center">
+          {goBackUri && (
+            <Clickable onClick={handleGoBack} className={classnames(' ')}>
+              <ChevronLeft size={28} strokeWidth={2} />
             </Clickable>
-            {user && (
-              <Clickable
-                onClick={handleProfile}
-                className={classnames('mr-6 sm:mr-8 focus:outline-none hover:text-steel-600', {
-                  hidden: menu.visible,
-                })}>
-                <User />
-              </Clickable>
-            )}
-            <MenuButton {...menu} className="focus:outline-none hover:text-steel-600">
-              {menu?.visible ? <X /> : <RMenu />}
-            </MenuButton>
-          </div>
-          <Menu
-            {...menu}
-            aria-label="Preferences"
-            className="z-10 w-screen px-4 pt-4 pb-8 rounded-b-lg bg-steel-400 lg:w-full lg:max-w-xs focus:outline-none">
-            <div className="mx-auto max-w-max lg:ml-12">
-              <MenuItem
-                {...menu}
-                onClick={handleSearch}
-                className="flex block py-2 focus:outline-none hover:text-steel-600">
-                <Search />
-                <Text variant="textSmMedium" className="ml-4">
-                  Suchen & Finden
-                </Text>
-              </MenuItem>
-              {user ? (
-                <>
-                  <MenuItem
-                    {...menu}
-                    onClick={handleProfile}
-                    className="flex block py-2 focus:outline-none hover:text-steel-600">
-                    <User />
-                    <Text variant="textSmMedium" className="ml-4">
-                      {truncate(user?.name ?? 'Dein Bereich', { length: 14 })}
-                    </Text>
-                  </MenuItem>
-                  <MenuItem
-                    {...menu}
-                    onClick={handleSettings}
-                    className="block py-2 ml-10 focus:outline-none hover:text-steel-600">
-                    <Text variant="textSmMedium">Einstellungen</Text>
-                  </MenuItem>
-                </>
-              ) : (
-                <MenuItem
-                  {...menu}
-                  onClick={handleLoginSignup}
-                  className="block py-2 ml-10 focus:outline-none hover:text-steel-600">
-                  <Text variant="textSmMedium">Anmelden</Text>
-                </MenuItem>
-              )}
-              <MenuItem
-                {...menu}
-                onClick={handeLegals}
-                className="block py-2 ml-10 focus:outline-none hover:text-steel-600">
-                <Text variant="textSmMedium">Impressum</Text>
-              </MenuItem>
-              <MenuItem
-                {...menu}
-                onClick={handlePrivacy}
-                className="block py-2 ml-10 focus:outline-none hover:text-steel-600">
-                <Text variant="textSmMedium">Datenschutz</Text>
-              </MenuItem>
-              {user && (
-                <MenuItem
-                  {...menu}
-                  onClick={handleLogout}
-                  className="block py-2 ml-10 focus:outline-none text-warning-700">
-                  <Text variant="textSmMedium">Ausloggen</Text>
-                </MenuItem>
-              )}
-            </div>
-          </Menu>
+          )}
         </div>
-      </Frame>
-    </>
+        <div className="flex items-center">
+          <Clickable onClick={handleSearch} className="mr-6 sm:mr-8 focus:outline-none">
+            <Search />
+          </Clickable>
+          {user && (
+            <Clickable onClick={handleProfile} className="mr-6 sm:mr-8 focus:outline-none">
+              <User />
+            </Clickable>
+          )}
+          <MenuButton {...menu} className="focus:outline-none">
+            <RMenu />
+          </MenuButton>
+        </div>
+        <Menu
+          {...menu}
+          aria-label="Navigation"
+          className={classnames(
+            'z-20 py-3 text-sm mt-4 lg:mt-6 font-medium rounded-md shadow-md text-steel-800 bg-steel-400 focus:outline-none',
+            { shadow: hasScrolled }
+          )}>
+          <MenuItem
+            {...menu}
+            hasIcon={true}
+            onClick={handleSearch}
+            className="block w-full px-5 py-1.5 hover:bg-steel-300 focus:outline-none">
+            <div className="flex items-center ">
+              <Search />
+              <Text variant="textSmMedium" className="inline-block ml-3">
+                {cms.items[0]}
+              </Text>
+            </div>
+          </MenuItem>
+          {user ? (
+            <>
+              <MenuItem {...menu} hasIcon={true} onClick={handleProfile}>
+                <div className="flex items-center">
+                  <User />
+                  <Text variant="textSmMedium" className="inline-block ml-3">
+                    {truncate(user?.name ?? cms.items[1], { length: 14 })}
+                  </Text>
+                </div>
+              </MenuItem>
+              <MenuItem {...menu} onClick={handleSettings}>
+                <Text variant="textSmMedium">{cms.items[2]}</Text>
+              </MenuItem>
+            </>
+          ) : (
+            <MenuItem {...menu} onClick={handleLoginSignup}>
+              <Text variant="textSmMedium">{cms.items[3]}</Text>
+            </MenuItem>
+          )}
+          <MenuItem {...menu} onClick={handeLegals}>
+            <Text variant="textSmMedium">{cms.items[4]}</Text>
+          </MenuItem>
+          <MenuItem {...menu} onClick={handlePrivacy}>
+            <Text variant="textSmMedium">{cms.items[5]}</Text>
+          </MenuItem>
+          {user && (
+            <MenuItem {...menu} onClick={handleLogout}>
+              <Text className="text-warning-700" variant="textSmMedium">
+                {cms.items[6]}
+              </Text>
+            </MenuItem>
+          )}
+        </Menu>
+      </div>
+    </Frame>
   )
 }
 

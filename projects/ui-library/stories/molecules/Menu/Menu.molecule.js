@@ -29,7 +29,7 @@ const MyMenu = ({ label, items, color = 'lilac', variant = 'icon', ...props }) =
                 <MenuItem className={classnames(MenuColor[color].item)} onSelect={() => {}}>
                   <Link href={item.href}>
                     <a>
-                      <Text as="span" variant="textSm">
+                      <Text as="span" variant="textSmMedium">
                         {item.text}
                       </Text>
                     </a>
@@ -42,7 +42,7 @@ const MyMenu = ({ label, items, color = 'lilac', variant = 'icon', ...props }) =
                   onSelect={() => {
                     item.action()
                   }}>
-                  <Text as="span" variant="textSm">
+                  <Text as="span" variant="textSmMedium">
                     {item.text}
                   </Text>
                 </MenuItem>
