@@ -9,11 +9,11 @@ export default {
     ),
     name: {
       meta: 'Name',
-      errorMessages: ['Maximal 50 Zeichen', 'Gib´ einen Namen ein'],
+      errorMessages: ['Maximal 50 Zeichen', 'Gib einen Namen ein'],
     },
     email: {
       meta: 'E-Mail-Adresse',
-      errorMessages: ['Keine valide E-Mail-Adresse', 'Gib´ eine E-Mail-Adresse ein'],
+      errorMessages: ['Keine valide E-Mail-Adresse', 'Gib eine E-Mail-Adresse ein'],
     },
     privacy: {
       meta: 'Bestätigung der Datenschutzerklärung',
@@ -41,7 +41,7 @@ export default {
     logo: 'Zum Nusszopf',
     email: {
       meta: 'E-Mail-Adresse',
-      errorMessages: ['Keine valide E-Mail-Adresse.', 'Gib´ eine E-Mail-Adresse ein.'],
+      errorMessages: ['Keine valide E-Mail-Adresse.', 'Gib eine E-Mail-Adresse ein.'],
     },
     alerts: {
       loading: 'Deine Abmeldung wird bearbeitet.',

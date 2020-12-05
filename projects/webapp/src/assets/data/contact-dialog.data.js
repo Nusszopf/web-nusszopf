@@ -9,7 +9,7 @@ export default {
     description: 'Deine Nachricht wird über den Nusszopf versendet. Mehr Erklärung...',
   },
   validation: {
-    email: ['Bitte gib´ eine valide E-Mail-Adresse ein', 'Bitte gib´ eine E-Mail-Adresse ein'],
+    email: ['Bitte gib eine valide E-Mail-Adresse ein', 'Bitte gib eine E-Mail-Adresse ein'],
     msg: ['Maximal 2000 Zeichen', 'Bitte schreibe eine Nachricht'],
   },
   fields: {
