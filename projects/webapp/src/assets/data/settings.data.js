@@ -7,7 +7,7 @@ export default {
         'Wir versorgen Dich mit backfrischen Nusszopf­neuigkeiten, inspirierenden Projekten und allem, was uns sonst noch so einfällt.',
       notify: {
         loading: 'Du wirst angemeldet.',
-        error: 'Sorry, da lief was schief.',
+        error: 'Sorry, da lief etwas schief.',
         success: 'Du bist jetzt angemeldet!',
       },
       field: {
@@ -27,10 +27,10 @@ export default {
     },
     unsubscribe: {
       description: 'Du möchtest dich vom nussigsten Newsletter aller Zeiten abmelden?',
-      confirm: 'Willst du dich wirklich vom Newsletter abmelden?',
+      confirm: 'Willst Du dich wirklich vom Newsletter abmelden?',
       notify: {
         loading: 'Du wirst abgemeldet.',
-        error: 'Sorry, da lief was schief.',
+        error: 'Sorry, da lief etwas schief.',
         success: 'Du bist jetzt abgemeldet!',
       },
       action: 'Abmelden',
@@ -61,7 +61,7 @@ export default {
     confirm: 'Willst du deinen Account wirklich löschen?',
     notify: {
       loading: 'Dein Account wird gelöscht.',
-      error: 'Sorry, da lief was schief.',
+      error: 'Sorry, da lief etwas schief.',
       success: 'Dein Account wurde gelöscht!',
     },
     action: 'Account löschen',

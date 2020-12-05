@@ -1,3 +1,3 @@
 export default {
-  actions: ['Ansehen', 'Bearbeiten', 'Geheimhalten', 'Veröffentlichen', 'Löschen'],
+  actions: ['Ansehen', 'Bearbeiten', 'Verbergen', 'Veröffentlichen', 'Löschen'],
 }

@@ -5,7 +5,7 @@ export default {
   notify: {
     loading: 'Dein Passwort wird geändert.',
     success: 'Passwort geändert! Weiterleitung zum Login.',
-    error: 'Sorry, das hat gerade nicht geklappt.',
+    error: 'Sorry, da lief etwas schief.',
   },
   seo: {
     title: 'Nusszopf – Netzwerk für gemeinsame Ideen und Projekte',
