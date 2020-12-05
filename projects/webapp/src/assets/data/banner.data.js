@@ -1,6 +1,6 @@
 export default {
   info: {
-    public: 'So sieht dein Projekt für andere Nusszoper:innen aus.',
+    public: 'So sieht dein Projekt für andere Nusszopfer:innen aus.',
     private: 'Dein Projekt ist gerade nur für dich sichtbar!',
   },
   edit: {
