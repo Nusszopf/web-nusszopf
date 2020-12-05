@@ -1,6 +1,6 @@
 export default {
   info: {
-    public: 'So sieht dein Projekt PENIS für andere Nusszöpfe aus.',
+    public: 'So sieht dein Projekt für andere Nusszöpfe aus.',
     private: 'Dein Projekt ist gerade nur für dich sichtbar!',
   },
   edit: {
@@ -8,3 +8,4 @@ export default {
     meta: 'Projekt bearbeiten',
   },
 }
+ 
