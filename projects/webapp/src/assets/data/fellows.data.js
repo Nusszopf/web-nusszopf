@@ -55,7 +55,7 @@ export default {
       },
     },
     {
-      title: 'Gib´ uns Feedback!',
+      title: 'Gib uns Feedback!',
       description: (
         <>
           Teile deine Ideen und Wünsche mit uns, damit wir den Nusszopf weiter ver&shy;bessern und an deine Bedürfnisse

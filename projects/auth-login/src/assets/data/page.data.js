@@ -5,7 +5,7 @@ export default {
   },
   notify: {
     change: {
-      loading: 'Deine Anfrage wird bearbeitet.',
+      loading: 'Deine Anfrage wird geknetet.',
       success: 'E-Mail verschickt!',
     },
     signup: {
@@ -14,7 +14,7 @@ export default {
     login: {
       loading: 'Du wirst einloggt.',
     },
-    error: 'Sorry, das hat gerade nicht geklappt.',
+    error: 'Sorry, da lief etwas schief.',
   },
   seo: {
     title: 'Nusszopf – Netzwerk für gemeinsame Ideen und Projekte',

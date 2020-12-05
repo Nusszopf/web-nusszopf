@@ -9,11 +9,11 @@ export default {
     ),
     name: {
       meta: 'Name',
-      errorMessages: ['Maximal 50 Zeichen', 'Trage einen Namen ein'],
+      errorMessages: ['Maximal 50 Zeichen', 'Gib´ einen Namen ein'],
     },
     email: {
       meta: 'E-Mail-Adresse',
-      errorMessages: ['Keine valide E-Mail-Adresse', 'Trage eine E-Mail-Adresse ein'],
+      errorMessages: ['Keine valide E-Mail-Adresse', 'Gib´ eine E-Mail-Adresse ein'],
     },
     privacy: {
       meta: 'Bestätigung der Datenschutzerklärung',
@@ -25,7 +25,7 @@ export default {
     },
     alerts: {
       loading: 'Deine Anmeldung wird bearbeitet.',
-      error: 'Sorry, es ist ein Fehler aufgetreten. Bitte versuche es nochmal oder melde dich bei mail@nusszopf.org.',
+      error: 'Sorry, es ist ein Fehler aufgetreten. Bitte versuche es erneut oder melde dich bei mail@nusszopf.org.',
       success: 'E-Mail verschickt! Bitte bestätige deine Anmeldung.',
     },
   },
@@ -41,18 +41,18 @@ export default {
     logo: 'Zum Nusszopf',
     email: {
       meta: 'E-Mail-Adresse',
-      errorMessages: ['Keine valide E-Mail-Adresse.', 'Trage eine E-Mail-Adresse ein.'],
+      errorMessages: ['Keine valide E-Mail-Adresse.', 'Gib´ eine E-Mail-Adresse ein.'],
     },
     alerts: {
       loading: 'Deine Abmeldung wird bearbeitet.',
-      error: 'Sorry, es ist ein Fehler aufgetreten. Bitte versuche es nochmal oder melde dich bei mail@nusszopf.org.',
+      error: 'Sorry, es ist ein Fehler aufgetreten. Bitte versuche es erneut oder melde dich bei mail@nusszopf.org.',
       success: 'E-Mail verschickt! Bitte bestätige deine Abmeldung.',
     },
   },
   unsubscribeConfirm: {
     heading: 'Schade Marmelade',
     textA: 'wurde vom Newsletter abgemeldet.',
-    textB: 'Wir freuen uns über dein Feedback, was wir am Newsletter noch verbessern können.',
+    textB: 'Wir freuen uns über dein Feedback was wir am Newsletter verbessern können.',
     logo: 'Zum Nusszopf',
     action: {
       meta: 'E-Mail an Nusszopf schreiben',

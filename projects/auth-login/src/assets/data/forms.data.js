@@ -24,7 +24,7 @@ export default {
       emailOrName: {
         aria: 'E-Mail-Adresse / Name',
         placeholder: 'E-Mail-Adresse / Name',
-        validation: ['Bitte gib Name oder E-Mail-Adresse ein'],
+        validation: ['Bitte gib deinen Name oder deine E-Mail-Adresse ein'],
       },
       password: {
         aria: 'Passwort',
@@ -55,7 +55,7 @@ export default {
           'Mindestens ein Großbuchstabe',
           'Mindestens eine Ziffer',
           'Mindestens ein Sonderzeichen (!@#$%^&*)',
-          'Gib ein Passwort ein',
+          'Gib´ ein Passwort ein',
         ],
       },
       privacy: {
