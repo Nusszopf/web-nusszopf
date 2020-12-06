@@ -12,7 +12,7 @@ const Skeleton = ({ className, full = true, ...props }) => (
 
 Skeleton.propTypes = {
   className: PropTypes.string,
-  full: PropTypes.boolen,
+  full: PropTypes.bool,
 }
 
 export default Skeleton

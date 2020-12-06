@@ -12,10 +12,10 @@ const Link = ({
   ariaLabel,
   className,
   title,
-  variant = LinkVariant.text,
+  variant = 'text',
   textVariant = 'textMd',
   color = 'steel',
-  border = LinkBorder.medium,
+  border = 'medium',
   ...props
 }) => {
   switch (variant) {

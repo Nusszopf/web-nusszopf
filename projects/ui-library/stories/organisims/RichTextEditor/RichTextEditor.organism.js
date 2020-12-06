@@ -26,7 +26,7 @@ const RichTextEditor = ({
   ...props
 }) => {
   const [value, setValue] = useState(initialState)
-  const renderElement = useCallback(props => <Element {...props} />, [])
+  const renderElement = useCallback(props => <Element color={color} {...props} />, [color])
   const renderLeaf = useCallback(props => <Leaf {...props} />, [])
   const editor = useMemo(() => withLinks(withHistory(withReact(createEditor()))), [])
 
@@ -43,7 +43,7 @@ const RichTextEditor = ({
           <MarkButton color={color} format="underline" icon={<Underline size={18} />} />
           <BlockButton color={color} format="unordered-list" icon={<List size={18} />} />
           <BlockButton color={color} format="ordered-list" icon={<ListOrdered size={18} />} />
-          <LinkButton color={color} icon={<Link size={18} />} />
+          <LinkButton color={color} icon={<Link size={18} color={color} />} />
         </div>
         <Editable
           className="px-4 py-3 min-h-48"

@@ -17,7 +17,7 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = false }) => {
   const [hasScrolled, setHasScrolled] = useState(false)
   const { notify } = useToasts()
   const router = useRouter()
-  const menu = useMenuState()
+  const menu = useMenuState({ placement: 'bottom-end' })
 
   useEffect(() => {
     if (fixed) {
@@ -123,53 +123,55 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = false }) => {
             <RMenu />
           </MenuButton>
         </div>
-        <Menu
-          {...menu}
-          aria-label="Navigation"
-          className={classnames(
-            'z-20 py-4 text-sm mt-4 lg:mt-6 font-medium rounded-md shadow-md text-steel-800 bg-steel-400 focus:outline-none',
-            { shadow: hasScrolled }
-          )}>
-          <MenuItem {...menu} hasIcon={true} onClick={handleSearch}>
-            <div className="flex items-center ">
-              <Search className="-ml-2" />
-              <Text variant="textSmMedium" className="inline-block ml-3">
-                {cms.items[0]}
-              </Text>
-            </div>
-          </MenuItem>
-          {user ? (
-            <>
-              <MenuItem {...menu} hasIcon={true} onClick={handleProfile}>
-                <div className="flex items-center">
-                  <User className="-ml-2" />
-                  <Text variant="textSmMedium" className="inline-block ml-3">
-                    {truncate(user?.name ?? cms.items[1], { length: 14 })}
-                  </Text>
-                </div>
-              </MenuItem>
-              <MenuItem {...menu} onClick={handleSettings}>
-                <Text variant="textSmMedium">{cms.items[2]}</Text>
-              </MenuItem>
-            </>
-          ) : (
-            <MenuItem {...menu} onClick={handleLoginSignup}>
-              <Text variant="textSmMedium">{cms.items[3]}</Text>
+        <Menu {...menu} tabIndex={0} aria-label="Navigation" className="z-20 focus:outline-none">
+          <div
+            className={classnames(
+              'py-4 mt-5 lg:mt-6 text-sm font-medium rounded-md shadow-md text-steel-800 bg-steel-400',
+              {
+                shadow: hasScrolled,
+              }
+            )}>
+            <MenuItem {...menu} hasIcon={true} onClick={handleSearch}>
+              <div className="flex items-center ">
+                <Search className="-ml-2" />
+                <Text variant="textSmMedium" className="inline-block ml-3">
+                  {cms.items[0]}
+                </Text>
+              </div>
             </MenuItem>
-          )}
-          <MenuItem {...menu} onClick={handeLegals}>
-            <Text variant="textSmMedium">{cms.items[4]}</Text>
-          </MenuItem>
-          <MenuItem {...menu} onClick={handlePrivacy}>
-            <Text variant="textSmMedium">{cms.items[5]}</Text>
-          </MenuItem>
-          {user && (
-            <MenuItem {...menu} onClick={handleLogout}>
-              <Text className="text-warning-700" variant="textSmMedium">
-                {cms.items[6]}
-              </Text>
+            {user ? (
+              <>
+                <MenuItem {...menu} hasIcon={true} onClick={handleProfile}>
+                  <div className="flex items-center">
+                    <User className="-ml-2" />
+                    <Text variant="textSmMedium" className="inline-block ml-3">
+                      {truncate(user?.name ?? cms.items[1], { length: 14 })}
+                    </Text>
+                  </div>
+                </MenuItem>
+                <MenuItem {...menu} onClick={handleSettings}>
+                  <Text variant="textSmMedium">{cms.items[2]}</Text>
+                </MenuItem>
+              </>
+            ) : (
+              <MenuItem {...menu} onClick={handleLoginSignup}>
+                <Text variant="textSmMedium">{cms.items[3]}</Text>
+              </MenuItem>
+            )}
+            <MenuItem {...menu} onClick={handeLegals}>
+              <Text variant="textSmMedium">{cms.items[4]}</Text>
             </MenuItem>
-          )}
+            <MenuItem {...menu} onClick={handlePrivacy}>
+              <Text variant="textSmMedium">{cms.items[5]}</Text>
+            </MenuItem>
+            {user && (
+              <MenuItem {...menu} onClick={handleLogout}>
+                <Text className="text-warning-700" variant="textSmMedium">
+                  {cms.items[6]}
+                </Text>
+              </MenuItem>
+            )}
+          </div>
         </Menu>
       </div>
     </Frame>

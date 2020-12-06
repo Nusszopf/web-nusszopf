@@ -157,7 +157,7 @@ const Project = ({ id, user }) => {
               <Text className="mb-2">{projectData.body.what}</Text>
               <div className="text-lg">
                 {data?.projects_by_pk?.descriptionTemplate.map((node, idx) => (
-                  <Fragment key={`rq-${idx}`}>{serializeJSX(node)}</Fragment>
+                  <Fragment key={`rq-${idx}`}>{serializeJSX(node, 'lilac')}</Fragment>
                 ))}
               </div>
             </div>

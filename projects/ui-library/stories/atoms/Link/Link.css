@@ -1,17 +1,35 @@
 @layer components {
   .nz-link-steel {
-    @apply border-steel-700 bg-steel-100 text-steel-700 group-hover:bg-steel-200;
+    @apply border-steel-700 bg-steel-100 text-steel-700;
   }
   .nz-link-red {
-    @apply bg-red-200 border-steel-700 text-steel-700 group-hover:bg-red-300;
+    @apply bg-red-200 border-steel-700 text-steel-700;
   }
   .nz-link-livid {
-    @apply bg-livid-200 text-livid-800 border-livid-800 group-hover:bg-livid-300;
+    @apply bg-livid-200 text-livid-800 border-livid-800;
   }
   .nz-link-lilac {
-    @apply bg-lilac-200 text-lilac-800 border-lilac-800 group-hover:bg-lilac-300;
+    @apply bg-lilac-200 text-lilac-800 border-lilac-800;
   }
   .nz-link-warning {
-    @apply bg-warning-100 text-stone-800 border-stone-800 group-hover:bg-warning-200;
+    @apply bg-warning-100 text-stone-800 border-stone-800;
+  }
+  .nz-link-stone {
+    @apply border-stone-800 text-stone-800 bg-stone-400;
+  }
+  .nz-link-stone-red {
+    @apply bg-red-300 border-stone-800 text-stone-800;
+  }
+  .nz-link-stone-yellow {
+    @apply bg-yellow-300 border-stone-800 text-stone-800;
+  }
+  .nz-link-stone-turquoise {
+    @apply bg-turquoise-300 border-stone-800 text-stone-800;
+  }
+  .nz-link-stone-blue {
+    @apply bg-blue-300 border-stone-800 text-stone-800;
+  }
+  .nz-link-stone-pink {
+    @apply bg-pink-300 border-stone-800 text-stone-800;
   }
 }

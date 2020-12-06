@@ -9553,10 +9553,10 @@ lru-memoizer@^2.1.0, lru-memoizer@^2.1.2:
     lodash.clonedeep "^4.5.0"
     lru-cache "~4.0.0"
 
-lucide-react@0.1.2-beta.5:
-  version "0.1.2-beta.5"
-  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.1.2-beta.5.tgz#81a9c254e160ea539744ade90ee743d3d4ef4e40"
-  integrity sha512-Xw3YQ6AEcP1Q/kktAxxg0ntRFQBLnsbmG6j0yI5kf94jPDG3ICuthPVHcP1X82C4R/rHIeEj2ao2Np4GpV8aYA==
+lucide-react@0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/lucide-react/-/lucide-react-0.11.0.tgz#fafe14ac757d25efb3a751b229485bfd4f21b37f"
+  integrity sha512-grt4lPHj3lrFHoYIArYoHP8XEEJ+QL+oZruAGGmqGWthaxe51P2mE/9eUHdFEXTv8DBHCg3NDOY2Q6QMbIgblg==
   dependencies:
     prop-types "^15.7.2"
     react "^17.0.1"

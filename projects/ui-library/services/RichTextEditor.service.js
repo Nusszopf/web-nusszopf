@@ -4,8 +4,6 @@ import { Text as SText } from 'slate'
 import classnames from 'classnames'
 import { Text, Link } from '../stories/atoms'
 
-// todo: serializeJSX: colors
-
 const parseUrl = _url => {
   const url = `https://${_url.split('//').pop()}`
   return escapeHtml(url)
@@ -27,7 +25,7 @@ export const serializeText = node => {
   }
 }
 
-export const serializeJSX = node => {
+export const serializeJSX = (node, color) => {
   if (SText.isText(node)) {
     return (
       <span
@@ -42,7 +40,7 @@ export const serializeJSX = node => {
     )
   }
 
-  const children = node.children.map((n, idx) => <Fragment key={`node-${idx}`}>{serializeJSX(n)}</Fragment>)
+  const children = node.children.map((n, idx) => <Fragment key={`node-${idx}`}>{serializeJSX(n, color)}</Fragment>)
 
   switch (node.type) {
     case 'unordered-list':
@@ -53,7 +51,7 @@ export const serializeJSX = node => {
       return <ol className="ml-8 list-decimal">{children}</ol>
     case 'link':
       return (
-        <Link textVariant="textSm" href={parseUrl(node.url)} title={node.url} ariaLabel={node.url}>
+        <Link textVariant="textSm" color={color} href={parseUrl(node.url)} title={node.url} ariaLabel={node.url}>
           {children}
         </Link>
       )

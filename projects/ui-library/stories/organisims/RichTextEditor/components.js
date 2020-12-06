@@ -22,7 +22,7 @@ export const Leaf = ({ attributes, children, leaf }) => {
   return <span {...attributes}>{children}</span>
 }
 
-export const Element = ({ attributes, children, element }) => {
+export const Element = ({ attributes, children, color, element }) => {
   switch (element.type) {
     case 'unordered-list':
       return (
@@ -40,7 +40,13 @@ export const Element = ({ attributes, children, element }) => {
       )
     case 'link':
       return (
-        <Link textVariant="textXs" href={element.url} {...attributes} title={element.url} ariaLabel={element.url}>
+        <Link
+          textVariant="textXs"
+          color={color}
+          href={element.url}
+          {...attributes}
+          title={element.url}
+          ariaLabel={element.url}>
           {children}
         </Link>
       )

@@ -16,6 +16,7 @@ const MyPopover = ({ children, ...props }) => {
       <Popover
         {...popover}
         aria-label="Info"
+        tabIndex={0}
         className="z-10 max-w-xs p-2 border-2 rounded-md shadow-md text-livid-300 bg-livid-300 focus:outline-none border-livid-300">
         <PopoverArrow {...popover} className="fill-current" />
         <Text variant="textXs" className="italic text-livid-800">
