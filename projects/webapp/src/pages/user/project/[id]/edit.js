@@ -30,7 +30,7 @@ const ProjectEdit = ({ id }) => {
       navHeader={{ visible: true, fixed: true, goBackUri: '/user/profile' }}
       footer={{ className: 'bg-white lg:bg-lilac-100' }}
       noindex={true}
-      className="text-lilac-800 bg-lilac-100">
+      className="bg-white text-lilac-800 lg:bg-lilac-100">
       <FramedGridCard
         className="lg:mb-20 lg:mt-12"
         bodyColor="bg-white lg:bg-lilac-100"
