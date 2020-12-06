@@ -14,7 +14,7 @@ import apollo from '~/utils/services/apollo.service'
 import { GET_PROJECT } from '~/utils/hasura/queries/projects.query'
 import { initializeApollo } from '~/utils/libs/apolloClient'
 import { NZ_EMAIL } from '~/utils/enums'
-import { projectData } from '~/assets/data'
+import { projectData as cms } from '~/assets/data'
 import { Page, RequestCard } from '~/components'
 import { RequestDialog, ContactDialog, Banner } from '~/containers/projects'
 
@@ -30,7 +30,7 @@ const Project = ({ id, user }) => {
     const endDate = new Date(data.projects_by_pk.period.to)
     return isValid(startDate) && isValid(endDate)
       ? `${startDate.toLocaleDateString('de-DE')} - ${endDate.toLocaleDateString('de-DE')}`
-      : projectData.header.period
+      : cms.header.period
   }, [data])
 
   const location = useMemo(() => {
@@ -40,7 +40,7 @@ const Project = ({ id, user }) => {
       const link = `https://www.openstreetmap.org/${osm.type}/${osm.id}`
       return { city, link }
     } else {
-      return { city: projectData.header.location, link: null }
+      return { city: cms.header.location, link: null }
     }
   }, [data])
 
@@ -52,7 +52,7 @@ const Project = ({ id, user }) => {
           url: window.location.href,
         })
       } catch (error) {
-        notify({ type: 'error', message: 'Sorry, da lief was schief!' })
+        notify({ type: 'error', message: cms.notify.error })
       }
     } else {
       const dummy = document.createElement('input')
@@ -62,7 +62,7 @@ const Project = ({ id, user }) => {
       dummy.select()
       document.execCommand('copy')
       document.body.removeChild(dummy)
-      notify({ type: 'success', message: 'Link kopiert!' })
+      notify({ type: 'success', message: cms.notify.success })
     }
   }
 
@@ -82,7 +82,7 @@ const Project = ({ id, user }) => {
       setShowContactDialog(true)
       closeRequest()
     } else {
-      window.location.href = `mailto:${data.projects_by_pk.contact}?subject=Nusszopf – Nussige Nachricht`
+      window.location.href = `mailto:${data.projects_by_pk.contact}?subject=${cms.email.subject}`
     }
   }
 
@@ -139,14 +139,14 @@ const Project = ({ id, user }) => {
                 color="lilac"
                 size="small"
                 className="mr-5 lg:mr-0 lg:mb-2">
-                {projectData.header.actions.contact}
+                {cms.header.actions.contact}
               </Button>
               <Button
                 onClick={handleShare}
                 size="small"
                 iconLeft={<Share2 size={21} className="mt-px mr-2 -ml-1" />}
                 color="lilac">
-                {projectData.header.actions.share}
+                {cms.header.actions.share}
               </Button>
             </div>
           </div>
@@ -154,7 +154,7 @@ const Project = ({ id, user }) => {
         <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
           <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2 lg:pr-4">
             <div>
-              <Text className="mb-2">{projectData.body.what}</Text>
+              <Text className="mb-2">{cms.body.what}</Text>
               <div className="text-lg">
                 {data?.projects_by_pk?.descriptionTemplate.map((node, idx) => (
                   <Fragment key={`rq-${idx}`}>{serializeJSX(node, 'lilac')}</Fragment>
@@ -163,13 +163,13 @@ const Project = ({ id, user }) => {
             </div>
             {data?.projects_by_pk?.team && (
               <div className="mt-8">
-                <Text className="mb-2">{projectData.body.who}</Text>
+                <Text className="mb-2">{cms.body.who}</Text>
                 <Text variant="textSm">{data.projects_by_pk.team}</Text>
               </div>
             )}
             {data?.projects_by_pk?.motto && (
               <div className="mt-8">
-                <Text className="mb-2">{projectData.body.how}</Text>
+                <Text className="mb-2">{cms.body.how}</Text>
                 <Text variant="textSm">{data.projects_by_pk.motto}</Text>
               </div>
             )}
@@ -191,12 +191,12 @@ const Project = ({ id, user }) => {
                 ))}
               </>
             ) : (
-              <InfoCard className="mt-2">{projectData.body.searchings.info}</InfoCard>
+              <InfoCard className="mt-2">{cms.body.searchings.info}</InfoCard>
             )}
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="oneCol" className="mt-10">
             <Text variant="textSm">
-              {projectData.body.createdAt} {new Date(data?.projects_by_pk?.created_at).toLocaleDateString('de-DE')}
+              {cms.body.createdAt} {new Date(data?.projects_by_pk?.created_at).toLocaleDateString('de-DE')}
             </Text>
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
