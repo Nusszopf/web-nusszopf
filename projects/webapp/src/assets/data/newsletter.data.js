@@ -23,7 +23,7 @@ export default {
         meta: 'Zum Datenschutz',
       },
     },
-    alerts: {
+    notify: {
       loading: 'Deine Anmeldung wird bearbeitet.',
       error: 'Sorry, es ist ein Fehler aufgetreten. Bitte versuche es erneut oder melde dich bei mail@nusszopf.org.',
       success: 'E-Mail verschickt! Bitte bestätige deine Anmeldung.',
@@ -43,7 +43,7 @@ export default {
       meta: 'E-Mail-Adresse',
       errorMessages: ['Keine valide E-Mail-Adresse.', 'Gib eine E-Mail-Adresse ein.'],
     },
-    alerts: {
+    notify: {
       loading: 'Deine Abmeldung wird bearbeitet.',
       error: 'Sorry, es ist ein Fehler aufgetreten. Bitte versuche es erneut oder melde dich bei mail@nusszopf.org.',
       success: 'E-Mail verschickt! Bitte bestätige deine Abmeldung.',

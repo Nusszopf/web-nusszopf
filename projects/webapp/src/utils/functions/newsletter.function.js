@@ -10,9 +10,14 @@ export const NewsletterType = {
 }
 
 export const handleSubscribe = async ({ email, name, privacy }, res, sgMail) => {
-  const lead = await addLead(email, name, privacy)
-  await sendSubscribeEmail(lead, sgMail)
-  res.status(200).json({ email: lead?.email, name: lead?.name })
+  const existingLead = await getLead(email)
+  if (existingLead) {
+    res.status(500).end(`lead with email ${email} could not be created`)
+  } else {
+    const lead = await addLead(email, name, privacy)
+    await sendSubscribeEmail(lead, sgMail)
+    res.status(200).json({ email: lead?.email, name: lead?.name })
+  }
 }
 
 export const handleSubscribeConfirm = async ({ token }, res) => {
