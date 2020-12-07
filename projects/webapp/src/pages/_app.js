@@ -41,7 +41,7 @@ export default function NusszopfApp({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
       </Head>
-      <div id="nusszopf" className="flex flex-col h-screen">
+      <div id="nusszopf" className="flex flex-col min-h-screen">
         <LoadingIndicator className={isPageLoading ? '' : 'hidden'} />
         <ApolloProvider client={apolloClient}>
           <ReakitProvider>

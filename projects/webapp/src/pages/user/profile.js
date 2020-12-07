@@ -29,7 +29,7 @@ const Profile = () => {
 
   return (
     <Page
-      navHeader={{ visible: true, fixed: true }}
+      navHeader={{ visible: true }}
       footer={{ className: 'bg-white lg:bg-steel-100' }}
       noindex={true}
       className="bg-white text-steel-700 lg:bg-steel-100">

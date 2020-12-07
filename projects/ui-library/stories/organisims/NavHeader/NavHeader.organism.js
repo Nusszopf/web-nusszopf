@@ -13,7 +13,7 @@ import { useToasts } from '../../../services/Toasts.service'
 import { navHeaderData as cms } from '../../../assets/data'
 import MenuItem from './MenuItem'
 
-const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = false }) => {
+const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
   const [hasScrolled, setHasScrolled] = useState(false)
   const { notify } = useToasts()
   const router = useRouter()

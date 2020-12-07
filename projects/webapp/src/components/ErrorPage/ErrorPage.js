@@ -6,7 +6,7 @@ import errorData from './error.data'
 
 const ErrorPage = ({ statusCode }) => (
   <Page footer={{ className: 'bg-warning-200' }}>
-    <FrameFullCenter fullScreen={false} className="text-stone-800 bg-warning-200">
+    <FrameFullCenter className="text-stone-800 bg-warning-200">
       <div className="max-w-xl mx-auto">
         <Text as="h1" variant="titleLg" className="sm:text-center">
           {statusCode && `${statusCode} – `}

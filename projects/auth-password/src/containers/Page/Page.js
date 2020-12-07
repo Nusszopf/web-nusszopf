@@ -39,7 +39,7 @@ const Page = ({ children, className }) => {
         }}
       />
       <NavHeader mode="external" goBackUri="https://nusszopf.org" />
-      <main className={classnames('flex-1 bg-white sm:bg-steel-100', className)}>{children}</main>
+      <main className={classnames('flex flex-col flex-1 bg-white sm:bg-steel-100', className)}>{children}</main>
       <Footer variant="auth0" className="bg-white sm:bg-steel-100" />
     </>
   )

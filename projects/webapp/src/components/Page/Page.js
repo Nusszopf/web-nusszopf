@@ -67,7 +67,7 @@ const Page = ({
       />
       <ErrorBoundary>
         {navHeader?.visible && <NavHeader user={user} {...navHeader} />}
-        <main className={classnames('flex-1', className)}>{children}</main>
+        <main className={classnames('flex flex-col flex-1', className)}>{children}</main>
         <Footer {...footer} />
       </ErrorBoundary>
     </>
