@@ -116,7 +116,32 @@ export default {
       ],
     },
     {
-      title: <>Newsletter-Daten</>,
+      title: <>Registrierung auf dieser Website</>,
+      description: [
+        <>
+          Zur Nutzung bestimmter Funktionen können Sie sich auf unserer Website registrieren. Die übermittelten Daten
+          dienen ausschließlich zum Zwecke der Nutzung des jeweiligen Angebotes oder Dienstes. Bei der Registrierung
+          abgefragte Pflichtangaben sind vollständig anzugeben. Andernfalls werden wir die Registrierung ablehnen. Im
+          Falle wichtiger Änderungen, etwa aus technischen Gründen, informieren wir Sie per E-Mail. Die E-Mail wird an
+          die Adresse versendet, die bei der Registrierung angegeben wurde. Die Verarbeitung der bei der Registrierung
+          eingegebenen Daten erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Ein Widerruf Ihrer
+          bereits erteilten Einwilligung ist jederzeit möglich. Für den Widerruf genügt eine formlose Mitteilung per
+          E-Mail. Die Rechtmäßigkeit der bereits erfolgten Datenverarbeitung bleibt vom Widerruf unberührt. Wir
+          speichern die bei der Registrierung erfassten Daten während des Zeitraums, den Sie auf unserer Website
+          registriert sind. Ihren Daten werden gelöscht, sollten Sie Ihre Registrierung aufheben. Gesetzliche
+          Aufbewahrungsfristen bleiben unberührt. Für das Identitäts- und Zugriffsmanagement verwenden wir den
+          Dienstleister
+        </>,
+        {
+          href: 'https://auth0.com',
+          meta: 'Zu Auth0',
+          text: 'Auth0',
+        },
+        <>, mit Servern in Europa.</>,
+      ],
+    },
+    {
+      title: <>Newsletterdaten</>,
       description: [
         <>
           Zum Versenden unseres Newsletters benötigen wir von Ihnen eine E-Mail-Adresse. Eine Verifizierung der
@@ -128,8 +153,14 @@ export default {
           „Austragen“-Link im Newsletter ab. Die Rechtmäßigkeit der bereits erfolgten Datenverarbeitungsvorgänge bleibt
           vom Widerruf unberührt. Zur Einrichtung des Abonnements eingegebene Daten werden im Falle der Abmeldung
           gelöscht. Sollten diese Daten für andere Zwecke und an anderer Stelle an uns übermittelt worden sein,
-          verbleiben diese weiterhin bei uns.
+          verbleiben diese weiterhin bei uns. Für das E-Mail-Management verwenden wir den Dienstleister
         </>,
+        {
+          href: 'https://sendgrid.com/',
+          meta: 'Zu SendGrid',
+          text: 'SendGrid',
+        },
+        <>, mit Servern in Europa.</>,
       ],
     },
     {

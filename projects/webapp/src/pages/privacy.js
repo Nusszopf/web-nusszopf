@@ -96,18 +96,42 @@ const Privacy = () => (
             {cms.list[8].title}
           </Text>
           <Text variant="textSm" className="mb-3">
-            {cms.list[8].description[0]}
+            {cms.list[8].description[0]}{' '}
+            <Link
+              textVariant="textSm"
+              href={cms.list[8].description[1].href}
+              title={cms.list[8].description[1].meta}
+              ariaLabel={cms.list[8].description[1].meta}>
+              {cms.list[8].description[1].text}
+            </Link>{' '}
+            {cms.list[8].description[2]}
+          </Text>
+        </div>
+        <div className="mb-10">
+          <Text as="h3" variant="titleSmSemi" className="mb-3">
+            {cms.list[9].title}
+          </Text>
+          <Text variant="textSm" className="mb-3">
+            {cms.list[9].description[0]}{' '}
+            <Link
+              textVariant="textSm"
+              href={cms.list[9].description[1].href}
+              title={cms.list[9].description[1].meta}
+              ariaLabel={cms.list[9].description[1].meta}>
+              {cms.list[9].description[1].text}
+            </Link>{' '}
+            {cms.list[9].description[2]}
           </Text>
         </div>
         <div>
           <Text variant="textSm" className="italic">
-            {cms.list[9].text}{' '}
+            {cms.list[10].text}{' '}
             <Link
               textVariant="textSm"
-              href={cms.list[9].link.href}
-              ariaLabel={cms.list[9].link.meta}
-              title={cms.list[9].link.meta}>
-              {cms.list[9].link.text}
+              href={cms.list[10].link.href}
+              ariaLabel={cms.list[10].link.meta}
+              title={cms.list[10].link.meta}>
+              {cms.list[10].link.text}
             </Link>
             .
           </Text>
