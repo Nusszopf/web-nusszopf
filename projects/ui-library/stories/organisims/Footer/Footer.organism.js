@@ -68,16 +68,14 @@ const Footer = ({ className, variant = 'vercel' }) => (
             {cms.privacy}
           </Route>
         </div>
-        <div className="mt-5 sm:mt-0">
-          <Link
-            className="inline-block"
-            variant="svg"
-            href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"
-            title={cms.vercel.meta}
-            ariaLabel={cms.vercel.meta}>
-            <SVGPoweredByVercel />
-          </Link>
-        </div>
+        <Link
+          className="inline-block mt-5 sm:mt-0"
+          variant="svg"
+          href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"
+          title={cms.vercel.meta}
+          ariaLabel={cms.vercel.meta}>
+          <SVGPoweredByVercel />
+        </Link>
       </div>
     )}
   </Frame>
