@@ -105,7 +105,7 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
       <div className={classnames('flex items-center w-full h-10 lg:h-12 justify-between relative')}>
         <div className="flex items-center">
           {goBackUri && (
-            <Clickable onClick={handleGoBack} className={classnames(' ')}>
+            <Clickable onClick={handleGoBack} className="focus:outline-none">
               <ChevronLeft size={28} strokeWidth={2} />
             </Clickable>
           )}

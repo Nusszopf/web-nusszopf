@@ -72,9 +72,9 @@ Route.propTypes = {
   border: PropTypes.oneOf(Object.keys(RouteBorder)),
   children: PropTypes.node,
   className: PropTypes.string,
-  href: PropTypes.string.isRequired,
+  href: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   textVariant: PropTypes.oneOf(Object.keys(TextVariant)),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   variant: PropTypes.oneOf(Object.keys(RouteVariant)),
 }
 

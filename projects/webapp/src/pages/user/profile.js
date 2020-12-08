@@ -1,8 +1,9 @@
+import { useEffect } from 'react'
 import { PlusCircle } from 'react-feather'
 import { useRouter } from 'next/router'
 
 import { FramedGridCard } from 'ui-library/stories/templates'
-import { Button } from 'ui-library/stories/atoms'
+import { Route } from 'ui-library/stories/atoms'
 import { Avatar } from 'ui-library/stories/molecules'
 import { Masonry } from 'ui-library/stories/organisims'
 import apollo from '~/utils/services/apollo.service'
@@ -11,13 +12,18 @@ import { PROJECT } from '~/utils/enums'
 import { EditProjectCard, WelcomeCard, ProjectsSkeleton } from '~/containers'
 import { Page } from '~/components'
 import { useEntireUser } from '~/utils/services/auth.service'
-import { profileData } from '~/assets/data'
+import { profileData as cms } from '~/assets/data'
 
 const Profile = () => {
   const router = useRouter()
   const { loading: loadingUser, ...user } = useEntireUser()
   const { data, loading: loadingProjects } = apollo.useGetProjects(user?.data?.id, { skip: loadingUser || !user?.data })
   const { deleteProject, updateProject, updateLoading } = useProjectsService()
+
+  useEffect(() => {
+    router.prefetch('/user/project/[id]/edit', '/user/project/id/edit')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleVisibility = (id, _visibility) => {
     if (!updateLoading) {
@@ -40,24 +46,28 @@ const Profile = () => {
         <FramedGridCard.Header className="bg-steel-200">
           <div className="flex flex-col lg:flex-row sm:justify-between lg:items-center">
             <Avatar user={user} />
-            <Button
-              onClick={() => router.push({ pathname: '/user/project/create', query: { step: 0 } })}
+            <Route
+              variant="button"
+              ariaLabel={cms.action}
+              href={{ pathname: '/user/project/create', query: { step: 0 } }}
               iconLeft={<PlusCircle className="mr-2 -ml-1" />}
               color="lilac"
               className="hidden lg:block bg-lilac-200">
-              {profileData.action}
-            </Button>
+              {cms.action}
+            </Route>
           </div>
         </FramedGridCard.Header>
         <FramedGridCard.Body gap="medium" className="bg-white">
-          <FramedGridCard.Body.Col variant="oneCol" className="lg:hidden">
-            <Button
-              className="block mx-auto mb-8 md:mb-10 bg-lilac-200"
+          <FramedGridCard.Body.Col variant="oneCol" className="text-center lg:hidden">
+            <Route
+              ariaLabel={cms.action}
+              variant="button"
+              className="mb-8 md:mb-10 bg-lilac-200"
               color="lilac"
-              onClick={() => router.push({ pathname: '/user/project/create', query: { step: 0 } })}
+              href={{ pathname: '/user/project/create', query: { step: 0 } }}
               iconLeft={<PlusCircle className="mr-2 -ml-1" />}>
-              {profileData.action}
-            </Button>
+              {cms.action}
+            </Route>
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="oneCol">
             {loadingProjects || loadingUser ? (
@@ -77,9 +87,9 @@ const Profile = () => {
               </Masonry>
             ) : (
               <WelcomeCard
-                title={profileData.welcome.title}
-                description={profileData.welcome.description}
-                greetings={profileData.welcome.greetings}
+                title={cms.welcome.title}
+                description={cms.welcome.description}
+                greetings={cms.welcome.greetings}
               />
             )}
           </FramedGridCard.Body.Col>
