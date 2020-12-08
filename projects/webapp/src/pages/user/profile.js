@@ -78,8 +78,8 @@ const Profile = () => {
                   <EditProjectCard
                     key={project.id}
                     project={project}
-                    onClick={id => router.push(`/projects/${id}`)}
-                    onEdit={id => router.push(`/user/project/${id}/edit`)}
+                    onClick={id => router.push({ pathname: '/projects/[id]', as: `/projects/${id}` })}
+                    onEdit={id => router.push({ pathname: '/user/project/[id]/edit', as: `/user/project/${id}/edit` })}
                     onDelete={deleteProject}
                     toggleVisibility={handleVisibility}
                   />
