@@ -39,7 +39,6 @@ const NewsletterForm = props => {
                 type="text"
                 aria-label={newsletterData.subscribe.name.meta}
                 placeholder={newsletterData.subscribe.name.meta}
-                disabled={loading}
               />
               <ErrorMessage variant="textSm" className="mt-2 ml-4 italic" component={Text} name="name" />
             </div>
@@ -52,7 +51,6 @@ const NewsletterForm = props => {
                 type="email"
                 aria-label={newsletterData.subscribe.email.meta}
                 placeholder={newsletterData.subscribe.email.meta}
-                disabled={loading}
               />
               <ErrorMessage variant="textSm" className="mt-2 ml-4 italic" component={Text} name="email" />
             </div>
@@ -61,7 +59,6 @@ const NewsletterForm = props => {
             <Field
               as={Checkbox}
               checked={values.privacy}
-              disabled={loading}
               name="privacy"
               aria-label={newsletterData.subscribe.privacy.meta}
               label={
