@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { Search, X } from 'react-feather'
 import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from '@reach/combobox'
+
 import { InputGroup } from '../../molecules'
 import { ComboboxColor } from './Combobox.theme'
 

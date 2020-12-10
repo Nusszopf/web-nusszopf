@@ -1,8 +1,8 @@
 import React from 'react'
-import ProgressBar from './Progressbar.atom'
+import ProgressBar from './Progressbar.molecule'
 
 export default {
-  title: 'Design System/Atoms/Progressbar',
+  title: 'Design System/Molecules/Progressbar',
   component: ProgressBar,
   parameters: {
     docs: {

@@ -7,7 +7,7 @@
 @import '../stories/atoms/Switch/Switch.css';
 @import '../stories/atoms/LoadingIndicator/LoadingIndicator.css';
 
-@import '../stories/molecules/Combobox/Combobox.css';
-@import '../stories/molecules/Dialog/Dialog.css';
-@import '../stories/molecules/Menu/Menu.css';
-@import '../stories/molecules/Tab/Tab.css';
+@import '../stories/organisms/Combobox/Combobox.css';
+@import '../stories/organisms/Dialog/Dialog.css';
+@import '../stories/organisms/Menu/Menu.css';
+@import '../stories/organisms/Tab/Tab.css';

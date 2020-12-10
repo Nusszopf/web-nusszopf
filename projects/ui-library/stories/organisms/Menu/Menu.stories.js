@@ -1,15 +1,15 @@
 import React from 'react'
-import Menu from './Menu.molecule'
+import Menu from './Menu.organism'
 import { MenuColor } from './Menu.theme'
 
 export default {
-  title: 'Design System/Molecules/Menu',
+  title: 'Design System/Organisms/Menu',
   component: Menu,
   parameters: {
     docs: {
       description: {
         component:
-          '**Menu Molecule** is based on [ReachUI MenuButton](https://reach.tech/menu-button) and [Button Atom](/design-system-atoms-button--filled).',
+          '**Menu Organism** is based on [ReachUI MenuButton](https://reach.tech/menu-button) and [Button Atom](/design-system-atoms-button--filled).',
       },
     },
   },

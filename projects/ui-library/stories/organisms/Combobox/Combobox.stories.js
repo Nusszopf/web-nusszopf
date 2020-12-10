@@ -1,13 +1,13 @@
 import React from 'react'
-import Combobox from './Combobox.molecule'
+import Combobox from './Combobox.organism'
 
 export default {
-  title: 'Design System/Molecules/Combobox',
+  title: 'Design System/Organisms/Combobox',
   component: Combobox,
   parameters: {
     docs: {
       description: {
-        component: '**Combobox Molecule** based on [ReachUI Combobox](https://reach.tech/combobox/).',
+        component: '**Combobox Organism** based on [ReachUI Combobox](https://reach.tech/combobox/).',
       },
     },
   },

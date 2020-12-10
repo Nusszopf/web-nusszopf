@@ -15,7 +15,7 @@ export default {
 }
 
 export const Primary = () => (
-  <FramedCard className="bg-gray-100">
+  <FramedCard className="bg-stone-300">
     <Text variant="textSm">framed card content</Text>
   </FramedCard>
 )

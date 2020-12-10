@@ -14,17 +14,17 @@ export default {
 }
 
 export const Primary = () => (
-  <Frame className="h-screen bg-gray-100">
-    <div className="p-4 mb-2 text-center text-white bg-gray-300">framed content</div>
-    <div className="p-4 mb-2 text-center text-white bg-gray-300">framed content</div>
-    <div className="p-4 mb-2 text-center text-white bg-gray-300">framed content</div>
+  <Frame className="h-screen bg-stone-100">
+    <div className="p-4 mb-2 text-center text-white bg-stone-300">framed content</div>
+    <div className="p-4 mb-2 text-center text-white bg-stone-300">framed content</div>
+    <div className="p-4 mb-2 text-center text-white bg-stone-300">framed content</div>
   </Frame>
 )
 
 export const Fluid = () => (
-  <Frame fluid className="h-screen bg-gray-100">
-    <div className="p-4 mb-2 text-center text-white bg-gray-300">framed fluid content</div>
-    <div className="p-4 mb-2 text-center text-white bg-gray-300">framed fluid content</div>
-    <div className="p-4 mb-2 text-center text-white bg-gray-300">framed fluid content</div>
+  <Frame fluid className="h-screen bg-stone-100">
+    <div className="p-4 mb-2 text-center text-white bg-stone-300">framed fluid content</div>
+    <div className="p-4 mb-2 text-center text-white bg-stone-300">framed fluid content</div>
+    <div className="p-4 mb-2 text-center text-white bg-stone-300">framed fluid content</div>
   </Frame>
 )

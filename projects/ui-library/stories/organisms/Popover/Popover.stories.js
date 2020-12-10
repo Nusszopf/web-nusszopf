@@ -1,13 +1,13 @@
 import React from 'react'
-import Popover from './Popover.molecule'
+import Popover from './Popover.organism'
 
 export default {
-  title: 'Design System/Molecules/Popover',
+  title: 'Design System/Organisms/Popover',
   component: Popover,
   parameters: {
     docs: {
       description: {
-        component: '**Popover Molecule** based on [Reakit Popover](https://reakit.io/docs/popover/).',
+        component: '**Popover Organism** based on [Reakit Popover](https://reakit.io/docs/popover/).',
       },
     },
   },

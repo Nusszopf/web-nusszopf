@@ -1,14 +1,14 @@
 import React from 'react'
-import Tab from './Tab.molecule'
+import Tab from './Tab.organism'
 
 export default {
-  title: 'Design System/Molecules/Tab',
+  title: 'Design System/Organisms/Tab',
   component: Tab,
   parameters: {
     docs: {
       description: {
         component:
-          '**UI molecule** based on [ReachUI Tab](https://reach.tech/tabs). `Tab` to switch between two screens only.',
+          '**UI Organism** based on [ReachUI Tab](https://reach.tech/tabs). `Tab` to switch between two screens only.',
       },
     },
   },

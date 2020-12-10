@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import { VisuallyHidden } from 'reakit/VisuallyHidden'
+
 import { Text } from '../../atoms'
 import { ProgressbarColor } from './Progressbar.theme'
-import { VisuallyHidden } from 'reakit/VisuallyHidden'
 
 const ProgressBar = ({ className, progress, label, color = 'lilac' }) => (
   <div className={className}>

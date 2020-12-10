@@ -44,6 +44,7 @@ Analyze the app bundles.
 +-- /public
 +-- /scripts
 +-- /src
+| +-- /assets
 | +-- /components
 | +-- /containers
 | +-- /pages
@@ -70,6 +71,12 @@ Dev-Tooling and helpers for e.g. automatisation.
 ### /src
 
 All the code relevant for the frontend app, als well the serverless-functions.
+
+#### **src/assets**
+
+Static content like images and text.
+
+Self-Contained-Components, which are used in multiple pages.
 
 #### **src/componets**
 

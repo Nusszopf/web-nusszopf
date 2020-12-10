@@ -1,16 +1,16 @@
 import React from 'react'
-import Stepper from './Stepper.molecule'
-import useStepper from './useStepper'
 import { Button, Progressbar } from '../../atoms'
+import Stepper from './Stepper.organism'
+import useStepper from './useStepper'
 
 export default {
-  title: 'Design System/Molecules/Stepper',
+  title: 'Design System/Organisms/Stepper',
   component: Stepper,
   parameters: {
     docs: {
       description: {
         component:
-          '**Stepper Molecule**, which can be controlled via `useStepper`. `useStepper` uses [Next.js Router](https://nextjs.org/docs/api-reference/next/router) to determine the current step via url-query.',
+          '**Stepper Organism**, which can be controlled via `useStepper`. `useStepper` uses [Next.js Router](https://nextjs.org/docs/api-reference/next/router) to determine the current step via url-query.',
       },
     },
   },

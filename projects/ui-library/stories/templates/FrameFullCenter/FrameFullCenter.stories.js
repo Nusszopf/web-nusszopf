@@ -15,8 +15,8 @@ export default {
 
 export const Main = () => (
   <div className="h-screen">
-    <FrameFullCenter className="bg-gray-100">
-      <div className="text-white bg-gray-300">centered content</div>
+    <FrameFullCenter className="bg-stone-300">
+      <div className="text-white bg-stone-600">centered content</div>
     </FrameFullCenter>
   </div>
 )

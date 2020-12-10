@@ -25,21 +25,21 @@ const RequestDialog = ({ isOpen, onDismiss, onContact, request, ...props }) => {
       aria-label="Request Infos"
       isOpen={isOpen}
       onDismiss={onDismiss}
-      className={classnames('text-stone-800', CategoryBackgroundColor[request?.category])}
+      className={classnames('flex flex-col justify-between text-stone-800', CategoryBackgroundColor[request?.category])}
       {...props}>
-      <div className="h-6">
-        <Button className="float-right" variant="clean" size="baseClean" onClick={onDismiss}>
-          <X />
-        </Button>
-      </div>
       <div>
+        <div className="flex justify-end">
+          <Button variant="clean" size="baseClean" onClick={onDismiss}>
+            <X />
+          </Button>
+        </div>
         <Text className="mb-2">{request?.title}</Text>
         <div className="text-lg">{richtText}</div>
         <Text variant="textSm" className="mt-6">
           {cms.created_at} {new Date(request?.created_at).toLocaleDateString('de-DE')}
         </Text>
       </div>
-      <div className="flex justify-center mt-6 space-x-4">
+      <div className="self-center mt-6 mb-4 space-x-4 sm:mb-0">
         <Button color="stone" className={CategoryButtonColor[request?.category]} onClick={onContact}>
           {cms.actions.contact}
         </Button>

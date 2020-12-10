@@ -1,14 +1,14 @@
 import React from 'react'
 import { Button } from '../../atoms'
-import Dialog from './Dialog.molecule'
+import Dialog from './Dialog.organism'
 
 export default {
-  title: 'Design System/Molecules/Dialog',
+  title: 'Design System/Organisms/Dialog',
   component: Dialog,
   parameters: {
     docs: {
       description: {
-        component: '**Dialog Molecule** based on [ReachUI Dialog](https://reach.tech/dialog/).',
+        component: '**Dialog Organism** based on [ReachUI Dialog](https://reach.tech/dialog/).',
       },
     },
   },
