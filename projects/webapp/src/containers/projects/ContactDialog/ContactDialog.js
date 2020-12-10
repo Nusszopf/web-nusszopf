@@ -5,7 +5,7 @@ import { object, string } from 'yup'
 
 import { useToasts } from 'ui-library/services/Toasts.service'
 import { Button, Text, Input } from 'ui-library/stories/atoms'
-import { Dialog } from 'ui-library/stories/molecules'
+import { Dialog } from 'ui-library/stories/organisms'
 import { contactDialogData as cms } from '~/assets/data'
 import { FieldTitle } from '~/components'
 

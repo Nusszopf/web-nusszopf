@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { mixed } from 'yup'
 
 import { Text } from 'ui-library/stories/atoms'
-import { RichTextEditor } from 'ui-library/stories/organisims'
+import { RichTextEditor } from 'ui-library/stories/organisms'
 import { FieldTitle } from '~/components'
 import { projectFormData as cms } from '~/assets/data'
 

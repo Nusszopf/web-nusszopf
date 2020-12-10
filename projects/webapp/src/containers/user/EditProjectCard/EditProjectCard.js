@@ -5,7 +5,7 @@ import { MoreHorizontal, Eye, EyeOff } from 'react-feather'
 import { truncate } from 'lodash'
 
 import { Text } from 'ui-library/stories/atoms'
-import { Menu } from 'ui-library/stories/molecules'
+import { Menu } from 'ui-library/stories/organisms'
 import { PROJECT } from '~/utils/enums'
 import { RequestCard } from '~/components'
 import { editProjectCardData as cms } from '~/assets/data'

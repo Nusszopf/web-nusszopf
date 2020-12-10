@@ -5,7 +5,7 @@ import { NextSeo } from 'next-seo'
 import { truncate } from 'lodash'
 import classnames from 'classnames'
 
-import { NavHeader, Footer } from 'ui-library/stories/organisims'
+import { NavHeader, Footer } from 'ui-library/stories/organisms'
 import { useFetchUser } from '~/utils/services/auth.service'
 import { seoData } from '~/assets/data'
 import { useScrollTop } from '~/utils/helper'

@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import { X } from 'react-feather'
 
 import { Button, Text } from 'ui-library/stories/atoms'
-import { Dialog } from 'ui-library/stories/molecules'
+import { Dialog } from 'ui-library/stories/organisms'
 import { serializeJSX } from 'ui-library/services/RichTextEditor.service'
 import { CategoryButtonColor, CategoryBackgroundColor, CategoryLinkColor } from './RequestDialog.theme'
 import { requestDialogData as cms } from '~/assets/data'

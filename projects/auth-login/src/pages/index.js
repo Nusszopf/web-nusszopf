@@ -4,7 +4,7 @@ import { WebAuth } from 'auth0-js'
 import { isEmpty } from 'lodash'
 
 import { FramedCard } from 'ui-library/stories/templates'
-import { Tab } from 'ui-library/stories/molecules'
+import { Tab } from 'ui-library/stories/organisms'
 import { Link } from 'ui-library/stories/atoms'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import { ChangePasswordForm, LoginForm, SignUpForm, Page } from '../containers'

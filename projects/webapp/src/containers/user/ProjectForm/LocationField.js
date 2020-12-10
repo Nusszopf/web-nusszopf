@@ -4,7 +4,7 @@ import { object, string } from 'yup'
 import { isEmpty } from 'lodash'
 
 import { Text, Switch } from 'ui-library/stories/atoms'
-import { Combobox } from 'ui-library/stories/molecules'
+import { Combobox } from 'ui-library/stories/organisms'
 import { findLocations } from '~/utils/services/location.service'
 import { FieldTitle } from '~/components'
 import { projectFormData as cms } from '~/assets/data'

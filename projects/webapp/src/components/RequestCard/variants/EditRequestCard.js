@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import { MoreHorizontal } from 'react-feather'
 
 import { Text } from 'ui-library/stories/atoms'
-import { Menu } from 'ui-library/stories/molecules'
+import { Menu } from 'ui-library/stories/organisms'
 import { RequestCategoryColor, RequestCategoryMenu } from '../RequestCard.theme'
 
 const EditRequestCard = ({ onEdit, onDelete, request, className, ...props }) => (

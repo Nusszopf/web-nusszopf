@@ -4,8 +4,7 @@ import { object } from 'yup'
 import { X } from 'react-feather'
 
 import { Button } from 'ui-library/stories/atoms'
-import { Dialog } from 'ui-library/stories/molecules'
-import { emptyRichText } from 'ui-library/stories/organisims'
+import { Dialog, emptyRichText } from 'ui-library/stories/organisms'
 import {
   DescriptionField,
   DescriptionFieldValidationSchema,

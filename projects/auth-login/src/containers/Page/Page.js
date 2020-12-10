@@ -3,7 +3,7 @@ import { NextSeo } from 'next-seo'
 import { truncate } from 'lodash'
 import classnames from 'classnames'
 
-import { NavHeader, Footer } from 'ui-library/stories/organisims'
+import { NavHeader, Footer } from 'ui-library/stories/organisms'
 import { pageData as cms } from '../../assets/data'
 
 const Page = ({ children, className }) => {
