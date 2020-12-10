@@ -60,7 +60,7 @@ export default {
       },
       privacy: {
         aria: 'Datenschutzerklärung',
-        validation: ['Bitte bestätigen'],
+        validation: ['Stimme den Datenschutzbestimmungen zu'],
         link: {
           label: ['Ich stimme den', 'Datenschutzbedingungen', 'zu'],
           meta: 'Zum Datenschutz',

@@ -7,8 +7,8 @@ export default {
     subject: 'Nusszopf – Nussige Nachricht',
   },
   header: {
-    location: 'unabhängig vom Ort',
-    period: 'flexibler Zeitraum',
+    location: 'Ortsunabhängig',
+    period: 'Flexibler Projektzeitraum',
     actions: {
       contact: 'Kontaktieren',
       share: 'Teilen',
@@ -17,7 +17,7 @@ export default {
   body: {
     what: 'Um was geht es?',
     who: 'Wer steckt dahinter?',
-    how: 'Motto',
+    how: 'Projektmotto',
     searchings: {
       info: 'Alles zopfig! Derzeit gibt es keine Gesuche.',
     },

@@ -55,7 +55,7 @@ const NewsletterForm = props => {
               <ErrorMessage variant="textSm" className="mt-2 ml-4 italic" component={Text} name="email" />
             </div>
           </div>
-          <div className="mt-4">
+          <div className="mt-5">
             <Field
               as={Checkbox}
               checked={values.privacy}
@@ -65,7 +65,6 @@ const NewsletterForm = props => {
                 <>
                   {newsletterData.subscribe.privacy.label.text[0]}{' '}
                   <Route
-                    className="italic"
                     href="/privacy"
                     title={newsletterData.subscribe.privacy.label.meta}
                     ariaLabel={newsletterData.subscribe.privacy.label.meta}>
@@ -76,7 +75,7 @@ const NewsletterForm = props => {
               }
             />
           </div>
-          <ErrorMessage variant="textSm" className="mt-2 ml-6 italic" component={Text} name="privacy" />
+          <ErrorMessage variant="textSm" className="mt-2 ml-8 italic" component={Text} name="privacy" />
           <div className="flex justify-center">
             <Button className="mt-10 bg-blue-400 sm:mt-12" type="submit" size="large" disabled={loading}>
               Anmelden

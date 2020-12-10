@@ -20,7 +20,10 @@ const Privacy = () => (
           <Text variant="textSm" className="mb-3">
             {cms.list[0].description[0]}
           </Text>
-          <Text variant="textSm">{cms.list[0].description[1]}</Text>
+          <Text variant="textSm" className="mb-3">
+            {cms.list[0].description[1]}
+          </Text>
+          <Text variant="textSm">{cms.list[0].description[2]}</Text>
         </div>
         <div className="mb-10">
           <Text as="h2" variant="titleSmSemi" className="mb-3">

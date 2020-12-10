@@ -11,7 +11,7 @@ export default {
         success: 'Du bist jetzt angemeldet!',
       },
       field: {
-        validation: 'Bitte bestätigen',
+        validation: 'Stimme den Datenschutzbestimmungen zu',
         aria: 'Datenschutzerklärung',
         label: [
           'Ich stimme den',

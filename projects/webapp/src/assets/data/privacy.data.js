@@ -4,8 +4,8 @@ export default {
     {
       title: <>Benennung der verantwortlichen Stelle</>,
       description: [
+        <>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</>,
         <>
-          Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:<br></br>
           Melina Oppelt & MichaelSchwarz<br></br>Schertlinstraße 10<br></br>86159 Augsburg
         </>,
         <>

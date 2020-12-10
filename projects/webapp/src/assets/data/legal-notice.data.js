@@ -5,7 +5,7 @@ export default {
       title: <>Angaben gemäß § 5 TMG</>,
       description: (
         <>
-          Michael Schwarz<br></br>Schertlinstraße 10<br></br>86159 Augsburg
+          Melina Oppelt & Michael Schwarz<br></br>Schertlinstraße 10<br></br>86159 Augsburg
         </>
       ),
     },
@@ -21,7 +21,7 @@ export default {
       title: <>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</>,
       description: (
         <>
-          Melina Oppelt<br></br>Schertlinstraße 10<br></br>86159 Augsburg
+          Melina Oppelt & Michael Schwarz<br></br>Schertlinstraße 10<br></br>86159 Augsburg
         </>
       ),
     },

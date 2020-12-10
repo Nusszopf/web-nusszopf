@@ -47,7 +47,7 @@ const LoginForm = ({ className, loading, onSubmit, onLoginWithGoogle, onLoginWit
                   onBlur={formikProps.handleBlur}
                 />
                 <InputGroup.RightElement onClick={() => setEye(isEyeOpen => !isEyeOpen)}>
-                  {isEyeOpen ? <Eye size={26} /> : <EyeOff size={26} />}
+                  {isEyeOpen ? <Eye size={24} /> : <EyeOff size={24} />}
                 </InputGroup.RightElement>
               </InputGroup>
               <ErrorMessage name="password" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
