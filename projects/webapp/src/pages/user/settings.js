@@ -79,11 +79,11 @@ const Settings = () => {
         bodyColor="bg-white lg:bg-steel-100"
         headerColor="bg-steel-200 lg:bg-steel-100">
         <FramedGridCard.Header className="bg-steel-200">
-          <div id="header" className="flex flex-col md:flex-row md:justify-between md:flex-row-reverse md:items-center">
-            <Text as="h1" variant="textLg">
+          <div id="header" className="flex flex-col sm:flex-row sm:justify-between sm:flex-row-reverse sm:items-center">
+            <Text as="h1" variant="textLg" className="-mt-2 sm:ml-6 sm:mt-0">
               {cms.title}
             </Text>
-            <Avatar user={user} className="mt-4 md:mt-0" />
+            <Avatar user={user} className="mt-4 sm:mt-0" />
           </div>
         </FramedGridCard.Header>
         <FramedGridCard.Body className="bg-white">
