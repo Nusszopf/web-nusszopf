@@ -62,6 +62,7 @@ const Profile = () => {
             <Route
               ariaLabel={cms.action}
               variant="button"
+              size="large"
               className="mb-8 md:mb-10 bg-lilac-200"
               color="lilac"
               href={{ pathname: '/user/project/create', query: { step: 0 } }}
@@ -73,7 +74,7 @@ const Profile = () => {
             {loadingProjects || loadingUser ? (
               <ProjectsSkeleton />
             ) : data?.projects?.length > 0 ? (
-              <Masonry>
+              <Masonry gap={{ wrap: '-ml-5', col: 'pl-5', row: 'mb-5' }}>
                 {data?.projects.map(project => (
                   <EditProjectCard
                     key={project.id}

@@ -5,20 +5,28 @@ import Masonry from 'react-masonry-css'
 
 const breakpoints = {
   default: 2,
-  1024: 1,
+  1023: 1,
 }
 
-const MyMasonry = ({ children, className, columnClassName, itemClassName, breakpointCols = breakpoints, ...props }) => {
+const MyMasonry = ({
+  breakpointCols = breakpoints,
+  children,
+  className,
+  columnClassName,
+  gap = { wrap: '-ml-4', col: 'pl-4', row: 'mb-4' },
+  itemClassName,
+  ...props
+}) => {
   return (
     <Masonry
-      className={classnames('flex w-auto -ml-4', className)}
-      columnClassName={classnames('pl-4', columnClassName)}
+      className={classnames('flex w-auto', gap.wrap, className)}
+      columnClassName={classnames(gap.col, columnClassName)}
       breakpointCols={breakpointCols}
       {...props}>
       {React.Children.map(children, child =>
         React.cloneElement(child, {
           key: child.id,
-          className: classnames('mb-4', child.props.className, itemClassName),
+          className: classnames(gap.row, child.props.className, itemClassName),
         })
       )}
     </Masonry>
@@ -26,11 +34,16 @@ const MyMasonry = ({ children, className, columnClassName, itemClassName, breakp
 }
 
 MyMasonry.propTypes = {
+  breakpointCols: PropTypes.number,
   children: PropTypes.node,
   className: PropTypes.string,
   columnClassName: PropTypes.string,
+  gap: PropTypes.shape({
+    wrap: PropTypes.string,
+    col: PropTypes.string,
+    row: PropTypes.string,
+  }),
   itemClassName: PropTypes.string,
-  breakpointCols: PropTypes.number,
 }
 
 export default MyMasonry

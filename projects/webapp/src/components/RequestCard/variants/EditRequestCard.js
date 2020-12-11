@@ -21,6 +21,7 @@ const EditRequestCard = ({ onEdit, onDelete, request, className, ...props }) => 
     </Clickable>
     <div className="flex flex-col items-end justify-between">
       <Menu
+        className="mt-2 mr-4"
         label={<MoreHorizontal />}
         color={RequestCategoryMenu[request.category]}
         items={[

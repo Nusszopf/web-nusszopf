@@ -8,16 +8,16 @@ import { Menu, MenuButton, MenuList, MenuItem } from '@reach/menu-button'
 import { Button, Text } from '../../atoms'
 import { MenuColor, MenuVariant } from './Menu.theme'
 
-const MyMenu = ({ label, items, color = 'lilac', variant = 'icon', ...props }) => {
+const MyMenu = ({ label, items, color = 'lilac', variant = 'icon', className, ...props }) => {
   return (
     <Menu>
       {variant === MenuVariant.button && (
-        <Button as={MenuButton} iconRight={<ChevronDown className="m-1 -mr-2" />} {...props}>
+        <Button as={MenuButton} iconRight={<ChevronDown className="m-1 -mr-2" />} className={className} {...props}>
           {label}
         </Button>
       )}
       {variant === MenuVariant.icon && (
-        <MenuButton className="mx-4 my-2 focus:outline-none" {...props}>
+        <MenuButton className={classnames('focus:outline-none mb-2 ml-4', className)} {...props}>
           {label}
         </MenuButton>
       )}
@@ -58,6 +58,7 @@ const MyMenu = ({ label, items, color = 'lilac', variant = 'icon', ...props }) =
 MyMenu.propTypes = {
   items: PropTypes.array.isRequired,
   label: PropTypes.node,
+  className: PropTypes.string,
   initialFocus: PropTypes.number,
   color: PropTypes.oneOf(Object.keys(MenuColor)),
   variant: PropTypes.oneOf(Object.keys(MenuVariant)),

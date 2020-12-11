@@ -17,7 +17,10 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
       className
     )}
     {...props}>
-    <Clickable onClick={() => onEdit(project.id)} className="flex-1 p-4 text-left focus:outline-none" type="button">
+    <Clickable
+      onClick={() => onEdit(project.id)}
+      className="flex-1 p-4 text-left md:p-5 focus:outline-none"
+      type="button">
       <Text className="mr-10">
         {project.visibility === PROJECT.visibility.public ? (
           <Eye size={21} className="inline mr-1 -mt-1" />
@@ -42,6 +45,7 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
     </Clickable>
     <div className="absolute top-0 right-0">
       <Menu
+        className="mt-3 mr-5"
         label={<MoreHorizontal />}
         items={[
           {
