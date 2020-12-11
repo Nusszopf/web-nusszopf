@@ -35,7 +35,7 @@ export default {
         </>
       ),
       action: {
-        text: 'Förder:in werden',
+        text: 'Förderer:in werden',
         href: 'https://steadyhq.com/de/nusszopf',
         meta: 'Zur Förderungswebseite',
       },

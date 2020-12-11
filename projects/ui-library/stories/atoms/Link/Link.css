@@ -6,7 +6,7 @@
     @apply bg-red-200 border-steel-700 text-steel-700;
   }
   .nz-link-livid {
-    @apply bg-livid-200 text-livid-800 border-livid-800;
+    @apply bg-livid-100 text-livid-800 border-livid-800;
   }
   .nz-link-lilac {
     @apply bg-lilac-200 text-lilac-800 border-lilac-800;

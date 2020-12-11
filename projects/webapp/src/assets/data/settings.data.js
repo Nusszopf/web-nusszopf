@@ -54,7 +54,6 @@ export default {
     },
     <>bei uns melden!</>,
   ],
-
   delete: {
     title: 'Account löschen',
     description: 'Nach dem Löschen können deine Daten nicht wieder hergestellt werden.',

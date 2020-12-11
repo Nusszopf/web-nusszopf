@@ -131,7 +131,7 @@ const Settings = () => {
                       />
                       <Button
                         type="submit"
-                        className="block mt-4 bg-steel-100"
+                        className="block mx-auto mt-6 sm:mt-4 bg-steel-100 sm:ml-0"
                         disabled={loadingUpdateLead || loadingAddLead}>
                         {cms.newsletter.subscribe.action}
                       </Button>
@@ -143,20 +143,25 @@ const Settings = () => {
                   <Text variant="textSm" className="mb-2">
                     {cms.newsletter.unsubscribe.description}
                   </Text>
-                  <Button onClick={handleUnsubscribe} className="block mt-4 bg-steel-100" disabled={loadingDeleteLead}>
+                  <Button
+                    onClick={handleUnsubscribe}
+                    className="block mx-auto mt-6 sm:mt-4 bg-steel-100 sm:ml-0"
+                    disabled={loadingDeleteLead}>
                     {cms.newsletter.unsubscribe.action}
                   </Button>
                 </>
               )}
             </div>
-            <div id="sponsoring" className="mt-12">
-              <Text variant="textMd" className="mb-2">
+            <div id="sponsoring" className="mt-12 text-center sm:text-left">
+              <Text variant="textMd" className="mb-2 text-left">
                 {cms.sponsoring.title}
               </Text>
-              <Text variant="textSm">{cms.sponsoring.description}</Text>
+              <Text variant="textSm" className="text-left">
+                {cms.sponsoring.description}
+              </Text>
               <Link
                 variant="button"
-                className="block mt-4 bg-steel-100"
+                className="block mt-6 sm:mt-4 bg-steel-100"
                 title={cms.sponsoring.action.meta}
                 ariaLabel={cms.sponsoring.action.meta}
                 href={cms.sponsoring.action.href}>
@@ -165,8 +170,22 @@ const Settings = () => {
             </div>
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="twoCols">
-            <InfoCard className="mt-12 text-gray-700 bg-gray-200 lg:ml-16 lg:mt-0">
-              {cms.info[0]}
+            <div id="delete" className="mt-10 text-warning-700 lg:ml-16 lg:mt-0">
+              <Text variant="textMd" className="mb-2">
+                {cms.delete.title}
+              </Text>
+              <Text variant="textSm">{cms.delete.description}</Text>
+              <Button
+                onClick={handleDelete}
+                variant="outline"
+                color="warning"
+                className="block mx-auto mt-6 sm:mt-4 sm:ml-0"
+                disabled={loadingDeleteUser}>
+                {cms.delete.action}
+              </Button>
+            </div>
+            <InfoCard className="text-gray-700 bg-gray-200 mt-14 lg:ml-16">
+              {cms.info[0]}{' '}
               <Link
                 color="livid"
                 href={cms.info[1].href}
@@ -177,22 +196,6 @@ const Settings = () => {
               </Link>{' '}
               {cms.info[2]}
             </InfoCard>
-          </FramedGridCard.Body.Col>
-          <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2">
-            <div id="delete" className="mt-10 text-warning-700">
-              <Text variant="textMd" className="mb-2">
-                {cms.delete.title}
-              </Text>
-              <Text variant="textSm">{cms.delete.description}</Text>
-              <Button
-                onClick={handleDelete}
-                variant="outline"
-                color="warning"
-                className="block mt-4"
-                disabled={loadingDeleteUser}>
-                {cms.delete.action}
-              </Button>
-            </div>
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
       </FramedGridCard>
