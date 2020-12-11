@@ -5,30 +5,33 @@ import { FramedCard } from 'ui-library/stories/templates'
 import { Page } from '~/components'
 import { confirmNewsletterSubscription } from '~/utils/services/newsletter.service'
 import { SVGNusszopfLogoBig } from '~/assets/logos'
-import { newsletterData } from '~/assets/data'
+import { newsletterData as cms } from '~/assets/data'
 
 const SubscribeConfirm = ({ lead }) => (
   <Page
-    className="bg-blue-300 text-steel-700"
-    navHeader={{ visible: process.env.ENV !== 'production', goBackUri: '/' }}
-    footer={{ className: 'bg-blue-300' }}
+    className="bg-white sm:bg-steel-100"
+    navHeader={{ visible: true }}
+    footer={{ className: 'bg-white sm:bg-steel-100' }}
     noindex={true}>
-    <FramedCard className="bg-white">
-      <Route
-        variant="svg"
-        className="block mx-auto mt-6 w-36 sm:mt-0"
-        href="/"
-        title={newsletterData.unsubscribe.logo}
-        ariaLabel={newsletterData.unsubscribe.logo}>
-        <SVGNusszopfLogoBig className="flex-shrink-0 w-full" />
+    <FramedCard className="bg-white text-steel-700">
+      <Route variant="svg" href="/" title={cms.unsubscribe.logo} ariaLabel={cms.unsubscribe.logo}>
+        <SVGNusszopfLogoBig className="h-full w-36" />
       </Route>
       <Text as="h1" variant="textXl" className="mt-10 mb-5 sm:mt-12">
-        {newsletterData.subscribeConfirm.heading}
+        {cms.subscribeConfirm.heading}
       </Text>
       <Text variant="textSmMedium" className="hyphens-auto">
-        <span className="italic font-semibold">{lead?.email}</span> {newsletterData.subscribeConfirm.textA}{' '}
-        {newsletterData.subscribeConfirm.textB}
+        <span className="italic font-semibold">{lead?.email}</span> {cms.subscribeConfirm.textA}{' '}
+        {cms.subscribeConfirm.textB}
       </Text>
+      <Route
+        variant="button"
+        className="mt-6 bg-steel-100"
+        title={cms.subscribeConfirm.action.meta}
+        ariaLabel={cms.subscribeConfirm.action.meta}
+        href="/">
+        {cms.subscribeConfirm.action.text}
+      </Route>
     </FramedCard>
   </Page>
 )

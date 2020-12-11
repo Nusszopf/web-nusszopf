@@ -6,31 +6,26 @@ import { FramedCard } from 'ui-library/stories/templates'
 import useNewsletter from '~/utils/services/newsletter.service'
 import { Page } from '~/components'
 import { SVGNusszopfLogoBig } from '~/assets/logos'
-import { newsletterData } from '~/assets/data'
+import { newsletterData as cms } from '~/assets/data'
 
 const UnsubscribeLead = () => {
   const { loading, unsubscribeFromNewsletter } = useNewsletter()
 
   return (
     <Page
-      className="bg-blue-300 text-steel-700"
-      navHeader={{ visible: process.env.ENV !== 'production', goBackUri: '/' }}
-      footer={{ className: 'bg-blue-300' }}
+      className="bg-white sm:bg-steel-100"
+      navHeader={{ visible: true }}
+      footer={{ className: 'bg-white sm:bg-steel-100' }}
       noindex={true}>
-      <FramedCard className="bg-white">
-        <Route
-          variant="svg"
-          className="block mx-auto mt-6 w-36 sm:mt-0"
-          href="/"
-          title={newsletterData.unsubscribe.logo}
-          ariaLabel={newsletterData.unsubscribe.logo}>
-          <SVGNusszopfLogoBig className="flex-shrink-0 w-full" />
+      <FramedCard className="bg-white text-steel-700">
+        <Route variant="svg" href="/" title={cms.unsubscribe.logo} ariaLabel={cms.unsubscribe.logo}>
+          <SVGNusszopfLogoBig className="h-full w-36" />
         </Route>
         <Text as="h1" variant="textXl" className="mt-10 mb-5 sm:mt-12 sm:text-center">
-          {newsletterData.unsubscribe.heading}
+          {cms.unsubscribe.heading}
         </Text>
         <Text variant="textSmMedium" className="mb-4 hyphens-auto">
-          {newsletterData.unsubscribe.description}
+          {cms.unsubscribe.description}
         </Text>
         <div className="w-full">
           <Formik
@@ -39,8 +34,8 @@ const UnsubscribeLead = () => {
             }}
             validationSchema={object({
               email: string()
-                .email(newsletterData.unsubscribe.email.errorMessages[0])
-                .required(newsletterData.unsubscribe.email.errorMessages[1]),
+                .email(cms.unsubscribe.email.errorMessages[0])
+                .required(cms.unsubscribe.email.errorMessages[1]),
             })}
             onSubmit={unsubscribeFromNewsletter}>
             <Form>
@@ -49,8 +44,8 @@ const UnsubscribeLead = () => {
                 autoComplete="off"
                 name="email"
                 type="email"
-                aria-label={newsletterData.unsubscribe.email.meta}
-                placeholder={newsletterData.unsubscribe.email.meta}
+                aria-label={cms.unsubscribe.email.meta}
+                placeholder={cms.unsubscribe.email.meta}
               />
               <ErrorMessage variant="textSm" className="mt-2 ml-4 italic" component={Text} name="email" />
               <div className="mt-6 text-center">

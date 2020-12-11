@@ -52,11 +52,11 @@ const LoginForm = ({ className, loading, onSubmit, onLoginWithGoogle, onLoginWit
               </InputGroup>
               <ErrorMessage name="password" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
             </div>
-            <div className="mt-5 space-x-4 text-center">
-              <Button type="submit" className="mb-4 bg-steel-100" disabled={loading}>
+            <div className="mt-5 text-center">
+              <Button type="submit" className="mx-1.5 mb-4 sm:mx-2 bg-steel-100" disabled={loading}>
                 {cms.login.actions.login}
               </Button>
-              <Button onClick={onForgotPassword} className="mb-4" disabled={loading}>
+              <Button onClick={onForgotPassword} className="mx-1.5 mb-4 sm:mx-2" disabled={loading}>
                 {cms.login.actions.forgot}
               </Button>
             </div>

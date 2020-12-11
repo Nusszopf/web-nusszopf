@@ -174,7 +174,7 @@ export default function IndexPage() {
     <Page>
       <FramedCard className="bg-white">
         <Link variant="svg" href="https://nusszopf.org" title={cms.logo.meta} ariaLabel={cms.logo.meta}>
-          <SVGNusszopfLogoBig className="w-40 h-full" />
+          <SVGNusszopfLogoBig className="w-36 h-full" />
         </Link>
         {view === Views.password ? (
           <ChangePasswordForm

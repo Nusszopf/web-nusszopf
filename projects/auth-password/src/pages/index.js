@@ -45,7 +45,7 @@ export default function IndexPage() {
     <Page className="bg-white sm:bg-steel-100">
       <FramedCard className="bg-white">
         <Link variant="svg" href="https://nusszopf.org" title={cms.logo.meta} ariaLabel={cms.logo.meta}>
-          <SVGNusszopfLogoBig className="w-40 h-full" />
+          <SVGNusszopfLogoBig className="h-full w-36" />
         </Link>
         <PasswordForm className="mt-10 sm:mt-12" onSubmit={handleSavePassword} loading={loading} />
       </FramedCard>

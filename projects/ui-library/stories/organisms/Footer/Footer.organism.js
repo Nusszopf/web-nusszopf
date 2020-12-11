@@ -36,21 +36,21 @@ const Footer = ({ className, variant = 'vercel' }) => (
         </Link>
       </div>
     ) : variant === 'auth0' ? (
-      <div className="py-4 text-center">
+      <div className="flex items-center justify-center py-4">
         <Link
-          className="inline-block m-2"
+          className="flex-shrink-0 inline-block m-2"
           variant="svg"
           href="https://auth0.com/?utm_source=oss&utm_medium=gp&utm_campaign=oss"
           title={cms.auth0.meta}
           ariaLabel={cms.auth0.meta}>
           <img
-            className="inline-block h-12"
+            className="inline-block h-11"
             alt="JWT Auth for open source projects"
             src="//cdn.auth0.com/oss/badges/a0-badge-dark.png"
           />
         </Link>
         <Link
-          className="inline-block m-2 align-top"
+          className="inline-block m-2"
           variant="svg"
           href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"
           title={cms.vercel.meta}

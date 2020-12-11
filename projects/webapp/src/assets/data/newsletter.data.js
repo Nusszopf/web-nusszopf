@@ -34,6 +34,10 @@ export default {
     textA: 'wurde zum Newsletter angemeldet.',
     textB: 'Schön, dass Du mit dabei bist!',
     logo: 'Zum Nusszopf',
+    action: {
+      meta: 'Zum Nusszopf',
+      text: 'Zum Nusszopf',
+    },
   },
   unsubscribe: {
     heading: <>Newsletter&shy;abmeldung</>,
