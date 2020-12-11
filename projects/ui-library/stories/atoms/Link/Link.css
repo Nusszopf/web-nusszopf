@@ -1,4 +1,7 @@
 @layer components {
+  .nz-link-current {
+    @apply text-current border-current;
+  }
   .nz-link-steel {
     @apply border-steel-700 bg-steel-100 text-steel-700;
   }

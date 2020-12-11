@@ -86,6 +86,7 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                     {cms.signup.fields.privacy.link.label[0]}{' '}
                     <Link
                       href="https://nusszopf.org/privacy"
+                      color="current"
                       textVariant="textSm"
                       title={cms.signup.fields.privacy.link.meta}
                       ariaLabel={cms.signup.fields.privacy.link.meta}>

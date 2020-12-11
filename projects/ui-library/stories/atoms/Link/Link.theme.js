@@ -5,6 +5,7 @@ export const LinkVariant = {
 }
 
 export const LinkColor = {
+  current: 'nz-link-current',
   steel: 'nz-link-steel',
   stone: 'nz-link-stone',
   'stone-red': 'nz-link-stone-red',
