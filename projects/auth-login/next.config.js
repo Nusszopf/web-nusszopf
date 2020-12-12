@@ -8,6 +8,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig = {
   target: 'serverless',
+  assetPrefix: 'https://auth.login.nusszopf.org',
   env: {
     AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
     AUTH0_TENANT: process.env.AUTH0_TENANT,
