@@ -81,6 +81,7 @@ export default function IndexPage() {
       webAuth.authorize(
         {
           connection: 'google-oauth2',
+          user_metadata: { env: 'development' },
         },
         (error, response) => {
           setLoading(false)
@@ -102,6 +103,7 @@ export default function IndexPage() {
       webAuth.authorize(
         {
           connection: 'apple',
+          env: 'development',
         },
         (error, response) => {
           setLoading(false)
@@ -126,7 +128,7 @@ export default function IndexPage() {
           username: values.username,
           email: values.email,
           password: values.password,
-          user_metadata: { newsletter: values.newsletter ? 'true' : 'false' },
+          user_metadata: { newsletter: values.newsletter ? 'true' : 'false', env: 'development' },
         },
         (error, response) => {
           setLoading(false)
@@ -174,7 +176,7 @@ export default function IndexPage() {
     <Page>
       <FramedCard className="bg-white">
         <Link variant="svg" href="https://nusszopf.org" title={cms.logo.meta} ariaLabel={cms.logo.meta}>
-          <SVGNusszopfLogoBig className="w-36 h-full" />
+          <SVGNusszopfLogoBig className="h-full w-36" />
         </Link>
         {view === Views.password ? (
           <ChangePasswordForm
