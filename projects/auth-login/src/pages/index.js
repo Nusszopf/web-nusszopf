@@ -81,7 +81,6 @@ export default function IndexPage() {
       webAuth.authorize(
         {
           connection: 'google-oauth2',
-          user_metadata: { env: 'development' },
         },
         (error, response) => {
           setLoading(false)
@@ -103,7 +102,6 @@ export default function IndexPage() {
       webAuth.authorize(
         {
           connection: 'apple',
-          env: 'development',
         },
         (error, response) => {
           setLoading(false)
@@ -128,7 +126,7 @@ export default function IndexPage() {
           username: values.username,
           email: values.email,
           password: values.password,
-          user_metadata: { newsletter: values.newsletter ? 'true' : 'false', env: 'development' },
+          user_metadata: { newsletter: values.newsletter ? 'true' : 'false' },
         },
         (error, response) => {
           setLoading(false)
