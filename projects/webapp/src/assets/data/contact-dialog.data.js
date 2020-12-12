@@ -6,7 +6,7 @@ export default {
   },
   dialog: {
     aria: 'Kontaktieren',
-    description: 'Schreibe dem Projekt eine Nachricht. Die E-Mail wird über den Nusszopf versendet.',
+    description: 'Schreibe dem Projekt eine Nachricht. Diese wird für dich über den Nusszopf per E-Mail versendet.',
   },
   validation: {
     email: ['Gib eine valide E-Mail-Adresse ein', 'Gib eine E-Mail-Adresse ein'],

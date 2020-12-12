@@ -42,11 +42,11 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
       className="text-lilac-800 bg-lilac-200"
       aria-label={cms.dialog.aria}
       {...props}>
-      <div className="h-6">
+      {/* <div className="h-6">
         <Button className="float-right" variant="clean" size="baseClean" onClick={onDismiss}>
           <X />
         </Button>
-      </div>
+      </div> */}
       <Text variant="textLg">{project.title}</Text>
       <Text variant="textSm">{cms.dialog.description}</Text>
       <Formik
@@ -88,7 +88,7 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
               />
               <ErrorMessage name="msg" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
             </>
-            <div className="flex justify-center mt-12 mb-6 space-x-4">
+            <div className="flex justify-center mt-12 space-x-4">
               <Button type="submit" className="bg-lilac-300" onClick={onContact}>
                 {cms.actions.submit}
               </Button>

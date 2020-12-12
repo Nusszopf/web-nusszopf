@@ -48,15 +48,15 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
         onSubmit={handleSubmit}>
         {formik => (
           <Form>
-            <div className="h-6">
+            {/* <div className="h-6">
               <Button className="float-right" variant="clean" size="baseClean" onClick={onDismiss}>
                 <X />
               </Button>
-            </div>
+            </div> */}
             <TitleField formik={formik} />
-            <CategoryField className="mt-4" formik={formik} />
-            <DescriptionField className="mt-4" formik={formik} />
-            <div className="flex justify-center mt-6 space-x-4">
+            <CategoryField className="mt-6" formik={formik} />
+            <DescriptionField className="mt-6" formik={formik} />
+            <div className="flex justify-center mt-10 space-x-4">
               <Button className="bg-stone-400" color="stone" variant="outline" type="submit">
                 {initialValues ? cms.save : cms.create}
               </Button>
