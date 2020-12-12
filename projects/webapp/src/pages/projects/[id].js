@@ -108,7 +108,7 @@ const Project = ({ id, user }) => {
               <Text variant="textSm" className="max-w-xl">
                 {data?.projects_by_pk?.goal}
               </Text>
-              <div className="flex flex-col w-full mt-3 sm:flex-row sm:items-center">
+              <div className="flex flex-col w-full mt-4 lg:mt-3 sm:flex-row sm:items-center">
                 <div className="flex items-center sm:mr-8">
                   <MapPin size={20} className="mr-2" />
                   {location?.link ? (
@@ -126,19 +126,19 @@ const Project = ({ id, user }) => {
                     </>
                   )}
                 </div>
-                <div className="flex items-center mt-1 sm:mt-0">
+                <div className="flex items-center mt-2 sm:mt-0">
                   <Calendar size={20} className="mr-2" />
                   <Text variant="textSm">{period}</Text>
                 </div>
               </div>
             </div>
-            <div className="flex mt-5 mb-2 lg:w-3/12 lg:mt-2 lg:items-end lg:flex-col lg:mb-0">
+            <div className="flex mt-6 mb-2.5 lg:mt-5 lg:w-3/12 lg:mt-2 lg:items-end lg:flex-col lg:mb-0">
               <Button
                 onClick={handleContact}
                 iconLeft={<Send size={21} className="mt-px mr-2 -ml-1" />}
                 color="lilac"
                 size="small"
-                className="mr-5 lg:mr-0 lg:mb-2">
+                className="mr-5 lg:mr-0 lg:mb-3">
                 {cms.header.actions.contact}
               </Button>
               <Button
@@ -153,8 +153,10 @@ const Project = ({ id, user }) => {
         </FramedGridCard.Header>
         <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
           <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2 lg:pr-4">
-            <div>
-              <Text className="mb-2">{cms.body.what}</Text>
+            <div className="mt-10 lg:mt-0">
+              <Text className="mb-3" variant="textLg">
+                {cms.body.what}
+              </Text>
               <div className="text-lg">
                 {data?.projects_by_pk?.descriptionTemplate.map((node, idx) => (
                   <Fragment key={`rq-${idx}`}>{serializeJSX(node, 'lilac')}</Fragment>
@@ -162,14 +164,18 @@ const Project = ({ id, user }) => {
               </div>
             </div>
             {data?.projects_by_pk?.team && (
-              <div className="mt-8">
-                <Text className="mb-2">{cms.body.who}</Text>
+              <div className="mt-10">
+                <Text className="mb-3" variant="textLg">
+                  {cms.body.who}
+                </Text>
                 <Text variant="textSm">{data.projects_by_pk.team}</Text>
               </div>
             )}
             {data?.projects_by_pk?.motto && (
-              <div className="mt-8">
-                <Text className="mb-2">{cms.body.how}</Text>
+              <div className="mt-10">
+                <Text className="mb-3" variant="textLg">
+                  {cms.body.how}
+                </Text>
                 <Text variant="textSm">{data.projects_by_pk.motto}</Text>
               </div>
             )}
@@ -177,7 +183,9 @@ const Project = ({ id, user }) => {
           <FramedGridCard.Body.Col
             variant="twoCols"
             className="row-start-1 100 lg:row-start-auto lg:pl-4 text-stone-800">
-            <Text className="mb-4">Aktuelle Gesuche</Text>
+            <Text className="mb-4" variant="textLg">
+              {cms.body.requests}
+            </Text>
             {data?.projects_by_pk?.requests?.length > 0 ? (
               <>
                 {data.projects_by_pk.requests.map((request, index) => (
@@ -185,7 +193,7 @@ const Project = ({ id, user }) => {
                     key={`requests-${index}`}
                     variant="view"
                     request={request}
-                    className={classnames({ 'mt-2': index > 0 })}
+                    className={classnames({ 'mt-4 lg:mt-3': index > 0 })}
                     onClick={request => setCurrentRequest(request)}
                   />
                 ))}
@@ -194,7 +202,7 @@ const Project = ({ id, user }) => {
               <InfoCard className="mt-2">{cms.body.searchings.info}</InfoCard>
             )}
           </FramedGridCard.Body.Col>
-          <FramedGridCard.Body.Col variant="oneCol" className="mt-10">
+          <FramedGridCard.Body.Col variant="oneCol" className="mt-8">
             <Text variant="textSm">
               {cms.body.createdAt} {new Date(data?.projects_by_pk?.created_at).toLocaleDateString('de-DE')}
             </Text>

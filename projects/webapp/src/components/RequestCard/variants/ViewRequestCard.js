@@ -16,7 +16,7 @@ const ViewRequestCard = ({ onClick, request, className, ...props }) => (
     )}
     {...props}>
     <div className="mr-4 text-left hyphens-auto">
-      <Text>{request.title}</Text>
+      <Text variant="textSmMedium">{request.title}</Text>
       <Text variant="textXs">Erstellt am {new Date(request.created_at).toLocaleDateString('de-DE')}</Text>
     </div>
     <ChevronRight size={30} className="flex-shrink-0" />

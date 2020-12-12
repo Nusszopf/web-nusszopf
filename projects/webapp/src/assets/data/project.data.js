@@ -15,9 +15,10 @@ export default {
     },
   },
   body: {
-    what: 'Um was geht es?',
-    who: 'Wer steckt dahinter?',
+    what: 'Projektbeschreibung',
+    who: 'Projektteam',
     how: 'Projektmotto',
+    requests: 'Aktuelle Gesuche',
     searchings: {
       info: 'Alles zopfig! Derzeit gibt es keine Gesuche.',
     },

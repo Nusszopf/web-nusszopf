@@ -11,7 +11,7 @@ import { Frame } from 'ui-library/stories/templates'
 const Banner = ({ project, user }) => {
   const [isVisible, setIsVisible] = useState(project.user_id === user)
   return (
-    <div className={classnames('py-3 bg-livid-300', { hidden: !isVisible })}>
+    <div className={classnames('py-4 bg-livid-300', { hidden: !isVisible })}>
       <Frame className="text-livid-800">
         <div className="relative flex items-center">
           <Text variant="textSm" className="pr-18">
