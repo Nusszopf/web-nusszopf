@@ -28,7 +28,7 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
     <Dialog
       isOpen={isOpen}
       onDismiss={onDismiss}
-      className="text-stone-800 bg-stone-200"
+      className="relative text-stone-800 bg-stone-200"
       aria-label="Gesuch bearbeiten">
       <Formik
         initialValues={
@@ -48,11 +48,9 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
         onSubmit={handleSubmit}>
         {formik => (
           <Form>
-            {/* <div className="h-6">
-              <Button className="float-right" variant="clean" size="baseClean" onClick={onDismiss}>
-                <X />
-              </Button>
-            </div> */}
+            <Button className="absolute top-0 right-0 p-1 m-3" variant="clean" size="baseClean" onClick={onDismiss}>
+              <X />
+            </Button>
             <TitleField formik={formik} />
             <CategoryField className="mt-6" formik={formik} />
             <DescriptionField className="mt-6" formik={formik} />

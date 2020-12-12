@@ -39,14 +39,12 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
     <Dialog
       isOpen={isOpen}
       onDismiss={onDismiss}
-      className="text-lilac-800 bg-lilac-200"
+      className="relative text-lilac-800 bg-lilac-200"
       aria-label={cms.dialog.aria}
       {...props}>
-      {/* <div className="h-6">
-        <Button className="float-right" variant="clean" size="baseClean" onClick={onDismiss}>
-          <X />
-        </Button>
-      </div> */}
+      <Button className="absolute top-0 right-0 p-1 m-3" variant="clean" size="baseClean" onClick={onDismiss}>
+        <X />
+      </Button>
       <Text variant="textLg">{project.title}</Text>
       <Text variant="textSm">{cms.dialog.description}</Text>
       <Formik
