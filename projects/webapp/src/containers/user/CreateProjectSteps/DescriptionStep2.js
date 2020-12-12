@@ -19,7 +19,7 @@ const DescriptionStep2 = () => {
         <TeamField formik={formik} />
       </FramedGridCard.Body.Col>
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
-        <MottoField formik={formik} className="mt-4 lg:mt-0" />
+        <MottoField formik={formik} className="mt-5 lg:mt-0" />
       </FramedGridCard.Body.Col>
     </>
   )

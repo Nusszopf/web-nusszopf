@@ -80,7 +80,7 @@ const ProjectView = ({ user, project }) => {
             </FramedGridCard.Body.Col>
             <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
               <LocationField className="mt-4 lg:mt-0" formik={formik} />
-              <PeriodField formik={formik} />
+              <PeriodField className="mt-8" formik={formik} />
               <TeamField formik={formik} className="mt-6" />
               <MottoField formik={formik} className="mt-6" />
             </FramedGridCard.Body.Col>

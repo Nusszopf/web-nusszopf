@@ -21,7 +21,7 @@ const VisibilityField = ({ formik, ...props }) => {
           label={
             <>
               <Text variant="textSmMedium">{cms.visibility.public.title}</Text>
-              <Text variant="textXs">{cms.visibility.public.description}</Text>
+              <Text variant="textSm">{cms.visibility.public.description}</Text>
             </>
           }
         />
@@ -34,7 +34,7 @@ const VisibilityField = ({ formik, ...props }) => {
           label={
             <>
               <Text variant="textSmMedium">{cms.visibility.private.title}</Text>
-              <Text variant="textXs">{cms.visibility.private.description}</Text>
+              <Text variant="textSm">{cms.visibility.private.description}</Text>
             </>
           }
         />

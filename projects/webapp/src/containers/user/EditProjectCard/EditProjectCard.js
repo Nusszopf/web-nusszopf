@@ -29,7 +29,7 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
         )}{' '}
         {project.title}
       </Text>
-      <Text variant="textSm" className="mt-2 hyphens-auto">
+      <Text variant="textSm" className="mt-2">
         {truncate(project.goal, { length: 90 })}
       </Text>
       <div className="flex flex-col mt-4">

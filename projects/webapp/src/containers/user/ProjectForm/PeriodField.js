@@ -34,9 +34,9 @@ export const PeriodFieldValidationSchema = object().shape({
     }),
 })
 
-const PeriodField = ({ formik }) => (
+const PeriodField = ({ className, formik }) => (
   <>
-    <FieldTitle className="mt-8" info={cms.period.info}>
+    <FieldTitle className={className} info={cms.period.info}>
       {cms.period.title}
     </FieldTitle>
     <Switch
@@ -53,7 +53,7 @@ const PeriodField = ({ formik }) => (
           <Text variant="textXs" className="w-12 mt-3 uppercase">
             {cms.period.action.from}
           </Text>
-          <div className="w-full">
+          <div className="w-full lg:max-w-xs">
             <Input
               name="period.from"
               color="lilac"
@@ -75,7 +75,7 @@ const PeriodField = ({ formik }) => (
           <Text variant="textXs" className="w-12 mt-3 uppercase">
             {cms.period.action.to}
           </Text>
-          <div className="w-full">
+          <div className="w-full lg:max-w-xs">
             <Input
               name="period.to"
               color="lilac"
@@ -99,6 +99,7 @@ const PeriodField = ({ formik }) => (
 )
 
 PeriodField.propTypes = {
+  className: PropTypes.string,
   formik: PropTypes.object.isRequired,
 }
 

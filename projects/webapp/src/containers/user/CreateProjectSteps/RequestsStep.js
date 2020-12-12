@@ -54,22 +54,24 @@ const RequestsStep = () => {
 
   return (
     <>
-      <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
-        <Text className="mb-2">{cms.requestsStep.title[0]}</Text>
-        <Text variant="textSm">{cms.requestsStep.description}</Text>
+      <FramedGridCard.Body.Col variant="twoCols" className="text-center lg:text-left lg:pr-4 lg:col-start-2">
+        <Text className="mb-2 text-left">{cms.requestsStep.title[0]}</Text>
+        <Text variant="textSm" className="text-left hyphens-auto">
+          {cms.requestsStep.description}
+        </Text>
         <Button
           onClick={openDialog}
           color="stone"
-          className="mt-6 bg-stone-300"
+          className="mt-8 bg-stone-300"
           iconLeft={<PlusCircle className="mr-2 -ml-2" />}
           size="large">
           {cms.requestsStep.action}
         </Button>
       </FramedGridCard.Body.Col>
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
-        <Text className="mt-4 mb-4 lg:mt-0">{cms.requestsStep.title[1]}</Text>
         {projectFormik.values.requests.length > 0 ? (
-          <>
+          <div className="mt-8 lg:mt-0">
+            <Text className="mb-4 hyphens-auto">{cms.requestsStep.title[1]}</Text>
             {projectFormik.values.requests.map((request, index) => (
               <RequestCard
                 key={`r-${index}`}
@@ -80,9 +82,9 @@ const RequestsStep = () => {
                 className={classnames({ 'mb-2': index < projectFormik.values.requests.length - 1 })}
               />
             ))}
-          </>
+          </div>
         ) : (
-          <InfoCard className="bg-livid-200 text-livid-700">{cms.requestsStep.info}</InfoCard>
+          <InfoCard className="mt-8 bg-livid-200 text-livid-700 lg:mt-0">{cms.requestsStep.info}</InfoCard>
         )}
       </FramedGridCard.Body.Col>
       <EditRequestDialog

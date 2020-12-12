@@ -3,7 +3,7 @@ export default {
     title: 'Kontakt',
     info:
       'Kann man dich über deine E-Mailadresse kontaktieren oder soll die Kommunikation erst einmal über den Nusszopf laufen?',
-    label: ['Direkt kontaktieren unter', 'möglich'],
+    label: 'Man kann mich kontaktieren unter',
   },
   goal: {
     title: 'Ziel des Projekts*',
@@ -64,7 +64,7 @@ export default {
     },
     private: {
       title: 'Privat',
-      description: 'Projekt ist nur für dich sichtbar.',
+      description: 'Projekt ist nur für dich sichtbar',
     },
   },
 }

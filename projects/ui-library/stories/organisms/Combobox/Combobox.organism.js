@@ -23,11 +23,11 @@ const MyCombobox = ({ aria, className, options, onSelect, onClear, color = 'lila
       />
       {props?.value?.length > 0 ? (
         <InputGroup.RightElement onClick={onClear}>
-          <X size={28} />
+          <X size={24} />
         </InputGroup.RightElement>
       ) : (
         <InputGroup.RightElement>
-          <Search size={28} />
+          <Search size={24} />
         </InputGroup.RightElement>
       )}
     </InputGroup>

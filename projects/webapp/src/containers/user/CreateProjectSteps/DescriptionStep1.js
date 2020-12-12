@@ -32,12 +32,12 @@ const DescriptionStep1 = () => {
     <>
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
         <TitleField formik={formik} />
-        <GoalField formik={formik} className="mt-6" />
-        <ProjectField formik={formik} className="mt-6" />
+        <GoalField formik={formik} className="mt-8" />
+        <ProjectField formik={formik} className="mt-7" />
       </FramedGridCard.Body.Col>
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
-        <LocationField className="mt-4 lg:mt-0" formik={formik} />
-        <PeriodField formik={formik} />
+        <LocationField className="mt-5 lg:mt-0" formik={formik} />
+        <PeriodField formik={formik} className="mt-8" />
       </FramedGridCard.Body.Col>
     </>
   )

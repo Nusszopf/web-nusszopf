@@ -16,7 +16,7 @@ const SettingsStep = () => {
         <VisibilityField formik={formik} />
       </FramedGridCard.Body.Col>
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
-        <ContactField formik={formik} user={user} className="mt-4 lg:mt-0" />
+        <ContactField formik={formik} user={user} className="mt-6 lg:mt-0" />
       </FramedGridCard.Body.Col>
     </>
   )

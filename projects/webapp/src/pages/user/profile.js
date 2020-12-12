@@ -74,7 +74,7 @@ const Profile = () => {
             {loadingProjects || loadingUser ? (
               <ProjectsSkeleton />
             ) : data?.projects?.length > 0 ? (
-              <Masonry gap={{ wrap: '-ml-5', col: 'pl-5', row: 'mb-5' }}>
+              <Masonry gap={{ wrap: '-ml-5 -mb-5', col: 'pl-5', row: 'mb-5' }}>
                 {data?.projects.map(project => (
                   <EditProjectCard
                     key={project.id}

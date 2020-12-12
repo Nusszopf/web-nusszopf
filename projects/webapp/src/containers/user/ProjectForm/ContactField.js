@@ -17,7 +17,7 @@ const ContactField = ({ formik, user, ...props }) => (
       checked={formik.values.contact}
       label={
         <>
-          {cms.contact.label[0]} <i className="hyphens-auto">{user?.data?.email}</i> {cms.contact.label[1]}
+          {cms.contact.label}: <span className="underline">{user?.data?.email}</span>
         </>
       }
     />
