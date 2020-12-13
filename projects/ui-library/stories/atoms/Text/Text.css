@@ -11,7 +11,7 @@
     @apply text-xl font-bold leading-snug;
   }
 
-  .nz-title-sm--semi {
+  .nz-title-sm-semi {
     @apply text-xl font-semibold leading-snug;
   }
 
@@ -27,7 +27,7 @@
     @apply text-xl font-medium leading-snug;
   }
 
-  .nz-text-sm--medium {
+  .nz-text-sm-medium {
     @apply text-lg font-medium;
   }
 

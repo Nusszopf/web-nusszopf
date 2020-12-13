@@ -30,7 +30,7 @@ export const serializeJSX = (node, color) => {
     return (
       <span
         className={classnames({
-          'font-semibold': node.bold,
+          'font-medium': node.bold,
           italic: node.italic,
           underline: node.underline,
           'block my-2': node.text === '',

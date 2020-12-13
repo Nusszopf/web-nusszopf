@@ -1,6 +1,6 @@
 export const InputSize = {
-  base: 'px-3 py-2 border-2 text-lg font-medium',
-  large: 'px-5 py-4 border-3 text-lg font-medium',
+  base: 'px-3 py-2 border-2 text-lg font-normal',
+  large: 'px-5 py-4 border-3 text-lg font-normal',
 }
 
 export const InputColor = {

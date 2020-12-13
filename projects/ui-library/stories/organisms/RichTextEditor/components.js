@@ -11,7 +11,7 @@ import { ThemeColor } from './RichTextEditor.theme'
 
 export const Leaf = ({ attributes, children, leaf }) => {
   if (leaf.bold) {
-    children = <strong>{children}</strong>
+    children = <span className="font-medium">{children}</span>
   }
   if (leaf.italic) {
     children = <em>{children}</em>
@@ -26,7 +26,7 @@ export const Element = ({ attributes, children, color, element }) => {
   switch (element.type) {
     case 'unordered-list':
       return (
-        <ul className="ml-8 list-disc" {...attributes}>
+        <ul className="ml-8 text-lg list-disc" {...attributes}>
           {children}
         </ul>
       )
@@ -34,14 +34,14 @@ export const Element = ({ attributes, children, color, element }) => {
       return <li {...attributes}>{children}</li>
     case 'ordered-list':
       return (
-        <ol className="ml-8 list-decimal" {...attributes}>
+        <ol className="ml-8 text-lg list-decimal" {...attributes}>
           {children}
         </ol>
       )
     case 'link':
       return (
         <Link
-          textVariant="textXs"
+          textVariant="textSm"
           color={color}
           href={element.url}
           {...attributes}
@@ -53,7 +53,7 @@ export const Element = ({ attributes, children, color, element }) => {
     default:
       return (
         <p {...attributes}>
-          <Text as="span" variant="textXs">
+          <Text as="span" variant="textSm">
             {children}
           </Text>
         </p>

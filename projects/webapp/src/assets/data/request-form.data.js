@@ -8,7 +8,7 @@ export default {
     title: 'Kategorie*',
     info: 'Wähle eine passende Kategorie für das Gesuch aus!',
     options: {
-      placeholder: 'Kategorie',
+      placeholder: '-',
       companions: 'Mitstreiter:innen',
       rooms: 'Räume',
       materials: 'Materialien',
