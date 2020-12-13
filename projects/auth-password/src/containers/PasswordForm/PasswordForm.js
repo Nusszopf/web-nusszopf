@@ -7,28 +7,29 @@ import { Eye, EyeOff } from 'react-feather'
 
 import { Text, Button } from 'ui-library/stories/atoms'
 import { InputGroup } from 'ui-library/stories/molecules'
+import { formData as cms } from '../../assets/data'
 
 const PasswordForm = ({ className, loading, onSubmit }) => {
   const [isEyeOpen, setEye] = useState(false)
   return (
-    <div className={classnames('w-full text-gray-500', className)} data-test="signup form">
-      <Text as="h1" variant="textXl" className="mb-5 text-center">
-        Neues Passwort vergeben
+    <div className={classnames('w-full text-steel-700', className)} data-test="signup form">
+      <Text as="h1" variant="textLgSemi" className="mb-5 text-center">
+        {cms.title}
       </Text>
       <Text variant="textSmMedium" className="mb-4 hyphens-auto">
-        Nach dem Speichern kannst Du dich gleich wieder wie gewohnt einloggen.
+        {cms.description}
       </Text>
       <Formik
         initialValues={{ password: '' }}
         onSubmit={onSubmit}
         validationSchema={object({
           password: string()
-            .min(8, 'Mindestens 8 Zeichen')
-            .matches(/[a-z]/, 'Mindestens ein Kleinbuchstabe')
-            .matches(/[A-Z]/, 'Mindestens ein Großbuchstabe')
-            .matches(/\d/, 'Mindestens eine Ziffer')
-            .matches(/[!@#$%^&*]/, 'Mindestens ein Sonderzeichen (!@#$%^&*)')
-            .required('Bitte gib ein Passwort ein'),
+            .min(8, cms.field.validation[0])
+            .matches(/[a-z]/, cms.field.validation[1])
+            .matches(/[A-Z]/, cms.field.validation[2])
+            .matches(/\d/, cms.field.validation[3])
+            .matches(/[!@#$%^&*]/, cms.field.validation[4])
+            .required(cms.field.validation[5]),
         })}>
         {formikProps => (
           <Form>
@@ -38,26 +39,24 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
                 name="password"
                 type={isEyeOpen ? 'text' : 'password'}
                 value={formikProps.values.password}
-                aria-label="Passwort"
-                placeholder="Passwort"
-                disabled={loading}
-                i
-                color="whiteGray500"
+                aria-label={cms.field.aria}
+                placeholder={cms.field.placeholder}
                 onChange={formikProps.handleChange}
                 onBlur={formikProps.handleBlur}
               />
               <InputGroup.RightElement onClick={() => setEye(isEyeOpen => !isEyeOpen)}>
-                {isEyeOpen ? (
-                  <Eye size={26} className={classnames({ 'opacity-50': loading })} />
-                ) : (
-                  <EyeOff size={26} className={classnames({ 'opacity-50': loading })} />
-                )}
+                {isEyeOpen ? <Eye size={24} /> : <EyeOff size={24} />}
               </InputGroup.RightElement>
             </InputGroup>
-            <ErrorMessage name="password" variant="textSm" className="mt-2 ml-6 italic" component={Text} />
+            <ErrorMessage
+              name="password"
+              variant="textSm"
+              className="mt-2 ml-4 italic text-warning-700"
+              component={Text}
+            />
             <div className="mt-6 text-center">
-              <Button type="submit" color="whiteGray500" disabled={loading}>
-                Speichern
+              <Button type="submit" className="bg-steel-100" disabled={loading}>
+                {cms.action}
               </Button>
             </div>
           </Form>

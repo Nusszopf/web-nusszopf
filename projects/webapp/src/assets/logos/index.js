@@ -7,6 +7,5 @@ export { default as SVGNusszopfLogoBigYellow } from './nusszopf-logo-big-yellow.
 export { default as SVGNusszopfLogoSmallPink } from './nusszopf-logo-small-pink.svg'
 export { default as SVGNusszopfLogoSmallTurquoise } from './nusszopf-logo-small-turquoise.svg'
 export { default as SVGNusszopfBigYellowBlue } from './nusszopf-logo-yellow-blue.svg'
-export { default as SVGPoweredByVercel } from './powered-by-vercel.svg'
 export { default as SVGSanityLogo } from './sanity-logo.svg'
 export { default as SVGVercelLogo } from './vercel-logo.svg'

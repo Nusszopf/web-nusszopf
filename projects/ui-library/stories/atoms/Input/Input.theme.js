@@ -1,11 +1,10 @@
 export const InputSize = {
-  base: 'px-3 py-2 border-2 text-lg font-medium',
-  large: 'px-5 py-4 border-3 text-lg font-medium',
+  base: 'px-3 py-2 border-2 text-lg font-normal',
+  large: 'px-5 py-4 border-3 text-lg font-normal',
 }
 
 export const InputColor = {
-  whiteGray600: 'nz-input-whiteGray600',
-  whiteGray500: 'nz-input-whiteGray500',
-  yellow300Blue400: 'nz-input-yellow300Blue400',
-  whiteBlue400: 'nz-input-whiteBlue400',
+  lilac: 'text-current border-current hover:ring-lilac-800 focus:ring-lilac-800',
+  stone: 'text-current border-current hover:ring-stone-800 focus:ring-stone-800',
+  steel: 'text-current border-current hover:ring-steel-700 focus:ring-steel-700',
 }

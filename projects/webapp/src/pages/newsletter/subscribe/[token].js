@@ -1,33 +1,37 @@
 import PropTypes from 'prop-types'
-import { Page, FOOTER_TYPE } from '../../../containers'
+
 import { Route, Text } from 'ui-library/stories/atoms'
 import { FramedCard } from 'ui-library/stories/templates'
-import { confirmNewsletterSubscription } from '../../../utils/services/newsletter.service'
-import { SVGNusszopfLogoBig } from '../../../assets/logos'
-import { newsletterData } from '../../../assets/data'
+import { Page } from '~/components'
+import { confirmNewsletterSubscription } from '~/utils/services/newsletter.service'
+import { SVGNusszopfLogoBig } from '~/assets/logos'
+import { newsletterData as cms } from '~/assets/data'
 
 const SubscribeConfirm = ({ lead }) => (
   <Page
-    className="text-blue-400 bg-white sm:bg-blue-400"
-    showFooter={true}
-    footerType={FOOTER_TYPE.secondary}
+    className="bg-white sm:bg-steel-100"
+    navHeader={{ visible: true }}
+    footer={{ className: 'bg-white sm:bg-steel-100' }}
     noindex={true}>
-    <FramedCard className="bg-white">
-      <Route
-        variant="svg"
-        className="block w-40 mx-auto"
-        href="/"
-        title={newsletterData.unsubscribe.logo}
-        ariaLabel={newsletterData.unsubscribe.logo}>
-        <SVGNusszopfLogoBig className="flex-shrink-0 w-full" />
+    <FramedCard className="bg-white text-steel-700">
+      <Route variant="svg" href="/" title={cms.unsubscribe.logo} ariaLabel={cms.unsubscribe.logo}>
+        <SVGNusszopfLogoBig className="h-full w-36" />
       </Route>
-      <Text as="h1" variant="textXl" className="mt-10 mb-5 sm:mt-12">
-        {newsletterData.subscribeConfirm.heading}
+      <Text as="h1" variant="textLgSemi" className="mt-10 mb-5 sm:mt-12">
+        {cms.subscribeConfirm.heading}
       </Text>
       <Text variant="textSmMedium" className="hyphens-auto">
-        <span className="italic font-semibold">{lead?.email}</span> {newsletterData.subscribeConfirm.textA}{' '}
-        {newsletterData.subscribeConfirm.textB}
+        <span className="italic font-semibold">{lead?.email}</span> {cms.subscribeConfirm.textA}{' '}
+        {cms.subscribeConfirm.textB}
       </Text>
+      <Route
+        variant="button"
+        className="mt-6 bg-steel-100"
+        title={cms.subscribeConfirm.action.meta}
+        ariaLabel={cms.subscribeConfirm.action.meta}
+        href="/">
+        {cms.subscribeConfirm.action.text}
+      </Route>
     </FramedCard>
   </Page>
 )

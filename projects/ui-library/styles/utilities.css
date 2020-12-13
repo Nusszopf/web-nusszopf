@@ -1,11 +1,10 @@
-.hyphens-none {
-  hyphens: none;
-}
-
-.hyphens-manual {
-  hyphens: manual;
-}
-
 .hyphens-auto {
-  hyphens: auto;
+  @layer utilities {
+    hyphens: auto;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  @responsive {
+    /* custom responsive utilities */
+  }
 }

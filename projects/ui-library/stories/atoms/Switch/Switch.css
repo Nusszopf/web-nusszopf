@@ -1,0 +1,16 @@
+@layer components {
+  .nz-switch-steel {
+    @apply border-steel-700 ring-2 ring-transparent;
+    @apply hover:ring-steel-700 focus:ring-steel-700 hover:ring-opacity-25 focus:ring-opacity-25;
+  }
+
+  .nz-switch-stone {
+    @apply border-stone-800 ring-2 ring-transparent;
+    @apply hover:ring-stone-800 focus:ring-stone-800 hover:ring-opacity-25 focus:ring-opacity-25;
+  }
+
+  .nz-switch-lilac {
+    @apply ring-2 ring-transparent border-lilac-800;
+    @apply hover:ring-lilac-800 focus:ring-lilac-800 hover:ring-opacity-25 focus:ring-opacity-25;
+  }
+}

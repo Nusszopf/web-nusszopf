@@ -4,11 +4,12 @@ import { WebAuth } from 'auth0-js'
 import { isEmpty } from 'lodash'
 
 import { FramedCard } from 'ui-library/stories/templates'
-import { Tab } from 'ui-library/stories/molecules'
+import { Tab } from 'ui-library/stories/organisms'
 import { Link } from 'ui-library/stories/atoms'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import { ChangePasswordForm, LoginForm, SignUpForm, Page } from '../containers'
 import { SVGNusszopfLogoBig } from '../assets/images'
+import { pageData as cms } from '../assets/data'
 
 const Views = {
   signInUp: 'signInUp',
@@ -46,14 +47,14 @@ export default function IndexPage() {
   const showError = () => {
     notify({
       type: 'error',
-      message: 'Sorry, das hat gerade nicht geklappt.',
+      message: cms.notify.error,
     })
   }
 
   // https://auth0.com/docs/api/authentication#login
   const handleLogin = values => {
     setLoading(true)
-    notify({ type: 'loading', message: 'Du wirst einloggt.' })
+    notify({ type: 'loading', message: cms.notify.login.loading })
     try {
       webAuth.login(
         {
@@ -75,7 +76,7 @@ export default function IndexPage() {
 
   const handleGoogleLogin = () => {
     setLoading(true)
-    notify({ type: 'loading', message: 'Du wirst einloggt.' })
+    notify({ type: 'loading', message: cms.notify.login.loading })
     try {
       webAuth.authorize(
         {
@@ -96,7 +97,7 @@ export default function IndexPage() {
   // todo: create auth0-apple connection
   const handleAppleLogin = () => {
     setLoading(true)
-    notify({ type: 'loading', message: 'Du wirst einloggt.' })
+    notify({ type: 'loading', message: cms.notify.login.loading })
     try {
       webAuth.authorize(
         {
@@ -117,7 +118,7 @@ export default function IndexPage() {
   // https://auth0.com/docs/api/authentication#signup
   const handleSignup = values => {
     setLoading(true)
-    notify({ type: 'loading', message: 'Du wirst registriert und eingeloggt.' })
+    notify({ type: 'loading', message: cms.notify.login.signup })
     try {
       webAuth.redirect.signupAndLogin(
         {
@@ -144,7 +145,7 @@ export default function IndexPage() {
     setLoading(true)
     notify({
       type: 'loading',
-      message: 'Anfrage wird bearbeitet.',
+      message: cms.notify.change.loading,
     })
     try {
       webAuth.changePassword(
@@ -158,7 +159,7 @@ export default function IndexPage() {
           if (response) {
             notify({
               type: 'success',
-              message: 'E-Mail verschickt! Schaue bitte in dein Postfach.',
+              message: cms.notify.change.success,
             })
           }
         }
@@ -170,10 +171,10 @@ export default function IndexPage() {
   }
 
   return (
-    <Page className="bg-white sm:bg-gray-100">
+    <Page>
       <FramedCard className="bg-white">
-        <Link variant="svg" href="https://nusszopf.org" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
-          <SVGNusszopfLogoBig className="w-40 h-full" />
+        <Link variant="svg" href="https://nusszopf.org" title={cms.logo.meta} ariaLabel={cms.logo.meta}>
+          <SVGNusszopfLogoBig className="h-full w-36" />
         </Link>
         {view === Views.password ? (
           <ChangePasswordForm
@@ -186,12 +187,7 @@ export default function IndexPage() {
             }}
           />
         ) : (
-          <Tab
-            ariaLabel="Auth Navigation"
-            className="mt-12"
-            labelLeft="Einloggen"
-            labelRight="Registrieren"
-            loading={loading}>
+          <Tab ariaLabel="Auth Navigation" className="mt-12" labelLeft={cms.tab[0]} labelRight={cms.tab[1]}>
             <Tab.Panel>
               <LoginForm
                 loading={loading}

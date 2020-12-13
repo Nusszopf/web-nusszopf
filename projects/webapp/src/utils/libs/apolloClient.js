@@ -1,13 +1,14 @@
 import { useMemo } from 'react'
 import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client'
-import { concatPagination } from '@apollo/client/utilities'
-import { setContext } from '@apollo/link-context'
-import { onError } from '@apollo/link-error'
+// import { concatPagination } from '@apollo/client/utilities'
+import { setContext } from '@apollo/client/link/context'
+import { onError } from '@apollo/client/link/error'
+import auth0 from './auth0'
 
 let apolloClient
 let accessToken
 
-const requestAccessToken = async () => {
+const requestAccessTokenClient = async () => {
   if (accessToken) return
   const res = await fetch(`${process.env.DOMAIN}/api/session`)
   if (res.ok) {
@@ -18,45 +19,69 @@ const requestAccessToken = async () => {
   }
 }
 
+const requestAccessTokenServer = async req => {
+  if (typeof req === 'undefined') {
+    accessToken = 'public'
+  }
+  const res = await auth0.getSession(req)
+  if (!res?.accessToken) {
+    accessToken = 'public'
+  } else {
+    accessToken = res.accessToken
+  }
+}
+
 const httpLink = new HttpLink({
   uri: process.env.API_URL,
   credentials: 'include',
   fetch,
 })
 
-// return the headers to the context so httpLink can read them
-const authLink = setContext(async (req, { headers }) => {
-  await requestAccessToken()
-  if (!accessToken || accessToken === 'public') {
-    return {
-      headers,
+const authLink = ctx =>
+  setContext(async (req, { headers }) => {
+    if (typeof window === 'undefined') {
+      await requestAccessTokenServer(ctx.req)
+    } else {
+      await requestAccessTokenClient()
     }
-  } else {
-    return {
-      headers: {
-        ...headers,
-        Authorization: `Bearer ${accessToken}`,
-      },
+    if (!accessToken || accessToken === 'public') {
+      return {
+        headers,
+      }
+    } else {
+      return {
+        headers: {
+          ...headers,
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
     }
-  }
-})
+  })
 
-// remove cached token on 401 from the server
 const resetTokenLink = onError(({ networkError }) => {
   if (networkError && networkError.name === 'ServerError' && networkError.statusCode === 401) {
     accessToken = null
   }
 })
 
-function createApolloClient() {
+function createApolloClient(ctx) {
   return new ApolloClient({
     ssrMode: typeof window === 'undefined',
-    link: authLink.concat(resetTokenLink).concat(httpLink),
+    link: authLink(ctx).concat(resetTokenLink).concat(httpLink),
     cache: new InMemoryCache({
       typePolicies: {
         Query: {
           fields: {
-            allPosts: concatPagination(),
+            users_by_pk: {
+              merge: true,
+            },
+            projects_by_pk(_, { args, toReference }) {
+              return toReference({
+                __typename: 'projects',
+                id: args.id,
+              })
+            },
+            // allPosts: concatPagination(),
           },
         },
       },
@@ -64,8 +89,8 @@ function createApolloClient() {
   })
 }
 
-export function initializeApollo(initialState = null) {
-  const _apolloClient = apolloClient ?? createApolloClient()
+export function initializeApollo(initialState = null, ctx = null) {
+  const _apolloClient = apolloClient ?? createApolloClient(ctx)
 
   // If your page has Next.js data fetching methods that use Apollo Client, the initial state
   // gets hydrated here

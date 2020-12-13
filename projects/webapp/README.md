@@ -44,6 +44,8 @@ Analyze the app bundles.
 +-- /public
 +-- /scripts
 +-- /src
+| +-- /assets
+| +-- /components
 | +-- /containers
 | +-- /pages
 | +-- /styles
@@ -70,14 +72,19 @@ Dev-Tooling and helpers for e.g. automatisation.
 
 All the code relevant for the frontend app, als well the serverless-functions.
 
+#### **src/assets**
+
+Static content like images and text.
+
+Self-Contained-Components, which are used in multiple pages.
+
+#### **src/componets**
+
+Self-Contained-Components, which are used in multiple pages.
+
 #### **src/containers**
 
-Components, which:
-
-- are smart
-- are not relevant for the design-system
-- can't be seperated simply
-- are related to react concepts like `high-order-components`
+Self-Contained-Components, which are used for specific pages. Organized in pages structure.
 
 #### **src/pages**
 
@@ -95,12 +102,12 @@ Global styles and tailwind-configuration.
 
 #### **src/utils**
 
-Shared helper:
-
 ```zsh
 | +-- /utils
-| | +--  /functions -> helper functions for serverless-functions
+| | +-- /functions -> helper functions for serverless-functions
 | | +-- /hasura -> logic linked with hasura backend
 | | +-- /libs -> logic linked with third-party libraries
 | | +-- /services -> combined logic of specific topics
+| | +-- enums
+| | +-- helper
 ```

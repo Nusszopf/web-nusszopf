@@ -1,39 +1,41 @@
-.nz-title-lg {
-  @apply text-4xl font-semibold leading-tight;
-}
+@layer components {
+  .nz-title-lg {
+    @apply text-4xl font-semibold leading-tight;
+  }
 
-.nz-title-md {
-  @apply text-3xl font-bold leading-tight;
-}
+  .nz-title-md {
+    @apply text-3xl font-bold leading-tight;
+  }
 
-.nz-title-sm {
-  @apply text-xl font-bold leading-snug;
-}
+  .nz-title-sm {
+    @apply text-xl font-bold leading-snug;
+  }
 
-.nz-title-sm--semi {
-  @apply text-xl font-semibold leading-snug;
-}
+  .nz-title-sm-semi {
+    @apply text-xl font-semibold leading-snug;
+  }
 
-.nz-text-xl {
-  @apply text-2xl font-semibold leading-snug;
-}
+  .nz-text-lg-semi {
+    @apply text-2xl font-semibold leading-snug;
+  }
 
-.nz-text-lg {
-  @apply text-2xl font-medium leading-snug;
-}
+  .nz-text-lg {
+    @apply text-2xl font-medium leading-snug;
+  }
 
-.nz-text-md {
-  @apply text-xl font-medium leading-snug;
-}
+  .nz-text-md {
+    @apply text-xl font-medium leading-snug;
+  }
 
-.nz-text-sm--medium {
-  @apply text-lg font-medium;
-}
+  .nz-text-sm-medium {
+    @apply text-lg font-medium;
+  }
 
-.nz-text-sm {
-  @apply text-lg;
-}
+  .nz-text-sm {
+    @apply text-lg;
+  }
 
-.nz-text-xs {
-  @apply text-base;
+  .nz-text-xs {
+    @apply text-base;
+  }
 }

@@ -5,11 +5,18 @@ export const LinkVariant = {
 }
 
 export const LinkColor = {
-  gray700Blue200: 'nz-link-gray700Blue200',
-  yellow100Red500: 'nz-link-yellow100Red500',
-  yellow300Pink700: 'nz-link-yellow300Pink700',
-  turquoise400Turquoise800: 'nz-link-turquoise400Turquoise800',
-  gray500Transparent: 'nz-link-gray500Transparent',
+  current: 'nz-link-current',
+  steel: 'nz-link-steel',
+  stone: 'nz-link-stone',
+  'stone-red': 'nz-link-stone-red',
+  'stone-pink': 'nz-link-stone-pink',
+  'stone-blue': 'nz-link-stone-blue',
+  'stone-turquoise': 'nz-link-stone-turquoise',
+  'stone-yellow': 'nz-link-stone-yellow',
+  red: 'nz-link-red',
+  livid: 'nz-link-livid',
+  lilac: 'nz-link-lilac',
+  warning: 'nz-link-warning',
 }
 
 export const LinkBorder = {

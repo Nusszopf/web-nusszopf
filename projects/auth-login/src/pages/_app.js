@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import Head from 'next/head'
 require('typeface-barlow')
-import '../styles/tailwind.css'
+import 'ui-library/styles/tailwind.css'
 import { ToastsProvider } from 'ui-library/services/Toasts.service'
 
 function App({ Component, pageProps }) {
@@ -10,7 +10,7 @@ function App({ Component, pageProps }) {
       <Head>
         <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
       </Head>
-      <div id="nusszopf" className="flex flex-col h-screen">
+      <div id="nusszopf" className="flex flex-col min-h-screen">
         <ToastsProvider>
           <Component {...pageProps} />
         </ToastsProvider>

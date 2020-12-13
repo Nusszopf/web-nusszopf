@@ -1,6 +1,7 @@
 import React from 'react'
-import Link from './Link.atom'
 import { SVGNusszopfLogoBig } from '../../../assets/logos'
+import Link from './Link.atom'
+import { LinkBorder, LinkColor, LinkVariant } from './Link.theme'
 
 export default {
   title: 'Design System/Atoms/Link',
@@ -12,33 +13,37 @@ export default {
       },
     },
   },
+  argTypes: {
+    border: {
+      control: {
+        type: 'select',
+        options: Object.keys(LinkBorder),
+      },
+    },
+    color: {
+      control: {
+        type: 'select',
+        options: Object.keys(LinkColor),
+      },
+    },
+    variant: {
+      control: {
+        type: 'select',
+        options: Object.keys(LinkVariant),
+      },
+    },
+  },
 }
 
-export const Text = () => (
-  <div className="space-x-3 space-y-3">
-    <Link href="https://nusszopf.org/" border="large" textVariant="textLg" title="title" ariaLabel="ariaLabel">
-      external link
-    </Link>
-    <Link href="https://nusszopf.org/" color="turquoise400Turquoise800" title="title" ariaLabel="ariaLabel">
-      external link
-    </Link>
-    <Link href="https://nusszopf.org/" color="yellow100Red500" title="title" ariaLabel="ariaLabel">
-      external link
-    </Link>
-    <Link href="https://nusszopf.org/" color="yellow300Pink700" title="title" ariaLabel="ariaLabel">
-      external link
-    </Link>
-    <Link
-      href="https://nusszopf.org/"
-      color="gray600transparent"
-      title="title"
-      border="small"
-      textVariant="textSm"
-      ariaLabel="ariaLabel">
-      external link
-    </Link>
-  </div>
-)
+const Template = args => <Link {...args}>{args.children}</Link>
+
+const Main = Template.bind({})
+Main.args = {
+  href: 'https://nusszopf.org/',
+  title: 'Zum Nusszopf',
+  ariaLabel: 'Zum Nusszopf',
+  children: 'External Link',
+}
 
 export const SVG = () => (
   <Link variant="svg" href="https://nusszopf.org" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
@@ -47,12 +52,7 @@ export const SVG = () => (
 )
 
 export const Button = () => (
-  <Link
-    variant="button"
-    color="gray600Gray200"
-    href="https://nusszopf.org"
-    title="Zum Nusszopf"
-    ariaLabel="Zum Nusszopf">
+  <Link variant="button" href="https://nusszopf.org" title="Zum Nusszopf" ariaLabel="Zum Nusszopf">
     Link with button styles
   </Link>
 )

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useToasts } from 'ui-library/services/Toasts.service'
-import { newsletterData } from '../../assets/data'
+import { newsletterData as cms } from '../../assets/data'
 import { NewsletterType } from '../functions/newsletter.function'
 
 export const confirmNewsletterSubscription = token => {
@@ -40,7 +40,7 @@ const useNewsletter = () => {
 
   const handleRequest = async (values, type) => {
     try {
-      notify({ type: 'loading', message: newsletterData[type].alerts.loading })
+      notify({ type: 'loading', message: cms[type].notify.loading })
       setLoading(true)
       const request = fetch(`${process.env.DOMAIN}/api/newsletter`, {
         method: 'POST',
@@ -49,12 +49,12 @@ const useNewsletter = () => {
       })
       const response = await delayedFetch(request)
       if (response.ok) {
-        notify({ type: 'success', message: newsletterData[type].alerts.success })
+        notify({ type: 'success', message: cms[type].notify.success })
       } else {
-        notify({ type: 'error', message: newsletterData[type].alerts.error })
+        notify({ type: 'error', message: cms[type].notify.error })
       }
     } catch (error) {
-      notify({ type: 'error', message: newsletterData[type].alerts.error })
+      notify({ type: 'error', message: cms[type].notify.error })
     }
     setLoading(false)
   }

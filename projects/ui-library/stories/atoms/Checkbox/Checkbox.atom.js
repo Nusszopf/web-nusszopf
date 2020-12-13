@@ -3,19 +3,26 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { Square, CheckSquare } from 'react-feather'
 import { Checkbox as ReakitCheckbox } from 'reakit/Checkbox'
+import { VisuallyHidden } from 'reakit/VisuallyHidden'
 import Text from '../Text/Text.atom'
 
 const Checkbox = ({ disabled = false, checked = false, label, className, ...props }) => (
   <label>
-    <ReakitCheckbox disabled={disabled} checked={checked} className="hidden" {...props} />
+    <VisuallyHidden>
+      <ReakitCheckbox disabled={disabled} checked={checked} {...props} />
+    </VisuallyHidden>
     <span
-      className={classnames('inline-flex', {
-        'opacity-50 cursor-default': disabled,
-        'cursor-pointer': !disabled,
-      })}>
-      {!checked && <Square className={classnames('mt-px flex-shrink-0', className)} />}
-      {checked && <CheckSquare className={classnames('mt-px flex-shrink-0', className)} />}
-      <Text as="span" variant="textSm" className={classnames('ml-2', className)}>
+      className={classnames(
+        'inline-flex',
+        {
+          'opacity-50 cursor-default': disabled,
+          'cursor-pointer': !disabled,
+        },
+        className
+      )}>
+      {!checked && <Square aria-hidden="true" className="flex-shrink-0 mt-px" />}
+      {checked && <CheckSquare aria-hidden="true" className="flex-shrink-0 mt-px" />}
+      <Text as="span" variant="textSm" className="ml-2">
         {label}
       </Text>
     </span>

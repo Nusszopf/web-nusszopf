@@ -6,19 +6,23 @@ export const NewsletterType = {
   subscribeConfirm: 'subscribeConfirm',
   unsubscribe: 'unsubscribe',
   unsubscribeConfirm: 'unsubscribeConfirm',
-  auth0SyncHasura: 'auth0SyncHasura', // todo
+  auth0SyncHasura: 'auth0SyncHasura',
 }
 
 export const handleSubscribe = async ({ email, name, privacy }, res, sgMail) => {
-  const lead = await addLead(email, name, privacy)
-  await sendSubscribeEmail(lead, sgMail)
-  res.status(200).json({ email: lead?.email, name: lead?.name })
+  const existingLead = await getLead(email)
+  if (existingLead) {
+    res.status(500).end(`lead with email ${email} could not be created`)
+  } else {
+    const lead = await addLead(email, name, privacy)
+    await sendSubscribeEmail(lead, sgMail)
+    res.status(200).json({ email: lead?.email, name: lead?.name })
+  }
 }
 
-export const handleSubscribeConfirm = async ({ token }, res, sgClient) => {
+export const handleSubscribeConfirm = async ({ token }, res) => {
   const { leadId } = jwt.verify(token, process.env.EMAIL_SECRET)
   const lead = await updateLead(leadId)
-  await createSendGridContact(sgClient, process.env.SENDGRID_LIST_ID, lead?.email, lead?.name)
   res.status(200).json({ email: lead?.email, name: lead?.name })
 }
 
@@ -32,29 +36,57 @@ export const handleUnsubscribe = async ({ email }, res, sgMail) => {
   }
 }
 
-export const handleUnsubscribeConfirm = async ({ token }, res, sgClient) => {
-  const { leadId, leadEmail } = jwt.verify(token, process.env.EMAIL_SECRET)
-  const contactId = await getSendGridContactId(sgClient, leadEmail, process.env.SENDGRID_LIST_ID)
-  if (contactId) {
-    await deleteSendGridContact(sgClient, contactId)
-    const lead = await deleteLead(leadId)
-    res.status(200).json({ email: lead.email, name: lead.name })
-  } else {
-    res.status(404).end(`lead with id ${leadId} was not found in sendgrid`)
-  }
+export const handleUnsubscribeConfirm = async ({ token }, res) => {
+  const { leadEmail } = jwt.verify(token, process.env.EMAIL_SECRET)
+  await deleteLead(leadEmail)
+  res.status(200).json({ email: leadEmail })
 }
 
-export const handleAuth0SyncHasura = async ({ token }, res, sgClient) => {
+export const handleAuth0SyncHasura = async ({ token }, res) => {
   const { id, name, email } = jwt.verify(token, process.env.EMAIL_SECRET)
   const lead = await getLead(email)
   if (lead) {
     res.status(200).json({ id })
   } else {
     const lead = await addLead(email, name, true)
-    await createSendGridContact(sgClient, process.env.SENDGRID_LIST_ID, email, name)
     await updateLead(lead.id)
     res.status(200).json({ id })
   }
+}
+
+export const createSendGridContact = (sgClient, listId, email, name) => {
+  const reqContact = {
+    method: 'PUT',
+    url: '/v3/marketing/contacts',
+    body: {
+      list_ids: [listId],
+      contacts: [{ email, first_name: name }],
+    },
+    json: true,
+  }
+  return sgClient.request(reqContact)
+}
+
+export const getSendGridContactId = async (sgClient, email, listId) => {
+  const reqContact = {
+    method: 'POST',
+    url: '/v3/marketing/contacts/search',
+    body: {
+      query: `email LIKE '${email}' AND CONTAINS(list_ids, '${listId}')`,
+    },
+    json: true,
+  }
+  const [response, body] = await sgClient.request(reqContact)
+  return body.result[0]?.id
+}
+
+export const deleteSendGridContact = (sgClient, leadId) => {
+  const reqContact = {
+    method: 'DELETE',
+    url: `/v3/marketing/contacts?ids=${leadId}`,
+    body: '{}',
+  }
+  return sgClient.request(reqContact)
 }
 
 const sendSubscribeEmail = (lead, sgMail) => {
@@ -80,19 +112,6 @@ const sendSubscribeEmail = (lead, sgMail) => {
       }
     })
   )
-}
-
-const createSendGridContact = (sgClient, listId, email, name) => {
-  const reqContact = {
-    method: 'PUT',
-    url: '/v3/marketing/contacts',
-    body: {
-      list_ids: [listId],
-      contacts: [{ email, first_name: name }],
-    },
-    json: true,
-  }
-  return sgClient.request(reqContact)
 }
 
 const sendUnsubscribeEmail = (lead, sgMail) => {
@@ -123,26 +142,4 @@ const sendUnsubscribeEmail = (lead, sgMail) => {
       }
     )
   )
-}
-
-const getSendGridContactId = async (sgClient, email, listId) => {
-  const reqContact = {
-    method: 'POST',
-    url: '/v3/marketing/contacts/search',
-    body: {
-      query: `email LIKE '${email}' AND CONTAINS(list_ids, '${listId}')`,
-    },
-    json: true,
-  }
-  const [response, body] = await sgClient.request(reqContact)
-  return body.result[0]?.id
-}
-
-const deleteSendGridContact = (sgClient, leadId) => {
-  const reqContact = {
-    method: 'DELETE',
-    url: `/v3/marketing/contacts?ids=${leadId}`,
-    body: '{}',
-  }
-  return sgClient.request(reqContact)
 }

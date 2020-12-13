@@ -10,7 +10,7 @@ const Toast = ({ message, className, type, id, onClose, ...props }) => (
   <ReakitClickable
     onClick={() => onClose(id)}
     className={classnames(
-      'w-full sm:w-96 bg-gray-300 rounded-md flex items-start outline-none focus:outline-none justify-between p-5 text-gray-600',
+      'w-full sm:w-96 bg-livid-300 rounded-md flex items-start outline-none focus:outline-none justify-between p-5 text-livid-800 shadow-md',
       className
     )}
     {...props}>
@@ -23,7 +23,7 @@ const Toast = ({ message, className, type, id, onClose, ...props }) => (
         {message}
       </Text>
     </div>
-    <X className="flex-shrink-0 ml-5 text-gray-400" size={26} />
+    <X className="flex-shrink-0 ml-5" size={26} />
   </ReakitClickable>
 )
 

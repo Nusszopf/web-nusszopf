@@ -1,15 +1,9 @@
-/* purgecss start ignore */
+@import 'tailwindcss/base';
 
-@tailwind base;
-/* Your own custom base styles */
-@tailwind components;
-/* Your own custom component styles */
-
-/* purgecss end ignore */
-
-/* local css */
+@import 'tailwindcss/components';
 @import './components.css';
 
-@tailwind utilities;
-/* Your own custom utilities */
+@import 'tailwindcss/utilities';
 @import './utilities.css';
+
+@import './reset.css';

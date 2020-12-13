@@ -1,18 +1,18 @@
 // cheatsheet: npx tailwind init tailwind-full.config.js --full
 // documentation: https://tailwindcss.com/docs/configuration/
+
+// Known issues: https://github.com/tailwindlabs/tailwindcss/discussions/2728
+
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  experimental: {
-    applyComplexClasses: true,
-  },
   purge: {
     content: [
+      './src/components/**/*.{js,jsx}',
       './src/containers/**/*.{js,jsx}',
       './src/pages/**/*.{js,jsx}',
       '../ui-library/stories/**/*.{js,jsx}',
       '../ui-library/services/**/*.{js,jsx}',
-      './stories/**/*.{js,jsx}',
     ],
     options: {
       whitelist: [],
@@ -25,60 +25,86 @@ module.exports = {
       current: 'currentColor',
       black: '#000',
       white: '#fff',
-      gray: {
+      warning: {
+        100: '#FFEEE5',
+        200: '#FDD1B9',
+        300: '#F8A87C',
+        700: '#B84405',
+      },
+      steel: {
         100: '#ECEFF1',
         200: '#CFD8DC',
-        300: '#90A4AE',
-        400: '#607D8B',
+        300: '#AFBEC5',
+        400: '#90A4AE',
         500: '#546E7A',
-        600: '#37474F',
-        700: '#263238',
+        600: '#455963',
+        700: '#37474F',
+        800: '#263238',
+      },
+      stone: {
+        200: '#F2F2F2',
+        300: '#E0E0E0',
+        400: '#C7C7C7',
+        600: '#828282',
+        800: '#404040',
+      },
+      livid: {
+        100: '#EEF5F7',
+        200: '#CBE1E6',
+        300: '#BAD7DE',
+        500: '#64A6B4',
+        800: '#213E45',
+      },
+      lilac: {
+        100: '#F4F3F5',
+        200: '#E5E2E8',
+        300: '#CBC6D0',
+        400: '#B1AAB8',
+        500: '#897F94',
+        600: '#645B6E',
+        800: '#403A46',
+      },
+      moss: {
+        200: '#E9E9AF',
+        400: '#D1D35F',
+        800: '#3B3C10',
       },
       yellow: {
-        100: '#FEFFCC',
-        200: '#FCFEAA',
-        300: '#FAFC88',
-        400: '#F4F651',
-        500: '#EAD706',
-        600: '#A68B03',
-        700: '#574800',
+        100: '#FFFFF0',
+        200: '#FCFDB5',
+        300: '#F6F151',
+        400: '#EAD706',
+        500: '#D6B300',
+        800: '#574800',
       },
       red: {
         100: '#FFE9E5',
-        200: '#FEC2B9',
-        300: '#FCA092',
-        400: '#F5624D',
-        500: '#D51407',
-        600: '#970702',
-        700: '#570000',
+        200: '#FFCDC6',
+        300: '#FCA99C',
+        500: '#F5624D',
+        600: '#D51407',
       },
       turquoise: {
         100: '#E5FFF5',
-        200: '#D3FDED',
-        300: '#C5F7E4',
-        400: '#B1EED7',
-        500: '#68D9B9',
-        600: '#169C7D',
+        200: '#C9F7E6',
+        300: '#9BE9CB',
+        500: '#4DCBAE',
         700: '#005C4C',
-        800: '#00332A',
       },
       blue: {
-        100: '#E5F0FF',
-        200: '#CBDFFB',
-        300: '#A6C6F2',
-        400: '#6396DC',
-        500: '#367EE2',
-        600: '#1062D5',
-        700: '#00398A',
+        100: '#EAF3FF',
+        200: '#D1E3FC',
+        300: '#ABCBF8',
+        400: '#87B2ED',
+        500: '#6395DC',
+        700: '#00378A',
       },
       pink: {
-        100: '#FFF0F0',
-        200: '#FFE7E5',
-        300: '#FFD3D1',
-        400: '#FFBDBA',
-        500: '#FF8095',
-        600: '#CC005C',
-        700: '#990045',
+        100: '#FFEEF1',
+        200: '#FFCCD5',
+        300: '#FF99AA',
+        500: '#F1507E',
+        700: '#C20A5D',
       },
     },
     fontFamily: {
@@ -86,38 +112,33 @@ module.exports = {
     },
     extend: {
       // additions
-      boxShadow: {
-        'outline:yellow-300': '0 0 0 3px rgba(250, 252, 136, 0.5)',
-        'outline:yellow-700': '0 0 0 3px rgba(87, 72, 0, 0.5)',
-        'outline:blue-200': '0 0 0 3px rgba(203, 223, 251, 0.5)',
-        'outline:blue-400': '0 0 0 3px rgba(99, 150, 220, 0.5)',
-        'outline:blue-700': '0 0 0 3px rgba(0, 57, 138, 0.5)',
-        'outline:gray-600': '0 0 0 3px rgba(38, 50, 56, 0.5)',
-        'outline:gray-500': '0 0 0 3px rgba(84, 110, 122, 0.5)',
-        'outline:gray-200': '0 0 0 3px rgba(207, 216, 220, 0.5)',
-        'outline:turquoise-600-bright': '0 0 0 3px rgba(104, 217, 185, 0.25)',
-      },
       borderWidth: {
         3: '3px',
       },
+      minHeight: {
+        48: '12rem',
+      },
       spacing: {
         18: '4.75rem',
-        72: '18rem',
         84: '21rem',
-        96: '24rem',
+      },
+      ringWidth: {
+        3: '3px',
       },
     },
   },
   variants: {
     // https://tailwindcss.com/docs/pseudo-class-variants#creating-custom-variants
-    backgroundColor: ['responsive', 'hover', 'focus', 'group-hover'],
-    borderColor: ['responsive', 'active', 'hover', 'focus', 'group-hover'],
-    textColor: ['responsive', 'hover', 'focus', 'group-hover'],
-    opacity: ['responsive', 'hover', 'focus', 'disabled'],
-    cursor: ['responsive', 'disabled'],
+    extend: {
+      borderColor: ['active'],
+      cursor: ['disabled'],
+      ringColor: ['hover'],
+      ringOpacity: ['hover'],
+      opacity: ['disabled'],
+    },
   },
   corePlugins: {},
   plugins: [
-    // third-party-plugins
+    // custom and third-party-plugins
   ],
 }

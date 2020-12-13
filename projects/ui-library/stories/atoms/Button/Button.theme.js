@@ -6,64 +6,46 @@ export const ButtonVariant = {
 
 export const ButtonSize = {
   base: 'font-medium text-lg py-2 px-4',
+  baseClean: 'font-medium text-lg p-0',
+  small: 'font-medium text-lg py-1 px-3',
+  large: 'font-medium text-lg py-3 px-6',
   circle: 'text-lg p-2',
-  large: 'font-semibold text-lg py-4 px-8',
 }
 
 export const ButtonColor = {
-  whiteGray600: {
+  stone: {
     clean: '',
-    outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--whiteGray600',
+    outline: 'nz-btn-stone',
+    filled: 'nz-btn-stone',
   },
-  whiteGray500: {
+  steel: {
     clean: '',
-    outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--whiteGray500',
+    outline: 'nz-btn-steel',
+    filled: 'nz-btn-steel',
   },
-  blue400Yellow300: {
+  lilac: {
     clean: '',
-    outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--blue400Yellow300',
+    outline: 'nz-btn-lilac',
+    filled: 'nz-btn-lilac',
   },
-  whiteBlue400: {
+  warning: {
     clean: '',
-    outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--whiteBlue400',
+    outline: 'nz-btn-warning',
+    filled: 'nz-btn-warning',
   },
-  pink400Blue700: {
+  blue: {
     clean: '',
-    outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--pink400Blue700',
+    outline: 'nz-btn-blue',
+    filled: 'nz-btn-blue',
   },
-  pink600Yellow300: {
+  turquoise: {
     clean: '',
-    outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--pink600Yellow300',
+    outline: 'nz-btn-turquoise',
+    filled: 'nz-btn-turquoise',
   },
-  yellow400Yellow700: {
+  yellow: {
     clean: '',
-    outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--yellow400Yellow700',
-  },
-  turquoise700Turquoise500: {
-    clean: '',
-    outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--turquoise700Turquoise600',
-  },
-  blue400Blue200: {
-    clean: '',
-    outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--blue400Blue200',
-  },
-  gray600Gray200: {
-    clean: '',
-    outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--gray600Gray200',
-  },
-  gray500Gray200: {
-    clean: '',
-    outline: '',
-    filled: 'nz-btn-filled nz-btn-filled--gray500Gray200',
+    outline: 'nz-btn-yellow',
+    filled: 'nz-btn-yellow',
   },
 }

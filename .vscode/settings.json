@@ -1,17 +1,21 @@
 {
   "editor.tabSize": 2,
-  "editor.quickSuggestions": {
-    "other": true,
-    "comments": false,
-    "strings": true
-  },
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.formatOnSave": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": true
+  },
   "css.validate": false,
   "scss.validate": false,
-  "tailwindCSS.validate": false,
-  "less.validate": false
+  "less.validate": false,
+  "prettier.useTabs": false,
+  "prettier.tabWidth": 2,
+  "tailwindCSS.validate": false
 }

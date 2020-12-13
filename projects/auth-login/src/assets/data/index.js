@@ -1,1 +1,2 @@
-export { default as seoData } from './seo.data'
+export { default as formsData } from './forms.data'
+export { default as pageData } from './page.data'

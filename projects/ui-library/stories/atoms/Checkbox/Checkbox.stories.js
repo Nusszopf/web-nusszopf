@@ -7,7 +7,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: '**UI atom** based on [Reakit Checkbox](https://reakit.io/docs/checkbox/).',
+        component: '**Checkbox Atom** based on [Reakit Checkbox](https://reakit.io/docs/checkbox/).',
       },
     },
   },

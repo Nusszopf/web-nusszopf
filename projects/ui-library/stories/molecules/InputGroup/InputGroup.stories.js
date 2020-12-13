@@ -27,7 +27,7 @@ export const IconRight = () => (
   <InputGroup>
     <InputGroup.Input />
     <InputGroup.RightElement onClick={console.log}>
-      <Eye size={28} />
+      <Eye size={24} />
     </InputGroup.RightElement>
   </InputGroup>
 )

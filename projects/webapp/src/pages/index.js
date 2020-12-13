@@ -1,8 +1,9 @@
 import classnames from 'classnames'
-import { Page, NewsletterSection } from '../containers'
+import { NewsletterSection } from '../containers'
 import { Button, Link, Text } from 'ui-library/stories/atoms'
 import { Frame } from 'ui-library/stories/templates'
-import { headerData, hintData, featuresData, contestData, fellowsData } from '../assets/data'
+import { Page } from '~/components'
+import { headerData, hintData, featuresData, contestData, fellowsData } from '~/assets/data'
 
 const Index = () => {
   const scrollIntoView = id => {
@@ -12,7 +13,10 @@ const Index = () => {
   }
 
   return (
-    <Page showNavHeader={process.env.ENV !== 'production'}>
+    <Page
+      navHeader={{ visible: process.env.ENV !== 'production' }}
+      footer={{ variant: 'classy', className: 'bg-steel-200' }}
+      className="text-steel-700">
       <Frame as="header" className="bg-white">
         <div className="flex flex-col pt-12 pb-12 sm:pt-20 sm:pb-20 lg:flex-row xl:pt-32 xl:pb-32">
           <div className="lg:w-1/2 lg:pr-8 lg:self-center">
@@ -23,28 +27,27 @@ const Index = () => {
             />
           </div>
           <div className="mt-8 sm:mt-16 lg:mt-0 lg:pl-8 lg:w-1/2 lg:self-center">
-            <Text as="h1" variant="titleLg" className="max-w-md text-gray-600">
+            <Text as="h1" variant="titleLg" className="max-w-md">
               {headerData.title}
             </Text>
-            <Text as="h2" variant="textLg" className="mt-5 text-gray-600">
+            <Text as="h2" variant="textLg" className="mt-5">
               {headerData.subtitle}
             </Text>
           </div>
         </div>
       </Frame>
-      <Frame className="pt-12 pb-16 text-yellow-700 bg-yellow-400 sm:pt-16 sm:pb-18">
+      <Frame className="pt-12 pb-16 bg-yellow-300 sm:pt-16 sm:pb-18">
         <div className="flex flex-col max-w-2xl mx-auto xl:max-w-3xl">
-          <Text variant="textXl">{hintData.message}</Text>
+          <Text variant="textLg">{hintData.message}</Text>
           <Button
-            color="yellow400Yellow700"
             size="large"
             onClick={() => scrollIntoView('newsletter')}
-            className="self-center mt-10 sm:mt-12">
+            className="self-center mt-10 bg-yellow-400 sm:mt-12">
             {hintData.action}
           </Button>
         </div>
       </Frame>
-      <Frame className="pt-12 pb-16 text-pink-600 bg-turquoise-400 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
+      <Frame className="pt-12 pb-16 bg-turquoise-300 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
         <Text as="h3" variant="titleMd" className="mb-8 sm:max-w-sm xl:max-w-full xl:mb-10">
           {featuresData.heading}
         </Text>
@@ -87,7 +90,7 @@ const Index = () => {
           </div>
         </div>
       </Frame>
-      <Frame id="bmbf" className="pt-12 pb-16 text-yellow-100 bg-red-400 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
+      <Frame id="bmbf" className="pt-12 pb-16 bg-red-300 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
         <div className="lg:flex">
           <div className="lg:w-2/3 xl:w-7/12">
             <Text as="h3" variant="titleMd" className="mb-8 xl:mb-10">
@@ -97,9 +100,9 @@ const Index = () => {
             <Text>
               {contestData.infoText}{' '}
               <Link
+                color="red"
                 href={contestData.infoLink.href}
                 title={contestData.infoLink.meta}
-                color="yellow100Red500"
                 ariaLabel={contestData.infoLink.meta}>
                 {contestData.infoLink.text}
               </Link>
@@ -117,14 +120,14 @@ const Index = () => {
           </div>
         </div>
       </Frame>
-      <Frame className="pt-12 pb-16 text-blue-700 bg-pink-400 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
+      <Frame className="pt-12 pb-16 bg-pink-200 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
         <Text as="h3" variant="titleMd" className="mb-6">
           {fellowsData.heading}
         </Text>
         <div className="flex flex-wrap items-center mb-8 -ml-4">
           {fellowsData.list.map((fellow, index) => (
             <Link key={`fellow-${index}`} variant="svg" href={fellow.href} title={fellow.meta} ariaLabel={fellow.meta}>
-              <fellow.logo className="w-32 p-4" />
+              <fellow.logo className="w-32 p-4 fill-current" />
             </Link>
           ))}
         </div>
@@ -146,7 +149,7 @@ const Index = () => {
               <div className="w-full mt-8 text-center lg:text-left">
                 <Link
                   variant="button"
-                  color="pink400Blue700"
+                  className="bg-pink-300"
                   title={fellow.action.meta}
                   ariaLabel={fellow.action.meta}
                   href={fellow.action.href}>
