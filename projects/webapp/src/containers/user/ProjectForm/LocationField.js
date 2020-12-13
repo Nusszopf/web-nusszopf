@@ -79,12 +79,12 @@ const LocationField = ({ formik, ...props }) => {
             options={locations}
           />
           {formik?.errors?.location?.searchTerm && formik.touched?.location?.searchTerm && (
-            <Text variant="textXs" className="mt-2 ml-4 italic">
+            <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
               {formik.errors.location?.searchTerm}
             </Text>
           )}
           {formik?.errors?.location?.data && formik.touched?.location?.searchTerm && (
-            <Text variant="textXs" className="mt-2 ml-4 italic">
+            <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
               {formik.errors.location?.data}
             </Text>
           )}

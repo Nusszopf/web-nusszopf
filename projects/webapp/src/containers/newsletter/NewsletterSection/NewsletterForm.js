@@ -40,7 +40,12 @@ const NewsletterForm = props => {
                 aria-label={newsletterData.subscribe.name.meta}
                 placeholder={newsletterData.subscribe.name.meta}
               />
-              <ErrorMessage variant="textSm" className="mt-2 ml-4 italic" component={Text} name="name" />
+              <ErrorMessage
+                variant="textSm"
+                className="mt-2 ml-4 italic text-warning-700"
+                component={Text}
+                name="name"
+              />
             </div>
             <div className="lg:w-1/2 lg:ml-2">
               <Field
@@ -52,7 +57,12 @@ const NewsletterForm = props => {
                 aria-label={newsletterData.subscribe.email.meta}
                 placeholder={newsletterData.subscribe.email.meta}
               />
-              <ErrorMessage variant="textSm" className="mt-2 ml-4 italic" component={Text} name="email" />
+              <ErrorMessage
+                variant="textSm"
+                className="mt-2 ml-4 italic text-warning-700"
+                component={Text}
+                name="email"
+              />
             </div>
           </div>
           <div className="mt-5">
@@ -75,7 +85,12 @@ const NewsletterForm = props => {
               }
             />
           </div>
-          <ErrorMessage variant="textSm" className="mt-2 ml-8 italic" component={Text} name="privacy" />
+          <ErrorMessage
+            variant="textSm"
+            className="mt-2 ml-8 italic text-warning-700"
+            component={Text}
+            name="privacy"
+          />
           <div className="flex justify-center">
             <Button className="mt-10 bg-blue-400 sm:mt-12" type="submit" size="large" disabled={loading}>
               Anmelden

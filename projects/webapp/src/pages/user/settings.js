@@ -126,7 +126,7 @@ const Settings = () => {
                       <ErrorMessage
                         name="privacy"
                         variant="textSm"
-                        className="mt-1 mb-3 ml-6 italic"
+                        className="mt-1 mb-3 ml-6 italic text-warning-700"
                         component={Text}
                       />
                       <Button

@@ -22,7 +22,7 @@ const GoalField = ({ formik, ...props }) => (
       placeholder={cms.goal.placeholder}
     />
     {formik?.errors?.goal && formik.touched?.goal && (
-      <Text variant="textXs" className="mt-2 ml-4 italic">
+      <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
         {formik.errors.goal}
       </Text>
     )}

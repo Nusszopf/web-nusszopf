@@ -47,7 +47,12 @@ const UnsubscribeLead = () => {
                 aria-label={cms.unsubscribe.email.meta}
                 placeholder={cms.unsubscribe.email.meta}
               />
-              <ErrorMessage variant="textSm" className="mt-2 ml-4 italic" component={Text} name="email" />
+              <ErrorMessage
+                variant="textSm"
+                className="mt-2 ml-4 italic text-warning-700"
+                component={Text}
+                name="email"
+              />
               <div className="mt-6 text-center">
                 <Button type="submit" disabled={loading} className="bg-steel-100">
                   Abmelden

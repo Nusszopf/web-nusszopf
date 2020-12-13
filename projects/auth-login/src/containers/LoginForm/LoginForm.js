@@ -32,7 +32,12 @@ const LoginForm = ({ className, loading, onSubmit, onLoginWithGoogle, onLoginWit
                 aria-label={cms.login.fields.emailOrName.aria}
                 placeholder={cms.login.fields.emailOrName.placeholder}
               />
-              <ErrorMessage name="emailOrName" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
+              <ErrorMessage
+                name="emailOrName"
+                variant="textSm"
+                className="mt-2 ml-4 italic text-warning-700"
+                component={Text}
+              />
             </div>
             <div className="mt-4">
               <InputGroup>
@@ -50,7 +55,12 @@ const LoginForm = ({ className, loading, onSubmit, onLoginWithGoogle, onLoginWit
                   {isEyeOpen ? <Eye size={24} /> : <EyeOff size={24} />}
                 </InputGroup.RightElement>
               </InputGroup>
-              <ErrorMessage name="password" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
+              <ErrorMessage
+                name="password"
+                variant="textSm"
+                className="mt-2 ml-4 italic text-warning-700"
+                component={Text}
+              />
             </div>
             <div className="mt-5 text-center">
               <Button type="submit" className="mx-1.5 mb-4 sm:mx-2 bg-steel-100" disabled={loading}>

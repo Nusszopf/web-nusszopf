@@ -31,7 +31,7 @@ const ChangePasswordForm = ({ className, loading, onSubmit, onCancel }) => (
           aria-label={cms.changePassword.fields.email.aria}
           placeholder={cms.changePassword.fields.email.placeholder}
         />
-        <ErrorMessage name="email" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
+        <ErrorMessage name="email" variant="textSm" className="mt-2 ml-4 italic text-warning-700" component={Text} />
         <div className="mt-6 space-x-4 text-center">
           <Button type="submit" className="bg-steel-100" disabled={loading}>
             {cms.changePassword.actions.send}

@@ -43,7 +43,12 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                 aria-label={cms.signup.fields.username.aria}
                 placeholder={cms.signup.fields.username.placeholder}
               />
-              <ErrorMessage name="username" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
+              <ErrorMessage
+                name="username"
+                variant="textSm"
+                className="mt-2 ml-4 italic text-warning-700"
+                component={Text}
+              />
             </div>
             <div className="mt-4">
               <Field
@@ -54,7 +59,12 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                 aria-label={cms.signup.fields.email.aria}
                 placeholder={cms.signup.fields.email.placeholder}
               />
-              <ErrorMessage name="email" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
+              <ErrorMessage
+                name="email"
+                variant="textSm"
+                className="mt-2 ml-4 italic text-warning-700"
+                component={Text}
+              />
             </div>
             <div className="mt-4">
               <InputGroup>
@@ -72,7 +82,12 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                   {isEyeOpen ? <Eye size={24} /> : <EyeOff size={24} />}
                 </InputGroup.RightElement>
               </InputGroup>
-              <ErrorMessage name="password" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
+              <ErrorMessage
+                name="password"
+                variant="textSm"
+                className="mt-2 ml-4 italic text-warning-700"
+                component={Text}
+              />
             </div>
             <div className="mt-4">
               <Field
@@ -96,7 +111,12 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                   </>
                 }
               />
-              <ErrorMessage name="privacy" variant="textSm" className="mt-1 mb-3 ml-4 italic" component={Text} />
+              <ErrorMessage
+                name="privacy"
+                variant="textSm"
+                className="mt-1 mb-3 ml-4 italic text-warning-700"
+                component={Text}
+              />
             </div>
             <div className="mt-2">
               <Field

@@ -23,7 +23,7 @@ const MottoField = ({ formik, ...props }) => (
       placeholder={cms.motto.placeholder}
     />
     {formik?.errors?.motto && formik.touched?.motto && (
-      <Text variant="textXs" className="mt-2 ml-4 italic">
+      <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
         {formik.errors.motto}
       </Text>
     )}

@@ -20,7 +20,7 @@ const TitleField = ({ formik }) => (
       placeholder={cms.title.placeholder}
     />
     {formik?.errors?.title && formik.touched?.title && (
-      <Text variant="textXs" className="mt-2 ml-4 italic">
+      <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
         {formik.errors.title}
       </Text>
     )}

@@ -22,7 +22,7 @@ const TeamField = ({ formik, ...props }) => (
       placeholder={cms.team.placeholder}
     />
     {formik?.errors?.team && formik.touched?.team && (
-      <Text variant="textXs" className="mt-2 ml-4 italic">
+      <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
         {formik.errors.team}
       </Text>
     )}

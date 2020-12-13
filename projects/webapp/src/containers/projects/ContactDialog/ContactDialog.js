@@ -69,7 +69,12 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
                 value={formik.values.title}
                 placeholder={cms.fields.email.placeholder}
               />
-              <ErrorMessage name="email" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
+              <ErrorMessage
+                name="email"
+                variant="textSm"
+                className="mt-2 ml-4 italic text-warning-700 "
+                component={Text}
+              />
             </>
             <>
               <Text className="mt-6 mb-3">{cms.fields.msg.title}</Text>
@@ -84,7 +89,12 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
                 onBlur={formik.handleBlur}
                 placeholder={cms.fields.msg.placeholder}
               />
-              <ErrorMessage name="msg" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
+              <ErrorMessage
+                name="msg"
+                variant="textSm"
+                className="mt-2 ml-4 italic text-warning-700"
+                component={Text}
+              />
             </>
             <div className="flex justify-center mt-12 space-x-4">
               <Button type="submit" className="bg-lilac-300" onClick={onContact}>

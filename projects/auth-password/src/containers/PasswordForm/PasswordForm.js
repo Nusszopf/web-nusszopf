@@ -48,7 +48,12 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
                 {isEyeOpen ? <Eye size={24} /> : <EyeOff size={24} />}
               </InputGroup.RightElement>
             </InputGroup>
-            <ErrorMessage name="password" variant="textSm" className="mt-2 ml-4 italic" component={Text} />
+            <ErrorMessage
+              name="password"
+              variant="textSm"
+              className="mt-2 ml-4 italic text-warning-700"
+              component={Text}
+            />
             <div className="mt-6 text-center">
               <Button type="submit" className="bg-steel-100" disabled={loading}>
                 {cms.action}

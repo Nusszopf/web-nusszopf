@@ -46,7 +46,7 @@ const CategoryField = ({ formik, ...props }) => {
         <option value="others">{cms.category.options.others}</option>
       </Select>
       {formik?.errors?.category && formik.touched?.category && (
-        <Text variant="textXs" className="mt-2 ml-4 italic">
+        <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
           {formik.errors.category}
         </Text>
       )}
