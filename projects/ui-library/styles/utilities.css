@@ -1,5 +1,5 @@
-@layer utilities {
-  .hyphens-auto {
+.hyphens-auto {
+  @layer utilities {
     hyphens: auto;
     overflow-wrap: break-word;
     word-break: break-word;

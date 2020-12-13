@@ -9,7 +9,7 @@ const Input = ({ as = ReakitInput, color = 'steel', size = 'base', className, ..
   <Box
     as={as}
     className={classnames(
-      'inline-block w-full bg-transparent rounded-md appearance-none ring-2 ring-transparent',
+      'inline-block w-full bg-transparent rounded-md appearance-none ring-2 ring-transparent placeholder-current',
       InputColor[color],
       'hover:ring-opacity-25 focus:ring-opacity-25 focus:outline-none focus:placeholder-transparent disabled:opacity-50 disabled:cursor-default',
       InputSize[size],
