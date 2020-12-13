@@ -111,7 +111,12 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
           )}
         </div>
         <div className="flex items-center">
-          <Clickable onClick={handleSearch} className="mr-6 sm:mr-8 focus:outline-none">
+          <Clickable
+            onClick={handleSearch}
+            disabled={process.env.ENV === 'production'}
+            className={classnames('mr-6 sm:mr-8 focus:outline-none', {
+              hidden: process.env.ENV === 'production',
+            })}>
             <Search />
           </Clickable>
           {user && (
@@ -131,7 +136,12 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
                 shadow: hasScrolled,
               }
             )}>
-            <MenuItem {...menu} hasIcon={true} onClick={handleSearch}>
+            <MenuItem
+              {...menu}
+              hasIcon={true}
+              onClick={handleSearch}
+              disabled={process.env.ENV === 'production'}
+              className={classnames({ 'opacity-50': process.env.ENV === 'production' })}>
               <div className="flex items-center ">
                 <Search className="-ml-2" />
                 <Text variant="textSmMedium" className="inline-block ml-3">
@@ -154,7 +164,11 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
                 </MenuItem>
               </>
             ) : (
-              <MenuItem {...menu} onClick={handleLoginSignup}>
+              <MenuItem
+                {...menu}
+                onClick={handleLoginSignup}
+                disabled={process.env.ENV === 'production'}
+                className={classnames({ 'opacity-50': process.env.ENV === 'production' })}>
                 <Text variant="textSmMedium">{cms.items[3]}</Text>
               </MenuItem>
             )}
