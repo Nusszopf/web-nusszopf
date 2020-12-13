@@ -21,7 +21,7 @@ const UnsubscribeLead = () => {
         <Route variant="svg" href="/" title={cms.unsubscribe.logo} ariaLabel={cms.unsubscribe.logo}>
           <SVGNusszopfLogoBig className="h-full w-36" />
         </Route>
-        <Text as="h1" variant="textXl" className="mt-10 mb-5 sm:mt-12 sm:text-center">
+        <Text as="h1" variant="textLgSemi" className="mt-10 mb-5 sm:mt-12 sm:text-center">
           {cms.unsubscribe.heading}
         </Text>
         <Text variant="textSmMedium" className="mb-4 hyphens-auto">

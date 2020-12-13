@@ -17,7 +17,7 @@ const UnsubscribeConfirm = ({ lead }) => (
       <Route variant="svg" href="/" title={cms.unsubscribe.logo} ariaLabel={cms.unsubscribe.logo}>
         <SVGNusszopfLogoBig className="h-full w-36" />
       </Route>
-      <Text as="h1" variant="textXl" className="mt-10 mb-5 sm:mt-12">
+      <Text as="h1" variant="textLgSemi" className="mt-10 mb-5 sm:mt-12">
         {cms.unsubscribeConfirm.heading}
         <span className="hidden sm:inline">...</span>
       </Text>

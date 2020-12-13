@@ -3,7 +3,7 @@ export const TextVariant = {
   titleMd: 'nz-title-md',
   titleSm: 'nz-title-sm',
   titleSmSemi: 'nz-title-sm-semi',
-  textXl: 'nz-text-xl',
+  textLgSemi: 'nz-text-lg-semi',
   textLg: 'nz-text-lg',
   textMd: 'nz-text-md',
   textSmMedium: 'nz-text-sm-medium',

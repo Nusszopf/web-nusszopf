@@ -13,7 +13,7 @@ const PasswordForm = ({ className, loading, onSubmit }) => {
   const [isEyeOpen, setEye] = useState(false)
   return (
     <div className={classnames('w-full text-steel-700', className)} data-test="signup form">
-      <Text as="h1" variant="textXl" className="mb-5 text-center">
+      <Text as="h1" variant="textLgSemi" className="mb-5 text-center">
         {cms.title}
       </Text>
       <Text variant="textSmMedium" className="mb-4 hyphens-auto">

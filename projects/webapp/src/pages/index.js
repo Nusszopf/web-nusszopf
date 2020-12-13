@@ -38,7 +38,7 @@ const Index = () => {
       </Frame>
       <Frame className="pt-12 pb-16 bg-yellow-300 sm:pt-16 sm:pb-18">
         <div className="flex flex-col max-w-2xl mx-auto xl:max-w-3xl">
-          <Text variant="textXl">{hintData.message}</Text>
+          <Text variant="textLg">{hintData.message}</Text>
           <Button
             size="large"
             onClick={() => scrollIntoView('newsletter')}

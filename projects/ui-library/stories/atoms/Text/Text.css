@@ -15,7 +15,7 @@
     @apply text-xl font-semibold leading-snug;
   }
 
-  .nz-text-xl {
+  .nz-text-lg-semi {
     @apply text-2xl font-semibold leading-snug;
   }
 
