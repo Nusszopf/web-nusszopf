@@ -3,7 +3,7 @@
 
 module.exports = {
   plugins: {
-    'postcss-import': {}, // -> sinnvoll? test läuft nicht...
+    'postcss-import': {},
     tailwindcss: {},
     'postcss-nesting': {},
     autoprefixer: {},
