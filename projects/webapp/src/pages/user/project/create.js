@@ -49,12 +49,12 @@ const CreateProject = () => {
           description: emptyRichText,
           requests: [],
           location: {
-            remote: true,
+            remote: false,
             searchTerm: '',
             data: {},
           },
           period: {
-            flexible: true,
+            flexible: false,
             from: '',
             to: '',
           },

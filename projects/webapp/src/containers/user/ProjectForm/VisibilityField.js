@@ -6,7 +6,7 @@ import { FieldTitle } from '~/components'
 import { projectFormData as cms } from '~/assets/data'
 
 const VisibilityField = ({ formik, ...props }) => {
-  const radio = useRadioState({ state: formik.values.visibility })
+  const radio = useRadioState({ state: formik.values.visibility, orientation: 'vertical' })
   return (
     <>
       <FieldTitle info={cms.visibility.info} {...props}>
