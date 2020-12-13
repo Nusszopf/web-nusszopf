@@ -5,6 +5,7 @@ import { Node } from 'slate'
 import { serializeText } from 'ui-library/services/RichTextEditor.service'
 import { NZ_EMAIL } from '../enums'
 import { parseDateISOString } from '../helper'
+import { createProjectData as cmsCreate, editProjectsViewsData as cmsEdit } from '~/assets/data'
 
 const useProjectsService = props => {
   const { notify } = useToasts()
@@ -73,7 +74,7 @@ const useProjectsService = props => {
     const project = serializeProject(user, form)
     notify({
       type: 'loading',
-      message: 'Projekt erstellen...',
+      message: cmsCreate.notify.project.loading,
     })
     try {
       const res = await apolloAddProject({ variables: { project } })
@@ -83,13 +84,13 @@ const useProjectsService = props => {
       }
       notify({
         type: 'success',
-        message: 'Dein Projekt wurde erstellt.',
+        message: cmsCreate.notify.project.success,
       })
       return true
     } catch (error) {
       notify({
         type: 'error',
-        message: 'Sorry, dein Projekt konnten nicht erstellt werden.',
+        message: cmsCreate.notify.project.error,
       })
       return false
     }
@@ -98,7 +99,7 @@ const useProjectsService = props => {
   const updateProject = async (id, project) => {
     notify({
       type: 'loading',
-      message: 'Änderungen speichern...',
+      message: cmsEdit.notify.project.update.loading,
     })
     try {
       await apolloUpdateProject({
@@ -106,22 +107,22 @@ const useProjectsService = props => {
       })
       notify({
         type: 'success',
-        message: 'Deine Projekt wurde aktualisiert.',
+        message: cmsEdit.notify.project.update.success,
       })
     } catch (error) {
       notify({
         type: 'error',
-        message: 'Sorry, deine Änderungen konnte nicht gepeichert werden.',
+        message: cmsEdit.notify.project.update.error,
       })
     }
   }
 
   const deleteProject = async id => {
-    const hasConfirmed = confirm('Möchtest Du dein Projekt wirklich löschen?')
+    const hasConfirmed = confirm(cmsEdit.notify.project.delete.alert)
     if (hasConfirmed) {
       notify({
         type: 'loading',
-        message: 'Löschen...',
+        message: cmsEdit.notify.project.delete.loading,
       })
       try {
         await apolloDeleteProject({
@@ -132,13 +133,13 @@ const useProjectsService = props => {
         })
         notify({
           type: 'success',
-          message: 'Dein Projekt wurde gelöscht.',
+          message: cmsEdit.notify.project.delete.success,
         })
         return true
       } catch (error) {
         notify({
           type: 'error',
-          message: 'Sorry, dein Projekt konnte nicht gelöscht werden.',
+          message: cmsEdit.notify.project.delete.success,
         })
         return false
       }
@@ -150,20 +151,20 @@ const useProjectsService = props => {
   const addRequest = async (id, _request) => {
     notify({
       type: 'loading',
-      message: 'Gesuch erstellen...',
+      message: cmsCreate.notify.request.loading,
     })
     try {
       const request = serializeRequest(id, _request)
       await apolloAddRequest({ variables: { request } })
       notify({
         type: 'success',
-        message: 'Dein Gesuch wurde erstellt.',
+        message: cmsCreate.notify.request.success,
       })
       return true
     } catch (error) {
       notify({
         type: 'error',
-        message: 'Sorry, dein Gesuch konnte nicht erstellt werden.',
+        message: cmsCreate.notify.request.error,
       })
       return false
     }
@@ -172,31 +173,31 @@ const useProjectsService = props => {
   const updateRequest = async _request => {
     notify({
       type: 'loading',
-      message: 'Änderungen speichern...',
+      message: cmsEdit.notify.request.update.loading,
     })
     try {
       const { created_at, ...request } = serializeRequest(_request.project_id, _request)
       await apolloUpdateRequest({ variables: { id: _request.id, request } })
       notify({
         type: 'success',
-        message: 'Dein Gesuch wurde aktualisiert.',
+        message: cmsEdit.notify.request.update.success,
       })
       return true
     } catch (error) {
       notify({
         type: 'error',
-        message: 'Sorry, dein Gesuch konnte nicht aktualisiert werden.',
+        message: cmsEdit.notify.request.update.error,
       })
       return false
     }
   }
 
   const deleteRequest = async id => {
-    const hasConfirmed = confirm('Möchtest Du dein Gesuch wirklich löschen?')
+    const hasConfirmed = confirm(cmsEdit.notify.request.delete.alert)
     if (hasConfirmed) {
       notify({
         type: 'loading',
-        message: 'Löschen...',
+        message: cmsEdit.notify.request.delete.loading,
       })
       try {
         await apolloDeleteRequest({
@@ -209,13 +210,13 @@ const useProjectsService = props => {
         })
         notify({
           type: 'success',
-          message: 'Dein Gesuch wurde gelöscht.',
+          message: cmsEdit.notify.request.delete.success,
         })
         return true
       } catch (error) {
         notify({
           type: 'error',
-          message: 'Sorry, dein Gesuch konnte nicht gelöscht werden.',
+          message: cmsEdit.notify.request.delete.error,
         })
         return false
       }

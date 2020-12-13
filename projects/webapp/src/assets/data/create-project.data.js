@@ -14,4 +14,16 @@ export default {
     action: 'Gesuch erstellen',
     info: 'Gesuche für das Projekt kannst Du entweder jetzt oder später erstellen.',
   },
+  notify: {
+    request: {
+      loading: 'Gesuch erstellen...',
+      success: 'Gesuch wurde erstellt.',
+      error: 'Sorry, das Gesuch konnte nicht erstellt werden.',
+    },
+    project: {
+      loading: 'Projekt erstellen...',
+      success: 'Projekt wurde erstellt.',
+      error: 'Sorry, das Projekt konnte nicht erstellt werden.',
+    },
+  },
 }
