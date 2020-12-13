@@ -8,7 +8,7 @@ const LegalNotice = () => (
     className="bg-steel-200 text-steel-800"
     footer={{ className: 'bg-steel-200' }}
     back="/"
-    navHeader={{ visible: process.env.ENV !== 'production', goBackUri: '/' }}>
+    navHeader={{ visible: true, goBackUri: '/' }}>
     <Frame className="my-12 sm:my-20 hyphens-auto">
       <div className="max-w-2xl mx-auto">
         <Text as="h1" variant="titleMd" className="mb-8">

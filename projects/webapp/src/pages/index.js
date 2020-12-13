@@ -14,7 +14,7 @@ const Index = () => {
 
   return (
     <Page
-      navHeader={{ visible: process.env.ENV !== 'production' }}
+      navHeader={{ visible: true }}
       footer={{ variant: 'classy', className: 'bg-steel-200' }}
       className="text-steel-700">
       <Frame as="header" className="bg-white">
