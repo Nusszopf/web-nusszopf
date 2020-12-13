@@ -5,7 +5,7 @@ import { Text, Input } from 'ui-library/stories/atoms'
 import { FieldTitle } from '~/components'
 import { requestFormData as cms } from '~/assets/data'
 
-export const TitleFieldValidationSchema = string().max(30, 'max length error').required('required error')
+export const TitleFieldValidationSchema = string().max(30, 'max length error').required(cms.title.error)
 
 const TitleField = ({ formik }) => (
   <>

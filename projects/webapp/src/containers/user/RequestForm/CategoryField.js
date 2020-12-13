@@ -6,7 +6,7 @@ import { FieldTitle } from '~/components'
 import { REQUEST_CATEGORY } from '~/utils/enums'
 import { requestFormData as cms } from '~/assets/data'
 
-export const CategoryFieldValidationSchema = string().required('required error')
+export const CategoryFieldValidationSchema = string().required(cms.category.error)
 
 const CategoryField = ({ formik, ...props }) => {
   const mapCategoryToColor = category => {

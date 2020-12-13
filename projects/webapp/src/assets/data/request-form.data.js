@@ -3,6 +3,7 @@ export default {
     title: 'Titel*',
     info: 'Wie soll das Gesuch heißen?',
     placeholder: 'Wer oder was wird gesucht?',
+    error: 'Gib einen Titel ein',
   },
   category: {
     title: 'Kategorie*',
@@ -15,6 +16,7 @@ export default {
       financials: 'Finanzielle Ressourcen',
       others: 'Sonstiges',
     },
+    error: 'Wähle eine Kategorie aus',
   },
   description: {
     title: 'Beschreibung*',
