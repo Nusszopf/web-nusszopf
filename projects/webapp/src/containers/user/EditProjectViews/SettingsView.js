@@ -36,19 +36,24 @@ const SettingsView = ({ user, project }) => {
           <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
             <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
               <VisibilityField formik={formik} />
-              <ContactField formik={formik} user={user} className="mt-6" />
-              <div className="mt-12">
+              <ContactField formik={formik} user={user} className="mt-8" />
+              <div className="text-center mt-9 sm:text-left">
                 <Button type="submit" className="bg-lilac-200" color="lilac" disabled={updateLoading}>
                   {cms.settingsView.save}
                 </Button>
               </div>
             </FramedGridCard.Body.Col>
-            <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4 text-warning-700">
-              <Text className="mb-2">Projekt löschen</Text>
-              <Text className="mb-6" variant="textSm">
+            <FramedGridCard.Body.Col variant="twoCols" className="text-center lg:pl-4 text-warning-700 sm:text-left">
+              <Text className="mt-8 mb-2 text-left lg:mt-0">Projekt löschen</Text>
+              <Text variant="textSm" className="text-left">
                 {cms.settingsView.alert}
               </Text>
-              <Button variant="outline" color="warning" onClick={handleDelete} disabled={deleteLoading}>
+              <Button
+                className="mt-6 sm:mt-4"
+                variant="outline"
+                color="warning"
+                onClick={handleDelete}
+                disabled={deleteLoading}>
                 {cms.settingsView.delete}
               </Button>
             </FramedGridCard.Body.Col>

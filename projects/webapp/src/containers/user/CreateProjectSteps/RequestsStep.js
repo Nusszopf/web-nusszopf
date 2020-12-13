@@ -79,7 +79,7 @@ const RequestsStep = () => {
                 request={request}
                 onEdit={onEdit}
                 onDelete={handleDelete}
-                className={classnames({ 'mb-2': index < projectFormik.values.requests.length - 1 })}
+                className={classnames({ 'mb-3': index < projectFormik.values.requests.length - 1 })}
               />
             ))}
           </div>

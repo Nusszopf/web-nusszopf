@@ -37,7 +37,7 @@ const DescriptionStep1 = () => {
       </FramedGridCard.Body.Col>
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
         <LocationField className="mt-5 lg:mt-0" formik={formik} />
-        <PeriodField formik={formik} className="mt-8" />
+        <PeriodField formik={formik} className="mt-7" />
       </FramedGridCard.Body.Col>
     </>
   )

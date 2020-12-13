@@ -9,6 +9,6 @@ export default {
   settingsView: {
     save: 'Speichern',
     alert: 'Nach dem Löschen können die Daten nicht wieder hergestellt werden.',
-    delete: 'Projekt löschen',
+    delete: 'Löschen',
   },
 }

@@ -75,14 +75,14 @@ const ProjectView = ({ user, project }) => {
           <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white text-lilac-800">
             <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
               <TitleField formik={formik} />
-              <GoalField formik={formik} className="mt-6" />
-              <ProjectField formik={formik} className="mt-6" />
+              <GoalField formik={formik} className="mt-8" />
+              <ProjectField formik={formik} className="mt-7" />
             </FramedGridCard.Body.Col>
             <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
-              <LocationField className="mt-4 lg:mt-0" formik={formik} />
-              <PeriodField className="mt-8" formik={formik} />
-              <TeamField formik={formik} className="mt-6" />
-              <MottoField formik={formik} className="mt-6" />
+              <LocationField className="mt-5 lg:mt-0" formik={formik} />
+              <PeriodField className="mt-7" formik={formik} />
+              <TeamField formik={formik} className="mt-7" />
+              <MottoField formik={formik} className="mt-8" />
             </FramedGridCard.Body.Col>
             <FramedGridCard.Body.Col variant="oneCol" className="flex justify-center mt-12 mb-4 md:mb-0 lg:col-start-2">
               <Button className="bg-lilac-200" type="submit" color="lilac" size="large" disabled={updateLoading}>

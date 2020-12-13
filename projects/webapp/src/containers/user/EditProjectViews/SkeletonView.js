@@ -9,11 +9,11 @@ const SkeletonView = () => (
         <Skeleton className="w-full h-10 mt-3 bg-lilac-200" />
       </>
       <>
-        <Skeleton full={false} className="h-4 max-w-xs mt-6 bg-lilac-200 w-36" />
+        <Skeleton full={false} className="h-4 max-w-xs mt-10 bg-lilac-200 w-36" />
         <Skeleton className="w-full mt-3 bg-lilac-200 h-18" />
       </>
       <>
-        <Skeleton full={false} className="h-4 max-w-xs mt-6 bg-lilac-200 w-36" />
+        <Skeleton full={false} className="h-4 max-w-xs mt-10 bg-lilac-200 w-36" />
         <Skeleton className="w-full h-32 mt-3 bg-lilac-200" />
       </>
     </FramedGridCard.Body.Col>
@@ -23,15 +23,15 @@ const SkeletonView = () => (
         <Skeleton className="w-full h-10 mt-3 bg-lilac-200" />
       </>
       <>
-        <Skeleton full={false} className="h-4 max-w-xs mt-6 bg-lilac-200 w-36" />
+        <Skeleton full={false} className="h-4 max-w-xs mt-10 bg-lilac-200 w-36" />
         <Skeleton className="w-full h-10 mt-3 bg-lilac-200" />
       </>
       <>
-        <Skeleton full={false} className="h-4 max-w-xs mt-6 bg-lilac-200 w-36" />
+        <Skeleton full={false} className="h-4 max-w-xs mt-10 bg-lilac-200 w-36" />
         <Skeleton className="w-full h-32 mt-3 bg-lilac-200" />
       </>
       <>
-        <Skeleton full={false} className="h-4 max-w-xs mt-6 bg-lilac-200 w-36" />
+        <Skeleton full={false} className="h-4 max-w-xs mt-10 bg-lilac-200 w-36" />
         <Skeleton className="w-full mt-3 bg-lilac-200 h-18" />
       </>
     </FramedGridCard.Body.Col>
