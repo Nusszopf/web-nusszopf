@@ -44,10 +44,10 @@ export default function IndexPage() {
     setWebAuth(webAuth)
   }, [router.query])
 
-  const showError = () => {
+  const showError = (i = 0) => {
     notify({
       type: 'error',
-      message: cms.notify.error,
+      message: cms.notify.error[i],
     })
   }
 
@@ -118,7 +118,7 @@ export default function IndexPage() {
   // https://auth0.com/docs/api/authentication#signup
   const handleSignup = values => {
     setLoading(true)
-    notify({ type: 'loading', message: cms.notify.login.signup })
+    notify({ type: 'loading', message: cms.notify.signup.loading })
     try {
       webAuth.redirect.signupAndLogin(
         {
@@ -130,7 +130,10 @@ export default function IndexPage() {
         },
         (error, response) => {
           setLoading(false)
-          if (error) showError()
+          if (error) {
+            const errorType = error.statusCode === 400 ? 1 : 0
+            showError(errorType)
+          }
           // redirect
         }
       )
