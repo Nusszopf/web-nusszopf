@@ -39,6 +39,7 @@ export default function IndexPage() {
       responseType: router.query['response_type'],
       scope: router.query['scope'],
       state: router.query['state'],
+      leeway: 60,
     }
     const webAuth = new WebAuth(params)
     setWebAuth(webAuth)

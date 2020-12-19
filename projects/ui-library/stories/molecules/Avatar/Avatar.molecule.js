@@ -11,10 +11,16 @@ const Avatar = ({ user, className, ...props }) => {
     return truncate(name, { length: 33 })
   }, [user])
 
+  const imgSource = useMemo(() => {
+    return user?.auth?.picture && user?.auth?.picture !== 'none'
+      ? user?.auth?.picture
+      : `https://eu.ui-avatars.com/api/?name=${parsedUserName}&size=128&background=CFD8DC&color=37474F&length=1&font-size=0.6&uppercase=true`
+  }, [user, parsedUserName])
+
   return (
     <div className={classnames('flex items-center break-all', className)} {...props}>
       <div className="overflow-hidden border-2 rounded-xl border-steel-700 bg-steel-700">
-        <img className="flex-shrink-0 w-16 h-16" src={user?.auth?.picture} alt="avatar" />
+        <img className="flex-shrink-0 w-16 h-16" src={imgSource} alt="avatar" />
       </div>
       <div className="ml-6">
         <Text variant="textSmMedium">{parsedUserName}</Text>

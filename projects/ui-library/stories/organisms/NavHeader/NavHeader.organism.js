@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
@@ -25,6 +25,12 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
       return () => window.removeEventListener('scroll', handleScroll)
     }
   }, [fixed])
+
+  const parsedUserName = useMemo(() => {
+    if (!user) return cms.items[1]
+    const name = user['https://hasura.io/jwt/claims']?.username ?? user?.name ?? user?.nickname ?? cms.items[1]
+    return truncate(name, { length: 12 })
+  }, [user])
 
   const handleScroll = () => {
     if (window.scrollY > 0) {
@@ -155,7 +161,7 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
                   <div className="flex items-center">
                     <User className="-ml-2" />
                     <Text variant="textSmMedium" className="inline-block ml-3">
-                      {truncate(user?.name ?? cms.items[1], { length: 14 })}
+                      {parsedUserName}
                     </Text>
                   </div>
                 </MenuItem>
