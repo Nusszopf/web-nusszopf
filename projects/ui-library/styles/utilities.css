@@ -1,8 +1,13 @@
-.hyphens-auto {
-  @layer utilities {
+@layer utilities {
+  .hyphens-auto {
     hyphens: auto;
     overflow-wrap: break-word;
     word-break: break-word;
+  }
+  .hyphens-all {
+    hyphens: auto;
+    overflow-wrap: anywhere;
+    word-break: break-all;
   }
   @responsive {
     /* custom responsive utilities */

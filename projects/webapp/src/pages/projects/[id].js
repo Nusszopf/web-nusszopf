@@ -102,7 +102,7 @@ const Project = ({ id, user }) => {
         <FramedGridCard.Header className="bg-lilac-300">
           <div className="flex flex-col flex-wrap lg:flex-row lg:justify-between">
             <div className="lg:pr-12 lg:w-9/12 hyphens-auto">
-              <Text as="h1" variant="textLg" className="mb-2">
+              <Text as="h1" variant="textLg" className="mb-2 hyphens-all">
                 {data?.projects_by_pk?.title}
               </Text>
               <Text variant="textSm" className="max-w-xl">
@@ -132,7 +132,7 @@ const Project = ({ id, user }) => {
                 </div>
               </div>
             </div>
-            <div className="flex mt-6 mb-2.5 lg:mt-5 lg:w-3/12 lg:mt-2 lg:items-end lg:flex-col lg:mb-0">
+            <div className="flex mt-6 mb-2.5 lg:mt-0 lg:w-3/12 lg:mt-2 lg:items-end lg:flex-col lg:mb-0">
               <Button
                 onClick={handleContact}
                 iconLeft={<Send size={21} className="mt-px mr-2 -ml-1" />}

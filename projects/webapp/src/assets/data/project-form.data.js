@@ -53,7 +53,7 @@ export default {
     title: 'Titel*',
     info: 'Gib deinem Projekt einen Titel.',
     placeholder: 'Wie heißt das Projekt?',
-    error: ['Nicht mehr als 30 Zeichen', 'Gib einen Titel ein'],
+    error: ['Nicht mehr als 40 Zeichen', 'Gib einen Titel ein'],
   },
   visibility: {
     title: 'Sichtbarkeit',
