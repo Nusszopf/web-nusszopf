@@ -18,7 +18,7 @@ const Avatar = ({ user, className, ...props }) => {
   }, [user, parsedUserName])
 
   return (
-    <div className={classnames('flex items-center hyphens-all', className)} {...props}>
+    <div className={classnames('flex items-center hyphens-auto', className)} {...props}>
       <div className="overflow-hidden border-2 rounded-xl border-steel-700 bg-steel-700">
         <img className="flex-shrink-0 w-16 h-16" src={imgSource} alt="avatar" />
       </div>

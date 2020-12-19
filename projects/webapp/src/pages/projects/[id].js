@@ -102,7 +102,7 @@ const Project = ({ id, user }) => {
         <FramedGridCard.Header className="bg-lilac-300">
           <div className="flex flex-col flex-wrap lg:flex-row lg:justify-between">
             <div className="lg:pr-12 lg:w-9/12 hyphens-auto">
-              <Text as="h1" variant="textLg" className="mb-2 hyphens-all">
+              <Text as="h1" variant="textLg" className="mb-2 hyphens-auto">
                 {data?.projects_by_pk?.title}
               </Text>
               <Text variant="textSm" className="max-w-xl">
