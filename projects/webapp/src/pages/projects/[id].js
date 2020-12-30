@@ -204,7 +204,7 @@ const Project = ({ id, user }) => {
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="oneCol" className="mt-8">
             <Text variant="textSm">
-              {cms.body.createdAt}: {data?.projects_by_pk.user.name},{' '}
+              {cms.body.createdBy} {data?.projects_by_pk.user.name},{' '}
               {new Date(data?.projects_by_pk?.created_at).toLocaleDateString('de-DE')}
             </Text>
           </FramedGridCard.Body.Col>
