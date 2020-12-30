@@ -2,6 +2,8 @@ import { Frame } from 'ui-library/stories/templates'
 import { Page } from '~/components'
 import { SearchInput } from '~/containers/search'
 
+// todo content -> asstes
+
 const Search = () => {
   return (
     <Page navHeader={{ visible: true }} footer={{ className: 'bg-white' }} className="text-steel-700">

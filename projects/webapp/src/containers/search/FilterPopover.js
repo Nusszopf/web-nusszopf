@@ -29,7 +29,7 @@ const FilterPopover = ({ className }) => {
           onSubmit={() => {}}>
           {formikProps => (
             <Form>
-              <div>
+              <div className="my-1.5">
                 <Field
                   as={Checkbox}
                   checked={formikProps.values.financials}
@@ -38,10 +38,10 @@ const FilterPopover = ({ className }) => {
                   label="Finanzielle Ressourcen"
                 />
               </div>
-              <div>
+              <div className="my-1.5">
                 <Field as={Checkbox} checked={formikProps.values.rooms} name="rooms" aria-label="Räume" label="Räume" />
               </div>
-              <div>
+              <div className="my-1.5">
                 <Field
                   as={Checkbox}
                   checked={formikProps.values.companions}
@@ -50,7 +50,7 @@ const FilterPopover = ({ className }) => {
                   label="Mitstreiter:innen"
                 />
               </div>
-              <div>
+              <div className="my-1.5">
                 <Field
                   as={Checkbox}
                   checked={formikProps.values.materials}
@@ -59,7 +59,7 @@ const FilterPopover = ({ className }) => {
                   label="Materialien"
                 />
               </div>
-              <div>
+              <div className="my-1.5">
                 <Field
                   as={Checkbox}
                   checked={formikProps.values.others}
