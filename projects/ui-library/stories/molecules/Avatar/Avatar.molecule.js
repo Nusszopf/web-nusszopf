@@ -8,7 +8,9 @@ const Avatar = ({ user, className, ...props }) => {
   const imgSource = useMemo(() => {
     return user?.auth?.picture && user?.auth?.picture !== 'none'
       ? user?.auth?.picture
-      : `https://eu.ui-avatars.com/api/?name=${user?.data?.name}&size=128&background=CFD8DC&color=37474F&length=1&font-size=0.6&uppercase=true`
+      : user?.data?.name
+      ? `https://eu.ui-avatars.com/api/?name=${user?.data?.name}&size=128&background=CFD8DC&color=37474F&length=1&font-size=0.6&uppercase=true`
+      : ''
   }, [user])
 
   return (
