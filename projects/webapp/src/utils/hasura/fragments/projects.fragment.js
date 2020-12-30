@@ -20,6 +20,9 @@ export const ProjectFragment = gql`
     requests(order_by: { created_at: desc }) {
       ...Request
     }
+    user {
+      name
+    }
   }
   ${RequestFragment}
 `
