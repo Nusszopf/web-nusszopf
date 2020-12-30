@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { Input } from '../../atoms'
@@ -35,7 +35,9 @@ InputGroup.propTypes = {
   className: PropTypes.string,
 }
 
-InputGroup.Input = ({ className, ...props }) => <Input className={classnames(className)} {...props} />
+InputGroup.Input = forwardRef(({ className, ...props }, ref) => (
+  <Input ref={ref} className={classnames(className)} {...props} />
+))
 InputGroup.Input.displayName = 'InputGroup.Input'
 InputGroup.Input.propTypes = { className: PropTypes.string }
 

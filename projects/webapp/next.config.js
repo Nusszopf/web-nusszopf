@@ -16,6 +16,7 @@ const nextConfig = {
     SANITY_URL: process.env.SANITY_URL,
     ENV: process.env.ENV,
     LOCATIONIQ_KEY: process.env.LOCATIONIQ_KEY,
+    MEILI_API_KEY: process.env.MEILI_API_KEY,
   },
   webpack: (config, { isServer }) => {
     if (isServer) {

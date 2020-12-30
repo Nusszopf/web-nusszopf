@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { Input as ReakitInput } from 'reakit/Input'
 import { Box } from 'reakit/Box'
 import { InputSize, InputColor } from './Input.theme'
 
-const Input = ({ as = ReakitInput, color = 'steel', size = 'base', className, ...props }) => (
+const Input = forwardRef(({ as = ReakitInput, color = 'steel', size = 'base', className, ...props }, ref) => (
   <Box
     as={as}
+    ref={ref}
     className={classnames(
       'inline-block w-full bg-transparent rounded-md appearance-none ring-2 ring-transparent placeholder-current',
       InputColor[color],
@@ -17,8 +18,9 @@ const Input = ({ as = ReakitInput, color = 'steel', size = 'base', className, ..
     )}
     {...props}
   />
-)
+))
 
+Input.displayName = 'Input'
 Input.propTypes = {
   as: PropTypes.oneOfType([PropTypes.elementType, PropTypes.string]),
   className: PropTypes.string,
