@@ -8,21 +8,21 @@ const InputGroup = ({ children, className, ...props }) => (
   <div className={classnames('relative', className)} {...props}>
     {React.Children.map(children, child => (
       <>
-        {child.type.displayName === 'InputGroup.Input' &&
+        {child?.type?.displayName === 'InputGroup.Input' &&
           React.cloneElement(child, {
             className: classnames(
               {
-                'pl-12': children.findIndex(child => child.type.displayName === 'InputGroup.LeftElement') >= 0,
-                'pr-12': children.findIndex(child => child.type.displayName === 'InputGroup.RightElement') >= 0,
+                'pl-12': children.findIndex(child => child?.type?.displayName === 'InputGroup.LeftElement') >= 0,
+                'pr-12': children.findIndex(child => child?.type?.displayName === 'InputGroup.RightElement') >= 0,
               },
               child.props.className
             ),
           })}
-        {child.type.displayName === 'InputGroup.LeftElement' &&
+        {child?.type?.displayName === 'InputGroup.LeftElement' &&
           React.cloneElement(child, {
             className: classnames('left-0', child.props.className),
           })}
-        {child.type.displayName === 'InputGroup.RightElement' &&
+        {child?.type?.displayName === 'InputGroup.RightElement' &&
           React.cloneElement(child, {
             className: classnames('right-0', child.props.className),
           })}
