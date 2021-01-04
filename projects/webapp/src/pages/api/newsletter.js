@@ -8,8 +8,7 @@ import {
   handleAuth0SyncHasura,
   NewsletterType,
 } from '../../utils/functions/newsletter.function'
-
-const ERROR_CONSTRAINT = 'constraint-violation'
+import { ERROR_CONSTRAINT } from '../../utils/enums'
 
 export default async function newsletter(req, res) {
   try {

@@ -23,3 +23,5 @@ export const REQUEST_CATEGORY = {
   financials: 'financials',
   others: 'others',
 }
+
+export const ERROR_CONSTRAINT = 'constraint-violation'

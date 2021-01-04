@@ -50,7 +50,7 @@ export const deleteLead = async email => {
   return res?.delete_leads?.affected_rows
 }
 
-export const getProject = async id => {
+export const getProjectCrop = async id => {
   const res = await fetchWithAdminAuth(GET_PROJECT_CROP, { id })
   return res?.projects_by_pk
 }

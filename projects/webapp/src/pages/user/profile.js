@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { PlusCircle } from 'react-feather'
 import { useRouter } from 'next/router'
+import { throttle } from 'lodash'
 
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { Route } from 'ui-library/stories/atoms'
@@ -25,13 +26,13 @@ const Profile = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const handleVisibility = (id, _visibility) => {
+  const handleVisibility = throttle((id, _visibility) => {
     if (!updateLoading) {
       const visibility =
         _visibility === PROJECT.visibility.public ? PROJECT.visibility.private : PROJECT.visibility.public
       updateProject(id, { visibility })
     }
-  }
+  }, 1000)
 
   return (
     <Page

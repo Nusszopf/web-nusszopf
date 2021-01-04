@@ -1,5 +1,5 @@
 import gql from 'graphql-tag'
-import { ProjectFragment } from '../fragments/projects.fragment'
+import { ProjectFragment, ProjectCropFragment } from '../fragments/projects.fragment'
 
 export const GET_USER_PROJECTS = gql`
   query getUserProjects($id: String!) {
@@ -20,11 +20,10 @@ export const GET_PROJECT = gql`
 `
 
 export const GET_PROJECT_CROP = gql`
-  query getProject($id: String!) {
+  query getProjectCrop($id: String!) {
     projects_by_pk(id: $id) {
-      title
-      goal
-      visibility
+      ...ProjectCrop
     }
   }
+  ${ProjectCropFragment}
 `

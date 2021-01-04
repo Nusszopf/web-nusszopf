@@ -1,8 +1,7 @@
 import sgClient from '@sendgrid/client'
 import { requireEventSecret } from '../../../utils/functions/auth.function'
 import { UsersTrigger, handleDeleteUser } from '../../../utils/functions/users.function'
-
-const ERROR_CONSTRAINT = 'constraint-violation'
+import { ERROR_CONSTRAINT } from '../../../utils/enums'
 
 export default async function users(req, res) {
   try {
