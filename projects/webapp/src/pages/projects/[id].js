@@ -243,7 +243,7 @@ export async function getServerSideProps(ctx) {
         const session = await auth0.getSession(ctx.req)
         user = session.user.sub
       } catch (error) {
-        console.log(error)
+        console.error(error)
       }
       return {
         props: {
@@ -254,7 +254,7 @@ export async function getServerSideProps(ctx) {
       }
     }
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return {
       notFound: true,
     }

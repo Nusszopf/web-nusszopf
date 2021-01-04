@@ -203,8 +203,6 @@ const useProjectsService = props => {
         await apolloDeleteRequest({
           variables: { id },
           update: (cache, { data }) => {
-            // todo
-            console.log(cache)
             cache.evict({ id: `requests:${data.delete_requests_by_pk.id}` })
           },
         })
