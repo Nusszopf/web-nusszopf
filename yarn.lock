@@ -5467,7 +5467,7 @@ cross-fetch@3.0.5:
   dependencies:
     node-fetch "2.6.0"
 
-cross-fetch@3.0.6, cross-fetch@^3.0.6:
+cross-fetch@3.0.6, cross-fetch@^3.0.5, cross-fetch@^3.0.6:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.0.6.tgz#3a4040bc8941e653e0e9cf17f29ebcd177d3365c"
   integrity sha512-KBPUbqgFjzWlVcURG+Svp9TlhA5uliYtiNx/0r8nv0pdypeQCRJ9IaSIc3q/x3q8t3F75cHuwxVql1HFGHCNJQ==
@@ -9733,6 +9733,13 @@ media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=
+
+meilisearch@0.17.0:
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/meilisearch/-/meilisearch-0.17.0.tgz#695914c929a57166a99e14549c22ab1216a62ed1"
+  integrity sha512-fKBNS1VtX8xl9WCK+3Uo60uLsJO6esoPXXOt6nq9lavWURmgRn7HC4em9S8N6P1kYCyb/BFMUOYZBm3rgq1zAw==
+  dependencies:
+    cross-fetch "^3.0.5"
 
 memoizerific@^1.11.3:
   version "1.11.3"

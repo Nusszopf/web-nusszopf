@@ -18,3 +18,13 @@ export const GET_PROJECT = gql`
   }
   ${ProjectFragment}
 `
+
+export const GET_PROJECT_CROP = gql`
+  query getProject($id: String!) {
+    projects_by_pk(id: $id) {
+      title
+      goal
+      visibility
+    }
+  }
+`

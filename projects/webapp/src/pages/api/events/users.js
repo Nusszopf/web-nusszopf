@@ -12,6 +12,8 @@ export default async function users(req, res) {
       case UsersTrigger.delete:
         await handleDeleteUser(req.body?.event?.data?.old, res, sgClient)
         break
+      default:
+        res.status(200).end('nothing triggered')
     }
   } catch (error) {
     console.error(error)

@@ -3,6 +3,7 @@ import { print } from 'graphql/language/printer'
 import { INSERT_LEAD, UPDATE_LEAD, DELETE_LEAD } from '../hasura/mutations/leads.mutation'
 import { GET_LEAD } from '../hasura/queries/newsletter.query'
 import { GET_USER } from '../hasura/queries/users.query'
+import { GET_PROJECT_CROP } from '../hasura/queries/projects.query'
 
 export const fetchWithUserAuth = (query, variables = {}, token) => {
   const client = new GraphQLClient(process.env.API_URL, {
@@ -47,4 +48,9 @@ export const updateLead = async id => {
 export const deleteLead = async email => {
   const res = await fetchWithAdminAuth(DELETE_LEAD, { email })
   return res?.delete_leads?.affected_rows
+}
+
+export const getProject = async id => {
+  const res = await fetchWithAdminAuth(GET_PROJECT_CROP, { id })
+  return res?.projects_by_pk
 }

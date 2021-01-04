@@ -32,6 +32,8 @@ export default async function newsletter(req, res) {
       case NewsletterType.auth0SyncHasura:
         await handleAuth0SyncHasura(req.body, res)
         break
+      default:
+        res.status(200).end('nothing triggered')
     }
   } catch (error) {
     console.error(error)

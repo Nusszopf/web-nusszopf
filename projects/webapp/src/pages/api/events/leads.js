@@ -16,6 +16,8 @@ export default async function account(req, res) {
           await handleConfirmation(req.body?.event?.data?.new, res, sgClient)
         }
         break
+      default:
+        res.status(200).end('nothing triggered')
     }
   } catch (error) {
     console.error(error)
