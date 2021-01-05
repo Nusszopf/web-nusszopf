@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { groupBy } from 'lodash'
 
+import { Masonry } from 'ui-library/stories/organisms'
 import { Frame } from 'ui-library/stories/templates'
 import { useSearch } from '~/utils/services/search.service'
 import { Page } from '~/components'
@@ -15,11 +16,16 @@ const Search = () => {
       <Frame className="pt-6 pb-4 md:pt-12 bg-moss-200">
         <SearchInput className="max-w-2xl mx-auto" />
       </Frame>
-      <Frame className="flex-1 h-full mt-10 break-all">
-        <div className="space-y-4">
-          {groupedHits.length > 0 &&
-            groupedHits.map(group => <HitCard key={group[0]} projectId={group[0]} hits={group[1]} />)}
-        </div>
+      <Frame className="flex-1 h-full mt-8 break-all">
+        {groupedHits.length > 0 && (
+          <Masonry
+            breakpointCols={{ default: 3, 639: 1, 1023: 2 }}
+            gap={{ wrap: '-ml-5 -mb-5', col: 'pl-5', row: 'mb-5' }}>
+            {groupedHits.map(group => (
+              <HitCard key={group[0]} projectId={group[0]} hits={group[1]} />
+            ))}
+          </Masonry>
+        )}
       </Frame>
     </Page>
   )

@@ -7,6 +7,8 @@ import MeiliSearch from 'meilisearch'
 // - small response object (e.g. attributesToRetrieve: [""])
 // - Set  `searchable-attributes`
 // - Set `displayed-attributes`
+// - crop
+// - filter
 
 export const SearchContext = createContext({})
 export const useSearch = () => useContext(SearchContext)
