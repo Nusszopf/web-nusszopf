@@ -1,15 +1,17 @@
 import PropTypes from 'prop-types'
-import { PreviewRequestCard, ViewRequestCard, EditRequestCard } from './variants'
+import { PreviewRequestCard, ViewRequestCard, EditRequestCard, HitRequestCard } from './variants'
 import { RequestVariant } from './RequestCard.theme'
 
 const RequestCard = ({ variant, ...props }) => {
   switch (variant) {
-    case 'preview':
+    case RequestVariant.preview:
       return <PreviewRequestCard {...props} />
-    case 'view':
+    case RequestVariant.view:
       return <ViewRequestCard {...props} />
-    case 'edit':
+    case RequestVariant.edit:
       return <EditRequestCard {...props} />
+    case RequestVariant.hit:
+      return <HitRequestCard {...props} />
   }
 }
 

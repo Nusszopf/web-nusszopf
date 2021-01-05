@@ -34,9 +34,19 @@ export const SearchContextProvider = ({ children }) => {
     console.log('search')
     try {
       const _hits = await index.search(_term, {
-        matches: true,
         limit: 100,
-        attributesToRetrieve: ['*'],
+        attributesToRetrieve: ['itemsId', 'groupId', 'type', 'pro_title', 'pro_goal', 'req_type'],
+        attributesToHighlight: [
+          'pro_title',
+          'pro_goal',
+          'pro_description',
+          'pro_team',
+          'pro_motto',
+          'pro_location_text',
+          'pro_author',
+          'req_title',
+          'req_description',
+        ],
         // filters: 'req_type != others AND req_type != financials',
       })
       setHits(_hits)

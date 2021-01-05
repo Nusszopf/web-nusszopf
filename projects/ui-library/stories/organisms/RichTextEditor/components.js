@@ -14,7 +14,7 @@ export const Leaf = ({ attributes, children, leaf }) => {
     children = <span className="font-medium">{children}</span>
   }
   if (leaf.italic) {
-    children = <em>{children}</em>
+    children = <i>{children}</i>
   }
   if (leaf.underline) {
     children = <u>{children}</u>

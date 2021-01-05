@@ -2,6 +2,7 @@ export const RequestVariant = {
   view: 'view',
   preview: 'preview',
   edit: 'edit',
+  hit: 'hit',
 }
 
 export const RequestCategoryColor = {
