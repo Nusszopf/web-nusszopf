@@ -16,7 +16,7 @@ const Search = () => {
       <Frame className="pt-6 pb-4 md:pt-12 bg-moss-200">
         <SearchInput className="max-w-2xl mx-auto" />
       </Frame>
-      <Frame className="flex-1 h-full mt-8 break-all">
+      <Frame className="flex-1 h-full my-8 break-all">
         {groupedHits.length > 0 && (
           <Masonry
             breakpointCols={{ default: 3, 639: 1, 1023: 2 }}

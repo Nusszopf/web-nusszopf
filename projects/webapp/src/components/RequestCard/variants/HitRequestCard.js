@@ -17,6 +17,7 @@ const HitRequestCard = ({ request, className, ...props }) => (
       <Request size={18} className="flex-shrink-0 mt-1 mr-1" />
       <Text
         variant="textXs"
+        className="font-medium"
         dangerouslySetInnerHTML={{ __html: request?._formatted?.req_title || request?.req_title }}
       />
     </div>
