@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# Nusszopf – Network for joint ideas and projects
+# Nusszopf – Network for joint idea and project processes
 
 ## Special thanks to our sponsors
 
