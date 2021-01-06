@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
+import { Request } from '~/assets/icons'
 import { Text } from 'ui-library/stories/atoms'
 import { RequestCategoryColor } from '../RequestCard.theme'
 
@@ -12,7 +13,10 @@ const PreviewRequestCard = ({ request, className, ...props }) => (
       className
     )}
     {...props}>
-    <Text variant="textSmMedium">{request.title}</Text>
+    <div className="flex items-start">
+      <Request size={18} className="flex-shrink-0 mt-1.5 mr-1" />
+      <Text variant="textSmMedium">{request.title}</Text>
+    </div>
     <Text variant="textXs">Erstellt am {new Date(request.created_at).toLocaleDateString('de-DE')}</Text>
   </div>
 )

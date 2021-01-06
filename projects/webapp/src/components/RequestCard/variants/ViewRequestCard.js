@@ -3,6 +3,7 @@ import { Clickable } from 'reakit/Clickable'
 import classnames from 'classnames'
 import { ChevronRight } from 'react-feather'
 
+import { Request } from '~/assets/icons'
 import { Text } from 'ui-library/stories/atoms'
 import { RequestCategoryColor } from '../RequestCard.theme'
 
@@ -16,7 +17,10 @@ const ViewRequestCard = ({ onClick, request, className, ...props }) => (
     )}
     {...props}>
     <div className="mr-4 text-left hyphens-auto">
-      <Text variant="textSmMedium">{request.title}</Text>
+      <div className="flex items-start -mt-0.5">
+        <Request size={18} className="flex-shrink-0 mt-1.5 mr-1" />
+        <Text variant="textSmMedium">{request.title}</Text>
+      </div>
       <Text variant="textXs">Erstellt am {new Date(request.created_at).toLocaleDateString('de-DE')}</Text>
     </div>
     <ChevronRight size={30} className="flex-shrink-0" />

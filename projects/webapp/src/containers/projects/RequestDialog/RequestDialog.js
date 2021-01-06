@@ -7,6 +7,7 @@ import { Button, Text } from 'ui-library/stories/atoms'
 import { Dialog } from 'ui-library/stories/organisms'
 import { serializeJSX } from 'ui-library/services/RichTextEditor.service'
 import { CategoryButtonColor, CategoryBackgroundColor, CategoryLinkColor } from './RequestDialog.theme'
+import { Request } from '~/assets/icons'
 import { requestDialogData as cms } from '~/assets/data'
 
 const RequestDialog = ({ isOpen, onDismiss, onContact, request, ...props }) => {
@@ -31,7 +32,10 @@ const RequestDialog = ({ isOpen, onDismiss, onContact, request, ...props }) => {
         <Button className="absolute top-0 right-0 p-1 m-3" variant="clean" size="baseClean" onClick={onDismiss}>
           <X />
         </Button>
-        <Text className="mb-2">{request?.title}</Text>
+        <div className="flex items-start -mt-0.5 mb-2">
+          <Request size={22} className="flex-shrink-0 mt-1 mr-1.5" />
+          <Text>{request?.title}</Text>
+        </div>
         <Text variant="textSm">
           {cms.created_at} {new Date(request?.created_at).toLocaleDateString('de-DE')}
         </Text>
