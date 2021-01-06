@@ -102,7 +102,7 @@ const parseRequestToDocument = (request, project) => {
     req_type: request?.category,
     req_title: request?.title,
     req_description: request?.description,
-    req_created_at: request?.created_at,
+    req_created_at: request?.created_at ? new Date(request.created_at).valueOf() : '',
   }
 }
 
@@ -113,7 +113,7 @@ const parseProjectToDocument = (project, projectCrop) => {
     type: 'project',
     pro_title: project?.title,
     pro_goal: project?.goal,
-    pro_created_at: project?.created_at,
+    pro_created_at: project?.created_at ? new Date(project.created_at).valueOf() : '',
     pro_description: project?.description,
     pro_team: project?.team,
     pro_motto: project?.motto,
@@ -122,8 +122,8 @@ const parseProjectToDocument = (project, projectCrop) => {
     pro_location_geo: !project?.location?.remote ? project?.location?.data?.geo : {},
     pro_location_text: !project?.location?.remote ? project?.location?.searchTerm : '',
     pro_period_flexible: project?.period?.flexible,
-    pro_period_from: !project?.period?.flexible ? project?.period?.from : '',
-    pro_period_to: !project?.period?.flexible ? project?.period?.to : '',
+    pro_period_from: !project?.period?.flexible ? new Date(project?.period?.from).valueOf() : '',
+    pro_period_to: !project?.period?.flexible ? new Date(project?.period?.to).valueOf() : '',
     pro_author: projectCrop?.user?.name,
   }
 }

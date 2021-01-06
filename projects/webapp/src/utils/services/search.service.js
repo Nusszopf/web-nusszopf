@@ -8,18 +8,17 @@ import MeiliSearch from 'meilisearch'
 // - Set `displayed-attributes`
 
 // TODO
-// 1. grouping
-// 2. no results state
-// 3. initial state
+// 1. initial state
+// 2. load more
+// 3. new combobox component for serach
 // 4. crop text length
-// 5. new combobox component for serach
-// 6. profile back route
 
 export const SearchContext = createContext({})
 export const useSearch = () => useContext(SearchContext)
 
 export const SearchContextProvider = ({ children }) => {
   const [client, setClient] = useState()
+  const [isInitial, setIsInital] = useState(true)
   const [index, setIndex] = useState()
   const [term, setTerm] = useState('')
   const [hits, setHits] = useState([])
@@ -65,12 +64,17 @@ export const SearchContextProvider = ({ children }) => {
         filters: filterQuery.length > 0 ? filterQuery : null,
       })
       setHits(_hits)
+      setIsInital(false)
     } catch (error) {
       console.error(error)
     }
   }, 250)
 
-  return <SearchContext.Provider value={{ term, setTerm, filter, hits, search }}>{children}</SearchContext.Provider>
+  return (
+    <SearchContext.Provider value={{ term, setTerm, isInitial, filter, hits, search }}>
+      {children}
+    </SearchContext.Provider>
+  )
 }
 
 SearchContextProvider.propTypes = {
