@@ -9,21 +9,10 @@ import { useSearch } from '~/utils/services/search.service'
 import FilterPopover from './FilterPopover'
 
 const SearchInput = ({ className }) => {
-  const { term, setTerm, search } = useSearch()
+  const { term, setTerm, filter, search } = useSearch()
   const [isKeyCode13, setIsKeyCode13] = useState(false)
-  const [currentFilter, setCurrentFilter] = useState({
-    financials: true,
-    rooms: true,
-    companions: true,
-    materials: true,
-    others: true,
-  })
-  const [filter, setFilter] = useState(currentFilter)
+  const [newFilter, setNewFilter] = useState(filter)
   const inputRef = useRef()
-
-  useEffect(() => {
-    setTerm(term)
-  }, [term, setTerm])
 
   useEffect(() => {
     if (!inputRef?.current) return
@@ -40,11 +29,6 @@ const SearchInput = ({ className }) => {
     }
   }
 
-  const handleChange = event => {
-    setCurrentFilter(filter)
-    setTerm(event.target.value)
-  }
-
   const handleBlur = () => {
     if (isKeyCode13) {
       handleSearch()
@@ -52,9 +36,12 @@ const SearchInput = ({ className }) => {
     }
   }
 
+  const handleChange = event => {
+    setTerm(event.target.value)
+  }
+
   const handleSearch = () => {
-    setCurrentFilter(filter)
-    search(term, filter)
+    search(term, newFilter)
   }
 
   const handleClear = event => {
@@ -68,7 +55,7 @@ const SearchInput = ({ className }) => {
       <InputGroup className="rounded-lg bg-moss-400 text-moss-800">
         <InputGroup.LeftElement onClick={handleSearch}>
           <div className="p-1 -ml-1 transition duration-100 ease-out rounded-full hover:bg-moss-200">
-            {term?.length > 0 && !isEqual(filter, currentFilter) ? (
+            {term?.length > 0 && !isEqual(filter, newFilter) ? (
               <RefreshCw size={21} strokeWidth={2.2} className="ml-0.5" />
             ) : (
               <SearchIcon size={24} />
@@ -92,7 +79,7 @@ const SearchInput = ({ className }) => {
           </InputGroup.RightElement>
         )}
       </InputGroup>
-      <FilterPopover filter={filter} setFilter={setFilter} className="float-right mt-2 mr-3" />
+      <FilterPopover filter={newFilter} setFilter={setNewFilter} className="float-right mt-2 mr-3" />
     </div>
   )
 }

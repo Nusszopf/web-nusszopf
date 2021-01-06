@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import { truncate } from 'lodash'
 
 import { Text } from 'ui-library/stories/atoms'
 import { Request } from '~/assets/icons'
@@ -22,7 +23,10 @@ const HitRequestCard = ({ request, className, ...props }) => (
       />
     </div>
     {request?._formatted?.req_description && (
-      <Text variant="textXs" dangerouslySetInnerHTML={{ __html: request?._formatted?.req_description }} />
+      <Text
+        variant="textXs"
+        dangerouslySetInnerHTML={{ __html: truncate(request._formatted?.req_description, { length: 90 }) }}
+      />
     )}
   </div>
 )

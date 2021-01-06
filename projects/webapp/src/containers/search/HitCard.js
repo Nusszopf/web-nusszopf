@@ -10,10 +10,17 @@ import { RequestCard } from '~/components'
 
 const HitCard = ({ projectId, hits, className, ...props }) => {
   const projectHits = useMemo(() => {
-    const { req_title, req_description, ...project } = hits[0]?._formatted
-    return Object.values(project)
-      .filter(i => i.length > 0)
-      .join(' | ')
+    const _hits = hits.filter(hit => hit.type === 'project')
+    if (_hits.length <= 0) {
+      return ''
+    }
+    const { req_title, req_description, ...project } = _hits[0]?._formatted
+    return truncate(
+      Object.values(project)
+        .filter(i => i.length > 0)
+        .join(' | '),
+      { length: 90 }
+    )
   }, [hits])
 
   return (
@@ -40,15 +47,7 @@ const HitCard = ({ projectId, hits, className, ...props }) => {
             <ChevronRight size={28} className="-mr-2" />
           </div>
         </div>
-        {hits.map(
-          hit =>
-            hit.type === 'project' &&
-            projectHits.length > 0 && (
-              <div className="mb-4">
-                <Text key={hit.itemsId} variant="textXs" dangerouslySetInnerHTML={{ __html: projectHits }} />
-              </div>
-            )
-        )}
+        {projectHits.length > 0 && <Text variant="textXs" dangerouslySetInnerHTML={{ __html: projectHits }} />}
         {hits.map(
           hit =>
             hit.type === 'request' && <RequestCard className="mt-2" key={hit.itemsId} variant="hit" request={hit} />

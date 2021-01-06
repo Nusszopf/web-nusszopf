@@ -34,7 +34,7 @@ const MyMasonry = ({
 }
 
 MyMasonry.propTypes = {
-  breakpointCols: PropTypes.number,
+  breakpointCols: PropTypes.object,
   children: PropTypes.node,
   className: PropTypes.string,
   columnClassName: PropTypes.string,
