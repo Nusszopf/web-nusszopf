@@ -8,9 +8,9 @@ import MeiliSearch from 'meilisearch'
 // - Set `displayed-attributes`
 
 // TODO
-// 1. load more (fab + logic)
-// 3. initial state placeholder-search: getServerSideProps
-// 4. truncate text length (UI)
+// 1. load more documents
+// 2. scroll-to-top (fab)
+// 2. truncate text length (UI)
 
 export const MEILI_CONFIG = {
   limit: 100,

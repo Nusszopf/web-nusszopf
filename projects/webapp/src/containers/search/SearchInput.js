@@ -59,7 +59,7 @@ const SearchInput = ({ className }) => {
           <div className="flex items-center justify-center w-10 h-10 rounded-full bg-moss-400">
             {isLoading ? (
               <Loader className="animate-spin" size={22} strokeWidth={2.2} />
-            ) : term?.length > 0 && !isEqual(filter, newFilter) ? (
+            ) : !isEqual(filter, newFilter) ? (
               <RefreshCw size={20} strokeWidth={2.2} className="" />
             ) : (
               <SearchIcon size={24} />
