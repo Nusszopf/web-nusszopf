@@ -10,9 +10,9 @@ import { searchData as cms } from '~/assets/data'
 // - Set `displayed-attributes`
 
 // TODO
-// 1. remove duplicates
+// 1. remove duplicates (load more)
 // 2. scroll-to-top (fab)
-// 3. truncate text length (UI)
+// 3. truncate text length where needed (UI)
 
 const OFFSET = 100
 export const MEILI_CONFIG = {
