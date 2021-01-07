@@ -13,6 +13,7 @@ import { searchData as cms } from '~/assets/data'
 // 1. remove duplicates (load more)
 // 2. scroll-to-top (fab)
 // 3. truncate text length where needed (UI)
+// 4. search-page: getStaticProps?
 
 const OFFSET = 100
 export const MEILI_CONFIG = {

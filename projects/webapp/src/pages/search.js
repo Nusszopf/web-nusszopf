@@ -66,7 +66,7 @@ const Search = ({ placeholderHits = [] }) => {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { index } = await initMeiliSearch()
   const placeholderHits = await index.search('', MEILI_CONFIG)
   return { props: { placeholderHits } }
