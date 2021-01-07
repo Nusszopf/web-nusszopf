@@ -12,8 +12,18 @@ const InputGroup = ({ children, className, ...props }) => (
           React.cloneElement(child, {
             className: classnames(
               {
-                'pl-12': children.findIndex(child => child?.type?.displayName === 'InputGroup.LeftElement') >= 0,
-                'pr-12': children.findIndex(child => child?.type?.displayName === 'InputGroup.RightElement') >= 0,
+                'pl-12':
+                  children.findIndex(child => child?.type?.displayName === 'InputGroup.LeftElement') >= 0 &&
+                  child.props.size !== 'large',
+                'pr-12':
+                  children.findIndex(child => child?.type?.displayName === 'InputGroup.RightElement') >= 0 &&
+                  child.props.size !== 'large',
+                'pl-16':
+                  children.findIndex(child => child?.type?.displayName === 'InputGroup.LeftElement') >= 0 &&
+                  child.props.size === 'large',
+                'pr-16':
+                  children.findIndex(child => child?.type?.displayName === 'InputGroup.RightElement') >= 0 &&
+                  child.props.size === 'large',
               },
               child.props.className
             ),

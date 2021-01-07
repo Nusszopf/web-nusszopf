@@ -4,21 +4,24 @@ import { usePopoverState, Popover, PopoverDisclosure } from 'reakit/Popover'
 import { ChevronDown } from 'react-feather'
 
 import { searchData as cms } from '~/assets/data'
-import { Checkbox } from 'ui-library/stories/atoms'
+import { Checkbox, Text } from 'ui-library/stories/atoms'
 
 const FilterPopover = ({ className, filter, setFilter }) => {
-  const popover = usePopoverState({ placement: 'bottom-start', unstable_offset: [0, 8] })
+  const popover = usePopoverState({ placement: 'bottom-end', unstable_offset: [0, 8] })
 
   return (
-    <div className={classnames('font-medium text-moss-800', className)}>
+    <div className={classnames('text-moss-800', className)}>
       <PopoverDisclosure {...popover} className="flex font-semibold focus:outline-none">
-        {cms.filter.title} <ChevronDown size={20} strokeWidth={2.5} className="mt-1 ml-1" />
+        <div className="flex px-4 py-1 rounded-full bg-moss-400">
+          <Text variant="textXs">{cms.filter.title} </Text>
+          <ChevronDown size={20} strokeWidth={2.5} className="mt-1 ml-1 -mr-1" />
+        </div>
       </PopoverDisclosure>
       <Popover
         {...popover}
         aria-label="Info"
         tabIndex={0}
-        className="z-10 w-64 px-4 py-2 text-sm font-medium border-2 rounded-md shadow-md bg-moss-400 border-moss-800 focus:outline-none">
+        className="z-10 w-64 px-4 py-2 text-sm font-medium border-2 rounded-md shadow-md bg-moss-200 border-moss-800 focus:outline-none">
         <div className="my-1.5">
           <Checkbox
             checked={filter.financials}

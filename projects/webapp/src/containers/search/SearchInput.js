@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { X as XIcon, Search as SearchIcon, RefreshCw } from 'react-feather'
+import { X as XIcon, Search as SearchIcon, RefreshCw, Loader } from 'react-feather'
 import { isEqual } from 'lodash'
 
 import { InputGroup } from 'ui-library/stories/molecules'
@@ -9,7 +9,7 @@ import { useSearch } from '~/utils/services/search.service'
 import FilterPopover from './FilterPopover'
 
 const SearchInput = ({ className }) => {
-  const { term, setTerm, filter, search } = useSearch()
+  const { term, setTerm, filter, search, isLoading } = useSearch()
   const [isKeyCode13, setIsKeyCode13] = useState(false)
   const [newFilter, setNewFilter] = useState(filter)
   const inputRef = useRef()
@@ -41,7 +41,9 @@ const SearchInput = ({ className }) => {
   }
 
   const handleSearch = () => {
-    search(term, newFilter)
+    if (!isLoading) {
+      search(term, newFilter)
+    }
   }
 
   const handleClear = event => {
@@ -51,12 +53,14 @@ const SearchInput = ({ className }) => {
   }
 
   return (
-    <div className={classnames(className)}>
-      <InputGroup className="rounded-lg bg-moss-400 text-moss-800">
+    <div className={className}>
+      <InputGroup className="rounded-lg text-moss-800">
         <InputGroup.LeftElement onClick={handleSearch}>
-          <div className="p-1 -ml-1 transition duration-100 ease-out rounded-full hover:bg-moss-200">
-            {term?.length > 0 && !isEqual(filter, newFilter) ? (
-              <RefreshCw size={21} strokeWidth={2.2} className="ml-0.5" />
+          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-moss-400">
+            {isLoading ? (
+              <Loader className="animate-spin" size={22} strokeWidth={2.2} />
+            ) : term?.length > 0 && !isEqual(filter, newFilter) ? (
+              <RefreshCw size={20} strokeWidth={2.2} className="" />
             ) : (
               <SearchIcon size={24} />
             )}
@@ -66,26 +70,28 @@ const SearchInput = ({ className }) => {
           ref={inputRef}
           value={term}
           color="moss"
-          className="font-medium"
+          size="large"
           onChange={handleChange}
           onBlur={handleBlur}
+          displayRing={false}
           placeholder="Suchen & Entdecken"
         />
         {term?.length > 0 && (
           <InputGroup.RightElement onClick={handleClear} className={classnames({ hidden: term.length === 0 })}>
-            <div className="p-1 -mr-1 transition duration-100 ease-out rounded-full hover:bg-moss-200">
+            <div className="p-1 transition duration-100 ease-out rounded-full hover:bg-moss-400">
               <XIcon size={24} />
             </div>
           </InputGroup.RightElement>
         )}
       </InputGroup>
-      <FilterPopover filter={newFilter} setFilter={setNewFilter} className="float-right mt-2 mr-3" />
+      <FilterPopover filter={newFilter} setFilter={setNewFilter} className="float-right mt-3" />
     </div>
   )
 }
 
 SearchInput.propTypes = {
   className: PropTypes.string,
+  isLoading: PropTypes.bool,
 }
 
 export default SearchInput

@@ -8,20 +8,35 @@ import MeiliSearch from 'meilisearch'
 // - Set `displayed-attributes`
 
 // TODO
-// 1. initial state
-// 2. load more
-// 3. new combobox component for serach
-// 4. crop text length
+// 1. load more (fab + logic)
+// 3. initial state placeholder-search: getServerSideProps
+// 4. truncate text length (UI)
+
+export const MEILI_CONFIG = {
+  limit: 100,
+  attributesToRetrieve: ['itemsId', 'groupId', 'type', 'pro_title', 'pro_goal', 'req_type'],
+  attributesToHighlight: [
+    'pro_title',
+    'pro_goal',
+    'pro_description',
+    'pro_team',
+    'pro_motto',
+    'pro_location_text',
+    'pro_author',
+    'req_title',
+    'req_description',
+  ],
+}
 
 export const SearchContext = createContext({})
 export const useSearch = () => useContext(SearchContext)
 
 export const SearchContextProvider = ({ children }) => {
   const [client, setClient] = useState()
-  const [isInitial, setIsInital] = useState(true)
   const [index, setIndex] = useState()
   const [term, setTerm] = useState('')
   const [hits, setHits] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
   const [filter, setFilter] = useState({
     financials: true,
     rooms: true,
@@ -42,6 +57,7 @@ export const SearchContextProvider = ({ children }) => {
 
   const search = throttle(async (_term, _filter) => {
     setFilter(_filter)
+    setIsLoading(true)
     const filterQuery = Object.entries(_filter)
       .filter(item => !item[1])
       .map(item => `req_type != ${item[0]}`)
@@ -64,14 +80,15 @@ export const SearchContextProvider = ({ children }) => {
         filters: filterQuery.length > 0 ? filterQuery : null,
       })
       setHits(_hits)
-      setIsInital(false)
+      setIsLoading(false)
     } catch (error) {
-      console.error(error)
+      setHits([])
+      setIsLoading(false)
     }
-  }, 250)
+  }, 500)
 
   return (
-    <SearchContext.Provider value={{ term, setTerm, isInitial, filter, hits, search }}>
+    <SearchContext.Provider value={{ term, setTerm, filter, hits, setHits, isLoading, search }}>
       {children}
     </SearchContext.Provider>
   )

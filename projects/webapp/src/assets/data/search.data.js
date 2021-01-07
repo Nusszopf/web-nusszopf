@@ -1,6 +1,7 @@
 export default {
+  title: 'Ideen und Projekte aus dem Nusswerk',
   filter: {
-    title: 'Filter',
+    title: 'Filtern',
     options: {
       companions: 'Mitstreiter:innen',
       rooms: 'Räume',
@@ -17,8 +18,5 @@ export default {
       meta: 'Idee | Projekt starten',
       text: 'Idee | Projekt starten',
     },
-  },
-  initial: {
-    title: 'Die backfrischsten Nusszopfprojekte!',
   },
 }

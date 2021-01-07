@@ -1,25 +1,35 @@
-import { useMemo } from 'react'
+import { useMemo, useEffect } from 'react'
 import { groupBy } from 'lodash'
 
+import { Text } from 'ui-library/stories/atoms'
 import { Masonry } from 'ui-library/stories/organisms'
 import { Frame } from 'ui-library/stories/templates'
-import { useSearch } from '~/utils/services/search.service'
+import { useSearch, MEILI_CONFIG } from '~/utils/services/search.service'
+import { initMeiliSearch } from '~/utils/functions/search.function'
+import { HitCard, SearchInput, NoHitsSection } from '~/containers/search'
 import { Page } from '~/components'
-import { HitCard, SearchInput, InitialHitsSection, NoHitsSection } from '~/containers/search'
+import { searchData as cms } from '~/assets/data'
 
-const Search = () => {
-  const { hits, isInitial } = useSearch()
+const Search = ({ placeholderHits = [] }) => {
+  const { hits, setHits } = useSearch()
   const groupedHits = useMemo(() => Object.entries(groupBy(hits.hits, item => item.groupId)), [hits])
+
+  useEffect(() => {
+    setHits(placeholderHits)
+  }, [setHits, placeholderHits])
 
   return (
     <Page navHeader={{ visible: true }} footer={{ className: 'bg-white' }} className="bg-white text-steel-700">
-      <Frame className="pt-6 pb-4 md:pt-12 bg-moss-200">
-        <SearchInput className="max-w-2xl mx-auto" />
+      <Frame className="py-6 md:pt-12 md:pb-10 bg-moss-200 text-moss-800">
+        <div className="max-w-3xl mx-auto">
+          <Text as="h1" variant="titleMd" className="mb-6">
+            {cms.title}
+          </Text>
+          <SearchInput />
+        </div>
       </Frame>
       <Frame className="flex-1 h-full my-8 break-all">
-        {isInitial ? (
-          <InitialHitsSection />
-        ) : groupedHits.length > 0 ? (
+        {groupedHits.length > 0 ? (
           <Masonry
             breakpointCols={{ default: 3, 1023: 2, 639: 1 }}
             gap={{ wrap: '-ml-5 -mb-5', col: 'pl-5', row: 'mb-5' }}>
@@ -28,11 +38,17 @@ const Search = () => {
             ))}
           </Masonry>
         ) : (
-          <NoHitsSection />
+          <NoHitsSection className="mt-4" />
         )}
       </Frame>
     </Page>
   )
+}
+
+export async function getServerSideProps() {
+  const { index } = await initMeiliSearch()
+  const placeholderHits = await index.search('', MEILI_CONFIG)
+  return { props: { placeholderHits } }
 }
 
 export default Search

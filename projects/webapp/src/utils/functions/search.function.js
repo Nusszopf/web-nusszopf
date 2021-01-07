@@ -10,6 +10,15 @@ export const SearchTrigger = {
   requests: 'sync_requests_search',
 }
 
+export const initMeiliSearch = async (_index = 'items') => {
+  const client = new MeiliSearch({
+    apiKey: process.env.MEILI_PK,
+    host: process.env.MEILI_DOMAIN,
+  })
+  const index = await client.getIndex(_index)
+  return { client, index }
+}
+
 export const addRequest = async (data, res) => {
   await upsertRequest(data, 'add')
   res.status(200).json({ itemsId: data.new.id })
@@ -34,15 +43,6 @@ export const deleteDocument = async (data, res) => {
   const { index } = await initMeiliSearch()
   await index.deleteDocument(data.old.id)
   res.status(200).json({})
-}
-
-const initMeiliSearch = async (_index = 'items') => {
-  const client = new MeiliSearch({
-    apiKey: process.env.MEILI_PK,
-    host: process.env.MEILI_DOMAIN,
-  })
-  const index = await client.getIndex(_index)
-  return { client, index }
 }
 
 const upsertRequest = async (data, action) => {
@@ -94,36 +94,35 @@ const upsertProject = async (data, action) => {
 
 const parseRequestToDocument = (request, project) => {
   return {
-    itemsId: request?.id,
-    groupId: request?.project_id,
-    type: 'request',
-    pro_title: project?.title,
-    pro_goal: project?.goal,
-    req_type: request?.category,
     req_title: request?.title,
     req_description: request?.description,
-    req_created_at: request?.created_at ? new Date(request.created_at).valueOf() : '',
+    req_type: request?.category,
+    pro_title: project?.title,
+    pro_goal: project?.goal,
+    created_at: new Date(request.created_at).valueOf(),
+    type: 'request',
+    itemsId: request?.id,
+    groupId: request?.project_id,
   }
 }
 
 const parseProjectToDocument = (project, projectCrop) => {
   return {
-    itemsId: project?.id,
-    groupId: project?.id,
-    type: 'project',
     pro_title: project?.title,
     pro_goal: project?.goal,
-    pro_created_at: project?.created_at ? new Date(project.created_at).valueOf() : '',
     pro_description: project?.description,
+    pro_location_text: !project?.location?.remote ? project?.location?.searchTerm : '',
     pro_team: project?.team,
     pro_motto: project?.motto,
-    pro_user: project?.user?.name,
+    pro_author: projectCrop?.user?.name,
+    pro_period_flexible: project?.period?.flexible,
+    pro_period_from: !project?.period?.flexible ? new Date(project.period.from).valueOf() : '',
+    pro_period_to: !project?.period?.flexible ? new Date(project.period.to).valueOf() : '',
     pro_location_remote: project?.location?.remote,
     pro_location_geo: !project?.location?.remote ? project?.location?.data?.geo : {},
-    pro_location_text: !project?.location?.remote ? project?.location?.searchTerm : '',
-    pro_period_flexible: project?.period?.flexible,
-    pro_period_from: !project?.period?.flexible ? new Date(project?.period?.from).valueOf() : '',
-    pro_period_to: !project?.period?.flexible ? new Date(project?.period?.to).valueOf() : '',
-    pro_author: projectCrop?.user?.name,
+    created_at: new Date(project.created_at).valueOf(),
+    type: 'project',
+    itemsId: project?.id,
+    groupId: project?.id,
   }
 }
