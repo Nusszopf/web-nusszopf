@@ -1,6 +1,5 @@
 import { useEffect, useState, useContext, createContext } from 'react'
 import PropTypes from 'prop-types'
-import { throttle } from 'lodash'
 import MeiliSearch from 'meilisearch'
 
 import { useToasts } from 'ui-library/services/Toasts.service'
@@ -11,10 +10,11 @@ import { searchData as cms } from '~/assets/data'
 // - Set `displayed-attributes`
 
 // TODO
-// 1. scroll-to-top (fab)
-// 2. truncate text length (UI)
+// 2. remove duplicates
+// 3. scroll-to-top (fab)
+// 4. truncate text length (UI)
 
-const OFFSET = 100
+const OFFSET = 1
 export const MEILI_CONFIG = {
   limit: OFFSET,
   attributesToRetrieve: ['itemsId', 'groupId', 'type', 'pro_title', 'pro_goal', 'req_type'],
@@ -62,7 +62,10 @@ export const SearchContextProvider = ({ children }) => {
     setIndex(_index)
   }, [])
 
-  const search = throttle(async (_term, _filter) => {
+  const search = async (_term, _filter) => {
+    if (isLoading) {
+      return
+    }
     setIsLoading(true)
     setFilter(_filter)
     setOffset(0)
@@ -84,9 +87,12 @@ export const SearchContextProvider = ({ children }) => {
       setNbHits(0)
       setIsLoading(false)
     }
-  }, 500)
+  }
 
-  const loadMore = throttle(async () => {
+  const loadMore = async () => {
+    if (isLoadingMore) {
+      return
+    }
     setIsLoadingMore(true)
     const filterQuery = Object.entries(filter)
       .filter(item => !item[1])
@@ -106,7 +112,7 @@ export const SearchContextProvider = ({ children }) => {
       notify({ type: 'error', message: cms.error.loadMore })
       setIsLoadingMore(false)
     }
-  }, 500)
+  }
 
   return (
     <SearchContext.Provider
