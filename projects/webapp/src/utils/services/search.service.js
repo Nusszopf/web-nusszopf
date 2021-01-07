@@ -10,11 +10,11 @@ import { searchData as cms } from '~/assets/data'
 // - Set `displayed-attributes`
 
 // TODO
-// 2. remove duplicates
-// 3. scroll-to-top (fab)
-// 4. truncate text length (UI)
+// 1. remove duplicates
+// 2. scroll-to-top (fab)
+// 3. truncate text length (UI)
 
-const OFFSET = 1
+const OFFSET = 100
 export const MEILI_CONFIG = {
   limit: OFFSET,
   attributesToRetrieve: ['itemsId', 'groupId', 'type', 'pro_title', 'pro_goal', 'req_type'],
