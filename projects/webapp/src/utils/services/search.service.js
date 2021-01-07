@@ -3,17 +3,20 @@ import PropTypes from 'prop-types'
 import { throttle } from 'lodash'
 import MeiliSearch from 'meilisearch'
 
+import { useToasts } from 'ui-library/services/Toasts.service'
+import { searchData as cms } from '~/assets/data'
+
 // Improvments:
 // - Set  `searchable-attributes`
 // - Set `displayed-attributes`
 
 // TODO
-// 1. load more documents
-// 2. scroll-to-top (fab)
+// 1. scroll-to-top (fab)
 // 2. truncate text length (UI)
 
+const OFFSET = 100
 export const MEILI_CONFIG = {
-  limit: 100,
+  limit: OFFSET,
   attributesToRetrieve: ['itemsId', 'groupId', 'type', 'pro_title', 'pro_goal', 'req_type'],
   attributesToHighlight: [
     'pro_title',
@@ -32,11 +35,15 @@ export const SearchContext = createContext({})
 export const useSearch = () => useContext(SearchContext)
 
 export const SearchContextProvider = ({ children }) => {
+  const { notify } = useToasts()
   const [client, setClient] = useState()
   const [index, setIndex] = useState()
   const [term, setTerm] = useState('')
-  const [hits, setHits] = useState([])
+  const [hits, setHits] = useState()
+  const [nbHits, setNbHits] = useState(0)
+  const [offset, setOffset] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
+  const [isLoadingMore, setIsLoadingMore] = useState(false)
   const [filter, setFilter] = useState({
     financials: true,
     rooms: true,
@@ -56,39 +63,54 @@ export const SearchContextProvider = ({ children }) => {
   }, [])
 
   const search = throttle(async (_term, _filter) => {
-    setFilter(_filter)
     setIsLoading(true)
+    setFilter(_filter)
+    setOffset(0)
     const filterQuery = Object.entries(_filter)
       .filter(item => !item[1])
       .map(item => `req_type != ${item[0]}`)
       .join(' AND ')
     try {
       const _hits = await index.search(_term, {
-        limit: 100,
-        attributesToRetrieve: ['itemsId', 'groupId', 'type', 'pro_title', 'pro_goal', 'req_type'],
-        attributesToHighlight: [
-          'pro_title',
-          'pro_goal',
-          'pro_description',
-          'pro_team',
-          'pro_motto',
-          'pro_location_text',
-          'pro_author',
-          'req_title',
-          'req_description',
-        ],
+        ...MEILI_CONFIG,
         filters: filterQuery.length > 0 ? filterQuery : null,
       })
+      setHits() // force update
       setHits(_hits)
+      setNbHits(_hits.nbHits)
       setIsLoading(false)
     } catch (error) {
       setHits([])
+      setNbHits(0)
       setIsLoading(false)
     }
   }, 500)
 
+  const loadMore = throttle(async () => {
+    setIsLoadingMore(true)
+    const filterQuery = Object.entries(filter)
+      .filter(item => !item[1])
+      .map(item => `req_type != ${item[0]}`)
+      .join(' AND ')
+    try {
+      const _hits = await index.search(term, {
+        ...MEILI_CONFIG,
+        offset: offset + OFFSET,
+        filters: filterQuery.length > 0 ? filterQuery : null,
+      })
+      setOffset(offset + OFFSET)
+      setHits({ ..._hits, hits: hits.hits.concat(_hits.hits) })
+      setNbHits(_hits.nbHits)
+      setIsLoadingMore(false)
+    } catch (error) {
+      notify({ type: 'error', message: cms.error.loadMore })
+      setIsLoadingMore(false)
+    }
+  }, 500)
+
   return (
-    <SearchContext.Provider value={{ term, setTerm, filter, hits, setHits, isLoading, search }}>
+    <SearchContext.Provider
+      value={{ term, setTerm, filter, hits, nbHits, setHits, isLoading, setNbHits, isLoadingMore, search, loadMore }}>
       {children}
     </SearchContext.Provider>
   )

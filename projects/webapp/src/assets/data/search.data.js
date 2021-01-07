@@ -1,5 +1,6 @@
 export default {
   title: 'Ideen und Projekte aus dem Nusswerk',
+  more: 'Mehr laden',
   filter: {
     title: 'Filtern',
     options: {
@@ -18,5 +19,8 @@ export default {
       meta: 'Idee | Projekt starten',
       text: 'Idee | Projekt starten',
     },
+  },
+  error: {
+    loadMore: 'Sorry! Das hat gerade nicht geklappt.',
   },
 }

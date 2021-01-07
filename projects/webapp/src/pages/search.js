@@ -1,7 +1,8 @@
 import { useMemo, useEffect } from 'react'
 import { groupBy } from 'lodash'
+import { ArrowDownCircle, Loader } from 'react-feather'
 
-import { Text } from 'ui-library/stories/atoms'
+import { Text, Button } from 'ui-library/stories/atoms'
 import { Masonry } from 'ui-library/stories/organisms'
 import { Frame } from 'ui-library/stories/templates'
 import { useSearch, MEILI_CONFIG } from '~/utils/services/search.service'
@@ -11,12 +12,13 @@ import { Page } from '~/components'
 import { searchData as cms } from '~/assets/data'
 
 const Search = ({ placeholderHits = [] }) => {
-  const { hits, setHits } = useSearch()
-  const groupedHits = useMemo(() => Object.entries(groupBy(hits.hits, item => item.groupId)), [hits])
+  const { hits, setHits, setNbHits, nbHits, loadMore, isLoadingMore } = useSearch()
+  const groupedHits = useMemo(() => Object.entries(groupBy(hits?.hits, item => item.groupId)), [hits])
 
   useEffect(() => {
     setHits(placeholderHits)
-  }, [setHits, placeholderHits])
+    setNbHits(placeholderHits.nbHits)
+  }, [setHits, setNbHits, placeholderHits])
 
   return (
     <Page navHeader={{ visible: true }} footer={{ className: 'bg-white' }} className="bg-white text-steel-700">
@@ -41,6 +43,25 @@ const Search = ({ placeholderHits = [] }) => {
           <NoHitsSection className="mt-4" />
         )}
       </Frame>
+      {nbHits > hits?.hits?.length && (
+        <Frame className="my-10 text-center">
+          <Button
+            onClick={loadMore}
+            className="bg-moss-200"
+            iconLeft={
+              <>
+                {isLoadingMore ? (
+                  <Loader size={22} className="mr-2 animate-spin" />
+                ) : (
+                  <ArrowDownCircle className="mr-1.5" />
+                )}
+              </>
+            }
+            color="moss">
+            {cms.more}
+          </Button>
+        </Frame>
+      )}
     </Page>
   )
 }

@@ -48,4 +48,9 @@ export const ButtonColor = {
     outline: 'nz-btn-yellow',
     filled: 'nz-btn-yellow',
   },
+  moss: {
+    clean: '',
+    outline: 'nz-btn-moss',
+    filled: 'nz-btn-moss',
+  },
 }
