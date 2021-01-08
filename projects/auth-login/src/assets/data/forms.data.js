@@ -37,8 +37,8 @@ export default {
     action: 'Registrieren',
     fields: {
       username: {
-        aria: 'Username',
-        placeholder: 'Username',
+        aria: 'Öffentlicher Username',
+        placeholder: 'Öffentlicher Username',
         validation: ['Keine Leerzeichen', 'Maximal 15 Zeichen', 'Gib einen Username ein'],
       },
       email: {
