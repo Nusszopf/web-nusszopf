@@ -6,12 +6,6 @@ import { groupBy, uniqBy } from 'lodash'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import { searchData as cms } from '~/assets/data'
 
-// Improvments:
-// - Set  `searchable-attributes`
-// - Set `displayed-attributes`
-
-// TODO: truncate text length where needed (UI)
-
 const OFFSET = 100
 export const MEILI_CONFIG = {
   limit: OFFSET,
