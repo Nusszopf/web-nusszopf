@@ -10,10 +10,7 @@ import { searchData as cms } from '~/assets/data'
 // - Set  `searchable-attributes`
 // - Set `displayed-attributes`
 
-// TODO
-// 1. add skelleton ui (inital)
-// 2. scroll-to-top (fab)
-// 3. bug: truncate text length where needed (UI)
+// TODO: truncate text length where needed (UI)
 
 const OFFSET = 100
 export const MEILI_CONFIG = {

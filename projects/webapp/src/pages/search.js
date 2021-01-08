@@ -1,4 +1,4 @@
-import { ArrowDownCircle, Loader } from 'react-feather'
+import { ArrowDownCircle, Loader, ChevronUp } from 'react-feather'
 
 import { Text, Button } from 'ui-library/stories/atoms'
 import { Masonry } from 'ui-library/stories/organisms'
@@ -10,10 +10,13 @@ import { searchData as cms } from '~/assets/data'
 
 const Search = () => {
   const { hits, groupedHits, isInitial, loadMore, isLoadingMore } = useSearch()
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
     <Page navHeader={{ visible: true }} footer={{ className: 'bg-white' }} className="bg-white text-steel-700">
-      <Frame className="py-6 md:pt-12 md:pb-10 bg-moss-200 text-moss-800">
+      <Frame className="py-6 md:pt-12 md:pb-10 bg-moss-200 text-moss-800" size="large">
         <div className="max-w-3xl mx-auto">
           <Text as="h1" variant="titleMd" className="mb-6">
             {cms.title}
@@ -21,7 +24,7 @@ const Search = () => {
           <SearchInput />
         </div>
       </Frame>
-      <Frame className="flex-1 h-full my-8 break-all">
+      <Frame className="flex-1 h-full my-8 break-all" size="large">
         {isInitial ? (
           <SkeletonHits />
         ) : groupedHits.length > 0 ? (
@@ -55,6 +58,9 @@ const Search = () => {
           </Button>
         </Frame>
       )}
+      <Button onClick={scrollTop} size="circle" className="fixed bottom-0 right-0 m-6 shadow-lg-dark bg-steel-300">
+        <ChevronUp />
+      </Button>
     </Page>
   )
 }
