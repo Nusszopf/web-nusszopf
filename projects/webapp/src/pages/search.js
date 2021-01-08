@@ -1,5 +1,3 @@
-import { useEffect } from 'react'
-import { PropTypes } from 'prop-types'
 import { ArrowDownCircle, Loader } from 'react-feather'
 
 import { Text, Button } from 'ui-library/stories/atoms'
@@ -11,12 +9,7 @@ import { Page } from '~/components'
 import { searchData as cms } from '~/assets/data'
 
 const Search = () => {
-  const { hits, groupedHits, loadMore, isLoadingMore } = useSearch()
-
-  useEffect(() => {
-    // load inital state if isInitalState true
-    // show sceleton ui while loading
-  }, [])
+  const { hits, groupedHits, isInitial, loadMore, isLoadingMore } = useSearch()
 
   return (
     <Page navHeader={{ visible: true }} footer={{ className: 'bg-white' }} className="bg-white text-steel-700">
@@ -29,7 +22,9 @@ const Search = () => {
         </div>
       </Frame>
       <Frame className="flex-1 h-full my-8 break-all">
-        {groupedHits.length > 0 ? (
+        {isInitial ? (
+          <p>inital loading</p>
+        ) : groupedHits.length > 0 ? (
           <Masonry
             breakpointCols={{ default: 3, 1023: 2, 639: 1 }}
             gap={{ wrap: '-ml-5 -mb-5', col: 'pl-5', row: 'mb-5' }}>
@@ -62,19 +57,6 @@ const Search = () => {
       )}
     </Page>
   )
-}
-
-// PROBLEM: getStaticProps/getServerSideProps maps the page to a ssr-page
-// SOLUTION: skeletton ui & isInitialState & useEffect
-
-// export async function getStaticProps() {
-//   const { index } = await initMeiliSearch()
-//   const placeholderHits = await index.search('', MEILI_CONFIG)
-//   return { props: { placeholderHits } }
-// }
-
-Search.propTypes = {
-  placeholderHits: PropTypes.object,
 }
 
 export default Search

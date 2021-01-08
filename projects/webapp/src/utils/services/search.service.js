@@ -11,9 +11,9 @@ import { searchData as cms } from '~/assets/data'
 // - Set `displayed-attributes`
 
 // TODO
-// 1. scroll-to-top (fab)
-// 2. bug: truncate text length where needed (UI)
-// 3. bug: get initalState serverside
+// 1. add skelleton ui (inital)
+// 2. scroll-to-top (fab)
+// 3. bug: truncate text length where needed (UI)
 
 const OFFSET = 100
 export const MEILI_CONFIG = {
@@ -43,6 +43,7 @@ export const SearchContextProvider = ({ children }) => {
   const [hits, setHits] = useState()
   const [isLoading, setIsLoading] = useState(false)
   const [isLoadingMore, setIsLoadingMore] = useState(false)
+  const [isInitial, setIsInitial] = useState(true)
   const [filter, setFilter] = useState({
     financials: true,
     rooms: true,
@@ -50,6 +51,7 @@ export const SearchContextProvider = ({ children }) => {
     materials: true,
     others: true,
   })
+  const groupedHits = useMemo(() => Object.entries(groupBy(hits?.hits, item => item.groupId)), [hits])
 
   useEffect(() => {
     const _client = new MeiliSearch({
@@ -61,10 +63,18 @@ export const SearchContextProvider = ({ children }) => {
     setIndex(_index)
   }, [])
 
-  const groupedHits = useMemo(() => Object.entries(groupBy(hits?.hits, item => item.groupId)), [hits])
+  useEffect(() => {
+    const placeholderSearch = async () => {
+      if (isInitial && index) {
+        await search('', filter)
+        setIsInitial(false)
+      }
+    }
+    placeholderSearch()
+  }, [isInitial, index])
 
   const search = async (_term, _filter) => {
-    if (isLoading) {
+    if (isLoading || isLoadingMore) {
       return
     }
     setIsLoading(true)
@@ -88,7 +98,7 @@ export const SearchContextProvider = ({ children }) => {
   }
 
   const loadMore = async () => {
-    if (isLoadingMore) {
+    if (isLoadingMore || isLoading || isInitial) {
       return
     }
     setIsLoadingMore(true)
@@ -113,7 +123,19 @@ export const SearchContextProvider = ({ children }) => {
 
   return (
     <SearchContext.Provider
-      value={{ term, setTerm, filter, hits, groupedHits, setHits, isLoading, isLoadingMore, search, loadMore }}>
+      value={{
+        filter,
+        groupedHits,
+        isInitial,
+        isLoading,
+        isLoadingMore,
+        hits,
+        term,
+        setTerm,
+        setHits,
+        loadMore,
+        search,
+      }}>
       {children}
     </SearchContext.Provider>
   )
