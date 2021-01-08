@@ -4,7 +4,7 @@ import { Text, Button } from 'ui-library/stories/atoms'
 import { Masonry } from 'ui-library/stories/organisms'
 import { Frame } from 'ui-library/stories/templates'
 import { useSearch } from '~/utils/services/search.service'
-import { HitCard, SearchInput, NoHitsSection } from '~/containers/search'
+import { HitCard, SearchInput, NoHitsSection, SkeletonHits } from '~/containers/search'
 import { Page } from '~/components'
 import { searchData as cms } from '~/assets/data'
 
@@ -23,7 +23,7 @@ const Search = () => {
       </Frame>
       <Frame className="flex-1 h-full my-8 break-all">
         {isInitial ? (
-          <p>inital loading</p>
+          <SkeletonHits />
         ) : groupedHits.length > 0 ? (
           <Masonry
             breakpointCols={{ default: 3, 1023: 2, 639: 1 }}
