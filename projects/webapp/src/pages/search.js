@@ -1,24 +1,22 @@
-import { useMemo, useEffect } from 'react'
-import { groupBy } from 'lodash'
+import { useEffect } from 'react'
+import { PropTypes } from 'prop-types'
 import { ArrowDownCircle, Loader } from 'react-feather'
 
 import { Text, Button } from 'ui-library/stories/atoms'
 import { Masonry } from 'ui-library/stories/organisms'
 import { Frame } from 'ui-library/stories/templates'
-import { useSearch, MEILI_CONFIG } from '~/utils/services/search.service'
-import { initMeiliSearch } from '~/utils/functions/search.function'
+import { useSearch } from '~/utils/services/search.service'
 import { HitCard, SearchInput, NoHitsSection } from '~/containers/search'
 import { Page } from '~/components'
 import { searchData as cms } from '~/assets/data'
 
-const Search = ({ placeholderHits = [] }) => {
-  const { hits, setHits, setNbHits, nbHits, loadMore, isLoadingMore } = useSearch()
-  const groupedHits = useMemo(() => Object.entries(groupBy(hits?.hits, item => item.groupId)), [hits])
+const Search = () => {
+  const { hits, groupedHits, loadMore, isLoadingMore } = useSearch()
 
   useEffect(() => {
-    setHits(placeholderHits)
-    setNbHits(placeholderHits.nbHits)
-  }, [setHits, setNbHits, placeholderHits])
+    // load inital state if isInitalState true
+    // show sceleton ui while loading
+  }, [])
 
   return (
     <Page navHeader={{ visible: true }} footer={{ className: 'bg-white' }} className="bg-white text-steel-700">
@@ -43,7 +41,7 @@ const Search = ({ placeholderHits = [] }) => {
           <NoHitsSection className="mt-4" />
         )}
       </Frame>
-      {nbHits > hits?.hits?.length && (
+      {hits?.nbHits > hits?.hits?.length && (
         <Frame className="my-10 text-center">
           <Button
             onClick={loadMore}
@@ -66,10 +64,17 @@ const Search = ({ placeholderHits = [] }) => {
   )
 }
 
-export async function getServerSideProps() {
-  const { index } = await initMeiliSearch()
-  const placeholderHits = await index.search('', MEILI_CONFIG)
-  return { props: { placeholderHits } }
+// PROBLEM: getStaticProps/getServerSideProps maps the page to a ssr-page
+// SOLUTION: skeletton ui & isInitialState & useEffect
+
+// export async function getStaticProps() {
+//   const { index } = await initMeiliSearch()
+//   const placeholderHits = await index.search('', MEILI_CONFIG)
+//   return { props: { placeholderHits } }
+// }
+
+Search.propTypes = {
+  placeholderHits: PropTypes.object,
 }
 
 export default Search

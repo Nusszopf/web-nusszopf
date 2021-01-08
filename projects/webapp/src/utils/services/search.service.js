@@ -1,6 +1,7 @@
-import { useEffect, useState, useContext, createContext } from 'react'
+import { useEffect, useState, useContext, createContext, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import MeiliSearch from 'meilisearch'
+import { groupBy, uniqBy } from 'lodash'
 
 import { useToasts } from 'ui-library/services/Toasts.service'
 import { searchData as cms } from '~/assets/data'
@@ -10,10 +11,9 @@ import { searchData as cms } from '~/assets/data'
 // - Set `displayed-attributes`
 
 // TODO
-// 1. remove duplicates (load more)
-// 2. scroll-to-top (fab)
-// 3. truncate text length where needed (UI)
-// 4. search-page: getStaticProps?
+// 1. scroll-to-top (fab)
+// 2. bug: truncate text length where needed (UI)
+// 3. bug: get initalState serverside
 
 const OFFSET = 100
 export const MEILI_CONFIG = {
@@ -41,8 +41,6 @@ export const SearchContextProvider = ({ children }) => {
   const [index, setIndex] = useState()
   const [term, setTerm] = useState('')
   const [hits, setHits] = useState()
-  const [nbHits, setNbHits] = useState(0)
-  const [offset, setOffset] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [isLoadingMore, setIsLoadingMore] = useState(false)
   const [filter, setFilter] = useState({
@@ -63,13 +61,14 @@ export const SearchContextProvider = ({ children }) => {
     setIndex(_index)
   }, [])
 
+  const groupedHits = useMemo(() => Object.entries(groupBy(hits?.hits, item => item.groupId)), [hits])
+
   const search = async (_term, _filter) => {
     if (isLoading) {
       return
     }
     setIsLoading(true)
     setFilter(_filter)
-    setOffset(0)
     const filterQuery = Object.entries(_filter)
       .filter(item => !item[1])
       .map(item => `req_type != ${item[0]}`)
@@ -81,11 +80,9 @@ export const SearchContextProvider = ({ children }) => {
       })
       setHits() // force update
       setHits(_hits)
-      setNbHits(_hits.nbHits)
       setIsLoading(false)
     } catch (error) {
-      setHits([])
-      setNbHits(0)
+      setHits()
       setIsLoading(false)
     }
   }
@@ -102,12 +99,11 @@ export const SearchContextProvider = ({ children }) => {
     try {
       const _hits = await index.search(term, {
         ...MEILI_CONFIG,
-        offset: offset + OFFSET,
+        offset: hits.offset + OFFSET,
         filters: filterQuery.length > 0 ? filterQuery : null,
       })
-      setOffset(offset + OFFSET)
-      setHits({ ..._hits, hits: hits.hits.concat(_hits.hits) })
-      setNbHits(_hits.nbHits)
+      const moreHits = uniqBy(hits.hits.concat(_hits.hits), 'itemsId')
+      setHits({ ..._hits, hits: moreHits })
       setIsLoadingMore(false)
     } catch (error) {
       notify({ type: 'error', message: cms.error.loadMore })
@@ -117,7 +113,7 @@ export const SearchContextProvider = ({ children }) => {
 
   return (
     <SearchContext.Provider
-      value={{ term, setTerm, filter, hits, nbHits, setHits, isLoading, setNbHits, isLoadingMore, search, loadMore }}>
+      value={{ term, setTerm, filter, hits, groupedHits, setHits, isLoading, isLoadingMore, search, loadMore }}>
       {children}
     </SearchContext.Provider>
   )
