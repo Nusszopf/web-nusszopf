@@ -1,7 +1,7 @@
 export default {
   message: (
     <>
-      Der Nusszopf wird gerade noch fertig geknetet. Anfang nächsten Jahres kannst Du dich im Netzwerk anmelden, Ideen
+      Der Nusszopf wird gerade noch fertig geknetet. Anfang diesen Jahres kannst Du dich im Netzwerk anmelden, Ideen
       teilen, Mitstreiter:in&shy;nen und Ressourcen finden und wirst bei deinen Projekten unterstützt.
     </>
   ),
