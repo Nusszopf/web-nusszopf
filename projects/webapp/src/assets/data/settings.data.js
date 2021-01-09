@@ -55,7 +55,7 @@ export default {
       },
     },
     contact: {
-      text: 'Füge den Nusszopf zu deinen Kontatk hinzu, damit unsere E-Mails dich sicher erreichen',
+      text: 'Füge den Nusszopf zu deinen Kontakten hinzu, damit unsere E-Mails dich sicher erreichen',
       link: {
         text: 'Kontakt speichern',
         href: '/contact/nusszopf-vcard.vcf',
