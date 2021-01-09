@@ -75,29 +75,20 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
     router.push('/user/settings')
   }
 
-  const handlePrivacy = () => {
-    menu.hide()
-    if (mode === 'external') {
-      router.push('https://nusszopf.org/privacy')
-    } else {
-      router.push('/privacy')
-    }
-  }
-
-  const handeLegals = () => {
-    menu.hide()
-    if (mode === 'external') {
-      router.push('https://nusszopf.org/legalNotice')
-    } else {
-      router.push('/legalNotice')
-    }
-  }
-
   const handleGoBack = () => {
     if (goBackUri === 'back') {
       router.back()
     } else {
       router.push(goBackUri)
+    }
+  }
+
+  const handleNusszopf = () => {
+    menu.hide()
+    if (mode === 'external') {
+      router.push('https://nusszopf.org')
+    } else {
+      router.push('/')
     }
   }
 
@@ -178,16 +169,13 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
                 <Text variant="textSmMedium">{cms.items[3]}</Text>
               </MenuItem>
             )}
-            <MenuItem {...menu} onClick={handeLegals}>
+            <MenuItem {...menu} onClick={handleNusszopf}>
               <Text variant="textSmMedium">{cms.items[4]}</Text>
-            </MenuItem>
-            <MenuItem {...menu} onClick={handlePrivacy}>
-              <Text variant="textSmMedium">{cms.items[5]}</Text>
             </MenuItem>
             {user && (
               <MenuItem {...menu} onClick={handleLogout}>
                 <Text className="text-warning-700" variant="textSmMedium">
-                  {cms.items[6]}
+                  {cms.items[5]}
                 </Text>
               </MenuItem>
             )}

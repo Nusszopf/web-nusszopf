@@ -70,7 +70,7 @@ const Settings = () => {
 
   return (
     <Page
-      navHeader={{ visible: true, goBackUri: 'back' }}
+      navHeader={{ visible: true }}
       footer={{ className: 'bg-white lg:bg-steel-100' }}
       noindex={true}
       className="text-steel-700 bg-steel-100">

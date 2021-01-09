@@ -4,5 +4,5 @@ export default {
     logout: 'Du wirst abgemeldet.',
   },
   aria: 'Navigation',
-  items: ['Suchen & Finden', 'Dein Bereich', 'Einstellungen', 'Anmelden', 'Impressum', 'Datenschutz', 'Ausloggen'],
+  items: ['Suchen & Finden', 'Dein Bereich', 'Einstellungen', 'Anmelden', 'Nusszopf.org', 'Ausloggen'],
 }
