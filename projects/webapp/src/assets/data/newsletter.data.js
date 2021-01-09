@@ -7,6 +7,14 @@ export default {
         noch so einfällt.
       </>
     ),
+    contact: {
+      text: 'Füge den Nusszopf zu deinen Kontakten hinzu, damit unsere E-Mails dich sicher erreichen',
+      link: {
+        text: 'Kontakt speichern',
+        meta: 'Nusszopf als Kontakt speichern',
+        href: '/contact/nusszopf-vcard.vcf',
+      },
+    },
     name: {
       meta: 'Name',
       errorMessages: ['Maximal 50 Zeichen', 'Gib einen Namen ein'],

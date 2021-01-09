@@ -24,8 +24,8 @@ const Link = ({
         <a
           className={classnames('cursor-pointer group', className)}
           href={href}
-          rel="noopener noreferrer"
-          target="_blank"
+          rel={!props?.download ? 'noopener noreferrer' : ''}
+          target={!props?.download ? '_blank' : ''}
           title={title}
           aria-label={ariaLabel}
           {...props}>
