@@ -33,7 +33,7 @@ const RequestDialog = ({ isOpen, onDismiss, onContact, request, ...props }) => {
           <X />
         </Button>
         <div className="flex items-start -mt-0.5 mb-2">
-          <Request size={22} className="flex-shrink-0 mt-1 mr-1.5" />
+          <Request size={22} className="flex-shrink-0 mt-1 mr-2.5" />
           <Text>{request?.title}</Text>
         </div>
         <Text variant="textSm">

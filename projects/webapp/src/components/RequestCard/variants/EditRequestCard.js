@@ -18,7 +18,7 @@ const EditRequestCard = ({ onEdit, onDelete, request, className, ...props }) => 
     {...props}>
     <Clickable type="button" onClick={() => onEdit(request)} className="flex-1 p-4 text-left focus:outline-none">
       <div className="flex items-start -mt-0.5 mr-4">
-        <Request size={18} className="flex-shrink-0 mt-1.5 mr-1" />
+        <Request size={18} className="flex-shrink-0 mt-1.5 mr-1.5" />
         <Text variant="textSmMedium">{request.title}</Text>
       </div>
       <Text variant="textXs">Erstellt am {new Date(request.created_at).toLocaleDateString('de-DE')}</Text>

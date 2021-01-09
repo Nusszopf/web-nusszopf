@@ -15,7 +15,7 @@ const HitRequestCard = ({ request, className, ...props }) => (
     )}
     {...props}>
     <div className="flex items-start">
-      <Request size={18} className="flex-shrink-0 mt-1 mr-1" />
+      <Request size={18} className="flex-shrink-0 mt-1 mr-1.5" />
       <Text
         variant="textXs"
         className="font-medium"

@@ -22,7 +22,7 @@ const FilterPopover = ({ className, filter, setFilter }) => {
         aria-label="Info"
         tabIndex={0}
         className="z-10 w-64 px-4 py-2 text-sm font-medium border-2 rounded-md shadow-md bg-moss-200 border-moss-800 focus:outline-none">
-        <div className="my-1.5">
+        <div className="my-2">
           <Checkbox
             checked={filter.financials}
             onChange={() => setFilter(state => ({ ...state, financials: !state.financials }))}
@@ -31,7 +31,7 @@ const FilterPopover = ({ className, filter, setFilter }) => {
             label={cms.filter.options.financials}
           />
         </div>
-        <div className="my-1.5">
+        <div className="my-2">
           <Checkbox
             checked={filter.rooms}
             onChange={() => setFilter(state => ({ ...state, rooms: !state.rooms }))}
@@ -40,7 +40,7 @@ const FilterPopover = ({ className, filter, setFilter }) => {
             label={cms.filter.options.rooms}
           />
         </div>
-        <div className="my-1.5">
+        <div className="my-2">
           <Checkbox
             checked={filter.companions}
             onChange={() => setFilter(state => ({ ...state, companions: !state.companions }))}
@@ -49,7 +49,7 @@ const FilterPopover = ({ className, filter, setFilter }) => {
             label={cms.filter.options.companions}
           />
         </div>
-        <div className="my-1.5">
+        <div className="my-2">
           <Checkbox
             checked={filter.materials}
             onChange={() => setFilter(state => ({ ...state, materials: !state.materials }))}
@@ -58,7 +58,7 @@ const FilterPopover = ({ className, filter, setFilter }) => {
             label={cms.filter.options.materials}
           />
         </div>
-        <div className="my-1.5">
+        <div className="my-2">
           <Checkbox
             checked={filter.others}
             onChange={() => setFilter(state => ({ ...state, others: !state.others }))}

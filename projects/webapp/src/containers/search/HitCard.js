@@ -35,7 +35,7 @@ const HitCard = ({ projectId, hits, className, ...props }) => {
           <div>
             <Text
               variant="textSm"
-              className="font-semibold"
+              className="mb-1.5 font-semibold leading-6"
               dangerouslySetInnerHTML={{ __html: hits[0]?._formatted?.pro_title || hits[0]?.pro_title }}
             />
             <Text
@@ -50,7 +50,7 @@ const HitCard = ({ projectId, hits, className, ...props }) => {
         {projectHits.length > 0 && <Text variant="textXs" dangerouslySetInnerHTML={{ __html: projectHits }} />}
         {hits.map(
           hit =>
-            hit.type === 'request' && <RequestCard className="mt-2" key={hit.itemsId} variant="hit" request={hit} />
+            hit.type === 'request' && <RequestCard className="mt-3" key={hit.itemsId} variant="hit" request={hit} />
         )}
       </div>
     </NLink>

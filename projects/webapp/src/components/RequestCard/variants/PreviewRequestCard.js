@@ -14,7 +14,7 @@ const PreviewRequestCard = ({ request, className, ...props }) => (
     )}
     {...props}>
     <div className="flex items-start">
-      <Request size={18} className="flex-shrink-0 mt-1.5 mr-1" />
+      <Request size={18} className="flex-shrink-0 mt-1.5 mr-1.5" />
       <Text variant="textSmMedium">{request.title}</Text>
     </div>
     <Text variant="textXs">Erstellt am {new Date(request.created_at).toLocaleDateString('de-DE')}</Text>
