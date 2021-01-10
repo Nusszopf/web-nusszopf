@@ -1,7 +1,7 @@
 import sgMail from '@sendgrid/mail'
 import runMiddleware, { rateLimiter } from '../../utils/functions/runMiddleware.function'
 import { getUser } from '../../utils/functions/api.function'
-const ERROR_CONSTRAINT = 'constraint-violation'
+import { ERROR_CONSTRAINT } from '../../utils/enums'
 
 export default async function contact(req, res) {
   try {

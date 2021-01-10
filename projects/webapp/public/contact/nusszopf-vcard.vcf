@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:4.0
+N:Team;Nusszopf;;;
+FN:Team Nusszopf
+ORG:Nusszopf
+EMAIL:noreply@nusszopf.org
+EMAIL:mail@nusszopf.org
+URL:https://nusszopf.org
+NOTE;CHARSET=UTF-8:Netzwerk für gemeinsame Ideen und Projekte
+END:VCARD

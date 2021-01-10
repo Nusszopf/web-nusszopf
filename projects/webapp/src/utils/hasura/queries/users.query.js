@@ -5,6 +5,7 @@ export const GET_USER = gql`
     users_by_pk(id: $id) {
       id
       email
+      name
       lead {
         id
         hasConfirmed

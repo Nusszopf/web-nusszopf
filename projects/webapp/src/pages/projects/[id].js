@@ -88,7 +88,7 @@ const Project = ({ id, user }) => {
 
   return (
     <Page
-      navHeader={{ visible: true, goBackUri: '/user/profile' }}
+      navHeader={{ visible: true }}
       title={data.projects_by_pk.title}
       description={data.projects_by_pk.goal}
       footer={{ className: 'bg-white lg:bg-lilac-100' }}
@@ -102,7 +102,7 @@ const Project = ({ id, user }) => {
         <FramedGridCard.Header className="bg-lilac-300">
           <div className="flex flex-col flex-wrap lg:flex-row lg:justify-between">
             <div className="lg:pr-12 lg:w-9/12 hyphens-auto">
-              <Text as="h1" variant="textLg" className="mb-2">
+              <Text as="h1" variant="textLg" className="mb-2 hyphens-auto">
                 {data?.projects_by_pk?.title}
               </Text>
               <Text variant="textSm" className="max-w-xl">
@@ -132,7 +132,7 @@ const Project = ({ id, user }) => {
                 </div>
               </div>
             </div>
-            <div className="flex mt-6 mb-2.5 lg:mt-5 lg:w-3/12 lg:mt-2 lg:items-end lg:flex-col lg:mb-0">
+            <div className="flex mt-6 mb-2.5 lg:mt-0 lg:w-3/12 lg:mt-2 lg:items-end lg:flex-col lg:mb-0">
               <Button
                 onClick={handleContact}
                 iconLeft={<Send size={21} className="mt-px mr-2 -ml-1" />}
@@ -204,7 +204,8 @@ const Project = ({ id, user }) => {
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="oneCol" className="mt-8">
             <Text variant="textSm">
-              {cms.body.createdAt} {new Date(data?.projects_by_pk?.created_at).toLocaleDateString('de-DE')}
+              {cms.body.createdBy} {data?.projects_by_pk.user.name},{' '}
+              {new Date(data?.projects_by_pk?.created_at).toLocaleDateString('de-DE')}
             </Text>
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
@@ -242,7 +243,7 @@ export async function getServerSideProps(ctx) {
         const session = await auth0.getSession(ctx.req)
         user = session.user.sub
       } catch (error) {
-        console.log(error)
+        console.error(error)
       }
       return {
         props: {
@@ -253,7 +254,7 @@ export async function getServerSideProps(ctx) {
       }
     }
   } catch (error) {
-    console.log(error)
+    console.error(error)
     return {
       notFound: true,
     }

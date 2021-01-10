@@ -11,6 +11,7 @@ require('typeface-barlow')
 import 'ui-library/styles/tailwind.css'
 import { LoadingIndicator } from 'ui-library/stories/atoms'
 import { ToastsProvider } from 'ui-library/services/Toasts.service'
+import { SearchContextProvider } from '../utils/services/search.service'
 import { useApollo } from '../utils/libs/apolloClient'
 
 export default function NusszopfApp({ Component, pageProps }) {
@@ -46,7 +47,9 @@ export default function NusszopfApp({ Component, pageProps }) {
         <ApolloProvider client={apolloClient}>
           <ReakitProvider>
             <ToastsProvider>
-              <Component {...pageProps} />
+              <SearchContextProvider>
+                <Component {...pageProps} />
+              </SearchContextProvider>
             </ToastsProvider>
           </ReakitProvider>
         </ApolloProvider>

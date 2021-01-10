@@ -22,9 +22,9 @@ export default {
     seperator: 'Oder einloggen mit',
     fields: {
       emailOrName: {
-        aria: 'E-Mail-Adresse / Name',
-        placeholder: 'E-Mail-Adresse / Name',
-        validation: ['Bitte gib einen Name oder eine E-Mail-Adresse ein'],
+        aria: 'E-Mail-Adresse / Username',
+        placeholder: 'E-Mail-Adresse / Username',
+        validation: ['Bitte gib einen Username oder eine E-Mail-Adresse ein'],
       },
       password: {
         aria: 'Passwort',
@@ -37,9 +37,9 @@ export default {
     action: 'Registrieren',
     fields: {
       username: {
-        aria: 'Name',
-        placeholder: 'Name',
-        validation: ['Keine Leerzeichen', 'Maximal 15 Zeichen', 'Gib einen Namen ein'],
+        aria: 'Öffentlicher Username',
+        placeholder: 'Öffentlicher Username',
+        validation: ['Keine Leerzeichen', 'Maximal 15 Zeichen', 'Gib einen Username ein'],
       },
       email: {
         aria: 'E-Mail-Adresse',

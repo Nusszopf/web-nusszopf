@@ -1,6 +1,6 @@
 {
   "name": "auth-password",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "auth0 password page",
   "repository": "git@github.com:nusszopf/web-nusszopf.git",
   "author": "schwamic <schwarz.michael@posteo.net>",

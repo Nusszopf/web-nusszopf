@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
@@ -25,6 +25,12 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
       return () => window.removeEventListener('scroll', handleScroll)
     }
   }, [fixed])
+
+  const parsedUserName = useMemo(() => {
+    if (!user) return cms.items[1]
+    const name = user['https://hasura.io/jwt/claims']?.username ?? user?.name ?? user?.nickname ?? cms.items[1]
+    return truncate(name, { length: 12 })
+  }, [user])
 
   const handleScroll = () => {
     if (window.scrollY > 0) {
@@ -69,29 +75,20 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
     router.push('/user/settings')
   }
 
-  const handlePrivacy = () => {
-    menu.hide()
-    if (mode === 'external') {
-      router.push('https://nusszopf.org/privacy')
-    } else {
-      router.push('/privacy')
-    }
-  }
-
-  const handeLegals = () => {
-    menu.hide()
-    if (mode === 'external') {
-      router.push('https://nusszopf.org/legalNotice')
-    } else {
-      router.push('/legalNotice')
-    }
-  }
-
   const handleGoBack = () => {
     if (goBackUri === 'back') {
       router.back()
     } else {
       router.push(goBackUri)
+    }
+  }
+
+  const handleNusszopf = () => {
+    menu.hide()
+    if (mode === 'external') {
+      router.push('https://nusszopf.org')
+    } else {
+      router.push('/')
     }
   }
 
@@ -155,7 +152,7 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
                   <div className="flex items-center">
                     <User className="-ml-2" />
                     <Text variant="textSmMedium" className="inline-block ml-3">
-                      {truncate(user?.name ?? cms.items[1], { length: 14 })}
+                      {parsedUserName}
                     </Text>
                   </div>
                 </MenuItem>
@@ -172,16 +169,13 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
                 <Text variant="textSmMedium">{cms.items[3]}</Text>
               </MenuItem>
             )}
-            <MenuItem {...menu} onClick={handeLegals}>
+            <MenuItem {...menu} onClick={handleNusszopf}>
               <Text variant="textSmMedium">{cms.items[4]}</Text>
-            </MenuItem>
-            <MenuItem {...menu} onClick={handlePrivacy}>
-              <Text variant="textSmMedium">{cms.items[5]}</Text>
             </MenuItem>
             {user && (
               <MenuItem {...menu} onClick={handleLogout}>
                 <Text className="text-warning-700" variant="textSmMedium">
-                  {cms.items[6]}
+                  {cms.items[5]}
                 </Text>
               </MenuItem>
             )}

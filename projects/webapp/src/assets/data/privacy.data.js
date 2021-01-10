@@ -6,7 +6,7 @@ export default {
       description: [
         <>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</>,
         <>
-          Melina Oppelt & MichaelSchwarz<br></br>Schertlinstraße 10<br></br>86159 Augsburg
+          Melina Oppelt & Michael Schwarz<br></br>Schertlinstraße 10<br></br>86159 Augsburg
         </>,
         <>
           Die verantwortliche Stelle entscheidet allein oder gemeinsam mit anderen über die Zwecke und Mittel der
@@ -137,7 +137,7 @@ export default {
           meta: 'Zu Auth0',
           text: 'Auth0',
         },
-        <>, mit Servern in Europa.</>,
+        <>, mit Servern in Europa/Deutschland.</>,
       ],
     },
     {
@@ -160,7 +160,7 @@ export default {
           meta: 'Zu SendGrid',
           text: 'SendGrid',
         },
-        <>, mit Servern in Europa.</>,
+        <>, mit Servern in Europa/Deutschland.</>,
       ],
     },
     {

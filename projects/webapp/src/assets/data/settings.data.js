@@ -45,15 +45,24 @@ export default {
       text: 'Steady öffnen',
     },
   },
-  info: [
-    <>Bei Fragen kannst Du dich immer unter</>,
-    {
-      href: 'mailto:mail@nusszopf.org',
-      meta: 'E-Mail an Nusszopf senden',
-      text: 'mail@nusszopf.org',
+  info: {
+    support: {
+      text: ['Bei Fragen kannst Du dich immer unter', 'bei uns melden!'],
+      link: {
+        href: 'mailto:mail@nusszopf.org',
+        meta: 'E-Mail an Nusszopf senden',
+        text: 'mail@nusszopf.org',
+      },
     },
-    <>bei uns melden!</>,
-  ],
+    contact: {
+      text: 'Füge den Nusszopf zu deinen Kontakten hinzu, damit unsere E-Mails dich sicher erreichen',
+      link: {
+        text: 'Kontakt speichern',
+        href: '/contact/nusszopf-vcard.vcf',
+        meta: 'Nusszopf als Kontakt speichern',
+      },
+    },
+  },
   delete: {
     title: 'Account löschen',
     description: 'Nach dem Löschen können deine Daten nicht wieder hergestellt werden.',

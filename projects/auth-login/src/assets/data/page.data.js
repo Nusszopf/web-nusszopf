@@ -14,7 +14,7 @@ export default {
     login: {
       loading: 'Du wirst einloggt.',
     },
-    error: 'Sorry, da lief etwas schief.',
+    error: ['Sorry, da lief etwas schief.', 'Der Username existiert leider schon.'],
   },
   seo: {
     title: 'Nusszopf – Netzwerk für gemeinsame Ideen und Projekte',

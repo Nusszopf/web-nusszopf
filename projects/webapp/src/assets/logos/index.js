@@ -1,4 +1,3 @@
-export { default as SVGAlgoliaLogo } from './algolia-logo.svg'
 export { default as SVGAuth0Logo } from './auth0-logo.svg'
 export { default as SVGDDCLogo } from './ddc-logo.svg'
 export { default as SVGNusszopfLogoSmall } from './nusszopf-logo-small.svg'

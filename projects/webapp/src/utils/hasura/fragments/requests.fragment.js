@@ -11,3 +11,14 @@ export const RequestFragment = gql`
     description
   }
 `
+
+export const RequestCropFragment = gql`
+  fragment RequestCrop on requests {
+    id
+    project_id
+    created_at
+    title
+    category
+    description
+  }
+`

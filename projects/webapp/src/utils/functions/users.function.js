@@ -14,6 +14,5 @@ export const handleDeleteUser = async ({ id, email }, res) => {
   })
   await deleteLead(email)
   await management.deleteUser({ id })
-
   res.status(200).json({ id })
 }

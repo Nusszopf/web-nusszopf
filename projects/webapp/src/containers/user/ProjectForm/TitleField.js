@@ -4,7 +4,7 @@ import { Text, Input } from 'ui-library/stories/atoms'
 import { FieldTitle } from '~/components'
 import { projectFormData as cms } from '~/assets/data'
 
-export const TitleFieldValidationSchema = string().max(30, cms.title.error[0]).required(cms.title.error[1])
+export const TitleFieldValidationSchema = string().max(40, cms.title.error[0]).required(cms.title.error[1])
 
 const TitleField = ({ formik }) => (
   <>
@@ -12,7 +12,7 @@ const TitleField = ({ formik }) => (
     <Input
       name="title"
       color="lilac"
-      maxLength={30}
+      maxLength={40}
       value={formik.values.title}
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}

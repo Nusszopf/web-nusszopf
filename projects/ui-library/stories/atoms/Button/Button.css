@@ -33,4 +33,9 @@
     @apply text-yellow-800 transition-shadow duration-200 ease-out border-2 border-yellow-800 rounded-full ring-2 ring-transparent;
     @apply hover:ring-yellow-800 focus:ring-yellow-800 hover:ring-opacity-25 focus:ring-opacity-25;
   }
+
+  .nz-btn-moss {
+    @apply transition-shadow duration-200 ease-out border-2 rounded-full text-moss-800 border-moss-800 ring-2 ring-transparent;
+    @apply hover:ring-moss-800 focus:ring-moss-800 hover:ring-opacity-25 focus:ring-opacity-25;
+  }
 }

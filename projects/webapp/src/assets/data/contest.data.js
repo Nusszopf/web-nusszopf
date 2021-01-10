@@ -10,9 +10,9 @@ export default {
 
   description: (
     <>
-      Auch ein Nusszopf muss seine Brötchen verdienen: Um den Nusszopf dauerhaft umsetzen zu können, haben wir das
-      Projekt bei einem Wettbewerb des Deutschen Designer Clubs eingereicht. Neuig&shy;keiten gibt es im Frühjahr 2021,
-      drückt die Daumen!
+      Auch ein Nusszopf muss seine Brötchen verdienen: Wir haben das Projekt bei einem Wettbewerb des Deutschen Designer
+      Clubs eingereicht, um den Nusszopf kontinuierlich finanziell unterhalten zu können. Neuig&shy;keiten gibt es im
+      Frühjahr 2021, drückt die Daumen!
     </>
   ),
   infoText: 'Mehr Informationen:',

@@ -1,5 +1,5 @@
 import { gql } from '@apollo/client'
-import { RequestFragment } from './requests.fragment'
+import { RequestFragment, RequestCropFragment } from './requests.fragment'
 
 export const ProjectFragment = gql`
   fragment Project on projects {
@@ -20,6 +20,24 @@ export const ProjectFragment = gql`
     requests(order_by: { created_at: desc }) {
       ...Request
     }
+    user {
+      name
+    }
   }
   ${RequestFragment}
+`
+
+export const ProjectCropFragment = gql`
+  fragment ProjectCrop on projects {
+    title
+    goal
+    visibility
+    requests {
+      ...RequestCrop
+    }
+    user {
+      name
+    }
+  }
+  ${RequestCropFragment}
 `

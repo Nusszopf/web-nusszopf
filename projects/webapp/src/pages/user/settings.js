@@ -70,7 +70,7 @@ const Settings = () => {
 
   return (
     <Page
-      navHeader={{ visible: true, goBackUri: 'back' }}
+      navHeader={{ visible: true }}
       footer={{ className: 'bg-white lg:bg-steel-100' }}
       noindex={true}
       className="text-steel-700 bg-steel-100">
@@ -185,16 +185,29 @@ const Settings = () => {
               </Button>
             </div>
             <InfoCard className="text-gray-700 bg-gray-200 mt-14 lg:ml-16">
-              {cms.info[0]}{' '}
+              {cms.info.contact.text}
+              {': '}
               <Link
                 color="livid"
-                href={cms.info[1].href}
+                href={cms.info.contact.link.href}
+                download
                 textVariant="textSm"
-                title={cms.info[1].meta}
-                ariaLabel={cms.info[1].meta}>
-                {cms.info[1].text}
+                title={cms.info.contact.link.meta}
+                ariaLabel={cms.info.contact.link.meta}>
+                {cms.info.contact.link.text}
+              </Link>
+            </InfoCard>
+            <InfoCard className="mt-5 text-gray-700 bg-gray-200 lg:ml-16">
+              {cms.info.support.text[0]}{' '}
+              <Link
+                color="livid"
+                href={cms.info.support.link.href}
+                textVariant="textSm"
+                title={cms.info.support.link.meta}
+                ariaLabel={cms.info.support.link.meta}>
+                {cms.info.support.link.text}
               </Link>{' '}
-              {cms.info[2]}
+              {cms.info.support.text[1]}
             </InfoCard>
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>

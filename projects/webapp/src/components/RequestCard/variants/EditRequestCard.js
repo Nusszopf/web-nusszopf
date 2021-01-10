@@ -3,6 +3,7 @@ import { Clickable } from 'reakit/Clickable'
 import classnames from 'classnames'
 import { MoreHorizontal } from 'react-feather'
 
+import { Request } from '~/assets/icons'
 import { Text } from 'ui-library/stories/atoms'
 import { Menu } from 'ui-library/stories/organisms'
 import { RequestCategoryColor, RequestCategoryMenu } from '../RequestCard.theme'
@@ -16,9 +17,10 @@ const EditRequestCard = ({ onEdit, onDelete, request, className, ...props }) => 
     )}
     {...props}>
     <Clickable type="button" onClick={() => onEdit(request)} className="flex-1 p-4 text-left focus:outline-none">
-      <Text className="mr-4" variant="textSmMedium">
-        {request.title}
-      </Text>
+      <div className="flex items-start -mt-0.5 mr-4">
+        <Request size={18} className="flex-shrink-0 mt-1.5 mr-1.5" />
+        <Text variant="textSmMedium">{request.title}</Text>
+      </div>
       <Text variant="textXs">Erstellt am {new Date(request.created_at).toLocaleDateString('de-DE')}</Text>
     </Clickable>
     <div className="flex flex-col items-end justify-between">

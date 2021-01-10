@@ -1,14 +1,9 @@
 /* eslint-disable react/display-name */
-import { SVGAlgoliaLogo, SVGAuth0Logo, SVGSanityLogo, SVGVercelLogo } from '../logos'
+import { SVGAuth0Logo, SVGSanityLogo, SVGVercelLogo } from '../logos'
 
 export default {
   heading: 'Zopfstarke Mitstreiter:innen',
   list: [
-    {
-      href: 'https://www.sanity.io/',
-      meta: 'Zu Sanity',
-      logo: props => <SVGSanityLogo {...props} />,
-    },
     {
       href: 'https://vercel.com?utm_source=nusszopf&utm_campaign=oss',
       meta: 'Zu Vercel',
@@ -20,9 +15,9 @@ export default {
       logo: props => <SVGAuth0Logo {...props} />,
     },
     {
-      href: 'https://www.algolia.com/',
-      meta: 'Zu Algolia',
-      logo: props => <SVGAlgoliaLogo {...props} />,
+      href: 'https://www.sanity.io/',
+      meta: 'Zu Sanity',
+      logo: props => <SVGSanityLogo {...props} />,
     },
   ],
   options: [
@@ -30,8 +25,8 @@ export default {
       title: 'Werde Fördermitglied!',
       description: (
         <>
-          Der Nusszopf ist ein Non-Profit- Herzens­projekt. Unterstütze ihn, damit er dich unterstützen kann auf unserer
-          Förderungs&shy;webseite.
+          Der Nusszopf ist ein Non-Profit- Herzens­projekt. Unterstütze ihn auf unserer Förderungs&shy;webseite, damit
+          er dich unterstützen kann.
         </>
       ),
       action: {
