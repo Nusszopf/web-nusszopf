@@ -1,11 +1,12 @@
 {
   "name": "ui-library",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "nusszopf design system",
   "repository": "git@github.com:nusszopf/web-nusszopf.git",
   "author": "schwamic <schwarz.michael@posteo.net>",
   "license": "GNU General Public License v3.0",
   "private": true,
+  "main": "index.js",
   "scripts": {
     "storybook": "yarn start-storybook -p 6006",
     "build-storybook": "yarn build-storybook"
@@ -14,10 +15,10 @@
     "react-is": "16.13.1"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "6.1.8",
-    "@storybook/addon-essentials": "6.1.8",
-    "@storybook/addon-links": "6.1.8",
-    "@storybook/react": "6.1.8",
+    "@storybook/addon-actions": "6.1.11",
+    "@storybook/addon-essentials": "6.1.11",
+    "@storybook/addon-links": "6.1.11",
+    "@storybook/react": "6.1.11",
     "@svgr/webpack": "5.5.0",
     "babel-loader": "8.2.2"
   }

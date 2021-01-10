@@ -1,6 +1,6 @@
 {
   "name": "auth-login",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "auth0 login page",
   "repository": "git@github.com:nusszopf/web-nusszopf.git",
   "author": "schwamic <schwarz.michael@posteo.net>",
