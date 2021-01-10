@@ -1,20 +1,20 @@
 *::-webkit-input-placeholder {
-  opacity: 0.7;
+  opacity: 0.7 !important;
 }
 :-moz-placeholder {
-  opacity: 0.7;
+  opacity: 0.7 !important;
 }
 *::-moz-placeholder {
-  opacity: 0.7;
+  opacity: 0.7 !important;
 }
 *:-ms-input-placeholder {
-  opacity: 0.7;
+  opacity: 0.7 !important;
 }
 *::-ms-input-placeholder {
-  opacity: 0.7;
+  opacity: 0.7 !important;
 }
 *::placeholder {
-  opacity: 0.7;
+  opacity: 0.7 !important;
 }
 
 em {
