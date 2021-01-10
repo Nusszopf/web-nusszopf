@@ -6,7 +6,6 @@
   "author": "schwamic <schwarz.michael@posteo.net>",
   "license": "GNU General Public License v3.0",
   "private": true,
-  "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
