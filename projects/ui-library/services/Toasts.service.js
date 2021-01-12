@@ -36,7 +36,7 @@ export const ToastsProvider = ({ children, ...props }) => {
             {toasts.map((toast, index) => (
               <Toast
                 key={toast.id}
-                className={classnames('transition-opacity duration-200 ease-out mb-2', {
+                className={classnames('mb-2', {
                   'opacity-50': toasts.length !== index + 1,
                 })}
                 id={toast.id}
