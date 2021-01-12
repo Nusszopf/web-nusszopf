@@ -128,6 +128,30 @@ module.exports = {
       boxShadow: {
         'lg-dark': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
       },
+      animation: {
+        opacityFade: 'opacityFade 150ms cubic-bezier(0.08, 0.82, 0.17, 1)',
+        scaleFade: 'scaleFade 150ms cubic-bezier(0.08, 0.82, 0.17, 1)',
+      },
+      keyframes: {
+        opacityFade: {
+          from: {
+            opacity: 0,
+          },
+          to: {
+            opacity: 1,
+          },
+        },
+        scaleFade: {
+          from: {
+            transform: 'scale(0.8)',
+            opacity: 0,
+          },
+          to: {
+            transform: 'scale(1)',
+            opacity: 1,
+          },
+        },
+      },
     },
   },
   variants: {
