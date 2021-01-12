@@ -6,7 +6,7 @@ import { truncate } from 'lodash'
 import classnames from 'classnames'
 
 import { NavHeader, Footer } from 'ui-library/stories/organisms'
-import { getUser } from '~/utils/services/auth.service'
+import { useFetchUser } from '~/utils/services/auth.service'
 import { seoData } from '~/assets/data'
 import { useScrollTop } from '~/utils/helper'
 import ErrorBoundary from './ErrorBoundary'
@@ -24,7 +24,7 @@ const Page = ({
 }) => {
   useScrollTop()
   const router = useRouter()
-  const user = getUser()
+  const { user } = useFetchUser()
   const domain = `${process.env.DOMAIN}`
   const url = router && router.asPath ? router.asPath : undefined
   const canonical = url && url === '/' ? domain : domain + url

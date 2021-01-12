@@ -16,7 +16,10 @@ export default {
         label: [
           'Ich stimme den',
           {
-            href: '/privacy',
+            href: {
+              pathname: '/privacy',
+              query: { back: 'history' },
+            },
             meta: 'Zum Datenschutz',
             text: 'Datenschutzbedingungen',
           },
