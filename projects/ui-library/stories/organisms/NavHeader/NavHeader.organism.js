@@ -128,7 +128,7 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
         <Menu {...menu} tabIndex={0} aria-label="Navigation" className="z-20 focus:outline-none">
           <div
             className={classnames(
-              'py-4 mt-5 lg:mt-6 text-sm font-medium rounded-md shadow-md text-steel-800 bg-steel-400',
+              'py-4 mt-5 lg:mt-6 text-sm font-medium rounded-md shadow-md text-steel-800 bg-steel-400 animate-scaleFade',
               {
                 shadow: hasScrolled,
               }
