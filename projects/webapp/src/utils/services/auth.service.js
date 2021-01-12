@@ -35,7 +35,6 @@ export function useFetchUser({ required } = {}) {
     if (typeof window === 'undefined') {
       return null
     }
-
     return window.__user || null
   })
 
@@ -76,4 +75,11 @@ export const useEntireUser = () => {
   const { data } = apollo.useGetUser(user?.sub)
 
   return { auth: user, data: data?.users_by_pk, loading: !data?.users_by_pk }
+}
+
+export const getUser = () => {
+  if (typeof window === 'undefined') {
+    return null
+  }
+  return window.__user || null
 }
