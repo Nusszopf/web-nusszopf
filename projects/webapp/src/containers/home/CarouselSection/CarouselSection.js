@@ -18,7 +18,7 @@ const CarouselSection = () => {
   }, [groupedHits])
 
   return (
-    <Frame className="pt-12 pb-16 -mb-5 bg-lilac-100 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
+    <Frame className="pt-12 pb-16 -mb-2 bg-lilac-100 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
       <Text as="h3" variant="titleMd" className="mb-8 sm:max-w-sm xl:max-w-full xl:mb-10">
         {cms.carousel.title}
       </Text>
