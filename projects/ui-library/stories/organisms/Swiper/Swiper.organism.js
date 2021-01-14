@@ -13,7 +13,7 @@ const Swiper = forwardRef(({ className, items = [], ...props }, ref) => (
       disableButtonsControls={true}
       infinite={true}
       items={items}
-      touchMoveDefaultEvents={false}
+      touchMoveDefaultEvents={true}
       mouseTracking={false}
       paddingLeft={0}
       responsive={{
