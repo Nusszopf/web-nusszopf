@@ -57,6 +57,7 @@ module.exports = {
       },
       lilac: {
         100: '#F4F3F5',
+        150: '#F2F1F3',
         200: '#E5E2E8',
         300: '#CBC6D0',
         400: '#B1AAB8',

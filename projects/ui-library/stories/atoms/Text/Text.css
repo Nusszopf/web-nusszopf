@@ -23,6 +23,10 @@
     @apply text-2xl font-medium leading-snug;
   }
 
+  .nz-text-lg-thin {
+    @apply text-2xl font-normal leading-snug;
+  }
+
   .nz-text-md {
     @apply text-xl font-medium leading-snug;
   }

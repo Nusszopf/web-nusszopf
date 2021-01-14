@@ -5,6 +5,7 @@ export const TextVariant = {
   titleSmSemi: 'nz-title-sm-semi',
   textLgSemi: 'nz-text-lg-semi',
   textLg: 'nz-text-lg',
+  textLgThin: 'nz-text-lg-thin',
   textMd: 'nz-text-md',
   textSmMedium: 'nz-text-sm-medium',
   textSm: 'nz-text-sm',
