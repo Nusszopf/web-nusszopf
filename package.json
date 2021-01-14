@@ -49,6 +49,7 @@
     "next-transpile-modules": "6.0.0",
     "prop-types": "15.7.2",
     "react": "16.14.0",
+    "react-alice-carousel": "2.2.1",
     "react-dom": "16.14.0",
     "react-feather": "2.0.9",
     "react-masonry-css": "1.0.14",
