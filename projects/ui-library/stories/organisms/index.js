@@ -9,4 +9,5 @@ export { default as RichTextEditor } from './RichTextEditor/RichTextEditor.organ
 export * from './RichTextEditor/RichTextEditor.organism'
 export { default as Stepper } from './Stepper/Stepper.organism'
 export { default as useStepper } from './Stepper/useStepper'
+export { default as Swiper } from './Swiper/Swiper.organism'
 export { default as Tab } from './Tab/Tab.organism'

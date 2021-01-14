@@ -1,23 +1,25 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import AliceCarousel from 'react-alice-carousel'
 
-const Swiper = ({ className, items = [] }) => (
+const Swiper = forwardRef(({ className, items = [], ...props }, ref) => (
   <div className={className}>
     <AliceCarousel
+      ref={ref}
       autoPlay={true}
-      autoPlayStrategy="default"
+      autoPlayStrategy="none"
       autoPlayInterval={3000}
       disableButtonsControls={true}
       infinite={true}
       items={items}
-      mouseTracking={true}
+      touchMoveDefaultEvents={false}
+      mouseTracking={false}
       paddingLeft={0}
       responsive={{
         0: { items: 1 },
-        640: { items: 2 },
-        1024: { items: 3 },
+        639: { items: 2 },
+        1023: { items: 3 },
       }}
       renderDotsItem={({ isActive }) => (
         <div
@@ -27,11 +29,13 @@ const Swiper = ({ className, items = [] }) => (
           })}
         />
       )}
-      touchTracking={true}
+      touchTracking={false}
+      {...props}
     />
   </div>
-)
+))
 
+Swiper.displayName = 'Swiper'
 Swiper.propTypes = {
   items: PropTypes.array,
   className: PropTypes.string,

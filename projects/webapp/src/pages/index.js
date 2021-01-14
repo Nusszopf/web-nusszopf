@@ -1,10 +1,10 @@
 import classnames from 'classnames'
 
-import { NewsletterSection } from '../containers'
+import { NewsletterSection, CarouselSection } from '../containers'
 import { Button, Link, Text } from 'ui-library/stories/atoms'
 import { Frame } from 'ui-library/stories/templates'
 import { Page } from '~/components'
-import { headerData, hintData, featuresData, contestData, fellowsData } from '~/assets/data'
+import { headerData, homeData, featuresData, contestData, fellowsData } from '~/assets/data'
 
 const Index = () => {
   const scrollIntoView = id => {
@@ -39,15 +39,16 @@ const Index = () => {
       </Frame>
       <Frame className="pt-12 pb-16 bg-yellow-300 sm:pt-16 sm:pb-18">
         <div className="flex flex-col max-w-2xl mx-auto xl:max-w-3xl">
-          <Text variant="textLg">{hintData.message}</Text>
+          <Text variant="textLg">{homeData.hint.message}</Text>
           <Button
             size="large"
             onClick={() => scrollIntoView('newsletter')}
             className="self-center mt-10 bg-yellow-400 sm:mt-12">
-            {hintData.action}
+            {homeData.hint.action}
           </Button>
         </div>
       </Frame>
+      {process.env.ENV !== 'production' && <CarouselSection />}
       <Frame className="pt-12 pb-16 bg-turquoise-300 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
         <Text as="h3" variant="titleMd" className="mb-8 sm:max-w-sm xl:max-w-full xl:mb-10">
           {featuresData.heading}
