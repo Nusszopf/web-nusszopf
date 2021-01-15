@@ -2,12 +2,12 @@ import { PlusCircle, Search } from 'react-feather'
 
 import { Frame } from 'ui-library/stories/templates'
 import { Text, Route } from 'ui-library/stories/atoms'
-import { useFetchUser } from '~/utils/services/auth.service'
+import { useAuth } from '~/utils/services/auth.service'
 import { homeData as cms } from '~/assets/data'
 import StepCard from './StepCard'
 
 const HowToSection = () => {
-  const { user } = useFetchUser()
+  const { user } = useAuth()
   return (
     <Frame className="pt-12 pb-16 bg-yellow-300 sm:pt-16 sm:pb-18">
       <Text as="h3" variant="titleMd" className="mb-8 sm:max-w-sm xl:max-w-full xl:mb-10">
@@ -22,7 +22,8 @@ const HowToSection = () => {
             <Route
               variant="button"
               size="large"
-              href={user ? '/user/project/create' : '/api/login'}
+              href={user?.auth ? '/user/project/create' : '/api/login'}
+              ariaLabel={cms.howTo.actions.create.meta}
               className="bg-yellow-400"
               iconLeft={<PlusCircle className="hidden mr-2 -ml-1 lg:inline-block" />}>
               {cms.howTo.actions.create.text}

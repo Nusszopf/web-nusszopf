@@ -3,6 +3,7 @@ import classnames from 'classnames'
 import { NewsletterSection, CarouselSection, HowToSection } from '../containers'
 import { Link, Text } from 'ui-library/stories/atoms'
 import { Frame } from 'ui-library/stories/templates'
+import { withAuth } from '~/utils/hoc'
 import { Page } from '~/components'
 import { headerData, featuresData, contestData, fellowsData } from '~/assets/data'
 
@@ -149,4 +150,4 @@ const Index = () => (
   </Page>
 )
 
-export default Index
+export default withAuth(Index, { isAuthRequired: false })

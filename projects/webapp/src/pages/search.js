@@ -4,6 +4,7 @@ import { Text, Button } from 'ui-library/stories/atoms'
 import { Masonry } from 'ui-library/stories/organisms'
 import { Frame } from 'ui-library/stories/templates'
 import { useSearch } from '~/utils/services/search.service'
+import { withAuth } from '~/utils/hoc'
 import { HitCard, SearchInput, NoHitsSection, SkeletonHits } from '~/containers/search'
 import { Page } from '~/components'
 import { searchData as cms } from '~/assets/data'
@@ -65,4 +66,4 @@ const Search = () => {
   )
 }
 
-export default Search
+export default withAuth(Search, { isAuthRequired: false })

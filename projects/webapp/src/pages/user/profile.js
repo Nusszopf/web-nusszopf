@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { PlusCircle } from 'react-feather'
 import { useRouter } from 'next/router'
 import { throttle } from 'lodash'
@@ -12,12 +13,11 @@ import useProjectsService from '~/utils/services/projects.service'
 import { PROJECT } from '~/utils/enums'
 import { EditProjectCard, WelcomeCard, ProjectsSkeleton } from '~/containers'
 import { Page } from '~/components'
-import { useEntireUser } from '~/utils/services/auth.service'
+import { withAuth } from '~/utils/hoc'
 import { profileData as cms } from '~/assets/data'
 
-const Profile = () => {
+const Profile = ({ user, loading: loadingUser }) => {
   const router = useRouter()
-  const { loading: loadingUser, ...user } = useEntireUser()
   const { data, loading: loadingProjects } = apollo.useGetProjects(user?.data?.id, { skip: loadingUser || !user?.data })
   const { deleteProject, updateProject, updateLoading } = useProjectsService()
 
@@ -101,4 +101,9 @@ const Profile = () => {
   )
 }
 
-export default Profile
+Profile.propTypes = {
+  user: PropTypes.object,
+  loading: PropTypes.bool,
+}
+
+export default withAuth(Profile, { isAuthRequired: true })

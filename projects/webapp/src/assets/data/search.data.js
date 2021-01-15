@@ -15,7 +15,10 @@ export default {
     title: 'Verzopft, wir konnten leider nichts zu deiner Suche finden!',
     description:
       'Versuch es noch einmal mit anderen oder weniger Begriffen oder erstelle dein Traumprojekt in ein paar Schritten einfach selbst.',
-    action: 'Idee | Projekt starten',
+    action: {
+      text: 'Idee | Projekt starten',
+      meta: 'Idee | Projekt starten',
+    },
   },
   error: {
     loadMore: 'Sorry! Das hat gerade nicht geklappt.',

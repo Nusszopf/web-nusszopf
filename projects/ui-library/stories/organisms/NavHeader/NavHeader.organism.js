@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { truncate } from 'lodash'
 import { Menu as RMenu, Search, ChevronLeft, User } from 'react-feather'
 import { Clickable } from 'reakit/Clickable'
 import { useMenuState, Menu, MenuButton } from 'reakit/Menu'
@@ -13,7 +12,7 @@ import { useToasts } from '../../../services/Toasts.service'
 import { navHeaderData as cms } from '../../../assets/data'
 import MenuItem from './MenuItem'
 
-const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
+const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true }) => {
   const [hasScrolled, setHasScrolled] = useState(false)
   const { notify } = useToasts()
   const router = useRouter()
@@ -25,12 +24,6 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
       return () => window.removeEventListener('scroll', handleScroll)
     }
   }, [fixed])
-
-  const parsedUserName = useMemo(() => {
-    if (!user) return cms.items[1]
-    const name = user['https://hasura.io/jwt/claims']?.username ?? user?.name ?? user?.nickname ?? cms.items[1]
-    return truncate(name, { length: 12 })
-  }, [user])
 
   const handleScroll = () => {
     if (window.scrollY > 0) {
@@ -53,7 +46,7 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
   const handleLogout = () => {
     menu.hide()
     notify({ type: 'loading', message: cms.notify.logout })
-    router.push('/api/logout')
+    logout()
   }
 
   const handleSearch = () => {
@@ -116,7 +109,7 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
             })}>
             <Search />
           </Clickable>
-          {user && (
+          {user?.auth && (
             <Clickable onClick={handleProfile} className="mr-6 sm:mr-8 focus:outline-none">
               <User />
             </Clickable>
@@ -146,13 +139,13 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
                 </Text>
               </div>
             </MenuItem>
-            {user ? (
+            {user?.auth ? (
               <>
                 <MenuItem {...menu} hasIcon={true} onClick={handleProfile}>
                   <div className="flex items-center">
                     <User className="-ml-2" />
                     <Text variant="textSmMedium" className="inline-block ml-3">
-                      {parsedUserName}
+                      {user?.data?.name ?? cms.items[1]}
                     </Text>
                   </div>
                 </MenuItem>
@@ -172,7 +165,7 @@ const NavHeader = ({ user, goBackUri, mode = 'internal', fixed = true }) => {
             <MenuItem {...menu} onClick={handleNusszopf}>
               <Text variant="textSmMedium">{cms.items[4]}</Text>
             </MenuItem>
-            {user && (
+            {user?.auth && (
               <MenuItem {...menu} onClick={handleLogout}>
                 <Text className="text-warning-700" variant="textSmMedium">
                   {cms.items[5]}
@@ -191,6 +184,7 @@ NavHeader.propTypes = {
   user: PropTypes.object,
   fixed: PropTypes.bool,
   goBackUri: PropTypes.string,
+  logout: PropTypes.func,
   mode: PropTypes.oneOf(['internal', 'external']),
 }
 

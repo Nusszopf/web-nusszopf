@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { Frame } from 'ui-library/stories/templates'
 import { Link, Text } from 'ui-library/stories/atoms'
+import { withAuth } from '~/utils/hoc'
 import { Page } from '~/components'
 import { privacyData as cms } from '~/assets/data'
 
@@ -148,4 +149,4 @@ const Privacy = () => {
   )
 }
 
-export default Privacy
+export default withAuth(Privacy, { isAuthRequired: false })

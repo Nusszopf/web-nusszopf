@@ -4,6 +4,7 @@ import { Route, Link, Text } from 'ui-library/stories/atoms'
 import { FramedCard } from 'ui-library/stories/templates'
 import { Page } from '~/components'
 import { confirmNewsletterUnsubscription } from '~/utils/services/newsletter.service'
+import { withAuth } from '~/utils/hoc'
 import { SVGNusszopfLogoBig } from '~/assets/logos'
 import { newsletterData as cms } from '~/assets/data'
 
@@ -44,8 +45,6 @@ UnsubscribeConfirm.propTypes = {
   }),
 }
 
-export default UnsubscribeConfirm
-
 export const getServerSideProps = async ctx => {
   try {
     const { token } = ctx.query
@@ -64,3 +63,5 @@ export const getServerSideProps = async ctx => {
     return { props: { statusCode: 500 } }
   }
 }
+
+export default withAuth(UnsubscribeConfirm, { isAuthRequired: false })

@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import PropTypes from 'prop-types'
 import { Formik, Form } from 'formik'
 import { object } from 'yup'
 
@@ -6,8 +7,8 @@ import { Text } from 'ui-library/stories/atoms'
 import { Progressbar } from 'ui-library/stories/molecules'
 import { emptyRichText, Stepper, useStepper } from 'ui-library/stories/organisms'
 import { FramedGridCard } from 'ui-library/stories/templates'
-import { useEntireUser } from '~/utils/services/auth.service'
 import useProjectsService from '~/utils/services/projects.service'
+import { withAuth } from '~/utils/hoc'
 import { Page } from '~/components'
 import {
   DescriptionStep1,
@@ -20,8 +21,7 @@ import {
 } from '~/containers'
 import { createProjectData as content } from '~/assets/data'
 
-const CreateProject = () => {
-  const user = useEntireUser()
+const CreateProject = ({ user }) => {
   const { addProject, addLoading, addRequestsLoading } = useProjectsService({ user })
   const router = useRouter()
   const stepper = useStepper()
@@ -82,7 +82,7 @@ const CreateProject = () => {
                   <DescriptionStep1 validationSchema={step1ValidationSchema} />
                   <DescriptionStep2 validationSchema={step2ValidationSchema} />
                   <RequestsStep />
-                  <SettingsStep />
+                  <SettingsStep user={user} />
                 </Stepper>
                 <FramedGridCard.Body.Col variant="oneCol" className="mt-12 mb-4 md:mb-0 lg:col-start-2">
                   <Navigation
@@ -101,4 +101,8 @@ const CreateProject = () => {
   )
 }
 
-export default CreateProject
+CreateProject.propTypes = {
+  user: PropTypes.object,
+}
+
+export default withAuth(CreateProject, { isAuthRequired: true })

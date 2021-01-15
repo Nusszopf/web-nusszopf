@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 
 import { Text, Select } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
-import { useEntireUser } from '~/utils/services/auth.service'
+import { withAuth } from '~/utils/hoc'
 import apollo from '~/utils/services/apollo.service'
 import { Page } from '~/components'
 import { ProjectView, RequestsView, SettingsView, SkeletonView } from '~/containers'
@@ -13,9 +13,8 @@ const projectEditData = {
   nav: ['Beschreibung', 'Gesuche', 'Einstellungen'],
 }
 
-const ProjectEdit = ({ id }) => {
+const ProjectEdit = ({ id, user }) => {
   const router = useRouter()
-  const user = useEntireUser()
   const [view, setView] = useState(projectEditData.nav[0])
   const { data, loading } = apollo.useGetProject(id)
 
@@ -75,6 +74,7 @@ export async function getServerSideProps(ctx) {
 
 ProjectEdit.propTypes = {
   id: PropTypes.string,
+  user: PropTypes.object,
 }
 
-export default ProjectEdit
+export default withAuth(ProjectEdit, { isAuthRequired: true })

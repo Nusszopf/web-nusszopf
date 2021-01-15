@@ -8,6 +8,7 @@ import { Text, Button, Link } from 'ui-library/stories/atoms'
 import { InfoCard } from 'ui-library/stories/molecules'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { serializeJSX } from 'ui-library/services/RichTextEditor.service'
+import { withAuth } from '~/utils/hoc'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import auth0 from '~/utils/libs/auth0'
 import apollo from '~/utils/services/apollo.service'
@@ -266,4 +267,4 @@ Project.propTypes = {
   user: PropTypes.string,
 }
 
-export default Project
+export default withAuth(Project, { isAuthRequired: false })

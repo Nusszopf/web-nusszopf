@@ -1,20 +1,20 @@
+import PropTypes from 'prop-types'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { object, mixed } from 'yup'
-import { useRouter } from 'next/router'
 
 import { Text, Link, Checkbox, Route, Button } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { InfoCard, Avatar } from 'ui-library/stories/molecules'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import apollo from '~/utils/services/apollo.service'
-import { useEntireUser } from '~/utils/services/auth.service'
+import { useAuth } from '~/utils/services/auth.service'
+import { withAuth } from '~/utils/hoc'
 import { Page } from '~/components'
 import { settingsData as cms } from '~/assets/data'
 
-const Settings = () => {
-  const { loading, ...user } = useEntireUser()
+const Settings = ({ user }) => {
   const { notify } = useToasts()
-  const router = useRouter()
+  const { logout } = useAuth()
   const [deleteUser, { loading: loadingDeleteUser }] = apollo.useDeleteUser()
   const [addLead, { loading: loadingAddLead }] = apollo.useAddLead()
   const [deleteLead, { loading: loadingDeleteLead }] = apollo.useDeleteLead()
@@ -26,7 +26,7 @@ const Settings = () => {
       const res = await addLead({
         variables: {
           email: user.data.email,
-          name: user.auth.nickname,
+          name: user.data.name, // todo
           privacy,
         },
       })
@@ -60,7 +60,7 @@ const Settings = () => {
         await deleteUser({
           variables: { id: user.data.id },
         })
-        router.push('/api/logout')
+        logout()
         notify({ type: 'success', message: cms.delete.notify.success })
       } catch (error) {
         notify({ type: 'error', message: cms.delete.notify.error })
@@ -216,4 +216,8 @@ const Settings = () => {
   )
 }
 
-export default Settings
+Settings.propTypes = {
+  user: PropTypes.object,
+}
+
+export default withAuth(Settings, { isAuthRequired: true })

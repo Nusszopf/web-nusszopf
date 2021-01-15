@@ -12,6 +12,7 @@ import 'ui-library/styles/tailwind.css'
 import { LoadingIndicator } from 'ui-library/stories/atoms'
 import { ToastsProvider } from 'ui-library/services/Toasts.service'
 import { SearchContextProvider } from '../utils/services/search.service'
+import { AuthContextProvider } from '../utils/services/auth.service'
 import { useApollo } from '../utils/libs/apolloClient'
 
 export default function NusszopfApp({ Component, pageProps }) {
@@ -47,9 +48,11 @@ export default function NusszopfApp({ Component, pageProps }) {
         <ApolloProvider client={apolloClient}>
           <ReakitProvider>
             <ToastsProvider>
-              <SearchContextProvider>
-                <Component {...pageProps} />
-              </SearchContextProvider>
+              <AuthContextProvider>
+                <SearchContextProvider>
+                  <Component {...pageProps} />
+                </SearchContextProvider>
+              </AuthContextProvider>
             </ToastsProvider>
           </ReakitProvider>
         </ApolloProvider>
