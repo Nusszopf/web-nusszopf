@@ -14,7 +14,7 @@ const CarouselSection = () => {
       return []
     } else {
       return data?.projects.map(project => {
-        const _project = { ...project, requests: project.requests.slice(0, 2) }
+        const _project = { ...project, requests: project.requests.slice(0, 3) }
         return <ItemCard key={project.id} project={_project} className="m-2.5" />
       })
     }

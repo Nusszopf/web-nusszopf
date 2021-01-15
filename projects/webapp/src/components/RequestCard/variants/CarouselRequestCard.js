@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { truncate } from 'lodash'
 
 import { Text } from 'ui-library/stories/atoms'
 import { Request } from '~/assets/icons'
@@ -20,7 +19,6 @@ const CarouselRequestCard = ({ request, className, ...props }) => (
         {request.title}
       </Text>
     </div>
-    <Text variant="textXs">{truncate(request.description, { length: 90 })}</Text>
   </div>
 )
 

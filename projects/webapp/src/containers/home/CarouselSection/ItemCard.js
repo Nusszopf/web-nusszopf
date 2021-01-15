@@ -15,7 +15,7 @@ const ItemCard = ({ project, className, ...props }) => {
             'hyphens-auto border p-4 md:p-5 border-lilac-300 text-lilac-800 transition-shadow duration-150 ease-in-out rounded-lg bg-lilac-200 ring-1 ring-transparent hover:ring-lilac-300 cursor-pointer',
             className
           )}>
-          <div className="flex justify-between mb-2">
+          <div className="flex justify-between mb-3">
             <div>
               <Text variant="textSm" className="mb-1.5 font-semibold leading-6">
                 {project.title}
@@ -27,7 +27,7 @@ const ItemCard = ({ project, className, ...props }) => {
             </div>
           </div>
           {project.requests.map(request => (
-            <RequestCard className="mt-3" key={request.id} variant="carousel" request={request} />
+            <RequestCard className="mt-2" key={request.id} variant="carousel" request={request} />
           ))}
         </div>
       </a>
