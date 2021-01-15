@@ -6,7 +6,7 @@ const Stepper = ({ children, setChildren, currentChild }) => {
     setChildren(React.Children.toArray(children))
   }, [])
 
-  return <>{currentChild}</>
+  return <>{currentChild ?? React.Children.toArray(children)[0]}</>
 }
 
 Stepper.propTypes = {
