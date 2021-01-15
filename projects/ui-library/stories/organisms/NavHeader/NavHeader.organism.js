@@ -102,6 +102,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
         </div>
         <div className="flex items-center">
           <Clickable
+            aria-label={cms.aria[0]}
             onClick={handleSearch}
             disabled={process.env.ENV === 'production'}
             className={classnames('mr-6 sm:mr-8 focus:outline-none', {
@@ -110,15 +111,15 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
             <Search />
           </Clickable>
           {user?.auth && (
-            <Clickable onClick={handleProfile} className="mr-6 sm:mr-8 focus:outline-none">
+            <Clickable aria-label={cms.aria[1]} onClick={handleProfile} className="mr-6 sm:mr-8 focus:outline-none">
               <User />
             </Clickable>
           )}
-          <MenuButton {...menu} className="focus:outline-none">
+          <MenuButton {...menu} className="focus:outline-none" aria-label={cms.aria[2]}>
             <RMenu />
           </MenuButton>
         </div>
-        <Menu {...menu} tabIndex={0} aria-label="Navigation" className="z-20 focus:outline-none">
+        <Menu {...menu} tabIndex={0} aria-label={cms.aria[2]} className="z-20 focus:outline-none">
           <div
             className={classnames(
               'py-4 mt-5 lg:mt-6 text-sm font-medium rounded-md shadow-md text-steel-800 bg-steel-400 animate-scaleFade',
