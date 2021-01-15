@@ -4,7 +4,7 @@ import { GET_USER } from '../hasura/queries/users.query'
 import { DELETE_USER } from '../hasura/mutations/users.mutation'
 import { DELETE_LEAD, INSERT_LEAD, UPDATE_LEAD } from '../hasura/mutations/leads.mutation'
 import { INSERT_PROJECT, DELETE_PROJECT, UPDATE_PROJECT } from '../hasura/mutations/projects.mutation'
-import { GET_PROJECT, GET_USER_PROJECTS } from '../hasura/queries/projects.query'
+import { GET_PROJECT, GET_USER_PROJECTS, GET_LATEST_PROJECTS_CROP } from '../hasura/queries/projects.query'
 import { INSERT_REQUESTS, INSERT_REQUEST, UPDATE_REQUEST, DELETE_REQUEST } from '../hasura/mutations/requests.mutation'
 
 // USERS
@@ -43,6 +43,8 @@ const useUpdateLead = id =>
 
 // PROJECTS
 const useGetProject = id => useQuery(GET_PROJECT, { skip: !id, variables: { id } })
+
+const useGetLatestProjects = () => useQuery(GET_LATEST_PROJECTS_CROP)
 
 const useGetProjects = (id, options = {}) =>
   useQuery(GET_USER_PROJECTS, {
@@ -114,6 +116,7 @@ export default {
   useDeleteUser,
   useGetProject,
   useGetProjects,
+  useGetLatestProjects,
   useAddProject,
   useUpdateProject,
   useDeleteProject,

@@ -27,3 +27,16 @@ export const GET_PROJECT_CROP = gql`
   }
   ${ProjectCropFragment}
 `
+
+export const GET_LATEST_PROJECTS_CROP = gql`
+  query getLatestProjects {
+    projects(
+      where: { requests: { _not: { id: { _is_null: true } } }, visibility: { _eq: "public" } }
+      order_by: { created_at: desc }
+      limit: 6
+    ) {
+      ...ProjectCrop
+    }
+  }
+  ${ProjectCropFragment}
+`

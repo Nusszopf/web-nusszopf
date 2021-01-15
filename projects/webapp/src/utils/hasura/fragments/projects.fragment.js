@@ -29,6 +29,7 @@ export const ProjectFragment = gql`
 
 export const ProjectCropFragment = gql`
   fragment ProjectCrop on projects {
+    id
     title
     goal
     visibility
