@@ -19,8 +19,8 @@ const RequestsView = ({ project }) => {
   const openDialog = () => setShowDialog(true)
 
   const closeDialog = () => {
-    setCurrentRequest(null)
     setShowDialog(false)
+    setCurrentRequest(null)
   }
 
   const onEdit = _request => {

@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import { Formik, Form } from 'formik'
 import { object } from 'yup'
@@ -16,6 +17,17 @@ import {
 import { editRequestDialogData as cms } from '~/assets/data'
 
 const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValues }) => {
+  const request = useMemo(
+    () =>
+      initialValues ?? {
+        title: '',
+        description: emptyRichText,
+        category: '',
+        created_at: new Date().toISOString('de-DE'),
+      },
+    [initialValues]
+  )
+
   const handleSubmit = values => {
     if (initialValues) {
       onUpdate(values)
@@ -31,14 +43,7 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
       className="relative text-stone-800 bg-stone-200"
       aria-label="Gesuch bearbeiten">
       <Formik
-        initialValues={
-          initialValues ?? {
-            title: '',
-            description: emptyRichText,
-            category: '',
-            created_at: new Date().toISOString('de-DE'),
-          }
-        }
+        initialValues={request}
         validationSchema={object({
           title: TitleFieldValidationSchema,
           description: DescriptionFieldValidationSchema,
