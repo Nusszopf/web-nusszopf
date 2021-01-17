@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { Menu as RMenu, Search, ChevronLeft, User } from 'react-feather'
+import { Menu as RMenu, Search, ChevronLeft, User, PlusCircle, LogIn } from 'react-feather'
 import { Clickable } from 'reakit/Clickable'
 import { useMenuState, Menu, MenuButton } from 'reakit/Menu'
 
@@ -55,6 +55,15 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
       router.push('https://nusszopf.org/search')
     } else {
       router.push('/search')
+    }
+  }
+
+  const handleCreateProject = () => {
+    menu.hide()
+    if (user?.auth) {
+      router.push('/user/project/create')
+    } else {
+      router.push('/api/login')
     }
   }
 
@@ -140,6 +149,21 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
                 </Text>
               </div>
             </MenuItem>
+            {mode === 'internal' && (
+              <MenuItem
+                {...menu}
+                hasIcon={true}
+                onClick={handleCreateProject}
+                disabled={process.env.ENV === 'production'}
+                className={classnames({ 'opacity-50': process.env.ENV === 'production' })}>
+                <div className="flex items-center ">
+                  <PlusCircle size={22} className="-ml-2" />
+                  <Text variant="textSmMedium" className="inline-block ml-3">
+                    {cms.items[6]}
+                  </Text>
+                </div>
+              </MenuItem>
+            )}
             {user?.auth ? (
               <>
                 <MenuItem {...menu} hasIcon={true} onClick={handleProfile}>
@@ -157,10 +181,16 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
             ) : (
               <MenuItem
                 {...menu}
+                hasIcon={true}
                 onClick={handleLoginSignup}
                 disabled={process.env.ENV === 'production'}
                 className={classnames({ 'opacity-50': process.env.ENV === 'production' })}>
-                <Text variant="textSmMedium">{cms.items[3]}</Text>
+                <div className="flex items-center">
+                  <LogIn size={23} className="-ml-2" />
+                  <Text variant="textSmMedium" className="inline-block ml-3">
+                    {cms.items[3]}
+                  </Text>
+                </div>
               </MenuItem>
             )}
             <MenuItem {...menu} onClick={handleNusszopf}>

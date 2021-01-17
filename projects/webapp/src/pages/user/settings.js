@@ -26,7 +26,7 @@ const Settings = ({ user }) => {
       const res = await addLead({
         variables: {
           email: user.data.email,
-          name: user.data.name, // todo
+          name: user.data.name,
           privacy,
         },
       })
