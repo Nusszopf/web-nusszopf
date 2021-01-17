@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { MapPin, Calendar, Send, Share2 } from 'react-feather'
 import { isValid } from 'date-fns'
 import classnames from 'classnames'
+import { truncate } from 'lodash'
 
 import { Text, Button, Link } from 'ui-library/stories/atoms'
 import { InfoCard } from 'ui-library/stories/molecules'
@@ -49,11 +50,12 @@ const Project = ({ id, user }) => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: data?.projects_by_pk?.title,
+          title: truncate(data?.projects_by_pk?.title, { length: 60 }),
+          text: truncate(data?.projects_by_pk?.goal, { length: 60 }),
           url: window.location.href,
         })
       } catch (error) {
-        notify({ type: 'error', message: cms.notify.error })
+        // error or aborted
       }
     } else {
       const dummy = document.createElement('input')

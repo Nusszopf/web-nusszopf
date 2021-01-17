@@ -64,7 +64,7 @@ export default {
     },
     private: {
       title: 'Privat',
-      description: 'Projekt ist nur zugänglich, wenn man den Link kennt',
+      description: 'Projekt ist nur zugänglich, wenn man den passenden Link kennt',
     },
   },
 }
