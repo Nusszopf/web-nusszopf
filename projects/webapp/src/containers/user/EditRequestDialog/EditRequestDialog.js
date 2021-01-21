@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Formik, Form } from 'formik'
 import { object } from 'yup'
 import { X } from 'react-feather'
-
+import { isEqual } from 'lodash'
 import { Button } from 'ui-library/stories/atoms'
 import { Dialog, emptyRichText } from 'ui-library/stories/organisms'
 import {
@@ -28,18 +28,20 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
     [initialValues]
   )
 
-  const handleSubmit = values => {
-    if (initialValues) {
-      onUpdate(values)
+  const handleSubmit = newValues => {
+    if (isEqual(newValues, initialValues)) {
+      onDismiss()
+    } else if (initialValues) {
+      onUpdate(newValues)
     } else {
-      onCreate(values)
+      onCreate(newValues)
     }
   }
 
   return (
     <Dialog
       isOpen={isOpen}
-      onDismiss={onDismiss}
+      onDismiss={undefined}
       className="relative text-stone-800 bg-stone-200"
       aria-label="Gesuch bearbeiten">
       <Formik

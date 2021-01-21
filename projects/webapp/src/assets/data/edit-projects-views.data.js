@@ -11,6 +11,7 @@ export default {
     alert: 'Nach dem Löschen können die Daten nicht wieder hergestellt werden.',
     delete: 'Löschen',
   },
+  alert: 'Möchtest Du die Seite wirklich verlassen? Deine Änderungen gehen dann verloren.',
   notify: {
     request: {
       update: {

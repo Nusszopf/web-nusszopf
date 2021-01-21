@@ -38,7 +38,7 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
   return (
     <Dialog
       isOpen={isOpen}
-      onDismiss={onDismiss}
+      onDismiss={undefined}
       className="relative text-lilac-800 bg-lilac-200"
       aria-label={cms.dialog.aria}
       {...props}>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 
@@ -8,6 +8,7 @@ import { withAuth } from '~/utils/hoc'
 import apollo from '~/utils/services/apollo.service'
 import { Page } from '~/components'
 import { ProjectView, RequestsView, SettingsView, SkeletonView } from '~/containers'
+import { editProjectsViewsData as cms } from '~/assets/data'
 
 const projectEditData = {
   nav: ['Beschreibung', 'Gesuche', 'Einstellungen'],
@@ -15,6 +16,8 @@ const projectEditData = {
 
 const ProjectEdit = ({ id, user }) => {
   const router = useRouter()
+  const projectViewRef = useRef()
+  const settingsViewRef = useRef()
   const [view, setView] = useState(projectEditData.nav[0])
   const { data, loading } = apollo.useGetProject(id)
 
@@ -23,6 +26,19 @@ const ProjectEdit = ({ id, user }) => {
       router.push('/404')
     }
   }, [loading, data, router])
+
+  const shouldSelectView = e => {
+    if (settingsViewRef?.current?.hasChanged() || projectViewRef?.current?.hasChanged()) {
+      const isConfirmed = confirm(cms.alert)
+      if (!isConfirmed) {
+        setView(view)
+      } else {
+        setView(e.target.value)
+      }
+    } else {
+      setView(e.target.value)
+    }
+  }
 
   return (
     <Page
@@ -40,7 +56,8 @@ const ProjectEdit = ({ id, user }) => {
               {data?.projects_by_pk?.title}
             </Text>
             <Select
-              onChange={e => setView(e.target.value)}
+              value={view}
+              onChange={shouldSelectView}
               color="lilac"
               className="flex-shrink-0 w-56 mb-2 lg:ml-12 lg:mb-0">
               {projectEditData.nav.map((nav, index) => (
@@ -52,11 +69,11 @@ const ProjectEdit = ({ id, user }) => {
         {loading || !data ? (
           <SkeletonView />
         ) : view === projectEditData.nav[0] ? (
-          <ProjectView user={user} project={data?.projects_by_pk} />
+          <ProjectView ref={projectViewRef} user={user} project={data?.projects_by_pk} />
         ) : view === projectEditData.nav[1] ? (
           <RequestsView project={data?.projects_by_pk} />
         ) : (
-          <SettingsView user={user} project={data?.projects_by_pk} />
+          <SettingsView ref={settingsViewRef} user={user} project={data?.projects_by_pk} />
         )}
       </FramedGridCard>
     </Page>
