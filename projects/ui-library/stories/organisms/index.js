@@ -1,4 +1,5 @@
 export { default as Combobox } from './Combobox/Combobox.organism'
+export { default as Cropper } from './Cropper/Cropper.organism'
 export { default as Dialog } from './Dialog/Dialog.organism'
 export { default as Footer } from './Footer/Footer.organism'
 export { default as Masonry } from './Masonry/Masonry.organism'

@@ -15,10 +15,10 @@ const Avatar = ({ user, className, ...props }) => {
 
   return (
     <div className={classnames('flex items-center hyphens-auto', className)} {...props}>
-      <div className="overflow-hidden border-2 rounded-xl border-steel-700 bg-steel-700">
-        <img className="flex-shrink-0 w-16 h-16" src={imgSource} alt="avatar" />
+      <div className="flex-shrink-0 overflow-hidden border-2 rounded-full border-steel-700 bg-steel-700">
+        <img className="w-14 h-14" src={imgSource} alt="avatar" />
       </div>
-      <div className="ml-6">
+      <div className="ml-5">
         <Text variant="textSmMedium">{truncate(user?.data?.name, { length: 33 })}</Text>
         {user?.data?.email && <Text variant="textSm">{truncate(user?.data?.email ?? '-', { length: 33 })}</Text>}
       </div>
