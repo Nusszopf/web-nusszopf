@@ -21,6 +21,7 @@
     "@sendgrid/client": "7.4.1",
     "@sendgrid/mail": "7.4.1",
     "auth0": "2.31.1",
+    "aws-sdk": "2.830.0",
     "date-fns": "2.16.1",
     "escape-html": "1.0.3",
     "express-rate-limit": "5.2.3",
