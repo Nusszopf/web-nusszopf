@@ -122,6 +122,7 @@ module.exports = {
       spacing: {
         18: '4.75rem',
         84: '21rem',
+        128: '32rem',
       },
       ringWidth: {
         3: '3px',

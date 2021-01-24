@@ -13,7 +13,7 @@ const getRadianAngle = degreeValue => {
   return (degreeValue * Math.PI) / 180
 }
 
-export async function getCroppedImage(imageSrc, pixelCrop, rotation = 0) {
+export const getCroppedImage = async (imageSrc, pixelCrop, rotation = 0) => {
   const image = await createImage(imageSrc)
   const canvas = document.createElement('canvas')
   const ctx = canvas.getContext('2d')
@@ -45,14 +45,30 @@ export async function getCroppedImage(imageSrc, pixelCrop, rotation = 0) {
   })
 }
 
-export async function getCompressedImage(file) {
+export const getCompressedImage = file => {
   return new Promise((resolve, reject) => {
     new Compressor(file, {
       quality: 0.6,
-      maxWidth: 200,
-      maxHeight: 200,
+      maxWidth: 150,
+      maxHeight: 150,
       success(compressedImage) {
         resolve(compressedImage)
+      },
+      error(error) {
+        reject(error)
+      },
+    })
+  })
+}
+
+// https://github.com/ricardo-ch/react-easy-crop/issues/91
+export const getNormalizedFile = file => {
+  return new Promise((resolve, reject) => {
+    new Compressor(file, {
+      maxWidth: 1000,
+      maxHeight: 1000,
+      success(normalizedFile) {
+        resolve(normalizedFile)
       },
       error(error) {
         reject(error)
