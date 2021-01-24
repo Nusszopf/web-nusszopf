@@ -29,12 +29,11 @@ const MyCropper = forwardRef(({ className, onComplete }, ref) => {
   }, [])
 
   useImperativeHandle(ref, () => ({
-    createFile: async userId => {
+    createImage: async () => {
       try {
         const croppedImage = await getCroppedImage(image, croppedAreaPixels, rotation)
         const compressedImage = await getCompressedImage(croppedImage)
-        const compressedFile = new File([compressedImage], `${userId}.jpeg`, { type: 'image/jpeg' })
-        return compressedFile
+        return compressedImage
       } catch (error) {
         return null
       }

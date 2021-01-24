@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { object, mixed } from 'yup'
@@ -10,11 +11,13 @@ import apollo from '~/utils/services/apollo.service'
 import { useAuth } from '~/utils/services/auth.service'
 import { withAuth } from '~/utils/hoc'
 import { Page } from '~/components'
+import { AvatarDialog } from '~/containers/settings'
 import { settingsData as cms } from '~/assets/data'
 
 const Settings = ({ user }) => {
   const { notify } = useToasts()
   const { logout } = useAuth()
+  const [showAvatarDialog, setShowAvatarDialog] = useState(false)
   const [deleteUser, { loading: loadingDeleteUser }] = apollo.useDeleteUser()
   const [addLead, { loading: loadingAddLead }] = apollo.useAddLead()
   const [deleteLead, { loading: loadingDeleteLead }] = apollo.useDeleteLead()
@@ -83,7 +86,7 @@ const Settings = ({ user }) => {
             <Text as="h1" variant="textLg" className="-mt-2 sm:ml-6 sm:mt-0">
               {cms.title}
             </Text>
-            <Avatar user={user} className="mt-4 sm:mt-0" />
+            <Avatar user={user} isEditable={true} onEdit={() => setShowAvatarDialog(true)} className="mt-4 sm:mt-0" />
           </div>
         </FramedGridCard.Header>
         <FramedGridCard.Body className="bg-white">
@@ -212,6 +215,7 @@ const Settings = ({ user }) => {
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
       </FramedGridCard>
+      <AvatarDialog isOpen={showAvatarDialog} onDismiss={() => setShowAvatarDialog(false)} user={user} />
     </Page>
   )
 }

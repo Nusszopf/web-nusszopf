@@ -1,7 +1,7 @@
 import { useQuery, useMutation } from '@apollo/client'
 
 import { GET_USER } from '../hasura/queries/users.query'
-import { DELETE_USER } from '../hasura/mutations/users.mutation'
+import { DELETE_USER, UPDATE_USER } from '../hasura/mutations/users.mutation'
 import { DELETE_LEAD, INSERT_LEAD, UPDATE_LEAD } from '../hasura/mutations/leads.mutation'
 import { INSERT_PROJECT, DELETE_PROJECT, UPDATE_PROJECT } from '../hasura/mutations/projects.mutation'
 import { GET_PROJECT, GET_USER_PROJECTS, GET_LATEST_PROJECTS_CROP } from '../hasura/queries/projects.query'
@@ -9,8 +9,8 @@ import { INSERT_REQUESTS, INSERT_REQUEST, UPDATE_REQUEST, DELETE_REQUEST } from 
 
 // USERS
 const useGetUser = id => useQuery(GET_USER, { skip: !id, variables: { id } })
-
 const useDeleteUser = () => useMutation(DELETE_USER)
+const useUpdateUser = () => useMutation(UPDATE_USER)
 
 // LEADS
 const useAddLead = () => useMutation(INSERT_LEAD)
@@ -113,6 +113,7 @@ export default {
   useUpdateLead,
   useDeleteLead,
   useGetUser,
+  useUpdateUser,
   useDeleteUser,
   useGetProject,
   useGetProjects,

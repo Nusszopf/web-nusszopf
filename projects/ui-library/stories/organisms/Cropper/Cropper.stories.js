@@ -19,8 +19,8 @@ export const Checked = () => {
   const cropper = useRef()
 
   const logImage = async () => {
-    const file = await cropper.current.createFile('userId')
-    console.log(file)
+    const image = await cropper.current.createImage()
+    console.log(image)
   }
 
   return (

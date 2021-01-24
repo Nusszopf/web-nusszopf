@@ -1,12 +1,17 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
+import { Edit3 } from 'react-feather'
 import { truncate } from 'lodash'
+import { Clickable } from 'reakit/Clickable'
+
 import { Text } from '../../atoms'
 
-const Avatar = ({ user, className, ...props }) => {
+const Avatar = ({ user, className, isEditable = false, onEdit, ...props }) => {
   const imgSource = useMemo(() => {
-    return user?.auth?.picture && user?.auth?.picture !== 'none'
+    return user?.data?.picture
+      ? user?.data?.picture
+      : user?.auth?.picture && user?.auth?.picture !== 'none'
       ? user?.auth?.picture
       : user?.data?.name
       ? `https://eu.ui-avatars.com/api/?name=${user?.data?.name}&size=128&background=CFD8DC&color=37474F&length=1&font-size=0.6&uppercase=true`
@@ -15,8 +20,16 @@ const Avatar = ({ user, className, ...props }) => {
 
   return (
     <div className={classnames('flex items-center hyphens-auto', className)} {...props}>
-      <div className="flex-shrink-0 overflow-hidden border-2 rounded-full border-steel-700 bg-steel-700">
-        <img className="w-14 h-14" src={imgSource} alt="avatar" />
+      <div className="relative flex-shrink-0 overflow-hidden border-2 rounded-full border-steel-700 bg-steel-700">
+        <img className={classnames('w-14 h-14', { 'opacity-30': isEditable })} src={imgSource} alt="avatar" />
+        {isEditable && (
+          <Clickable
+            as="div"
+            onClick={onEdit}
+            className="absolute p-3 transition-transform duration-150 ease-out transform scale-100 outline-none cursor-pointer text-steel-100 left-1 top-1 hover:scale-110">
+            <Edit3 />
+          </Clickable>
+        )}
       </div>
       <div className="ml-5">
         <Text variant="textSmMedium">{truncate(user?.data?.name, { length: 33 })}</Text>
@@ -28,9 +41,11 @@ const Avatar = ({ user, className, ...props }) => {
 
 Avatar.propTypes = {
   className: PropTypes.string,
+  isEditable: PropTypes.bool,
+  onEdit: PropTypes.func,
   user: PropTypes.shape({
     auth: PropTypes.object,
-    data: PropTypes.shape({ email: PropTypes.string, name: PropTypes.string }),
+    data: PropTypes.shape({ email: PropTypes.string, name: PropTypes.string, picture: PropTypes.string }),
   }),
 }
 

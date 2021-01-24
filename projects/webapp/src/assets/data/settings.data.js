@@ -77,4 +77,15 @@ export default {
     },
     action: 'Account löschen',
   },
+  picture: {
+    actions: {
+      save: 'Speichern',
+      cancel: 'Abbrechen',
+    },
+    notify: {
+      loading: 'Bild wird gespeichert.',
+      error: 'Bild konnte nicht gespeichert werden.',
+      success: 'Frisches Bild gespeichert.',
+    },
+  },
 }

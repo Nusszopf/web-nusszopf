@@ -22,6 +22,7 @@ export const ProjectFragment = gql`
     }
     user {
       name
+      picture
     }
   }
   ${RequestFragment}
