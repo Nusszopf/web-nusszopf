@@ -6,7 +6,7 @@ import classnames from 'classnames'
 import { truncate } from 'lodash'
 
 import { Text, Button, Link } from 'ui-library/stories/atoms'
-import { InfoCard } from 'ui-library/stories/molecules'
+import { InfoCard, Avatar } from 'ui-library/stories/molecules'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { serializeJSX } from 'ui-library/services/RichTextEditor.service'
 import { withAuth } from '~/utils/hoc'
@@ -206,10 +206,7 @@ const Project = ({ id, user }) => {
             )}
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col variant="oneCol" className="mt-8">
-            <Text variant="textSm">
-              {cms.body.createdBy} {data?.projects_by_pk.user.name},{' '}
-              {new Date(data?.projects_by_pk?.created_at).toLocaleDateString('de-DE')}
-            </Text>
+            <Avatar variant="project" project={data?.projects_by_pk} user={{ data: data?.projects_by_pk?.user }} />
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
       </FramedGridCard>

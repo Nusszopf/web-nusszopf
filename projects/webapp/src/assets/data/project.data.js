@@ -22,6 +22,5 @@ export default {
     searchings: {
       info: 'Alles zopfig! Derzeit gibt es keine Gesuche.',
     },
-    createdBy: 'Erstellt von',
   },
 }

@@ -6,13 +6,13 @@ import { truncate } from 'lodash'
 import { Clickable } from 'reakit/Clickable'
 
 import { Text } from '../../atoms'
+import { avatarData as cms } from '../../../assets/data'
+import { AvatarVariant } from './Avatar.theme'
 
-const Avatar = ({ user, className, isEditable = false, onEdit, ...props }) => {
+const Avatar = ({ user, className, variant = 'profile', project, onEdit, ...props }) => {
   const imgSource = useMemo(() => {
     return user?.data?.picture
       ? user?.data?.picture
-      : user?.auth?.picture && user?.auth?.picture !== 'none'
-      ? user?.auth?.picture
       : user?.data?.name
       ? `https://eu.ui-avatars.com/api/?name=${user?.data?.name}&size=128&background=CFD8DC&color=37474F&length=1&font-size=0.6&uppercase=true`
       : ''
@@ -21,8 +21,12 @@ const Avatar = ({ user, className, isEditable = false, onEdit, ...props }) => {
   return (
     <div className={classnames('flex items-center hyphens-auto', className)} {...props}>
       <div className="relative flex-shrink-0 overflow-hidden border-2 rounded-full border-steel-700 bg-steel-700">
-        <img className={classnames('w-14 h-14', { 'opacity-30': isEditable })} src={imgSource} alt="avatar" />
-        {isEditable && (
+        <img
+          className={classnames('w-14 h-14', { 'opacity-30': variant === AvatarVariant.settings })}
+          src={imgSource}
+          alt="avatar"
+        />
+        {variant === AvatarVariant.settings && (
           <Clickable
             as="div"
             onClick={onEdit}
@@ -33,7 +37,13 @@ const Avatar = ({ user, className, isEditable = false, onEdit, ...props }) => {
       </div>
       <div className="ml-5">
         <Text variant="textSmMedium">{truncate(user?.data?.name, { length: 33 })}</Text>
-        {user?.data?.email && <Text variant="textSm">{truncate(user?.data?.email ?? '-', { length: 33 })}</Text>}
+        {variant !== AvatarVariant.project ? (
+          <Text variant="textSm">{truncate(user?.data?.email ?? '-', { length: 33 })}</Text>
+        ) : (
+          <Text variant="textSm">
+            {cms.createdAt} {new Date(project.created_at).toLocaleDateString('de-DE')}
+          </Text>
+        )}
       </div>
     </div>
   )
@@ -43,6 +53,8 @@ Avatar.propTypes = {
   className: PropTypes.string,
   isEditable: PropTypes.bool,
   onEdit: PropTypes.func,
+  variant: PropTypes.oneOf(Object.values(AvatarVariant)),
+  project: PropTypes.object,
   user: PropTypes.shape({
     auth: PropTypes.object,
     data: PropTypes.shape({ email: PropTypes.string, name: PropTypes.string, picture: PropTypes.string }),

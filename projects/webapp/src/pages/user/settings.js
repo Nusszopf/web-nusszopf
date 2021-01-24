@@ -86,7 +86,7 @@ const Settings = ({ user }) => {
             <Text as="h1" variant="textLg" className="-mt-2 sm:ml-6 sm:mt-0">
               {cms.title}
             </Text>
-            <Avatar user={user} isEditable={true} onEdit={() => setShowAvatarDialog(true)} className="mt-4 sm:mt-0" />
+            <Avatar user={user} variant="settings" onEdit={() => setShowAvatarDialog(true)} className="mt-4 sm:mt-0" />
           </div>
         </FramedGridCard.Header>
         <FramedGridCard.Body className="bg-white">
