@@ -204,9 +204,12 @@ const Project = ({ id, user }) => {
             ) : (
               <InfoCard className="mt-2">{cms.body.searchings.info}</InfoCard>
             )}
-          </FramedGridCard.Body.Col>
-          <FramedGridCard.Body.Col variant="oneCol" className="mt-8">
-            <Avatar variant="project" project={data?.projects_by_pk} user={{ data: data?.projects_by_pk?.user }} />
+            <Avatar
+              className="mt-16 lg:mt-14"
+              variant="project"
+              project={data?.projects_by_pk}
+              user={{ data: data?.projects_by_pk?.user }}
+            />
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
       </FramedGridCard>
