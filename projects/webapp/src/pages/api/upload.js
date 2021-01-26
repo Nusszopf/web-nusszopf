@@ -22,6 +22,9 @@ const s3 = new aws.S3({
 })
 
 export default auth0.requireAuthentication(async function upload(req, res) {
+  console.log(process.env.SPACES_ENDPOINT)
+  console.log(process.env.SPACES_ACCESS_KEY)
+  console.log(process.env.SPACES_SECRET_KEY)
   try {
     await runMiddleware(req, res, rateLimiter)
     const { id, picture } = req.body
