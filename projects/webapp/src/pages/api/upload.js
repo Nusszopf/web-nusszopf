@@ -5,16 +5,21 @@ import auth0 from '../../utils/libs/auth0'
 import runMiddleware, { rateLimiter } from '../../utils/functions/runMiddleware.function'
 import { ERROR_CONSTRAINT } from '../../utils/enums'
 
-aws.config.update({
+// aws.config.update({
+//   accessKeyId: process.env.SPACES_ACCESS_KEY,
+//   secretAccessKey: process.env.SPACES_SECRET_KEY,
+//   region: 'fra1',
+//   bucketname: process.env.BUCKET_NAME,
+//   endpoint: process.env.SPACES_ENDPOINT,
+//   signatureVersion: 'v4',
+// })
+
+const spacesEndpoint = new aws.Endpoint(process.env.SPACES_ENDPOINT)
+const s3 = new aws.S3({
+  endpoint: spacesEndpoint,
   accessKeyId: process.env.SPACES_ACCESS_KEY,
   secretAccessKey: process.env.SPACES_SECRET_KEY,
-  region: 'fra1',
-  bucketname: process.env.BUCKET_NAME,
-  endpoint: process.env.SPACES_ENDPOINT,
-  signatureVersion: 'v4',
 })
-
-const s3 = new aws.S3()
 
 export default auth0.requireAuthentication(async function upload(req, res) {
   try {
