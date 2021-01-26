@@ -13,6 +13,7 @@ export const handleDeleteUser = async ({ id, email }, res) => {
     scope: 'delete:users',
   })
   await deleteLead(email)
+  // todo: digital ocean delete picture
   await management.deleteUser({ id })
   res.status(200).json({ id })
 }

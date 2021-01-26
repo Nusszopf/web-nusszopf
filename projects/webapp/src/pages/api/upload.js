@@ -7,7 +7,7 @@ export default auth0.requireAuthentication(async function upload(req, res) {
   try {
     await runMiddleware(req, res, rateLimiter)
     const { id, picture } = req.body
-    const isFirstUpload = !picture.includes('nz_v')
+    const isFirstUpload = !picture?.includes('nz_v')
     const filename = createFilename(picture, id, isFirstUpload)
     const post = await s3.createPresignedPost({
       Bucket: process.env.BUCKET_NAME,
