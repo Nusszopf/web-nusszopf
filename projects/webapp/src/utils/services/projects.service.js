@@ -139,7 +139,7 @@ const useProjectsService = props => {
       } catch (error) {
         notify({
           type: 'error',
-          message: cmsEdit.notify.project.delete.success,
+          message: cmsEdit.notify.project.delete.error,
         })
         return false
       }

@@ -55,7 +55,7 @@ const SettingsView = forwardRef(({ user, project }, ref) => {
           </div>
         </FramedGridCard.Body.Col>
         <FramedGridCard.Body.Col variant="twoCols" className="text-center lg:pl-4 text-warning-700 sm:text-left">
-          <Text className="mt-8 mb-2 text-left lg:mt-0">Projekt löschen</Text>
+          <Text className="mt-8 mb-2 text-left lg:mt-0">{cms.settingsView.delete.title}</Text>
           <Text variant="textSm" className="text-left">
             {cms.settingsView.alert}
           </Text>
@@ -65,7 +65,7 @@ const SettingsView = forwardRef(({ user, project }, ref) => {
             color="warning"
             onClick={handleDelete}
             disabled={deleteLoading}>
-            {cms.settingsView.delete}
+            {cms.settingsView.delete.action}
           </Button>
         </FramedGridCard.Body.Col>
       </FramedGridCard.Body>
