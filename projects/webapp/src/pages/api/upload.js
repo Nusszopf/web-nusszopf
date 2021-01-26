@@ -21,6 +21,7 @@ export default auth0.requireAuthentication(async function upload(req, res) {
       ],
     })
 
+    // https://github.com/vercel/vercel/discussions/5759
     // todo start -> outsoure as event: 'cleanup-pictures-digitalocean'
     if (!isFirstUpload) {
       const key = decodeURIComponent(picture.split('com/')[1])
