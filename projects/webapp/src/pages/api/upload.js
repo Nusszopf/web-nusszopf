@@ -7,7 +7,9 @@ export default auth0.requireAuthentication(async function upload(req, res) {
   try {
     await runMiddleware(req, res, rateLimiter)
     const { id, picture } = req.body
-    const isFirstUpload = !picture?.includes('nz_v')
+    console.log(id, picture)
+    console.log('log2', picture?.includes('nz_v'))
+    const isFirstUpload = !picture?.includes('nz_v') // todo führt zu false???
     const filename = createFilename(picture, id, isFirstUpload)
     const post = await s3.createPresignedPost({
       Bucket: process.env.BUCKET_NAME,
@@ -21,9 +23,11 @@ export default auth0.requireAuthentication(async function upload(req, res) {
       ],
     })
 
+    console.log('log3', decodeURIComponent(picture.split('com/')[1]))
     // todo start -> outsoure as event: 'cleanup-pictures-digitalocean'
     if (!isFirstUpload) {
-      const key = decodeURIComponent(picture.split('com/')[1])
+      const key = decodeURIComponent(picture.split('com/')[1]) // todo check if key is okay...
+      console.log('log4', key)
       await s3.deleteObject(
         {
           Bucket: process.env.BUCKET_NAME,
