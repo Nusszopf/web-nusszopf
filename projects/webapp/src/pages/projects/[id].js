@@ -162,7 +162,7 @@ const Project = ({ id, user }) => {
               </Text>
               <div className="text-lg">
                 {data?.projects_by_pk?.descriptionTemplate.map((node, idx) => (
-                  <Fragment key={`rq-${idx}`}>{serializeJSX(node, 'lilac')}</Fragment>
+                  <Fragment key={`desc-${idx}`}>{serializeJSX(node, 'lilac')}</Fragment>
                 ))}
               </div>
             </div>
@@ -171,7 +171,11 @@ const Project = ({ id, user }) => {
                 <Text className="mb-3" variant="textLg">
                   {cms.body.who}
                 </Text>
-                <Text variant="textSm">{data.projects_by_pk.team}</Text>
+                <div className="text-lg">
+                  {data?.projects_by_pk?.teamTemplate.map((node, idx) => (
+                    <Fragment key={`team-${idx}`}>{serializeJSX(node, 'lilac')}</Fragment>
+                  ))}
+                </div>
               </div>
             )}
             {data?.projects_by_pk?.motto && (
