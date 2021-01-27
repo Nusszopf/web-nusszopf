@@ -60,6 +60,8 @@ const deleteFile = picture => {
         Key: key,
       },
       function (error, data) {
+        console.log(error)
+        console.log(data)
         if (error) {
           reject({ data: null, error })
         } else {
