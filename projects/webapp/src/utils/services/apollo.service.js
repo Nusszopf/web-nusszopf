@@ -10,7 +10,20 @@ import { INSERT_REQUESTS, INSERT_REQUEST, UPDATE_REQUEST, DELETE_REQUEST } from 
 // USERS
 const useGetUser = id => useQuery(GET_USER, { skip: !id, variables: { id } })
 const useDeleteUser = () => useMutation(DELETE_USER)
-const useUpdateUser = () => useMutation(UPDATE_USER)
+const useUpdateUser = () =>
+  useMutation(UPDATE_USER, {
+    update: (cache, { data }) => {
+      cache.writeQuery({
+        query: GET_USER,
+        variables: { id: data?.update_users_by_pk?.private?.id },
+        data: {
+          users_by_pk: {
+            ...data?.update_users_by_pk,
+          },
+        },
+      })
+    },
+  })
 
 // LEADS
 const useAddLead = () => useMutation(INSERT_LEAD)
