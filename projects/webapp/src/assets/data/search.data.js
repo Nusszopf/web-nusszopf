@@ -2,7 +2,7 @@ export default {
   title: 'Ideen und Projekte aus dem Nusswerk',
   more: 'Mehr laden',
   filter: {
-    title: 'Filtern',
+    title: 'Gesuche Filtern',
     options: {
       companions: 'Mitstreiter:innen',
       rooms: 'Räume',

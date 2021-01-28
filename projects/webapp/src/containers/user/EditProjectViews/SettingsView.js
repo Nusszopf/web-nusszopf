@@ -25,7 +25,7 @@ const SettingsView = forwardRef(({ user, project }, ref) => {
   const formik = useFormik({
     initialValues: {
       visibility: project.visibility,
-      contact: project.contact === user.data.email,
+      contact: project.contact === user.data.private.email,
     },
     onSubmit: handleSubmit,
     enableReinitialize: true,

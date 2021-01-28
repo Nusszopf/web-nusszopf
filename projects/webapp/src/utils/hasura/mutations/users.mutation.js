@@ -13,8 +13,10 @@ export const UPDATE_USER = gql`
 export const DELETE_USER = gql`
   mutation deleteUser($id: String!) {
     delete_users_by_pk(id: $id) {
-      email
-      id
+      private {
+        email
+        id
+      }
       lead {
         id
       }

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { Menu as RMenu, Search, ChevronLeft, User, PlusCircle, LogIn } from 'react-feather'
+import { Menu as RMenu, Search, ChevronLeft, User, PlusCircle, LogIn, Folder } from 'react-feather'
 import { Clickable } from 'reakit/Clickable'
 import { useMenuState, Menu, MenuButton } from 'reakit/Menu'
 
@@ -121,7 +121,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
           </Clickable>
           {user?.auth && (
             <Clickable aria-label={cms.aria[1]} onClick={handleProfile} className="mr-6 sm:mr-8 focus:outline-none">
-              <User />
+              <Folder size={20} strokeWidth={2.2} />
             </Clickable>
           )}
           <MenuButton {...menu} className="focus:outline-none" aria-label={cms.aria[2]}>
@@ -143,8 +143,10 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
               disabled={process.env.ENV === 'production'}
               className={classnames({ 'opacity-50': process.env.ENV === 'production' })}>
               <div className="flex items-center ">
-                <Search className="-ml-2" />
-                <Text variant="textSmMedium" className="inline-block ml-3">
+                <div className="w-6 mr-1">
+                  <Search className="-ml-2" />
+                </div>
+                <Text variant="textSmMedium" className="inline-block">
                   {cms.items[0]}
                 </Text>
               </div>
@@ -157,8 +159,10 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
                 disabled={process.env.ENV === 'production'}
                 className={classnames({ 'opacity-50': process.env.ENV === 'production' })}>
                 <div className="flex items-center ">
-                  <PlusCircle size={22} className="-ml-2" />
-                  <Text variant="textSmMedium" className="inline-block ml-3">
+                  <div className="w-6 mr-1">
+                    <PlusCircle size={22} className="-ml-2" />
+                  </div>
+                  <Text variant="textSmMedium" className="inline-block">
                     {cms.items[6]}
                   </Text>
                 </div>
@@ -168,14 +172,23 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
               <>
                 <MenuItem {...menu} hasIcon={true} onClick={handleProfile}>
                   <div className="flex items-center">
-                    <User className="-ml-2" />
-                    <Text variant="textSmMedium" className="inline-block ml-3">
-                      {user?.data?.name ?? cms.items[1]}
+                    <div className="w-6 mr-1">
+                      <Folder className="-ml-1.5" size={20} strokeWidth={2.2} />
+                    </div>
+                    <Text variant="textSmMedium" className="inline-block">
+                      {cms.items[2]}
                     </Text>
                   </div>
                 </MenuItem>
-                <MenuItem {...menu} onClick={handleSettings}>
-                  <Text variant="textSmMedium">{cms.items[2]}</Text>
+                <MenuItem {...menu} hasIcon={true} onClick={handleSettings}>
+                  <div className="flex items-center">
+                    <div className="w-6 mr-1">
+                      <User className="-ml-2" />
+                    </div>
+                    <Text variant="textSmMedium" className="inline-block">
+                      {user?.data?.name ?? cms.items[1]}
+                    </Text>
+                  </div>
                 </MenuItem>
               </>
             ) : (
@@ -186,8 +199,10 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
                 disabled={process.env.ENV === 'production'}
                 className={classnames({ 'opacity-50': process.env.ENV === 'production' })}>
                 <div className="flex items-center">
-                  <LogIn size={23} className="-ml-2" />
-                  <Text variant="textSmMedium" className="inline-block ml-3">
+                  <div className="w-6 mr-1">
+                    <LogIn size={23} className="-ml-2" />
+                  </div>
+                  <Text variant="textSmMedium" className="inline-block">
                     {cms.items[3]}
                   </Text>
                 </div>

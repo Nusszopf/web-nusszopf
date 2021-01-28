@@ -11,9 +11,9 @@ const useProjectsService = props => {
   const { notify } = useToasts()
   const [apolloDeleteProject, { loading: deleteLoading }] = apollo.useDeleteProject()
   const [apolloUpdateProject, { loading: updateLoading }] = apollo.useUpdateProject()
-  const [apolloAddProject, { loading: addLoading }] = apollo.useAddProject(props?.user?.data?.id)
+  const [apolloAddProject, { loading: addLoading }] = apollo.useAddProject(props?.user?.data?.private?.id)
 
-  const [apolloAddRequests, { loading: addRequestsLoading }] = apollo.useAddRequests(props?.user?.data?.id)
+  const [apolloAddRequests, { loading: addRequestsLoading }] = apollo.useAddRequests(props?.user?.data?.private?.id)
   const [apolloAddRequest, { loading: addRequestLoading }] = apollo.useAddRequest(props?.project?.id)
   const [apolloUpdateRequest, { loading: updateRequestLoading }] = apollo.useUpdateRequest()
   const [apolloDeleteRequest, { loading: deleteRequestLoading }] = apollo.useDeleteRequest()
@@ -59,14 +59,14 @@ const useProjectsService = props => {
       teamTemplate: form.team,
       team: form.team.map(n => Node.string(n)).join(' '),
       motto: form.motto,
-      user_id: user.data.id,
+      user_id: user.data.private.id,
     }
   }
 
   const serializeProjectSettings = (user, form) => {
     return {
       visibility: form.visibility,
-      contact: form.contact ? user.data.email : NZ_EMAIL,
+      contact: form.contact ? user.data.private.email : NZ_EMAIL,
     }
   }
 

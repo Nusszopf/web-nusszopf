@@ -21,14 +21,14 @@ const Settings = ({ user }) => {
   const [deleteUser, { loading: loadingDeleteUser }] = apollo.useDeleteUser()
   const [addLead, { loading: loadingAddLead }] = apollo.useAddLead()
   const [deleteLead, { loading: loadingDeleteLead }] = apollo.useDeleteLead()
-  const [updateLead, { loading: loadingUpdateLead }] = apollo.useUpdateLead(user?.data?.id)
+  const [updateLead, { loading: loadingUpdateLead }] = apollo.useUpdateLead(user?.data?.private?.id)
 
   const handleSubscribe = async ({ privacy }) => {
     notify({ type: 'loading', message: cms.newsletter.subscribe.notify.loading })
     try {
       const res = await addLead({
         variables: {
-          email: user.data.email,
+          email: user.data.private.email,
           name: user.data.name,
           privacy,
         },
@@ -46,7 +46,7 @@ const Settings = ({ user }) => {
       notify({ type: 'loading', message: cms.newsletter.unsubscribe.notify.loading })
       try {
         await deleteLead({
-          variables: { email: user.data.email },
+          variables: { email: user.data.private.email },
         })
         notify({ type: 'success', message: cms.newsletter.unsubscribe.notify.success })
       } catch (error) {
@@ -61,7 +61,7 @@ const Settings = ({ user }) => {
       notify({ type: 'loading', message: cms.delete.notify.loading })
       try {
         await deleteUser({
-          variables: { id: user.data.id },
+          variables: { id: user.data.private.id },
         })
         logout()
         notify({ type: 'success', message: cms.delete.notify.success })

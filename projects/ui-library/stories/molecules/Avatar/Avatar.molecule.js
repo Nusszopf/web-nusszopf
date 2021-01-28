@@ -38,7 +38,7 @@ const Avatar = ({ user, className, variant = 'profile', project, onEdit, ...prop
       <div className="ml-5">
         <Text variant="textSmMedium">{truncate(user?.data?.name, { length: 33 })}</Text>
         {variant !== AvatarVariant.project ? (
-          <Text variant="textSm">{truncate(user?.data?.email ?? '-', { length: 33 })}</Text>
+          <Text variant="textSm">{truncate(user?.data?.private?.email ?? '-', { length: 33 })}</Text>
         ) : (
           <Text variant="textSm">
             {cms.createdAt} {new Date(project.created_at).toLocaleDateString('de-DE')}
@@ -55,10 +55,7 @@ Avatar.propTypes = {
   onEdit: PropTypes.func,
   variant: PropTypes.oneOf(Object.values(AvatarVariant)),
   project: PropTypes.object,
-  user: PropTypes.shape({
-    auth: PropTypes.object,
-    data: PropTypes.shape({ email: PropTypes.string, name: PropTypes.string, picture: PropTypes.string }),
-  }),
+  user: PropTypes.object,
 }
 
 export default Avatar

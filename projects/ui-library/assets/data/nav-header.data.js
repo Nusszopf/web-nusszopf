@@ -6,8 +6,8 @@ export default {
   aria: ['Suche', 'Profil', 'Navigation'],
   items: [
     'Suchen & Finden',
-    'Dein Bereich',
-    'Einstellungen',
+    'Dein Profil',
+    'Deine Projekte',
     'Anmelden',
     'Nusszopf.org',
     'Ausloggen',

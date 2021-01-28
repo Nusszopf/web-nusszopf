@@ -18,7 +18,9 @@ import { profileData as cms } from '~/assets/data'
 
 const Profile = ({ user, loading: loadingUser }) => {
   const router = useRouter()
-  const { data, loading: loadingProjects } = apollo.useGetProjects(user?.data?.id, { skip: loadingUser || !user?.data })
+  const { data, loading: loadingProjects } = apollo.useGetProjects(user?.data?.private?.id, {
+    skip: loadingUser || !user?.data,
+  })
   const { deleteProject, updateProject, updateLoading } = useProjectsService()
 
   useEffect(() => {

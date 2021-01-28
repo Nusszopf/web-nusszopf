@@ -24,7 +24,7 @@ const AvatarDialog = ({ isOpen, onDismiss, user, ...props }) => {
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
         },
-        body: JSON.stringify({ id: user.data.id, picture: user.data.picture }),
+        body: JSON.stringify({ id: user.data.private.id, picture: user.data.picture }),
       })
       const { url, fields, filename } = await res.json()
       const file = new File([image], filename, { type: 'image/jpeg' })
@@ -39,7 +39,7 @@ const AvatarDialog = ({ isOpen, onDismiss, user, ...props }) => {
       })
       // update user data
       await updateUser({
-        variables: { id: user.data.id, picture: SPACES_CDN_ENDPOINT + encodeURIComponent(filename) },
+        variables: { id: user.data.private.id, picture: SPACES_CDN_ENDPOINT + encodeURIComponent(filename) },
       })
 
       notify({ type: 'success', message: cms.picture.notify.success })
