@@ -10,7 +10,7 @@ import { avatarData as cms } from '../../../assets/data'
 import { AvatarVariant } from './Avatar.theme'
 
 const Avatar = ({ user, className, variant = 'profile', project, onEdit, ...props }) => {
-  const isSocialAccount = user?.auth?.sub?.includes('google') || user?.auth?.sub?.includes('google')
+  const isSocialAccount = user?.auth?.sub?.includes('google') || user?.auth?.sub?.includes('apple')
 
   const imgSource = useMemo(() => {
     return user?.data?.picture
