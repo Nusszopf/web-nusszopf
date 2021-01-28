@@ -11,8 +11,10 @@ import { AvatarVariant } from './Avatar.theme'
 
 const Avatar = ({ user, className, variant = 'profile', project, onEdit, ...props }) => {
   const imgSource = useMemo(() => {
-    return user?.data?.picture !== 'none'
+    return user?.data?.picture
       ? user?.data?.picture
+      : !user?.auth?.picture?.includes('cdn.auth0.com')
+      ? user?.auth?.picture
       : user?.data?.name
       ? `https://eu.ui-avatars.com/api/?name=${user?.data?.name}&size=128&background=CFD8DC&color=37474F&length=1&font-size=0.6&uppercase=true`
       : ''
