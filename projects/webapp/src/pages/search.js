@@ -5,7 +5,7 @@ import { Masonry } from 'ui-library/stories/organisms'
 import { Frame } from 'ui-library/stories/templates'
 import { useSearch } from '~/utils/services/search.service'
 import { withAuth } from '~/utils/hoc'
-import { HitCard, SearchInput, NoHitsSection, SkeletonHits } from '~/containers/search'
+import { HitCard, SearchInput, NoHitsSection, SkeletonHits } from '~/containers'
 import { Page } from '~/components'
 import { searchData as cms } from '~/assets/data'
 

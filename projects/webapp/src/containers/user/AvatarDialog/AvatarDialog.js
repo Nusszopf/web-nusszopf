@@ -6,7 +6,7 @@ import { useToasts } from 'ui-library/services/Toasts.service'
 import { Button } from 'ui-library/stories/atoms'
 import { Dialog, Cropper } from 'ui-library/stories/organisms'
 import { SPACES_CDN_ENDPOINT } from '~/utils/enums'
-import { settingsData as cms } from '~/assets/data'
+import { profileData as cms } from '~/assets/data'
 
 const AvatarDialog = ({ isOpen, onDismiss, user, ...props }) => {
   const [isComplete, setIsComplete] = useState(false)

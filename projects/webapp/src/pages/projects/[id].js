@@ -18,7 +18,7 @@ import { initializeApollo } from '~/utils/libs/apolloClient'
 import { NZ_EMAIL } from '~/utils/enums'
 import { projectData as cms } from '~/assets/data'
 import { Page, RequestCard } from '~/components'
-import { RequestDialog, ContactDialog, Banner } from '~/containers/projects'
+import { RequestDialog, ContactDialog, Banner } from '~/containers'
 
 const Project = ({ id, user }) => {
   const [currentRequest, setCurrentRequest] = useState()

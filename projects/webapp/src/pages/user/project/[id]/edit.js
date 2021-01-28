@@ -42,7 +42,7 @@ const ProjectEdit = ({ id, user }) => {
 
   return (
     <Page
-      navHeader={{ visible: true, goBackUri: '/user/profile' }}
+      navHeader={{ visible: true, goBackUri: '/user/projects' }}
       footer={{ className: 'bg-white lg:bg-lilac-100' }}
       noindex={true}
       className="bg-white text-lilac-800 lg:bg-lilac-100">

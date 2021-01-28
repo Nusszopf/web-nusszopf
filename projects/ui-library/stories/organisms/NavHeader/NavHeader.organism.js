@@ -67,14 +67,14 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
     }
   }
 
+  const handleProjects = () => {
+    menu.hide()
+    router.push('/user/projects')
+  }
+
   const handleProfile = () => {
     menu.hide()
     router.push('/user/profile')
-  }
-
-  const handleSettings = () => {
-    menu.hide()
-    router.push('/user/settings')
   }
 
   const handleGoBack = () => {
@@ -120,7 +120,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
             <Search />
           </Clickable>
           {user?.auth && (
-            <Clickable aria-label={cms.aria[1]} onClick={handleProfile} className="mr-6 sm:mr-8 focus:outline-none">
+            <Clickable aria-label={cms.aria[1]} onClick={handleProjects} className="mr-6 sm:mr-8 focus:outline-none">
               <Folder size={20} strokeWidth={2.2} />
             </Clickable>
           )}
@@ -170,7 +170,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
             )}
             {user?.auth ? (
               <>
-                <MenuItem {...menu} hasIcon={true} onClick={handleProfile}>
+                <MenuItem {...menu} hasIcon={true} onClick={handleProjects}>
                   <div className="flex items-center">
                     <div className="w-6 mr-1">
                       <Folder className="-ml-1.5" size={20} strokeWidth={2.2} />
@@ -180,7 +180,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
                     </Text>
                   </div>
                 </MenuItem>
-                <MenuItem {...menu} hasIcon={true} onClick={handleSettings}>
+                <MenuItem {...menu} hasIcon={true} onClick={handleProfile}>
                   <div className="flex items-center">
                     <div className="w-6 mr-1">
                       <User className="-ml-2" />

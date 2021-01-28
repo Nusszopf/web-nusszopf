@@ -4,7 +4,7 @@ import { Swiper } from 'ui-library/stories/organisms'
 import { Frame } from 'ui-library/stories/templates'
 import { Text, Skeleton } from 'ui-library/stories/atoms'
 import apollo from '~/utils/services/apollo.service'
-import { ItemCard } from '~/containers/home'
+import { ItemCard } from '~/containers'
 import { homeData as cms } from '~/assets/data'
 
 const CarouselSection = () => {

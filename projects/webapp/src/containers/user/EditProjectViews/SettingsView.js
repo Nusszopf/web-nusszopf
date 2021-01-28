@@ -38,7 +38,7 @@ const SettingsView = forwardRef(({ user, project }, ref) => {
   const handleDelete = async () => {
     const isDeleted = await deleteProject(project.id)
     if (isDeleted) {
-      router.push('/user/profile')
+      router.push('/user/projects')
     }
   }
 
