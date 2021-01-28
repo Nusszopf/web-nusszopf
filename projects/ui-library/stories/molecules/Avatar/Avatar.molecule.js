@@ -10,6 +10,8 @@ import { avatarData as cms } from '../../../assets/data'
 import { AvatarVariant } from './Avatar.theme'
 
 const Avatar = ({ user, className, variant = 'profile', project, onEdit, ...props }) => {
+  const isSocialAccount = user?.auth?.sub?.includes('google') || user?.auth?.sub?.includes('google')
+
   const imgSource = useMemo(() => {
     return user?.data?.picture
       ? user?.data?.picture
@@ -22,11 +24,11 @@ const Avatar = ({ user, className, variant = 'profile', project, onEdit, ...prop
     <div className={classnames('flex items-center hyphens-auto', className)} {...props}>
       <div className="relative flex-shrink-0 overflow-hidden border-2 rounded-full border-steel-700 bg-steel-700">
         <img
-          className={classnames('w-14 h-14', { 'opacity-30': variant === AvatarVariant.settings })}
+          className={classnames('w-14 h-14', { 'opacity-30': variant === AvatarVariant.settings && !isSocialAccount })}
           src={imgSource}
           alt="avatar"
         />
-        {variant === AvatarVariant.settings && (
+        {variant === AvatarVariant.settings && !isSocialAccount && (
           <Clickable
             as="div"
             onClick={onEdit}
