@@ -1,15 +1,16 @@
-import sgClient from '@sendgrid/client'
 import { requireEventSecret } from '../../../utils/functions/auth.function'
-import { UsersTrigger, handleDeleteUser } from '../../../utils/functions/users.function'
+import { UsersTrigger, handleDeleteUser, handleUpdateUser } from '../../../utils/functions/users.function'
 import { ERROR_CONSTRAINT } from '../../../utils/enums'
 
 export default async function users(req, res) {
   try {
     requireEventSecret(req.headers.secret)
-    sgClient.setApiKey(process.env.SENDGRID_API_KEY)
     switch (req.body?.trigger?.name) {
       case UsersTrigger.delete:
-        await handleDeleteUser(req.body?.event?.data?.old, res, sgClient)
+        await handleDeleteUser(req.body?.event?.data?.old, res)
+        break
+      case UsersTrigger.update:
+        await handleUpdateUser(req.body?.event?.data?.old, res)
         break
       default:
         res.status(200).end('nothing triggered')
