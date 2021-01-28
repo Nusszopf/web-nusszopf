@@ -6,7 +6,7 @@ import { isEqual } from 'lodash'
 
 import { InputGroup } from 'ui-library/stories/molecules'
 import { useSearch } from '~/utils/services/search.service'
-import FilterPopover from './FilterPopover'
+import { FilterPopover } from '../index'
 
 const SearchInput = ({ className }) => {
   const { term, setTerm, filter, search, isLoading } = useSearch()
