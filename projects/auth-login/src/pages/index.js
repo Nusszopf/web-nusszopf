@@ -127,7 +127,7 @@ export default function IndexPage() {
           username: values.username,
           email: values.email,
           password: values.password,
-          user_metadata: { newsletter: values.newsletter ? 'true' : 'false' },
+          user_metadata: { newsletter: values.newsletter ? 'true' : 'false', env: process.env.VERCEL_ENV },
         },
         (error, response) => {
           setLoading(false)
