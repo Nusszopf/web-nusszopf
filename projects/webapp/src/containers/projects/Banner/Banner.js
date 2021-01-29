@@ -8,8 +8,8 @@ import { bannerData } from '~/assets/data'
 import { Text, Route } from 'ui-library/stories/atoms'
 import { Frame } from 'ui-library/stories/templates'
 
-const Banner = ({ project, user }) => {
-  const [isVisible, setIsVisible] = useState(project.user_id === user)
+const Banner = ({ project, userId }) => {
+  const [isVisible, setIsVisible] = useState(project.user_id === userId)
   return (
     <div className={classnames('py-4 bg-livid-300', { hidden: !isVisible })}>
       <Frame className="text-livid-800">
@@ -36,7 +36,7 @@ const Banner = ({ project, user }) => {
 
 Banner.propTypes = {
   project: PropTypes.object.isRequired,
-  user: PropTypes.string,
+  userId: PropTypes.string,
 }
 
 export default Banner

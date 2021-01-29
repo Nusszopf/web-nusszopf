@@ -20,7 +20,7 @@ import { projectData as cms } from '~/assets/data'
 import { Page, RequestCard } from '~/components'
 import { RequestDialog, ContactDialog, Banner } from '~/containers'
 
-const Project = ({ id, user }) => {
+const Project = ({ id, userId }) => {
   const { serializeJSX } = useRichTextEditor()
   const [currentRequest, setCurrentRequest] = useState()
   const [showRequestDialog, setShowRequestDialog] = useState(false)
@@ -98,7 +98,7 @@ const Project = ({ id, user }) => {
       footer={{ className: 'bg-white lg:bg-lilac-100' }}
       noindex={true}
       className="text-lilac-800 bg-lilac-100">
-      <Banner project={data.projects_by_pk} user={user} />
+      <Banner project={data.projects_by_pk} userId={userId} />
       <FramedGridCard
         className="lg:mb-20 lg:mt-12"
         bodyColor="bg-white lg:bg-lilac-100"
@@ -246,11 +246,11 @@ export async function getServerSideProps(ctx) {
         notFound: true,
       }
     } else {
-      let user = 'anonymous'
+      let userId = 'anonymous'
       try {
         const session = await auth0.getSession(ctx.req)
         if (session?.user) {
-          user = session.user.sub
+          userId = session.user.sub
         }
       } catch (error) {
         console.error(error)
@@ -258,7 +258,7 @@ export async function getServerSideProps(ctx) {
       return {
         props: {
           id,
-          user: user,
+          userId: userId,
           initialApolloState: apolloClient.cache.extract(),
         },
       }
@@ -273,7 +273,7 @@ export async function getServerSideProps(ctx) {
 
 Project.propTypes = {
   id: PropTypes.string,
-  user: PropTypes.string,
+  userId: PropTypes.string,
 }
 
 export default withAuth(Project, { isAuthRequired: false })
