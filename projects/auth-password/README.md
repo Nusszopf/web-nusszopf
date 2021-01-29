@@ -6,18 +6,20 @@
 
 # Nusszopf – Password Page
 
-Environment to develop and build the custom auth0-nusszopf password page.
+Environment to develop and build a custom auth0 password page.
 
-Copy and paste the current build on vercel: e.g. https://vercel.com/nusszopf/auth-password-nusszopf/9a2td8tty/source, and add to each url the domain. After each deployment, replace the new index.html file in auth0!
+## Current Workflow
+
+1. Push new changes to Vercel
+2. Replace dist/tt.mm.yy.html with tt.mm.yy.html from the output folder of the new vercel build
+3. Replace preload stylesheets with inline stylesheets
+4. Add full path to all `href`, `src` and `url` params
+5. Minify via [willpeavy.com/tools/minifier/](https://www.willpeavy.com/tools/minifier/)
+6. Save new html file in auth0 as custom password page
 
 ## Notes
 
 - [Auth0 Auth App](https://community.auth0.com/t/disable-authorize-app-dialog/6939)
 - [Auth0 Password Reset Page](https://github.com/auth0/auth0-custom-password-reset-hosted-page)
 - [Auth0 password-reset-flow](https://auth0.com/docs/connections/database/password-change#trigger-an-interactive-password-reset-flow)
-
-## Customize
-
-1. check github code: looks like only a post-request without auth0 library! [repo](https://github.com/auth0/auth0-custom-password-reset-hosted-page).
-   -> get query-params -> add new pw -> send post request `/lo/reset` should do the trick.
-   -> password validation (maybe auth0 password sherif?)
+- [auth0/password-sheriff](https://github.com/auth0/password-sheriff)
