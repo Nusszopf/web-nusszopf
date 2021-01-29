@@ -6,7 +6,7 @@ import { createEditor } from 'slate'
 import { Slate, Editable, withReact } from 'slate-react'
 import { withHistory } from 'slate-history'
 
-import { withLinks } from './utils/link'
+import { withLinks } from './utils'
 import { Element, Leaf, LinkButton, MarkButton, BlockButton } from './components'
 import { ThemeColor } from './RichTextEditor.theme'
 

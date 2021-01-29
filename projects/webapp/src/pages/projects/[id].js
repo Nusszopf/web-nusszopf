@@ -7,8 +7,8 @@ import { truncate } from 'lodash'
 
 import { Text, Button, Link } from 'ui-library/stories/atoms'
 import { InfoCard, Avatar } from 'ui-library/stories/molecules'
+import { useRichTextEditor } from 'ui-library/stories/organisms'
 import { FramedGridCard } from 'ui-library/stories/templates'
-import { serializeJSX } from 'ui-library/services/RichTextEditor.service'
 import { withAuth } from '~/utils/hoc'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import auth0 from '~/utils/libs/auth0'
@@ -21,6 +21,7 @@ import { Page, RequestCard } from '~/components'
 import { RequestDialog, ContactDialog, Banner } from '~/containers'
 
 const Project = ({ id, user }) => {
+  const { serializeJSX } = useRichTextEditor()
   const [currentRequest, setCurrentRequest] = useState()
   const [showRequestDialog, setShowRequestDialog] = useState(false)
   const [showContactDialog, setShowContactDialog] = useState(false)
@@ -248,7 +249,9 @@ export async function getServerSideProps(ctx) {
       let user = 'anonymous'
       try {
         const session = await auth0.getSession(ctx.req)
-        user = session.user.sub
+        if (session?.user) {
+          user = session.user.sub
+        }
       } catch (error) {
         console.error(error)
       }

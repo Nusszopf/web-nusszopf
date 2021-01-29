@@ -4,13 +4,13 @@ import classnames from 'classnames'
 import { X } from 'react-feather'
 
 import { Button, Text } from 'ui-library/stories/atoms'
-import { Dialog } from 'ui-library/stories/organisms'
-import { serializeJSX } from 'ui-library/services/RichTextEditor.service'
+import { Dialog, useRichTextEditor } from 'ui-library/stories/organisms'
 import { CategoryButtonColor, CategoryBackgroundColor, CategoryLinkColor } from './RequestDialog.theme'
 import { Request } from '~/assets/icons'
 import { requestDialogData as cms } from '~/assets/data'
 
 const RequestDialog = ({ isOpen, onDismiss, onContact, request, ...props }) => {
+  const { serializeJSX } = useRichTextEditor()
   const richtText = useMemo(() => {
     if (request) {
       return request?.descriptionTemplate?.map((node, idx) => (

@@ -2,13 +2,14 @@ import { useToasts } from 'ui-library/services/Toasts.service'
 import apollo from './apollo.service'
 import { Node } from 'slate'
 
-import { serializeText } from 'ui-library/services/RichTextEditor.service'
+import { useRichTextEditor } from 'ui-library/stories/organisms'
+import { createProjectData as cmsCreate, editProjectsViewsData as cmsEdit } from '~/assets/data'
 import { NZ_EMAIL } from '../enums'
 import { parseDateISOString } from '../helper'
-import { createProjectData as cmsCreate, editProjectsViewsData as cmsEdit } from '~/assets/data'
 
 const useProjectsService = props => {
   const { notify } = useToasts()
+  const { serializeText } = useRichTextEditor()
   const [apolloDeleteProject, { loading: deleteLoading }] = apollo.useDeleteProject()
   const [apolloUpdateProject, { loading: updateLoading }] = apollo.useUpdateProject()
   const [apolloAddProject, { loading: addLoading }] = apollo.useAddProject(props?.user?.data?.private?.id)
