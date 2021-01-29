@@ -98,7 +98,7 @@ Specific folder to Next.js. More informations in the documentation: [Next.js - P
 
 #### **src/styles**
 
-Global styles and tailwind-configuration.
+Global styles and tailwind configuration.
 
 #### **src/utils**
 
