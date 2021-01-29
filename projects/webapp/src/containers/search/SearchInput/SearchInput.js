@@ -16,9 +16,9 @@ const SearchInput = ({ className }) => {
 
   useEffect(() => {
     if (!inputRef?.current) return
-    inputRef.current.addEventListener('keyup', handleEnter)
+    const ref = inputRef.current.addEventListener('keyup', handleEnter)
     return () => {
-      inputRef.current.removeEventListener('keyup', handleEnter)
+      ref.removeEventListener('keyup', handleEnter)
     }
   }, [inputRef])
 

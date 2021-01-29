@@ -19,6 +19,7 @@ const RequestDialog = ({ isOpen, onDismiss, onContact, request, ...props }) => {
     } else {
       return null
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [request])
 
   return (

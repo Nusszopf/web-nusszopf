@@ -62,6 +62,7 @@ export const SearchContextProvider = ({ children }) => {
       }
     }
     placeholderSearch()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInitial, index])
 
   const search = async (_term, _filter) => {

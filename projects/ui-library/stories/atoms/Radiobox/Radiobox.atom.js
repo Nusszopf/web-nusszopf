@@ -9,7 +9,7 @@ import Text from '../Text/Text.atom'
 const Radiobox = ({ disabled = false, orientation, label, className, ...props }) => {
   const ref = useRef()
   return (
-    <label className={classnames({ block: orientation === 'vertical' })}>
+    <label htmlFor={props.value} className={classnames({ block: orientation === 'vertical' })}>
       <VisuallyHidden>
         <Radio ref={ref} disabled={disabled} {...props} />
       </VisuallyHidden>
@@ -40,6 +40,7 @@ Radiobox.propTypes = {
   label: PropTypes.node.isRequired,
   orientation: PropTypes.oneOf(['vertical', 'horizontal']),
   className: PropTypes.string,
+  value: PropTypes.string,
 }
 
 export default Radiobox

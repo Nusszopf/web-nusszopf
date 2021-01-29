@@ -6,19 +6,16 @@
   "author": "schwamic <schwarz.michael@posteo.net>",
   "license": "GNU General Public License v3.0",
   "private": true,
-  "workspaces": [
-    "projects/*"
-  ],
+  "workspaces": [ "projects/*" ],
   "scripts": {
     "dev:webapp": "yarn --cwd projects/webapp dev",
     "dev:login": "yarn --cwd projects/auth-login dev",
     "dev:pw": "yarn --cwd projects/auth-password dev",
-    "storybook": "yarn --cwd projects/ui-library start-storybook -p 6006"
+    "storybook": "yarn --cwd projects/ui-library start-storybook -p 6006",
+    "lint": "eslint ./projects/*"
   },
   "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
+    "extends": [ "@commitlint/config-conventional" ]
   },
   "lint-staged": {
     "*.{html,js,json,md,mdx,mjs,yml}": "prettier --write",

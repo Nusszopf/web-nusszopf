@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import { logError } from '../../utils/services/error.service'
 import ErrorPage from '../ErrorPage/ErrorPage'
 
 class ErrorBoundary extends React.Component {
@@ -13,7 +12,9 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    logError(`error-boundary: ${error.message} + ${errorInfo.componentStack}`)
+    if (process.env.ENV !== 'production') {
+      console.error(`Error: ${error.message} + ${errorInfo.componentStack}`)
+    }
   }
 
   render() {
