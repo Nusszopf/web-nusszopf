@@ -9,7 +9,8 @@ import Text from '../Text/Text.atom'
 const Radiobox = ({ disabled = false, orientation, label, className, ...props }) => {
   const ref = useRef()
   return (
-    <label htmlFor={props.value} className={classnames({ block: orientation === 'vertical' })}>
+    // eslint-disable-next-line jsx-a11y/label-has-associated-control
+    <label className={classnames({ block: orientation === 'vertical' })}>
       <VisuallyHidden>
         <Radio ref={ref} disabled={disabled} {...props} />
       </VisuallyHidden>
