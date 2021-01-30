@@ -1,6 +1,6 @@
 import { Fragment, useMemo, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { MapPin, Calendar, Send, Share2 } from 'react-feather'
+import { MapPin, Calendar, Send, Share2, AlertTriangle } from 'react-feather'
 import { isValid } from 'date-fns'
 import classnames from 'classnames'
 import { truncate } from 'lodash'
@@ -8,7 +8,7 @@ import { truncate } from 'lodash'
 import { Text, Button, Link } from 'ui-library/stories/atoms'
 import { InfoCard, Avatar } from 'ui-library/stories/molecules'
 import { useRichTextEditor } from 'ui-library/stories/organisms'
-import { FramedGridCard } from 'ui-library/stories/templates'
+import { FramedGridCard, Frame } from 'ui-library/stories/templates'
 import { withAuth } from '~/utils/hoc'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import auth0 from '~/utils/libs/auth0'
@@ -97,10 +97,10 @@ const Project = ({ id, userId }) => {
       description={data.projects_by_pk.goal}
       footer={{ className: 'bg-white lg:bg-lilac-100' }}
       noindex={true}
-      className="text-lilac-800 bg-lilac-100">
+      className="bg-white text-lilac-800 lg:bg-lilac-100">
       <Banner project={data.projects_by_pk} userId={userId} />
       <FramedGridCard
-        className="lg:mb-20 lg:mt-12"
+        className="lg:mt-12"
         bodyColor="bg-white lg:bg-lilac-100"
         headerColor="bg-lilac-300 lg:bg-lilac-100">
         <FramedGridCard.Header className="bg-lilac-300">
@@ -218,6 +218,21 @@ const Project = ({ id, userId }) => {
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
       </FramedGridCard>
+      <Frame className="mt-12 mb-12 text-center lg:mt-4 lg:text-right lg:mb-20">
+        <Link
+          variant="button"
+          size="base"
+          buttonVariant="clean"
+          iconLeft={<AlertTriangle size={21} className="mr-2" />}
+          className="underline lg:pr-2.5"
+          title={cms.report.meta}
+          ariaLabel={cms.report.meta}
+          href={`${cms.report.href} (ID: ${id})`}>
+          <Text as="span" variant="textSmMedium">
+            {cms.report.text}
+          </Text>
+        </Link>
+      </Frame>
       <RequestDialog
         isOpen={showRequestDialog}
         onDismiss={closeRequest}

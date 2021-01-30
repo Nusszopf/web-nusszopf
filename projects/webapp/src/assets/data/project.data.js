@@ -23,4 +23,9 @@ export default {
       info: 'Alles zopfig! Derzeit gibt es keine Gesuche.',
     },
   },
+  report: {
+    href: 'mailto:mail@nusszopf.org?subject=Projekt melden',
+    meta: 'Projekt mail@nusszopf.org melden',
+    text: 'Projekt melden',
+  },
 }
