@@ -40,3 +40,12 @@ export const GET_LATEST_PROJECTS_CROP = gql`
   }
   ${ProjectCropFragment}
 `
+
+export const GET_ALL_PUBLIC_PROJECTS = gql`
+  query getLatestProjects {
+    projects(where: { visibility: { _eq: "public" } }) {
+      id
+      created_at
+    }
+  }
+`

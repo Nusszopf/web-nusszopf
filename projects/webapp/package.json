@@ -26,11 +26,10 @@
     "graphql-request": "3.4.0",
     "graphql-tag": "2.11.0",
     "jsonwebtoken": "8.5.1",
-    "meilisearch": "0.17.0"
+    "meilisearch": "0.17.0",
+    "sitemap": "6.3.5"
   },
   "devDependencies": {
-    "babel-plugin-graphql-tag": "3.1.0",
-    "globby": "11.0.2",
-    "node-fetch": "2.6.1"
+    "babel-plugin-graphql-tag": "3.1.0"
   }
 }
