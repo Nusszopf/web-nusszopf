@@ -7,7 +7,7 @@ import { FramedGridCard } from 'ui-library/stories/templates'
 import { withAuth } from '~/utils/hoc'
 import apollo from '~/utils/services/apollo.service'
 import { Page } from '~/components'
-import { ProjectView, RequestsView, SettingsView, SkeletonView } from '~/containers'
+import { ProjectView, RequestsView, SettingsView, SkeletonView } from '~/containers/user/EditProjectViews'
 import { editProjectsViewsData as cms } from '~/assets/data'
 
 const projectEditData = {

@@ -4,6 +4,8 @@ export default {
   },
   requestsView: {
     create: 'Gesuch erstellen',
+    intro:
+      'Gesuche in dem Projekt zeigen anderen Nusszopfer:innen, was für die Projektumsetzung noch alles benötigt wird.',
     info: 'Alles zopfig! Derzeit gibt es keine Gesuche.',
   },
   settingsView: {

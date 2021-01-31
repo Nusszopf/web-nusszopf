@@ -6,7 +6,7 @@ import { useFormik } from 'formik'
 import { Button, Text } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import useProjectsService from '~/utils/services/projects.service'
-import { VisibilityField, ContactField } from '../ProjectForm'
+import { VisibilityField, ContactField } from '~/containers/user/ProjectForm'
 import { editProjectsViewsData as cms } from '~/assets/data'
 
 const SettingsView = forwardRef(({ user, project }, ref) => {

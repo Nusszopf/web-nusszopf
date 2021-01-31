@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { useScrollTop } from '~/utils/helper'
-import { ContactField, VisibilityField } from '../ProjectForm'
+import { ContactField, VisibilityField } from '~/containers/user/ProjectForm'
 
 const SettingsStep = ({ user }) => {
   useScrollTop()

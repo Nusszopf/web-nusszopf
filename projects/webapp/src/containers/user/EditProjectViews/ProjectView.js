@@ -22,7 +22,7 @@ import {
   LocationFieldValidationSchema,
   PeriodField,
   PeriodFieldValidationSchema,
-} from '../ProjectForm'
+} from '~/containers/user/ProjectForm'
 import { editProjectsViewsData as cms } from '~/assets/data'
 
 const ProjectView = forwardRef(({ user, project }, ref) => {

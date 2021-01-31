@@ -13,7 +13,7 @@ import {
   TitleFieldValidationSchema,
   CategoryField,
   CategoryFieldValidationSchema,
-} from '~/containers'
+} from '~/containers/user/RequestForm'
 import { editRequestDialogData as cms } from '~/assets/data'
 
 const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValues }) => {

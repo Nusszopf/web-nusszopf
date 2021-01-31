@@ -51,8 +51,7 @@ const RequestsView = ({ project }) => {
         <FramedGridCard.Body.Col variant="twoCols" className="text-center lg:text-left lg:pr-4 lg:col-start-2">
           <Text className="mb-2 text-left">Gesuche</Text>
           <Text variant="textSm" className="text-left hyphens-auto">
-            Gesuche in dem Projekt zeigen anderen Nusszopfer:innen, was für die Projektumsetzung noch alles benötigt
-            wird.
+            {cms.requestsView.intro}
           </Text>
           <Button
             onClick={openDialog}

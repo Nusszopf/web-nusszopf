@@ -18,7 +18,7 @@ import {
   Navigation,
   step1ValidationSchema,
   step2ValidationSchema,
-} from '~/containers'
+} from '~/containers/user/CreateProjectSteps'
 import { createProjectData as content } from '~/assets/data'
 
 const CreateProject = ({ user }) => {
