@@ -91,7 +91,7 @@ const useProjectsService = props => {
     } catch (error) {
       notify({
         type: 'error',
-        message: cmsCreate.notify.project.error,
+        message: cmsCreate.notify.project.errors[0],
       })
       return false
     }

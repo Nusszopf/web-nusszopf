@@ -3,29 +3,38 @@ import { useRouter } from 'next/router'
 
 const useFormikStepper = () => {
   const router = useRouter()
-  const [step, setStep] = useState()
+  const [step, setStep] = useState(0)
   const [progress, setProgress] = useState(0)
   const [children, setChildren] = useState()
+  const [isInitialized, setIsInitialized] = useState(false)
   const [currentChild, setCurrentChild] = useState()
 
   useEffect(() => {
-    if (!children) return
-    const numSteps = children.length
-    const queryStep = parseInt(router.query?.step) // first render is always NaN (https://github.com/vercel/next.js/discussions/11484)
-    if (isNaN(queryStep) || queryStep >= numSteps || queryStep < 0) {
+    if (!isInitialized) {
+      setIsInitialized(true)
       router.push({ pathname: '/user/project/create', query: { step: 0 } })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isInitialized])
+
+  useEffect(() => {
+    if (!children || !isInitialized) return
+    const numSteps = children.length
+    const queryStep = parseInt(router.query?.step)
+    if (isNaN(queryStep) || queryStep >= numSteps || queryStep < 0) {
+      return
     } else if (step !== queryStep) {
       setStep(queryStep)
     }
-  }, [router, children, setStep, step])
+  }, [router, children, setStep, step, isInitialized])
 
   useEffect(() => {
-    if (children && step >= 0) {
+    if (children && isInitialized && step >= 0) {
       setCurrentChild(children[step])
       const progress = step < 0 ? 100 : ((step + 1) / children.length) * 100
       setProgress(progress)
     }
-  }, [step, children])
+  }, [step, children, isInitialized])
 
   const getNextStep = useCallback(
     values => {

@@ -7,6 +7,7 @@ import { Text } from 'ui-library/stories/atoms'
 import { Progressbar } from 'ui-library/stories/molecules'
 import { emptyRichText, Stepper, useStepper } from 'ui-library/stories/organisms'
 import { FramedGridCard } from 'ui-library/stories/templates'
+import { useToasts } from 'ui-library/services/Toasts.service'
 import useProjectsService from '~/utils/services/projects.service'
 import { withAuth } from '~/utils/hoc'
 import { Page } from '~/components'
@@ -19,19 +20,26 @@ import {
   step1ValidationSchema,
   step2ValidationSchema,
 } from '~/containers/user/CreateProjectSteps'
-import { createProjectData as content } from '~/assets/data'
+import { createProjectData as cms } from '~/assets/data'
 
 const CreateProject = ({ user }) => {
   const { addProject, addLoading, addRequestsLoading } = useProjectsService({ user })
   const router = useRouter()
   const stepper = useStepper()
+  const { notify } = useToasts()
 
   const handleSubmit = async (values, helpers) => {
     const isFormComplete = stepper.goForward(values, helpers)
     if (isFormComplete) {
-      const hasCreated = await addProject(user, values)
-      if (hasCreated) {
-        router.push('/user/projects')
+      const isStep1Valid = step1ValidationSchema.isValidSync(values)
+      const isStep2Valid = step2ValidationSchema.isValidSync(values)
+      if (isStep1Valid && isStep2Valid) {
+        const isAdded = await addProject(user, values)
+        if (isAdded) {
+          router.push('/user/projects')
+        }
+      } else {
+        notify({ type: 'error', message: cms.notify.project.errors[1] })
       }
     }
   }
@@ -71,9 +79,9 @@ const CreateProject = ({ user }) => {
             bodyColor="bg-white lg:bg-lilac-100"
             headerColor="bg-lilac-300 lg:bg-lilac-100">
             <FramedGridCard.Header className="bg-lilac-300">
-              <Progressbar label={content.steps[stepper?.step ?? 0]} progress={stepper?.progress} />
+              <Progressbar label={cms.steps[stepper?.step ?? 0]} progress={stepper?.progress} />
               <Text as="h1" variant="textLg" className="block mt-3 hyphens-auto">
-                {formik?.values?.title?.length > 0 ? formik.values.title : content.title}
+                {formik?.values?.title?.length > 0 ? formik.values.title : cms.title}
               </Text>
             </FramedGridCard.Header>
             <Form>

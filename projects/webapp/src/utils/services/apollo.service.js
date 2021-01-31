@@ -39,18 +39,20 @@ const useUpdateLead = id =>
   useMutation(UPDATE_LEAD, {
     update: (cache, { data }) => {
       const res = cache.readQuery({ query: GET_USER, variables: { id } })
-      cache.writeQuery({
-        query: GET_USER,
-        variables: { id },
-        data: {
-          users_by_pk: {
-            ...res.users_by_pk,
-            lead: {
-              ...data.update_leads_by_pk,
+      if (res) {
+        cache.writeQuery({
+          query: GET_USER,
+          variables: { id },
+          data: {
+            users_by_pk: {
+              ...res.users_by_pk,
+              lead: {
+                ...data.update_leads_by_pk,
+              },
             },
           },
-        },
-      })
+        })
+      }
     },
   })
 
@@ -69,11 +71,13 @@ const useAddProject = id =>
   useMutation(INSERT_PROJECT, {
     update: (cache, { data }) => {
       const res = cache.readQuery({ query: GET_USER_PROJECTS, variables: { id } })
-      cache.writeQuery({
-        query: GET_USER_PROJECTS,
-        variables: { id },
-        data: { projects: [data?.insert_projects_one, ...res.projects] },
-      })
+      if (res) {
+        cache.writeQuery({
+          query: GET_USER_PROJECTS,
+          variables: { id },
+          data: { projects: [data?.insert_projects_one, ...res.projects] },
+        })
+      }
     },
   })
 
@@ -92,25 +96,31 @@ const useAddRequests = id =>
     update: (cache, { data }) => {
       const projectId = data.insert_requests.returning[0].project_id
       const requests = data.insert_requests.returning
-      const { projects } = cache.readQuery({ query: GET_USER_PROJECTS, variables: { id } })
-      const updatedProjects = projects.map(project => (project.id === projectId ? { ...project, requests } : project))
-      cache.writeQuery({
-        query: GET_USER_PROJECTS,
-        variables: { id },
-        data: { projects: updatedProjects },
-      })
+      const res = cache.readQuery({ query: GET_USER_PROJECTS, variables: { id } })
+      if (res) {
+        const updatedProjects = res.projects.map(project =>
+          project.id === projectId ? { ...project, requests } : project
+        )
+        cache.writeQuery({
+          query: GET_USER_PROJECTS,
+          variables: { id },
+          data: { projects: updatedProjects },
+        })
+      }
     },
   })
 const useAddRequest = id =>
   useMutation(INSERT_REQUEST, {
     update: (cache, { data }) => {
       const res = cache.readQuery({ query: GET_PROJECT, variables: { id } })
-      const requests = [data.insert_requests_one, ...res.projects_by_pk.requests]
-      cache.writeQuery({
-        query: GET_PROJECT,
-        variables: { id },
-        data: { projects_by_pk: { ...res.projects_by_pk, requests } },
-      })
+      if (res) {
+        const requests = [data.insert_requests_one, ...res.projects_by_pk.requests]
+        cache.writeQuery({
+          query: GET_PROJECT,
+          variables: { id },
+          data: { projects_by_pk: { ...res.projects_by_pk, requests } },
+        })
+      }
     },
   })
 const useUpdateRequest = () => useMutation(UPDATE_REQUEST)

@@ -23,7 +23,10 @@ export default {
     project: {
       loading: 'Projekt erstellen...',
       success: 'Projekt wurde erstellt.',
-      error: 'Sorry, das Projekt konnte nicht erstellt werden.',
+      errors: [
+        'Sorry, das Projekt konnte nicht erstellt werden.',
+        'Bitte überprüfe deine Eingaben oder versuche es später erneut.',
+      ],
     },
   },
 }
