@@ -15,7 +15,7 @@ export default {
     title: 'Ort*',
     info: 'Ist das Projekt an einen bestimmten Ort gebunden?',
     placeholder: 'Ort',
-    action: 'Projekt ist ortsunabhängig',
+    action: 'Ist das Projekt ortsunabhängig?',
     error: ['Gib einen Ort ein', 'Wähle einen Ort aus der Liste aus'],
   },
   motto: {
@@ -28,7 +28,7 @@ export default {
     title: 'Projektzeitraum*',
     info: 'Gibt es einen definierten Zeitraum, in welchem das Projekt stattfindet?',
     action: {
-      switch: 'Projektzeitraum ist flexibel',
+      switch: 'Ist der Projektzeitraum flexibel?',
       from: 'Von',
       to: 'Bis',
       placeholder: 'dd.mm.yyyy',
