@@ -18,7 +18,9 @@ const useFormikStepper = () => {
   }, [isInitialized])
 
   useEffect(() => {
-    if (!children || !isInitialized) return
+    if (!children || !isInitialized) {
+      return
+    }
     const numSteps = children.length
     const queryStep = parseInt(router.query?.step)
     if (isNaN(queryStep) || queryStep >= numSteps || queryStep < 0) {

@@ -1,7 +1,7 @@
 import s3 from '../../utils/libs/s3'
 import auth0 from '../../utils/libs/auth0'
 import runMiddleware, { rateLimiter } from '../../utils/functions/runMiddleware.function'
-import { ERROR_CONSTRAINT } from '../../utils/enums'
+import { handleError } from '../../utils/functions/api.function'
 
 export default auth0.requireAuthentication(async function upload(req, res) {
   try {
@@ -22,12 +22,7 @@ export default auth0.requireAuthentication(async function upload(req, res) {
 
     res.status(200).json({ ...post, filename })
   } catch (error) {
-    console.error(error)
-    const status =
-      error.response?.errors[0]?.extensions?.code === ERROR_CONSTRAINT || error.message?.includes('jwt')
-        ? 400
-        : error.status ?? 500
-    res.status(status).end(error.message)
+    handleError({ res, error })
   }
 })
 

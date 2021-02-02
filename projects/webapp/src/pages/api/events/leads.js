@@ -1,7 +1,7 @@
 import sgClient from '@sendgrid/client'
 import { requireEventSecret } from '../../../utils/functions/auth.function'
 import { LeadsTrigger, handleConfirmation, handleDeleteLead } from '../../../utils/functions/leads.function'
-import { ERROR_CONSTRAINT } from '../../../utils/enums'
+import { handleError } from '../../../utils/functions/api.function'
 
 export default async function account(req, res) {
   try {
@@ -19,11 +19,6 @@ export default async function account(req, res) {
         res.status(200).end('nothing triggered')
     }
   } catch (error) {
-    console.error(error)
-    const status =
-      error.response?.errors[0]?.extensions?.code === ERROR_CONSTRAINT || error.message?.includes('jwt')
-        ? 400
-        : error.status ?? 500
-    res.status(status).end(error.message)
+    handleError({ res, error })
   }
 }

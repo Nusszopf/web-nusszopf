@@ -1,8 +1,7 @@
 import { SitemapStream, streamToPromise } from 'sitemap'
 
 import runMiddleware, { rateLimiter } from '../../utils/functions/runMiddleware.function'
-import { getPublicProjects } from '../../utils/functions/api.function'
-import { ERROR_CONSTRAINT } from '../../utils/enums'
+import { handleError, getPublicProjects } from '../../utils/functions/api.function'
 
 export default async function sitemap(req, res) {
   try {
@@ -27,8 +26,6 @@ export default async function sitemap(req, res) {
     res.write(sitemap)
     res.end()
   } catch (error) {
-    console.error(error)
-    const status = error.response?.errors[0]?.extensions?.code === ERROR_CONSTRAINT ? 400 : error.status ?? 500
-    res.status(status).end(error.message)
+    handleError({ res, error })
   }
 }

@@ -4,6 +4,20 @@ import { INSERT_LEAD, UPDATE_LEAD, DELETE_LEAD } from '../hasura/mutations/leads
 import { GET_LEAD } from '../hasura/queries/newsletter.query'
 import { GET_USER } from '../hasura/queries/users.query'
 import { GET_PROJECT_CROP, GET_ALL_PUBLIC_PROJECTS } from '../hasura/queries/projects.query'
+import { ERROR_CONSTRAINT } from '../../utils/enums'
+
+export const handleError = ({ res, error }) => {
+  console.error(error)
+  const isUnauthorized = error.message?.includes('jwt')
+  const isForbidden = error.response?.errors[0]?.extensions?.code === ERROR_CONSTRAINT
+  if (isUnauthorized || isForbidden) {
+    res.status(400).end(error.message)
+  } else if (error.status) {
+    res.status(error.status).end(error.message)
+  } else {
+    res.status(500).end(error.message)
+  }
+}
 
 export const fetchWithUserAuth = (query, variables = {}, token) => {
   const client = new GraphQLClient(process.env.API_URL, {

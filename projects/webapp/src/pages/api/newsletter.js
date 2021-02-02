@@ -8,7 +8,7 @@ import {
   handleAuth0SyncHasura,
   NewsletterType,
 } from '../../utils/functions/newsletter.function'
-import { ERROR_CONSTRAINT } from '../../utils/enums'
+import { handleError } from '../../utils/functions/api.function'
 
 export default async function newsletter(req, res) {
   try {
@@ -35,11 +35,6 @@ export default async function newsletter(req, res) {
         res.status(200).end('nothing triggered')
     }
   } catch (error) {
-    console.error(error)
-    const status =
-      error.response?.errors[0]?.extensions?.code === ERROR_CONSTRAINT || error.message?.includes('jwt')
-        ? 400
-        : error.status ?? 500
-    res.status(status).end(error.message)
+    handleError({ res, error })
   }
 }

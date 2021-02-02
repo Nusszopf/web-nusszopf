@@ -1,7 +1,6 @@
 import sgMail from '@sendgrid/mail'
 import runMiddleware, { rateLimiter } from '../../utils/functions/runMiddleware.function'
-import { getUser } from '../../utils/functions/api.function'
-import { ERROR_CONSTRAINT } from '../../utils/enums'
+import { getUser, handleError } from '../../utils/functions/api.function'
 
 export default async function contact(req, res) {
   try {
@@ -21,11 +20,6 @@ export default async function contact(req, res) {
     await sgMail.send(content)
     res.status(200).json({ project: req.body.title })
   } catch (error) {
-    console.error(error)
-    const status =
-      error.response?.errors[0]?.extensions?.code === ERROR_CONSTRAINT || error.message?.includes('jwt')
-        ? 400
-        : error.status ?? 500
-    res.status(status).end(error.message)
+    handleError({ res, error })
   }
 }
