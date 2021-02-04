@@ -104,7 +104,11 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
       <div className={classnames('flex items-center w-full h-10 lg:h-12 justify-between relative')}>
         <div className="flex items-center">
           {goBackUri && (
-            <Clickable aria-label={cms.aria[3]} onClick={handleGoBack} className="focus:outline-none">
+            <Clickable
+              aria-label={cms.aria[3]}
+              title={cms.aria[3]}
+              onClick={handleGoBack}
+              className="focus:outline-none">
               <ChevronLeft size={28} strokeWidth={2} />
             </Clickable>
           )}
@@ -112,6 +116,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
         <div className="flex items-center">
           <Clickable
             aria-label={cms.aria[0]}
+            title={cms.aria[0]}
             onClick={handleSearch}
             disabled={process.env.ENV === 'production'}
             className={classnames('mr-6 sm:mr-8 focus:outline-none', {
@@ -120,11 +125,15 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
             <Search />
           </Clickable>
           {user?.auth && (
-            <Clickable aria-label={cms.aria[1]} onClick={handleProjects} className="mr-6 sm:mr-8 focus:outline-none">
+            <Clickable
+              aria-label={cms.aria[1]}
+              title={cms.aria[1]}
+              onClick={handleProjects}
+              className="mr-6 sm:mr-8 focus:outline-none">
               <Folder size={20} strokeWidth={2.2} />
             </Clickable>
           )}
-          <MenuButton {...menu} className="focus:outline-none" aria-label={cms.aria[2]}>
+          <MenuButton {...menu} className="focus:outline-none" title={cms.aria[2]} aria-label={cms.aria[2]}>
             <RMenu />
           </MenuButton>
         </div>

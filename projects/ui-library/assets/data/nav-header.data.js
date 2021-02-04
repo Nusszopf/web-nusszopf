@@ -3,7 +3,7 @@ export default {
     login: 'Du wirst eingeloggt.',
     logout: 'Du wirst abgemeldet.',
   },
-  aria: ['Suche', 'Profil', 'Navigation', 'Zurück'],
+  aria: ['Suchen & Finden', 'Deine Projekte', 'Menü', 'Zurück'],
   items: [
     'Suchen & Finden',
     'Dein Profil',
