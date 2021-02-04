@@ -1,6 +1,7 @@
 export default {
   title: 'Ideen und Projekte aus dem Nusswerk',
   more: 'Mehr laden',
+  input: 'Suchen und Entdecken',
   filter: {
     title: 'Gesuche Filtern',
     options: {
@@ -11,6 +12,7 @@ export default {
       others: 'Sonstiges',
     },
   },
+  scrollTop: 'Nach oben scrollen',
   empty: {
     title: 'Verzopft, wir konnten leider nichts zu deiner Suche finden!',
     description:

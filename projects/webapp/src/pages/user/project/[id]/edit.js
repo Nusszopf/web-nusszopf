@@ -14,18 +14,18 @@ const projectEditData = {
   nav: ['Beschreibung', 'Gesuche', 'Einstellungen'],
 }
 
-const ProjectEdit = ({ id, user }) => {
+const ProjectEdit = ({ id, user, loading: loadingUser }) => {
   const router = useRouter()
   const projectViewRef = useRef()
   const settingsViewRef = useRef()
   const [view, setView] = useState(projectEditData.nav[0])
-  const { data, loading } = apollo.useGetProject(id)
+  const { data: projectData, loading: loadingProject } = apollo.useGetProject(id)
 
   useEffect(() => {
-    if (!loading && !data) {
+    if (!loadingProject && !projectData) {
       router.push('/404')
     }
-  }, [loading, data, router])
+  }, [loadingProject, projectData, router])
 
   const shouldSelectView = e => {
     if (settingsViewRef?.current?.hasChanged() || projectViewRef?.current?.hasChanged()) {
@@ -53,9 +53,10 @@ const ProjectEdit = ({ id, user }) => {
         <FramedGridCard.Header className="bg-lilac-300">
           <div className="flex flex-col justify-between lg:items-center lg:flex-row">
             <Text as="h1" variant="textLg" className="mb-4 hyphens-auto lg:mb-0">
-              {data?.projects_by_pk?.title}
+              {projectData?.projects_by_pk?.title}
             </Text>
             <Select
+              aria-label={cms.aria.select}
               value={view}
               onChange={shouldSelectView}
               color="lilac"
@@ -66,14 +67,14 @@ const ProjectEdit = ({ id, user }) => {
             </Select>
           </div>
         </FramedGridCard.Header>
-        {loading || !data ? (
+        {loadingProject || loadingUser || !projectData ? (
           <SkeletonView />
         ) : view === projectEditData.nav[0] ? (
-          <ProjectView ref={projectViewRef} user={user} project={data.projects_by_pk} />
+          <ProjectView ref={projectViewRef} user={user} project={projectData.projects_by_pk} />
         ) : view === projectEditData.nav[1] ? (
-          <RequestsView project={data.projects_by_pk} />
+          <RequestsView project={projectData.projects_by_pk} />
         ) : (
-          <SettingsView ref={settingsViewRef} user={user} project={data.projects_by_pk} />
+          <SettingsView ref={settingsViewRef} project={projectData.projects_by_pk} />
         )}
       </FramedGridCard>
     </Page>
@@ -92,6 +93,7 @@ export async function getServerSideProps(ctx) {
 ProjectEdit.propTypes = {
   id: PropTypes.string,
   user: PropTypes.object,
+  loading: PropTypes.bool,
 }
 
 export default withAuth(ProjectEdit, { isAuthRequired: true })

@@ -4,6 +4,7 @@ import { useFormik } from 'formik'
 import { object } from 'yup'
 import { isValid, parseISO } from 'date-fns'
 
+import { useAuth } from '~/utils/services/auth.service'
 import useProjectsService from '~/utils/services/projects.service'
 import { Button } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
@@ -25,7 +26,8 @@ import {
 } from '~/containers/user/ProjectForm'
 import { editProjectsViewsData as cms } from '~/assets/data'
 
-const ProjectView = forwardRef(({ user, project }, ref) => {
+const ProjectView = forwardRef(({ project }, ref) => {
+  const { user } = useAuth()
   const { updateProject, updateLoading, serializeProjectDescription } = useProjectsService()
   const parseDate = _date => {
     const date = parseISO(_date)
@@ -105,7 +107,6 @@ const ProjectView = forwardRef(({ user, project }, ref) => {
 })
 
 ProjectView.propTypes = {
-  user: PropTypes.object.isRequired,
   project: PropTypes.object.isRequired,
 }
 

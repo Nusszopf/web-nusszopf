@@ -28,4 +28,7 @@ export default {
     meta: 'Projekt mail@nusszopf.org melden',
     text: 'Projekt melden',
   },
+  banner: {
+    aria: 'Information ausblenden',
+  },
 }

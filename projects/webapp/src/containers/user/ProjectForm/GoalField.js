@@ -14,6 +14,7 @@ const GoalField = ({ formik, ...props }) => (
     <Input
       as="textarea"
       color="lilac"
+      aria-label={cms.goal.title}
       name="goal"
       maxLength={150}
       value={formik.values.goal}

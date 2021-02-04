@@ -62,6 +62,7 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
               </FieldTitle>
               <Field
                 as={Input}
+                aria-label={cms.fields.email.title}
                 name="email"
                 color="lilac"
                 type="email"
@@ -80,6 +81,7 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
               <Text className="mt-6 mb-3">{cms.fields.msg.title}</Text>
               <Input
                 as="textarea"
+                aria-label={cms.fields.msg.title}
                 className="min-h-48"
                 color="lilac"
                 name="msg"

@@ -54,7 +54,7 @@ const AvatarDialog = ({ isOpen, onDismiss, user, ...props }) => {
       isOpen={isOpen}
       onDismiss={onDismiss}
       className="relative text-steel-700 bg-steel-200"
-      aria-label="{cms.dialog.aria}"
+      aria-label={cms.picture.aria}
       {...props}>
       <div className="-mx-6 -mt-10 overflow-hidden sm:-mx-8 sm:rounded-t-md">
         <Cropper ref={cropper} onComplete={() => setIsComplete(true)} />

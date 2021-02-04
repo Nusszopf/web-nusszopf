@@ -32,7 +32,7 @@ const LocationField = ({ formik, ...props }) => {
   const handleSearchTermChange = async event => {
     const searchTerm = event.target.value
     formik.setFieldValue('location.searchTerm', searchTerm)
-    search(searchTerm)
+    await search(searchTerm)
   }
 
   const search = async searchTerm => {
@@ -55,6 +55,7 @@ const LocationField = ({ formik, ...props }) => {
         {cms.location.title}
       </FieldTitle>
       <Switch
+        aria-label={cms.location.title}
         color="lilac"
         name="location.remote"
         onBlur={formik.handleBlur}
@@ -69,8 +70,8 @@ const LocationField = ({ formik, ...props }) => {
             tabIndex="0"
             name="location.searchTerm"
             className="mt-4"
-            aria="Suche nach einem Ort"
-            placeholder="Ort"
+            aria={cms.location.title}
+            placeholder={cms.location.placeholder}
             onChange={handleSearchTermChange}
             onBlur={formik.handleBlur}
             onSelect={handleLocationSelect}

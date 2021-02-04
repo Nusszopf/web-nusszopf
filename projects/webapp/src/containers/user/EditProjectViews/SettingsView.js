@@ -3,13 +3,15 @@ import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
 import { useFormik } from 'formik'
 
+import { useAuth } from '~/utils/services/auth.service'
 import { Button, Text } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import useProjectsService from '~/utils/services/projects.service'
 import { VisibilityField, ContactField } from '~/containers/user/ProjectForm'
 import { editProjectsViewsData as cms } from '~/assets/data'
 
-const SettingsView = forwardRef(({ user, project }, ref) => {
+const SettingsView = forwardRef(({ project }, ref) => {
+  const { user } = useAuth()
   const { deleteProject, serializeProjectSettings, updateProject, deleteLoading, updateLoading } = useProjectsService()
   const router = useRouter()
 
@@ -74,7 +76,6 @@ const SettingsView = forwardRef(({ user, project }, ref) => {
 })
 
 SettingsView.propTypes = {
-  user: PropTypes.object.isRequired,
   project: PropTypes.object.isRequired,
 }
 

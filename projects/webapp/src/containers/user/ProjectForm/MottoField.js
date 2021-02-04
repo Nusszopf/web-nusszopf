@@ -14,6 +14,7 @@ const MottoField = ({ formik, ...props }) => (
     </FieldTitle>
     <Input
       as="textarea"
+      aria-label={cms.motto.title}
       color="lilac"
       name="motto"
       maxLength={200}

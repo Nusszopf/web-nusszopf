@@ -12,6 +12,7 @@ const TitleField = ({ formik }) => (
     <FieldTitle info={cms.title.info}>{cms.title.title}</FieldTitle>
     <Input
       color="stone"
+      aria-label={cms.title.info}
       name="title"
       maxLength={30}
       value={formik.values.title}

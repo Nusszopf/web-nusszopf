@@ -43,7 +43,7 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
       isOpen={isOpen}
       onDismiss={undefined}
       className="relative text-stone-800 bg-stone-200"
-      aria-label="Gesuch bearbeiten">
+      aria-label={cms.aria}>
       <Formik
         initialValues={request}
         validationSchema={object({

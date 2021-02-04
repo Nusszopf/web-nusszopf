@@ -104,7 +104,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
       <div className={classnames('flex items-center w-full h-10 lg:h-12 justify-between relative')}>
         <div className="flex items-center">
           {goBackUri && (
-            <Clickable onClick={handleGoBack} className="focus:outline-none">
+            <Clickable aria-label={cms.aria[3]} onClick={handleGoBack} className="focus:outline-none">
               <ChevronLeft size={28} strokeWidth={2} />
             </Clickable>
           )}

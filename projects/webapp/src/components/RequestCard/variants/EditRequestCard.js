@@ -4,6 +4,7 @@ import classnames from 'classnames'
 import { MoreHorizontal } from 'react-feather'
 
 import { Request } from '~/assets/icons'
+import { editRequestCardData as cms } from '~/assets/data'
 import { Text } from 'ui-library/stories/atoms'
 import { Menu } from 'ui-library/stories/organisms'
 import { RequestCategoryColor, RequestCategoryMenu } from '../RequestCard.theme'
@@ -27,6 +28,7 @@ const EditRequestCard = ({ onEdit, onDelete, request, className, ...props }) => 
       <Menu
         className="mt-2 mr-4"
         label={<MoreHorizontal />}
+        ariaLabel={cms.aria}
         color={RequestCategoryMenu[request.category]}
         items={[
           {

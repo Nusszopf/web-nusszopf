@@ -33,6 +33,7 @@ const CategoryField = ({ formik, ...props }) => {
       </FieldTitle>
       <Select
         name="category"
+        aria-label={cms.category.title}
         value={formik.values.category}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}

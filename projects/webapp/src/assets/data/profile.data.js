@@ -78,6 +78,7 @@ export default {
     action: 'Account löschen',
   },
   picture: {
+    aria: 'Avatar bearbeiten',
     actions: {
       save: 'Speichern',
       cancel: 'Abbrechen',

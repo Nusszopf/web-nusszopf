@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import { usePopoverState, Popover, PopoverDisclosure, PopoverArrow } from 'reakit/Popover'
 import { Info } from 'react-feather'
+
+import { popoverData as cms } from '../../../assets/data'
 import { Text } from '../../atoms'
 
 const MyPopover = ({ children, ...props }) => {
@@ -10,7 +11,7 @@ const MyPopover = ({ children, ...props }) => {
 
   return (
     <div {...props}>
-      <PopoverDisclosure {...popover} className="focus:outline-none text-livid-500">
+      <PopoverDisclosure {...popover} aria-label={cms.aria} className="focus:outline-none text-livid-500">
         <Info size={21} />
       </PopoverDisclosure>
       <Popover {...popover} aria-label="Info" tabIndex={0} className="z-10 focus:outline-none">

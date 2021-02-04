@@ -40,6 +40,7 @@ const PeriodField = ({ className, formik }) => (
       {cms.period.title}
     </FieldTitle>
     <Switch
+      aria-label={cms.period.title}
       name="period.flexible"
       color="lilac"
       onBlur={formik.handleBlur}
@@ -56,6 +57,7 @@ const PeriodField = ({ className, formik }) => (
           <div className="w-full lg:max-w-xs">
             <Input
               name="period.from"
+              aria-label={cms.period.action.from}
               color="lilac"
               value={formik.values.period.from}
               onChange={formik.handleChange}
@@ -78,6 +80,7 @@ const PeriodField = ({ className, formik }) => (
           <div className="w-full lg:max-w-xs">
             <Input
               name="period.to"
+              aria-label={cms.period.action.to}
               color="lilac"
               value={formik.values.period.to}
               onChange={formik.handleChange}

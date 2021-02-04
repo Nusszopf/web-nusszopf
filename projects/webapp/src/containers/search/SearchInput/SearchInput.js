@@ -1,11 +1,12 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { X as XIcon, Search as SearchIcon, RefreshCw, Loader } from 'react-feather'
-import { isEqual } from 'lodash'
+import { isEqual, throttle } from 'lodash'
 
 import { InputGroup } from 'ui-library/stories/molecules'
 import { useSearch } from '~/utils/services/search.service'
+import { searchData as cms } from '~/assets/data'
 import { FilterPopover } from '../index'
 
 const SearchInput = ({ className }) => {
@@ -41,9 +42,14 @@ const SearchInput = ({ className }) => {
     setTerm(event.target.value)
   }
 
+  const throttleSearch = useCallback(
+    throttle(fn => fn(), 500),
+    []
+  )
+
   const handleSearch = () => {
     if (!isLoading) {
-      search(term, newFilter)
+      throttleSearch(() => search(term, newFilter))
     }
   }
 
@@ -69,13 +75,14 @@ const SearchInput = ({ className }) => {
         </InputGroup.LeftElement>
         <InputGroup.Input
           ref={inputRef}
+          aria-label={cms.input}
           value={term}
           color="moss"
           size="large"
           onChange={handleChange}
           onBlur={handleBlur}
           displayRing={false}
-          placeholder="Suchen & Entdecken"
+          placeholder={cms.input}
         />
         {term?.length > 0 && (
           <InputGroup.RightElement onClick={handleClear} className={classnames({ hidden: term.length === 0 })}>

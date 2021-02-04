@@ -59,7 +59,11 @@ const Search = () => {
           </Button>
         </Frame>
       )}
-      <Button onClick={scrollTop} size="circle" className="fixed bottom-0 right-0 m-6 shadow-lg-dark bg-steel-300">
+      <Button
+        aria-label={cms.scrollTop}
+        onClick={scrollTop}
+        size="circle"
+        className="fixed bottom-0 right-0 m-6 shadow-lg-dark bg-steel-300">
         <ChevronUp />
       </Button>
     </Page>

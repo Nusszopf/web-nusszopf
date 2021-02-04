@@ -11,6 +11,7 @@ const ContactField = ({ formik, user, ...props }) => (
     </FieldTitle>
     <Switch
       name="contact"
+      aria-label={cms.contact.title}
       color="lilac"
       onBlur={formik.handleBlur}
       onChange={formik.handleChange}

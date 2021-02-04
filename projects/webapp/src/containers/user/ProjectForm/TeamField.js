@@ -26,6 +26,7 @@ const TeamField = ({ formik, ...props }) => {
         {cms.team.title}
       </FieldTitle>
       <RichTextEditor
+        ariaLabel={cms.team.title}
         name="team"
         onChange={handleChange}
         onBlur={() => formik.setFieldTouched('team')}

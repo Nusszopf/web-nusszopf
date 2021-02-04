@@ -1,4 +1,5 @@
 export default {
+  aria: { select: 'Projekt Bereich auswählen' },
   projectView: {
     save: 'Speichern',
   },

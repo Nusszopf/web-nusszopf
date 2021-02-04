@@ -46,6 +46,7 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
     <div className="absolute top-0 right-0">
       <Menu
         className="mt-3 mr-5"
+        ariaLabel={cms.aria}
         label={<MoreHorizontal />}
         items={[
           {

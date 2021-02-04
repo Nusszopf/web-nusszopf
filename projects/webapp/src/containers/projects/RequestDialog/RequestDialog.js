@@ -20,7 +20,7 @@ const RequestDialog = ({ isOpen, onDismiss, onContact, request, ...props }) => {
 
   return (
     <Dialog
-      aria-label="Request Infos"
+      aria-label={cms.aria}
       isOpen={isOpen}
       onDismiss={onDismiss}
       className={classnames('text-stone-800 relative', CategoryBackgroundColor[request.category])}
