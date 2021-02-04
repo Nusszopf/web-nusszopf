@@ -32,7 +32,7 @@ const TeamField = ({ formik, ...props }) => {
         initialState={formik.values.team}
         placeholder={cms.team.placeholder}
       />
-      {formik?.errors?.team && formik.touched?.team && (
+      {formik.errors?.team && formik.touched?.team && (
         <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
           {formik.errors.team}
         </Text>

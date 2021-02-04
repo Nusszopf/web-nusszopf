@@ -33,7 +33,7 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
         {truncate(project.goal, { length: 90 })}
       </Text>
       <div className="flex flex-col mt-4">
-        {project?.requests?.map((request, index) => (
+        {project.requests?.map((request, index) => (
           <RequestCard
             key={`rq-${index}`}
             variant="preview"

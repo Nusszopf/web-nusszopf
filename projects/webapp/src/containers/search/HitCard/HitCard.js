@@ -14,7 +14,7 @@ const HitCard = ({ projectId, hits, className, ...props }) => {
     if (_hits.length <= 0) {
       return ''
     }
-    const { pro_location_text, pro_description, pro_team, pro_motto, pro_author } = _hits[0]?._formatted
+    const { pro_location_text, pro_description, pro_team, pro_motto, pro_author } = _hits[0]._formatted
     return truncate(
       Object.values({ pro_description, pro_location_text, pro_team, pro_motto, pro_author })
         .filter(i => i.length > 0)
@@ -36,11 +36,11 @@ const HitCard = ({ projectId, hits, className, ...props }) => {
               <Text
                 variant="textSm"
                 className="mb-1.5 font-semibold leading-6"
-                dangerouslySetInnerHTML={{ __html: hits[0]?._formatted?.pro_title || hits[0]?.pro_title }}
+                dangerouslySetInnerHTML={{ __html: hits[0]?._formatted?.pro_title || hits[0].pro_title }}
               />
               <Text
                 variant="textXs"
-                dangerouslySetInnerHTML={{ __html: hits[0]?._formatted?.pro_goal || hits[0]?.pro_goal }}
+                dangerouslySetInnerHTML={{ __html: hits[0]?._formatted?.pro_goal || hits[0].pro_goal }}
               />
             </div>
             <div>

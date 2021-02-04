@@ -13,7 +13,7 @@ const CarouselSection = () => {
     if (!data?.projects) {
       return []
     } else {
-      return data?.projects.map(project => {
+      return data.projects.map(project => {
         const _project = { ...project, requests: project.requests.slice(0, 3) }
         return <ItemCard key={project.id} project={_project} className="m-2.5" />
       })
@@ -28,7 +28,7 @@ const CarouselSection = () => {
       <Swiper
         className="-mx-2.5"
         items={
-          swiperItems?.length > 0
+          swiperItems.length > 0
             ? swiperItems
             : [
                 <Skeleton full={false} key="swipe-item-1" className="h-36 mx-2.5 bg-lilac-400" />,

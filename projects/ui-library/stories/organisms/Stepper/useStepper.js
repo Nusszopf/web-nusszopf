@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter } from 'next/router'
 
-const useFormikStepper = () => {
+const useStepper = () => {
   const router = useRouter()
   const [step, setStep] = useState(0)
   const [progress, setProgress] = useState(0)
@@ -71,4 +71,4 @@ const useFormikStepper = () => {
   return { goForward, setChildren, currentChild, goBack, step, progress }
 }
 
-export default useFormikStepper
+export default useStepper

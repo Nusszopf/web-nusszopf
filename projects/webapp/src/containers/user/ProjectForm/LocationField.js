@@ -30,7 +30,7 @@ const LocationField = ({ formik, ...props }) => {
   }
 
   const handleSearchTermChange = async event => {
-    const searchTerm = event?.target?.value
+    const searchTerm = event.target.value
     formik.setFieldValue('location.searchTerm', searchTerm)
     search(searchTerm)
   }
@@ -78,14 +78,14 @@ const LocationField = ({ formik, ...props }) => {
             value={formik.values.location.searchTerm}
             options={locations}
           />
-          {formik?.errors?.location?.searchTerm && formik.touched?.location?.searchTerm && (
+          {formik.errors?.location?.searchTerm && formik.touched?.location?.searchTerm && (
             <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
-              {formik.errors.location?.searchTerm}
+              {formik.errors.location.searchTerm}
             </Text>
           )}
-          {formik?.errors?.location?.data && formik.touched?.location?.searchTerm && (
+          {formik.errors?.location?.data && formik.touched?.location?.searchTerm && (
             <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
-              {formik.errors.location?.data}
+              {formik.errors.location.data}
             </Text>
           )}
         </>

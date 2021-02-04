@@ -21,7 +21,7 @@ const GoalField = ({ formik, ...props }) => (
       onBlur={formik.handleBlur}
       placeholder={cms.goal.placeholder}
     />
-    {formik?.errors?.goal && formik.touched?.goal && (
+    {formik.errors?.goal && formik.touched?.goal && (
       <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
         {formik.errors.goal}
       </Text>

@@ -64,9 +64,9 @@ const PeriodField = ({ className, formik }) => (
               placeholder={cms.period.action.placeholder}
               type="text"
             />
-            {formik?.errors?.period?.from && formik.touched?.period?.from && (
+            {formik.errors?.period?.from && formik.touched?.period?.from && (
               <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
-                {formik.errors.period?.from}
+                {formik.errors.period.from}
               </Text>
             )}
           </div>
@@ -86,9 +86,9 @@ const PeriodField = ({ className, formik }) => (
               placeholder={cms.period.action.placeholder}
               type="text"
             />
-            {formik?.errors?.period?.to && formik.touched?.period?.to && (
+            {formik.errors?.period?.to && formik.touched?.period?.to && (
               <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
-                {formik.errors.period?.to}
+                {formik.errors.period.to}
               </Text>
             )}
           </div>

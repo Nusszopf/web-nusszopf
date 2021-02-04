@@ -22,7 +22,7 @@ const SubscribeConfirm = ({ lead }) => (
         {cms.subscribeConfirm.heading}
       </Text>
       <Text variant="textSmMedium" className="hyphens-auto">
-        <span className="italic font-semibold">{lead?.email}</span> {cms.subscribeConfirm.textA}{' '}
+        <span className="italic font-semibold">{lead.email}</span> {cms.subscribeConfirm.textA}{' '}
         {cms.subscribeConfirm.textB}
       </Text>
       <Route

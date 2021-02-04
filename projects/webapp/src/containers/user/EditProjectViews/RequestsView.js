@@ -64,9 +64,9 @@ const RequestsView = ({ project }) => {
         </FramedGridCard.Body.Col>
         <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
           <Text className="mt-8 mb-4 hyphens-auto lg:mt-0">Aktuelle Gesuche</Text>
-          {project?.requests?.length > 0 ? (
+          {project.requests?.length > 0 ? (
             <>
-              {project?.requests?.map((request, index) => (
+              {project.requests.map((request, index) => (
                 <RequestCard
                   key={`r-${index}`}
                   variant="edit"

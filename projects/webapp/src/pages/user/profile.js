@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { object, mixed } from 'yup'
 
-import { Text, Link, Checkbox, Route, Button } from 'ui-library/stories/atoms'
+import { Text, Link, Checkbox, Route, Button, Skeleton } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { InfoCard, Avatar } from 'ui-library/stories/molecules'
 import { useToasts } from 'ui-library/services/Toasts.service'
@@ -14,7 +14,7 @@ import { Page } from '~/components'
 import { AvatarDialog } from '~/containers'
 import { profileData as cms } from '~/assets/data'
 
-const Settings = ({ user }) => {
+const Profile = ({ user, loading }) => {
   const { notify } = useToasts()
   const { logout } = useAuth()
   const [showAvatarDialog, setShowAvatarDialog] = useState(false)
@@ -86,7 +86,13 @@ const Settings = ({ user }) => {
             <Text as="h1" variant="textLg" className="-mt-2 sm:ml-6 sm:mt-0">
               {cms.title}
             </Text>
-            <Avatar user={user} variant="settings" onEdit={() => setShowAvatarDialog(true)} className="mt-4 sm:mt-0" />
+            <Avatar
+              user={user}
+              loading={loading}
+              variant="settings"
+              onEdit={() => setShowAvatarDialog(true)}
+              className="mt-4 sm:mt-0"
+            />
           </div>
         </FramedGridCard.Header>
         <FramedGridCard.Body className="bg-white">
@@ -95,7 +101,13 @@ const Settings = ({ user }) => {
               <Text variant="textMd" className="mb-2">
                 {cms.newsletter.title}
               </Text>
-              {!user?.data?.lead?.hasConfirmed ? (
+              {loading ? (
+                <>
+                  <Skeleton className="h-4 mt-4 bg-steel-400" />
+                  <Skeleton className="h-4 mt-3 bg-steel-400" />
+                  <Skeleton full={false} className="w-1/2 h-4 mt-3 bg-steel-400" />
+                </>
+              ) : !user.data.lead?.hasConfirmed ? (
                 <Formik
                   initialValues={{ privacy: false }}
                   onSubmit={handleSubscribe}
@@ -220,8 +232,9 @@ const Settings = ({ user }) => {
   )
 }
 
-Settings.propTypes = {
+Profile.propTypes = {
   user: PropTypes.object,
+  loading: PropTypes.bool,
 }
 
-export default withAuth(Settings, { isAuthRequired: true })
+export default withAuth(Profile, { isAuthRequired: true })

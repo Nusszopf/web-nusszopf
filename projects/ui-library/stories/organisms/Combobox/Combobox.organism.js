@@ -30,7 +30,7 @@ const MyCombobox = ({ aria, className, options, onSelect, onClear, color = 'lila
           color={color}
           {...props}
         />
-        {props?.value?.length > 0 ? (
+        {props.value.length > 0 ? (
           <InputGroup.RightElement onClick={handleClear}>
             <X size={24} />
           </InputGroup.RightElement>

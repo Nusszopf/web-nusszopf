@@ -25,7 +25,7 @@ const Project = ({ id, userId }) => {
   const [currentRequest, setCurrentRequest] = useState()
   const [showRequestDialog, setShowRequestDialog] = useState(false)
   const [showContactDialog, setShowContactDialog] = useState(false)
-  const { data } = apollo.useGetProject(id)
+  const { data, loading } = apollo.useGetProject(id)
   const { notify } = useToasts()
 
   const period = useMemo(() => {
@@ -37,9 +37,9 @@ const Project = ({ id, userId }) => {
   }, [data])
 
   const location = useMemo(() => {
-    const osm = data?.projects_by_pk?.location?.data?.osm
+    const osm = data.projects_by_pk?.location?.data?.osm
     if (osm) {
-      const city = data?.projects_by_pk?.location?.data?.city
+      const city = data.projects_by_pk.location.data.city
       const link = `https://www.openstreetmap.org/${osm.type}/${osm.id}`
       return { city, link }
     } else {
@@ -51,8 +51,8 @@ const Project = ({ id, userId }) => {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: truncate(data?.projects_by_pk?.title, { length: 60 }),
-          text: truncate(data?.projects_by_pk?.goal, { length: 60 }),
+          title: truncate(data.projects_by_pk.title, { length: 60 }),
+          text: truncate(data.projects_by_pk.goal, { length: 60 }),
           url: window.location.href,
         })
       } catch (error) {
@@ -107,10 +107,10 @@ const Project = ({ id, userId }) => {
           <div className="flex flex-col flex-wrap lg:flex-row lg:justify-between">
             <div className="lg:pr-12 lg:w-9/12 hyphens-auto">
               <Text as="h1" variant="textLg" className="mb-2 hyphens-auto">
-                {data?.projects_by_pk?.title}
+                {data.projects_by_pk.title}
               </Text>
               <Text variant="textSm" className="max-w-xl">
-                {data?.projects_by_pk?.goal}
+                {data.projects_by_pk.goal}
               </Text>
               <div className="flex flex-col w-full mt-4 lg:mt-3 sm:flex-row sm:items-center">
                 <div className="flex items-center sm:mr-8">
@@ -126,7 +126,7 @@ const Project = ({ id, userId }) => {
                     </Link>
                   ) : (
                     <>
-                      <Text variant="textSm">{location?.city}</Text>
+                      <Text variant="textSm">{location.city}</Text>
                     </>
                   )}
                 </div>
@@ -162,24 +162,24 @@ const Project = ({ id, userId }) => {
                 {cms.body.what}
               </Text>
               <div className="text-lg">
-                {data?.projects_by_pk?.descriptionTemplate.map((node, idx) => (
+                {data.projects_by_pk.descriptionTemplate.map((node, idx) => (
                   <Fragment key={`desc-${idx}`}>{serializeJSX(node, 'lilac')}</Fragment>
                 ))}
               </div>
             </div>
-            {data?.projects_by_pk?.team && (
+            {data.projects_by_pk?.team && (
               <div className="mt-10">
                 <Text className="mb-3" variant="textLg">
                   {cms.body.who}
                 </Text>
                 <div className="text-lg">
-                  {data?.projects_by_pk?.teamTemplate.map((node, idx) => (
+                  {data.projects_by_pk.teamTemplate.map((node, idx) => (
                     <Fragment key={`team-${idx}`}>{serializeJSX(node, 'lilac')}</Fragment>
                   ))}
                 </div>
               </div>
             )}
-            {data?.projects_by_pk?.motto && (
+            {data.projects_by_pk?.motto && (
               <div className="mt-10">
                 <Text className="mb-3" variant="textLg">
                   {cms.body.how}
@@ -194,7 +194,7 @@ const Project = ({ id, userId }) => {
             <Text className="mb-4" variant="textLg">
               {cms.body.requests}
             </Text>
-            {data?.projects_by_pk?.requests?.length > 0 ? (
+            {data.projects_by_pk?.requests?.length > 0 ? (
               <>
                 {data.projects_by_pk.requests.map((request, index) => (
                   <RequestCard
@@ -212,8 +212,9 @@ const Project = ({ id, userId }) => {
             <Avatar
               className="mt-16 lg:mt-14"
               variant="project"
-              project={data?.projects_by_pk}
-              user={{ data: data?.projects_by_pk?.user }}
+              project={data.projects_by_pk}
+              user={{ data: data.projects_by_pk.user }}
+              loading={loading}
             />
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
@@ -233,16 +234,18 @@ const Project = ({ id, userId }) => {
           </Text>
         </Link>
       </Frame>
-      <RequestDialog
-        isOpen={showRequestDialog}
-        onDismiss={closeRequest}
-        onContact={handleContact}
-        request={currentRequest}
-      />
+      {currentRequest && (
+        <RequestDialog
+          isOpen={showRequestDialog}
+          onDismiss={closeRequest}
+          onContact={handleContact}
+          request={currentRequest}
+        />
+      )}
       <ContactDialog
         isOpen={showContactDialog}
         onDismiss={() => setShowContactDialog(false)}
-        project={data?.projects_by_pk}
+        project={data.projects_by_pk}
       />
     </Page>
   )

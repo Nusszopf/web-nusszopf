@@ -23,7 +23,7 @@ const UnsubscribeConfirm = ({ lead }) => (
         <span className="hidden sm:inline">...</span>
       </Text>
       <Text variant="textSmMedium" className="hyphens-auto">
-        <span className="italic font-semibold">{lead?.email}</span> {cms.unsubscribeConfirm.textA}{' '}
+        <span className="italic font-semibold">{lead.email}</span> {cms.unsubscribeConfirm.textA}{' '}
         {cms.unsubscribeConfirm.textB}
       </Text>
       <Link

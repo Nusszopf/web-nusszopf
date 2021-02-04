@@ -69,11 +69,11 @@ const ProjectEdit = ({ id, user }) => {
         {loading || !data ? (
           <SkeletonView />
         ) : view === projectEditData.nav[0] ? (
-          <ProjectView ref={projectViewRef} user={user} project={data?.projects_by_pk} />
+          <ProjectView ref={projectViewRef} user={user} project={data.projects_by_pk} />
         ) : view === projectEditData.nav[1] ? (
-          <RequestsView project={data?.projects_by_pk} />
+          <RequestsView project={data.projects_by_pk} />
         ) : (
-          <SettingsView ref={settingsViewRef} user={user} project={data?.projects_by_pk} />
+          <SettingsView ref={settingsViewRef} user={user} project={data.projects_by_pk} />
         )}
       </FramedGridCard>
     </Page>

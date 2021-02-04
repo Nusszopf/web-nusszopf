@@ -19,7 +19,7 @@ const TitleField = ({ formik }) => (
       onBlur={formik.handleBlur}
       placeholder={cms.title.placeholder}
     />
-    {formik?.errors?.title && formik.touched?.title && (
+    {formik.errors?.title && formik.touched?.title && (
       <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
         {formik.errors.title}
       </Text>

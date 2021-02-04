@@ -16,7 +16,7 @@ import { Page } from '~/components'
 import { withAuth } from '~/utils/hoc'
 import { projectsData as cms } from '~/assets/data'
 
-const Profile = ({ user, loading: loadingUser }) => {
+const Projects = ({ user, loading: loadingUser }) => {
   const router = useRouter()
   const { data, loading: loadingProjects } = apollo.useGetProjects(user?.data?.private?.id, {
     skip: loadingUser || !user?.data,
@@ -48,7 +48,7 @@ const Profile = ({ user, loading: loadingUser }) => {
         headerColor="bg-steel-200 lg:bg-steel-100">
         <FramedGridCard.Header className="bg-steel-200">
           <div className="flex flex-col lg:flex-row sm:justify-between lg:items-center">
-            <Avatar user={user} />
+            <Avatar user={user} loading={loadingUser} />
             <Route
               variant="button"
               ariaLabel={cms.action}
@@ -103,9 +103,9 @@ const Profile = ({ user, loading: loadingUser }) => {
   )
 }
 
-Profile.propTypes = {
+Projects.propTypes = {
   user: PropTypes.object,
   loading: PropTypes.bool,
 }
 
-export default withAuth(Profile, { isAuthRequired: true })
+export default withAuth(Projects, { isAuthRequired: true })
