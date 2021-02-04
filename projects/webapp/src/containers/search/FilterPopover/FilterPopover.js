@@ -7,7 +7,7 @@ import { searchData as cms } from '~/assets/data'
 import { Checkbox, Text } from 'ui-library/stories/atoms'
 
 const FilterPopover = ({ className, filter, setFilter }) => {
-  const popover = usePopoverState({ placement: 'bottom-end', unstable_offset: [0, 8] })
+  const popover = usePopoverState({ placement: 'bottom-end', unstable_offset: [0, 8], animated: 100 })
 
   return (
     <div className={classnames('text-moss-800', className)}>
@@ -17,8 +17,8 @@ const FilterPopover = ({ className, filter, setFilter }) => {
           <ChevronDown size={20} strokeWidth={2.5} className="mt-1 ml-1 -mr-1" />
         </div>
       </PopoverDisclosure>
-      <Popover {...popover} aria-label="Info" tabIndex={0} className="z-10 focus:outline-none">
-        <div className="w-64 px-4 py-2 text-sm font-medium border-2 rounded-md shadow-md bg-moss-200 border-moss-800 animate-scaleFade">
+      <Popover {...popover} aria-label="Info" tabIndex={0} className="z-10 focus:outline-none reakit-animate-scale">
+        <div className="w-64 px-4 py-2 text-sm font-medium border-2 rounded-md shadow-md bg-moss-200 border-moss-800">
           <div className="my-2">
             <Checkbox
               checked={filter.companions}

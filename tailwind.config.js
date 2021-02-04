@@ -131,9 +131,8 @@ module.exports = {
         'lg-dark': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
       },
       animation: {
-        opacitySlowFade: 'opacityFade 250ms cubic-bezier(0.08, 0.82, 0.17, 1)',
-        opacityFade: 'opacityFade 150ms cubic-bezier(0.08, 0.82, 0.17, 1)',
-        scaleFade: 'scaleFade 150ms cubic-bezier(0.08, 0.82, 0.17, 1)',
+        opacityFade: 'opacityFade 200ms cubic-bezier(0.08, 0.82, 0.17, 1)',
+        scaleFade: 'scaleFade 200ms cubic-bezier(0.08, 0.82, 0.17, 1)',
       },
       keyframes: {
         opacityFade: {
@@ -146,7 +145,7 @@ module.exports = {
         },
         scaleFade: {
           from: {
-            transform: 'scale(0.8)',
+            transform: 'scale(0.85)',
             opacity: 0,
           },
           to: {

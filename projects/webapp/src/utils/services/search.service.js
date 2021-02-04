@@ -6,7 +6,7 @@ import { groupBy, uniqBy } from 'lodash'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import { searchData as cms } from '~/assets/data'
 
-const OFFSET = 100
+const OFFSET = 50
 export const MEILI_CONFIG = {
   limit: OFFSET,
   attributesToRetrieve: ['itemsId', 'groupId', 'type', 'pro_title', 'pro_goal', 'req_type'],

@@ -16,7 +16,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
   const [hasScrolled, setHasScrolled] = useState(false)
   const { notify } = useToasts()
   const router = useRouter()
-  const menu = useMenuState({ placement: 'bottom-end' })
+  const menu = useMenuState({ placement: 'bottom-end', animated: 150 })
 
   useEffect(() => {
     if (fixed) {
@@ -137,10 +137,10 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
             <RMenu />
           </MenuButton>
         </div>
-        <Menu {...menu} tabIndex={0} aria-label={cms.aria[2]} className="z-20 focus:outline-none">
+        <Menu {...menu} tabIndex={0} aria-label={cms.aria[2]} className="z-20 focus:outline-none reakit-animate-scale">
           <div
             className={classnames(
-              'py-4 mt-5 lg:mt-6 text-sm font-medium rounded-md shadow-md text-steel-800 bg-steel-400 animate-scaleFade',
+              'py-4 mt-5 lg:mt-6 text-sm font-medium rounded-md shadow-md text-steel-800 bg-steel-400',
               {
                 shadow: hasScrolled,
               }
