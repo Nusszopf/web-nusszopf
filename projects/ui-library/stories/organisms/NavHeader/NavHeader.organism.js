@@ -138,13 +138,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
           </MenuButton>
         </div>
         <Menu {...menu} tabIndex={0} aria-label={cms.aria[2]} className="z-20 focus:outline-none reakit-animate-scale">
-          <div
-            className={classnames(
-              'py-4 mt-5 lg:mt-6 text-sm font-medium rounded-md shadow-md text-steel-800 bg-steel-400',
-              {
-                shadow: hasScrolled,
-              }
-            )}>
+          <div className="py-4 mt-5 text-sm font-medium rounded-md shadow-md lg:mt-6 text-steel-800 bg-steel-400">
             <MenuItem
               {...menu}
               hasIcon={true}

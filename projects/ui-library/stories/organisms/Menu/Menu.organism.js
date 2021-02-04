@@ -1,62 +1,41 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import Link from 'next/link'
-import { ChevronDown } from 'react-feather'
-import { Menu, MenuButton, MenuList, MenuItem } from '@reach/menu-button'
+import { useMenuState, Menu, MenuButton, MenuItem } from 'reakit/Menu'
 
-import { Button, Text } from '../../atoms'
-import { MenuColor, MenuVariant } from './Menu.theme'
+import { Text } from '../../atoms'
+import { MenuColor } from './Menu.theme'
 
-const MyMenu = ({ ariaLabel, label, items, color = 'lilac', variant = 'icon', className, ...props }) => {
+const MyMenu = ({ ariaLabel, label, items, color = 'lilac', className, ...props }) => {
+  const menu = useMenuState({ placement: 'bottom-end', animated: 150 })
+
+  const handleClick = action => {
+    menu.hide()
+    action()
+  }
+
   return (
-    <Menu>
-      {variant === MenuVariant.button && (
-        <Button
-          as={MenuButton}
-          aria-label={ariaLabel}
-          iconRight={<ChevronDown className="m-1 -mr-2" />}
-          className={className}
-          {...props}>
-          {label}
-        </Button>
-      )}
-      {variant === MenuVariant.icon && (
-        <MenuButton aria-label={ariaLabel} className={classnames('focus:outline-none mb-2 ml-4', className)} {...props}>
-          {label}
-        </MenuButton>
-      )}
-      <MenuList aria-label="Menu" className={classnames(MenuColor[color].menu)}>
-        <>
+    <>
+      <MenuButton {...menu} className={classnames('focus:outline-none my-3')} aria-label={ariaLabel} {...props}>
+        <div className={className}>{label}</div>
+      </MenuButton>
+      <Menu {...menu} tabIndex={0} aria-label={ariaLabel} className="z-20 focus:outline-none reakit-animate-scale">
+        <div className={classnames('rounded-md shadow-md py-2 mr-4', MenuColor[color].menu)}>
           {items.map((item, index) => (
-            <React.Fragment key={`menu-${index}`}>
-              {item.type === 'link' && (
-                <MenuItem className={classnames(MenuColor[color].item)} onSelect={() => {}}>
-                  <Link href={item.href}>
-                    <a>
-                      <Text as="span" variant="textSmMedium">
-                        {item.text}
-                      </Text>
-                    </a>
-                  </Link>
-                </MenuItem>
+            <MenuItem
+              key={`menu-${index}`}
+              {...menu}
+              className={classnames(
+                MenuColor[color].item,
+                'whitespace-nowrap w-full py-1 px-4 text-left focus:outline-none'
               )}
-              {item.type === 'button' && (
-                <MenuItem
-                  className={classnames(MenuColor[color].item)}
-                  onSelect={() => {
-                    item.action()
-                  }}>
-                  <Text as="span" variant="textSmMedium">
-                    {item.text}
-                  </Text>
-                </MenuItem>
-              )}
-            </React.Fragment>
+              onClick={() => handleClick(item.action)}>
+              <Text variant="textSmMedium">{item.text}</Text>
+            </MenuItem>
           ))}
-        </>
-      </MenuList>
-    </Menu>
+        </div>
+      </Menu>
+    </>
   )
 }
 
@@ -65,9 +44,7 @@ MyMenu.propTypes = {
   items: PropTypes.array.isRequired,
   label: PropTypes.node,
   className: PropTypes.string,
-  initialFocus: PropTypes.number,
   color: PropTypes.oneOf(Object.keys(MenuColor)),
-  variant: PropTypes.oneOf(Object.keys(MenuVariant)),
 }
 
 export default MyMenu

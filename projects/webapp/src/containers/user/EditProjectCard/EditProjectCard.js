@@ -45,27 +45,23 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
     </Clickable>
     <div className="absolute top-0 right-0">
       <Menu
-        className="mt-3 mr-5"
         ariaLabel={cms.aria}
+        className="mx-5 my-1"
         label={<MoreHorizontal />}
         items={[
           {
-            type: 'button',
             text: cms.actions[0],
             action: () => onClick(project.id),
           },
           {
-            type: 'button',
             text: cms.actions[1],
             action: () => onEdit(project.id),
           },
           {
-            type: 'button',
             text: project.visibility === PROJECT.visibility.public ? cms.actions[2] : cms.actions[3],
             action: () => toggleVisibility(project.id, project.visibility),
           },
           {
-            type: 'button',
             text: cms.actions[4],
             action: () => onDelete(project.id),
           },
