@@ -50,7 +50,7 @@ const Avatar = ({ user, className, variant = 'profile', project, onEdit, loading
               <Text variant="textSm">{truncate(user.data.private.email, { length: 33 })}</Text>
             ) : (
               <Text variant="textSm">
-                {cms.createdAt} {new Date(project.created_at).toLocaleDateString('de-DE')}
+                {cms.updatedAt} {new Date(project.updated_at).toLocaleDateString('de-DE')}
               </Text>
             )}
           </div>

@@ -16,7 +16,7 @@ export const RequestCropFragment = gql`
   fragment RequestCrop on requests {
     id
     project_id
-    created_at
+    updated_at
     title
     category
     description

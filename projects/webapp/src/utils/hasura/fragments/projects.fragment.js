@@ -6,6 +6,7 @@ export const ProjectFragment = gql`
     id
     user_id
     created_at
+    updated_at
     title
     goal
     descriptionTemplate
@@ -31,6 +32,7 @@ export const ProjectFragment = gql`
 export const ProjectCropFragment = gql`
   fragment ProjectCrop on projects {
     id
+    updated_at
     title
     goal
     visibility

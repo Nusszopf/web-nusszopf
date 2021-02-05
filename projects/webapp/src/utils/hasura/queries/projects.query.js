@@ -32,7 +32,7 @@ export const GET_LATEST_PROJECTS_CROP = gql`
   query getLatestProjects {
     projects(
       where: { requests: { _not: { id: { _is_null: true } } }, visibility: { _eq: "public" } }
-      order_by: { created_at: desc }
+      order_by: { updated_at: desc }
       limit: 6
     ) {
       ...ProjectCrop
@@ -45,7 +45,7 @@ export const GET_ALL_PUBLIC_PROJECTS = gql`
   query getLatestProjects {
     projects(where: { visibility: { _eq: "public" } }) {
       id
-      created_at
+      updated_at
     }
   }
 `

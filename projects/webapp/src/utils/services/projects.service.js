@@ -29,7 +29,6 @@ const useProjectsService = props => {
         .replace(/\s+/g, ' ')
         .trim(),
       descriptionTemplate: request.description,
-      created_at: request.created_at,
       project_id: id,
     }
   }
@@ -177,7 +176,7 @@ const useProjectsService = props => {
       message: cmsEdit.notify.request.update.loading,
     })
     try {
-      const { created_at, ...request } = serializeRequest(_request.project_id, _request)
+      const request = serializeRequest(_request.project_id, _request)
       await apolloUpdateRequest({ variables: { id: _request.id, request } })
       notify({
         type: 'success',

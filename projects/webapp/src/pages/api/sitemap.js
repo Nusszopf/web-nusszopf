@@ -15,7 +15,7 @@ export default async function sitemap(req, res) {
     projects.forEach(project => {
       smStream.write({
         url: `/projects/${project.id}`,
-        lastmod: project.created_at,
+        lastmod: project.updated_at,
       })
     })
     smStream.end()

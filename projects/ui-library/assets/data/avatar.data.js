@@ -1,3 +1,3 @@
 export default {
-  createdAt: 'Erstellt am',
+  updatedAt: 'Aktualisiert am',
 }

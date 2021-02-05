@@ -1,4 +1,6 @@
 import MeiliSearch from 'meilisearch'
+import { compareDesc } from 'date-fns'
+
 import { getProjectCrop } from './api.function'
 import { PROJECT } from '../enums'
 
@@ -93,13 +95,15 @@ const upsertProject = async (data, action) => {
 }
 
 const parseRequestToDocument = (request, project) => {
+  const isMoreCurrentThanProject = compareDesc(new Date(project.updated_at), new Date(request.updated_at))
+  const timestamp = isMoreCurrentThanProject ? request.updated_at : project.updated_at
   return {
     req_title: request?.title,
     req_description: request?.description,
     req_type: request?.category,
     pro_title: project?.title,
     pro_goal: project?.goal,
-    created_at: new Date(request.created_at).valueOf(),
+    updated_at: new Date(timestamp).valueOf(),
     type: 'request',
     itemsId: request?.id,
     groupId: request?.project_id,
@@ -120,7 +124,7 @@ const parseProjectToDocument = (project, projectCrop) => {
     pro_period_to: !project?.period?.flexible ? new Date(project.period.to).valueOf() : '',
     pro_location_remote: project?.location?.remote,
     pro_location_geo: !project?.location?.remote ? project?.location?.data?.geo : {},
-    created_at: new Date(project.created_at).valueOf(),
+    updated_at: new Date(project.updated_at).valueOf(),
     type: 'project',
     itemsId: project?.id,
     groupId: project?.id,

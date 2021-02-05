@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import { MoreHorizontal } from 'react-feather'
 
 import { Request } from '~/assets/icons'
-import { editRequestCardData as cms } from '~/assets/data'
+import { requestCardData as cms } from '~/assets/data'
 import { Text } from 'ui-library/stories/atoms'
 import { Menu } from 'ui-library/stories/organisms'
 import { RequestCategoryColor, RequestCategoryMenu } from '../RequestCard.theme'
@@ -22,7 +22,9 @@ const EditRequestCard = ({ onEdit, onDelete, request, className, ...props }) => 
         <Request size={18} className="flex-shrink-0 mt-1.5 mr-1.5" />
         <Text variant="textSmMedium">{request.title}</Text>
       </div>
-      <Text variant="textXs">Erstellt am {new Date(request.created_at).toLocaleDateString('de-DE')}</Text>
+      <Text variant="textXs">
+        {cms.createdAt} {new Date(request.created_at).toLocaleDateString('de-DE')}
+      </Text>
     </Clickable>
     <div className="absolute top-0 right-0">
       <Menu
@@ -33,11 +35,11 @@ const EditRequestCard = ({ onEdit, onDelete, request, className, ...props }) => 
         color={RequestCategoryMenu[request.category]}
         items={[
           {
-            text: 'Bearbeiten',
+            text: cms.edit,
             action: () => onEdit(request),
           },
           {
-            text: 'Löschen',
+            text: cms.delete,
             action: () => onDelete(request),
           },
         ]}
