@@ -15,7 +15,7 @@ module.exports = {
       '../ui-library/services/**/*.{js,jsx}',
     ],
     options: {
-      whitelist: [],
+      safelist: [],
     },
   },
   theme: {

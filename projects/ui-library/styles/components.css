@@ -7,6 +7,7 @@
 @import '../stories/atoms/Switch/Switch.css';
 @import '../stories/atoms/LoadingIndicator/LoadingIndicator.css';
 
+/* Global Components */
 @import '../stories/organisms/Combobox/Combobox.css';
 @import '../stories/organisms/Cropper/Cropper.css';
 @import '../stories/organisms/Dialog/Dialog.css';
