@@ -19,7 +19,7 @@ const MyMenu = ({ ariaLabel, label, items, color = 'lilac', className, innerClas
       <MenuButton {...menu} className={classnames('focus:outline-none my-3')} aria-label={ariaLabel} {...props}>
         <div className={className}>{label}</div>
       </MenuButton>
-      <Menu {...menu} tabIndex={0} aria-label={ariaLabel} className="z-20 focus:outline-none reakit-animate-scale">
+      <Menu {...menu} tabIndex={0} aria-label={ariaLabel} className="z-10 focus:outline-none reakit-animate-scale">
         <div className={classnames('rounded-md shadow-md', MenuColor[color].menu, innerClassName)}>
           {items.map((item, index) => (
             <MenuItem
