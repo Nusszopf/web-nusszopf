@@ -6,12 +6,12 @@ import { useMenuState, Menu, MenuButton, MenuItem } from 'reakit/Menu'
 import { Text } from '../../atoms'
 import { MenuColor } from './Menu.theme'
 
-const MyMenu = ({ ariaLabel, label, items, color = 'lilac', className, ...props }) => {
+const MyMenu = ({ ariaLabel, label, items, color = 'lilac', className, innerClassName, ...props }) => {
   const menu = useMenuState({ placement: 'bottom-end', animated: 150 })
 
   const handleClick = action => {
     menu.hide()
-    action()
+    setTimeout(() => action(), 100)
   }
 
   return (
@@ -20,7 +20,7 @@ const MyMenu = ({ ariaLabel, label, items, color = 'lilac', className, ...props 
         <div className={className}>{label}</div>
       </MenuButton>
       <Menu {...menu} tabIndex={0} aria-label={ariaLabel} className="z-20 focus:outline-none reakit-animate-scale">
-        <div className={classnames('rounded-md shadow-md py-2 mr-4', MenuColor[color].menu)}>
+        <div className={classnames('rounded-md shadow-md', MenuColor[color].menu, innerClassName)}>
           {items.map((item, index) => (
             <MenuItem
               key={`menu-${index}`}
@@ -44,6 +44,7 @@ MyMenu.propTypes = {
   items: PropTypes.array.isRequired,
   label: PropTypes.node,
   className: PropTypes.string,
+  innerClassName: PropTypes.string,
   color: PropTypes.oneOf(Object.keys(MenuColor)),
 }
 

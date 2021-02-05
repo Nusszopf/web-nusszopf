@@ -28,7 +28,8 @@ const EditRequestCard = ({ onEdit, onDelete, request, className, ...props }) => 
       <Menu
         label={<MoreHorizontal />}
         ariaLabel={cms.aria}
-        className="mx-4"
+        className="mx-4 mb-1"
+        innerClassName="py-2 mr-3"
         color={RequestCategoryMenu[request.category]}
         items={[
           {

@@ -47,6 +47,7 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
       <Menu
         ariaLabel={cms.aria}
         className="mx-5 my-1"
+        innerClassName="py-2 mr-4"
         label={<MoreHorizontal />}
         items={[
           {
