@@ -70,14 +70,24 @@ const upsertProject = async (data, action) => {
     } else if (action === 'update') {
       await index.updateDocuments([document])
       if (projectCrop?.requests?.length > 0) {
+        // add all requests, because project visibility changed from private to public
         if (data.old?.visibility === PROJECT.visibility.private) {
-          const documents = projectCrop?.requests.map(request => parseRequestToDocument(request, projectCrop))
+          const documents = projectCrop.requests.map(request => parseRequestToDocument(request, projectCrop))
           await index.addDocuments(documents)
+          // update requests, because of main project infos changed
         } else if (data.old?.title !== data.new?.title || data.old?.goal !== data.new?.goal) {
-          const documents = projectCrop?.requests.map(request => ({
-            itemsId: request?.id,
-            pro_title: projectCrop?.title,
-            pro_goal: projectCrop?.goal,
+          const documents = projectCrop.requests.map(request => ({
+            itemsId: request.id,
+            pro_title: projectCrop.title,
+            pro_goal: projectCrop.goal,
+            updated_at: projectCrop.updated_at,
+          }))
+          await index.updateDocuments(documents)
+          // update requests update_at, because of activity in project
+        } else {
+          const documents = projectCrop.requests.map(request => ({
+            itemsId: request.id,
+            updated_at: projectCrop.updated_at,
           }))
           await index.updateDocuments(documents)
         }
