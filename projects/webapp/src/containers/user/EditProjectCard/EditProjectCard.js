@@ -60,7 +60,7 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
           },
           {
             text: project.visibility === PROJECT.visibility.public ? cms.actions[2] : cms.actions[3],
-            action: () => toggleVisibility(project.id, project.visibility),
+            action: () => setTimeout(toggleVisibility(project.id, project.visibility), 100),
           },
           {
             text: cms.actions[4],

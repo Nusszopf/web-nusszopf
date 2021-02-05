@@ -11,7 +11,7 @@ const MyMenu = ({ ariaLabel, label, items, color = 'lilac', className, innerClas
 
   const handleClick = action => {
     menu.hide()
-    setTimeout(() => action(), 100)
+    action()
   }
 
   return (
