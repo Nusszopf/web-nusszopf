@@ -4,7 +4,9 @@ export default {
     save: 'Speichern',
   },
   requestsView: {
+    titleCreated: 'Aktuelle Gesuche',
     create: 'Gesuch erstellen',
+    titleIntro: 'Gesuche',
     intro:
       'Gesuche in dem Projekt zeigen anderen Nusszopfer:innen, was für die Projektumsetzung noch alles benötigt wird.',
     info: 'Alles zopfig! Derzeit gibt es keine Gesuche.',

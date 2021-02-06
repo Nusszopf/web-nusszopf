@@ -8,7 +8,7 @@ export default {
       companions: 'Mitstreiter:innen',
       rooms: 'Räume',
       materials: 'Materialien',
-      financials: 'Finanzen',
+      financials: 'Finanzielles',
       others: 'Sonstiges',
     },
   },

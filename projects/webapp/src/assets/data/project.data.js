@@ -18,7 +18,7 @@ export default {
     what: 'Projektbeschreibung',
     who: 'Projektteam',
     how: 'Projektmotto',
-    requests: 'Aktuelle Gesuche',
+    requests: 'Projektgesuche',
     searchings: {
       info: 'Alles zopfig! Derzeit gibt es keine Gesuche.',
     },
