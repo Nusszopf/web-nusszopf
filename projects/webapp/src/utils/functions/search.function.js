@@ -34,11 +34,13 @@ export const updateProject = async (data, res) => {
 }
 
 export const updateRequest = async (data, res) => {
-  const { index } = await initMeiliSearch()
   const projectCrop = await getProjectCrop(data.new.project_id)
-  const document = _parseRequestToDocument(data.new, projectCrop, data.new.updated_at)
-  await index.updateDocuments([document])
-  await _syncProjectWithRequest(data.new, projectCrop)
+  if (projectCrop && projectCrop.visibility === PROJECT.visibility.public) {
+    const { index } = await initMeiliSearch()
+    const document = _parseRequestToDocument(data.new, projectCrop, data.new.updated_at)
+    await index.updateDocuments([document])
+    await _syncProjectWithRequest(data.new, projectCrop)
+  }
   res.status(200).json({ itemsId: data.new.id })
 }
 
