@@ -110,12 +110,17 @@ const Index = () => (
       <Text as="h3" variant="titleMd" className="mb-6">
         {fellowsData.heading}
       </Text>
-      <div className="flex flex-wrap items-center mb-8 -ml-4">
-        {fellowsData.list.map((fellow, index) => (
-          <Link key={`fellow-${index}`} variant="svg" href={fellow.href} title={fellow.meta} ariaLabel={fellow.meta}>
-            <fellow.logo className="w-32 p-4 fill-current" />
-          </Link>
-        ))}
+      <div className="flex flex-col mb-7 lg:items-center lg:flex-row">
+        <Text as="h5" className="lg:mr-8">
+          {fellowsData.listInfo}
+        </Text>
+        <div className="flex flex-wrap items-center -ml-4">
+          {fellowsData.list.map((fellow, index) => (
+            <Link key={`fellow-${index}`} variant="svg" href={fellow.href} title={fellow.meta} ariaLabel={fellow.meta}>
+              <fellow.logo className="w-32 p-4 fill-current" />
+            </Link>
+          ))}
+        </div>
       </div>
       <div className="flex flex-wrap">
         {fellowsData.options.map((fellow, index) => (

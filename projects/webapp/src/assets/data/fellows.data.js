@@ -3,6 +3,7 @@ import { SVGAuth0Logo, SVGSanityLogo, SVGVercelLogo } from '../logos'
 
 export default {
   heading: 'Zopfstarke Mitstreiter:innen',
+  listInfo: 'Wir werden unterstützt von:',
   list: [
     {
       href: 'https://vercel.com?utm_source=nusszopf&utm_campaign=oss',
@@ -30,7 +31,7 @@ export default {
         </>
       ),
       action: {
-        text: 'Förderer:in werden',
+        text: 'Mehr erfahren',
         href: 'https://steadyhq.com/de/nusszopf',
         meta: 'Zur Förderungswebseite',
       },
