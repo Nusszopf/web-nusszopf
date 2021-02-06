@@ -3,12 +3,12 @@ export default {
   more: 'Mehr laden',
   input: 'Suchen und Entdecken',
   filter: {
-    title: 'Gesuche Filtern',
+    title: 'Gesuche filtern',
     options: {
       companions: 'Mitstreiter:innen',
       rooms: 'Räume',
       materials: 'Materialien',
-      financials: 'Finanzielle Ressourcen',
+      financials: 'Finanzen',
       others: 'Sonstiges',
     },
   },

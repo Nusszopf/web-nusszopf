@@ -13,7 +13,7 @@ export default {
       companions: 'Mitstreiter:innen',
       rooms: 'Räume',
       materials: 'Materialien',
-      financials: 'Finanzielle Ressourcen',
+      financials: 'Finanzen',
       others: 'Sonstiges',
     },
     error: 'Wähle eine Kategorie aus',

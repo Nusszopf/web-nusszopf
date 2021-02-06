@@ -18,7 +18,7 @@ const FilterPopover = ({ className, filter, setFilter }) => {
         </div>
       </PopoverDisclosure>
       <Popover {...popover} aria-label="Info" tabIndex={0} className="z-10 focus:outline-none reakit-animate-scale">
-        <div className="w-64 px-4 py-2 text-sm font-medium border-2 rounded-md shadow-md bg-moss-200 border-moss-800">
+        <div className="px-4 py-2 text-sm font-medium border-2 rounded-md shadow-md w-52 bg-moss-200 border-moss-800">
           <div className="my-2">
             <Checkbox
               checked={filter.companions}
