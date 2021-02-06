@@ -33,14 +33,13 @@ export const updateProject = async (data, res) => {
   res.status(200).json({ itemsId: data.new.id })
 }
 
+export const addRequest = async (data, res) => {
+  _upsertRequest(data, 'add')
+  res.status(200).json({ itemsId: data.new.id })
+}
+
 export const updateRequest = async (data, res) => {
-  const projectCrop = await getProjectCrop(data.new.project_id)
-  if (projectCrop && projectCrop.visibility === PROJECT.visibility.public) {
-    const { index } = await initMeiliSearch()
-    const document = _parseRequestToDocument(data.new, projectCrop, data.new.updated_at)
-    await index.updateDocuments([document])
-    await _syncProjectWithRequest(data.new, projectCrop)
-  }
+  _upsertRequest(data, 'update')
   res.status(200).json({ itemsId: data.new.id })
 }
 
@@ -48,7 +47,9 @@ export const deleteDocument = async (data, res) => {
   const { index } = await initMeiliSearch()
   await index.deleteDocuments([data.old.id])
   const projectCrop = await getProjectCrop(data.old.project_id)
-  await _syncProjectWithRequest({ ...data.old, updated_at: new Date().toISOString() }, projectCrop)
+  if (projectCrop && projectCrop.visibility === PROJECT.visibility.public) {
+    await _syncProjectWithRequest({ ...data.old, updated_at: new Date().toISOString() }, projectCrop)
+  }
   res.status(200).json({ itemsId: data.old.id })
 }
 
@@ -76,12 +77,24 @@ const upsertProject = async (data, action) => {
   }
 }
 
-const _syncProjectWithRequest = async (request, project) => {
-  if (project && project.visibility === PROJECT.visibility.public) {
-    const diff = differenceInHours(new Date(request.updated_at), new Date(project.updated_at))
-    if (diff >= MIN_DIFF_HOURS) {
-      await apiUpdateProject(project.id, { updated_at: request.updated_at })
+const _upsertRequest = async (data, action) => {
+  const projectCrop = await getProjectCrop(data.new.project_id)
+  if (projectCrop && projectCrop.visibility === PROJECT.visibility.public) {
+    const { index } = await initMeiliSearch()
+    const document = _parseRequestToDocument(data.new, projectCrop, data.new.updated_at)
+    if (action === 'update') {
+      await index.updateDocuments([document])
+    } else if (action === 'add') {
+      await index.addDocuments([document])
     }
+    await _syncProjectWithRequest(data.new, projectCrop)
+  }
+}
+
+const _syncProjectWithRequest = async (request, project) => {
+  const diff = differenceInHours(new Date(request.updated_at), new Date(project.updated_at))
+  if (diff >= MIN_DIFF_HOURS) {
+    await apiUpdateProject(project.id, { updated_at: request.updated_at })
   }
 }
 

@@ -1,5 +1,6 @@
 import {
   SearchTrigger as trigger,
+  addRequest,
   updateRequest,
   addProject,
   updateProject,
@@ -12,6 +13,9 @@ export default async function search(req, res) {
   try {
     requireEventSecret(req.headers.secret)
     switch (true) {
+      case req.body?.trigger?.name === trigger.requests && req.body?.event?.op === trigger.add:
+        await addRequest(req.body.event.data, res)
+        break
       case req.body?.trigger?.name === trigger.requests && req.body?.event?.op === trigger.update:
         await updateRequest(req.body.event.data, res)
         break
