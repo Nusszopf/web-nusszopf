@@ -102,8 +102,9 @@ const useProjectsService = props => {
       message: cmsEdit.notify.project.update.loading,
     })
     try {
+      const { user_id, ...newProject } = project
       await apolloUpdateProject({
-        variables: { id, project },
+        variables: { id, project: newProject },
       })
       notify({
         type: 'success',
@@ -177,7 +178,8 @@ const useProjectsService = props => {
     })
     try {
       const request = serializeRequest(_request.project_id, _request)
-      await apolloUpdateRequest({ variables: { id: _request.id, request } })
+      const { project_id, ...newRequest } = request
+      await apolloUpdateRequest({ variables: { id: _request.id, request: newRequest } })
       notify({
         type: 'success',
         message: cmsEdit.notify.request.update.success,

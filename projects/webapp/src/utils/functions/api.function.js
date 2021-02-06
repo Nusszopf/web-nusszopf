@@ -1,6 +1,8 @@
 import { GraphQLClient } from 'graphql-request'
 import { print } from 'graphql/language/printer'
+
 import { INSERT_LEAD, UPDATE_LEAD, DELETE_LEAD } from '../hasura/mutations/leads.mutation'
+import { UPDATE_PROJECT } from '../hasura/mutations/projects.mutation'
 import { GET_LEAD } from '../hasura/queries/newsletter.query'
 import { GET_USER } from '../hasura/queries/users.query'
 import { GET_PROJECT_CROP, GET_ALL_PUBLIC_PROJECTS } from '../hasura/queries/projects.query'
@@ -72,4 +74,9 @@ export const getProjectCrop = async id => {
 export const getPublicProjects = async () => {
   const res = await fetchWithAdminAuth(GET_ALL_PUBLIC_PROJECTS)
   return res?.projects
+}
+
+export const updateProject = async (id, project) => {
+  const res = await fetchWithAdminAuth(UPDATE_PROJECT, { id, project })
+  return res?.update_projects_by_pk
 }
