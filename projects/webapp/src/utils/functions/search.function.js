@@ -24,12 +24,12 @@ export const initMeiliSearch = async (_index = 'items') => {
 }
 
 export const addProject = async (data, res) => {
-  await upsertProject(data, 'add')
+  await _upsertProject(data, 'add')
   res.status(200).json({ itemsId: data.new.id })
 }
 
 export const updateProject = async (data, res) => {
-  await upsertProject(data, 'update')
+  await _upsertProject(data, 'update')
   res.status(200).json({ itemsId: data.new.id })
 }
 
@@ -53,7 +53,7 @@ export const deleteDocument = async (data, res) => {
   res.status(200).json({ itemsId: data.old.id })
 }
 
-const upsertProject = async (data, action) => {
+const _upsertProject = async (data, action) => {
   if (data?.new && data.new?.visibility === PROJECT.visibility.public) {
     const { index } = await initMeiliSearch()
     const projectCrop = await getProjectCrop(data.new.id)
