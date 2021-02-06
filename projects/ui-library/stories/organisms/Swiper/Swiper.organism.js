@@ -9,7 +9,7 @@ const Swiper = forwardRef(({ className, items = [], ...props }, ref) => (
       ref={ref}
       autoPlay={true}
       autoPlayStrategy="none"
-      autoPlayInterval={6000}
+      autoPlayInterval={9000}
       disableButtonsControls={true}
       infinite={true}
       items={items}

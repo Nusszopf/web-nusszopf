@@ -22,12 +22,12 @@ export default {
     ],
     actions: {
       create: {
-        text: 'Idee / Projekt starten',
-        meta: 'Idee / Projekt starten',
+        text: 'Projekt starten',
+        meta: 'Projekt starten',
       },
       search: {
-        text: 'Ideen / Projekte entdecken',
-        meta: 'Ideen / Projekte entdecken',
+        text: 'Projekte entdecken',
+        meta: 'Projekte entdecken',
       },
     },
   },

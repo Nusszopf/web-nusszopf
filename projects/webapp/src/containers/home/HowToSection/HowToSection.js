@@ -25,7 +25,7 @@ const HowToSection = () => {
               href={user?.auth ? '/user/project/create' : '/api/login'}
               ariaLabel={cms.howTo.actions.create.meta}
               className="bg-yellow-400"
-              iconLeft={<PlusCircle className="hidden mr-2 -ml-1 lg:inline-block" />}>
+              iconLeft={<PlusCircle className="mr-2 -ml-1" />}>
               {cms.howTo.actions.create.text}
             </Route>
           </div>
@@ -35,7 +35,7 @@ const HowToSection = () => {
               size="large"
               href="/search"
               ariaLabel={cms.howTo.actions.search.meta}
-              iconLeft={<PlusCircle className="hidden mr-2 -ml-1 lg:inline-block" />}
+              iconLeft={<Search className="mr-2 -ml-1" />}
               className="bg-yellow-400">
               {cms.howTo.actions.search.text}
             </Route>
@@ -47,7 +47,7 @@ const HowToSection = () => {
             size="large"
             href="/search"
             ariaLabel={cms.howTo.actions.search.meta}
-            iconLeft={<Search className="hidden mr-2 -ml-1 lg:inline-block" />}
+            iconLeft={<Search className="mr-2 -ml-1" />}
             className="bg-yellow-400">
             {cms.howTo.actions.search.text}
           </Route>
