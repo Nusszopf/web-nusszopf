@@ -8,7 +8,7 @@ export default async function contact(req, res) {
     sgMail.setApiKey(process.env.SENDGRID_API_KEY)
     const user = await getUser(req.body.user)
     const content = {
-      to: user.email,
+      to: user.private.email,
       from: { name: 'Nusszopf (noreply)', email: 'noreply@nusszopf.org' },
       templateId: process.env.SENDGRID_TEMPLATE_CONTACT,
       dynamicTemplateData: {
