@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
 import { object, string } from 'yup'
 import { isMatch, compareDesc } from 'date-fns'
+import { useRadioState, RadioGroup } from 'reakit/Radio'
 
-import { Text, Input, Switch } from 'ui-library/stories/atoms'
+import { Text, Input, Radiobox } from 'ui-library/stories/atoms'
 import { parseDate } from '~/utils/helper'
 import { FieldTitle } from '~/components'
 import { projectFormData as cms } from '~/assets/data'
@@ -34,24 +36,35 @@ export const PeriodFieldValidationSchema = object().shape({
     }),
 })
 
-const PeriodField = ({ className, formik }) => (
-  <>
-    <FieldTitle className={className} info={cms.period.info}>
-      {cms.period.title}
-    </FieldTitle>
-    <Switch
-      aria-label={cms.period.title}
-      name="period.flexible"
-      color="lilac"
-      onBlur={formik.handleBlur}
-      onChange={formik.handleChange}
-      label={cms.period.action.switch}
-      checked={formik.values.period.flexible}
-    />
-    {!formik.values.period.flexible && (
+const PeriodField = ({ className, formik }) => {
+  const radio = useRadioState({ state: formik.values.period.flexible, orientation: 'vertical' })
+  return (
+    <>
+      <FieldTitle className={className} info={cms.period.info}>
+        {cms.period.title}
+      </FieldTitle>
+      <RadioGroup {...radio} aria-label={cms.visibility.title}>
+        <Radiobox
+          {...radio}
+          name="period.flexible"
+          value={true}
+          onChange={() => formik.setFieldValue('period.flexible', true)}
+          label={<Text variant="textSmMedium">{cms.period.action.radio1}</Text>}
+        />
+        <Radiobox
+          {...radio}
+          name="period.flexible"
+          value={false}
+          onChange={() => formik.setFieldValue('period.flexible', false)}
+          className="mt-4"
+          label={<Text variant="textSmMedium">{cms.period.action.radio2}</Text>}
+        />
+      </RadioGroup>
       <div className="mt-4 space-y-4">
         <div className="flex">
-          <Text variant="textXs" className="w-12 mt-3 uppercase">
+          <Text
+            variant="textXs"
+            className={classnames('w-12 mt-3 uppercase', { 'opacity-50': formik.values.period.flexible })}>
             {cms.period.action.from}
           </Text>
           <div className="w-full lg:max-w-xs">
@@ -65,6 +78,7 @@ const PeriodField = ({ className, formik }) => (
               maxLength={10}
               placeholder={cms.period.action.placeholder}
               type="text"
+              disabled={formik.values.period.flexible}
             />
             {formik.errors?.period?.from && formik.touched?.period?.from && (
               <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
@@ -74,7 +88,9 @@ const PeriodField = ({ className, formik }) => (
           </div>
         </div>
         <div className="flex">
-          <Text variant="textXs" className="w-12 mt-3 uppercase">
+          <Text
+            variant="textXs"
+            className={classnames('w-12 mt-3 uppercase', { 'opacity-50': formik.values.period.flexible })}>
             {cms.period.action.to}
           </Text>
           <div className="w-full lg:max-w-xs">
@@ -88,6 +104,7 @@ const PeriodField = ({ className, formik }) => (
               maxLength={10}
               placeholder={cms.period.action.placeholder}
               type="text"
+              disabled={formik.values.period.flexible}
             />
             {formik.errors?.period?.to && formik.touched?.period?.to && (
               <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
@@ -97,9 +114,9 @@ const PeriodField = ({ className, formik }) => (
           </div>
         </div>
       </div>
-    )}
-  </>
-)
+    </>
+  )
+}
 
 PeriodField.propTypes = {
   className: PropTypes.string,

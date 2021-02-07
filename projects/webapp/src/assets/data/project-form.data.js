@@ -6,16 +6,17 @@ export default {
     label: 'Man kann mich kontaktieren unter',
   },
   goal: {
-    title: 'Ziel des Projekts*',
+    title: 'Projektziel*',
     info: 'Was soll mit dem Projekt erreicht werden?',
     placeholder: 'Wie lässt sich das Ziel des Projektes in einem Satz beschreiben?',
     error: ['Nicht mehr als 150 Zeichen', 'Gib ein Ziel ein'],
   },
   location: {
-    title: 'Ort*',
+    title: 'Projektort*',
     info: 'Ist das Projekt an einen bestimmten Ort gebunden?',
     placeholder: 'Ort',
-    action: 'Ist das Projekt ortsunabhängig?',
+    radio1: 'Ortsunabhängig',
+    radio2: ['Ortsabhängig', 'Wähle hierzu einen Ort aus der Suche aus'],
     error: ['Gib einen Ort ein', 'Wähle einen Ort aus der Liste aus'],
   },
   motto: {
@@ -28,7 +29,8 @@ export default {
     title: 'Projektzeitraum*',
     info: 'Gibt es einen definierten Zeitraum, in welchem das Projekt stattfindet?',
     action: {
-      switch: 'Ist der Projektzeitraum flexibel?',
+      radio1: 'Flexibel',
+      radio2: 'Zeitraum',
       from: 'Von',
       to: 'Bis',
       placeholder: 'dd.mm.yyyy',
@@ -50,7 +52,7 @@ export default {
     error: 'Maximale Zeichenlänge erreicht',
   },
   title: {
-    title: 'Titel*',
+    title: 'Projekttitel*',
     info: 'Gib deinem Projekt einen Titel.',
     placeholder: 'Wie heißt das Projekt?',
     error: ['Nicht mehr als 40 Zeichen', 'Gib einen Titel ein'],

@@ -63,7 +63,7 @@ const LocationField = ({ formik, ...props }) => {
           name="location.remote"
           value={true}
           onChange={() => formik.setFieldValue('location.remote', true)}
-          label={<Text variant="textSmMedium">Ortsunabhängig</Text>}
+          label={<Text variant="textSmMedium">{cms.location.radio1}</Text>}
         />
         <Radiobox
           {...radio}
@@ -73,9 +73,9 @@ const LocationField = ({ formik, ...props }) => {
           className="mt-4"
           label={
             <>
-              <Text variant="textSmMedium">Ortsabhängig</Text>
+              <Text variant="textSmMedium">{cms.location.radio2[0]}</Text>
               <Text variant="textSm" className={classnames({ 'opacity-50': formik.values.location.remote })}>
-                Wähle hierzu einen Ort aus der Suche aus
+                {cms.location.radio2[1]}
               </Text>
             </>
           }
