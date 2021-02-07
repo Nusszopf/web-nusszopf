@@ -75,7 +75,7 @@ export default {
       error: 'Sorry, da lief etwas schief.',
       success: 'Dein Account wurde gelöscht!',
     },
-    action: 'Account löschen',
+    action: 'Löschen',
   },
   picture: {
     aria: 'Avatar bearbeiten',
