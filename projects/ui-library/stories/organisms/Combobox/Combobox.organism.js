@@ -7,7 +7,7 @@ import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption 
 import { InputGroup } from '../../molecules'
 import { ComboboxColor } from './Combobox.theme'
 
-const MyCombobox = ({ aria, className, options, onSelect, onClear, color = 'lilac', ...props }) => {
+const MyCombobox = ({ aria, className, options, onSelect, onClear, color = 'lilac', disabled, ...props }) => {
   const inputRef = useRef()
 
   const handleClear = () => {
@@ -20,12 +20,11 @@ const MyCombobox = ({ aria, className, options, onSelect, onClear, color = 'lila
       className={classnames(ComboboxColor[color].box, className)}
       aria-label={aria}
       onSelect={value => onSelect(options.find(option => option.value === value))}>
-      <InputGroup>
+      <InputGroup disabled={disabled}>
         <InputGroup.Input
           as={ComboboxInput}
           ref={inputRef}
           autoComplete="off"
-          selectOnClick
           placeholder="Ort"
           color={color}
           {...props}
@@ -77,6 +76,7 @@ MyCombobox.propTypes = {
   onSelect: PropTypes.func,
   onClear: PropTypes.func,
   value: PropTypes.string,
+  disabled: PropTypes.bool,
 }
 
 export default MyCombobox

@@ -161,6 +161,7 @@ module.exports = {
     extend: {
       borderColor: ['active'],
       cursor: ['disabled'],
+      pointerEvents: ['disabled'],
       ringColor: ['hover'],
       ringOpacity: ['hover'],
       opacity: ['disabled'],

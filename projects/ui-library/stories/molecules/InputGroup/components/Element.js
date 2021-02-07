@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { Clickable } from 'reakit/Clickable'
 
-const Element = ({ className, children, onClick, ...props }) => (
+const Element = ({ className, children, onClick, disabled, ...props }) => (
   <Clickable
     as="div"
     className={classnames(
       'absolute top-0 h-full px-3 flex items-center outline-none cursor-pointer focus:outline-none',
+      { 'cursor-default pointer-events-none opacity-50': disabled },
       className
     )}
     onClick={onClick}
@@ -16,6 +17,11 @@ const Element = ({ className, children, onClick, ...props }) => (
   </Clickable>
 )
 
-Element.propTypes = { children: PropTypes.node, className: PropTypes.string, onClick: PropTypes.func }
+Element.propTypes = {
+  children: PropTypes.node,
+  className: PropTypes.string,
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+}
 
 export default Element
