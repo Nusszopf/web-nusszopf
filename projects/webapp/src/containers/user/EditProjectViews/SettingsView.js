@@ -49,26 +49,27 @@ const SettingsView = forwardRef(({ project }, ref) => {
       <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
         <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
           <VisibilityField formik={formik} />
-          <ContactField formik={formik} user={user} className="mt-8" />
-          <div className="text-center mt-9 sm:text-left">
+        </FramedGridCard.Body.Col>
+        <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
+          <ContactField formik={formik} user={user} className="mt-4 lg:mt-0" />
+        </FramedGridCard.Body.Col>
+        <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2">
+          <div className="mt-5 text-center sm:text-left">
             <Button type="submit" className="bg-lilac-200" color="lilac" disabled={updateLoading}>
               {cms.settingsView.save}
             </Button>
           </div>
         </FramedGridCard.Body.Col>
-        <FramedGridCard.Body.Col variant="twoCols" className="text-center lg:pl-4 text-warning-700 sm:text-left">
-          <Text className="mt-8 mb-2 text-left lg:mt-0">{cms.settingsView.delete.title}</Text>
+        <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2 text-warning-700">
+          <Text className="mt-8 mb-2 text-left">{cms.settingsView.delete.title}</Text>
           <Text variant="textSm" className="text-left">
             {cms.settingsView.alert}
           </Text>
-          <Button
-            className="mt-6 sm:mt-4"
-            variant="outline"
-            color="warning"
-            onClick={handleDelete}
-            disabled={deleteLoading}>
-            {cms.settingsView.delete.action}
-          </Button>
+          <div className="mt-8 text-center sm:text-left">
+            <Button variant="outline" color="warning" onClick={handleDelete} disabled={deleteLoading}>
+              {cms.settingsView.delete.action}
+            </Button>
+          </div>
         </FramedGridCard.Body.Col>
       </FramedGridCard.Body>
     </form>

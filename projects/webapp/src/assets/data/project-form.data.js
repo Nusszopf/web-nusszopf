@@ -1,8 +1,10 @@
 export default {
   contact: {
     title: 'Kontakt',
+    radio1: ['Öffentlich', 'Direkt kontaktieren unter'],
+    radio2: ['Anonym', 'Der Nusszopf leitet erstmal alle Nachrichten an dich weiter'],
     info:
-      'Kann man dich über deine E-Mailadresse kontaktieren oder soll die Kommunikation erst einmal über den Nusszopf laufen?',
+      'Kann man dich über deine E-Mail-Adresse kontaktieren oder soll die Kommunikation erst einmal über den Nusszopf laufen?  Bedenke, dass es hierbei  auch um deinen Datenschutz geht.',
     label: 'Man kann mich kontaktieren unter',
   },
   goal: {
@@ -59,7 +61,8 @@ export default {
   },
   visibility: {
     title: 'Sichtbarkeit',
-    info: 'Soll das Projekt allgemein oder nur für dich sichtbar sein?',
+    info:
+      'Soll das Projekt allgemein oder nur für bestimmte Peronen sichtbar sein? Bedenke, dass sobald du das Projekt veröffentlicht hast, diese Informationen frei über das Internet verfügbar sind.',
     public: {
       title: 'Öffentlich',
       description: 'Projekt kann über Nusszopf und Suchmaschinen gefunden werden',
