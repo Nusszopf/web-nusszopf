@@ -16,15 +16,15 @@ const SkeletonView = () => (
         <Skeleton full={false} className="h-4 max-w-xs mt-10 bg-lilac-200 w-36" />
         <Skeleton className="w-full h-32 mt-3 bg-lilac-200" />
       </>
+      <>
+        <Skeleton full={false} className="h-4 max-w-xs mt-10 bg-lilac-200 w-36" />
+        <Skeleton className="w-full mt-3 bg-lilac-200 h-18" />
+      </>
     </FramedGridCard.Body.Col>
     <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
       <>
         <Skeleton full={false} className="h-4 max-w-xs bg-lilac-200 w-36" />
-        <Skeleton className="w-full h-10 mt-3 bg-lilac-200" />
-      </>
-      <>
-        <Skeleton full={false} className="h-4 max-w-xs mt-10 bg-lilac-200 w-36" />
-        <Skeleton className="w-full h-10 mt-3 bg-lilac-200" />
+        <Skeleton className="w-full h-32 mt-3 bg-lilac-200" />
       </>
       <>
         <Skeleton full={false} className="h-4 max-w-xs mt-10 bg-lilac-200 w-36" />
@@ -32,7 +32,7 @@ const SkeletonView = () => (
       </>
       <>
         <Skeleton full={false} className="h-4 max-w-xs mt-10 bg-lilac-200 w-36" />
-        <Skeleton className="w-full mt-3 bg-lilac-200 h-18" />
+        <Skeleton className="w-full h-32 mt-3 bg-lilac-200" />
       </>
     </FramedGridCard.Body.Col>
   </FramedGridCard.Body>

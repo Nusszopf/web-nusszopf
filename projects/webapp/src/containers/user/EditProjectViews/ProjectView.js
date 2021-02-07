@@ -92,7 +92,7 @@ const ProjectView = forwardRef(({ project }, ref) => {
           <MottoField formik={formik} className="mt-8" />
         </FramedGridCard.Body.Col>
         <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
-          <LocationField className="mt-5 lg:mt-0" formik={formik} />
+          <LocationField className="mt-3 lg:mt-0" formik={formik} />
           <PeriodField className="mt-7" formik={formik} />
           <TeamField formik={formik} className="mt-7" />
         </FramedGridCard.Body.Col>
