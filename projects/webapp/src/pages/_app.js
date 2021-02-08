@@ -24,7 +24,9 @@ export default function NusszopfApp({ Component, pageProps }) {
 
     // Page Load Indicator
     Router.events.on('routeChangeStart', () => {
+      clearTimeout(window.loadingTimer)
       window.loadingTimer = setTimeout(() => {
+        clearTimeout(window.loadingTimer)
         setIsPageLoading(true)
       }, 150)
     })

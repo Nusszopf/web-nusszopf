@@ -25,7 +25,7 @@ const Radiobox = ({ disabled = false, orientation, label, className, ...props })
             aria-hidden="true"
             className="inline-flex items-center justify-center flex-shrink-0 w-6 h-6 mt-0.5 border-2 border-current rounded-full">
             <span
-              className={classnames('rounded-full w-4 h-4', {
+              className={classnames('rounded-full w-3.5 h-3.5', {
                 'bg-current': ref?.current?.checked,
                 'bg-transparent': !ref?.current?.checked,
               })}

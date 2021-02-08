@@ -12,13 +12,13 @@ const FilterPopover = ({ className, filter, setFilter }) => {
   return (
     <div className={classnames('text-moss-800', className)}>
       <PopoverDisclosure {...popover} className="flex font-semibold focus:outline-none">
-        <div className="flex px-4 py-1 rounded-full bg-moss-400">
+        <div className="flex px-4 py-1 rounded-full bg-moss-450">
           <Text variant="textXs">{cms.filter.title} </Text>
           <ChevronDown size={20} strokeWidth={2.5} className="mt-1 ml-1 -mr-1" />
         </div>
       </PopoverDisclosure>
       <Popover {...popover} aria-label="Info" tabIndex={0} className="z-10 focus:outline-none reakit-animate-scale">
-        <div className="px-4 py-2 text-sm font-medium border-2 rounded-md shadow-md w-52 bg-moss-200 border-moss-800">
+        <div className="px-4 py-2 text-sm font-medium border-2 rounded-md shadow-md w-52 bg-moss-300 border-moss-800">
           <div className="my-2">
             <Checkbox
               checked={filter.companions}

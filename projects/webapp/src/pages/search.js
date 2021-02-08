@@ -17,7 +17,7 @@ const Search = () => {
 
   return (
     <Page navHeader={{ visible: true }} footer={{ className: 'bg-white' }} className="bg-white text-steel-700">
-      <Frame className="py-6 md:pt-12 md:pb-10 bg-moss-200 text-moss-800" size="large">
+      <Frame className="py-6 md:pt-12 md:pb-10 bg-moss-300 text-moss-800" size="large">
         <div className="max-w-3xl mx-auto">
           <Text as="h1" variant="titleMd" className="mb-6">
             {cms.title}
@@ -44,7 +44,7 @@ const Search = () => {
         <Frame className="my-10 text-center">
           <Button
             onClick={loadMore}
-            className="bg-moss-200"
+            className="bg-moss-300"
             iconLeft={
               <>
                 {isLoadingMore ? (

@@ -32,4 +32,24 @@ export default {
     },
   },
   carousel: { title: 'Frisch gebackene Nusszopf Projekte' },
+  about: {
+    heading: 'Über den Nusszopf',
+    list: [
+      {
+        title: 'Die Nussvision',
+        description:
+          'Wir wollen, dass viel mehr tolle Ideen gemeinschaftlich verwirklicht werden können und die Welt durch jedes Projekt ein bisschen besser wird. ',
+      },
+      {
+        title: 'Unsere Werte',
+        description:
+          'Der Nusszopf ist offen für alle und soll von allen gemeinsam gestaltet werden. Wir stehen für einen respektvollen und inklusiven Umgang miteinander. ',
+      },
+      {
+        title: 'Über uns',
+        description:
+          'Gestartet wurde das Nusszopfprojekt im August 2019 von Meli und Micha, mit dem Wunsch, mehr von ihren eigenen Ideen umsetzen zu können. ',
+      },
+    ],
+  },
 }

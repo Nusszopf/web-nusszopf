@@ -5,7 +5,7 @@ import { Link, Text } from 'ui-library/stories/atoms'
 import { Frame } from 'ui-library/stories/templates'
 import { withAuth } from '~/utils/hoc'
 import { Page } from '~/components'
-import { headerData, featuresData, contestData, fellowsData } from '~/assets/data'
+import { headerData, contestData, fellowsData, homeData } from '~/assets/data'
 
 const Index = () => (
   <Page
@@ -35,45 +35,25 @@ const Index = () => (
     {process.env.ENV !== 'production' && <CarouselSection />}
     <Frame className="pt-12 pb-16 bg-turquoise-300 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
       <Text as="h3" variant="titleMd" className="mb-8 sm:max-w-sm xl:max-w-full xl:mb-10">
-        {featuresData.heading}
+        {homeData.about.heading}
       </Text>
       <div className="flex flex-wrap">
-        <div className="mb-8 sm:pr-4 xl:pr-10 lg:pr-6 sm:w-1/2 lg:w-1/3">
-          <Text as="h4" variant="titleSm">
-            {featuresData.list[0].title}
-          </Text>
-          <Text>{featuresData.list[0].description}</Text>
-        </div>
-        <div className="mb-8 sm:pl-4 lg:pl-3 lg:pr-3 xl:pl-5 xl:pr-5 sm:w-1/2 lg:w-1/3">
-          <Text as="h4" variant="titleSm">
-            {featuresData.list[1].title}
-          </Text>
-          <Text>{featuresData.list[1].description}</Text>
-        </div>
-        <div className="mb-8 sm:pr-4 lg:pr-0 xl:pl-10 lg:pl-6 sm:w-1/2 lg:w-1/3">
-          <Text as="h4" variant="titleSm">
-            {featuresData.list[2].title}
-          </Text>
-          <Text>{featuresData.list[2].description}</Text>
-        </div>
-        <div className="mb-8 sm:pl-4 lg:mb-0 lg:pl-0 lg:pr-6 xl:pr-10 sm:w-1/2 lg:w-1/3">
-          <Text as="h4" variant="titleSm">
-            {featuresData.list[3].title}
-          </Text>
-          <Text>{featuresData.list[3].description}</Text>
-        </div>
-        <div className="mb-8 sm:mb-0 sm:pr-4 lg:pr-3 lg:pl-3 xl:pl-5 xl:pr-5 sm:w-1/2 lg:w-1/3">
-          <Text as="h4" variant="titleSm">
-            {featuresData.list[4].title}
-          </Text>
-          <Text>{featuresData.list[4].description}</Text>
-        </div>
-        <div className="sm:pl-4 lg:pl-6 xl:pl-10 sm:w-1/2 lg:w-1/3">
-          <Text as="h4" variant="titleSm">
-            {featuresData.list[5].title}
-          </Text>
-          <Text>{featuresData.list[5].description}</Text>
-        </div>
+        {homeData.about.list.map((about, index) => (
+          <div
+            key={`about-${index}`}
+            className={classnames('flex flex-col justify-between lg:w-1/3', {
+              'lg:pr-6 xl:pr-10 mb-12 lg:mb-0': index === 0,
+              'lg:pl-3 lg:pr-3 xl:pr-5 xl:pl-5 mb-12 lg:mb-0': index === 1,
+              'lg:pl-6 xl:pl-10': index === 2,
+            })}>
+            <div>
+              <Text as="h4" variant="titleSm" className="mb-2">
+                {about.title}
+              </Text>
+              <Text>{about.description}</Text>
+            </div>
+          </div>
+        ))}
       </div>
     </Frame>
     <Frame id="bmbf" className="pt-12 pb-16 bg-red-300 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
@@ -132,7 +112,7 @@ const Index = () => (
               'lg:pl-6 xl:pl-10': index === 2,
             })}>
             <div>
-              <Text as="h4" variant="titleSm">
+              <Text as="h4" variant="titleSm" className="mb-2">
                 {fellow.title}
               </Text>
               <Text>{fellow.description}</Text>

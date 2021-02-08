@@ -63,7 +63,7 @@ const SearchInput = ({ className }) => {
     <div className={className}>
       <InputGroup className="rounded-lg text-moss-800">
         <InputGroup.LeftElement onClick={handleSearch}>
-          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-moss-400">
+          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-moss-450">
             {isLoading ? (
               <Loader className="animate-spin" size={22} strokeWidth={2.2} />
             ) : !isEqual(filter, newFilter) ? (
@@ -86,7 +86,7 @@ const SearchInput = ({ className }) => {
         />
         {term?.length > 0 && (
           <InputGroup.RightElement onClick={handleClear} className={classnames({ hidden: term.length === 0 })}>
-            <div className="p-1 transition duration-100 ease-out rounded-full hover:bg-moss-400">
+            <div className="p-1 transition duration-100 ease-out rounded-full hover:bg-moss-450">
               <XIcon size={24} />
             </div>
           </InputGroup.RightElement>

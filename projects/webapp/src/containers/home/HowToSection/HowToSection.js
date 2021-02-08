@@ -9,7 +9,7 @@ import StepCard from './StepCard'
 const HowToSection = () => {
   const { user } = useAuth()
   return (
-    <Frame className="pt-12 pb-16 bg-yellow-300 sm:pt-16 sm:pb-18">
+    <Frame className="pt-12 pb-16 bg-yellow-250 sm:pt-16 sm:pb-18">
       <Text as="h3" variant="titleMd" className="mb-8 sm:max-w-sm xl:max-w-full xl:mb-10">
         {cms.howTo.title}
       </Text>
