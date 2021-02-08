@@ -53,8 +53,8 @@ const SettingsView = forwardRef(({ project }, ref) => {
         <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
           <ContactField formik={formik} user={user} className="mt-4 lg:mt-0" />
         </FramedGridCard.Body.Col>
-        <FramedGridCard.Body.Col variant="twoCols" className="lg:col-start-2">
-          <div className="mt-5 text-center lg:mt-3 sm:text-left">
+        <FramedGridCard.Body.Col variant="oneCol">
+          <div className="mt-5 text-center sm:text-left lg:text-center">
             <Button type="submit" className="bg-lilac-200" color="lilac" disabled={updateLoading}>
               {cms.settingsView.save}
             </Button>

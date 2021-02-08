@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useRadioState, RadioGroup } from 'reakit/Radio'
+import { truncate } from 'lodash'
 
 import { Text, Radiobox } from 'ui-library/stories/atoms'
 import { FieldTitle } from '~/components'
@@ -22,7 +23,8 @@ const ContactField = ({ formik, user, ...props }) => {
             <>
               <Text variant="textSmMedium">{cms.contact.radio1[0]}</Text>
               <Text variant="textSm">
-                {cms.contact.radio1[1]} <span className="underline">{user.data.private.email}</span>
+                {cms.contact.radio1[1]}{' '}
+                <span className="underline">{truncate(user.data.private.email, { length: 25 })}</span>
               </Text>
             </>
           }

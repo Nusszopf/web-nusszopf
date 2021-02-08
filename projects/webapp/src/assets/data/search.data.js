@@ -18,8 +18,8 @@ export default {
     description:
       'Versuch es noch einmal mit anderen oder weniger Begriffen oder erstelle dein Traumprojekt in ein paar Schritten einfach selbst.',
     action: {
-      text: 'Idee | Projekt starten',
-      meta: 'Idee | Projekt starten',
+      text: 'Projekt starten',
+      meta: 'Projekt starten',
     },
   },
   error: {

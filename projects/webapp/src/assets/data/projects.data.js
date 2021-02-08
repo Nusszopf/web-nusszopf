@@ -1,5 +1,5 @@
 export default {
-  action: 'Idee | Projekt starten',
+  action: 'Projekt starten',
   welcome: {
     title: 'Willkommen in Deinem Nusszopfbereich!',
     description:

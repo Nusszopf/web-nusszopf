@@ -1,8 +1,8 @@
 export default {
   contact: {
-    title: 'Kontakt',
-    radio1: ['Öffentlich', 'Direkt kontaktieren unter'],
-    radio2: ['Anonym', 'Der Nusszopf leitet erstmal alle Nachrichten an dich weiter'],
+    title: 'Kontaktmöglichkeit',
+    radio1: ['Persönlich', 'Meine E-Mail-Adresse ist öffentlich einsehbar. Kontaktmöglichkeit:'],
+    radio2: ['Über Nusszopf', 'Meine E-Mail-Adresse wird nicht angezeigt, der Erstkontakt läuft über den Nusszopf'],
     info:
       'Kann man dich über deine E-Mail-Adresse kontaktieren oder soll die Kommunikation erst einmal über den Nusszopf laufen?  Bedenke, dass es hierbei  auch um deinen Datenschutz geht.',
     label: 'Man kann mich kontaktieren unter',
@@ -18,7 +18,7 @@ export default {
     info: 'Ist das Projekt an einen bestimmten Ort gebunden?',
     placeholder: 'Ort',
     radio1: 'Ortsunabhängig',
-    radio2: ['Ortsabhängig', 'Wähle hierzu einen Ort aus der Suche aus'],
+    radio2: ['Ortsabhängig', 'Wähle hierzu einen Ort aus der Suche aus:'],
     error: ['Gib einen Ort ein', 'Wähle einen Ort aus der Liste aus'],
   },
   motto: {
@@ -32,7 +32,7 @@ export default {
     info: 'Gibt es einen definierten Zeitraum, in welchem das Projekt stattfindet?',
     action: {
       radio1: 'Flexibel',
-      radio2: 'Zeitraum',
+      radio2: 'Festgelegt:',
       from: 'Von',
       to: 'Bis',
       placeholder: 'dd.mm.yyyy',
@@ -69,7 +69,7 @@ export default {
     },
     private: {
       title: 'Privat',
-      description: 'Projekt ist nur zugänglich, wenn man den passenden Link kennt',
+      description: 'Projekt ist nur zugänglich für Personen, die den Projektlink kennen',
     },
   },
 }
