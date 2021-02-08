@@ -14,15 +14,15 @@ const projectEditData = {
   nav: ['Beschreibung', 'Gesuche', 'Einstellungen'],
 }
 
-const ProjectEdit = ({ id, user, loading: loadingUser }) => {
+const ProjectEdit = ({ user, loading: loadingUser }) => {
   const router = useRouter()
   const projectViewRef = useRef()
   const settingsViewRef = useRef()
   const [view, setView] = useState(projectEditData.nav[0])
-  const { data: projectData, loading: loadingProject } = apollo.useGetProject(id)
+  const { data: projectData, loading: loadingProject } = apollo.useGetProject(router.query?.id)
 
   useEffect(() => {
-    if (!loadingProject && !projectData) {
+    if (router.query?.id && !loadingProject && !projectData) {
       router.push('/404')
     }
   }, [loadingProject, projectData, router])
@@ -81,17 +81,7 @@ const ProjectEdit = ({ id, user, loading: loadingUser }) => {
   )
 }
 
-export async function getServerSideProps(ctx) {
-  const { id } = ctx.query
-  return {
-    props: {
-      id,
-    },
-  }
-}
-
 ProjectEdit.propTypes = {
-  id: PropTypes.string,
   user: PropTypes.object,
   loading: PropTypes.bool,
 }

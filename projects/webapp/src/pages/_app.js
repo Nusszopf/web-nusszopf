@@ -28,7 +28,7 @@ export default function NusszopfApp({ Component, pageProps }) {
       window.loadingTimer = setTimeout(() => {
         clearTimeout(window.loadingTimer)
         setIsPageLoading(true)
-      }, 150)
+      }, 350)
     })
     Router.events.on('routeChangeComplete', () => {
       clearTimeout(window.loadingTimer)
