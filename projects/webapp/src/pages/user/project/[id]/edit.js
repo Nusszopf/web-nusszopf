@@ -43,13 +43,13 @@ const ProjectEdit = ({ user, loading: loadingUser }) => {
   return (
     <Page
       navHeader={{ visible: true, goBackUri: '/user/projects' }}
-      footer={{ className: 'bg-white lg:bg-lilac-100' }}
+      footer={{ className: 'bg-white lg:bg-steel-100' }}
       noindex={true}
-      className="bg-white text-lilac-800 lg:bg-lilac-100">
+      className="bg-white text-lilac-800 lg:bg-steel-100">
       <FramedGridCard
         className="lg:mb-20 lg:mt-12"
-        bodyColor="bg-white lg:bg-lilac-100"
-        headerColor="bg-lilac-300 lg:bg-lilac-100">
+        bodyColor="bg-white lg:bg-steel-100"
+        headerColor="bg-lilac-300 lg:bg-steel-100">
         <FramedGridCard.Header className="bg-lilac-300">
           <div className="flex flex-col justify-between lg:items-center lg:flex-row">
             <Text as="h1" variant="textLg" className="mb-4 hyphens-auto lg:mb-0">

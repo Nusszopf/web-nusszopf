@@ -1,7 +1,7 @@
 export default {
   title: 'Ideen und Projekte aus dem Nusswerk',
   more: 'Mehr laden',
-  input: 'Suchen und Entdecken',
+  input: 'Suchen & Finden',
   filter: {
     title: 'Gesuche filtern',
     options: {

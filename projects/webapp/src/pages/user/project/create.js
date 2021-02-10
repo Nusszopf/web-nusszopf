@@ -47,9 +47,9 @@ const CreateProject = ({ user }) => {
   return (
     <Page
       navHeader={{ visible: true, goBackUri: '/user/projects' }}
-      footer={{ className: 'bg-white lg:bg-lilac-100' }}
+      footer={{ className: 'bg-white lg:bg-steel-100' }}
       noindex={true}
-      className="bg-white text-lilac-800 lg:bg-lilac-100">
+      className="bg-white text-lilac-800 lg:bg-steel-100">
       <Formik
         initialValues={{
           title: '',
@@ -76,8 +76,8 @@ const CreateProject = ({ user }) => {
         {formik => (
           <FramedGridCard
             className="lg:mb-20 lg:mt-12"
-            bodyColor="bg-white lg:bg-lilac-100"
-            headerColor="bg-lilac-300 lg:bg-lilac-100">
+            bodyColor="bg-white lg:bg-steel-100"
+            headerColor="bg-lilac-300 lg:bg-steel-100">
             <FramedGridCard.Header className="bg-lilac-300">
               <Progressbar label={cms.steps[stepper?.step ?? 0]} progress={stepper?.progress} />
               <Text as="h1" variant="textLg" className="block mt-3 hyphens-auto">

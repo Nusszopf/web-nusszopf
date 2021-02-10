@@ -95,14 +95,14 @@ const Project = ({ id, userId }) => {
       navHeader={{ visible: true }}
       title={data.projects_by_pk.title}
       description={data.projects_by_pk.goal}
-      footer={{ className: 'bg-white lg:bg-lilac-100' }}
+      footer={{ className: 'bg-white lg:bg-steel-100' }}
       noindex={true}
-      className="bg-white text-lilac-800 lg:bg-lilac-100">
+      className="bg-white text-lilac-800 lg:bg-steel-100">
       <Banner project={data.projects_by_pk} userId={userId} />
       <FramedGridCard
         className="lg:mt-12"
-        bodyColor="bg-white lg:bg-lilac-100"
-        headerColor="bg-lilac-300 lg:bg-lilac-100">
+        bodyColor="bg-white lg:bg-steel-100"
+        headerColor="bg-lilac-300 lg:bg-steel-100">
         <FramedGridCard.Header className="bg-lilac-300">
           <div className="flex flex-col flex-wrap lg:flex-row lg:justify-between">
             <div className="lg:pr-12 lg:w-9/12 hyphens-auto">
