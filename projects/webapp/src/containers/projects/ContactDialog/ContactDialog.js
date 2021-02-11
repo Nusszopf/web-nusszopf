@@ -9,7 +9,7 @@ import { Dialog } from 'ui-library/stories/organisms'
 import { contactDialogData as cms } from '~/assets/data'
 import { FieldTitle } from '~/components'
 
-const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
+const ContactDialog = ({ isOpen, onDismiss, onContact, project, request, ...props }) => {
   const { notify } = useToasts()
   const handleSubmit = async values => {
     notify({ type: 'loading', message: cms.notify.loading })
@@ -22,6 +22,7 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, ...props }) => {
           user: project.user_id,
           email: values.email,
           msg: values.msg,
+          request: request?.title ?? '',
         }),
       })
       if (res.ok) {
@@ -118,6 +119,7 @@ ContactDialog.propTypes = {
   onDismiss: PropTypes.func,
   onContact: PropTypes.func,
   project: PropTypes.object,
+  request: PropTypes.object,
 }
 
 export default ContactDialog

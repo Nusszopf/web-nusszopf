@@ -81,10 +81,15 @@ const Project = ({ id, userId }) => {
     setCurrentRequest(null)
   }
 
+  const closeContact = () => {
+    setShowContactDialog(false)
+    setCurrentRequest(null)
+  }
+
   const handleContact = () => {
     if (data.projects_by_pk.contact === NZ_EMAIL) {
       setShowContactDialog(true)
-      closeRequest()
+      setShowRequestDialog(false)
     } else {
       window.location.href = `mailto:${data.projects_by_pk.contact}?subject=${cms.email.subject}`
     }
@@ -236,16 +241,17 @@ const Project = ({ id, userId }) => {
       </Frame>
       {currentRequest && (
         <RequestDialog
-          isOpen={showRequestDialog}
+          isOpen={showRequestDialog && !showContactDialog}
           onDismiss={closeRequest}
           onContact={handleContact}
           request={currentRequest}
         />
       )}
       <ContactDialog
-        isOpen={showContactDialog}
-        onDismiss={() => setShowContactDialog(false)}
+        isOpen={showContactDialog && !showRequestDialog}
+        onDismiss={closeContact}
         project={data.projects_by_pk}
+        request={currentRequest}
       />
     </Page>
   )

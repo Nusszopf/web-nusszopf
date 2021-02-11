@@ -8,7 +8,7 @@ const StepCard = ({ className, step }) => (
   <div className={classnames('flex items-center p-5 border-2 rounded-lg border-steel-700', className)}>
     <div className="mr-5">
       {step.index === 3 ? (
-        <Request width={48} height={48} />
+        <Request size={48} />
       ) : (
         <div className="flex items-center justify-center w-12 h-12 border-2 rounded-full border-steel-700">
           <Text variant="textLgThin" className="">

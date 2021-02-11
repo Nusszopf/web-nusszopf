@@ -12,8 +12,9 @@ export default async function contact(req, res) {
       from: { name: 'Nusszopf (noreply)', email: 'noreply@nusszopf.org' },
       templateId: process.env.SENDGRID_TEMPLATE_CONTACT,
       dynamicTemplateData: {
-        project_title: req.body.title,
         contact_email: req.body.email,
+        project_title: req.body.title,
+        request_title: req.body.request,
         private_msg: req.body.msg,
       },
     }
