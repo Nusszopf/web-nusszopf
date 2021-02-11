@@ -92,7 +92,7 @@ const SearchInput = ({ className }) => {
               onClick={handleSearch}
               className="flex items-center justify-center w-16 h-16 -mr-3 border-t-2 border-b-2 border-r-2 outline-none cursor-pointer rounded-r-md border-moss-800 bg-moss-450">
               {isLoading ? (
-                <Loader className="animate-spin" size={22} strokeWidth={2.2} />
+                <Loader className="animate-spin" size={24} strokeWidth={2.2} />
               ) : !isEqual(filter, newFilter) ? (
                 <RefreshCw size={24} strokeWidth={2.2} />
               ) : (
