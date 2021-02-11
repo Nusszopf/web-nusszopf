@@ -64,6 +64,15 @@ const FilterPopover = ({ className, filter, setFilter }) => {
               label={cms.filter.options.others}
             />
           </div>
+          <div className="my-2">
+            <Checkbox
+              checked={filter.none}
+              onChange={() => setFilter(state => ({ ...state, none: !state.none }))}
+              name="none"
+              aria-label={cms.filter.options.none}
+              label={cms.filter.options.none}
+            />
+          </div>
         </div>
       </Popover>
     </div>

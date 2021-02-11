@@ -22,6 +22,7 @@ export const REQUEST_CATEGORY = {
   materials: 'materials',
   financials: 'financials',
   others: 'others',
+  none: 'none',
 }
 
 export const ERROR_CONSTRAINT = 'constraint-violation'

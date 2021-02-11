@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { X as XIcon, Search as SearchIcon, RefreshCw, Loader } from 'react-feather'
 import { isEqual, throttle } from 'lodash'
+import { Clickable } from 'reakit/Clickable'
 
 import { InputGroup } from 'ui-library/stories/molecules'
 import { useSearch } from '~/utils/services/search.service'
@@ -42,6 +43,7 @@ const SearchInput = ({ className }) => {
     setTerm(event.target.value)
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const throttleSearch = useCallback(
     throttle(fn => fn(), 500),
     []
@@ -62,17 +64,6 @@ const SearchInput = ({ className }) => {
   return (
     <div className={className}>
       <InputGroup className="rounded-lg text-moss-800">
-        <InputGroup.LeftElement onClick={handleSearch}>
-          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-moss-450">
-            {isLoading ? (
-              <Loader className="animate-spin" size={22} strokeWidth={2.2} />
-            ) : !isEqual(filter, newFilter) ? (
-              <RefreshCw size={20} strokeWidth={2.2} className="" />
-            ) : (
-              <SearchIcon size={24} />
-            )}
-          </div>
-        </InputGroup.LeftElement>
         <InputGroup.Input
           ref={inputRef}
           aria-label={cms.input}
@@ -83,14 +74,33 @@ const SearchInput = ({ className }) => {
           onBlur={handleBlur}
           displayRing={false}
           placeholder={cms.input}
+          className="pr-32"
         />
-        {term?.length > 0 && (
-          <InputGroup.RightElement onClick={handleClear} className={classnames({ hidden: term.length === 0 })}>
-            <div className="p-1 transition duration-100 ease-out rounded-full hover:bg-moss-450">
+        <InputGroup.RightElement variant="block">
+          <>
+            <Clickable
+              as="div"
+              onClick={handleClear}
+              className={classnames(
+                { hidden: term.length === 0 },
+                'p-1 mr-3 transition cursor-pointer duration-100 ease-out rounded-full hover:bg-moss-450 outline-none'
+              )}>
               <XIcon size={24} />
-            </div>
-          </InputGroup.RightElement>
-        )}
+            </Clickable>
+            <Clickable
+              as="div"
+              onClick={handleSearch}
+              className="flex items-center justify-center w-16 h-16 -mr-3 border-t-2 border-b-2 border-r-2 outline-none cursor-pointer rounded-r-md border-moss-800 bg-moss-450">
+              {isLoading ? (
+                <Loader className="animate-spin" size={22} strokeWidth={2.2} />
+              ) : !isEqual(filter, newFilter) ? (
+                <RefreshCw size={24} strokeWidth={2.2} />
+              ) : (
+                <SearchIcon size={27} />
+              )}
+            </Clickable>
+          </>
+        </InputGroup.RightElement>
       </InputGroup>
       <FilterPopover filter={newFilter} setFilter={setNewFilter} className="float-right mt-3" />
     </div>

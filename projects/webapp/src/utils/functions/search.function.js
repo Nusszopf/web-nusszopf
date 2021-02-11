@@ -1,8 +1,7 @@
 import MeiliSearch from 'meilisearch'
-import { differenceInHours } from 'date-fns'
 
 import { getProjectCrop, updateProject as apiUpdateProject } from './api.function'
-import { PROJECT } from '../enums'
+import { PROJECT, REQUEST_CATEGORY } from '../enums'
 
 export const SearchTrigger = {
   add: 'INSERT',
@@ -11,8 +10,6 @@ export const SearchTrigger = {
   projects: 'sync_projects_search',
   requests: 'sync_requests_search',
 }
-
-const MIN_DIFF_HOURS = 1
 
 export const initMeiliSearch = async (_index = 'items') => {
   const client = new MeiliSearch({
@@ -34,21 +31,20 @@ export const updateProject = async (data, res) => {
 }
 
 export const addRequest = async (data, res) => {
-  _upsertRequest(data, 'add')
+  await _syncProject(data)
   res.status(200).json({ itemsId: data.new.id })
 }
 
 export const updateRequest = async (data, res) => {
-  _upsertRequest(data, 'update')
+  await _syncProject(data)
   res.status(200).json({ itemsId: data.new.id })
 }
 
 export const deleteDocument = async (data, res) => {
   const { index } = await initMeiliSearch()
   await index.deleteDocuments([data.old.id])
-  const projectCrop = await getProjectCrop(data.old.project_id)
-  if (projectCrop && projectCrop.visibility === PROJECT.visibility.public) {
-    await _syncProjectWithRequest({ ...data.old, updated_at: new Date().toISOString() }, projectCrop)
+  if (data.old.project_id) {
+    await _syncProject({ new: { project_id: data.old.project_id, updated_at: new Date().toISOString() } })
   }
   res.status(200).json({ itemsId: data.old.id })
 }
@@ -57,12 +53,9 @@ const _upsertProject = async (data, action) => {
   if (data?.new && data.new?.visibility === PROJECT.visibility.public) {
     const { index } = await initMeiliSearch()
     const projectCrop = await getProjectCrop(data.new.id)
-    const projectDocument = _parseProjectToDocument(data.new, projectCrop)
+    const projectDocument = _parseProjectToDocument(projectCrop)
     if (action === 'add') {
-      const requestDocuments = projectCrop.requests.map(request =>
-        _parseRequestToDocument(request, projectCrop, projectCrop.updated_at)
-      )
-      await index.addDocuments([projectDocument, ...requestDocuments])
+      await _addProjectOrRequests(projectCrop, projectDocument, index)
     } else if (action === 'update') {
       await _updateProjectAndRequests(data, projectCrop, projectDocument, index)
     }
@@ -77,65 +70,45 @@ const _upsertProject = async (data, action) => {
   }
 }
 
-const _upsertRequest = async (data, action) => {
+const _syncProject = async data => {
   const projectCrop = await getProjectCrop(data.new.project_id)
   if (projectCrop && projectCrop.visibility === PROJECT.visibility.public) {
-    const { index } = await initMeiliSearch()
-    const document = _parseRequestToDocument(data.new, projectCrop, data.new.updated_at)
-    if (action === 'update') {
-      await index.updateDocuments([document])
-    } else if (action === 'add') {
-      await index.addDocuments([document])
-    }
-    await _syncProjectWithRequest(data.new, projectCrop)
+    await apiUpdateProject(projectCrop.id, { updated_at: data.new.updated_at })
   }
 }
 
-const _syncProjectWithRequest = async (request, project) => {
-  const diff = differenceInHours(new Date(request.updated_at), new Date(project.updated_at))
-  if (diff >= MIN_DIFF_HOURS) {
-    await apiUpdateProject(project.id, { updated_at: request.updated_at })
+const _addProjectOrRequests = async (projectCrop, projectDocument, index) => {
+  const requestDocuments = projectCrop.requests.map(request =>
+    _parseRequestToDocument(request, projectCrop, projectCrop.updated_at)
+  )
+  if (requestDocuments.length > 0) {
+    await index.addDocuments(requestDocuments)
+  } else {
+    await index.addDocuments([projectDocument])
   }
 }
 
 const _updateProjectAndRequests = async (data, projectCrop, projectDocument, index) => {
+  const requestDocuments = projectCrop.requests.map(request =>
+    _parseRequestToDocument(request, projectCrop, projectCrop.updated_at)
+  )
   if (data.old?.visibility === PROJECT.visibility.private) {
-    const requestDocuments = projectCrop.requests.map(request =>
-      _parseRequestToDocument(request, projectCrop, projectCrop.updated_at)
-    )
-    await index.addDocuments([projectDocument, ...requestDocuments])
-  } else if (data.old?.title !== data.new?.title || data.old?.goal !== data.new?.goal) {
-    const requestDocuments = projectCrop.requests.map(request => ({
-      itemsId: request?.id,
-      pro_title: projectCrop.title,
-      pro_goal: projectCrop.goal,
-      updated_at: new Date(projectCrop.updated_at).valueOf(),
-    }))
-    await index.updateDocuments([projectDocument, ...requestDocuments])
+    if (requestDocuments.length > 0) {
+      await index.addDocuments(requestDocuments)
+    } else {
+      await index.addDocuments([projectDocument])
+    }
   } else {
-    const requestDocuments = projectCrop.requests.map(request => ({
-      itemsId: request?.id,
-      updated_at: new Date(projectCrop.updated_at).valueOf(),
-    }))
-    await index.updateDocuments([projectDocument, ...requestDocuments])
+    if (requestDocuments.length > 0) {
+      await index.updateDocuments(requestDocuments)
+      await index.deleteDocuments([projectCrop.id])
+    } else {
+      await index.updateDocuments([projectDocument])
+    }
   }
 }
 
-const _parseRequestToDocument = (request, project, timestamp) => {
-  return {
-    req_title: request?.title,
-    req_description: request?.description,
-    req_type: request?.category,
-    pro_title: project?.title,
-    pro_goal: project?.goal,
-    updated_at: new Date(timestamp).valueOf(),
-    type: 'request',
-    itemsId: request?.id,
-    groupId: request?.project_id,
-  }
-}
-
-const _parseProjectToDocument = (project, projectCrop) => {
+const _parseProjectToDocument = project => {
   return {
     pro_title: project?.title,
     pro_goal: project?.goal,
@@ -143,15 +116,28 @@ const _parseProjectToDocument = (project, projectCrop) => {
     pro_location_text: !project?.location?.remote ? project?.location?.searchTerm : '',
     pro_team: project?.team,
     pro_motto: project?.motto,
-    pro_author: projectCrop?.user?.name,
+    pro_author: project?.user?.name,
     pro_period_flexible: project?.period?.flexible,
     pro_period_from: !project?.period?.flexible ? new Date(project.period.from).valueOf() : '',
     pro_period_to: !project?.period?.flexible ? new Date(project.period.to).valueOf() : '',
     pro_location_remote: project?.location?.remote,
     pro_location_geo: !project?.location?.remote ? project?.location?.data?.geo : {},
-    updated_at: new Date(projectCrop.updated_at).valueOf(),
-    type: 'project',
+    updated_at: new Date(project.updated_at).valueOf(),
+    req_type: REQUEST_CATEGORY.none,
     itemsId: project?.id,
     groupId: project?.id,
+  }
+}
+
+const _parseRequestToDocument = (request, project, timestamp) => {
+  const { updated_at, req_type, itemsId, groupId, ...projectDocument } = _parseProjectToDocument(project)
+  return {
+    req_title: request?.title,
+    req_description: request?.description,
+    ...projectDocument,
+    updated_at: new Date(timestamp).valueOf(),
+    req_type: request?.category,
+    itemsId: request?.id,
+    groupId: request?.project_id,
   }
 }

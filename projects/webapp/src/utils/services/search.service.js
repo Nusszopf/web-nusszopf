@@ -36,11 +36,12 @@ export const SearchContextProvider = ({ children }) => {
   const [isLoadingMore, setIsLoadingMore] = useState(false)
   const [isInitial, setIsInitial] = useState(true)
   const [filter, setFilter] = useState({
-    financials: true,
-    rooms: true,
-    companions: true,
-    materials: true,
-    others: true,
+    financials: false,
+    rooms: false,
+    companions: false,
+    materials: false,
+    others: false,
+    none: false,
   })
   const groupedHits = useMemo(() => Object.entries(groupBy(hits?.hits, item => item.groupId)), [hits])
 
@@ -71,14 +72,11 @@ export const SearchContextProvider = ({ children }) => {
     }
     setIsLoading(true)
     setFilter(_filter)
-    const filterQuery = Object.entries(_filter)
-      .filter(item => !item[1])
-      .map(item => `req_type != ${item[0]}`)
-      .join(' AND ')
+    const filterQuery = _mapFilterQuery(_filter)
     try {
       const _hits = await index.search(_term, {
         ...MEILI_CONFIG,
-        filters: filterQuery.length > 0 ? filterQuery : null,
+        filters: filterQuery,
       })
       setHits() // force update
       setHits(_hits)
@@ -94,15 +92,12 @@ export const SearchContextProvider = ({ children }) => {
       return
     }
     setIsLoadingMore(true)
-    const filterQuery = Object.entries(filter)
-      .filter(item => !item[1])
-      .map(item => `req_type != ${item[0]}`)
-      .join(' AND ')
+    const filterQuery = _mapFilterQuery(filter)
     try {
       const _hits = await index.search(term, {
         ...MEILI_CONFIG,
         offset: hits.offset + OFFSET,
-        filters: filterQuery.length > 0 ? filterQuery : null,
+        filters: filterQuery,
       })
       const moreHits = uniqBy(hits.hits.concat(_hits.hits), 'itemsId')
       setHits({ ..._hits, hits: moreHits })
@@ -110,6 +105,19 @@ export const SearchContextProvider = ({ children }) => {
     } catch (error) {
       notify({ type: 'error', message: cms.error.loadMore })
       setIsLoadingMore(false)
+    }
+  }
+
+  const _mapFilterQuery = filter => {
+    const allChecked = Object.values(filter).every(bool => bool)
+    const noneChecked = Object.values(filter).every(bool => !bool)
+    if (!allChecked && !noneChecked) {
+      return Object.entries(filter)
+        .filter(item => item[1])
+        .map(item => `req_type = ${item[0]}`)
+        .join(' OR ')
+    } else {
+      return null
     }
   }
 

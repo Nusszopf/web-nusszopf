@@ -7,17 +7,14 @@ import { truncate } from 'lodash'
 
 import { Text } from 'ui-library/stories/atoms'
 import { RequestCard } from '~/components'
+import { REQUEST_CATEGORY } from '~/utils/enums'
 
 const HitCard = ({ projectId, hits, className, ...props }) => {
-  const projectHits = useMemo(() => {
-    const _hits = hits.filter(hit => hit.type === 'project')
-    if (_hits.length <= 0) {
-      return ''
-    }
-    const { pro_location_text, pro_description, pro_team, pro_motto, pro_author } = _hits[0]._formatted
+  const projectInfos = useMemo(() => {
+    const { pro_location_text, pro_description, pro_team, pro_motto, pro_author } = hits[0]._formatted
     return truncate(
       Object.values({ pro_description, pro_location_text, pro_team, pro_motto, pro_author })
-        .filter(i => i.length > 0)
+        .filter(i => i?.length > 0)
         .join(' | '),
       { length: 90 }
     )
@@ -47,10 +44,12 @@ const HitCard = ({ projectId, hits, className, ...props }) => {
               <ChevronRight size={28} className="-mr-2" />
             </div>
           </div>
-          {projectHits.length > 0 && <Text variant="textXs" dangerouslySetInnerHTML={{ __html: projectHits }} />}
+          <Text variant="textXs" dangerouslySetInnerHTML={{ __html: projectInfos }} />
           {hits.map(
             hit =>
-              hit.type === 'request' && <RequestCard className="mt-3" key={hit.itemsId} variant="hit" request={hit} />
+              hit.req_type !== REQUEST_CATEGORY.none && (
+                <RequestCard className="mt-3" key={hit.itemsId} variant="hit" request={hit} />
+              )
           )}
         </div>
       </a>

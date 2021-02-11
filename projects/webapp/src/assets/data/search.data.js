@@ -10,6 +10,7 @@ export default {
       materials: 'Materialien',
       financials: 'Finanzielles',
       others: 'Sonstiges',
+      none: 'Keine Gesuche',
     },
   },
   scrollTop: 'Nach oben scrollen',
