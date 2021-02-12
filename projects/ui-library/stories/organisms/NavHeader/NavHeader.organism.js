@@ -104,12 +104,13 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
       <div className={classnames('flex items-center w-full h-10 lg:h-12 justify-between relative')}>
         <div className="flex items-center">
           <Clickable
-            {...menu}
             aria-label={cms.aria[4]}
             title={cms.aria[4]}
             onClick={handleNusszopf}
             className="focus:outline-none">
-            <Text variant="textSmMedium">LOGO</Text>
+            <Text as="span" variant="textSmMedium">
+              LOGO
+            </Text>
           </Clickable>
           {goBackUri && (
             <Clickable
