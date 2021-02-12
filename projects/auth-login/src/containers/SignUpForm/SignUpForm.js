@@ -15,7 +15,7 @@ const SignUpForm = forwardRef(({ webAuth, loading, className, onSubmit }, ref) =
 
   useEffect(() => {
     if (webAuth && !captcha) {
-      const _captcha = webAuth.renderCaptcha(document.querySelector('.captcha-signup'))
+      const _captcha = webAuth.renderCaptcha(document.querySelector('.captcha-signup'), { lang: 'de' })
       setCaptcha(_captcha)
     }
   }, [webAuth, captcha])

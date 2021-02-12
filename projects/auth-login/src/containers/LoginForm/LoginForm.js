@@ -17,7 +17,7 @@ const LoginForm = forwardRef(
 
     useEffect(() => {
       if (webAuth && !captcha) {
-        const _captcha = webAuth.renderCaptcha(document.querySelector('.captcha-login'))
+        const _captcha = webAuth.renderCaptcha(document.querySelector('.captcha-login'), { lang: 'de' })
         setCaptcha(_captcha)
       }
     }, [webAuth, captcha])

@@ -11,13 +11,6 @@ import { ChangePasswordForm, LoginForm, SignUpForm, Page } from '../containers'
 import { SVGNusszopfLogoBig } from '../assets/images'
 import { pageData as cms } from '../assets/data'
 
-// TODO:
-// [x] google recaptcha
-// [x] auth0 enable protection
-// [x] add captcha to login/signup (tutorial: https://auth0.com/docs/attack-protection/bot-detection/bot-detection-custom-login-pages)
-// [ ] fix cors error and test (just one captach at index level better?)
-// [ ] deploy and and test
-
 const Views = {
   signInUp: 'signInUp',
   password: 'password',
@@ -66,12 +59,6 @@ export default function IndexPage() {
     setLoading(true)
     notify({ type: 'loading', message: cms.notify.login.loading })
     try {
-      console.log({
-        realm: 'Username-Password-Authentication',
-        username: values.emailOrName,
-        password: values.password,
-        captcha: loginFormRef?.current?.getCaptchaValue(),
-      })
       webAuth.login(
         {
           realm: 'Username-Password-Authentication',
@@ -140,17 +127,6 @@ export default function IndexPage() {
     setLoading(true)
     notify({ type: 'loading', message: cms.notify.signup.loading })
     try {
-      console.log({
-        connection: 'Username-Password-Authentication',
-        username: values.username,
-        email: values.email,
-        password: values.password,
-        captcha: signupFormRef?.current?.getCaptchaValue(),
-        user_metadata: {
-          newsletter: values.newsletter ? 'true' : 'false',
-          isTestUser: process.env.VERCEL_ENV !== 'production' ? 'true' : 'false',
-        },
-      })
       webAuth.redirect.signupAndLogin(
         {
           connection: 'Username-Password-Authentication',
