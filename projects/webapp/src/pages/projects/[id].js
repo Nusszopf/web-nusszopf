@@ -66,7 +66,7 @@ const Project = ({ id, userId }) => {
           url: window.location.href,
         })
       } catch (error) {
-        alert(JSON.stringify(error))
+        alert(error.name + '////' + error.message)
         // if (aborted error) {
         //   copyUrl()
         //   notify({ type: 'success', message: cms.notify.success })
