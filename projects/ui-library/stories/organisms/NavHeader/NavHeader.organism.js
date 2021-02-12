@@ -103,12 +103,20 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
       })}>
       <div className={classnames('flex items-center w-full h-10 lg:h-12 justify-between relative')}>
         <div className="flex items-center">
+          <Clickable
+            {...menu}
+            aria-label={cms.aria[4]}
+            title={cms.aria[4]}
+            onClick={handleNusszopf}
+            className="focus:outline-none">
+            <Text variant="textSmMedium">LOGO</Text>
+          </Clickable>
           {goBackUri && (
             <Clickable
               aria-label={cms.aria[3]}
               title={cms.aria[3]}
               onClick={handleGoBack}
-              className="focus:outline-none">
+              className="ml-6 focus:outline-none">
               <ChevronLeft size={28} strokeWidth={2} />
             </Clickable>
           )}
@@ -166,7 +174,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
                     <PlusCircle size={22} className="-ml-2" />
                   </div>
                   <Text variant="textSmMedium" className="inline-block">
-                    {cms.items[6]}
+                    {cms.items[4]}
                   </Text>
                 </div>
               </MenuItem>
@@ -211,9 +219,6 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
                 </div>
               </MenuItem>
             )}
-            <MenuItem {...menu} onClick={handleNusszopf}>
-              <Text variant="textSmMedium">{cms.items[4]}</Text>
-            </MenuItem>
             {user?.auth && (
               <MenuItem {...menu} onClick={handleLogout}>
                 <Text className="text-warning-700" variant="textSmMedium">
