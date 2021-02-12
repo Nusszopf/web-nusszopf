@@ -47,6 +47,16 @@ const Project = ({ id, userId }) => {
     }
   }, [data])
 
+  const copyUrl = () => {
+    const dummy = document.createElement('input')
+    const url = window.location.href
+    document.body.appendChild(dummy)
+    dummy.value = url
+    dummy.select()
+    document.execCommand('copy')
+    document.body.removeChild(dummy)
+  }
+
   const handleShare = async () => {
     if (typeof navigator.share === 'function') {
       try {
@@ -56,22 +66,16 @@ const Project = ({ id, userId }) => {
           url: window.location.href,
         })
       } catch (error) {
-        alert('catch1: ' + error.message)
+        alert(JSON.stringify(error))
+        // if (aborted error) {
+        //   copyUrl()
+        //   notify({ type: 'success', message: cms.notify.success })
+        // }
         // error or aborted
       }
     } else {
-      try {
-        const dummy = document.createElement('input')
-        const url = window.location.href
-        document.body.appendChild(dummy)
-        dummy.value = url
-        dummy.select()
-        document.execCommand('copy')
-        document.body.removeChild(dummy)
-        notify({ type: 'success', message: cms.notify.success })
-      } catch (error) {
-        alert('catch2: ' + error.message)
-      }
+      copyUrl()
+      notify({ type: 'success', message: cms.notify.success })
     }
   }
 
