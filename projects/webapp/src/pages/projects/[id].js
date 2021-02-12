@@ -55,6 +55,7 @@ const Project = ({ id, userId }) => {
     dummy.select()
     document.execCommand('copy')
     document.body.removeChild(dummy)
+    notify({ type: 'success', message: cms.notify.success })
   }
 
   const handleShare = async () => {
@@ -66,16 +67,14 @@ const Project = ({ id, userId }) => {
           url: window.location.href,
         })
       } catch (error) {
-        alert(error.name + '////' + error.message)
-        // if (aborted error) {
-        //   copyUrl()
-        //   notify({ type: 'success', message: cms.notify.success })
-        // }
-        // error or aborted
+        if (error.name === 'AbortError') {
+          return
+        } else {
+          copyUrl()
+        }
       }
     } else {
       copyUrl()
-      notify({ type: 'success', message: cms.notify.success })
     }
   }
 
