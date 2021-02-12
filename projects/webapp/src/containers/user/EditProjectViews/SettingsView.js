@@ -21,7 +21,7 @@ const SettingsView = forwardRef(({ project }, ref) => {
     }
     const settings = serializeProjectSettings(user, newValues)
     updateProject(project.id, settings)
-    formik.resetForm(newValues)
+    formik.resetForm({ values: newValues })
   }
 
   const formik = useFormik({
@@ -30,7 +30,6 @@ const SettingsView = forwardRef(({ project }, ref) => {
       contact: project.contact === user.data.private.email,
     },
     onSubmit: handleSubmit,
-    enableReinitialize: true,
   })
 
   useImperativeHandle(ref, () => ({

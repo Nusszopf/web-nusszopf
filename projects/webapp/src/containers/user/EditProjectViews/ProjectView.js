@@ -44,7 +44,7 @@ const ProjectView = forwardRef(({ project }, ref) => {
     }
     const description = serializeProjectDescription(user, newValues)
     updateProject(project.id, description)
-    formik.resetForm(newValues)
+    formik.resetForm({ values: newValues })
   }
 
   const formik = useFormik({
@@ -75,7 +75,6 @@ const ProjectView = forwardRef(({ project }, ref) => {
       motto: MottoFieldValidationSchema,
     }),
     onSubmit: handleSubmit,
-    enableReinitialize: true,
   })
 
   useImperativeHandle(ref, () => ({
