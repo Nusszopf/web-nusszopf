@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, forwardRef, useImperativeHandle } from 'react'
 import PropTypes from 'prop-types'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import classnames from 'classnames'
@@ -9,8 +9,22 @@ import { Text, Button, Input, Link, Checkbox } from 'ui-library/stories/atoms'
 import { InputGroup } from 'ui-library/stories/molecules'
 import { formsData as cms } from '../../assets/data'
 
-const SignUpForm = ({ loading, className, onSubmit }) => {
+const SignUpForm = forwardRef(({ webAuth, loading, className, onSubmit }, ref) => {
   const [isEyeOpen, setEye] = useState(false)
+  const [captcha, setCaptcha] = useState()
+
+  useEffect(() => {
+    if (webAuth && !captcha) {
+      const _captcha = webAuth.renderCaptcha(document.querySelector('.captcha-signup'))
+      setCaptcha(_captcha)
+    }
+  }, [webAuth, captcha])
+
+  useImperativeHandle(ref, () => ({
+    getCaptchaValue: () => captcha?.getValue(),
+    reloadCaptcha: () => captcha?.reload(),
+  }))
+
   return (
     <div className={classnames('w-full text-steel-700', className)} data-test="signup form">
       <Formik
@@ -129,6 +143,7 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
                 label={cms.signup.fields.newsletter.label}
               />
             </div>
+            <div className="mt-4 captcha-signup" />
             <div className="mt-6 text-center">
               <Button type="submit" className="bg-steel-100" disabled={loading}>
                 {cms.signup.action}
@@ -139,11 +154,14 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
       </Formik>
     </div>
   )
-}
+})
+
+SignUpForm.displayName = 'SignUpForm'
 SignUpForm.propTypes = {
   className: PropTypes.string,
   onSubmit: PropTypes.func,
   loading: PropTypes.bool,
+  webAuth: PropTypes.object,
 }
 
 export default SignUpForm

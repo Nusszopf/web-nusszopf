@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { WebAuth } from 'auth0-js'
 import { isEmpty } from 'lodash'
@@ -11,6 +11,13 @@ import { ChangePasswordForm, LoginForm, SignUpForm, Page } from '../containers'
 import { SVGNusszopfLogoBig } from '../assets/images'
 import { pageData as cms } from '../assets/data'
 
+// TODO:
+// [x] google recaptcha
+// [x] auth0 enable protection
+// [x] add captcha to login/signup (tutorial: https://auth0.com/docs/attack-protection/bot-detection/bot-detection-custom-login-pages)
+// [ ] fix cors error and test (just one captach at index level better?)
+// [ ] deploy and and test
+
 const Views = {
   signInUp: 'signInUp',
   password: 'password',
@@ -22,6 +29,8 @@ export default function IndexPage() {
   const [webAuth, setWebAuth] = useState()
   const [view, setView] = useState(Views.signInUp)
   const [loading, setLoading] = useState(false)
+  const signupFormRef = useRef()
+  const loginFormRef = useRef()
 
   useEffect(() => {
     if (isEmpty(router.query)) return
@@ -57,15 +66,25 @@ export default function IndexPage() {
     setLoading(true)
     notify({ type: 'loading', message: cms.notify.login.loading })
     try {
+      console.log({
+        realm: 'Username-Password-Authentication',
+        username: values.emailOrName,
+        password: values.password,
+        captcha: loginFormRef?.current?.getCaptchaValue(),
+      })
       webAuth.login(
         {
           realm: 'Username-Password-Authentication',
           username: values.emailOrName,
           password: values.password,
+          captcha: loginFormRef?.current?.getCaptchaValue(),
         },
         (error, response) => {
           setLoading(false)
-          if (error) showError()
+          if (error) {
+            showError()
+            loginFormRef?.current?.reloadCaptcha()
+          }
           // redirect
         }
       )
@@ -121,12 +140,24 @@ export default function IndexPage() {
     setLoading(true)
     notify({ type: 'loading', message: cms.notify.signup.loading })
     try {
+      console.log({
+        connection: 'Username-Password-Authentication',
+        username: values.username,
+        email: values.email,
+        password: values.password,
+        captcha: signupFormRef?.current?.getCaptchaValue(),
+        user_metadata: {
+          newsletter: values.newsletter ? 'true' : 'false',
+          isTestUser: process.env.VERCEL_ENV !== 'production' ? 'true' : 'false',
+        },
+      })
       webAuth.redirect.signupAndLogin(
         {
           connection: 'Username-Password-Authentication',
           username: values.username,
           email: values.email,
           password: values.password,
+          captcha: signupFormRef?.current?.getCaptchaValue(),
           user_metadata: {
             newsletter: values.newsletter ? 'true' : 'false',
             isTestUser: process.env.VERCEL_ENV !== 'production' ? 'true' : 'false',
@@ -137,6 +168,7 @@ export default function IndexPage() {
           if (error) {
             const errorType = error.statusCode === 400 ? 1 : 0
             showError(errorType)
+            signupFormRef?.current?.reloadCaptcha()
           }
           // redirect
         }
@@ -197,6 +229,8 @@ export default function IndexPage() {
           <Tab ariaLabel="Auth Navigation" className="mt-12" labelLeft={cms.tab[0]} labelRight={cms.tab[1]}>
             <Tab.Panel>
               <LoginForm
+                ref={loginFormRef}
+                webAuth={webAuth}
                 loading={loading}
                 className="mt-5"
                 onSubmit={handleLogin}
@@ -209,7 +243,13 @@ export default function IndexPage() {
               />
             </Tab.Panel>
             <Tab.Panel>
-              <SignUpForm loading={loading} className="mt-5" onSubmit={handleSignup} />
+              <SignUpForm
+                ref={signupFormRef}
+                webAuth={webAuth}
+                loading={loading}
+                className="mt-5"
+                onSubmit={handleSignup}
+              />
             </Tab.Panel>
           </Tab>
         )}

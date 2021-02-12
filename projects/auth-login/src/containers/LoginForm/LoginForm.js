@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, forwardRef, useImperativeHandle } from 'react'
 import PropTypes from 'prop-types'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import classnames from 'classnames'
@@ -10,98 +10,116 @@ import { InputGroup } from 'ui-library/stories/molecules'
 import { SVGAppleLogo, SVGGoogleLogo } from '../../assets/images'
 import { formsData as cms } from '../../assets/data'
 
-const LoginForm = ({ className, loading, onSubmit, onLoginWithGoogle, onLoginWithApple, onForgotPassword }) => {
-  const [isEyeOpen, setEye] = useState(false)
-  return (
-    <div className={classnames('w-full text-steel-700', className)} data-test="login form">
-      <Formik
-        initialValues={{ password: '', emailOrName: '' }}
-        onSubmit={onSubmit}
-        validationSchema={object({
-          emailOrName: string().required(cms.login.fields.emailOrName.validation[0]),
-          password: string().required(cms.login.fields.password.validation[0]),
-        })}>
-        {formikProps => (
-          <Form>
-            <div>
-              <Field
-                as={Input}
-                autoComplete="off"
-                name="emailOrName"
-                type="text"
-                aria-label={cms.login.fields.emailOrName.aria}
-                placeholder={cms.login.fields.emailOrName.placeholder}
-              />
-              <ErrorMessage
-                name="emailOrName"
-                variant="textSm"
-                className="mt-2 ml-4 italic text-warning-700"
-                component={Text}
-              />
-            </div>
-            <div className="mt-4">
-              <InputGroup>
-                <InputGroup.Input
+const LoginForm = forwardRef(
+  ({ webAuth, className, loading, onSubmit, onLoginWithGoogle, onLoginWithApple, onForgotPassword }, ref) => {
+    const [isEyeOpen, setEye] = useState(false)
+    const [captcha, setCaptcha] = useState()
+
+    useEffect(() => {
+      if (webAuth && !captcha) {
+        const _captcha = webAuth.renderCaptcha(document.querySelector('.captcha-login'))
+        setCaptcha(_captcha)
+      }
+    }, [webAuth, captcha])
+
+    useImperativeHandle(ref, () => ({
+      getCaptchaValue: () => captcha?.getValue(),
+      reloadCaptcha: () => captcha?.reload(),
+    }))
+
+    return (
+      <div className={classnames('w-full text-steel-700', className)} data-test="login form">
+        <Formik
+          initialValues={{ password: '', emailOrName: '' }}
+          onSubmit={onSubmit}
+          validationSchema={object({
+            emailOrName: string().required(cms.login.fields.emailOrName.validation[0]),
+            password: string().required(cms.login.fields.password.validation[0]),
+          })}>
+          {formikProps => (
+            <Form>
+              <div>
+                <Field
+                  as={Input}
                   autoComplete="off"
-                  name="password"
-                  type={isEyeOpen ? 'text' : 'password'}
-                  value={formikProps.values.password}
-                  aria-label={cms.login.fields.password.aria}
-                  placeholder={cms.login.fields.password.placeholder}
-                  onChange={formikProps.handleChange}
-                  onBlur={formikProps.handleBlur}
+                  name="emailOrName"
+                  type="text"
+                  aria-label={cms.login.fields.emailOrName.aria}
+                  placeholder={cms.login.fields.emailOrName.placeholder}
                 />
-                <InputGroup.RightElement onClick={() => setEye(isEyeOpen => !isEyeOpen)}>
-                  {isEyeOpen ? <Eye size={24} /> : <EyeOff size={24} />}
-                </InputGroup.RightElement>
-              </InputGroup>
-              <ErrorMessage
-                name="password"
-                variant="textSm"
-                className="mt-2 ml-4 italic text-warning-700"
-                component={Text}
-              />
-            </div>
-            <div className="mt-5 text-center">
-              <Button type="submit" className="mx-1.5 mb-4 sm:mx-2 bg-steel-100" disabled={loading}>
-                {cms.login.actions.login}
-              </Button>
-              <Button onClick={onForgotPassword} className="mx-1.5 mb-4 sm:mx-2" disabled={loading}>
-                {cms.login.actions.forgot}
-              </Button>
-            </div>
-          </Form>
-        )}
-      </Formik>
-      <div>
-        <div className="flex items-center justify-center mt-2">
-          <div className="w-10 h-px mr-3 bg-steel-700 sm:w-20" />
-          <Text className="text-center" variant="textSm">
-            {cms.login.seperator}
-          </Text>
-          <div className="w-10 h-px ml-3 bg-steel-700 sm:w-20" />
-        </div>
-        <div className="mt-6 text-center">
-          <Button
-            disabled
-            className="mr-3 sm:mr-4 bg-steel-100"
-            onClick={onLoginWithApple}
-            iconLeft={<SVGAppleLogo className="w-auto h-5 mr-2" />}>
-            Apple
-          </Button>
-          <Button
-            disabled={loading}
-            className="bg-steel-100"
-            onClick={onLoginWithGoogle}
-            iconLeft={<SVGGoogleLogo className="w-auto h-5 mr-2" />}>
-            Google
-          </Button>
+                <ErrorMessage
+                  name="emailOrName"
+                  variant="textSm"
+                  className="mt-2 ml-4 italic text-warning-700"
+                  component={Text}
+                />
+              </div>
+              <div className="mt-4">
+                <InputGroup>
+                  <InputGroup.Input
+                    autoComplete="off"
+                    name="password"
+                    type={isEyeOpen ? 'text' : 'password'}
+                    value={formikProps.values.password}
+                    aria-label={cms.login.fields.password.aria}
+                    placeholder={cms.login.fields.password.placeholder}
+                    onChange={formikProps.handleChange}
+                    onBlur={formikProps.handleBlur}
+                  />
+                  <InputGroup.RightElement onClick={() => setEye(isEyeOpen => !isEyeOpen)}>
+                    {isEyeOpen ? <Eye size={24} /> : <EyeOff size={24} />}
+                  </InputGroup.RightElement>
+                </InputGroup>
+                <ErrorMessage
+                  name="password"
+                  variant="textSm"
+                  className="mt-2 ml-4 italic text-warning-700"
+                  component={Text}
+                />
+              </div>
+              <div className="mt-4 captcha-login" />
+              <div className="mt-5 text-center">
+                <Button type="submit" className="mx-1.5 mb-4 sm:mx-2 bg-steel-100" disabled={loading}>
+                  {cms.login.actions.login}
+                </Button>
+                <Button onClick={onForgotPassword} className="mx-1.5 mb-4 sm:mx-2" disabled={loading}>
+                  {cms.login.actions.forgot}
+                </Button>
+              </div>
+            </Form>
+          )}
+        </Formik>
+        <div>
+          <div className="flex items-center justify-center mt-2">
+            <div className="w-10 h-px mr-3 bg-steel-700 sm:w-20" />
+            <Text className="text-center" variant="textSm">
+              {cms.login.seperator}
+            </Text>
+            <div className="w-10 h-px ml-3 bg-steel-700 sm:w-20" />
+          </div>
+          <div className="mt-6 text-center">
+            <Button
+              disabled
+              className="mr-3 sm:mr-4 bg-steel-100"
+              onClick={onLoginWithApple}
+              iconLeft={<SVGAppleLogo className="w-auto h-5 mr-2" />}>
+              Apple
+            </Button>
+            <Button
+              disabled={loading}
+              className="bg-steel-100"
+              onClick={onLoginWithGoogle}
+              iconLeft={<SVGGoogleLogo className="w-auto h-5 mr-2" />}>
+              Google
+            </Button>
+          </div>
         </div>
       </div>
-    </div>
-  )
-}
+    )
+  }
+)
 
+LoginForm.displayName = 'LoginForm'
 LoginForm.propTypes = {
   className: PropTypes.string,
   onSubmit: PropTypes.func,
@@ -109,6 +127,7 @@ LoginForm.propTypes = {
   onLoginWithApple: PropTypes.func,
   onForgotPassword: PropTypes.func,
   loading: PropTypes.bool,
+  webAuth: PropTypes.object,
 }
 
 export default LoginForm
