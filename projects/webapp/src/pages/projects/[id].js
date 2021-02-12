@@ -48,10 +48,8 @@ const Project = ({ id, userId }) => {
   }, [data])
 
   const handleShare = async () => {
-    alert(typeof navigator.share)
-    if (typeof navigator.share !== 'undefined') {
+    if (typeof navigator.share === 'function') {
       try {
-        alert(JSON.stringify(data.projects_by_pk))
         await navigator.share({
           title: truncate(data.projects_by_pk.title, { length: 60 }),
           text: truncate(data.projects_by_pk.goal, { length: 60 }),
