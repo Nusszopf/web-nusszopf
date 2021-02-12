@@ -48,25 +48,34 @@ const Project = ({ id, userId }) => {
   }, [data])
 
   const handleShare = async () => {
-    if (navigator.share) {
+    console.log(typeof navigator.share)
+    if (typeof navigator.share !== undefined) {
       try {
+        console.log('data', data.projects_by_pk)
         await navigator.share({
           title: truncate(data.projects_by_pk.title, { length: 60 }),
           text: truncate(data.projects_by_pk.goal, { length: 60 }),
           url: window.location.href,
         })
       } catch (error) {
+        console.log('catch first')
+        console.log(error)
         // error or aborted
       }
     } else {
-      const dummy = document.createElement('input')
-      const url = window.location.href
-      document.body.appendChild(dummy)
-      dummy.value = url
-      dummy.select()
-      document.execCommand('copy')
-      document.body.removeChild(dummy)
-      notify({ type: 'success', message: cms.notify.success })
+      try {
+        const dummy = document.createElement('input')
+        const url = window.location.href
+        document.body.appendChild(dummy)
+        dummy.value = url
+        dummy.select()
+        document.execCommand('copy')
+        document.body.removeChild(dummy)
+        notify({ type: 'success', message: cms.notify.success })
+      } catch (error) {
+        console.log('catch second')
+        console.log(error)
+      }
     }
   }
 
