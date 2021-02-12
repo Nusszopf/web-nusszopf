@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useRef } from 'react'
 import PropTypes from 'prop-types'
 import { Formik, Form } from 'formik'
 import { object } from 'yup'
@@ -17,6 +17,7 @@ import {
 import { editRequestDialogData as cms } from '~/assets/data'
 
 const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValues }) => {
+  const formikRef = useRef()
   const request = useMemo(
     () =>
       initialValues ?? {
@@ -38,6 +39,17 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
     }
   }
 
+  const handleDismiss = () => {
+    if (formikRef?.current?.dirty) {
+      const isConfirmed = confirm(initialValues ? cms.confirmEdit : cms.confirmCreate)
+      if (isConfirmed) {
+        onDismiss()
+      }
+    } else {
+      onDismiss()
+    }
+  }
+
   return (
     <Dialog
       isOpen={isOpen}
@@ -45,6 +57,7 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
       className="relative text-stone-800 bg-stone-200"
       aria-label={cms.aria}>
       <Formik
+        innerRef={formikRef}
         initialValues={request}
         validationSchema={object({
           title: TitleFieldValidationSchema,
@@ -55,7 +68,7 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
         onSubmit={handleSubmit}>
         {formik => (
           <Form>
-            <Button className="absolute top-0 right-0 p-1 m-3" variant="clean" size="baseClean" onClick={onDismiss}>
+            <Button className="absolute top-0 right-0 p-1 m-3" variant="clean" size="baseClean" onClick={handleDismiss}>
               <X />
             </Button>
             <TitleField formik={formik} />
@@ -65,7 +78,7 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
               <Button className="bg-stone-400" color="stone" variant="outline" type="submit">
                 {initialValues ? cms.save : cms.create}
               </Button>
-              <Button color="stone" variant="outline" onClick={onDismiss}>
+              <Button color="stone" variant="outline" onClick={handleDismiss}>
                 {cms.cancel}
               </Button>
             </div>

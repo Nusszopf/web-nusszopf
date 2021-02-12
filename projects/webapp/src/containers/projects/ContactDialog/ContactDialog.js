@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import PropTypes from 'prop-types'
 import { X } from 'react-feather'
@@ -11,6 +12,7 @@ import { FieldTitle } from '~/components'
 
 const ContactDialog = ({ isOpen, onDismiss, onContact, project, request, ...props }) => {
   const { notify } = useToasts()
+  const formikRef = useRef()
   const handleSubmit = async values => {
     notify({ type: 'loading', message: cms.notify.loading })
     try {
@@ -36,6 +38,17 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, request, ...prop
     }
   }
 
+  const handleDismiss = () => {
+    if (formikRef?.current?.dirty) {
+      const isConfirmed = confirm(cms.confirm)
+      if (isConfirmed) {
+        onDismiss()
+      }
+    } else {
+      onDismiss()
+    }
+  }
+
   return (
     <Dialog
       isOpen={isOpen}
@@ -43,12 +56,13 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, request, ...prop
       className="relative text-lilac-800 bg-lilac-200"
       aria-label={cms.dialog.aria}
       {...props}>
-      <Button className="absolute top-0 right-0 p-1 m-3" variant="clean" size="baseClean" onClick={onDismiss}>
+      <Button className="absolute top-0 right-0 p-1 m-3" variant="clean" size="baseClean" onClick={handleDismiss}>
         <X />
       </Button>
       <Text variant="textLg">{project.title}</Text>
       <Text variant="textSm">{cms.dialog.description}</Text>
       <Formik
+        innerRef={formikRef}
         initialValues={{ email: '', msg: '' }}
         onSubmit={handleSubmit}
         validationSchema={object({
@@ -103,7 +117,7 @@ const ContactDialog = ({ isOpen, onDismiss, onContact, project, request, ...prop
               <Button type="submit" className="bg-lilac-300" onClick={onContact}>
                 {cms.actions.submit}
               </Button>
-              <Button type="button" onClick={onDismiss}>
+              <Button type="button" onClick={handleDismiss}>
                 {cms.actions.cancel}
               </Button>
             </div>
