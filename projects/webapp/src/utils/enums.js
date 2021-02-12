@@ -26,5 +26,3 @@ export const REQUEST_CATEGORY = {
 }
 
 export const ERROR_CONSTRAINT = 'constraint-violation'
-
-export const SPACES_CDN_ENDPOINT = 'https://assets-nusszopf.fra1.cdn.digitaloceanspaces.com/'

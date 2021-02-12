@@ -5,7 +5,6 @@ import apollo from '~/utils/services/apollo.service'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import { Button } from 'ui-library/stories/atoms'
 import { Dialog, Cropper } from 'ui-library/stories/organisms'
-import { SPACES_CDN_ENDPOINT } from '~/utils/enums'
 import { profileData as cms } from '~/assets/data'
 
 const AvatarDialog = ({ isOpen, onDismiss, user, ...props }) => {
@@ -39,7 +38,10 @@ const AvatarDialog = ({ isOpen, onDismiss, user, ...props }) => {
       })
       // update user data
       await updateUser({
-        variables: { id: user.data.private.id, picture: SPACES_CDN_ENDPOINT + encodeURIComponent(filename) },
+        variables: {
+          id: user.data.private.id,
+          picture: process.env.SPACES_CDN_ENDPOINT + encodeURIComponent(filename),
+        },
       })
 
       notify({ type: 'success', message: cms.picture.notify.success })

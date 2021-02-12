@@ -17,6 +17,7 @@ const nextConfig = {
     LOCATIONIQ_KEY: process.env.LOCATIONIQ_KEY,
     MEILI_API_KEY: process.env.MEILI_API_KEY,
     MEILI_DOMAIN: process.env.MEILI_DOMAIN,
+    SPACES_CDN_ENDPOINT: process.env.SPACES_CDN_ENDPOINT,
   },
   async rewrites() {
     return [
