@@ -16,9 +16,10 @@ const Views = {
   password: 'password',
 }
 
-// TODO: Laut recherche ist wohl ein captcha pro page die beste lösung... alles andere erforder workarounds.
-// Wie ein captcha in die tab-views integrieren?
-// auth0-js: https://github.com/auth0/auth0.js/blob/master/src/web-auth/captcha.js#L7
+// currently invisible captcha is used, so be able to have one captcha for the whole page
+// - captcha will only be visible if auth0 detects some sort of risk
+// - docs: https://auth0.com/docs/attack-protection/bot-detection
+
 export default function IndexPage() {
   const { notify } = useToasts()
   const router = useRouter()

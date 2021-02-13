@@ -10,6 +10,7 @@ import { Text } from '../../atoms'
 import { Frame } from '../../templates'
 import { useToasts } from '../../../services/Toasts.service'
 import { navHeaderData as cms } from '../../../assets/data'
+import { Nuss, NusszopfHeaderLogo } from '../../../assets/icons'
 import MenuItem from './MenuItem'
 
 const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true }) => {
@@ -108,9 +109,8 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
             title={cms.aria[4]}
             onClick={handleNusszopf}
             className="focus:outline-none">
-            <Text as="span" variant="textSmMedium">
-              LOGO
-            </Text>
+            <NusszopfHeaderLogo size={25} className="text-steel-100 lg:hidden" />
+            <NusszopfHeaderLogo size={30} className="hidden text-steel-100 lg:block" />
           </Clickable>
           {goBackUri && (
             <Clickable
@@ -139,7 +139,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
               title={cms.aria[1]}
               onClick={handleProjects}
               className="mr-6 sm:mr-8 focus:outline-none">
-              <Folder size={20} strokeWidth={2.2} />
+              <Nuss size={21.5} strokeWidth={8.5} />
             </Clickable>
           )}
           <MenuButton {...menu} className="focus:outline-none" title={cms.aria[2]} aria-label={cms.aria[2]}>
@@ -185,7 +185,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
                 <MenuItem {...menu} hasIcon={true} onClick={handleProjects}>
                   <div className="flex items-center">
                     <div className="w-6 mr-1">
-                      <Folder className="-ml-1.5" size={20} strokeWidth={2.2} />
+                      <Nuss size={21} strokeWidth={8.5} className="-ml-2" />
                     </div>
                     <Text variant="textSmMedium" className="inline-block">
                       {cms.items[2]}
