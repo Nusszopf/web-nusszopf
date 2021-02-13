@@ -32,6 +32,7 @@ module.exports = {
         700: '#B84405',
       },
       steel: {
+        50: '#F1F6F9',
         100: '#ECEFF1',
         200: '#CFD8DC',
         300: '#AFBEC5',

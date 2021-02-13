@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Instagram } from 'react-feather'
 
 import { Route, Link } from '../../atoms'
 import { Frame } from '../../templates'
@@ -68,14 +69,24 @@ const Footer = ({ className, variant = 'vercel' }) => (
             {cms.privacy}
           </Route>
         </div>
-        <Link
-          className="inline-block mt-5 sm:mt-0"
-          variant="svg"
-          href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"
-          title={cms.vercel.meta}
-          ariaLabel={cms.vercel.meta}>
-          <SVGPoweredByVercel />
-        </Link>
+        <div className="flex items-center mt-5 sm:mt-0">
+          <Link
+            className="flex-shrink-0 inline-block mr-8"
+            variant="svg"
+            href="https://www.instagram.com/nuss.zopf"
+            title={cms.instagram.meta}
+            ariaLabel={cms.instagram.meta}>
+            <Instagram size={28} strokeWidth={2} />
+          </Link>
+          <Link
+            className="flex-shrink-0 inline-block"
+            variant="svg"
+            href="https://vercel.com?utm_source=nusszopf&utm_campaign=oss"
+            title={cms.vercel.meta}
+            ariaLabel={cms.vercel.meta}>
+            <SVGPoweredByVercel />
+          </Link>
+        </div>
       </div>
     )}
   </Frame>

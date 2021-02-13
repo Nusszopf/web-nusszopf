@@ -12,7 +12,7 @@ const Index = () => (
     navHeader={{ visible: true }}
     footer={{ variant: 'classy', className: 'bg-steel-200' }}
     className="text-steel-700">
-    <Frame as="header" className="bg-white">
+    <Frame as="header" className="bg-steel-50">
       <div className="flex flex-col pt-12 pb-12 sm:pt-20 sm:pb-20 lg:flex-row xl:pt-32 xl:pb-32">
         <div className="lg:w-1/2 lg:pr-8 lg:self-center">
           <headerData.logo.component
