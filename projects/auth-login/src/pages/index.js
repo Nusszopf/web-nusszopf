@@ -16,7 +16,7 @@ const Views = {
   password: 'password',
 }
 
-// currently invisible captcha is used, so be able to have one captcha for the whole page
+// currently invisible captcha is used, to be able to have one captcha for the whole page
 // - captcha will only be visible if auth0 detects some sort of risk
 // - docs: https://auth0.com/docs/attack-protection/bot-detection
 
