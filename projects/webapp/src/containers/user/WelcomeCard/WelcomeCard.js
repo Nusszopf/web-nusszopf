@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
 import { Text } from 'ui-library/stories/atoms'
-import { SVGNusszopfLogoSmall } from '~/assets/logos'
+import { Nuss } from 'ui-library/assets/icons'
 
 const WelcomeCard = ({ title, description, greetings, className, ...props }) => (
   <div
@@ -21,7 +21,7 @@ const WelcomeCard = ({ title, description, greetings, className, ...props }) => 
       </Text>
     </div>
     <div className="flex items-center justify-center mt-10 mb-5 md:m-0 md:mr-12 lg:mr-16">
-      <SVGNusszopfLogoSmall className="flex-shrink-0 w-auto h-18" />
+      <Nuss strokeWidth={6} className="flex-shrink-0 w-auto h-18" />
     </div>
   </div>
 )

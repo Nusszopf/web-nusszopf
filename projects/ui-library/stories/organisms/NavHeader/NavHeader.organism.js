@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { Menu as RMenu, Search, ChevronLeft, User, PlusCircle, LogIn, Folder } from 'react-feather'
+import { Menu as RMenu, Search, ChevronLeft, User, PlusCircle, LogIn } from 'react-feather'
 import { Clickable } from 'reakit/Clickable'
 import { useMenuState, Menu, MenuButton } from 'reakit/Menu'
+import { truncate } from 'lodash'
 
 import { Text } from '../../atoms'
 import { Frame } from '../../templates'
@@ -198,7 +199,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
                       <User className="-ml-2" />
                     </div>
                     <Text variant="textSmMedium" className="inline-block">
-                      {user?.data?.name ?? cms.items[1]}
+                      {truncate(user?.data?.name ?? cms.items[1], { length: 12 })}
                     </Text>
                   </div>
                 </MenuItem>
