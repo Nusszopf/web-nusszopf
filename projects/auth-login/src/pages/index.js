@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { WebAuth } from 'auth0-js'
 import { isEmpty } from 'lodash'
@@ -16,14 +16,16 @@ const Views = {
   password: 'password',
 }
 
+// TODO: Laut recherche ist wohl ein captcha pro page die beste lösung... alles andere erforder workarounds.
+// Wie ein captcha in die tab-views integrieren?
+// auth0-js: https://github.com/auth0/auth0.js/blob/master/src/web-auth/captcha.js#L7
 export default function IndexPage() {
   const { notify } = useToasts()
   const router = useRouter()
   const [webAuth, setWebAuth] = useState()
   const [view, setView] = useState(Views.signInUp)
   const [loading, setLoading] = useState(false)
-  const signupFormRef = useRef()
-  const loginFormRef = useRef()
+  const [captcha, setCaptcha] = useState()
 
   useEffect(() => {
     if (isEmpty(router.query)) return
@@ -47,6 +49,13 @@ export default function IndexPage() {
     setWebAuth(webAuth)
   }, [router.query])
 
+  useEffect(() => {
+    if (webAuth && !captcha) {
+      const _captcha = webAuth.renderCaptcha(document.querySelector('.captcha-container'), { lang: 'de' })
+      setCaptcha(_captcha)
+    }
+  }, [webAuth, captcha])
+
   const showError = (i = 0) => {
     notify({
       type: 'error',
@@ -64,13 +73,13 @@ export default function IndexPage() {
           realm: 'Username-Password-Authentication',
           username: values.emailOrName,
           password: values.password,
-          captcha: loginFormRef?.current?.getCaptchaValue(),
+          captcha: captcha?.getValue(),
         },
         (error, response) => {
           setLoading(false)
           if (error) {
             showError()
-            loginFormRef?.current?.reloadCaptcha()
+            captcha?.reload()
           }
           // redirect
         }
@@ -78,6 +87,7 @@ export default function IndexPage() {
     } catch (error) {
       setLoading(false)
       showError()
+      captcha?.reload()
     }
   }
 
@@ -133,7 +143,7 @@ export default function IndexPage() {
           username: values.username,
           email: values.email,
           password: values.password,
-          captcha: signupFormRef?.current?.getCaptchaValue(),
+          captcha: captcha?.getValue(),
           user_metadata: {
             newsletter: values.newsletter ? 'true' : 'false',
             isTestUser: process.env.VERCEL_ENV !== 'production' ? 'true' : 'false',
@@ -144,7 +154,7 @@ export default function IndexPage() {
           if (error) {
             const errorType = error.statusCode === 400 ? 1 : 0
             showError(errorType)
-            signupFormRef?.current?.reloadCaptcha()
+            captcha?.reload()
           }
           // redirect
         }
@@ -152,6 +162,7 @@ export default function IndexPage() {
     } catch (error) {
       setLoading(false)
       showError()
+      captcha?.reload()
     }
   }
 
@@ -205,8 +216,6 @@ export default function IndexPage() {
           <Tab ariaLabel="Auth Navigation" className="mt-12" labelLeft={cms.tab[0]} labelRight={cms.tab[1]}>
             <Tab.Panel>
               <LoginForm
-                ref={loginFormRef}
-                webAuth={webAuth}
                 loading={loading}
                 className="mt-5"
                 onSubmit={handleLogin}
@@ -219,17 +228,12 @@ export default function IndexPage() {
               />
             </Tab.Panel>
             <Tab.Panel>
-              <SignUpForm
-                ref={signupFormRef}
-                webAuth={webAuth}
-                loading={loading}
-                className="mt-5"
-                onSubmit={handleSignup}
-              />
+              <SignUpForm loading={loading} className="mt-5" onSubmit={handleSignup} />
             </Tab.Panel>
           </Tab>
         )}
       </FramedCard>
+      <div className="captcha-container" />
     </Page>
   )
 }
