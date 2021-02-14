@@ -7,7 +7,7 @@ const Nuss = forwardRef(({ color = 'currentColor', strokeWidth = 2, size = 24, .
       ref={ref}
       width={size}
       height={size}
-      viewBox="0 0 100 100"
+      viewBox="0 0 101 101"
       fill="none"
       stroke={color}
       strokeWidth={strokeWidth}

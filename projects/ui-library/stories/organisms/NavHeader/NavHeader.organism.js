@@ -128,10 +128,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
             aria-label={cms.aria[0]}
             title={cms.aria[0]}
             onClick={handleSearch}
-            disabled={process.env.ENV === 'production'}
-            className={classnames('mr-6 sm:mr-8 focus:outline-none', {
-              hidden: process.env.ENV === 'production',
-            })}>
+            className="mr-6 sm:mr-8 focus:outline-none">
             <Search />
           </Clickable>
           {user?.auth && (
@@ -149,12 +146,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
         </div>
         <Menu {...menu} tabIndex={0} aria-label={cms.aria[2]} className="z-20 focus:outline-none reakit-animate-scale">
           <div className="py-4 mt-5 text-sm font-medium rounded-md shadow-md lg:mt-6 text-steel-800 bg-steel-400">
-            <MenuItem
-              {...menu}
-              hasIcon={true}
-              onClick={handleSearch}
-              disabled={process.env.ENV === 'production'}
-              className={classnames({ 'opacity-50': process.env.ENV === 'production' })}>
+            <MenuItem {...menu} hasIcon={true} onClick={handleSearch}>
               <div className="flex items-center ">
                 <div className="w-6 mr-1">
                   <Search className="-ml-2" />
@@ -165,12 +157,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
               </div>
             </MenuItem>
             {mode === 'internal' && (
-              <MenuItem
-                {...menu}
-                hasIcon={true}
-                onClick={handleCreateProject}
-                disabled={process.env.ENV === 'production'}
-                className={classnames({ 'opacity-50': process.env.ENV === 'production' })}>
+              <MenuItem {...menu} hasIcon={true} onClick={handleCreateProject}>
                 <div className="flex items-center ">
                   <div className="w-6 mr-1">
                     <PlusCircle size={22} className="-ml-2" />
@@ -205,12 +192,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
                 </MenuItem>
               </>
             ) : (
-              <MenuItem
-                {...menu}
-                hasIcon={true}
-                onClick={handleLoginSignup}
-                disabled={process.env.ENV === 'production'}
-                className={classnames({ 'opacity-50': process.env.ENV === 'production' })}>
+              <MenuItem {...menu} hasIcon={true} onClick={handleLoginSignup}>
                 <div className="flex items-center">
                   <div className="w-6 mr-1">
                     <LogIn size={23} className="-ml-2" />
