@@ -63,7 +63,6 @@ const Project = ({ id, userId }) => {
       try {
         await navigator.share({
           title: truncate(data.projects_by_pk.title, { length: 60 }),
-          text: truncate(data.projects_by_pk.goal, { length: 60 }),
           url: window.location.href,
         })
       } catch (error) {
