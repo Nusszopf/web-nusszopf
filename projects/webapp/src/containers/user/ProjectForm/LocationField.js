@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { object, string } from 'yup'
@@ -8,6 +8,7 @@ import { useRadioState, RadioGroup } from 'reakit/Radio'
 import { Text, Radiobox } from 'ui-library/stories/atoms'
 import { Combobox } from 'ui-library/stories/organisms'
 import { findLocations } from '~/utils/services/location.service'
+import { useDebounce } from '~/utils/hooks'
 import { FieldTitle } from '~/components'
 import { projectFormData as cms } from '~/assets/data'
 
@@ -25,6 +26,13 @@ export const LocationFieldValidationSchema = object().shape({
 const LocationField = ({ formik, ...props }) => {
   const radio = useRadioState({ state: formik.values.location.remote, orientation: 'vertical' })
   const [locations, setLocations] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
+  const debouncedSearchTerm = useDebounce(searchTerm, 500)
+
+  useEffect(() => {
+    search()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [debouncedSearchTerm])
 
   const handleLocationSelect = location => {
     const { value, ...data } = location
@@ -33,23 +41,23 @@ const LocationField = ({ formik, ...props }) => {
   }
 
   const handleSearchTermChange = async event => {
-    const searchTerm = event.target.value
-    formik.setFieldValue('location.searchTerm', searchTerm)
-    await search(searchTerm)
-  }
-
-  const search = async searchTerm => {
-    let newLocations = locations
-    if (searchTerm) {
-      newLocations = await findLocations(searchTerm, locations)
-      setLocations(newLocations)
-    }
+    const _searchTerm = event.target.value
+    formik.setFieldValue('location.searchTerm', _searchTerm)
+    setSearchTerm(_searchTerm)
   }
 
   const handleSearchTermClear = () => {
     formik.setFieldValue('location.searchTerm', '')
     formik.setFieldValue('location.data', {})
     setLocations([])
+  }
+
+  const search = async () => {
+    let newLocations = locations
+    if (searchTerm) {
+      newLocations = await findLocations(searchTerm, locations)
+      setLocations(newLocations)
+    }
   }
 
   return (
