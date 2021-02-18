@@ -50,11 +50,15 @@ const useProjectsService = props => {
         .join(' ')
         .replace(/\s+/g, ' ')
         .trim(),
-      location: form.location,
+      location: {
+        remote: form.location.remote,
+        searchTerm: form.location.remote ? '' : form.location.searchTerm,
+        data: form.location.remote ? {} : form.location.data,
+      },
       period: {
         flexible: form.period.flexible,
-        from: parseDateISOString(form.period.from),
-        to: parseDateISOString(form.period.to),
+        from: form.period.flexible ? '' : parseDateISOString(form.period.from),
+        to: form.period.flexible ? '' : parseDateISOString(form.period.to),
       },
       teamTemplate: form.team,
       team: form.team.map(n => Node.string(n)).join(' '),

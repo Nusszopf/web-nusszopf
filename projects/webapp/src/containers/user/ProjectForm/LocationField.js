@@ -43,6 +43,7 @@ const LocationField = ({ formik, ...props }) => {
   const handleSearchTermChange = async event => {
     const _searchTerm = event.target.value
     formik.setFieldValue('location.searchTerm', _searchTerm)
+    formik.setFieldValue('location.data', {})
     setSearchTerm(_searchTerm)
   }
 
@@ -50,6 +51,12 @@ const LocationField = ({ formik, ...props }) => {
     formik.setFieldValue('location.searchTerm', '')
     formik.setFieldValue('location.data', {})
     setLocations([])
+  }
+
+  const handleKeyPress = e => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+    }
   }
 
   const search = async () => {
@@ -92,6 +99,7 @@ const LocationField = ({ formik, ...props }) => {
       <div className="mt-2 ml-8">
         <Combobox
           id="postalcode"
+          onKeyPress={handleKeyPress}
           tabIndex="0"
           name="location.searchTerm"
           aria={cms.location.title}
