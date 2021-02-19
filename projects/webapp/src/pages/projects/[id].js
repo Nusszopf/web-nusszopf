@@ -1,13 +1,15 @@
 import { Fragment, useMemo, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { MapPin, Calendar, Send, Share2 } from 'react-feather'
+import { MapPin, Calendar, Send, Share2, AlertTriangle } from 'react-feather'
 import { isValid } from 'date-fns'
 import classnames from 'classnames'
+import { truncate } from 'lodash'
 
 import { Text, Button, Link } from 'ui-library/stories/atoms'
-import { InfoCard } from 'ui-library/stories/molecules'
-import { FramedGridCard } from 'ui-library/stories/templates'
-import { serializeJSX } from 'ui-library/services/RichTextEditor.service'
+import { InfoCard, Avatar } from 'ui-library/stories/molecules'
+import { useRichTextEditor } from 'ui-library/stories/organisms'
+import { FramedGridCard, Frame } from 'ui-library/stories/templates'
+import { withAuth } from '~/utils/hoc'
 import { useToasts } from 'ui-library/services/Toasts.service'
 import auth0 from '~/utils/libs/auth0'
 import apollo from '~/utils/services/apollo.service'
@@ -16,13 +18,14 @@ import { initializeApollo } from '~/utils/libs/apolloClient'
 import { NZ_EMAIL } from '~/utils/enums'
 import { projectData as cms } from '~/assets/data'
 import { Page, RequestCard } from '~/components'
-import { RequestDialog, ContactDialog, Banner } from '~/containers/projects'
+import { RequestDialog, ContactDialog, Banner } from '~/containers'
 
-const Project = ({ id, user }) => {
+const Project = ({ id, userId }) => {
+  const { serializeJSX } = useRichTextEditor()
   const [currentRequest, setCurrentRequest] = useState()
   const [showRequestDialog, setShowRequestDialog] = useState(false)
   const [showContactDialog, setShowContactDialog] = useState(false)
-  const { data } = apollo.useGetProject(id)
+  const { data, loading } = apollo.useGetProject(id)
   const { notify } = useToasts()
 
   const period = useMemo(() => {
@@ -34,9 +37,9 @@ const Project = ({ id, user }) => {
   }, [data])
 
   const location = useMemo(() => {
-    const osm = data?.projects_by_pk?.location?.data?.osm
+    const osm = data.projects_by_pk?.location?.data?.osm
     if (osm) {
-      const city = data?.projects_by_pk?.location?.data?.city
+      const city = data.projects_by_pk.location.data.city
       const link = `https://www.openstreetmap.org/${osm.type}/${osm.id}`
       return { city, link }
     } else {
@@ -44,25 +47,33 @@ const Project = ({ id, user }) => {
     }
   }, [data])
 
+  const copyUrl = () => {
+    const dummy = document.createElement('input')
+    const url = window.location.href
+    document.body.appendChild(dummy)
+    dummy.value = url
+    dummy.select()
+    document.execCommand('copy')
+    document.body.removeChild(dummy)
+    notify({ type: 'success', message: cms.notify.success })
+  }
+
   const handleShare = async () => {
-    if (navigator.share) {
+    if (typeof navigator.share === 'function') {
       try {
         await navigator.share({
-          title: data?.projects_by_pk?.title,
+          title: truncate(data.projects_by_pk.title, { length: 60 }),
           url: window.location.href,
         })
       } catch (error) {
-        notify({ type: 'error', message: cms.notify.error })
+        if (error.name === 'AbortError') {
+          return
+        } else {
+          copyUrl()
+        }
       }
     } else {
-      const dummy = document.createElement('input')
-      const url = window.location.href
-      document.body.appendChild(dummy)
-      dummy.value = url
-      dummy.select()
-      document.execCommand('copy')
-      document.body.removeChild(dummy)
-      notify({ type: 'success', message: cms.notify.success })
+      copyUrl()
     }
   }
 
@@ -77,10 +88,15 @@ const Project = ({ id, user }) => {
     setCurrentRequest(null)
   }
 
+  const closeContact = () => {
+    setShowContactDialog(false)
+    setCurrentRequest(null)
+  }
+
   const handleContact = () => {
     if (data.projects_by_pk.contact === NZ_EMAIL) {
       setShowContactDialog(true)
-      closeRequest()
+      setShowRequestDialog(false)
     } else {
       window.location.href = `mailto:${data.projects_by_pk.contact}?subject=${cms.email.subject}`
     }
@@ -91,22 +107,22 @@ const Project = ({ id, user }) => {
       navHeader={{ visible: true }}
       title={data.projects_by_pk.title}
       description={data.projects_by_pk.goal}
-      footer={{ className: 'bg-white lg:bg-lilac-100' }}
+      footer={{ className: 'bg-white lg:bg-steel-100' }}
       noindex={true}
-      className="text-lilac-800 bg-lilac-100">
-      <Banner project={data.projects_by_pk} user={user} />
+      className="bg-white text-lilac-800 lg:bg-steel-100">
+      <Banner project={data.projects_by_pk} userId={userId} />
       <FramedGridCard
-        className="lg:mb-20 lg:mt-12"
-        bodyColor="bg-white lg:bg-lilac-100"
-        headerColor="bg-lilac-300 lg:bg-lilac-100">
+        className="lg:mt-12"
+        bodyColor="bg-white lg:bg-steel-100"
+        headerColor="bg-lilac-300 lg:bg-steel-100">
         <FramedGridCard.Header className="bg-lilac-300">
           <div className="flex flex-col flex-wrap lg:flex-row lg:justify-between">
             <div className="lg:pr-12 lg:w-9/12 hyphens-auto">
               <Text as="h1" variant="textLg" className="mb-2 hyphens-auto">
-                {data?.projects_by_pk?.title}
+                {data.projects_by_pk.title}
               </Text>
               <Text variant="textSm" className="max-w-xl">
-                {data?.projects_by_pk?.goal}
+                {data.projects_by_pk.goal}
               </Text>
               <div className="flex flex-col w-full mt-4 lg:mt-3 sm:flex-row sm:items-center">
                 <div className="flex items-center sm:mr-8">
@@ -122,7 +138,7 @@ const Project = ({ id, user }) => {
                     </Link>
                   ) : (
                     <>
-                      <Text variant="textSm">{location?.city}</Text>
+                      <Text variant="textSm">{location.city}</Text>
                     </>
                   )}
                 </div>
@@ -158,20 +174,24 @@ const Project = ({ id, user }) => {
                 {cms.body.what}
               </Text>
               <div className="text-lg">
-                {data?.projects_by_pk?.descriptionTemplate.map((node, idx) => (
-                  <Fragment key={`rq-${idx}`}>{serializeJSX(node, 'lilac')}</Fragment>
+                {data.projects_by_pk.descriptionTemplate.map((node, idx) => (
+                  <Fragment key={`desc-${idx}`}>{serializeJSX(node, 'lilac')}</Fragment>
                 ))}
               </div>
             </div>
-            {data?.projects_by_pk?.team && (
+            {data.projects_by_pk?.team && (
               <div className="mt-10">
                 <Text className="mb-3" variant="textLg">
                   {cms.body.who}
                 </Text>
-                <Text variant="textSm">{data.projects_by_pk.team}</Text>
+                <div className="text-lg">
+                  {data.projects_by_pk.teamTemplate.map((node, idx) => (
+                    <Fragment key={`team-${idx}`}>{serializeJSX(node, 'lilac')}</Fragment>
+                  ))}
+                </div>
               </div>
             )}
-            {data?.projects_by_pk?.motto && (
+            {data.projects_by_pk?.motto && (
               <div className="mt-10">
                 <Text className="mb-3" variant="textLg">
                   {cms.body.how}
@@ -186,7 +206,7 @@ const Project = ({ id, user }) => {
             <Text className="mb-4" variant="textLg">
               {cms.body.requests}
             </Text>
-            {data?.projects_by_pk?.requests?.length > 0 ? (
+            {data.projects_by_pk?.requests?.length > 0 ? (
               <>
                 {data.projects_by_pk.requests.map((request, index) => (
                   <RequestCard
@@ -201,25 +221,44 @@ const Project = ({ id, user }) => {
             ) : (
               <InfoCard className="mt-2">{cms.body.searchings.info}</InfoCard>
             )}
-          </FramedGridCard.Body.Col>
-          <FramedGridCard.Body.Col variant="oneCol" className="mt-8">
-            <Text variant="textSm">
-              {cms.body.createdBy} {data?.projects_by_pk.user.name},{' '}
-              {new Date(data?.projects_by_pk?.created_at).toLocaleDateString('de-DE')}
-            </Text>
+            <Avatar
+              className="mt-16 lg:mt-14"
+              variant="project"
+              project={data.projects_by_pk}
+              user={{ data: data.projects_by_pk.user }}
+              loading={loading}
+            />
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
       </FramedGridCard>
-      <RequestDialog
-        isOpen={showRequestDialog}
-        onDismiss={closeRequest}
-        onContact={handleContact}
-        request={currentRequest}
-      />
+      <Frame className="mt-12 mb-12 text-center lg:mt-4 lg:text-right lg:mb-20">
+        <Link
+          variant="button"
+          size="base"
+          buttonVariant="clean"
+          iconLeft={<AlertTriangle size={21} className="mr-2" />}
+          className="underline lg:pr-2.5"
+          title={cms.report.meta}
+          ariaLabel={cms.report.meta}
+          href={`${cms.report.href} (ID: ${id})`}>
+          <Text as="span" variant="textSmMedium">
+            {cms.report.text}
+          </Text>
+        </Link>
+      </Frame>
+      {currentRequest && (
+        <RequestDialog
+          isOpen={showRequestDialog && !showContactDialog}
+          onDismiss={closeRequest}
+          onContact={handleContact}
+          request={currentRequest}
+        />
+      )}
       <ContactDialog
-        isOpen={showContactDialog}
-        onDismiss={() => setShowContactDialog(false)}
-        project={data?.projects_by_pk}
+        isOpen={showContactDialog && !showRequestDialog}
+        onDismiss={closeContact}
+        project={data.projects_by_pk}
+        request={currentRequest}
       />
     </Page>
   )
@@ -238,17 +277,19 @@ export async function getServerSideProps(ctx) {
         notFound: true,
       }
     } else {
-      let user = 'anonymous'
+      let userId = 'anonymous'
       try {
         const session = await auth0.getSession(ctx.req)
-        user = session.user.sub
+        if (session?.user) {
+          userId = session.user.sub
+        }
       } catch (error) {
         console.error(error)
       }
       return {
         props: {
           id,
-          user: user,
+          userId: userId,
           initialApolloState: apolloClient.cache.extract(),
         },
       }
@@ -263,7 +304,7 @@ export async function getServerSideProps(ctx) {
 
 Project.propTypes = {
   id: PropTypes.string,
-  user: PropTypes.string,
+  userId: PropTypes.string,
 }
 
-export default Project
+export default withAuth(Project, { isAuthRequired: false })

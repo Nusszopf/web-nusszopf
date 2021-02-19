@@ -12,6 +12,7 @@ const nextConfig = {
   env: {
     AUTH0_DOMAIN: process.env.AUTH0_DOMAIN,
     AUTH0_TENANT: process.env.AUTH0_TENANT,
+    VERCEL_ENV: process.env.VERCEL_ENV,
   },
 }
 

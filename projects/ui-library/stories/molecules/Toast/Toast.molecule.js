@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Loader, CheckCircle, Info, X, XCircle } from 'react-feather'
 import { Clickable as ReakitClickable } from 'reakit/Clickable'
 import classnames from 'classnames'
+
 import { Text } from '../../atoms'
 import { ToastVariant } from './Toast.theme'
 

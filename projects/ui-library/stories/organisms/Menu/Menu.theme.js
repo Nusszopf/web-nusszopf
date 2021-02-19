@@ -1,8 +1,3 @@
-export const MenuVariant = {
-  button: 'button',
-  icon: 'icon',
-}
-
 export const MenuColor = {
   lilac: {
     menu: 'text-lilac-800 bg-lilac-200 border border-lilac-500',

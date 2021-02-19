@@ -1,16 +1,22 @@
 export default {
+  aria: { select: 'Projekt Bereich auswählen' },
   projectView: {
     save: 'Speichern',
   },
   requestsView: {
+    titleCreated: 'Aktuelle Gesuche',
     create: 'Gesuch erstellen',
+    titleIntro: 'Projektgesuche',
+    intro:
+      'Gesuche in dem Projekt zeigen anderen Nusszopfer:innen, was für die Projektumsetzung noch alles benötigt wird.',
     info: 'Alles zopfig! Derzeit gibt es keine Gesuche.',
   },
   settingsView: {
     save: 'Speichern',
     alert: 'Nach dem Löschen können die Daten nicht wieder hergestellt werden.',
-    delete: 'Löschen',
+    delete: { title: 'Projekt löschen', action: 'Löschen' },
   },
+  alert: 'Möchtest Du die Seite wirklich verlassen? Deine Änderungen gehen dann verloren.',
   notify: {
     request: {
       update: {

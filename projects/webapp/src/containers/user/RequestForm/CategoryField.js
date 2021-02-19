@@ -33,6 +33,7 @@ const CategoryField = ({ formik, ...props }) => {
       </FieldTitle>
       <Select
         name="category"
+        aria-label={cms.category.title}
         value={formik.values.category}
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
@@ -45,7 +46,7 @@ const CategoryField = ({ formik, ...props }) => {
         <option value="financials">{cms.category.options.financials}</option>
         <option value="others">{cms.category.options.others}</option>
       </Select>
-      {formik?.errors?.category && formik.touched?.category && (
+      {formik.errors?.category && formik.touched?.category && (
         <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
           {formik.errors.category}
         </Text>

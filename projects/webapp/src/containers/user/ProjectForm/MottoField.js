@@ -14,6 +14,7 @@ const MottoField = ({ formik, ...props }) => (
     </FieldTitle>
     <Input
       as="textarea"
+      aria-label={cms.motto.title}
       color="lilac"
       name="motto"
       maxLength={200}
@@ -22,7 +23,7 @@ const MottoField = ({ formik, ...props }) => (
       onBlur={formik.handleBlur}
       placeholder={cms.motto.placeholder}
     />
-    {formik?.errors?.motto && formik.touched?.motto && (
+    {formik.errors?.motto && formik.touched?.motto && (
       <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
         {formik.errors.motto}
       </Text>

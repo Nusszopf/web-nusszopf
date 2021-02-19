@@ -1,14 +1,13 @@
 import { useFormikContext } from 'formik'
+import PropTypes from 'prop-types'
 
 import { FramedGridCard } from 'ui-library/stories/templates'
-import { useEntireUser } from '~/utils/services/auth.service'
 import { useScrollTop } from '~/utils/helper'
-import { ContactField, VisibilityField } from '../ProjectForm'
+import { ContactField, VisibilityField } from '~/containers/user/ProjectForm'
 
-const SettingsStep = () => {
+const SettingsStep = ({ user }) => {
   useScrollTop()
   const formik = useFormikContext()
-  const user = useEntireUser()
 
   return (
     <>
@@ -20,6 +19,10 @@ const SettingsStep = () => {
       </FramedGridCard.Body.Col>
     </>
   )
+}
+
+SettingsStep.propTypes = {
+  user: PropTypes.object,
 }
 
 export default SettingsStep

@@ -21,6 +21,7 @@ export default [
     contact: 'noreply@nusszopf.org',
     searchings: [{}, {}, {}],
     created_at: '2020-11-01T12:07:01.873Z',
+    updated_at: '2020-11-01T12:07:01.873Z',
     isVisible: false,
   },
   {
@@ -29,6 +30,7 @@ export default [
     description: 'Kurzbeschreibung des Projekts in wenigen Worten',
     searchings: [{}],
     created_at: '2020-11-01T12:07:20.087Z',
+    updated_at: '2020-11-01T12:07:20.087Z',
     isVisible: true,
   },
   {
@@ -37,6 +39,7 @@ export default [
     description: 'Kurzbeschreibung des Projekts in wenigen Worten',
     searchings: [],
     created_at: '2020-11-01T12:07:33.631Z',
+    updated_at: '2020-11-01T12:07:33.631Z',
     isVisible: true,
   },
   {
@@ -45,6 +48,7 @@ export default [
     description: 'Kurzbeschreibung des Projekts in wenigen Worten',
     searchings: [],
     created_at: '2020-11-01T12:07:33.631Z',
+    updated_at: '2020-11-01T12:07:33.631Z',
     isVisible: true,
   },
 ]

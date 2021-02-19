@@ -12,6 +12,7 @@ import { formsData as cms } from '../../assets/data'
 
 const LoginForm = ({ className, loading, onSubmit, onLoginWithGoogle, onLoginWithApple, onForgotPassword }) => {
   const [isEyeOpen, setEye] = useState(false)
+
   return (
     <div className={classnames('w-full text-steel-700', className)} data-test="login form">
       <Formik

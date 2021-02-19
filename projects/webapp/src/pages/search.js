@@ -4,7 +4,8 @@ import { Text, Button } from 'ui-library/stories/atoms'
 import { Masonry } from 'ui-library/stories/organisms'
 import { Frame } from 'ui-library/stories/templates'
 import { useSearch } from '~/utils/services/search.service'
-import { HitCard, SearchInput, NoHitsSection, SkeletonHits } from '~/containers/search'
+import { withAuth } from '~/utils/hoc'
+import { HitCard, SearchInput, NoHitsSection, SkeletonHits } from '~/containers'
 import { Page } from '~/components'
 import { searchData as cms } from '~/assets/data'
 
@@ -16,7 +17,7 @@ const Search = () => {
 
   return (
     <Page navHeader={{ visible: true }} footer={{ className: 'bg-white' }} className="bg-white text-steel-700">
-      <Frame className="py-6 md:pt-12 md:pb-10 bg-moss-200 text-moss-800" size="large">
+      <Frame className="py-6 md:pt-12 md:pb-10 bg-moss-300 text-moss-800" size="large">
         <div className="max-w-3xl mx-auto">
           <Text as="h1" variant="titleMd" className="mb-6">
             {cms.title}
@@ -43,7 +44,7 @@ const Search = () => {
         <Frame className="my-10 text-center">
           <Button
             onClick={loadMore}
-            className="bg-moss-200"
+            className="bg-moss-300"
             iconLeft={
               <>
                 {isLoadingMore ? (
@@ -58,11 +59,15 @@ const Search = () => {
           </Button>
         </Frame>
       )}
-      <Button onClick={scrollTop} size="circle" className="fixed bottom-0 right-0 m-6 shadow-lg-dark bg-steel-300">
+      <Button
+        aria-label={cms.scrollTop}
+        onClick={scrollTop}
+        size="circle"
+        className="fixed bottom-0 right-0 m-6 shadow-lg-dark bg-steel-300">
         <ChevronUp />
       </Button>
     </Page>
   )
 }
 
-export default Search
+export default withAuth(Search, { isAuthRequired: false })

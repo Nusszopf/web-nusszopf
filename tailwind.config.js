@@ -15,7 +15,7 @@ module.exports = {
       '../ui-library/services/**/*.{js,jsx}',
     ],
     options: {
-      whitelist: [],
+      safelist: [],
     },
   },
   theme: {
@@ -32,6 +32,7 @@ module.exports = {
         700: '#B84405',
       },
       steel: {
+        50: '#F1F6F9',
         100: '#ECEFF1',
         200: '#CFD8DC',
         300: '#AFBEC5',
@@ -56,22 +57,26 @@ module.exports = {
         800: '#213E45',
       },
       lilac: {
-        100: '#F4F3F5',
-        200: '#E5E2E8',
-        300: '#CBC6D0',
-        400: '#B1AAB8',
-        500: '#897F94',
-        600: '#645B6E',
-        800: '#403A46',
+        100: '#F4F2F6',
+        150: '#F2F0F4',
+        200: '#E5E1E9',
+        300: '#CBC3D3',
+        400: '#B1A6BC',
+        500: '#89799A',
+        600: '#645673',
+        800: '#403749',
       },
       moss: {
-        200: '#E9E9AF',
-        400: '#D1D35F',
-        800: '#3B3C10',
+        200: '#EAF0A8',
+        300: '#E0E97C',
+        400: '#D5E151',
+        450: '#C0CA33',
+        800: '#3E410B',
       },
       yellow: {
         100: '#FFFFF0',
         200: '#FCFDB5',
+        250: '#F7F97B',
         300: '#F6F151',
         400: '#EAD706',
         500: '#D6B300',
@@ -121,12 +126,37 @@ module.exports = {
       spacing: {
         18: '4.75rem',
         84: '21rem',
+        128: '32rem',
       },
       ringWidth: {
         3: '3px',
       },
       boxShadow: {
         'lg-dark': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+      },
+      animation: {
+        opacityFade: 'opacityFade 200ms cubic-bezier(0.08, 0.82, 0.17, 1)',
+        scaleFade: 'scaleFade 200ms cubic-bezier(0.08, 0.82, 0.17, 1)',
+      },
+      keyframes: {
+        opacityFade: {
+          from: {
+            opacity: 0,
+          },
+          to: {
+            opacity: 1,
+          },
+        },
+        scaleFade: {
+          from: {
+            transform: 'scale(0.85)',
+            opacity: 0,
+          },
+          to: {
+            transform: 'scale(1)',
+            opacity: 1,
+          },
+        },
       },
     },
   },
@@ -135,6 +165,7 @@ module.exports = {
     extend: {
       borderColor: ['active'],
       cursor: ['disabled'],
+      pointerEvents: ['disabled'],
       ringColor: ['hover'],
       ringOpacity: ['hover'],
       opacity: ['disabled'],

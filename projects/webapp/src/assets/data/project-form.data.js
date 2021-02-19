@@ -1,21 +1,24 @@
 export default {
   contact: {
-    title: 'Kontakt',
+    title: 'Kontaktmöglichkeit',
+    radio1: ['Persönlich', 'Meine E-Mail-Adresse ist öffentlich einsehbar. Kontaktmöglichkeit:'],
+    radio2: ['Über Nusszopf', 'Meine E-Mail-Adresse wird nicht angezeigt, der Erstkontakt läuft über den Nusszopf'],
     info:
-      'Kann man dich über deine E-Mailadresse kontaktieren oder soll die Kommunikation erst einmal über den Nusszopf laufen?',
+      'Kann man dich über deine E-Mail-Adresse kontaktieren oder soll die Kommunikation erst einmal über den Nusszopf laufen?  Bedenke, dass es hierbei  auch um deinen Datenschutz geht.',
     label: 'Man kann mich kontaktieren unter',
   },
   goal: {
-    title: 'Ziel des Projekts*',
+    title: 'Projektziel*',
     info: 'Was soll mit dem Projekt erreicht werden?',
     placeholder: 'Wie lässt sich das Ziel des Projektes in einem Satz beschreiben?',
     error: ['Nicht mehr als 150 Zeichen', 'Gib ein Ziel ein'],
   },
   location: {
-    title: 'Ort*',
+    title: 'Projektort*',
     info: 'Ist das Projekt an einen bestimmten Ort gebunden?',
     placeholder: 'Ort',
-    action: 'Projekt ist ortsunabhängig',
+    radio1: 'Ortsunabhängig',
+    radio2: ['Ortsabhängig', 'Wähle hierzu einen Ort aus der Suche aus:'],
     error: ['Gib einen Ort ein', 'Wähle einen Ort aus der Liste aus'],
   },
   motto: {
@@ -28,7 +31,8 @@ export default {
     title: 'Projektzeitraum*',
     info: 'Gibt es einen definierten Zeitraum, in welchem das Projekt stattfindet?',
     action: {
-      switch: 'Projektzeitraum ist flexibel',
+      radio1: 'Flexibel',
+      radio2: 'Festgelegt:',
       from: 'Von',
       to: 'Bis',
       placeholder: 'dd.mm.yyyy',
@@ -50,21 +54,22 @@ export default {
     error: 'Maximale Zeichenlänge erreicht',
   },
   title: {
-    title: 'Titel*',
+    title: 'Projekttitel*',
     info: 'Gib deinem Projekt einen Titel.',
     placeholder: 'Wie heißt das Projekt?',
     error: ['Nicht mehr als 40 Zeichen', 'Gib einen Titel ein'],
   },
   visibility: {
     title: 'Sichtbarkeit',
-    info: 'Soll das Projekt allgemein oder nur für dich sichtbar sein?',
+    info:
+      'Soll das Projekt allgemein oder nur für bestimmte Peronen sichtbar sein? Bedenke, dass sobald du das Projekt veröffentlicht hast, diese Informationen frei über das Internet verfügbar sind.',
     public: {
       title: 'Öffentlich',
       description: 'Projekt kann über Nusszopf und Suchmaschinen gefunden werden',
     },
     private: {
       title: 'Privat',
-      description: 'Projekt ist nur für dich sichtbar',
+      description: 'Projekt ist nur zugänglich für Personen, die den Projektlink kennen',
     },
   },
 }

@@ -4,6 +4,7 @@ import { Route, Text } from 'ui-library/stories/atoms'
 import { FramedCard } from 'ui-library/stories/templates'
 import { Page } from '~/components'
 import { confirmNewsletterSubscription } from '~/utils/services/newsletter.service'
+import { withAuth } from '~/utils/hoc'
 import { SVGNusszopfLogoBig } from '~/assets/logos'
 import { newsletterData as cms } from '~/assets/data'
 
@@ -21,7 +22,7 @@ const SubscribeConfirm = ({ lead }) => (
         {cms.subscribeConfirm.heading}
       </Text>
       <Text variant="textSmMedium" className="hyphens-auto">
-        <span className="italic font-semibold">{lead?.email}</span> {cms.subscribeConfirm.textA}{' '}
+        <span className="italic font-semibold">{lead.email}</span> {cms.subscribeConfirm.textA}{' '}
         {cms.subscribeConfirm.textB}
       </Text>
       <Route
@@ -43,8 +44,6 @@ SubscribeConfirm.propTypes = {
   }),
 }
 
-export default SubscribeConfirm
-
 export const getServerSideProps = async ctx => {
   try {
     const { token } = ctx.query
@@ -63,3 +62,5 @@ export const getServerSideProps = async ctx => {
     return { props: { statusCode: 500 } }
   }
 }
+
+export default withAuth(SubscribeConfirm, { isAuthRequired: false })

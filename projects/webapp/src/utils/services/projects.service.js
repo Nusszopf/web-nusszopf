@@ -2,18 +2,19 @@ import { useToasts } from 'ui-library/services/Toasts.service'
 import apollo from './apollo.service'
 import { Node } from 'slate'
 
-import { serializeText } from 'ui-library/services/RichTextEditor.service'
+import { useRichTextEditor } from 'ui-library/stories/organisms'
+import { createProjectData as cmsCreate, editProjectsViewsData as cmsEdit } from '~/assets/data'
 import { NZ_EMAIL } from '../enums'
 import { parseDateISOString } from '../helper'
-import { createProjectData as cmsCreate, editProjectsViewsData as cmsEdit } from '~/assets/data'
 
 const useProjectsService = props => {
   const { notify } = useToasts()
+  const { serializeText } = useRichTextEditor()
   const [apolloDeleteProject, { loading: deleteLoading }] = apollo.useDeleteProject()
   const [apolloUpdateProject, { loading: updateLoading }] = apollo.useUpdateProject()
-  const [apolloAddProject, { loading: addLoading }] = apollo.useAddProject(props?.user?.data?.id)
+  const [apolloAddProject, { loading: addLoading }] = apollo.useAddProject(props?.user?.data?.private?.id)
 
-  const [apolloAddRequests, { loading: addRequestsLoading }] = apollo.useAddRequests(props?.user?.data?.id)
+  const [apolloAddRequests, { loading: addRequestsLoading }] = apollo.useAddRequests(props?.user?.data?.private?.id)
   const [apolloAddRequest, { loading: addRequestLoading }] = apollo.useAddRequest(props?.project?.id)
   const [apolloUpdateRequest, { loading: updateRequestLoading }] = apollo.useUpdateRequest()
   const [apolloDeleteRequest, { loading: deleteRequestLoading }] = apollo.useDeleteRequest()
@@ -28,7 +29,6 @@ const useProjectsService = props => {
         .replace(/\s+/g, ' ')
         .trim(),
       descriptionTemplate: request.description,
-      created_at: request.created_at,
       project_id: id,
     }
   }
@@ -50,23 +50,27 @@ const useProjectsService = props => {
         .join(' ')
         .replace(/\s+/g, ' ')
         .trim(),
-      location: form.location,
+      location: {
+        remote: form.location.remote,
+        searchTerm: form.location.remote ? '' : form.location.searchTerm,
+        data: form.location.remote ? {} : form.location.data,
+      },
       period: {
         flexible: form.period.flexible,
-        from: parseDateISOString(form.period.from),
-        to: parseDateISOString(form.period.to),
+        from: form.period.flexible ? '' : parseDateISOString(form.period.from),
+        to: form.period.flexible ? '' : parseDateISOString(form.period.to),
       },
       teamTemplate: form.team,
       team: form.team.map(n => Node.string(n)).join(' '),
       motto: form.motto,
-      user_id: user.data.id,
+      user_id: user.data.private.id,
     }
   }
 
   const serializeProjectSettings = (user, form) => {
     return {
       visibility: form.visibility,
-      contact: form.contact ? user.data.email : NZ_EMAIL,
+      contact: form.contact ? user.data.private.email : NZ_EMAIL,
     }
   }
 
@@ -90,7 +94,7 @@ const useProjectsService = props => {
     } catch (error) {
       notify({
         type: 'error',
-        message: cmsCreate.notify.project.error,
+        message: cmsCreate.notify.project.errors[0],
       })
       return false
     }
@@ -102,8 +106,9 @@ const useProjectsService = props => {
       message: cmsEdit.notify.project.update.loading,
     })
     try {
+      const { user_id, ...newProject } = project
       await apolloUpdateProject({
-        variables: { id, project },
+        variables: { id, project: newProject },
       })
       notify({
         type: 'success',
@@ -139,7 +144,7 @@ const useProjectsService = props => {
       } catch (error) {
         notify({
           type: 'error',
-          message: cmsEdit.notify.project.delete.success,
+          message: cmsEdit.notify.project.delete.error,
         })
         return false
       }
@@ -176,8 +181,9 @@ const useProjectsService = props => {
       message: cmsEdit.notify.request.update.loading,
     })
     try {
-      const { created_at, ...request } = serializeRequest(_request.project_id, _request)
-      await apolloUpdateRequest({ variables: { id: _request.id, request } })
+      const request = serializeRequest(_request.project_id, _request)
+      const { project_id, ...newRequest } = request
+      await apolloUpdateRequest({ variables: { id: _request.id, request: newRequest } })
       notify({
         type: 'success',
         message: cmsEdit.notify.request.update.success,

@@ -3,7 +3,12 @@ import { object } from 'yup'
 
 import { FramedGridCard } from 'ui-library/stories/templates'
 import { useScrollTop } from '~/utils/helper'
-import { MottoField, MottoFieldValidationSchema, TeamField, TeamFieldValidationSchema } from '../ProjectForm'
+import {
+  MottoField,
+  MottoFieldValidationSchema,
+  TeamField,
+  TeamFieldValidationSchema,
+} from '~/containers/user/ProjectForm'
 
 export const step2ValidationSchema = object({
   team: TeamFieldValidationSchema,

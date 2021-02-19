@@ -12,13 +12,14 @@ const TitleField = ({ formik }) => (
     <Input
       name="title"
       color="lilac"
+      aria-label={cms.title.title}
       maxLength={40}
       value={formik.values.title}
       onChange={formik.handleChange}
       onBlur={formik.handleBlur}
       placeholder={cms.title.placeholder}
     />
-    {formik?.errors?.title && formik.touched?.title && (
+    {formik.errors?.title && formik.touched?.title && (
       <Text variant="textXs" className="mt-2 ml-4 italic text-warning-700">
         {formik.errors.title}
       </Text>

@@ -4,6 +4,7 @@ import { object, string } from 'yup'
 import { Input, Button, Text, Route } from 'ui-library/stories/atoms'
 import { FramedCard } from 'ui-library/stories/templates'
 import useNewsletter from '~/utils/services/newsletter.service'
+import { withAuth } from '~/utils/hoc'
 import { Page } from '~/components'
 import { SVGNusszopfLogoBig } from '~/assets/logos'
 import { newsletterData as cms } from '~/assets/data'
@@ -66,4 +67,4 @@ const UnsubscribeLead = () => {
   )
 }
 
-export default UnsubscribeLead
+export default withAuth(UnsubscribeLead, { isAuthRequired: false })

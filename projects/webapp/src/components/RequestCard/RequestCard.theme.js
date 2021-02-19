@@ -1,8 +1,9 @@
 export const RequestVariant = {
-  view: 'view',
-  preview: 'preview',
+  carousel: 'carousel',
   edit: 'edit',
   hit: 'hit',
+  preview: 'preview',
+  view: 'view',
 }
 
 export const RequestCategoryColor = {

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import { Button, Text } from '../../atoms'
-import { ButtonColor } from '../Button/Button.theme'
+import { ButtonColor, ButtonVariant } from '../Button/Button.theme'
 import { TextVariant } from '../Text/Text.theme'
 import { LinkColor, LinkBorder, LinkVariant } from './Link.theme'
 
@@ -13,6 +13,7 @@ const Link = ({
   className,
   title,
   variant = 'text',
+  buttonVariant = 'filled',
   textVariant = 'textMd',
   color = 'steel',
   border = 'medium',
@@ -21,11 +22,12 @@ const Link = ({
   switch (variant) {
     case LinkVariant.text: {
       return (
+        // eslint-disable-next-line react/jsx-no-target-blank
         <a
           className={classnames('cursor-pointer group', className)}
           href={href}
-          rel={!props?.download ? 'noopener noreferrer' : ''}
-          target={!props?.download ? '_blank' : ''}
+          rel={!props.download ? 'noopener noreferrer' : ''}
+          target={!props.download ? '_blank' : ''}
           title={title}
           aria-label={ariaLabel}
           {...props}>
@@ -71,6 +73,7 @@ const Link = ({
           target="_blank"
           title={title}
           aria-label={ariaLabel}
+          variant={buttonVariant}
           {...props}>
           {children}
         </Button>
@@ -89,6 +92,7 @@ Link.propTypes = {
   title: PropTypes.string.isRequired,
   variant: PropTypes.oneOf(Object.keys(LinkVariant)),
   textVariant: PropTypes.oneOf(Object.keys(TextVariant)),
+  buttonVariant: PropTypes.oneOf(Object.keys(ButtonVariant)),
 }
 
 export default Link

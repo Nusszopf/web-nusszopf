@@ -12,7 +12,7 @@ const VisibilityField = ({ formik, ...props }) => {
       <FieldTitle info={cms.visibility.info} {...props}>
         {cms.visibility.title}
       </FieldTitle>
-      <RadioGroup {...radio} aria-label="visibility">
+      <RadioGroup {...radio} aria-label={cms.visibility.title}>
         <Radiobox
           {...radio}
           name="visibility"

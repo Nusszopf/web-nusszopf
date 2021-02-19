@@ -1,71 +1,81 @@
+import { forwardRef, useImperativeHandle } from 'react'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
-import { Form, Formik } from 'formik'
+import { useFormik } from 'formik'
 
+import { useAuth } from '~/utils/services/auth.service'
 import { Button, Text } from 'ui-library/stories/atoms'
 import { FramedGridCard } from 'ui-library/stories/templates'
 import useProjectsService from '~/utils/services/projects.service'
-import { VisibilityField, ContactField } from '../ProjectForm'
+import { VisibilityField, ContactField } from '~/containers/user/ProjectForm'
 import { editProjectsViewsData as cms } from '~/assets/data'
 
-const SettingsView = ({ user, project }) => {
+const SettingsView = forwardRef(({ project }, ref) => {
+  const { user } = useAuth()
   const { deleteProject, serializeProjectSettings, updateProject, deleteLoading, updateLoading } = useProjectsService()
   const router = useRouter()
 
-  const handleSubmit = values => {
-    const settings = serializeProjectSettings(user, values)
+  const handleSubmit = newValues => {
+    if (!formik.dirty) {
+      return
+    }
+    const settings = serializeProjectSettings(user, newValues)
     updateProject(project.id, settings)
+    formik.resetForm({ values: newValues })
   }
+
+  const formik = useFormik({
+    initialValues: {
+      visibility: project.visibility,
+      contact: project.contact === user.data.private.email,
+    },
+    onSubmit: handleSubmit,
+  })
+
+  useImperativeHandle(ref, () => ({
+    hasChanged: () => formik.dirty,
+  }))
 
   const handleDelete = async () => {
     const isDeleted = await deleteProject(project.id)
     if (isDeleted) {
-      router.push('/user/profile')
+      router.push('/user/projects')
     }
   }
 
   return (
-    <Formik
-      initialValues={{
-        visibility: project.visibility,
-        contact: project.contact === user.data.email,
-      }}
-      onSubmit={handleSubmit}>
-      {formik => (
-        <Form>
-          <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
-            <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
-              <VisibilityField formik={formik} />
-              <ContactField formik={formik} user={user} className="mt-8" />
-              <div className="text-center mt-9 sm:text-left">
-                <Button type="submit" className="bg-lilac-200" color="lilac" disabled={updateLoading}>
-                  {cms.settingsView.save}
-                </Button>
-              </div>
-            </FramedGridCard.Body.Col>
-            <FramedGridCard.Body.Col variant="twoCols" className="text-center lg:pl-4 text-warning-700 sm:text-left">
-              <Text className="mt-8 mb-2 text-left lg:mt-0">Projekt löschen</Text>
-              <Text variant="textSm" className="text-left">
-                {cms.settingsView.alert}
-              </Text>
-              <Button
-                className="mt-6 sm:mt-4"
-                variant="outline"
-                color="warning"
-                onClick={handleDelete}
-                disabled={deleteLoading}>
-                {cms.settingsView.delete}
-              </Button>
-            </FramedGridCard.Body.Col>
-          </FramedGridCard.Body>
-        </Form>
-      )}
-    </Formik>
+    <form onSubmit={formik.handleSubmit}>
+      <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
+        <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2">
+          <VisibilityField formik={formik} />
+        </FramedGridCard.Body.Col>
+        <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
+          <ContactField formik={formik} user={user} className="mt-4 lg:mt-0" />
+        </FramedGridCard.Body.Col>
+        <FramedGridCard.Body.Col variant="oneCol">
+          <div className="mt-5 text-center sm:text-left lg:text-center">
+            <Button type="submit" className="bg-lilac-200" color="lilac" disabled={updateLoading}>
+              {cms.settingsView.save}
+            </Button>
+          </div>
+        </FramedGridCard.Body.Col>
+        <FramedGridCard.Body.Col variant="twoCols" className="lg:pr-4 lg:col-start-2 text-warning-700">
+          <Text className="mt-10 mb-2 text-left lg:mt-8">{cms.settingsView.delete.title}</Text>
+          <Text variant="textSm" className="text-left">
+            {cms.settingsView.alert}
+          </Text>
+          <div className="mt-4 text-center sm:text-left">
+            <Button variant="outline" color="warning" onClick={handleDelete} disabled={deleteLoading}>
+              {cms.settingsView.delete.action}
+            </Button>
+          </div>
+        </FramedGridCard.Body.Col>
+      </FramedGridCard.Body>
+    </form>
   )
-}
+})
 
 SettingsView.propTypes = {
-  user: PropTypes.object.isRequired,
   project: PropTypes.object.isRequired,
 }
 

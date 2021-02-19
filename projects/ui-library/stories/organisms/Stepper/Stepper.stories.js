@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button, Progressbar } from '../../atoms'
+import { Button } from '../../atoms'
+import { Progressbar } from '../../molecules'
 import Stepper from './Stepper.organism'
 import useStepper from './useStepper'
 

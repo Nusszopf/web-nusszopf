@@ -19,8 +19,8 @@ const RequestsView = ({ project }) => {
   const openDialog = () => setShowDialog(true)
 
   const closeDialog = () => {
-    setCurrentRequest(null)
     setShowDialog(false)
+    setCurrentRequest(null)
   }
 
   const onEdit = _request => {
@@ -49,10 +49,9 @@ const RequestsView = ({ project }) => {
     <>
       <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
         <FramedGridCard.Body.Col variant="twoCols" className="text-center lg:text-left lg:pr-4 lg:col-start-2">
-          <Text className="mb-2 text-left">Gesuche</Text>
+          <Text className="mb-2 text-left">{cms.requestsView.titleIntro}</Text>
           <Text variant="textSm" className="text-left hyphens-auto">
-            Gesuche in dem Projekt zeigen anderen Nusszopfer:innen, was für die Projektumsetzung noch alles benötigt
-            wird.
+            {cms.requestsView.intro}
           </Text>
           <Button
             onClick={openDialog}
@@ -64,10 +63,10 @@ const RequestsView = ({ project }) => {
           </Button>
         </FramedGridCard.Body.Col>
         <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
-          <Text className="mt-8 mb-4 hyphens-auto lg:mt-0">Aktuelle Gesuche</Text>
-          {project?.requests?.length > 0 ? (
+          <Text className="mt-8 mb-4 hyphens-auto lg:mt-0">{cms.requestsView.titleCreated}</Text>
+          {project.requests?.length > 0 ? (
             <>
-              {project?.requests?.map((request, index) => (
+              {project.requests.map((request, index) => (
                 <RequestCard
                   key={`r-${index}`}
                   variant="edit"

@@ -14,7 +14,7 @@ import {
   LocationFieldValidationSchema,
   PeriodField,
   PeriodFieldValidationSchema,
-} from '../ProjectForm'
+} from '~/containers/user/ProjectForm'
 
 export const step1ValidationSchema = object({
   title: TitleFieldValidationSchema,

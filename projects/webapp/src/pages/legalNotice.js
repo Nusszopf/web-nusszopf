@@ -1,5 +1,6 @@
 import { Frame } from 'ui-library/stories/templates'
 import { Link, Text } from 'ui-library/stories/atoms'
+import { withAuth } from '~/utils/hoc'
 import { Page } from '~/components'
 import { legalNoticeData as cms } from '~/assets/data'
 
@@ -40,4 +41,4 @@ const LegalNotice = () => (
   </Page>
 )
 
-export default LegalNotice
+export default withAuth(LegalNotice, { isAuthRequired: false })

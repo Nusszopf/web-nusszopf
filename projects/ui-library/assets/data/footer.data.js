@@ -8,4 +8,7 @@ export default {
   auth0: {
     meta: 'Zu Auth0',
   },
+  instagram: {
+    meta: 'Zu Instagram',
+  },
 }

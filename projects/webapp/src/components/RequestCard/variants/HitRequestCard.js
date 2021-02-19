@@ -19,13 +19,13 @@ const HitRequestCard = ({ request, className, ...props }) => (
       <Text
         variant="textXs"
         className="font-medium"
-        dangerouslySetInnerHTML={{ __html: request?._formatted?.req_title || request?.req_title }}
+        dangerouslySetInnerHTML={{ __html: request?._formatted?.req_title || request.req_title }}
       />
     </div>
     {request?._formatted?.req_description && (
       <Text
         variant="textXs"
-        dangerouslySetInnerHTML={{ __html: truncate(request._formatted?.req_description, { length: 90 }) }}
+        dangerouslySetInnerHTML={{ __html: truncate(request._formatted.req_description, { length: 90 }) }}
       />
     )}
   </div>

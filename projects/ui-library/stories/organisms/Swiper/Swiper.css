@@ -1,0 +1,97 @@
+/* source 'react-alice-carousel/lib/alice-carousel.css'; */
+
+.alice-carousel .animated {
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.alice-carousel .animated-out {
+  z-index: 1;
+}
+
+.alice-carousel .fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.alice-carousel {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  direction: ltr;
+}
+
+.alice-carousel__wrapper {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+}
+
+.alice-carousel__stage {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  transform-style: flat;
+  -webkit-transform-style: flat;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.alice-carousel__stage-item {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  vertical-align: top;
+  white-space: normal;
+  line-height: inherit;
+}
+
+.alice-carousel__stage-item * {
+  line-height: inherit;
+}
+
+.alice-carousel__stage-item.__hidden {
+  opacity: 0;
+  overflow: hidden;
+}
+
+.alice-carousel__dots {
+  margin: 1.875rem 0 0 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+.alice-carousel__dots > li {
+  display: inline-block;
+}

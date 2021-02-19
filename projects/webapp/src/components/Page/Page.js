@@ -6,10 +6,10 @@ import { truncate } from 'lodash'
 import classnames from 'classnames'
 
 import { NavHeader, Footer } from 'ui-library/stories/organisms'
-import { useFetchUser } from '~/utils/services/auth.service'
 import { seoData } from '~/assets/data'
 import { useScrollTop } from '~/utils/helper'
 import ErrorBoundary from './ErrorBoundary'
+import { useAuth } from '~/utils/services/auth.service'
 
 const Page = ({
   children,
@@ -23,8 +23,8 @@ const Page = ({
   className,
 }) => {
   useScrollTop()
+  const { user, logout } = useAuth()
   const router = useRouter()
-  const { user } = useFetchUser()
   const domain = `${process.env.DOMAIN}`
   const url = router && router.asPath ? router.asPath : undefined
   const canonical = url && url === '/' ? domain : domain + url
@@ -66,7 +66,7 @@ const Page = ({
         }}
       />
       <ErrorBoundary>
-        {navHeader?.visible && <NavHeader user={user} {...navHeader} />}
+        {navHeader?.visible && <NavHeader user={user} logout={logout} {...navHeader} />}
         <main className={classnames('flex flex-col flex-1', className)}>{children}</main>
         <Footer {...footer} />
       </ErrorBoundary>
@@ -85,6 +85,7 @@ Page.propTypes = {
   navHeader: PropTypes.object,
   className: PropTypes.string,
   footer: PropTypes.object,
+  user: PropTypes.object,
 }
 
 export default Page

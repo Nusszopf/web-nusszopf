@@ -3,6 +3,7 @@ import classnames from 'classnames'
 
 import { Request } from '~/assets/icons'
 import { Text } from 'ui-library/stories/atoms'
+import { requestCardData as cms } from '~/assets/data'
 import { RequestCategoryColor } from '../RequestCard.theme'
 
 const PreviewRequestCard = ({ request, className, ...props }) => (
@@ -17,7 +18,9 @@ const PreviewRequestCard = ({ request, className, ...props }) => (
       <Request size={18} className="flex-shrink-0 mt-1.5 mr-1.5" />
       <Text variant="textSmMedium">{request.title}</Text>
     </div>
-    <Text variant="textXs">Erstellt am {new Date(request.created_at).toLocaleDateString('de-DE')}</Text>
+    <Text variant="textXs">
+      {cms.createdAt} {new Date(request.created_at).toLocaleDateString('de-DE')}
+    </Text>
   </div>
 )
 

@@ -18,10 +18,17 @@ export default {
     what: 'Projektbeschreibung',
     who: 'Projektteam',
     how: 'Projektmotto',
-    requests: 'Aktuelle Gesuche',
+    requests: 'Projektgesuche',
     searchings: {
       info: 'Alles zopfig! Derzeit gibt es keine Gesuche.',
     },
-    createdBy: 'Erstellt von',
+  },
+  report: {
+    href: 'mailto:mail@nusszopf.org?subject=Projekt melden',
+    meta: 'Projekt mail@nusszopf.org melden',
+    text: 'Projekt melden',
+  },
+  banner: {
+    aria: 'Information ausblenden',
   },
 }

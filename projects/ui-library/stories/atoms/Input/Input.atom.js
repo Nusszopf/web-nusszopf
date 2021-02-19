@@ -14,7 +14,7 @@ const Input = forwardRef(
         'inline-block w-full bg-transparent rounded-md appearance-none placeholder-current',
         InputColor[color],
         { 'ring-2 ring-transparent hover:ring-opacity-25 focus:ring-opacity-25': displayRing },
-        'focus:outline-none focus:placeholder-transparent disabled:opacity-50 disabled:cursor-default',
+        'focus:outline-none focus:placeholder-transparent disabled:opacity-50 disabled:pointer-events-none',
         InputSize[size],
         className
       )}

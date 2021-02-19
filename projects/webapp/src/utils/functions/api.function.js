@@ -1,9 +1,25 @@
 import { GraphQLClient } from 'graphql-request'
 import { print } from 'graphql/language/printer'
+
 import { INSERT_LEAD, UPDATE_LEAD, DELETE_LEAD } from '../hasura/mutations/leads.mutation'
+import { UPDATE_PROJECT } from '../hasura/mutations/projects.mutation'
 import { GET_LEAD } from '../hasura/queries/newsletter.query'
 import { GET_USER } from '../hasura/queries/users.query'
-import { GET_PROJECT_CROP } from '../hasura/queries/projects.query'
+import { GET_PROJECT_CROP, GET_ALL_PUBLIC_PROJECTS } from '../hasura/queries/projects.query'
+import { ERROR_CONSTRAINT } from '../../utils/enums'
+
+export const handleError = ({ res, error }) => {
+  console.error(error)
+  const isUnauthorized = error.message?.includes('jwt')
+  const isForbidden = error.response?.errors[0]?.extensions?.code === ERROR_CONSTRAINT
+  if (isUnauthorized || isForbidden) {
+    res.status(400).end(error.message)
+  } else if (error.status) {
+    res.status(error.status).end(error.message)
+  } else {
+    res.status(500).end(error.message)
+  }
+}
 
 export const fetchWithUserAuth = (query, variables = {}, token) => {
   const client = new GraphQLClient(process.env.API_URL, {
@@ -53,4 +69,14 @@ export const deleteLead = async email => {
 export const getProjectCrop = async id => {
   const res = await fetchWithAdminAuth(GET_PROJECT_CROP, { id })
   return res?.projects_by_pk
+}
+
+export const getPublicProjects = async () => {
+  const res = await fetchWithAdminAuth(GET_ALL_PUBLIC_PROJECTS)
+  return res?.projects
+}
+
+export const updateProject = async (id, project) => {
+  const res = await fetchWithAdminAuth(UPDATE_PROJECT, { id, project })
+  return res?.update_projects_by_pk
 }

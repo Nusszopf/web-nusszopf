@@ -33,7 +33,7 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
         {truncate(project.goal, { length: 90 })}
       </Text>
       <div className="flex flex-col mt-4">
-        {project?.requests?.map((request, index) => (
+        {project.requests?.map((request, index) => (
           <RequestCard
             key={`rq-${index}`}
             variant="preview"
@@ -45,26 +45,24 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
     </Clickable>
     <div className="absolute top-0 right-0">
       <Menu
-        className="mt-3 mr-5"
+        ariaLabel={cms.aria}
+        className="mx-5 my-1"
+        innerClassName="py-2 mr-4"
         label={<MoreHorizontal />}
         items={[
           {
-            type: 'button',
             text: cms.actions[0],
             action: () => onClick(project.id),
           },
           {
-            type: 'button',
             text: cms.actions[1],
             action: () => onEdit(project.id),
           },
           {
-            type: 'button',
             text: project.visibility === PROJECT.visibility.public ? cms.actions[2] : cms.actions[3],
-            action: () => toggleVisibility(project.id, project.visibility),
+            action: () => setTimeout(toggleVisibility(project.id, project.visibility), 100),
           },
           {
-            type: 'button',
             text: cms.actions[4],
             action: () => onDelete(project.id),
           },

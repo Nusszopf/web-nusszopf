@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { PreviewRequestCard, ViewRequestCard, EditRequestCard, HitRequestCard } from './variants'
+import { CarouselRequestCard, PreviewRequestCard, ViewRequestCard, EditRequestCard, HitRequestCard } from './variants'
 import { RequestVariant } from './RequestCard.theme'
 
 const RequestCard = ({ variant, ...props }) => {
@@ -12,6 +12,8 @@ const RequestCard = ({ variant, ...props }) => {
       return <EditRequestCard {...props} />
     case RequestVariant.hit:
       return <HitRequestCard {...props} />
+    case RequestVariant.carousel:
+      return <CarouselRequestCard {...props} />
   }
 }
 

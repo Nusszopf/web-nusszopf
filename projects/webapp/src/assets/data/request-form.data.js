@@ -3,7 +3,7 @@ export default {
     title: 'Titel*',
     info: 'Wie soll das Gesuch heißen?',
     placeholder: 'Wer oder was wird gesucht?',
-    error: 'Gib einen Titel ein',
+    error: ['Maximal 40 Zeichen', 'Gib einen Titel ein'],
   },
   category: {
     title: 'Kategorie*',
@@ -13,7 +13,7 @@ export default {
       companions: 'Mitstreiter:innen',
       rooms: 'Räume',
       materials: 'Materialien',
-      financials: 'Finanzielle Ressourcen',
+      financials: 'Finanzielles',
       others: 'Sonstiges',
     },
     error: 'Wähle eine Kategorie aus',

@@ -4,12 +4,13 @@ import classnames from 'classnames'
 import { Input } from '../../atoms'
 import Element from './components/Element'
 
-const InputGroup = ({ children, className, ...props }) => (
+const InputGroup = ({ children, className, disabled, ...props }) => (
   <div className={classnames('relative', className)} {...props}>
     {React.Children.map(children, child => (
       <>
         {child?.type?.displayName === 'InputGroup.Input' &&
           React.cloneElement(child, {
+            disabled,
             className: classnames(
               {
                 'pl-12':
@@ -30,10 +31,12 @@ const InputGroup = ({ children, className, ...props }) => (
           })}
         {child?.type?.displayName === 'InputGroup.LeftElement' &&
           React.cloneElement(child, {
+            disabled,
             className: classnames('left-0', child.props.className),
           })}
         {child?.type?.displayName === 'InputGroup.RightElement' &&
           React.cloneElement(child, {
+            disabled,
             className: classnames('right-0', child.props.className),
           })}
       </>
@@ -43,6 +46,7 @@ const InputGroup = ({ children, className, ...props }) => (
 InputGroup.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
+  disabled: PropTypes.bool,
 }
 
 InputGroup.Input = forwardRef(({ className, ...props }, ref) => (

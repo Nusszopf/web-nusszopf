@@ -27,4 +27,5 @@ export default {
     submit: 'Senden',
     cancel: 'Abbrechen',
   },
+  confirm: 'Willst Du wirklich abbrechen? Deine Nachricht wird nicht gespeichert.',
 }

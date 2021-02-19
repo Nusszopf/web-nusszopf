@@ -72,6 +72,9 @@ function createApolloClient(ctx) {
       typePolicies: {
         Query: {
           fields: {
+            users_private: {
+              merge: false,
+            },
             users_by_pk: {
               merge: true,
             },

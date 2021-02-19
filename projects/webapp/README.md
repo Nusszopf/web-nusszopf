@@ -42,7 +42,6 @@ Analyze the app bundles.
 +-- /.next
 +-- /.vercel
 +-- /public
-+-- /scripts
 +-- /src
 | +-- /assets
 | +-- /components
@@ -63,10 +62,6 @@ Dokumentation.
 ### /public
 
 Specific folder to Next.js. More informations in the documentation: [Next.js - Static File Serving](https://nextjs.org/docs/basic-features/static-file-serving).
-
-### /scripts
-
-Dev-Tooling and helpers for e.g. automatisation.
 
 ### /src
 
@@ -98,7 +93,7 @@ Specific folder to Next.js. More informations in the documentation: [Next.js - P
 
 #### **src/styles**
 
-Global styles and tailwind-configuration.
+Global styles and tailwind configuration.
 
 #### **src/utils**
 

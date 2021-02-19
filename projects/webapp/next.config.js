@@ -1,10 +1,9 @@
 // Tell webpack to compile the "bar" package, necessary if you're using the export statement for example
 // https://www.npmjs.com/package/next-transpile-modules
 const withTM = require('next-transpile-modules')(['ui-library'])
-const generateSitemap = require('./scripts/generate-sitemap')
 
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+  enabled: false,
 })
 
 const nextConfig = {
@@ -18,12 +17,15 @@ const nextConfig = {
     LOCATIONIQ_KEY: process.env.LOCATIONIQ_KEY,
     MEILI_API_KEY: process.env.MEILI_API_KEY,
     MEILI_DOMAIN: process.env.MEILI_DOMAIN,
+    SPACES_CDN_ENDPOINT: process.env.SPACES_CDN_ENDPOINT,
   },
-  webpack: (config, { isServer }) => {
-    if (isServer) {
-      generateSitemap(process.env.API_URL, process.env.DOMAIN)
-    }
-    return config
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/api/sitemap',
+      },
+    ]
   },
 }
 

@@ -14,7 +14,7 @@ const Switch = ({ label, disabled, checked, className, color = 'steel', ...props
     <span aria-hidden="true" className="inline-flex cursor-pointer">
       <span
         className={classnames(
-          'relative inline-flex h-6 rounded-full w-10 border-2 focus:outline-none flex-shrink-0',
+          'relative inline-flex h-6 rounded-full w-12 border-2 focus:outline-none flex-shrink-0',
           SwitchColor[color].border,
           {
             [`${SwitchColor[color].on}`]: checked,
@@ -24,7 +24,7 @@ const Switch = ({ label, disabled, checked, className, color = 'steel', ...props
         )}>
         <span
           className={classnames('inline-block w-5 h-5 transform duration-100 transition-transform rounded-full', {
-            'translate-x-4': checked,
+            'translate-x-6': checked,
             'translate-x-0': !checked,
             [`${SwitchColor[color].on}`]: !checked,
             [`${SwitchColor[color].off}`]: checked,

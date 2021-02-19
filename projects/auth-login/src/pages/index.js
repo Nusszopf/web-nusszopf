@@ -16,12 +16,17 @@ const Views = {
   password: 'password',
 }
 
+// currently invisible captcha is used, to be able to have one captcha for the whole page
+// - captcha will only be visible if auth0 detects some sort of risk
+// - docs: https://auth0.com/docs/attack-protection/bot-detection
+
 export default function IndexPage() {
   const { notify } = useToasts()
   const router = useRouter()
   const [webAuth, setWebAuth] = useState()
   const [view, setView] = useState(Views.signInUp)
   const [loading, setLoading] = useState(false)
+  const [captcha, setCaptcha] = useState()
 
   useEffect(() => {
     if (isEmpty(router.query)) return
@@ -45,6 +50,13 @@ export default function IndexPage() {
     setWebAuth(webAuth)
   }, [router.query])
 
+  useEffect(() => {
+    if (webAuth && !captcha) {
+      const _captcha = webAuth.renderCaptcha(document.querySelector('.captcha-container'), { lang: 'de' })
+      setCaptcha(_captcha)
+    }
+  }, [webAuth, captcha])
+
   const showError = (i = 0) => {
     notify({
       type: 'error',
@@ -62,16 +74,21 @@ export default function IndexPage() {
           realm: 'Username-Password-Authentication',
           username: values.emailOrName,
           password: values.password,
+          captcha: captcha?.getValue(),
         },
         (error, response) => {
           setLoading(false)
-          if (error) showError()
+          if (error) {
+            showError()
+            captcha?.reload()
+          }
           // redirect
         }
       )
     } catch (error) {
       setLoading(false)
       showError()
+      captcha?.reload()
     }
   }
 
@@ -127,13 +144,18 @@ export default function IndexPage() {
           username: values.username,
           email: values.email,
           password: values.password,
-          user_metadata: { newsletter: values.newsletter ? 'true' : 'false' },
+          captcha: captcha?.getValue(),
+          user_metadata: {
+            newsletter: values.newsletter ? 'true' : 'false',
+            isTestUser: process.env.VERCEL_ENV !== 'production' ? 'true' : 'false',
+          },
         },
         (error, response) => {
           setLoading(false)
           if (error) {
             const errorType = error.statusCode === 400 ? 1 : 0
             showError(errorType)
+            captcha?.reload()
           }
           // redirect
         }
@@ -141,6 +163,7 @@ export default function IndexPage() {
     } catch (error) {
       setLoading(false)
       showError()
+      captcha?.reload()
     }
   }
 
@@ -176,6 +199,7 @@ export default function IndexPage() {
 
   return (
     <Page>
+      <div className="captcha-container" />
       <FramedCard className="bg-white">
         <Link variant="svg" href="https://nusszopf.org" title={cms.logo.meta} ariaLabel={cms.logo.meta}>
           <SVGNusszopfLogoBig className="h-full w-36" />

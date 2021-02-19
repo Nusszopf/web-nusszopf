@@ -15,6 +15,7 @@ export default {
 
 export const Default = () => (
   <Avatar
+    loading={false}
     user={{
       auth: {
         name: 'finn nuss',

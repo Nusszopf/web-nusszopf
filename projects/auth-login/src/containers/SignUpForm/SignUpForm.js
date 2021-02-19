@@ -11,6 +11,7 @@ import { formsData as cms } from '../../assets/data'
 
 const SignUpForm = ({ loading, className, onSubmit }) => {
   const [isEyeOpen, setEye] = useState(false)
+
   return (
     <div className={classnames('w-full text-steel-700', className)} data-test="signup form">
       <Formik
@@ -140,6 +141,7 @@ const SignUpForm = ({ loading, className, onSubmit }) => {
     </div>
   )
 }
+
 SignUpForm.propTypes = {
   className: PropTypes.string,
   onSubmit: PropTypes.func,
