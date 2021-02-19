@@ -20,6 +20,11 @@ export default {
       meta: 'Zu Sanity',
       logo: props => <SVGSanityLogo {...props} />,
     },
+    // TODO {
+    //   href: 'https://locationiq.com/',
+    //   meta: 'Zu LocationIQ',
+    //   logo: props => <LocationIQLogo {...props} />,
+    // },
   ],
   options: [
     {
