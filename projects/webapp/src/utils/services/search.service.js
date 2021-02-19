@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext, createContext, useMemo } from 'react'
 import PropTypes from 'prop-types'
-import MeiliSearch from 'meilisearch'
+import { MeiliSearch } from 'meilisearch'
 import { groupBy, uniqBy } from 'lodash'
 
 import { useToasts } from 'ui-library/services/Toasts.service'

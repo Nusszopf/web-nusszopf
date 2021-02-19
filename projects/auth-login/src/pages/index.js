@@ -199,6 +199,7 @@ export default function IndexPage() {
 
   return (
     <Page>
+      <div className="captcha-container" />
       <FramedCard className="bg-white">
         <Link variant="svg" href="https://nusszopf.org" title={cms.logo.meta} ariaLabel={cms.logo.meta}>
           <SVGNusszopfLogoBig className="h-full w-36" />
@@ -234,7 +235,6 @@ export default function IndexPage() {
           </Tab>
         )}
       </FramedCard>
-      <div className="captcha-container" />
     </Page>
   )
 }

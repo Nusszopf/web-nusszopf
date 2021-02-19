@@ -1,4 +1,4 @@
-import MeiliSearch from 'meilisearch'
+import { MeiliSearch } from 'meilisearch'
 
 import { getProjectCrop, updateProject as apiUpdateProject } from './api.function'
 import { PROJECT, REQUEST_CATEGORY } from '../enums'

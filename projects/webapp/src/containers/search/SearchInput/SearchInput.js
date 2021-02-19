@@ -66,6 +66,7 @@ const SearchInput = ({ className }) => {
       <InputGroup className="rounded-lg text-moss-800">
         <InputGroup.Input
           ref={inputRef}
+          maxLength="30"
           aria-label={cms.input}
           value={term}
           color="moss"
