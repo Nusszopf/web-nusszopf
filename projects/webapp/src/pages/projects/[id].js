@@ -240,6 +240,7 @@ const Project = ({ id, userId }) => {
           className="underline lg:pr-2.5"
           title={cms.report.meta}
           ariaLabel={cms.report.meta}
+          type="mail"
           href={`${cms.report.href} (ID: ${id})`}>
           <Text as="span" variant="textSmMedium">
             {cms.report.text}

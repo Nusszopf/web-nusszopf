@@ -39,6 +39,7 @@ export default {
         text: 'Mehr erfahren',
         href: 'https://steadyhq.com/de/nusszopf',
         meta: 'Zur Förderungswebseite',
+        type: 'url',
       },
     },
     {
@@ -53,6 +54,7 @@ export default {
         text: 'Partner:in werden',
         href: 'mailto:mail@nusszopf.org?subject=Nussige Partnerschaft',
         meta: 'E-Mail an Nusszopf schreiben',
+        type: 'mail',
       },
     },
     {
@@ -67,6 +69,7 @@ export default {
         text: 'Feedback senden',
         href: 'mailto:mail@nusszopf.org?subject=Nussiges Feedback',
         meta: 'E-Mail an Nusszopf schreiben',
+        type: 'mail',
       },
     },
   ],

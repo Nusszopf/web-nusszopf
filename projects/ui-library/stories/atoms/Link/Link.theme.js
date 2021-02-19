@@ -4,6 +4,12 @@ export const LinkVariant = {
   svg: 'svg',
 }
 
+export const LinkType = {
+  mail: 'mail',
+  file: 'file',
+  url: 'url',
+}
+
 export const LinkColor = {
   current: 'nz-link-current',
   steel: 'nz-link-steel',

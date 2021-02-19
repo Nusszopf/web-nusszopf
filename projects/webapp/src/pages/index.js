@@ -91,9 +91,7 @@ const Index = () => (
         {fellowsData.heading}
       </Text>
       <div className="flex flex-col mb-7 lg:items-center lg:flex-row">
-        <Text as="h5" className="lg:mr-8">
-          {fellowsData.listInfo}
-        </Text>
+        <Text className="lg:mr-8">{fellowsData.listInfo}</Text>
         <div className="flex flex-wrap items-center -ml-4">
           {fellowsData.list.map((fellow, index) => (
             <Link key={`fellow-${index}`} variant="svg" href={fellow.href} title={fellow.meta} ariaLabel={fellow.meta}>
@@ -123,6 +121,7 @@ const Index = () => (
                 className="bg-pink-300"
                 title={fellow.action.meta}
                 ariaLabel={fellow.action.meta}
+                type={fellow.action.type}
                 href={fellow.action.href}>
                 {fellow.action.text}
               </Link>

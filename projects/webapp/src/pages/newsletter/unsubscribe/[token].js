@@ -28,6 +28,7 @@ const UnsubscribeConfirm = ({ lead }) => (
       </Text>
       <Link
         variant="button"
+        type="mail"
         className="mt-6 bg-steel-100"
         title={cms.unsubscribeConfirm.action.meta}
         ariaLabel={cms.unsubscribeConfirm.action.meta}

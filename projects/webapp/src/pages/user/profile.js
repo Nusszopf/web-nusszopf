@@ -205,7 +205,7 @@ const Profile = ({ user, loading }) => {
               <Link
                 color="livid"
                 href={cms.info.contact.link.href}
-                download
+                type="file"
                 textVariant="textSm"
                 title={cms.info.contact.link.meta}
                 ariaLabel={cms.info.contact.link.meta}>
@@ -217,6 +217,7 @@ const Profile = ({ user, loading }) => {
               <Link
                 color="livid"
                 href={cms.info.support.link.href}
+                type="mail"
                 textVariant="textSm"
                 title={cms.info.support.link.meta}
                 ariaLabel={cms.info.support.link.meta}>
