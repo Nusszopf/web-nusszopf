@@ -57,7 +57,7 @@ export default {
           'Inhalte zu veröffentlichen, die beleidigend, rassistisch, diskriminierend oder pornographische Elemente aufweisen gegenüber anderen Nutzer:innen und der Allgemeinheit',
           'jegliche Maßnahmen, die zu übermäßigen Systembelastungen oder zu Systemstörungen führen',
           'das Nutzen fremder Identitäten für die Registrierung, das Einstellen von Beiträgen oder das Versenden von Nachrichten',
-          'mehrfaches Einstellen von eiträgen (Doppelpostings)',
+          'mehrfaches Einstellen von Beiträgen (Doppelpostings)',
         ],
         'Jede der vorbenannten Pflichtverletzungen berechtigt den Nusszopf zur fristlosen Kündigung des Nutzungsvertrages und zur Sperrung des Nutzer:innenaccounts. Darüber hinaus ist der Nusszopf berechtigt, die Freischaltung eines neuen Accounts für diese:n Nutzer:in für die Dauer eines Jahres ab der Kündigung zu verweigern.',
       ],
@@ -87,7 +87,7 @@ export default {
     {
       title: <>§7 Haftung</>,
       description: [
-        'Der Nusszopf übernimmt keinerlei Gewähr für die auf der Plattform veröffentlichten und eingestellten Beiträge, Themen, externen Links und die daraus resultierenden Inhalte, insbesondere nicht für deren Richtigkeit, Vollständigkeit und Aktualität. Der Nusszopf ist auch nicht verpflichtet, permanent die übermittelten und gespeicherten Beiträge der Nutzer/Nutzerinnen zu überwachen oder nach den Umständen zu erforschen, ob sie auf einen rechtswidrigen Inhalt hinweisen. Der Nusszopf haften grundsätzlich nur im Falle einer vorsätzlichen oder grob fahrlässigen Pflichtverletzung.',
+        'Der Nusszopf übernimmt keinerlei Gewähr für die auf der Plattform veröffentlichten und eingestellten Beiträge, Themen, externen Links und die daraus resultierenden Inhalte, insbesondere nicht für deren Richtigkeit, Vollständigkeit und Aktualität. Der Nusszopf ist auch nicht verpflichtet, permanent die übermittelten und gespeicherten Beiträge der Nutzer/Nutzerinnen zu überwachen oder nach den Umständen zu erforschen, ob sie auf einen rechtswidrigen Inhalt hinweisen. Der Nusszopf haftet grundsätzlich nur im Falle einer vorsätzlichen oder grob fahrlässigen Pflichtverletzung.',
         'Der Nusszopf haftet in Fällen des Vorsatzes oder der groben Fahrlässigkeit nach den gesetzlichen Bestimmungen. Die Haftung für Garantien erfolgt verschuldensunabhängig. Für leichte Fahrlässigkeit haftet der Nusszopf ausschließlich nach den Vorschriften des Produkthaftungsgesetzes, wegen der Verletzung des Lebens, des Körpers oder der Gesundheit oder wegen der Verletzung wesentlicher Vertragspflichten. Der Schadensersatzanspruch für die leicht fahrlässige Verletzung wesentlicher Vertragspflichten ist jedoch auf den vertragstypischen, vorhersehbaren Schaden begrenzt, soweit nicht wegen der Verletzung des Lebens, des Körpers oder der Gesundheit gehaftet wird. Für das Verschulden von Erfüllungsgehilfen und Vertretern haftet der Nusszopf in demselben Umfang.',
         'Die Regelung des vorstehenden §7.2 erstreckt sich auf Schadensersatz neben der Leistung, den Schadensersatz statt der Leistung und den Ersatzanspruch wegen vergeblicher Aufwendungen, gleich aus welchem Rechtsgrund, einschließlich der Haftung wegen Mängeln, Verzugs oder Unmöglichkeit.',
         'Der Nusszopf weist ausdrücklich darauf hin, dass die juristischen Beiträge auf der Plattform vollkommen unverbindlich sind. Die Nutzung der Beiträge und deren Verwertung erfolgt auf  eigene Gefahr des/der Nutzers/Nutzerin.',
