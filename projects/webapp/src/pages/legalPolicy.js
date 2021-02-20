@@ -33,10 +33,10 @@ const LegalPolicy = () => (
               <Text variant="textSm">{section.description}</Text>
             ) : (
               <ol className="pl-4 list-decimal">
-                {section.description.map((text, index) => (
+                {section.description.map((text, subIndex) => (
                   <>
                     {typeof text === 'string' ? (
-                      <li key={`section-${index}`} className="mt-3">
+                      <li key={`${index}-${subIndex}`} className="mt-3">
                         <Text as="span" variant="textSm">
                           {text}
                         </Text>

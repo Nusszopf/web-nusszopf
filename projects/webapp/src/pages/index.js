@@ -95,7 +95,7 @@ const Index = () => (
         <div className="flex flex-wrap items-center -ml-4">
           {fellowsData.list.map((fellow, index) => (
             <Link key={`fellow-${index}`} variant="svg" href={fellow.href} title={fellow.meta} ariaLabel={fellow.meta}>
-              <fellow.logo className="w-32 p-4 fill-current" />
+              <fellow.logo className={classnames('p-4 fill-current', { 'w-32': index !== 3, 'w-36': index === 3 })} />
             </Link>
           ))}
         </div>

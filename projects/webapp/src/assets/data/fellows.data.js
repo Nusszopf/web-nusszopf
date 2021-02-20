@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import { SVGAuth0Logo, SVGSanityLogo, SVGVercelLogo } from '../logos'
+import { SVGAuth0Logo, SVGSanityLogo, SVGVercelLogo, SVGLocationIQLogo } from '../logos'
 
 export default {
   heading: 'Zopfstarke Mitstreiter:innen',
@@ -20,11 +20,11 @@ export default {
       meta: 'Zu Sanity',
       logo: props => <SVGSanityLogo {...props} />,
     },
-    // TODO {
-    //   href: 'https://locationiq.com/',
-    //   meta: 'Zu LocationIQ',
-    //   logo: props => <LocationIQLogo {...props} />,
-    // },
+    {
+      href: 'https://locationiq.com/',
+      meta: 'Zu LocationIQ',
+      logo: props => <SVGLocationIQLogo {...props} />,
+    },
   ],
   options: [
     {
