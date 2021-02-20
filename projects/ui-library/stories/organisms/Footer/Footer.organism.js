@@ -60,16 +60,19 @@ const Footer = ({ className, variant = 'vercel' }) => (
         </Link>
       </div>
     ) : (
-      <div className="flex flex-col items-center justify-between py-6 sm:flex-row">
+      <div className="flex flex-col items-center justify-between py-6 md:flex-row">
         <div>
           <Route className="mr-8" href="/legalNotice" title={cms.legalNotice} ariaLabel={cms.legalNotice}>
             {cms.legalNotice}
           </Route>
-          <Route href="/privacy" title={cms.privacy} ariaLabel={cms.privacy}>
+          <Route className="mr-8" href="/privacy" title={cms.privacy} ariaLabel={cms.privacy}>
             {cms.privacy}
           </Route>
+          <Route href="/legalPolicy" title={cms.legalPolicy} ariaLabel={cms.legalPolicy}>
+            {cms.legalPolicy}
+          </Route>
         </div>
-        <div className="flex items-center mt-5 sm:mt-0">
+        <div className="flex items-center mt-5 md:mt-0">
           <Link
             className="flex-shrink-0 inline-block mr-8"
             variant="svg"

@@ -2,6 +2,7 @@ export default {
   home: 'Zum Nusszopf',
   privacy: 'Datenschutz',
   legalNotice: 'Impressum',
+  legalPolicy: 'Rechtliches',
   vercel: {
     meta: 'Zu Vercel',
   },
