@@ -1,7 +1,7 @@
 export default {
   title: 'Rechtliches',
   info: [
-    'Das ist der Stand der Nutzungsbedingungen Februar 2021. Wir sind gerade noch am verbessern und verfeinern, weshalb sich hier noch öfter Änderungen ergeben können. Bei Fragen melde dich bitte bei uns.',
+    'Das ist der Stand der Nutzungsbedingungen Februar 2021. Wir sind gerade noch am Verbessern und Verfeinern, weshalb sich hier noch öfter Änderungen ergeben können. Bei Fragen melde dich bitte bei uns.',
     'Falls Du dich mit Themen wie Datenschutz, Impressum, Nutzungsbedingungen oder Richtlinien auskennst, dann würden wir uns freuen dich kennenzulernen!',
   ],
   subtitle: 'Nutzungsbedingungen',
@@ -10,9 +10,9 @@ export default {
       title: <>§1 Zustandekommen des Vertragsverhältnisses und Änderungen der Nutzungsbedingungen</>,
       description: [
         'Die nachfolgenden Nutzungsbedingungen regeln das vertragliche Verhältnis zwischen dem:der Anbieter:in Nusszopf, Schertlinstraße 10, 86159 Augsburg (nachfolgend Nusszopf) und dem:der Nutzer:in.',
-        'Mit dem Abschluss des Registrierungsvorganges für die Plattform gibt der:die Nutzer:in ein Angebot zum Abschluss eines Nutzungsvertrages auf der Grundlage dieser Nutzungsbedingungen ab. Mit der Freischaltung des Nutzer:innenaccounts durch den Nusszopf nimmt dieser das Angebot zum Abschluss eines Nutzungsvertrages an.',
+        'Durch den Zugriff auf die Webseite oder Dienstleistungen vom Nusszopf akzeptiert der:die Nutzer:in die Nutzungsbedingungen.',
         'Entgegenstehende oder von diesen Nutzungsbedingungen abweichende Bedingungen des/der Nutzers/Nutzerin werden im Zweifel nur durch eine ausdrückliche schriftliche Bestätigung durch den Nusszopf anerkannt.',
-        'Der Nusszopf ist berechtigt, diese Bedingungen während der laufenden Mitgliedschaft zu ändern und anzupassen. Der Nusszopf wird dem:der Nutzer:in die geänderten Bedingungen in Textform übermitteln und auf die Neuregelungen besonders hinweisen. Zugleich wird der Nusszopf dem:der Nutzer:in eine angemessene Frist für die Erklärung einräumen, ob er die geänderten Nutzungsbedingungen für die weitere Inanspruchnahme der Leistungen akzeptiert. Erfolgt innerhalb dieser Frist keine Erklärung, so gelten die geänderten Bedingungen als vereinbart. Der Nusszopf wird den:die Nutzer:in bei Fristbeginn ausdrücklich auf diese Rechtsfolge hinweisen. Widerspricht der:die Nutzer:in der Änderung dieser Bedingungen, so ist der Nusszopf berechtigt, den Nutzungsvertrag zum Zeitpunkt des Inkrafttretens der Nutzungsbedingungen gegenüber den übrigen Nutzern/Nutzerinnen, fristlos zu kündigen.',
+        'Der Nusszopf kann diese Bedingungen jederzeit überarbeiten, indem auf dieser Webseite eine aktualisierte Version veröffentlicht wird. Der:Die Nutzer:in sollte diese Seite regelmäßig besuchen und die Bedingungen lesen, da diese verbindlich für ihn/sie sind.',
       ],
     },
     {
@@ -96,11 +96,6 @@ export default {
       title: <>§8 Schlussbestimmungen</>,
       description:
         'Es gilt ausschließlich das Recht der Bundesrepublik Deutschland unter Ausschluss des Internationalen Privatrechts und des UN-Kaufrechts. Hiervon ausgenommen sind Ansprüche auf dem Gebiet der gewerblichen Schutzrechte und des Urheberrechts.',
-    },
-    {
-      title: <>§9 Salvatorische Klausel</>,
-      description:
-        'Diese Nutzungsbedingungen sind als Teil unserer Plattform zu betrachten, von dem aus auf diese Seite verwiesen wird. Sind einzelne Formulierungen dieser Nutzungsbedingungen nicht mehr ganz oder nicht mehr vollständig konform mit der geltenden Rechtslage, so ist davon auszugehen, dass die übrigen Regelungen der Nutzungsbedingungen bestehen bleiben.',
     },
   ],
   source: [
