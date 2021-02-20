@@ -25,7 +25,7 @@ export default {
           'Upload von eigenem Content und Contentmanagement über den Nutzer:innenaccount',
           'Kontaktaufnahme zu anderen Nutzern/Nutzerinnen',
           'Empfangen und Versenden und Mitteilungen von und zu anderen Nutzern/Nutzerinnen',
-          'Betätigung einer Suchanfrage nach öffentlichen Projektdaten',
+          'Betätigung einer Suchanfrage nach öffentlichen Beiträgen',
           'Eintrag eines Beitrags, welches nur Nutzern/Nutzerinnen zugänglich ist, wenn man den zugehörigen Link kennt',
           'Eintrag eines Beitrags, welches den anderen registrierten Nutzern/Nutzerinnen und drüber hinaus jede:m Internetnutzer:in öffentlich zugänglich und über Suchanfragen und Suchmaschinen auffindbar ist',
         ],
