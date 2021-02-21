@@ -32,7 +32,7 @@ const Index = () => (
       </div>
     </Frame>
     <HowToSection />
-    {/* TODO <CarouselSection /> */}
+    <CarouselSection />
     <Frame className="pt-12 pb-16 bg-turquoise-300 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
       <Text as="h3" variant="titleMd" className="mb-8 sm:max-w-sm xl:max-w-full xl:mb-10">
         {homeData.about.heading}
