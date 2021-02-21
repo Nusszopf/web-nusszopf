@@ -41,8 +41,8 @@ export default {
           'juristischen Personen nur über eine vertretungsberechtigungsberechtigte Person registrieren',
           'nur Nutzer:innen registrieren, die mindestens 16 Jahre alt sind',
         ],
-        'Der:Die Nutzer:in ist verpflichtet, gemäß den Vorgaben des Registrierungsformulars wahrheitsgemäße und vollständige Angaben zu seiner Person zu machen und seine Daten stets auf dem aktuellen Stand zu halten.',
-        'Der:Die Nutzer:in ist verpflichtet, sein Passwort geheim zu halten, sicher aufzubewahren und Dritten gegenüber nicht zugänglich zu machen. Wird das Passwort gegenüber Dritten bekannt, so hat der:die Nutzer:in dem Nusszopf hiervon unverzüglich per E-Mail oder schriftlich zu informieren, damit das alte Passwort gesperrt und ein neues Passwort vergeben werden kann. Der:Die Nutzer:in ist nicht berechtigt, seine:n Nutzer:innenaccount Dritten zur Verfügung zu stellen. Der:Die Nutzer:in nimmt zur Kenntnis, dass es für die Handlungen eines Dritten, dem er:sie seine:n Nutzer:innenaccount zur Verfügung stellt ist, vollumfänglich verantwortlich ist.',
+        'Der:Die Nutzer:in ist verpflichtet, gemäß den Vorgaben des Registrierungsformulars wahrheitsgemäße und vollständige Angaben zu seiner/ihrer Person zu machen und seine/ihre Daten stets auf dem aktuellen Stand zu halten.',
+        'Der:Die Nutzer:in ist verpflichtet, sein/ihr Passwort geheim zu halten, sicher aufzubewahren und Dritten gegenüber nicht zugänglich zu machen. Wird das Passwort gegenüber Dritten bekannt, so hat der:die Nutzer:in dem Nusszopf hiervon unverzüglich per E-Mail oder schriftlich zu informieren, damit das alte Passwort gesperrt und ein neues Passwort vergeben werden kann. Der:Die Nutzer:in ist nicht berechtigt, seinen:ihren Nutzer:innenaccount Dritten zur Verfügung zu stellen. Der:Die Nutzer:in nimmt zur Kenntnis, dass es für die Handlungen eines Dritten, dem er/sie seinen/ihren Nutzer:innenaccount zur Verfügung stellt ist, vollumfänglich verantwortlich ist.',
       ],
     },
     {
@@ -73,11 +73,11 @@ export default {
     {
       title: <>§6 Kündigung und Löschung des Nutzer:innenaccounts</>,
       description: [
-        'Der:Die Nutzer:in ist berechtigt, den Nutzungsvertrag mit dem Nusszopf jederzeit ohne Angabe von Gründen und ohne Einhaltung einer Frist zu kündigen. Die Kündigung bedarf der Textform oder kann konkludent durch Deaktivierung des Nutzer:innenaccounts erklärt werden. Im Falle der Kündigung wird das Profil des/der Nutzers/Nutzerin, sowie alle zugehörigen Daten gelöscht. Sofern der:die Nutzer:in zum Newsletter angemeldet ist, bleiben die hierzu notwendigen Daten bestehen.',
-        'Der Nusszopf ist berechtigt, den Nutzungsvertrag mit einer Frist von einem Monat zum Ende des vorangehenden Monats zu kündigen.',
-        'Der Nusszopf ist neben der fristgebundenen Kündigung berechtigt, den Nutzungsvertrag ohne Einhaltung einer Frist zu kündigen, wenn ein wichtiger Grund vorliegt. Ein wichtiger Grund liegt insbesondere dann vor, wenn der Nutzer:',
+        'Die Bedingungen sind gültig, solange der:die Nutzer:in Nutzer:in der Webseite/Dienstleistugen vom Nusszopf ist.',
+        'Im Falle des Löschens des Profils des/der Nutzers/Nutzerin, werden alle zugehörigen Daten gelöscht. Sofern der:die Nutzer:in zum Newsletter angemeldet ist, bleiben die hierzu notwendigen Daten bestehen.',
+        'Der Nusszopf ist berechtigt den Nutzungsvertrag ohne Einhaltung einer Frist zu kündigen, wenn ein wichtiger Grund vorliegt. Ein wichtiger Grund liegt insbesondere dann vor, wenn der:die Nutzer:in:',
         [
-          'nachhaltig und schwerwiegend gegen seine vertraglichen Pflichten verstößt (vgl. §4)',
+          'nachhaltig und schwerwiegend gegen seine/ihre vertraglichen Pflichten verstößt (vgl. §4)',
           'bei der Nutzung der Plattform schuldhaft und schwerwiegend gegen gesetzliche Vorschriften verstößt',
           'In diesen Fällen ist der Nusszopf auch berechtigt, den Nutzer:innenaccount zu löschen und die Einrichtung eines neuen Accounts für diese:n Nutzer:in für die Dauer eines Jahres nach Zugang der Kündigung zu verweigern',
         ],
