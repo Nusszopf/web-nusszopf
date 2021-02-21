@@ -87,7 +87,7 @@ export default {
       title: <>§7 Haftung</>,
       description: [
         'Der Nusszopf übernimmt keinerlei Gewähr für die auf der Plattform veröffentlichten und eingestellten Beiträge, Themen, externen Links und die daraus resultierenden Inhalte, insbesondere nicht für deren Richtigkeit, Vollständigkeit und Aktualität. Der Nusszopf ist auch nicht verpflichtet, permanent die übermittelten und gespeicherten Beiträge der Nutzer/Nutzerinnen zu überwachen oder nach den Umständen zu erforschen, ob sie auf einen rechtswidrigen Inhalt hinweisen. Der Nusszopf haftet grundsätzlich nur im Falle einer vorsätzlichen oder grob fahrlässigen Pflichtverletzung.',
-        'Der Nusszopf weist ausdrücklich darauf hin, dass die Beiträge auf der Plattform vollkommen unverbindlich sind. Die Nutzung der Beiträge und deren Verwertung erfolgt auf  eigene Gefahr des/der Nutzers/Nutzerin.',
+        'Der Nusszopf weist ausdrücklich darauf hin, dass die Beiträge auf der Plattform vollkommen unverbindlich sind. Die Nutzung der Beiträge und deren Verwertung erfolgt auf eigene Gefahr des/der Nutzers/Nutzerin.',
       ],
     },
     {
