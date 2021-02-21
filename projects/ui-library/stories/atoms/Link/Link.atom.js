@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import { Button, Text } from '../../atoms'
 import { ButtonColor, ButtonVariant } from '../Button/Button.theme'
 import { TextVariant } from '../Text/Text.theme'
-import { LinkColor, LinkBorder, LinkVariant } from './Link.theme'
+import { LinkColor, LinkBorder, LinkVariant, LinkType } from './Link.theme'
 
 const Link = ({
   children,
@@ -17,6 +17,7 @@ const Link = ({
   textVariant = 'textMd',
   color = 'steel',
   border = 'medium',
+  type = 'url',
   ...props
 }) => {
   switch (variant) {
@@ -25,9 +26,9 @@ const Link = ({
         // eslint-disable-next-line react/jsx-no-target-blank
         <a
           className={classnames('cursor-pointer group', className)}
-          href={href}
-          rel={!props.download ? 'noopener noreferrer' : ''}
-          target={!props.download ? '_blank' : ''}
+          href={encodeURI(href)}
+          rel={type === LinkType.url ? 'noopener noreferrer' : null}
+          target={type === LinkType.url ? '_blank' : null}
           title={title}
           aria-label={ariaLabel}
           {...props}>
@@ -52,7 +53,7 @@ const Link = ({
       return (
         <a
           className={classnames('cursor-pointer', className)}
-          href={href}
+          href={encodeURI(href)}
           rel="noopener noreferrer"
           target="_blank"
           title={title}
@@ -68,9 +69,9 @@ const Link = ({
           as="a"
           color={color}
           className={classnames('inline-block cursor-pointer', className)}
-          href={href}
-          rel="noopener noreferrer"
-          target="_blank"
+          href={encodeURI(href)}
+          rel={type === LinkType.url ? 'noopener noreferrer' : null}
+          target={type === LinkType.url ? '_blank' : null}
           title={title}
           aria-label={ariaLabel}
           variant={buttonVariant}
@@ -91,6 +92,7 @@ Link.propTypes = {
   href: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   variant: PropTypes.oneOf(Object.keys(LinkVariant)),
+  type: PropTypes.oneOf(Object.keys(LinkType)),
   textVariant: PropTypes.oneOf(Object.keys(TextVariant)),
   buttonVariant: PropTypes.oneOf(Object.keys(ButtonVariant)),
 }

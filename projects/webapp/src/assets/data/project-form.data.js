@@ -18,7 +18,7 @@ export default {
     info: 'Ist das Projekt an einen bestimmten Ort gebunden?',
     placeholder: 'Ort',
     radio1: 'Ortsunabhängig',
-    radio2: ['Ortsabhängig', 'Wähle hierzu einen Ort aus der Suche aus:'],
+    radio2: ['Ortsgebunden', 'Wähle hierzu einen Ort aus der Suche aus:'],
     error: ['Gib einen Ort ein', 'Wähle einen Ort aus der Liste aus'],
   },
   motto: {

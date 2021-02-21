@@ -32,7 +32,7 @@ const Index = () => (
       </div>
     </Frame>
     <HowToSection />
-    {/* TODO <CarouselSection /> */}
+    <CarouselSection />
     <Frame className="pt-12 pb-16 bg-turquoise-300 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
       <Text as="h3" variant="titleMd" className="mb-8 sm:max-w-sm xl:max-w-full xl:mb-10">
         {homeData.about.heading}
@@ -91,13 +91,11 @@ const Index = () => (
         {fellowsData.heading}
       </Text>
       <div className="flex flex-col mb-7 lg:items-center lg:flex-row">
-        <Text as="h5" className="lg:mr-8">
-          {fellowsData.listInfo}
-        </Text>
+        <Text className="lg:mr-8">{fellowsData.listInfo}</Text>
         <div className="flex flex-wrap items-center -ml-4">
           {fellowsData.list.map((fellow, index) => (
             <Link key={`fellow-${index}`} variant="svg" href={fellow.href} title={fellow.meta} ariaLabel={fellow.meta}>
-              <fellow.logo className="w-32 p-4 fill-current" />
+              <fellow.logo className={classnames('p-4 fill-current', { 'w-32': index !== 3, 'w-36': index === 3 })} />
             </Link>
           ))}
         </div>
@@ -123,6 +121,7 @@ const Index = () => (
                 className="bg-pink-300"
                 title={fellow.action.meta}
                 ariaLabel={fellow.action.meta}
+                type={fellow.action.type}
                 href={fellow.action.href}>
                 {fellow.action.text}
               </Link>

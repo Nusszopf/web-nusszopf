@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import { SVGAuth0Logo, SVGSanityLogo, SVGVercelLogo } from '../logos'
+import { SVGAuth0Logo, SVGSanityLogo, SVGVercelLogo, SVGLocationIQLogo } from '../logos'
 
 export default {
   heading: 'Zopfstarke Mitstreiter:innen',
@@ -20,11 +20,11 @@ export default {
       meta: 'Zu Sanity',
       logo: props => <SVGSanityLogo {...props} />,
     },
-    // TODO {
-    //   href: 'https://locationiq.com/',
-    //   meta: 'Zu LocationIQ',
-    //   logo: props => <LocationIQLogo {...props} />,
-    // },
+    {
+      href: 'https://locationiq.com/',
+      meta: 'Zu LocationIQ',
+      logo: props => <SVGLocationIQLogo {...props} />,
+    },
   ],
   options: [
     {
@@ -39,6 +39,7 @@ export default {
         text: 'Mehr erfahren',
         href: 'https://steadyhq.com/de/nusszopf',
         meta: 'Zur Förderungswebseite',
+        type: 'url',
       },
     },
     {
@@ -53,6 +54,7 @@ export default {
         text: 'Partner:in werden',
         href: 'mailto:mail@nusszopf.org?subject=Nussige Partnerschaft',
         meta: 'E-Mail an Nusszopf schreiben',
+        type: 'mail',
       },
     },
     {
@@ -67,6 +69,7 @@ export default {
         text: 'Feedback senden',
         href: 'mailto:mail@nusszopf.org?subject=Nussiges Feedback',
         meta: 'E-Mail an Nusszopf schreiben',
+        type: 'mail',
       },
     },
   ],

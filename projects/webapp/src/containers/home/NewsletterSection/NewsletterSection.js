@@ -26,7 +26,7 @@ const NewsletterSection = ({ className }) => {
               title={cms.subscribe.contact.link.meta}
               ariaLabel={cms.subscribe.contact.link.meta}
               href={cms.subscribe.contact.link.href}
-              download>
+              type="file">
               {cms.subscribe.contact.link.text}
             </Link>
           </Text>
