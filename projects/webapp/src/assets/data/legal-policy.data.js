@@ -10,9 +10,9 @@ export default {
       title: <>§1 Zustandekommen des Vertragsverhältnisses und Änderungen der Nutzungsbedingungen</>,
       description: [
         'Die nachfolgenden Nutzungsbedingungen regeln das vertragliche Verhältnis zwischen dem:der Anbieter:in Nusszopf, Schertlinstraße 10, 86159 Augsburg (nachfolgend Nusszopf) und dem:der Nutzer:in.',
-        'Durch den Zugriff auf die Webseite oder Dienstleistungen vom Nusszopf akzeptiert der:die Nutzer:in die Nutzungsbedingungen.',
+        'Durch den Zugriff auf die Webseite oder Dienstleistungen vom Nusszopf akzeptiert der:die Nutzer:in die Nutzungsbedingungen und Datenschutzbestimmungen. Wenn der:die Nutzer:in die Nutzungsbedingungen und Datenschutzbestimmungen nicht anerkennt, darf er/sie diese Webseite/Dienstleistungen nicht benutzen.',
         'Entgegenstehende oder von diesen Nutzungsbedingungen abweichende Bedingungen des/der Nutzers/Nutzerin werden im Zweifel nur durch eine ausdrückliche schriftliche Bestätigung durch den Nusszopf anerkannt.',
-        'Der Nusszopf kann diese Bedingungen jederzeit überarbeiten, indem auf dieser Webseite eine aktualisierte Version veröffentlicht wird. Der:Die Nutzer:in sollte diese Seite regelmäßig besuchen und die Bedingungen lesen, da diese verbindlich für ihn/sie sind.',
+        'Der Nusszopf kann diese Bedingungen jederzeit überarbeiten, indem auf dieser Webseite eine aktualisierte Version veröffentlicht wird. Der:Die Nutzer:in sollte diese Seite regelmäßig besuchen und die Bedingungen lesen, da diese verbindlich für ihn/sie sind. Mit der Weiternutzung nach erfolgten Änderungen erkennt der:die Nutzer:in diese Änderungen an.',
       ],
     },
     {
