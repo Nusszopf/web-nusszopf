@@ -4,12 +4,12 @@ export default {
     {
       title: <>Benennung der verantwortlichen Stelle</>,
       description: [
-        <>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</>,
+        <>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Webseite ist:</>,
         <>
           Melina Oppelt & Michael Schwarz<br></br>Schertlinstraße 10<br></br>86159 Augsburg
         </>,
         <>
-          Die verantwortliche Stelle entscheidet allein oder gemeinsam mit anderen über die Zwecke und Mittel der
+          Die verantwortliche Stelle entscheidet allein oder gemeinsam mit Anderen über die Zwecke und Mittel der
           Verarbeitung von personenbezogenen Daten (z.B. Namen, Kontaktdaten o. Ä.).
         </>,
       ],
@@ -28,7 +28,7 @@ export default {
       title: <>Recht auf Beschwerde bei der zuständigen Aufsichtsbehörde</>,
       description: [
         <>
-          Als Betroffener steht Ihnen im Falle eines datenschutzrechtlichen Verstoßes ein Beschwerderecht bei der
+          Als Betroffene:r steht Ihnen im Falle eines datenschutzrechtlichen Verstoßes ein Beschwerderecht bei der
           zuständigen Aufsichtsbehörde zu. Zuständige Aufsichtsbehörde bezüglich datenschutzrechtlicher Fragen ist der
           Landesdatenschutzbeauftragte des Bundeslandes, in dem sich der Sitz unseres Unternehmens befindet. Der
           folgende Link stellt eine Liste der Datenschutzbeauftragten sowie deren Kontaktdaten bereit:
@@ -67,8 +67,8 @@ export default {
       title: <>Server-Log-Dateien</>,
       description: [
         <>
-          In Server-Log-Dateien erhebt und speichert der Provider der Website automatisch Informationen, die Ihr Browser
-          automatisch an uns übermittelt. Dies sind:
+          In Server-Log-Dateien erhebt und speichert der Provider der Webseite automatisch Informationen, die Ihr
+          Browser automatisch an uns übermittelt. Dies sind:
         </>,
         [
           'Besuchte Seite auf unserer Domain',
@@ -91,9 +91,9 @@ export default {
       description: [
         <>
           Aus Sicherheitsgründen und zum Schutz der Übertragung vertraulicher Inhalte, die Sie an uns als
-          Seitenbetreiber senden, nutzt unsere Website eine SSL-bzw. TLS-Verschlüsselung. Damit sind Daten, die Sie über
-          diese Website übermitteln, für Dritte nicht mitlesbar. Sie erkennen eine verschlüsselte Verbindung an der
-          „https://“ Adresszeile Ihres Browsers und am Schloss-Symbol in der Browserzeile.
+          Seitenbetreiber senden, nutzt unsere Webseite eine SSL-bzw. TLS-Verschlüsselung. Damit sind Daten, die Sie
+          über diese Webseite übermitteln, für Dritte nicht mitlesbar. Sie erkennen eine verschlüsselte Verbindung an
+          der „https://“ Adresszeile Ihres Browsers und am Schloss-Symbol in der Browserzeile.
         </>,
       ],
     },
@@ -106,12 +106,12 @@ export default {
           text: 'Visitor Analytics',
         },
         <>
-          ist ein Website-Analyse-Service, der den Verkehr und das Nutzerverhalten auf unserer Website analysiert. Die
+          ist ein Webseite-Analyse-Service, der den Verkehr und das Nutzerverhalten auf unserer Webseite analysiert. Die
           gesamelten Daten werden pseudonymisiert, sowie IP-Adressen anonymisiert zu 100% DSGVO-/GDPR-konform in
-          ISO27001-zertifizierten Rechenzentren in Deutschland gespeichert. Als Website-Eigentümer, der Visitor
-          Analytics einsetzt, verwenden wir keine Cookies, um Daten über den Gerätetyp und die Bildschirmgröße unserer
-          Besucher, den ungefähren Standort, den Browser, das Betriebssystem, die Seitenbesuche, die Absprungrate, die
-          Konversionen und den populären Inhalt der Website zu sammeln.
+          ISO27001-zertifizierten Rechenzentren in Deutschland gespeichert. Als Webseite-Eigentümer:innen, welche
+          Visitor Analytics einsetzen, verwenden wir keine Cookies, um Daten über den Gerätetyp und die Bildschirmgröße
+          unserer Besucher:innen, den ungefähren Standort, den Browser, das Betriebssystem, die Seitenbesuche, die
+          Absprungrate, die Konversionen und den populären Inhalt der Webseite zu sammeln.
         </>,
       ],
     },
@@ -119,7 +119,7 @@ export default {
       title: <>Registrierung auf dieser Website</>,
       description: [
         <>
-          Zur Nutzung bestimmter Funktionen können Sie sich auf unserer Website registrieren. Die übermittelten Daten
+          Zur Nutzung bestimmter Funktionen können Sie sich auf unserer Webseite registrieren. Die übermittelten Daten
           dienen ausschließlich zum Zwecke der Nutzung des jeweiligen Angebotes oder Dienstes. Bei der Registrierung
           abgefragte Pflichtangaben sind vollständig anzugeben. Andernfalls werden wir die Registrierung ablehnen. Im
           Falle wichtiger Änderungen, etwa aus technischen Gründen, informieren wir Sie per E-Mail. Die E-Mail wird an
@@ -127,10 +127,10 @@ export default {
           eingegebenen Daten erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Ein Widerruf Ihrer
           bereits erteilten Einwilligung ist jederzeit möglich. Für den Widerruf genügt eine formlose Mitteilung per
           E-Mail. Die Rechtmäßigkeit der bereits erfolgten Datenverarbeitung bleibt vom Widerruf unberührt. Wir
-          speichern die bei der Registrierung erfassten Daten während des Zeitraums, den Sie auf unserer Website
+          speichern die bei der Registrierung erfassten Daten während des Zeitraums, den Sie auf unserer Webseite
           registriert sind. Ihren Daten werden gelöscht, sollten Sie Ihre Registrierung aufheben. Gesetzliche
-          Aufbewahrungsfristen bleiben unberührt. Für das Identitäts- und Zugriffsmanagement verwenden wir den
-          Dienstleister
+          Aufbewahrungsfristen bleiben unberührt. Für das Identitäts- und Zugriffsmanagement verwenden wir die
+          Dienstleistung von
         </>,
         {
           href: 'https://auth0.com',
@@ -153,7 +153,7 @@ export default {
           „Austragen“-Link im Newsletter ab. Die Rechtmäßigkeit der bereits erfolgten Datenverarbeitungsvorgänge bleibt
           vom Widerruf unberührt. Zur Einrichtung des Abonnements eingegebene Daten werden im Falle der Abmeldung
           gelöscht. Sollten diese Daten für andere Zwecke und an anderer Stelle an uns übermittelt worden sein,
-          verbleiben diese weiterhin bei uns. Für das E-Mail-Management verwenden wir den Dienstleister
+          verbleiben diese weiterhin bei uns. Für das E-Mail-Management verwenden wir die Dienstleistung von
         </>,
         {
           href: 'https://sendgrid.com/',

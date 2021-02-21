@@ -25,35 +25,33 @@ const LegalPolicy = () => (
           {cms.subtitle}
         </Text>
         {cms.list.map((section, index) => (
-          <div key={`section-${index}`} className="mb-10">
+          <div key={`policy-${index}`} className="mb-10">
             <Text as="h3" variant="titleSmSemi" className="mb-3">
               {section.title}
             </Text>
-            {typeof section.description === 'string' ? (
+            {!Array.isArray(section.description) ? (
               <Text variant="textSm">{section.description}</Text>
             ) : (
               <ol className="pl-4 list-decimal">
-                {section.description.map((text, subIndex) => (
-                  <>
-                    {typeof text === 'string' ? (
-                      <li key={`${index}-${subIndex}`} className="mt-3">
-                        <Text as="span" variant="textSm">
-                          {text}
-                        </Text>
-                      </li>
-                    ) : (
-                      <ul className="pl-5 list-disc">
-                        {text.map((item, index) => (
-                          <li key={`section-${index}`} className="mt-1">
-                            <Text as="span" variant="textSm">
-                              {item}
-                            </Text>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </>
-                ))}
+                {section.description.map((text, subIndex) =>
+                  !Array.isArray(text) ? (
+                    <li key={`policy-${index}-${subIndex}`} className="mt-3">
+                      <Text as="span" variant="textSm">
+                        {text}
+                      </Text>
+                    </li>
+                  ) : (
+                    <ul key={`policy-${index}-${subIndex}`} className="pl-5 list-disc">
+                      {text.map((item, subSubIndex) => (
+                        <li key={`policy-${index}-${subIndex}-${subSubIndex}`} className="mt-1">
+                          <Text as="span" variant="textSm">
+                            {item}
+                          </Text>
+                        </li>
+                      ))}
+                    </ul>
+                  )
+                )}
               </ol>
             )}
           </div>
