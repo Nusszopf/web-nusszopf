@@ -12,7 +12,7 @@ const ItemCard = ({ project, className, ...props }) => {
       <a href={`/projects/${project.id}`} {...props}>
         <div
           className={classnames(
-            'hyphens-auto border p-4 md:p-5 border-lilac-300 text-lilac-800 transition-shadow duration-150 ease-in-out rounded-lg bg-lilac-200 ring-1 ring-transparent hover:ring-lilac-300 cursor-pointer',
+            'border p-4 md:p-5 border-lilac-300 text-lilac-800 transition-shadow duration-150 ease-in-out rounded-lg bg-lilac-200 ring-1 ring-transparent hover:ring-lilac-300 cursor-pointer',
             className
           )}>
           <div className="flex justify-between mb-3">

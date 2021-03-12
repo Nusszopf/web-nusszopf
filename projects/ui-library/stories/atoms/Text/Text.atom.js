@@ -5,7 +5,16 @@ import { Box as ReakitBox } from 'reakit/Box'
 import { TextVariant } from './Text.theme'
 
 const Text = ({ as = 'p', children, className, variant = 'textMd', ...props }) => (
-  <ReakitBox as={as} className={classnames(TextVariant[variant], className)} {...props}>
+  <ReakitBox
+    as={as}
+    className={classnames(
+      {
+        'hyphens-auto': as !== 'h1' && as !== 'h2' && as !== 'h3' && as !== 'h4' && as !== 'h5' && as !== 'h6',
+      },
+      TextVariant[variant],
+      className
+    )}
+    {...props}>
     {children}
   </ReakitBox>
 )

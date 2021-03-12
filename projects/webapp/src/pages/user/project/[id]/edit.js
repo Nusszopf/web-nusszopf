@@ -52,7 +52,7 @@ const ProjectEdit = ({ user, loading: loadingUser }) => {
         headerColor="bg-lilac-300 lg:bg-steel-100">
         <FramedGridCard.Header className="bg-lilac-300">
           <div className="flex flex-col justify-between lg:items-center lg:flex-row">
-            <Text as="h1" variant="textLg" className="mb-4 hyphens-auto lg:mb-0">
+            <Text as="h1" variant="textLg" className="mb-4 lg:mb-0">
               {projectData?.projects_by_pk?.title}
             </Text>
             <Select

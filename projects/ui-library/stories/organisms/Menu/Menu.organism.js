@@ -24,6 +24,7 @@ const MyMenu = ({ ariaLabel, label, items, color = 'lilac', className, innerClas
           {items.map((item, index) => (
             <MenuItem
               key={`menu-${index}`}
+              type="button"
               {...menu}
               className={classnames(
                 MenuColor[color].item,

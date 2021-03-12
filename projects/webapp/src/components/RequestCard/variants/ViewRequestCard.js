@@ -17,7 +17,7 @@ const ViewRequestCard = ({ onClick, request, className, ...props }) => (
       className
     )}
     {...props}>
-    <div className="mr-4 text-left hyphens-auto">
+    <div className="mr-4 text-left">
       <div className="flex items-start -mt-0.5">
         <Request size={18} className="flex-shrink-0 mt-1.5 mr-1.5" />
         <Text variant="textSmMedium">{request.title}</Text>

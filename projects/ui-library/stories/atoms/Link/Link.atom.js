@@ -23,30 +23,27 @@ const Link = ({
   switch (variant) {
     case LinkVariant.text: {
       return (
-        // eslint-disable-next-line react/jsx-no-target-blank
-        <a
-          className={classnames('cursor-pointer group', className)}
+        <Text
+          as="a"
+          variant={textVariant}
+          className={classnames(
+            'cursor-pointer hyphens-auto',
+            {
+              'border-b': border === LinkBorder.small,
+              'border-b-2': border === LinkBorder.medium,
+              'border-b-3': border === LinkBorder.large,
+            },
+            LinkColor[color],
+            className
+          )}
           href={encodeURI(href)}
           rel={type === LinkType.url ? 'noopener noreferrer' : null}
           target={type === LinkType.url ? '_blank' : null}
           title={title}
           aria-label={ariaLabel}
           {...props}>
-          <Text
-            as="span"
-            variant={textVariant}
-            className={classnames(
-              'inline-block',
-              {
-                'border-b': border === LinkBorder.small,
-                'border-b-2': border === LinkBorder.medium,
-                'border-b-3': border === LinkBorder.large,
-              },
-              LinkColor[color]
-            )}>
-            {children}
-          </Text>
-        </a>
+          {children}
+        </Text>
       )
     }
     case LinkVariant.svg: {

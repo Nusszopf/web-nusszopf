@@ -11,7 +11,7 @@ const WelcomeCard = ({ title, description, greetings, className, ...props }) => 
       className
     )}
     {...props}>
-    <div className="md:max-w-xl hyphens-auto">
+    <div className="md:max-w-xl">
       <Text>{title}</Text>
       <Text variant="textSm" className="mt-3">
         {description}

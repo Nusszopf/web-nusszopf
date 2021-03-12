@@ -80,7 +80,7 @@ const CreateProject = ({ user }) => {
             headerColor="bg-lilac-300 lg:bg-steel-100">
             <FramedGridCard.Header className="bg-lilac-300">
               <Progressbar label={cms.steps[stepper?.step ?? 0]} progress={stepper?.progress} />
-              <Text as="h1" variant="textLg" className="block mt-3 hyphens-auto">
+              <Text as="h1" variant="textLg" className="block mt-3">
                 {formik.values.title.length > 0 ? formik.values.title : cms.title}
               </Text>
             </FramedGridCard.Header>
