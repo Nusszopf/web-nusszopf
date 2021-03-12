@@ -94,7 +94,8 @@ const MyCropper = forwardRef(({ className, onComplete }, ref) => {
             <div
               aria-hidden="true"
               className="flex transition-transform duration-150 ease-out transform scale-100 cursor-pointer text-steel-100 hover:scale-105">
-              <Upload className="mr-3" /> <Text variant="textSm">{cms.pick}</Text>
+              <Upload className="mr-3" />
+              <Text variant="textSm">{cms.pick}</Text>
             </div>
           </label>
         </div>
