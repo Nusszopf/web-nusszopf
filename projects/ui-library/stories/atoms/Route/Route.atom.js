@@ -7,7 +7,6 @@ import { TextVariant } from '../Text/Text.theme'
 import { RouteBorder, RouteVariant } from './Route.theme'
 
 const Route = ({
-  as = 'span',
   active = false,
   ariaLabel,
   border = RouteBorder.small,
@@ -23,19 +22,24 @@ const Route = ({
     case RouteVariant.text: {
       return (
         <NLink href={href}>
-          <a className={classnames('cursor-pointer group', className)} href={href} title={title} aria-label={ariaLabel}>
-            <Text
-              as={as}
-              active={active ? 'true' : 'false'}
-              variant={textVariant}
-              className={classnames('inline-block text-current active:border-current hover:border-current', {
+          <Text
+            as="a"
+            href={href}
+            title={title}
+            aria-label={ariaLabel}
+            active={active ? 'true' : 'false'}
+            variant={textVariant}
+            className={classnames(
+              'cursor-pointer text-current active:border-current hover:border-current',
+              {
                 'border-b-2': border === RouteBorder.small,
                 'border-b-3': border === RouteBorder.medium,
                 'border-b-4': border === RouteBorder.large,
-              })}>
-              {children}
-            </Text>
-          </a>
+              },
+              className
+            )}>
+            {children}
+          </Text>
         </NLink>
       )
     }
