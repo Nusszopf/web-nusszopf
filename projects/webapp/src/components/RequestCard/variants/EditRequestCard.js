@@ -12,7 +12,7 @@ import { RequestCategoryColor, RequestCategoryMenu } from '../RequestCard.theme'
 const EditRequestCard = ({ onEdit, onDelete, request, className, ...props }) => (
   <div
     className={classnames(
-      'relative w-full flex hyphens-auto text-stone-800 rounded-lg cursor-pointer transition duration-150 ease-in-out ring-1 ring-transparent focus:outline-none',
+      'relative w-full flex text-stone-800 rounded-lg cursor-pointer transition duration-150 ease-in-out ring-1 ring-transparent focus:outline-none',
       RequestCategoryColor[request.category],
       className
     )}

@@ -50,7 +50,7 @@ const RequestsView = ({ project }) => {
       <FramedGridCard.Body gap="medium" className="grid-flow-row bg-white ">
         <FramedGridCard.Body.Col variant="twoCols" className="text-center lg:text-left lg:pr-4 lg:col-start-2">
           <Text className="mb-2 text-left">{cms.requestsView.titleIntro}</Text>
-          <Text variant="textSm" className="text-left hyphens-auto">
+          <Text variant="textSm" className="text-left">
             {cms.requestsView.intro}
           </Text>
           <Button
@@ -63,7 +63,7 @@ const RequestsView = ({ project }) => {
           </Button>
         </FramedGridCard.Body.Col>
         <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
-          <Text className="mt-8 mb-4 hyphens-auto lg:mt-0">{cms.requestsView.titleCreated}</Text>
+          <Text className="mt-8 mb-4 lg:mt-0">{cms.requestsView.titleCreated}</Text>
           {project.requests?.length > 0 ? (
             <>
               {project.requests.map((request, index) => (

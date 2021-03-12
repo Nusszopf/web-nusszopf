@@ -21,7 +21,7 @@ const SubscribeConfirm = ({ lead }) => (
       <Text as="h1" variant="textLgSemi" className="mt-10 mb-5 sm:mt-12">
         {cms.subscribeConfirm.heading}
       </Text>
-      <Text variant="textSmMedium" className="hyphens-auto">
+      <Text variant="textSmMedium">
         <span className="italic font-semibold">{lead.email}</span> {cms.subscribeConfirm.textA}{' '}
         {cms.subscribeConfirm.textB}
       </Text>
