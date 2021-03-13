@@ -18,7 +18,7 @@ import { initializeApollo } from '~/utils/libs/apolloClient'
 import { NZ_EMAIL } from '~/utils/enums'
 import { projectData as cms } from '~/assets/data'
 import { Page, RequestCard } from '~/components'
-import { RequestDialog, ContactDialog, Banner } from '~/containers'
+import { RequestDialog, ContactDialog, Banner, VisitorCounter } from '~/containers'
 
 const Project = ({ id, userId }) => {
   const { serializeJSX } = useRichTextEditor()
@@ -86,15 +86,19 @@ const Project = ({ id, userId }) => {
         const hasViewed = views.includes(data.projects_by_pk.id)
         if (!hasViewed) {
           localStorage.setItem('viewed_projects', JSON.stringify([...views, data.projects_by_pk.id]))
-          await apolloUpdateProject({
-            variables: { id: data.projects_by_pk.id, project: { views: data.projects_by_pk.views + 1 } },
-          })
+          try {
+            await apolloUpdateProject({
+              variables: { id: data.projects_by_pk.id, project: { views: data.projects_by_pk.views + 1 } },
+            })
+          } catch (error) {
+            // max_views reached
+          }
         }
       }
     }
     updateViews()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data, userId])
+  }, [])
 
   useEffect(() => {
     if (currentRequest) {
@@ -126,7 +130,7 @@ const Project = ({ id, userId }) => {
       navHeader={{ visible: true }}
       title={data.projects_by_pk.title}
       description={data.projects_by_pk.goal}
-      footer={{ className: 'bg-white lg:bg-steel-100' }}
+      footer={{ className: 'bg-steel-100' }}
       noindex={true}
       className="bg-white text-lilac-800 lg:bg-steel-100">
       <Banner project={data.projects_by_pk} userId={userId} />
@@ -218,6 +222,9 @@ const Project = ({ id, userId }) => {
                 <Text variant="textSm">{data.projects_by_pk.motto}</Text>
               </div>
             )}
+            <div className="mt-12 mb-3 md:mb-0">
+              <VisitorCounter views={data.projects_by_pk.views} />
+            </div>
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col
             variant="twoCols"
@@ -250,7 +257,7 @@ const Project = ({ id, userId }) => {
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
       </FramedGridCard>
-      <Frame className="mt-12 mb-12 text-center lg:mt-4 lg:text-right lg:mb-20">
+      <Frame className="pt-4 pb-16 text-center lg:pb-20 lg:text-right bg-steel-100">
         <Link
           variant="button"
           size="base"

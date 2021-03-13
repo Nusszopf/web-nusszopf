@@ -39,7 +39,7 @@ const Projects = ({ user, loading: loadingUser }) => {
   return (
     <Page
       navHeader={{ visible: true }}
-      footer={{ className: 'bg-white lg:bg-steel-100' }}
+      footer={{ className: 'bg-steel-100' }}
       noindex={true}
       className="bg-white text-steel-700 lg:bg-steel-100">
       <FramedGridCard
