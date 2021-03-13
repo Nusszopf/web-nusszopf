@@ -25,6 +25,7 @@ const Project = ({ id, userId }) => {
   const [currentRequest, setCurrentRequest] = useState()
   const [showRequestDialog, setShowRequestDialog] = useState(false)
   const [showContactDialog, setShowContactDialog] = useState(false)
+  const [apolloUpdateProject] = apollo.useUpdateProject()
   const { data, loading } = apollo.useGetProject(id)
   const { notify } = useToasts()
 
@@ -76,6 +77,24 @@ const Project = ({ id, userId }) => {
       copyUrl()
     }
   }
+
+  useEffect(() => {
+    const updateViews = async () => {
+      if (data.projects_by_pk.user_id !== userId) {
+        const dataString = localStorage.getItem('viewed_projects')
+        const views = JSON.parse(dataString) ?? []
+        const hasViewed = views.includes(data.projects_by_pk.id)
+        if (!hasViewed) {
+          localStorage.setItem('viewed_projects', JSON.stringify([...views, data.projects_by_pk.id]))
+          await apolloUpdateProject({
+            variables: { id: data.projects_by_pk.id, project: { views: data.projects_by_pk.views + 1 } },
+          })
+        }
+      }
+    }
+    updateViews()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data, userId])
 
   useEffect(() => {
     if (currentRequest) {

@@ -25,6 +25,7 @@ export const ProjectFragment = gql`
       name
       picture
     }
+    views
   }
   ${RequestFragment}
 `
