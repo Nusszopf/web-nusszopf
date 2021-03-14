@@ -25,7 +25,8 @@ const Project = ({ id, userId }) => {
   const [currentRequest, setCurrentRequest] = useState()
   const [showRequestDialog, setShowRequestDialog] = useState(false)
   const [showContactDialog, setShowContactDialog] = useState(false)
-  const [apolloUpdateProject] = apollo.useUpdateProject()
+  const [apolloUpdateProjectAnalytics] = apollo.useUpdateProjectAnalytics()
+  const [apolloAddProjectAnalytics] = apollo.useAddProjectAnalytics()
   const { data, loading } = apollo.useGetProject(id)
   const { notify } = useToasts()
 
@@ -82,16 +83,23 @@ const Project = ({ id, userId }) => {
     const updateViews = async () => {
       if (data.projects_by_pk.user_id !== userId) {
         const dataString = localStorage.getItem('viewed_projects')
-        const views = JSON.parse(dataString) ?? []
-        const hasViewed = views.includes(data.projects_by_pk.id)
+        const localViews = JSON.parse(dataString) ?? []
+        const hasViewed = localViews.includes(data.projects_by_pk.id)
         if (!hasViewed) {
-          localStorage.setItem('viewed_projects', JSON.stringify([...views, data.projects_by_pk.id]))
+          localStorage.setItem('viewed_projects', JSON.stringify([...localViews, data.projects_by_pk.id]))
           try {
-            await apolloUpdateProject({
-              variables: { id: data.projects_by_pk.id, project: { views: data.projects_by_pk.views + 1 } },
-            })
+            const _views = data.projects_by_pk.analytics?.views
+            if (_views === null || _views === undefined) {
+              await apolloAddProjectAnalytics({
+                variables: { analytics: { project_id: data.projects_by_pk.id, views: 1 } },
+              })
+            } else {
+              await apolloUpdateProjectAnalytics({
+                variables: { id: data.projects_by_pk.id, analytics: { views: _views + 1 } },
+              })
+            }
           } catch (error) {
-            // max_views reached
+            // error or constraints
           }
         }
       }
@@ -223,7 +231,7 @@ const Project = ({ id, userId }) => {
               </div>
             )}
             <div className="mt-12 mb-3 md:mb-0">
-              <VisitorCounter views={data.projects_by_pk.views} />
+              <VisitorCounter views={data.projects_by_pk.analytics?.views} />
             </div>
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col
