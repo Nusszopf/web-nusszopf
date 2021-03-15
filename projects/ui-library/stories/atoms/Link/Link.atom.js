@@ -32,7 +32,7 @@ const Link = forwardRef(
             ref={ref}
             variant={textVariant}
             className={classnames(
-              'cursor-pointer hyphens-auto',
+              'cursor-pointer',
               {
                 'border-b': border === LinkBorder.small,
                 'border-b-2': border === LinkBorder.medium,
@@ -54,8 +54,8 @@ const Link = forwardRef(
       case LinkVariant.svg: {
         return (
           <a
-            className={classnames('cursor-pointer', className)}
             ref={ref}
+            className={classnames('cursor-pointer', className)}
             href={encodeURI(href)}
             rel="noopener noreferrer"
             target="_blank"

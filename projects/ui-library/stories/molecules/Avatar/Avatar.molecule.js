@@ -26,7 +26,7 @@ const Avatar = ({ user, className, variant = 'profile', project, onEdit, loading
       {loading ? (
         <AvatarSkeleton className={className} />
       ) : (
-        <div className={classnames('flex items-center hyphens-auto', className)} {...props}>
+        <div className={classnames('flex items-center', className)} {...props}>
           <div className="relative flex-shrink-0 overflow-hidden border-2 rounded-full border-steel-700 bg-steel-700">
             <img
               className={classnames('w-14 h-14', {

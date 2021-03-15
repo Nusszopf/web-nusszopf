@@ -28,11 +28,6 @@ const Route = forwardRef(
           <NLink href={href} ref={ref}>
             <Text
               as="a"
-              href={href}
-              title={title}
-              aria-label={ariaLabel}
-              active={active ? 'true' : 'false'}
-              variant={textVariant}
               className={classnames(
                 'cursor-pointer text-current active:border-current hover:border-current',
                 {
@@ -41,7 +36,12 @@ const Route = forwardRef(
                   'border-b-4': border === RouteBorder.large,
                 },
                 className
-              )}>
+              )}
+              href={href}
+              title={title}
+              aria-label={ariaLabel}
+              active={active ? 'true' : 'false'}
+              variant={textVariant}>
               {children}
             </Text>
           </NLink>
@@ -76,7 +76,6 @@ const Route = forwardRef(
 
 Route.displayName = 'Route'
 Route.propTypes = {
-  as: PropTypes.string,
   active: PropTypes.bool,
   ariaLabel: PropTypes.string.isRequired,
   border: PropTypes.oneOf(Object.keys(RouteBorder)),
