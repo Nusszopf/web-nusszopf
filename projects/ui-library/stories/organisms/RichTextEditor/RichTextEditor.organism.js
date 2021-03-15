@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
-import { ListOrdered, Link, List, Bold, Italic, Underline } from 'lucide-react'
+import { ListOrdered } from 'lucide-react'
+import { Link, List, Bold, Italic, Underline } from 'react-feather'
 import { createEditor } from 'slate'
 import { Slate, Editable, withReact } from 'slate-react'
 import { withHistory } from 'slate-history'
@@ -56,7 +57,7 @@ const RichTextEditor = ({
             format="ordered-list"
             icon={<ListOrdered size={18} />}
           />
-          <LinkButton aria-label={cms.aria.link} color={color} icon={<Link size={18} color={color} />} />
+          <LinkButton aria-label={cms.aria.link} color={color} icon={<Link size={18} />} />
         </div>
         <Editable
           className="px-4 py-3 min-h-48"

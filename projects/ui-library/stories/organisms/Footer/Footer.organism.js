@@ -61,7 +61,7 @@ const Footer = ({ className, variant = 'vercel' }) => (
       </div>
     ) : (
       <div className="flex flex-col items-center justify-between py-6 md:flex-row">
-        <div>
+        <div className="flex flex-col items-start w-full space-y-2.5 sm:space-y-0 sm:items-center sm:justify-center sm:flex-row md:justify-start">
           <Route className="mr-8" href="/legalNotice" title={cms.legalNotice} ariaLabel={cms.legalNotice}>
             {cms.legalNotice}
           </Route>
@@ -72,7 +72,7 @@ const Footer = ({ className, variant = 'vercel' }) => (
             {cms.legalPolicy}
           </Route>
         </div>
-        <div className="flex items-center mt-5 md:mt-0">
+        <div className="flex items-center mt-6 md:mt-0">
           <Link
             className="flex-shrink-0 inline-block mr-8"
             variant="svg"

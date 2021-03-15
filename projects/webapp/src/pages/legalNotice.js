@@ -10,7 +10,7 @@ const LegalNotice = () => (
     footer={{ className: 'bg-steel-200' }}
     back="/"
     navHeader={{ visible: true, goBackUri: '/' }}>
-    <Frame className="my-12 sm:my-20 hyphens-auto">
+    <Frame className="my-12 sm:my-20">
       <div className="max-w-2xl mx-auto">
         <Text as="h1" variant="titleMd" className="mb-8">
           {cms.title}

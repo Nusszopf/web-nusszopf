@@ -21,7 +21,7 @@ const MyPopover = ({ children, ...props }) => {
             'max-w-xs px-4 py-3 border-2 rounded-md shadow-md text-livid-300 bg-livid-300 border-livid-300'
           )}>
           <PopoverArrow {...popover} className="fill-current" />
-          <Text variant="textXs" className="italic text-livid-800 hyphens-auto">
+          <Text variant="textXs" className="italic text-livid-800">
             {children}
           </Text>
         </div>

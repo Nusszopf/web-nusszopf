@@ -56,7 +56,7 @@ const RequestsStep = () => {
     <>
       <FramedGridCard.Body.Col variant="twoCols" className="text-center lg:text-left lg:pr-4 lg:col-start-2">
         <Text className="mb-2 text-left">{cms.requestsStep.title[0]}</Text>
-        <Text variant="textSm" className="text-left hyphens-auto">
+        <Text variant="textSm" className="text-left">
           {cms.requestsStep.description}
         </Text>
         <Button
@@ -71,7 +71,7 @@ const RequestsStep = () => {
       <FramedGridCard.Body.Col variant="twoCols" className="lg:pl-4">
         {projectFormik.values.requests.length > 0 ? (
           <div className="mt-8 lg:mt-0">
-            <Text className="mb-4 hyphens-auto">{cms.requestsStep.title[1]}</Text>
+            <Text className="mb-4">{cms.requestsStep.title[1]}</Text>
             {projectFormik.values.requests.map((request, index) => (
               <RequestCard
                 key={`r-${index}`}

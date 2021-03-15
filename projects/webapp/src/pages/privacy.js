@@ -12,7 +12,7 @@ const Privacy = () => {
       className="bg-steel-200 text-steel-800"
       footer={{ className: 'bg-steel-200' }}
       navHeader={{ visible: true, goBackUri: router.query?.back ? 'back' : '/' }}>
-      <Frame className="my-12 sm:my-20 hyphens-auto">
+      <Frame className="my-12 sm:my-20">
         <div className="max-w-2xl mx-auto">
           <Text as="h1" variant="titleMd" className="mb-8">
             {cms.title}
