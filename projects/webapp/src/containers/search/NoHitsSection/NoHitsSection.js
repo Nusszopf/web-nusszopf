@@ -12,7 +12,7 @@ const NoHitsSection = ({ className }) => {
     <div className={classnames('max-w-3xl mx-auto break-normal', className)}>
       <div className="px-6 py-8 rounded-lg sm:px-8 lg:p-12 bg-livid-300 text-livid-800">
         <Text className="-mt-1.5">{cms.empty.title}</Text>
-        <Text variant="textSm" className="mt-3 hyphens-auto">
+        <Text variant="textSm" className="mt-3">
           {cms.empty.description}
         </Text>
         <div className="mt-6 text-center lg:mt-8">

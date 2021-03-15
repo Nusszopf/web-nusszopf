@@ -13,7 +13,7 @@ import { editProjectCardData as cms } from '~/assets/data'
 const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project, className, ...props }) => (
   <div
     className={classnames(
-      'w-full relative flex hyphens-auto border border-lilac-300 text-lilac-800 transition-shadow duration-150 ease-in-out rounded-lg cursor-pointer bg-lilac-200 ring-1 ring-transparent hover:ring-lilac-300',
+      'w-full relative flex border border-lilac-300 text-lilac-800 transition-shadow duration-150 ease-in-out rounded-lg cursor-pointer bg-lilac-200 ring-1 ring-transparent hover:ring-lilac-300',
       className
     )}
     {...props}>
@@ -21,7 +21,7 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
       onClick={() => onEdit(project.id)}
       className="flex-1 p-4 text-left md:p-5 focus:outline-none"
       type="button">
-      <Text className="mr-10 hyphens-auto">
+      <Text className="mr-10">
         {project.visibility === PROJECT.visibility.public ? (
           <Eye size={21} className="inline mr-1 -mt-1" />
         ) : (
