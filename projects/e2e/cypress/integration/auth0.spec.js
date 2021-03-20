@@ -1,5 +1,3 @@
-import { context, it, expect } from 'cypress'
-
 context('Auth0', () => {
   it('User can login', () => {
     expect(true).to.equal(false)

@@ -1,5 +1,3 @@
-import { context, it, expect } from 'cypress'
-
 context('Projects', () => {
   it('User can create a project', () => {
     expect(true).to.equal(false)

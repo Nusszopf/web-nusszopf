@@ -20,6 +20,7 @@ const HowToSection = () => {
         <div className="flex flex-col items-center justify-center mt-8 sm:flex-row lg:justify-end">
           <div>
             <Route
+              data-test="route_create-project-page"
               variant="button"
               size="large"
               href={user?.auth ? '/user/project/create' : '/api/login'}
@@ -31,6 +32,7 @@ const HowToSection = () => {
           </div>
           <div className="mt-5 sm:ml-5 sm:mt-0 lg:hidden">
             <Route
+              data-test="route_search-page"
               variant="button"
               size="large"
               href="/search"

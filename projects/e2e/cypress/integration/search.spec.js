@@ -1,9 +1,10 @@
 context('Search', () => {
   before(() => {
-    cy.visit('http://localhost:3000')
+    cy.visit('/')
   })
 
   it('User can search for projects', () => {
+    cy.get('[data-test="route_search-page"]').click()
     expect(true).to.equal(true)
   })
 
