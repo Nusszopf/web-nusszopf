@@ -18,7 +18,7 @@
 
 - [auth-login](./projects/auth-login/README.md)
 - [auth-password](./projects/auth-password/README.md)
-- [e2e](./projects/e2e/README.md)
+- [e2e-tests](./projects/e2e/README.md)
 - [ui-library](./projects/ui-library/README.md)
 - [webapp](./projects/webapp/README.md)
 
