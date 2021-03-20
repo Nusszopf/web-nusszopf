@@ -23,20 +23,20 @@ Starts Cypress in continuous integration mode, which will run all tests and exit
 
 ### Auth0
 
-- Login
-- Registration
-- Forgot Password
-- Change Password
+- [ ] Login
+- [ ] Registration
+- [ ] Forgot Password
+- [ ] Change Password
 
 ### User (anonym)
 
-- Search projects
-- Contact project-team
+- [ ] Search projects
+- [ ] Contact project-team
 
 ### User (logged in)
 
-- CRUD projects
-- CRUD requests
+- [ ] CRUD projects
+- [ ] CRUD requests
 
 ## Manual Tests
 
