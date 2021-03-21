@@ -37,10 +37,11 @@ Starts Cypress in continuous integration mode, which will run all tests and exit
 
 - [ ] CRUD projects
 - [ ] CRUD requests
+- [ ] Read/Remove account
 
 ## Manual Tests
 
-- CRUD account settings
+- Update/Read account settings
 - Newsletter
 - E-Mails
 - Responsive UI
