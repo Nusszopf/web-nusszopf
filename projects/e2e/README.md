@@ -23,13 +23,12 @@ Starts Cypress in continuous integration mode, which will run all tests and exit
 
 ### Auth0
 
-- [ ] Login
-- [ ] Registration
-- [ ] Forgot Password
-- [ ] Change Password
+- [x] Login
+- [x] Registration
 
 ### User (anonym)
 
+- [ ] landingpage call-to-actions
 - [ ] Search projects
 - [ ] Contact project-team
 
@@ -45,3 +44,5 @@ Starts Cypress in continuous integration mode, which will run all tests and exit
 - Newsletter
 - E-Mails
 - Responsive UI
+- Forgot Password
+- Change Password

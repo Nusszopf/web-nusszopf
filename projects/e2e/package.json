@@ -8,7 +8,7 @@
   "private": true,
   "scripts": {
     "open": "cypress open",
-    "run": "cypress run"
+    "start": "cypress run"
   },
   "dependencies": {},
   "devDependencies": {

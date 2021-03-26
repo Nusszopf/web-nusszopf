@@ -15,7 +15,7 @@
     "dev:e2e": "yarn --cwd projects/e2e open",
     "dev:ui-library": "yarn --cwd projects/ui-library start-storybook -p 6006",
     "dev:webapp": "yarn --cwd projects/webapp dev",
-    "ci:test": "yarn --cwd projects/webapp dev & wait-on http://localhost:3000 & yarn --cwd projects/e2e run",
+    "ci:test": "yarn --cwd projects/e2e start",
     "lint": "eslint ./projects/*"
   },
   "commitlint": {
@@ -96,7 +96,6 @@
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-recommended": "3.0.0",
     "tailwindcss": "2.0.1-compat",
-    "vercel": "20.1.4",
-    "wait-on": "5.3.0"
+    "vercel": "20.1.4"
   }
 }

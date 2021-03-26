@@ -1,3 +1,4 @@
 {
-  "baseUrl": "https://web.dev.nusszopf.org"
+  "baseUrl": "https://web.dev.nusszopf.org",
+  "testFiles": ["landingpage.spec.js", "search.spec.js", "auth0.spec.js", "projects.spec.js", "settings.spec.js"]
 }
