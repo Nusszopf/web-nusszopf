@@ -11,7 +11,10 @@ const FilterPopover = ({ className, filter, setFilter }) => {
 
   return (
     <div className={classnames('text-moss-800', className)}>
-      <PopoverDisclosure {...popover} className="flex font-semibold focus:outline-none">
+      <PopoverDisclosure
+        data-test="btn_disclosure_filter-popover"
+        {...popover}
+        className="flex font-semibold focus:outline-none">
         <div className="flex px-4 py-1 rounded-full bg-moss-450">
           <Text variant="textXs">{cms.filter.title} </Text>
           <ChevronDown size={20} strokeWidth={2.5} className="mt-1 ml-1 -mr-1" />
@@ -21,6 +24,7 @@ const FilterPopover = ({ className, filter, setFilter }) => {
         <div className="px-4 py-2 text-sm font-medium border-2 rounded-md shadow-md w-52 bg-moss-300 border-moss-800">
           <div className="my-2">
             <Checkbox
+              data-test="checkbox_companions_filter-popover"
               checked={filter.companions}
               onChange={() => setFilter(state => ({ ...state, companions: !state.companions }))}
               name="companions"
@@ -30,6 +34,7 @@ const FilterPopover = ({ className, filter, setFilter }) => {
           </div>
           <div className="my-2">
             <Checkbox
+              data-test="checkbox_rooms_filter-popover"
               checked={filter.rooms}
               onChange={() => setFilter(state => ({ ...state, rooms: !state.rooms }))}
               name="rooms"
@@ -39,6 +44,7 @@ const FilterPopover = ({ className, filter, setFilter }) => {
           </div>
           <div className="my-2">
             <Checkbox
+              data-test="checkbox_materials_filter-popover"
               checked={filter.materials}
               onChange={() => setFilter(state => ({ ...state, materials: !state.materials }))}
               name="materials"
@@ -48,6 +54,7 @@ const FilterPopover = ({ className, filter, setFilter }) => {
           </div>
           <div className="my-2">
             <Checkbox
+              data-test="checkbox_financials_filter-popover"
               checked={filter.financials}
               onChange={() => setFilter(state => ({ ...state, financials: !state.financials }))}
               name="financials"
@@ -57,6 +64,7 @@ const FilterPopover = ({ className, filter, setFilter }) => {
           </div>
           <div className="my-2">
             <Checkbox
+              data-test="checkbox_others_filter-popover"
               checked={filter.others}
               onChange={() => setFilter(state => ({ ...state, others: !state.others }))}
               name="others"
@@ -66,6 +74,7 @@ const FilterPopover = ({ className, filter, setFilter }) => {
           </div>
           <div className="my-2">
             <Checkbox
+              data-test="checkbox_none_filter-popover"
               checked={filter.none}
               onChange={() => setFilter(state => ({ ...state, none: !state.none }))}
               name="none"
