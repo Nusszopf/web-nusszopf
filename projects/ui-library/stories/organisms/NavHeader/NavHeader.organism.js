@@ -106,6 +106,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
       <div className={classnames('flex items-center w-full h-10 lg:h-12 justify-between relative')}>
         <div className="flex items-center">
           <Clickable
+            data-test="btn_logo_nav-header"
             aria-label={cms.aria[4]}
             title={cms.aria[4]}
             onClick={handleNusszopf}
@@ -115,6 +116,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
           </Clickable>
           {goBackUri && (
             <Clickable
+              data-test="btn_go-back_nav-header"
               aria-label={cms.aria[3]}
               title={cms.aria[3]}
               onClick={handleGoBack}
@@ -125,6 +127,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
         </div>
         <div className="flex items-center">
           <Clickable
+            data-test="btn_search_nav-header"
             aria-label={cms.aria[0]}
             title={cms.aria[0]}
             onClick={handleSearch}
@@ -133,6 +136,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
           </Clickable>
           {user?.auth && (
             <Clickable
+              data-test="btn_user-projects_nav-header"
               aria-label={cms.aria[1]}
               title={cms.aria[1]}
               onClick={handleProjects}
@@ -140,13 +144,18 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
               <Nuss size={21.5} strokeWidth={8.5} />
             </Clickable>
           )}
-          <MenuButton {...menu} className="focus:outline-none" title={cms.aria[2]} aria-label={cms.aria[2]}>
+          <MenuButton
+            data-test="btn_burger_nav-header"
+            {...menu}
+            className="focus:outline-none"
+            title={cms.aria[2]}
+            aria-label={cms.aria[2]}>
             <RMenu />
           </MenuButton>
         </div>
         <Menu {...menu} tabIndex={0} aria-label={cms.aria[2]} className="z-20 focus:outline-none reakit-animate-scale">
           <div className="py-4 mt-5 text-sm font-medium rounded-md shadow-md lg:mt-6 text-steel-800 bg-steel-400">
-            <MenuItem {...menu} hasIcon={true} onClick={handleSearch}>
+            <MenuItem data-test="btn_search_nav-header" {...menu} hasIcon={true} onClick={handleSearch}>
               <div className="flex items-center ">
                 <div className="w-6 mr-1">
                   <Search className="-ml-2" />
@@ -157,7 +166,11 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
               </div>
             </MenuItem>
             {mode === 'internal' && (
-              <MenuItem {...menu} hasIcon={true} onClick={handleCreateProject}>
+              <MenuItem
+                data-test="btn_create-project_nav-header"
+                {...menu}
+                hasIcon={true}
+                onClick={handleCreateProject}>
                 <div className="flex items-center ">
                   <div className="w-6 mr-1">
                     <PlusCircle size={22} className="-ml-2" />
@@ -170,7 +183,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
             )}
             {user?.auth ? (
               <>
-                <MenuItem {...menu} hasIcon={true} onClick={handleProjects}>
+                <MenuItem data-test="btn_user-projects_nav-header" {...menu} hasIcon={true} onClick={handleProjects}>
                   <div className="flex items-center">
                     <div className="w-6 mr-1">
                       <Nuss size={21} strokeWidth={8.5} className="-ml-2" />
@@ -180,7 +193,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
                     </Text>
                   </div>
                 </MenuItem>
-                <MenuItem {...menu} hasIcon={true} onClick={handleProfile}>
+                <MenuItem data-test="btn_settings_nav-header" {...menu} hasIcon={true} onClick={handleProfile}>
                   <div className="flex items-center">
                     <div className="w-6 mr-1">
                       <User className="-ml-2" />
@@ -192,7 +205,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
                 </MenuItem>
               </>
             ) : (
-              <MenuItem {...menu} hasIcon={true} onClick={handleLoginSignup}>
+              <MenuItem data-test="btn_login_nav-header" {...menu} hasIcon={true} onClick={handleLoginSignup}>
                 <div className="flex items-center">
                   <div className="w-6 mr-1">
                     <LogIn size={23} className="-ml-2" />
@@ -204,7 +217,7 @@ const NavHeader = ({ user, logout, goBackUri, mode = 'internal', fixed = true })
               </MenuItem>
             )}
             {user?.auth && (
-              <MenuItem {...menu} onClick={handleLogout}>
+              <MenuItem data-test="btn_logout_nav-header" {...menu} onClick={handleLogout}>
                 <Text className="text-warning-700" variant="textSmMedium">
                   {cms.items[5]}
                 </Text>
