@@ -21,7 +21,7 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
       onClick={() => onEdit(project.id)}
       className="flex-1 p-4 text-left md:p-5 focus:outline-none"
       type="button">
-      <Text className="mr-10">
+      <Text data-test="text_title_project-edit-card" className="mr-10">
         {project.visibility === PROJECT.visibility.public ? (
           <Eye size={21} className="inline mr-1 -mt-1" />
         ) : (

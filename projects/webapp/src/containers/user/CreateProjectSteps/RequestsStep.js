@@ -60,6 +60,7 @@ const RequestsStep = () => {
           {cms.requestsStep.description}
         </Text>
         <Button
+          data-test="btn_create_requests-step"
           onClick={openDialog}
           color="stone"
           className="mt-8 bg-stone-300"
