@@ -36,6 +36,7 @@ const ProjectField = ({ formik, ...props }) => {
         {cms.project.title}
       </FieldTitle>
       <RichTextEditor
+        data-test="input_project-description"
         ariaLabel={cms.project.title}
         name="description"
         onChange={handleChange}

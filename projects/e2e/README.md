@@ -15,7 +15,7 @@ The tests are carried out with the help of the Cypress framework. All necessary 
 
 Starts the Cypress Test Runner in watch mode and opens the Cypress Test Interface.
 
-### `yarn run`
+### `yarn start`
 
 Starts Cypress in continuous integration mode, which will run all tests and exit.
 

@@ -26,6 +26,7 @@ const TeamField = ({ formik, ...props }) => {
         {cms.team.title}
       </FieldTitle>
       <RichTextEditor
+        data-test="input_project-team"
         ariaLabel={cms.team.title}
         name="team"
         onChange={handleChange}

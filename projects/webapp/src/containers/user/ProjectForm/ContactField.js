@@ -15,6 +15,7 @@ const ContactField = ({ formik, user, ...props }) => {
       </FieldTitle>
       <RadioGroup {...radio} aria-label={cms.visibility.title}>
         <Radiobox
+          data-test="radio_direct_project-contact"
           {...radio}
           name="contact"
           value={true}
@@ -30,6 +31,7 @@ const ContactField = ({ formik, user, ...props }) => {
           }
         />
         <Radiobox
+          data-test="radio_nusszopf_project-contact"
           {...radio}
           name="contact"
           value={false}

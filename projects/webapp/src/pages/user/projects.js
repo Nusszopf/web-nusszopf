@@ -50,6 +50,7 @@ const Projects = ({ user, loading: loadingUser }) => {
           <div className="flex flex-col lg:flex-row sm:justify-between lg:items-center">
             <Avatar user={user} loading={loadingUser} />
             <Route
+              data-test="btn_create-project_projects-page"
               variant="button"
               ariaLabel={cms.action}
               href={{ pathname: '/user/project/create', query: { step: 0 } }}
@@ -80,6 +81,7 @@ const Projects = ({ user, loading: loadingUser }) => {
               <Masonry gap={{ wrap: '-ml-5 -mb-5', col: 'pl-5', row: 'mb-5' }}>
                 {data?.projects.map(project => (
                   <EditProjectCard
+                    data-test="route_edit-project_projects-page"
                     key={project.id}
                     project={project}
                     onClick={id => router.push({ pathname: '/projects/[id]', query: { id } })}

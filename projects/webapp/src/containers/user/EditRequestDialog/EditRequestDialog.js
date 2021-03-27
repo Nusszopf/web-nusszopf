@@ -75,7 +75,12 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
             <CategoryField className="mt-6" formik={formik} />
             <DescriptionField className="mt-6" formik={formik} />
             <div className="flex justify-center mt-10 space-x-4">
-              <Button className="bg-stone-400" color="stone" variant="outline" type="submit">
+              <Button
+                data-test="btn_create-or-save_edit-request-dialog"
+                className="bg-stone-400"
+                color="stone"
+                variant="outline"
+                type="submit">
                 {initialValues ? cms.save : cms.create}
               </Button>
               <Button color="stone" variant="outline" onClick={handleDismiss}>

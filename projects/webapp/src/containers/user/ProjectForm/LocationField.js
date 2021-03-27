@@ -74,6 +74,7 @@ const LocationField = ({ formik, ...props }) => {
       </FieldTitle>
       <RadioGroup {...radio} aria-label={cms.visibility.title}>
         <Radiobox
+          data-test="radio_remote_project-location"
           {...radio}
           name="location.remote"
           value={true}
@@ -81,6 +82,7 @@ const LocationField = ({ formik, ...props }) => {
           label={<Text variant="textSmMedium">{cms.location.radio1}</Text>}
         />
         <Radiobox
+          data-test="radio_fixed_project-location"
           {...radio}
           name="location.remote"
           value={false}
@@ -98,6 +100,7 @@ const LocationField = ({ formik, ...props }) => {
       </RadioGroup>
       <div className="mt-2 ml-8">
         <Combobox
+          data-test="combobox_project-location"
           id="postalcode"
           onKeyPress={handleKeyPress}
           tabIndex="0"

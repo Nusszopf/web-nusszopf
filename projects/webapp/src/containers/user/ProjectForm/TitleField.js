@@ -10,6 +10,7 @@ const TitleField = ({ formik }) => (
   <>
     <FieldTitle info={cms.title.info}>{cms.title.title}</FieldTitle>
     <Input
+      data-test="input_project-title"
       name="title"
       color="lilac"
       aria-label={cms.title.title}

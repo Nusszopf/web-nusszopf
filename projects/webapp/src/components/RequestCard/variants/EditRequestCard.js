@@ -28,6 +28,7 @@ const EditRequestCard = ({ onEdit, onDelete, request, className, ...props }) => 
     </Clickable>
     <div className="absolute top-0 right-0">
       <Menu
+        data-test="menu_edit-request-card"
         label={<MoreHorizontal />}
         ariaLabel={cms.aria}
         className="mx-4 mb-1"
