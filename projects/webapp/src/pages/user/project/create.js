@@ -90,7 +90,7 @@ const CreateProject = ({ user }) => {
                   <DescriptionStep1 validationSchema={step1ValidationSchema} />
                   <DescriptionStep2 validationSchema={step2ValidationSchema} />
                   <RequestsStep />
-                  <SettingsStep user={user} />
+                  <SettingsStep />
                 </Stepper>
                 <FramedGridCard.Body.Col variant="oneCol" className="mt-12 mb-4 md:mb-0 lg:col-start-2">
                   <Navigation
