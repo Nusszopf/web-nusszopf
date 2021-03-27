@@ -50,7 +50,7 @@ const Projects = ({ user, loading: loadingUser }) => {
           <div className="flex flex-col lg:flex-row sm:justify-between lg:items-center">
             <Avatar user={user} loading={loadingUser} />
             <Route
-              data-test="btn_create-project_projects-page"
+              data-test="route_create-project_projects-page"
               variant="button"
               ariaLabel={cms.action}
               href={{ pathname: '/user/project/create', query: { step: 0 } }}
@@ -64,6 +64,7 @@ const Projects = ({ user, loading: loadingUser }) => {
         <FramedGridCard.Body gap="medium" className="bg-white">
           <FramedGridCard.Body.Col variant="oneCol" className="text-center lg:hidden">
             <Route
+              data-test="route_create-project_projects-page"
               ariaLabel={cms.action}
               variant="button"
               size="large"
