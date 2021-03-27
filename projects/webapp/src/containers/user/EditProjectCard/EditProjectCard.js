@@ -21,13 +21,13 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
       onClick={() => onEdit(project.id)}
       className="flex-1 p-4 text-left md:p-5 focus:outline-none"
       type="button">
-      <Text data-test="text_title_project-edit-card" className="mr-10">
+      <Text className="mr-10">
         {project.visibility === PROJECT.visibility.public ? (
           <Eye size={21} className="inline mr-1 -mt-1" />
         ) : (
           <EyeOff size={21} className="inline mr-1 -mt-1" />
         )}{' '}
-        {project.title}
+        <span data-test="text_title_project-edit-card">{project.title}</span>
       </Text>
       <Text variant="textSm" className="mt-2">
         {truncate(project.goal, { length: 90 })}
