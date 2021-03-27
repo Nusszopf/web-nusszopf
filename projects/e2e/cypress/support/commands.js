@@ -18,10 +18,12 @@ Cypress.Commands.add('login', () => {
   cy.get('[name="password"]').first().type('asdf1234A!')
   cy.get('[type="submit"]').first().click()
 })
+
 Cypress.Commands.add('logout', () => {
   cy.get('[data-test="btn_burger_nav-header"]').click()
   cy.get('[data-test="btn_logout_nav-header"]').click()
 })
+
 //
 //
 // -- This is a child command --

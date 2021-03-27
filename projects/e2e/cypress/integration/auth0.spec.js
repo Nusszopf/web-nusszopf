@@ -7,6 +7,8 @@ context('Auth0', () => {
     cy.logout()
   })
 
+  // todo: FIX isTestUser in registration for staging
+
   xit('User can register', () => {
     cy.get('[data-test="btn_burger_nav-header"]').click()
     cy.get('[data-test="btn_login_nav-header"]').click()
