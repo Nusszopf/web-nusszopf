@@ -39,7 +39,15 @@ context('Projects', () => {
       })
       cy.get('[data-test="text_title_project-edit-card"]').should('have.text', 'Test Title')
       cy.get('[data-test="text_title_preview-request-card"]').should('have.text', 'Test Title')
-      // todo: check search
+    })
+
+    it('User can find the new created project on the search page', () => {
+      cy.visit('/search')
+      cy.get('[data-test="route_hitcard"]')
+        .first()
+        .within(() => {
+          cy.get('[data-test="route_title_hitcard"]').should('have.text', 'Test Title')
+        })
     })
   })
 

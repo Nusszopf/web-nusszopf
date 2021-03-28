@@ -31,6 +31,7 @@ const HitCard = ({ projectId, hits, className, ...props }) => {
           <div className="flex justify-between mb-2">
             <div>
               <Text
+                data-test="route_title_hitcard"
                 variant="textSm"
                 className="mb-1.5 font-semibold leading-6"
                 dangerouslySetInnerHTML={{ __html: hits[0]?._formatted?.pro_title || hits[0].pro_title }}
