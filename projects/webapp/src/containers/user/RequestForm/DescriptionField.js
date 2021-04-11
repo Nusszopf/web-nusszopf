@@ -37,6 +37,7 @@ const DescriptionField = ({ formik, ...props }) => {
         {cms.description.title}
       </FieldTitle>
       <RichTextEditor
+        data-test="input_request-description"
         ariaLabel={cms.description.title}
         name="description"
         color="stone"

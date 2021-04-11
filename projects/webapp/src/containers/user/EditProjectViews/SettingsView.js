@@ -54,7 +54,12 @@ const SettingsView = forwardRef(({ project }, ref) => {
         </FramedGridCard.Body.Col>
         <FramedGridCard.Body.Col variant="oneCol">
           <div className="mt-5 text-center sm:text-left lg:text-center">
-            <Button type="submit" className="bg-lilac-200" color="lilac" disabled={updateLoading}>
+            <Button
+              data-test="btn_save_settings-view"
+              type="submit"
+              className="bg-lilac-200"
+              color="lilac"
+              disabled={updateLoading}>
               {cms.settingsView.save}
             </Button>
           </div>
@@ -65,7 +70,12 @@ const SettingsView = forwardRef(({ project }, ref) => {
             {cms.settingsView.alert}
           </Text>
           <div className="mt-4 text-center sm:text-left">
-            <Button variant="outline" color="warning" onClick={handleDelete} disabled={deleteLoading}>
+            <Button
+              data-test="btn_delete_settings-view"
+              variant="outline"
+              color="warning"
+              onClick={handleDelete}
+              disabled={deleteLoading}>
               {cms.settingsView.delete.action}
             </Button>
           </div>

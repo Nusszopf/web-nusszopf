@@ -13,6 +13,7 @@ const MottoField = ({ formik, ...props }) => (
       {cms.motto.title}
     </FieldTitle>
     <Input
+      data-test="input_project-motto"
       as="textarea"
       aria-label={cms.motto.title}
       color="lilac"

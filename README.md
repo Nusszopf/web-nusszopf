@@ -16,10 +16,11 @@
 
 ## Projects
 
-- [web app](./projects/webapp/README.md)
-- [ui library](./projects/ui-library/README.md)
-- [auth0 login](./projects/auth-login/README.md)
-- [auth0 password](./projects/auth-password/README.md)
+- [auth-login](./projects/auth-login/README.md)
+- [auth-password](./projects/auth-password/README.md)
+- [e2e-tests](./projects/e2e/README.md)
+- [ui-library](./projects/ui-library/README.md)
+- [webapp](./projects/webapp/README.md)
 
 ## VS Code Plugins
 

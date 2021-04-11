@@ -191,6 +191,7 @@ const Profile = ({ user, loading }) => {
               </Text>
               <Text variant="textSm">{cms.delete.description}</Text>
               <Button
+                data-test="btn_delete-account_settings-page"
                 onClick={handleDelete}
                 variant="outline"
                 color="warning"

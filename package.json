@@ -10,10 +10,12 @@
     "projects/*"
   ],
   "scripts": {
+    "dev:auth-login": "yarn --cwd projects/auth-login dev",
+    "dev:auth-password": "yarn --cwd projects/auth-password dev",
+    "dev:e2e": "yarn --cwd projects/e2e open",
+    "dev:ui-library": "yarn --cwd projects/ui-library start-storybook -p 6006",
     "dev:webapp": "yarn --cwd projects/webapp dev",
-    "dev:login": "yarn --cwd projects/auth-login dev",
-    "dev:pw": "yarn --cwd projects/auth-password dev",
-    "storybook": "yarn --cwd projects/ui-library start-storybook -p 6006",
+    "ci:test": "yarn --cwd projects/e2e start",
     "lint": "eslint ./projects/*"
   },
   "commitlint": {
@@ -77,6 +79,7 @@
     "cross-env": "7.0.3",
     "eslint": "7.20.0",
     "eslint-config-prettier": "7.2.0",
+    "eslint-plugin-cypress": "2.11.2",
     "eslint-plugin-jsx-a11y": "6.4.1",
     "eslint-plugin-prettier": "3.3.1",
     "eslint-plugin-react": "7.22.0",

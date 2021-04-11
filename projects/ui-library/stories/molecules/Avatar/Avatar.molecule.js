@@ -45,7 +45,9 @@ const Avatar = ({ user, className, variant = 'profile', project, onEdit, loading
             )}
           </div>
           <div className="ml-5">
-            <Text variant="textSmMedium">{truncate(user.data.name, { length: 33 })}</Text>
+            <Text data-test="username_avatar" variant="textSmMedium">
+              {truncate(user.data.name, { length: 33 })}
+            </Text>
             {variant !== AvatarVariant.project ? (
               <Text variant="textSm">{truncate(user.data.private.email, { length: 33 })}</Text>
             ) : (

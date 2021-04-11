@@ -147,7 +147,8 @@ export default function IndexPage() {
           captcha: captcha?.getValue(),
           user_metadata: {
             newsletter: values.newsletter ? 'true' : 'false',
-            isTestUser: process.env.VERCEL_ENV !== 'production' ? 'true' : 'false',
+            isTestUser:
+              window.location.href.match(/web.dev/gm) || process.env.VERCEL_ENV !== 'production' ? 'true' : 'false',
           },
         },
         (error, response) => {

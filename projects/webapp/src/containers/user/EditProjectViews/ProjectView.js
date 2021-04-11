@@ -96,7 +96,13 @@ const ProjectView = forwardRef(({ project }, ref) => {
           <TeamField formik={formik} className="mt-7" />
         </FramedGridCard.Body.Col>
         <FramedGridCard.Body.Col variant="oneCol" className="flex justify-center mt-12 mb-4 md:mb-0 lg:col-start-2">
-          <Button className="bg-lilac-200" type="submit" color="lilac" size="large" disabled={updateLoading}>
+          <Button
+            data-test="btn_save_project-view"
+            className="bg-lilac-200"
+            type="submit"
+            color="lilac"
+            size="large"
+            disabled={updateLoading}>
             {cms.projectView.save}
           </Button>
         </FramedGridCard.Body.Col>

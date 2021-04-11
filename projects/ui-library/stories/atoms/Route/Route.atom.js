@@ -41,7 +41,8 @@ const Route = forwardRef(
               title={title}
               aria-label={ariaLabel}
               active={active ? 'true' : 'false'}
-              variant={textVariant}>
+              variant={textVariant}
+              {...props}>
               {children}
             </Text>
           </NLink>
@@ -50,7 +51,12 @@ const Route = forwardRef(
       case RouteVariant.svg: {
         return (
           <NLink href={href} ref={ref}>
-            <a className={classnames('cursor-pointer', className)} href={href} title={title} aria-label={ariaLabel}>
+            <a
+              className={classnames('cursor-pointer', className)}
+              href={href}
+              title={title}
+              aria-label={ariaLabel}
+              {...props}>
               {children}
             </a>
           </NLink>

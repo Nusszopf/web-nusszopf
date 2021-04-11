@@ -6,7 +6,7 @@ import { Text, Radiobox } from 'ui-library/stories/atoms'
 import { FieldTitle } from '~/components'
 import { projectFormData as cms } from '~/assets/data'
 
-const ContactField = ({ formik, user, ...props }) => {
+const ContactField = ({ formik, user, loading, ...props }) => {
   const radio = useRadioState({ state: formik.values.contact, orientation: 'vertical' })
   return (
     <>
@@ -15,6 +15,7 @@ const ContactField = ({ formik, user, ...props }) => {
       </FieldTitle>
       <RadioGroup {...radio} aria-label={cms.visibility.title}>
         <Radiobox
+          data-test="radio_direct_project-contact"
           {...radio}
           name="contact"
           value={true}
@@ -24,12 +25,13 @@ const ContactField = ({ formik, user, ...props }) => {
               <Text variant="textSmMedium">{cms.contact.radio1[0]}</Text>
               <Text variant="textSm">
                 {cms.contact.radio1[1]}{' '}
-                <span className="underline">{truncate(user.data.private.email, { length: 25 })}</span>
+                <span className="underline">{truncate(loading ? '' : user.data.private.email, { length: 25 })}</span>
               </Text>
             </>
           }
         />
         <Radiobox
+          data-test="radio_direct_project-contact"
           {...radio}
           name="contact"
           value={false}
@@ -50,6 +52,7 @@ const ContactField = ({ formik, user, ...props }) => {
 ContactField.propTypes = {
   formik: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
+  loading: PropTypes.bool,
 }
 
 export default ContactField

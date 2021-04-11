@@ -56,6 +56,7 @@ const ProjectEdit = ({ user, loading: loadingUser }) => {
               {projectData?.projects_by_pk?.title}
             </Text>
             <Select
+              data-test="select_view_edit-project-page"
               aria-label={cms.aria.select}
               value={view}
               onChange={shouldSelectView}

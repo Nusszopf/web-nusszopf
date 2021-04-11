@@ -27,7 +27,7 @@ const EditProjectCard = ({ onClick, toggleVisibility, onEdit, onDelete, project,
         ) : (
           <EyeOff size={21} className="inline mr-1 -mt-1" />
         )}{' '}
-        {project.title}
+        <span data-test="text_title_project-edit-card">{project.title}</span>
       </Text>
       <Text variant="textSm" className="mt-2">
         {truncate(project.goal, { length: 90 })}
