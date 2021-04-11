@@ -1,18 +1,17 @@
 context('Search', () => {
-  before(() => {
-    cy.visit('/')
+  beforeEach(() => {
+    cy.visit('/search')
   })
 
-  it('User can search for projects', () => {
-    cy.get('[data-test="route_search-page"]').click()
+  xit('User can search for projects', () => {
     expect(true).to.equal(true)
   })
 
-  it('User can filter for specific projects', () => {
+  xit('User can filter for specific projects', () => {
     expect(true).to.equal(true)
   })
 
-  it('User can contact a project', () => {
+  xit('User can contact a project', () => {
     expect(true).to.equal(true)
   })
 })
