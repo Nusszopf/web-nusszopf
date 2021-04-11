@@ -82,11 +82,11 @@ const Project = ({ id, userId }) => {
   useEffect(() => {
     const updateViews = async () => {
       if (data.projects_by_pk.user_id !== userId) {
-        const dataString = localStorage.getItem('viewed_projects')
+        const dataString = localStorage.getItem('nusszopf_viewed_projects')
         const localViews = JSON.parse(dataString) ?? []
         const hasViewed = localViews.includes(data.projects_by_pk.id)
         if (!hasViewed) {
-          localStorage.setItem('viewed_projects', JSON.stringify([...localViews, data.projects_by_pk.id]))
+          localStorage.setItem('nusszopf_viewed_projects', JSON.stringify([...localViews, data.projects_by_pk.id]))
           try {
             const _views = data.projects_by_pk.analytics?.views
             if (_views === null || _views === undefined) {
