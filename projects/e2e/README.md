@@ -28,7 +28,7 @@ Starts Cypress in continuous integration mode, which will run all tests and exit
 
 ### User (anonym)
 
-- [ ] landingpage call-to-actions
+- [x] landingpage call-to-actions
 - [ ] Search projects
 - [ ] Contact project-team
 
