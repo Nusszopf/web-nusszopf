@@ -34,9 +34,9 @@ Starts Cypress in continuous integration mode, which will run all tests and exit
 
 ### User (logged in)
 
-- [ ] CRUD projects
-- [ ] CRUD requests
-- [ ] Read/Remove account
+- [x] CRUD projects
+- [x] CRUD requests
+- [x] Read/Remove account
 
 ## Manual Tests
 

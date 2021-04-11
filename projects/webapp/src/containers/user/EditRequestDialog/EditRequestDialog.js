@@ -52,6 +52,7 @@ const EditRequestDialog = ({ isOpen, onDismiss, onCreate, onUpdate, initialValue
 
   return (
     <Dialog
+      data-test="edit-request-dialog"
       isOpen={isOpen}
       onDismiss={undefined}
       className="relative text-stone-800 bg-stone-200"

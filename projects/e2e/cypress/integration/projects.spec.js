@@ -51,31 +51,58 @@ context('Projects', () => {
     })
   })
 
-  xdescribe('[Update]', () => {
-    it('User can update a request', () => {
-      // check user/projects
-      // check search
-      expect(true).to.equal(false)
+  describe('[Update]', () => {
+    it('User can update description and requests of a project', () => {
+      cy.visit('/user/projects')
+      cy.get('[data-test="route_edit-project_projects-page"]').click()
+      // Update Description
+      cy.get('[data-test="input_project-title"]').first().type('Test Update Title')
+      cy.get('[data-test="btn_save_project-view"]').first().click()
+      // Update Request
+      cy.get('[data-test="select_view_edit-project-page"]').select('Gesuche')
+      cy.get('[data-test="menu_edit-request-card"]').first().click().within(cy.get('[role="menuitem"]').first().click())
+      cy.get('[data-test="edit-request-dialog"]').within(
+        cy.get('[data-test="input_request-title"]').first().type('Test Update Titel')
+      )
+      cy.get('[data-test="btn_create-or-save_edit-request-dialog"]').click()
+      // Expect
+      cy.get('[data-test="btn_user-projects_nav-header"]').first().click()
+      cy.get('[data-test="text_title_project-edit-card"]').should('have.text', 'Test Update Title')
+      cy.get('[data-test="text_title_preview-request-card"]').should('have.text', 'Test Update Title')
     })
 
-    it('User can update project description', () => {
-      // check user/projects
-      // check search
-      expect(true).to.equal(false)
+    it('User can find the updated project on the search page', () => {
+      cy.visit('/search')
+      cy.get('[data-test="route_hitcard"]')
+        .first()
+        .within(() => {
+          cy.get('[data-test="route_title_hitcard"]').should('have.text', 'Test Update Title')
+        })
     })
   })
 
-  xdescribe('[Delete]', () => {
+  describe('[Delete]', () => {
     it('User can delete a request', () => {
-      // check user/projects
-      // check search
-      expect(true).to.equal(false)
+      cy.visit('/user/projects')
+      cy.get('[data-test="select_view_edit-project-page"]').select('Gesuche')
+      cy.get('[data-test="menu_edit-request-card"]').first().click().within(cy.get('[role="menuitem"]').last().click())
+      cy.get('[data-test="btn_user-projects_nav-header"]').first().click()
+      cy.get('[data-test="text_title_preview-request-card"]').should('not.exist')
     })
 
     it('User can delete a project', () => {
-      // check user/projects
-      // check search
-      expect(true).to.equal(false)
+      cy.visit('/user/projects')
+      cy.get('[data-test="select_view_edit-project-page"]').select('Einstellungen')
+      cy.get('[data-test="btn_delete_settings-view"]').click()
+      cy.on('window:confirm', () => true)
+      cy.get('[data-test="route_edit-project_projects-page"]').should('not.exist')
+    })
+
+    it('User can not find the deleted project on the search page', () => {
+      cy.visit('/search')
+      cy.get('[data-test="input_search-input"]').type('Test Update Title')
+      cy.get('[data-test="btn_search_search-input"]').click()
+      cy.get('[data-test="route_hitcard"]').should('not.exist')
     })
   })
 })

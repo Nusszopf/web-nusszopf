@@ -7,9 +7,7 @@ context('Auth0', () => {
     cy.logout()
   })
 
-  // todo: FIX isTestUser in registration for staging
-
-  xit('User can register', () => {
+  it('User can register', () => {
     cy.get('[data-test="btn_burger_nav-header"]').click()
     cy.get('[data-test="btn_login_nav-header"]').click()
     cy.get('[data-reach-tab-list]').last().click()
@@ -23,20 +21,10 @@ context('Auth0', () => {
     })
   })
 
-  xit('User can login', () => {
+  it('User can login', () => {
     cy.login()
     cy.location().should(location => {
       expect(location.href).to.equal('https://web.dev.nusszopf.org/user/projects')
     })
-  })
-
-  xit('User can request new password', () => {
-    // manual test
-    expect(true).to.equal(false)
-  })
-
-  xit('User can change password', () => {
-    // manual test
-    expect(true).to.equal(false)
   })
 })
