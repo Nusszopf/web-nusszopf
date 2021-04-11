@@ -65,6 +65,7 @@ const SearchInput = ({ className }) => {
     <div className={className}>
       <InputGroup className="rounded-lg text-moss-800">
         <InputGroup.Input
+          data-test="input_search-input"
           ref={inputRef}
           maxLength="30"
           aria-label={cms.input}
@@ -89,6 +90,7 @@ const SearchInput = ({ className }) => {
               <XIcon size={24} />
             </Clickable>
             <Clickable
+              data-test="btn_search_search-input"
               as="div"
               onClick={handleSearch}
               className="flex items-center justify-center w-16 h-16 -mr-3 border-t-2 border-b-2 border-r-2 outline-none cursor-pointer rounded-r-md border-moss-800 bg-moss-450">

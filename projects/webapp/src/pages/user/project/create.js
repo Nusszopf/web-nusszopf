@@ -47,7 +47,7 @@ const CreateProject = ({ user }) => {
   return (
     <Page
       navHeader={{ visible: true, goBackUri: '/user/projects' }}
-      footer={{ className: 'bg-white lg:bg-steel-100' }}
+      footer={{ className: 'bg-steel-100' }}
       noindex={true}
       className="bg-white text-lilac-800 lg:bg-steel-100">
       <Formik
@@ -90,7 +90,7 @@ const CreateProject = ({ user }) => {
                   <DescriptionStep1 validationSchema={step1ValidationSchema} />
                   <DescriptionStep2 validationSchema={step2ValidationSchema} />
                   <RequestsStep />
-                  <SettingsStep user={user} />
+                  <SettingsStep />
                 </Stepper>
                 <FramedGridCard.Body.Col variant="oneCol" className="mt-12 mb-4 md:mb-0 lg:col-start-2">
                   <Navigation

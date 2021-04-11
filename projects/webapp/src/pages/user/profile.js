@@ -74,7 +74,7 @@ const Profile = ({ user, loading }) => {
   return (
     <Page
       navHeader={{ visible: true }}
-      footer={{ className: 'bg-white lg:bg-steel-100' }}
+      footer={{ className: 'bg-steel-100' }}
       noindex={true}
       className="text-steel-700 bg-steel-100">
       <FramedGridCard
@@ -191,6 +191,7 @@ const Profile = ({ user, loading }) => {
               </Text>
               <Text variant="textSm">{cms.delete.description}</Text>
               <Button
+                data-test="btn_delete-account_settings-page"
                 onClick={handleDelete}
                 variant="outline"
                 color="warning"

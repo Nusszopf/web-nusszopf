@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
+import { Formik, Form, ErrorMessage } from 'formik'
 import classnames from 'classnames'
 import { object, string } from 'yup'
 import { Eye, EyeOff } from 'react-feather'
@@ -21,17 +21,19 @@ const LoginForm = ({ className, loading, onSubmit, onLoginWithGoogle, onLoginWit
         validationSchema={object({
           emailOrName: string().required(cms.login.fields.emailOrName.validation[0]),
           password: string().required(cms.login.fields.password.validation[0]),
-        })}>
+        })}
+        enableReinitialize={true}>
         {formikProps => (
           <Form>
             <div>
-              <Field
-                as={Input}
-                autoComplete="off"
+              <Input
                 name="emailOrName"
                 type="text"
                 aria-label={cms.login.fields.emailOrName.aria}
                 placeholder={cms.login.fields.emailOrName.placeholder}
+                value={formikProps.values.emailOrName}
+                onChange={formikProps.handleChange}
+                onBlur={formikProps.handleBlur}
               />
               <ErrorMessage
                 name="emailOrName"
@@ -43,7 +45,6 @@ const LoginForm = ({ className, loading, onSubmit, onLoginWithGoogle, onLoginWit
             <div className="mt-4">
               <InputGroup>
                 <InputGroup.Input
-                  autoComplete="off"
                   name="password"
                   type={isEyeOpen ? 'text' : 'password'}
                   value={formikProps.values.password}

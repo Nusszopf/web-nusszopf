@@ -14,6 +14,7 @@ const VisibilityField = ({ formik, ...props }) => {
       </FieldTitle>
       <RadioGroup {...radio} aria-label={cms.visibility.title}>
         <Radiobox
+          data-test="radio_public_project-visibility"
           {...radio}
           name="visibility"
           value="public"
@@ -26,6 +27,7 @@ const VisibilityField = ({ formik, ...props }) => {
           }
         />
         <Radiobox
+          data-test="radio_private_project-visibility"
           {...radio}
           name="visibility"
           onChange={formik.handleChange}

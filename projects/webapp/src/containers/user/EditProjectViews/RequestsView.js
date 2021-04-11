@@ -54,6 +54,7 @@ const RequestsView = ({ project }) => {
             {cms.requestsView.intro}
           </Text>
           <Button
+            data-test="btn_create_requests-view"
             onClick={openDialog}
             color="stone"
             className="mt-8 bg-stone-300"

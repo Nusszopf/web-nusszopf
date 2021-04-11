@@ -27,7 +27,6 @@ const Link = forwardRef(
     switch (variant) {
       case LinkVariant.text: {
         return (
-          // eslint-disable-next-line react/jsx-no-target-blank
           <Text
             as="a"
             ref={ref}

@@ -45,6 +45,7 @@ const PeriodField = ({ className, formik }) => {
       </FieldTitle>
       <RadioGroup {...radio} aria-label={cms.visibility.title}>
         <Radiobox
+          data-test="radio_flexible_project-period"
           {...radio}
           name="period.flexible"
           value={true}
@@ -52,6 +53,7 @@ const PeriodField = ({ className, formik }) => {
           label={<Text variant="textSmMedium">{cms.period.action.radio1}</Text>}
         />
         <Radiobox
+          data-test="radio_fixed_project-period"
           {...radio}
           name="period.flexible"
           value={false}
@@ -69,6 +71,7 @@ const PeriodField = ({ className, formik }) => {
           </Text>
           <div className="w-full lg:max-w-xs">
             <Input
+              data-test="input_from_project-period"
               name="period.from"
               aria-label={cms.period.action.from}
               color="lilac"
@@ -95,6 +98,7 @@ const PeriodField = ({ className, formik }) => {
           </Text>
           <div className="w-full lg:max-w-xs">
             <Input
+              data-test="input_to_project-period"
               name="period.to"
               aria-label={cms.period.action.to}
               color="lilac"

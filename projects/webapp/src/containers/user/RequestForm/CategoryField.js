@@ -32,6 +32,7 @@ const CategoryField = ({ formik, ...props }) => {
         {cms.category.title}
       </FieldTitle>
       <Select
+        data-test="select_request-category"
         name="category"
         aria-label={cms.category.title}
         value={formik.values.category}

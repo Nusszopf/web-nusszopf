@@ -22,7 +22,7 @@ const HitCard = ({ projectId, hits, className, ...props }) => {
 
   return (
     <NLink href={`/projects/${projectId}`}>
-      <a href={`/projects/${projectId}`} {...props}>
+      <a data-test="route_hitcard" href={`/projects/${projectId}`} {...props}>
         <div
           className={classnames(
             'border p-4 md:p-5 border-lilac-300 text-lilac-800 transition-shadow duration-150 ease-in-out rounded-lg bg-lilac-200 ring-1 ring-transparent hover:ring-lilac-300 cursor-pointer',
@@ -31,6 +31,7 @@ const HitCard = ({ projectId, hits, className, ...props }) => {
           <div className="flex justify-between mb-2">
             <div>
               <Text
+                data-test="route_title_hitcard"
                 variant="textSm"
                 className="mb-1.5 font-semibold leading-6"
                 dangerouslySetInnerHTML={{ __html: hits[0]?._formatted?.pro_title || hits[0].pro_title }}

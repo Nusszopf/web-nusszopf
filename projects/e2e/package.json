@@ -1,0 +1,17 @@
+{
+  "name": "e2e",
+  "version": "4.0.0",
+  "description": "e2e tests",
+  "repository": "git@github.com:nusszopf/web-nusszopf.git",
+  "author": "schwamic <schwarz.michael@posteo.net>",
+  "license": "GNU General Public License v3.0",
+  "private": true,
+  "scripts": {
+    "open": "cypress open",
+    "start": "cypress run"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "cypress": "6.8.0"
+  }
+}

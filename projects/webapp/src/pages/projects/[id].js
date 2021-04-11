@@ -18,13 +18,15 @@ import { initializeApollo } from '~/utils/libs/apolloClient'
 import { NZ_EMAIL } from '~/utils/enums'
 import { projectData as cms } from '~/assets/data'
 import { Page, RequestCard } from '~/components'
-import { RequestDialog, ContactDialog, Banner } from '~/containers'
+import { RequestDialog, ContactDialog, Banner, VisitorCounter } from '~/containers'
 
 const Project = ({ id, userId }) => {
   const { serializeJSX } = useRichTextEditor()
   const [currentRequest, setCurrentRequest] = useState()
   const [showRequestDialog, setShowRequestDialog] = useState(false)
   const [showContactDialog, setShowContactDialog] = useState(false)
+  const [apolloUpdateProjectAnalytics] = apollo.useUpdateProjectAnalytics()
+  const [apolloAddProjectAnalytics] = apollo.useAddProjectAnalytics()
   const { data, loading } = apollo.useGetProject(id)
   const { notify } = useToasts()
 
@@ -78,6 +80,35 @@ const Project = ({ id, userId }) => {
   }
 
   useEffect(() => {
+    const updateViews = async () => {
+      if (data.projects_by_pk.user_id !== userId) {
+        const dataString = localStorage.getItem('nusszopf_viewed_projects')
+        const localViews = JSON.parse(dataString) ?? []
+        const hasViewed = localViews.includes(data.projects_by_pk.id)
+        if (!hasViewed) {
+          localStorage.setItem('nusszopf_viewed_projects', JSON.stringify([...localViews, data.projects_by_pk.id]))
+          try {
+            const _views = data.projects_by_pk.analytics?.views
+            if (_views === null || _views === undefined) {
+              await apolloAddProjectAnalytics({
+                variables: { analytics: { project_id: data.projects_by_pk.id, views: 1 } },
+              })
+            } else {
+              await apolloUpdateProjectAnalytics({
+                variables: { id: data.projects_by_pk.id, analytics: { views: _views + 1 } },
+              })
+            }
+          } catch (error) {
+            // error or constraints
+          }
+        }
+      }
+    }
+    updateViews()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  useEffect(() => {
     if (currentRequest) {
       setShowRequestDialog(true)
     }
@@ -107,7 +138,7 @@ const Project = ({ id, userId }) => {
       navHeader={{ visible: true }}
       title={data.projects_by_pk.title}
       description={data.projects_by_pk.goal}
-      footer={{ className: 'bg-white lg:bg-steel-100' }}
+      footer={{ className: 'bg-steel-100' }}
       noindex={true}
       className="bg-white text-lilac-800 lg:bg-steel-100">
       <Banner project={data.projects_by_pk} userId={userId} />
@@ -199,6 +230,9 @@ const Project = ({ id, userId }) => {
                 <Text variant="textSm">{data.projects_by_pk.motto}</Text>
               </div>
             )}
+            <div className="mt-12 mb-3 md:mb-0">
+              <VisitorCounter views={data.projects_by_pk.analytics?.views} />
+            </div>
           </FramedGridCard.Body.Col>
           <FramedGridCard.Body.Col
             variant="twoCols"
@@ -231,7 +265,7 @@ const Project = ({ id, userId }) => {
           </FramedGridCard.Body.Col>
         </FramedGridCard.Body>
       </FramedGridCard>
-      <Frame className="mt-12 mb-12 text-center lg:mt-4 lg:text-right lg:mb-20">
+      <Frame className="pt-4 pb-16 text-center lg:pb-20 lg:text-right bg-steel-100">
         <Link
           variant="button"
           size="base"

@@ -43,7 +43,7 @@ const ProjectEdit = ({ user, loading: loadingUser }) => {
   return (
     <Page
       navHeader={{ visible: true, goBackUri: '/user/projects' }}
-      footer={{ className: 'bg-white lg:bg-steel-100' }}
+      footer={{ className: 'bg-steel-100' }}
       noindex={true}
       className="bg-white text-lilac-800 lg:bg-steel-100">
       <FramedGridCard
@@ -56,6 +56,7 @@ const ProjectEdit = ({ user, loading: loadingUser }) => {
               {projectData?.projects_by_pk?.title}
             </Text>
             <Select
+              data-test="select_view_edit-project-page"
               aria-label={cms.aria.select}
               value={view}
               onChange={shouldSelectView}

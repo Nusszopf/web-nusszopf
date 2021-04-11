@@ -12,6 +12,7 @@ const GoalField = ({ formik, ...props }) => (
       {cms.goal.title}
     </FieldTitle>
     <Input
+      data-test="input_project-goal"
       as="textarea"
       color="lilac"
       aria-label={cms.goal.title}
