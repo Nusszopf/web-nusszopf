@@ -1,11 +1,9 @@
 name: e2e-tests-action
 on:
   push:
-    branches:
-      - develop # todo: remove
   pull_request:
     branches:
-      - develop # todo: replace with master
+      - master
 jobs:
   e2e:
     runs-on: ubuntu-latest
