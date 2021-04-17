@@ -30,26 +30,3 @@ jobs:
       - uses: cypress-io/github-action@v2
         with:
           install: false
-
-
-
-
-
-
-
-name: e2e-tests-action
-on: [push]
-jobs:
-  e2e:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-      - uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-      - name: Install packages
-        run: yarn install
-      - name:
-      - run: yarn ci:test
