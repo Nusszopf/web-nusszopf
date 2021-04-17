@@ -13,7 +13,7 @@ context('LandingPage', () => {
   it('[CTA] User can navigate to create-project-page', () => {
     cy.get('[data-test="route_create-project-page"]').click()
     cy.location().should(location => {
-      expect(location.href).to.match('/^https://auth.nusszopf.org/login/')
+      expect(location.href).to.contains('https://auth.nusszopf.org/login')
     })
   })
 })
