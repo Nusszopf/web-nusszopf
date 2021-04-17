@@ -26,6 +26,6 @@ jobs:
             ~/.cache/Cypress
             node_modules
           key: my-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - run: yarn --focus
+      - run: yarn add cypress@6.8.0
       - name: Run Tests
         run: yarn run
