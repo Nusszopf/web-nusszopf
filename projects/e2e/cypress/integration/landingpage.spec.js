@@ -4,7 +4,7 @@ context('LandingPage', () => {
   })
 
   it('[CTA] User can navigate to search-page', () => {
-    cy.get('[data-test="route_search-page"]').click()
+    cy.get('[data-test="route_search-page"]').last().click()
     cy.location().should(location => {
       expect(location.href).to.equal('https://web.dev.nusszopf.org/search')
     })
