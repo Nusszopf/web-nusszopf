@@ -20,5 +20,4 @@ jobs:
         with:
           node-version: 12.x
       - name: Run Tests
-        run: yarn
-        run: cypress run
+        run: npx cypress run
