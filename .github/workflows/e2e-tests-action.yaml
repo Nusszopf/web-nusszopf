@@ -19,5 +19,37 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: Run Tests
-        run: npx cypress run
+      - name: Install Dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cache/Cypress
+            node_modules
+          key: my-cache-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      - run: npm i cypress@6.8.0
+      - uses: cypress-io/github-action@v2
+        with:
+          install: false
+
+
+
+
+
+
+
+name: e2e-tests-action
+on: [push]
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+      - name: Install packages
+        run: yarn install
+      - name:
+      - run: yarn ci:test
