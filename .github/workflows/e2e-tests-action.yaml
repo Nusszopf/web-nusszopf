@@ -20,4 +20,5 @@ jobs:
         with:
           node-version: 12.x
       - name: Run Tests
-        uses: cypress-io/github-action@v2
+        run: yarn
+        run: cypress run
