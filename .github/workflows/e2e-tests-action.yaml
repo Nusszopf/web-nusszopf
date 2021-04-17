@@ -17,14 +17,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.cache/Cypress
-            node_modules
-          key: my-cache-${{ runner.os }}-${{ hashFiles('yarn.lock') }}
-      - name: Install Dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn add cypress@6.8.0
+      - run: yarn add cypress@6.8.0
       - name: Run Tests
         run: yarn start
