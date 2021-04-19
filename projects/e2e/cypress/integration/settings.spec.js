@@ -1,4 +1,4 @@
-xcontext('Settings', () => {
+context('Settings', () => {
   before(() => {
     cy.visit('/')
     cy.login()

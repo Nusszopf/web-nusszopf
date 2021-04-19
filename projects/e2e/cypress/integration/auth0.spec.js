@@ -1,4 +1,4 @@
-xcontext('Auth0', () => {
+context('Auth0', () => {
   before(() => {
     cy.visit('/')
   })
