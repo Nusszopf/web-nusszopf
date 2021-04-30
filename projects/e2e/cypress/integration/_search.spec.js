@@ -1,4 +1,4 @@
-xcontext('Search', () => {
+export default xcontext('Search', () => {
   beforeEach(() => {
     cy.visit('/search')
   })

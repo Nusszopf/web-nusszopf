@@ -1,10 +1,6 @@
-context('Auth0', () => {
+export default context('Auth0', () => {
   before(() => {
     cy.visit('/')
-  })
-
-  afterEach(() => {
-    cy.logout()
   })
 
   it('User can register', () => {
@@ -21,8 +17,23 @@ context('Auth0', () => {
     })
   })
 
+  it('User can logout', () => {
+    cy.get('[data-test="btn_burger_nav-header"]').click()
+    cy.get('[data-test="btn_logout_nav-header"]').click()
+    cy.location().should(location => {
+      expect(location.href).to.equal('https://web.dev.nusszopf.org/')
+    })
+  })
+
   it('User can login', () => {
-    cy.login()
+    cy.get('[data-test="btn_burger_nav-header"]').click()
+    cy.get('[data-test="btn_login_nav-header"]').click()
+    cy.get('[name="emailOrName"]').first().type('e2etest')
+    cy.get('[name="password"]').first().type('asdf1234A!')
+    cy.get('[type="submit"]').first().click()
+    Cypress.Cookies.defaults({
+      preserve: ['a0:state', 'a0:session'],
+    })
     cy.location().should(location => {
       expect(location.href).to.equal('https://web.dev.nusszopf.org/user/projects')
     })

@@ -1,4 +1,4 @@
-context('LandingPage', () => {
+export default context('LandingPage', () => {
   beforeEach(() => {
     cy.visit('/')
   })

@@ -1,6 +1,6 @@
 {
   "baseUrl": "https://web.dev.nusszopf.org",
-  "testFiles": ["landingpage.spec.js", "search.spec.js", "auth0.spec.js", "projects.spec.js", "settings.spec.js"],
+  "testFiles": ["main.spec.js"],
   "viewportWidth": 1440,
   "viewportHeight": 800
 }

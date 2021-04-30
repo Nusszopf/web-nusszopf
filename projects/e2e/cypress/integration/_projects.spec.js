@@ -1,13 +1,4 @@
-context('Projects', () => {
-  before(() => {
-    cy.visit('/')
-    cy.login()
-  })
-
-  beforeEach(() => {
-    Cypress.Cookies.preserveOnce('a0:state', 'a0:session')
-  })
-
+export default context('Projects', () => {
   // current workaround: slate-editor hast to be edited first, else it would not work
   // https://github.com/ianstormtaylor/slate/issues/3476
   describe('[Create]', () => {
