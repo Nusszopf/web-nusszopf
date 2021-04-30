@@ -31,9 +31,6 @@ export default context('Auth0', () => {
     cy.get('[name="emailOrName"]').first().type('e2etest')
     cy.get('[name="password"]').first().type('asdf1234A!')
     cy.get('[type="submit"]').first().click()
-    Cypress.Cookies.defaults({
-      preserve: ['a0:state', 'a0:session'],
-    })
     cy.location().should(location => {
       expect(location.href).to.equal('https://web.dev.nusszopf.org/user/projects')
     })
