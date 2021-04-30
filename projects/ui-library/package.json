@@ -12,13 +12,13 @@
     "build-storybook": "yarn build-storybook"
   },
   "dependencies": {
-    "react-is": "16.13.1"
+    "react-is": "17.0.2"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "6.1.11",
-    "@storybook/addon-essentials": "6.1.11",
-    "@storybook/addon-links": "6.1.11",
-    "@storybook/react": "6.1.11",
+    "@storybook/addon-actions": "6.2.9",
+    "@storybook/addon-essentials": "6.2.9",
+    "@storybook/addon-links": "6.2.9",
+    "@storybook/react": "6.2.9",
     "@svgr/webpack": "5.5.0",
     "babel-loader": "8.2.2"
   }
