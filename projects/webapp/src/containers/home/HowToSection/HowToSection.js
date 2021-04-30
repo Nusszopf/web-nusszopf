@@ -45,6 +45,7 @@ const HowToSection = () => {
         </div>
         <div className="hidden mt-8 lg:block">
           <Route
+            data-test="route_search-page"
             variant="button"
             size="large"
             href="/search"
