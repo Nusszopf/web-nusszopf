@@ -1,4 +1,4 @@
-context('LandingPage', () => {
+xcontext('LandingPage', () => {
   beforeEach(() => {
     cy.visit('/')
   })

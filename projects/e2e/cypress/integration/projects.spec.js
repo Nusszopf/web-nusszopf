@@ -37,12 +37,15 @@ context('Projects', () => {
       cy.location().should(location => {
         expect(location.href).to.equal('https://web.dev.nusszopf.org/user/projects')
       })
-      cy.get('[data-test="text_title_project-edit-card"]').should('have.text', 'Test Title')
-      cy.get('[data-test="text_title_preview-request-card"]').should('have.text', 'Test Title')
+      cy.get('[data-test="text_title_project-edit-card"]').first().should('have.text', 'Test Title')
+      cy.get('[data-test="text_title_preview-request-card"]').first().should('have.text', 'Test Title')
     })
 
     it('User can find the new created project on the search page', () => {
       cy.visit('/search')
+      // eslint-disable-next-line cypress/no-unnecessary-waiting
+      cy.wait(2000)
+      cy.get('[data-test="btn_search_search-input"]').click()
       cy.get('[data-test="route_hitcard"]')
         .first()
         .within(() => {
@@ -54,21 +57,24 @@ context('Projects', () => {
   describe('[Update]', () => {
     it('User can update description and requests of a project', () => {
       cy.visit('/user/projects')
-      cy.get('[data-test="route_edit-project_projects-page"]').click()
+      cy.get('[data-test="route_edit-project_projects-page"]').first().click()
       // Update Description
-      cy.get('[data-test="input_project-title"]').first().type('Test Update Title')
+      cy.get('[data-test="input_project-title"]').first().type(' Updated')
       cy.get('[data-test="btn_save_project-view"]').first().click()
+
       // Update Request
       cy.get('[data-test="select_view_edit-project-page"]').select('Gesuche')
-      cy.get('[data-test="menu_edit-request-card"]').first().click().within(cy.get('[role="menuitem"]').first().click())
-      cy.get('[data-test="edit-request-dialog"]').within(
-        cy.get('[data-test="input_request-title"]').first().type('Test Update Titel')
-      )
+      cy.get('[data-test="menu_edit-request-card"]')
+        .first()
+        .click()
+        .within(cy.get('[data-test="menuitem-0"]').first().click({ force: true }))
+      cy.get('[data-test="edit-request-dialog"]').within(cy.get('[data-test="input_request-title"]').type(' Updated'))
       cy.get('[data-test="btn_create-or-save_edit-request-dialog"]').click()
+
       // Expect
       cy.get('[data-test="btn_user-projects_nav-header"]').first().click()
-      cy.get('[data-test="text_title_project-edit-card"]').should('have.text', 'Test Update Title')
-      cy.get('[data-test="text_title_preview-request-card"]').should('have.text', 'Test Update Title')
+      cy.get('[data-test="text_title_project-edit-card"]').first().should('have.text', 'Test Title Updated')
+      cy.get('[data-test="text_title_preview-request-card"]').first().should('have.text', 'Test Title Updated')
     })
 
     it('User can find the updated project on the search page', () => {
@@ -100,7 +106,7 @@ context('Projects', () => {
 
     it('User can not find the deleted project on the search page', () => {
       cy.visit('/search')
-      cy.get('[data-test="input_search-input"]').type('Test Update Title')
+      cy.get('[data-test="input_search-input"]').type('Test Title Updated')
       cy.get('[data-test="btn_search_search-input"]').click()
       cy.get('[data-test="route_hitcard"]').should('not.exist')
     })

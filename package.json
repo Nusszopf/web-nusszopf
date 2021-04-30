@@ -15,7 +15,6 @@
     "dev:e2e": "yarn --cwd projects/e2e open",
     "dev:ui-library": "yarn --cwd projects/ui-library start-storybook -p 6006",
     "dev:webapp": "yarn --cwd projects/webapp dev",
-    "ci:test": "yarn --cwd projects/e2e start",
     "lint": "eslint ./projects/*"
   },
   "commitlint": {
