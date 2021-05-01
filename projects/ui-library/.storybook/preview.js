@@ -1,4 +1,4 @@
-require('typeface-barlow')
+import 'fontsource-barlow/latin.css'
 import '../styles/tailwind.css'
 
 export const parameters = {

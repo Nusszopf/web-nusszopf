@@ -60,7 +60,7 @@ const RichTextEditor = ({
           <LinkButton aria-label={cms.aria.link} color={color} icon={<Link size={18} />} />
         </div>
         <Editable
-          className="px-4 py-3 min-h-48"
+          className="px-4 py-3 min-h-48!"
           aria-label={ariaLabel}
           renderElement={props => renderElement({ ...props, color })}
           renderLeaf={props => renderLeaf({ ...props, color })}

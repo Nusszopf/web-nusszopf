@@ -1,6 +1,6 @@
 @layer components {
   .rainbow {
-    @apply fixed top-0 left-0 right-0 h-1.5 shadow;
+    @apply fixed top-0 left-0 right-0 h-2 shadow;
     z-index: 100;
     background-image: repeating-linear-gradient(
       to right,
