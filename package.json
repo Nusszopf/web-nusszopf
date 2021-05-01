@@ -10,6 +10,7 @@
     "projects/*"
   ],
   "scripts": {
+    "prepare": "husky install",
     "dev:auth-login": "yarn --cwd projects/auth-login dev",
     "dev:auth-password": "yarn --cwd projects/auth-password dev",
     "dev:e2e": "yarn --cwd projects/e2e open",
@@ -17,24 +18,9 @@
     "dev:webapp": "yarn --cwd projects/webapp dev",
     "lint": "eslint ./projects/*"
   },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
-  },
-  "lint-staged": {
-    "*.{html,js,json,md,mdx,mjs,yml}": "prettier --write",
-    "*.css": "stylelint --fix"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e",
-      "pre-commit": "lint-staged"
-    }
-  },
   "engines": {
-    "node": "12.x",
-    "yarn": "1.22.x"
+    "node": ">=12.22 <13",
+    "yarn": "~1.22"
   },
   "dependencies": {
     "@reach/combobox": "0.15.1",
@@ -47,7 +33,7 @@
     "formik": "2.2.6",
     "framer-motion": "4.1.11",
     "lodash": "4.17.21",
-    "lucide-react": "0.15.10",
+    "lucide-react": "0.15.11",
     "next": "10.0.7",
     "next-seo": "4.19.0",
     "next-transpile-modules": "6.3.0",
@@ -69,8 +55,8 @@
   "devDependencies": {
     "@babel/core": "7.14.0",
     "@babel/register": "7.13.16",
-    "@commitlint/cli": "11.0.0",
-    "@commitlint/config-conventional": "11.0.0",
+    "@commitlint/cli": "12.1.1",
+    "@commitlint/config-conventional": "12.1.1",
     "@next/bundle-analyzer": "10.2.0",
     "autoprefixer": "10.2.5",
     "babel-eslint": "10.1.0",
@@ -83,7 +69,7 @@
     "eslint-plugin-prettier": "3.4.0",
     "eslint-plugin-react": "7.23.2",
     "eslint-plugin-react-hooks": "4.2.0",
-    "husky": "4.3.7",
+    "husky": "6.0.0",
     "lint-staged": "10.5.4",
     "postcss": "8.2.13",
     "postcss-flexbugs-fixes": "5.0.2",
@@ -91,7 +77,7 @@
     "postcss-nesting": "7.0.1",
     "postcss-preset-env": "6.7.0",
     "prettier": "2.2.1",
-    "stylelint": "13.13.0",
+    "stylelint": "13.13.1",
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-recommended": "5.0.0",
     "tailwindcss": "2.1.2",
