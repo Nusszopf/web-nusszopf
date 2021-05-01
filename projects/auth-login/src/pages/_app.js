@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import Head from 'next/head'
-require('typeface-barlow')
+import 'fontsource-barlow/latin.css'
 import 'ui-library/styles/tailwind.css'
 import { ToastsProvider } from 'ui-library/services/Toasts.service'
 
