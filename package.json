@@ -34,9 +34,9 @@
     "framer-motion": "4.1.11",
     "lodash": "4.17.21",
     "lucide-react": "0.15.11",
-    "next": "10.0.7",
-    "next-seo": "4.19.0",
-    "next-transpile-modules": "6.3.0",
+    "next": "10.2.0",
+    "next-seo": "4.24.0",
+    "next-transpile-modules": "7.0.0",
     "prop-types": "15.7.2",
     "react": "17.0.2",
     "react-alice-carousel": "2.5.1",
@@ -81,6 +81,6 @@
     "stylelint-config-prettier": "8.0.2",
     "stylelint-config-recommended": "5.0.0",
     "tailwindcss": "2.1.2",
-    "vercel": "20.1.4"
+    "vercel": "22.0.1"
   }
 }
