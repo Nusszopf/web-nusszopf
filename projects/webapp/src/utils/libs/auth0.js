@@ -8,8 +8,8 @@ export default initAuth0({
   clockTolerance: 60,
   baseURL: process.env.DOMAIN,
   routes: {
-    callback: '/api/callback', // TODO: remove AUTH0_REDIRECT_URI
-    postLogoutRedirect: '/', // TODO: remove AUTH0_POST_LOGOUT_REDIRECT_URI
+    callback: '/api/callback',
+    postLogoutRedirect: '/',
   },
   authorizationParams: {
     audience: process.env.AUTH0_AUDIENCE,
