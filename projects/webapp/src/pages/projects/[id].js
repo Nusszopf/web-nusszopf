@@ -314,7 +314,7 @@ export async function getServerSideProps(ctx) {
     } else {
       let userId = 'anonymous'
       try {
-        const session = await auth0.getSession(ctx.req)
+        const session = await auth0.getSession(ctx.req, ctx.res)
         if (session?.user) {
           userId = session.user.sub
         }

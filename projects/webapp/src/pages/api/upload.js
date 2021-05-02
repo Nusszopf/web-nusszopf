@@ -3,7 +3,7 @@ import auth0 from '../../utils/libs/auth0'
 import runMiddleware, { rateLimiter } from '../../utils/functions/runMiddleware.function'
 import { handleError } from '../../utils/functions/api.function'
 
-export default auth0.requireAuthentication(async function upload(req, res) {
+export default auth0.withApiAuthRequired(async function upload(req, res) {
   try {
     await runMiddleware(req, res, rateLimiter)
     const { id, picture } = req.body

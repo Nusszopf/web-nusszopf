@@ -19,15 +19,15 @@ const requestAccessTokenClient = async () => {
   }
 }
 
-const requestAccessTokenServer = async req => {
+const requestAccessTokenServer = async (req, res) => {
   if (typeof req === 'undefined') {
     accessToken = 'public'
   }
-  const res = await auth0.getSession(req)
-  if (!res?.accessToken) {
+  const session = await auth0.getSession(req, res)
+  if (!session?.accessToken) {
     accessToken = 'public'
   } else {
-    accessToken = res.accessToken
+    accessToken = session.accessToken
   }
 }
 
@@ -40,7 +40,7 @@ const httpLink = new HttpLink({
 const authLink = ctx =>
   setContext(async (req, { headers }) => {
     if (typeof window === 'undefined') {
-      await requestAccessTokenServer(ctx.req)
+      await requestAccessTokenServer(ctx.req, ctx.res)
     } else {
       await requestAccessTokenClient()
     }

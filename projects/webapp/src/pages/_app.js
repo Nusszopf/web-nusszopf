@@ -5,7 +5,7 @@ import { ApolloProvider } from '@apollo/client'
 import { Provider as ReakitProvider } from 'reakit'
 import Head from 'next/head'
 import smoothscroll from 'smoothscroll-polyfill'
-import 'fontsource-barlow/latin.css'
+import '@fontsource/barlow/latin.css'
 
 import 'ui-library/styles/tailwind.css'
 import { LoadingIndicator } from 'ui-library/stories/atoms'
