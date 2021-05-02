@@ -1,5 +1,5 @@
 Cypress.Cookies.defaults({
-  preserve: ['a0:state', 'a0:session'],
+  preserve: ['a0:state', 'a0:session', 'appSession'],
 })
 
 import './_landingpage.spec'
