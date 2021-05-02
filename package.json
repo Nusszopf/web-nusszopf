@@ -23,13 +23,13 @@
     "yarn": "~1.22"
   },
   "dependencies": {
+    "@fontsource/barlow": "4.2.2",
     "@reach/combobox": "0.15.1",
     "@reach/dialog": "0.15.0",
     "@reach/tabs": "0.15.0",
     "auth0-js": "9.16.0",
     "classnames": "2.3.1",
     "compressorjs": "1.0.7",
-    "fontsource-barlow": "4.0.0",
     "formik": "2.2.6",
     "framer-motion": "4.1.11",
     "lodash": "4.17.21",

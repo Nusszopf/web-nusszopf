@@ -3,7 +3,7 @@ import { handleError } from '../../utils/functions/api.function'
 
 export default async function login(req, res) {
   try {
-    await auth0.handleLogin(req, res)
+    await auth0.handleLogin(req, res, { returnTo: '/user/projects' })
   } catch (error) {
     handleError({ res, error })
   }

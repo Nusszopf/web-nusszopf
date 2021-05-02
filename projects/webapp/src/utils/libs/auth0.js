@@ -1,18 +1,21 @@
 import { initAuth0 } from '@auth0/nextjs-auth0'
 
 export default initAuth0({
-  audience: process.env.AUTH0_AUDIENCE,
-  clientId: process.env.AUTH0_CLIENT_ID,
+  issuerBaseURL: `https://${process.env.AUTH0_DOMAIN}`,
+  clientID: process.env.AUTH0_CLIENT_ID,
   clientSecret: process.env.AUTH0_CLIENT_SECRET,
-  scope: process.env.AUTH0_SCOPE,
-  domain: process.env.AUTH0_DOMAIN,
-  redirectUri: process.env.AUTH0_REDIRECT_URI,
-  postLogoutRedirectUri: process.env.AUTH0_POST_LOGOUT_REDIRECT_URI,
+  secret: process.env.AUTH0_SESSION_COOKIE_SECRET,
+  clockTolerance: 60,
+  baseURL: process.env.DOMAIN,
+  routes: {
+    callback: '/api/callback', // TODO: remove AUTH0_REDIRECT_URI
+    postLogoutRedirect: '/', // TODO: remove AUTH0_POST_LOGOUT_REDIRECT_URI
+  },
+  authorizationParams: {
+    audience: process.env.AUTH0_AUDIENCE,
+    scope: process.env.AUTH0_SCOPE,
+  },
   session: {
-    cookieSecret: process.env.AUTH0_SESSION_COOKIE_SECRET,
-    cookieLifetime: 60 * 60 * 8,
-    storeAccessToken: true,
-    storeRefreshToken: true,
-    storeIdToken: false,
+    rollingDuration: 60 * 60 * 8,
   },
 })
