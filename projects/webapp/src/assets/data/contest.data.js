@@ -1,29 +1,23 @@
 /* eslint-disable react/display-name */
-import { SVGDDCLogo } from '../logos'
+import { SVGAZLogo } from '../logos'
 
 export default {
-  heading: (
-    <>
-      WAS IST GUT – Wettbewerb<br className="hidden sm:inline"></br> für weltverbesserndes Design
-    </>
-  ),
-
+  heading: <>Augsburger Zukunftspreis 2021</>,
   description: (
     <>
-      Auch ein Nusszopf muss seine Brötchen verdienen: Wir haben das Projekt bei einem Wettbewerb des Deutschen Designer
-      Clubs eingereicht, um den Nusszopf kontinuierlich finanziell unterhalten zu können. Neuig&shy;keiten gibt es im
-      Frühjahr 2021, drückt die Daumen!
+      Auch ein Nusszopf muss seine Brötchen verdienen: Wir haben das Projekt bei dem Augsburger Zukunftspreis 2021
+      eingereicht. Die Preisverleihung findet statt am Montag, den 16.05.22, wir sind fest am Daumen drücken!
     </>
   ),
   infoText: 'Mehr Informationen:',
   infoLink: {
-    text: 'ddc.de/was-ist-gut',
-    href: 'https://www.ddc.de/de/wettbewerb/was-ist-gut/index.php',
-    meta: 'Zum WAS IST GUT Wettbewerb',
+    text: 'augsburg.de/zukunftspreis',
+    href: 'https://www.nachhaltigkeit.augsburg.de/zukunftspreis',
+    meta: 'Augsburger Zukunftspreis 2021',
   },
   host: {
-    href: 'https://www.ddc.de/index.php',
-    meta: 'Zum Deutschen Designer Club',
-    logo: props => <SVGDDCLogo {...props} />,
+    href: 'https://www.nachhaltigkeit.augsburg.de/zukunftspreis',
+    meta: 'Zum Augsburger Zukunftspreis',
+    logo: props => <SVGAZLogo {...props} />,
   },
 }

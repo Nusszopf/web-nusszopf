@@ -17,44 +17,18 @@ const HowToSection = () => {
         {cms.howTo.steps.map((step, index) => (
           <StepCard key={`step-${index}`} step={{ index: index + 1, ...step }} />
         ))}
-        <div className="flex flex-col items-center justify-center mt-8 sm:flex-row lg:justify-end">
-          <div>
-            <Route
-              data-test="route_create-project-page"
-              variant="button"
-              size="large"
-              href={user?.auth ? '/user/project/create' : '/api/login'}
-              ariaLabel={cms.howTo.actions.create.meta}
-              className="bg-yellow-400"
-              iconLeft={<PlusCircle className="mr-2 -ml-1" />}>
-              {cms.howTo.actions.create.text}
-            </Route>
-          </div>
-          <div className="mt-5 sm:ml-5 sm:mt-0 lg:hidden">
-            <Route
-              data-test="route_search-page"
-              variant="button"
-              size="large"
-              href="/search"
-              ariaLabel={cms.howTo.actions.search.meta}
-              iconLeft={<Search className="mr-2 -ml-1" />}
-              className="bg-yellow-400">
-              {cms.howTo.actions.search.text}
-            </Route>
-          </div>
-        </div>
-        <div className="hidden mt-8 lg:block">
-          <Route
-            data-test="route_search-page"
-            variant="button"
-            size="large"
-            href="/search"
-            ariaLabel={cms.howTo.actions.search.meta}
-            iconLeft={<Search className="mr-2 -ml-1" />}
-            className="bg-yellow-400">
-            {cms.howTo.actions.search.text}
-          </Route>
-        </div>
+      </div>
+      <div className="flex justify-center mt-8">
+        <Route
+          data-test="route_search-page"
+          variant="button"
+          size="large"
+          href="/search"
+          ariaLabel={cms.howTo.actions.search.meta}
+          iconLeft={<Search className="mr-2 -ml-1" />}
+          className="bg-yellow-400">
+          {cms.howTo.actions.search.text}
+        </Route>
       </div>
     </Frame>
   )

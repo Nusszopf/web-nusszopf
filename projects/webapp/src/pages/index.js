@@ -9,7 +9,7 @@ import { headerData, contestData, fellowsData, homeData } from '~/assets/data'
 
 const Index = () => (
   <Page
-    navHeader={{ visible: true }}
+    navHeader={{ visible: false }}
     footer={{ variant: 'classy', className: 'bg-steel-200' }}
     className="text-steel-700">
     <Frame as="header" className="bg-steel-50">
@@ -30,9 +30,31 @@ const Index = () => (
           </Text>
         </div>
       </div>
+      <div className="pb-16 sm:pb-18 xl:pb-20">
+        <div className="max-w-3xl mx-auto break-normal">
+          <div className="px-6 py-8 rounded-lg sm:px-8 lg:p-12 bg-livid-300 text-livid-800">
+            <Text className="-mt-1.5">{headerData.info[0]}</Text>
+            <Text variant="textSm" className="mt-3">
+              {headerData.info[1]}
+            </Text>
+            <div className="flex lg:justify-center">
+              <ol className="pl-3 list-decimal my-3 lg:w-4/5">
+                {headerData.info[2].map((item, key) => (
+                  <li key={`header-${key}`} className="mt-3">
+                    <Text as="span" variant="textSm">
+                      {item}
+                    </Text>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <Text variant="textSm">{headerData.info[3]}</Text>
+          </div>
+        </div>
+      </div>
     </Frame>
     <HowToSection />
-    <CarouselSection />
+    {/* <CarouselSection /> */}
     <Frame className="pt-12 pb-16 bg-turquoise-300 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
       <Text as="h3" variant="titleMd" className="mb-8 sm:max-w-sm xl:max-w-full xl:mb-10">
         {homeData.about.heading}
@@ -56,7 +78,7 @@ const Index = () => (
         ))}
       </div>
     </Frame>
-    <Frame id="bmbf" className="pt-12 pb-16 bg-red-300 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
+    <Frame className="pt-12 pb-16 bg-red-300 sm:pt-16 sm:pb-18 xl:pt-18 xl:pb-20">
       <div className="lg:flex">
         <div className="lg:w-2/3 xl:w-7/12">
           <Text as="h3" variant="titleMd" className="mb-8 xl:mb-10">

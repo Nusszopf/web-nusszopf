@@ -1,6 +1,6 @@
 export default {
   howTo: {
-    title: 'How To Nusszopf',
+    title: 'How To Nusszopf (Alte Version)',
     steps: [
       {
         title: 'Idee!',
@@ -26,8 +26,8 @@ export default {
         meta: 'Projekt starten',
       },
       search: {
-        text: 'Projekte entdecken',
-        meta: 'Projekte entdecken',
+        text: 'Alte Version entdecken',
+        meta: 'Alte Version entdecken',
       },
     },
   },
